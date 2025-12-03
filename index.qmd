@@ -1,5 +1,5 @@
 ---
-title: "Accueil - Gestion des données du SVR"
+title: "Gestion des données du SVR"
 format: html
 lang: fr
 ---
@@ -8,5 +8,9 @@ lang: fr
 Lorem ipsum
 
 # Sélection de la fiche méthodo
-Environnement de travail
-Jeux de données
+::: {.grille-selec}
+<a href="#" class="redir">Environnement de travail</a>
+<a href="#" class="redir">Construction des jeux de données</a>
+<a href="#" class="redir">Lorem Ipsum</a>
+<a href="#" class="redir">Lorem Ipsum</a>
+:::

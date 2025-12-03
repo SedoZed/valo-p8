@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Style générale */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Forçage des contraintes de header mise en place par Quarto */
+
+.quarto-title-block {
+    background-color: #E30F1B;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 0;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.quarto-title-block-container {
+  max-width: 100% !important;
+  padding: 0;
+  margin: 0;
+}
+
+/* Conteneur de la grille */
+.grille-selec {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px; /* espace entre les boutons */
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+/* Style des boutons */
+.redir {
+    display: block;
+    padding: 12px 20px;
+    background-color: #E30F1B;
+    color: white;
+    border-radius: 0;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+}
+.redir:hover {
+    background-color: #ca0d17;
+}

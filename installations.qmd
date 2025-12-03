@@ -1,0 +1,8 @@
+---
+title: "Gestion des données du SVR"
+format: html
+lang: fr
+---
+
+# Environnement de travail
+Lorem ipsum

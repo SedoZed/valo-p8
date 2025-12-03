@@ -1,0 +1,8 @@
+---
+title: "Gestion des données du SVR"
+format: html
+lang: fr
+---
+
+# Construction des jeux de données
+Lorem Ipsum
