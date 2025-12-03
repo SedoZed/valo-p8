@@ -1,0 +1,12 @@
+---
+title: "Accueil - Gestion des données du SVR"
+format: html
+lang: fr
+---
+
+# Accueil
+Lorem ipsum
+
+# Sélection de la fiche méthodo
+Environnement de travail
+Jeux de données

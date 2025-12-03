@@ -1,0 +1,22 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix o: <http://omeka.org/s/vocabs/o#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ma: <http://www.w3.org/ns/ma-ont#>.
+@prefix valo: <[insert link]> .
+
+<[insert link]> a owl:Ontology ;
+    dcterms:title "Vocabulaire personnalité SVR" .
+
+valo:Example_class a rdfs:Class ;
+    rdfs:label "Exemple de titre" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:example_property a rdf:Property ;
+    rdfs:label "Exemple de propriété";
+    rdfs:domaine o:Resource ;
+    vs:term_status "experimental" .
