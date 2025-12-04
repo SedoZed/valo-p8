@@ -1,16 +1,18 @@
 ---
-title: "Gestion des données du SVR"
+title: "Contexte d'exploitation"
 format: html
 lang: fr
 ---
 
-# Accueil
-Lorem ipsum
+Lorem ipsum d'introduction
 
-# Sélection de la fiche méthodo
-::: {.grille-selec}
-<a href="#" class="redir">Environnement de travail</a>
-<a href="#" class="redir">Construction des jeux de données</a>
-<a href="#" class="redir">Lorem Ipsum</a>
-<a href="#" class="redir">Lorem Ipsum</a>
-:::
+# Titre 1
+## Titre 2
+blabla 
+
+## Titre 2
+egerg
+
+# Titre 1
+
+

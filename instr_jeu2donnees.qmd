@@ -1,8 +1,17 @@
 ---
-title: "Gestion des données du SVR"
+title: "Centralisation des données"
 format: html
 lang: fr
 ---
 
-# Construction des jeux de données
-Lorem Ipsum
+# Centralisation des données
+
+## Les jeux de données
+csv ; données provenant de plusieurs sources
+Lors de la mise à jour de données : s'assurer de l'uniformité (ne pas créer de doublons)
+
+### 
+
+## La base de donnée relationnelle
+### Nomenclature
+Utilisation du Dublin Core, etc... AINSI que d'un vocabulaire personnalisé pour les besoins du service.

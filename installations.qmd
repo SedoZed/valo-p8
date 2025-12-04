@@ -4,5 +4,18 @@ format: html
 lang: fr
 ---
 
-# Environnement de travail
-Lorem ipsum
+# Prérequis 
+
+## Matériel requis
+PC puissant capable de traiter des données
+Ubuntu si possible, privilège administrateur au minimum. 
+
+## Logiciels utilisés
+VN : Docker Desktop 
+LLM : oLlama
+Wamp Server (sur Windows) : 
+
+## Autre interfaces
+Resana
+GitHub
+Visual Studio Code (recommandé)

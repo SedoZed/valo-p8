@@ -5,3 +5,25 @@ format:
   html:
     theme: cosmo
     css: assets/styles.css
+
+website:
+  title: "Cartographie des données du SVR"
+  navbar:
+    background: "#E30F1B"
+    foreground: "white"
+    left:
+      - text: "Contexte d'exploitation"
+        href: index.qmd
+      - text: "Prérequis"
+        href: installations.qmd
+      - text: "Présentation du système"
+        href: pres_syst.qmd
+      - text: "Naviguer dans les jeux de données"
+        href: instr_jeu2donnees.qmd
+  page-footer:
+    left: "Direction de la Recherche de Paris 8"
+    center: |
+      <div class="footer-img">
+        <img src="assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo">
+      </div>  
+    right: "Documentation interne, ne pas diffuser"
