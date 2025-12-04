@@ -138,5 +138,12 @@
     "title": "Centralisation des données",
     "section": "",
     "text": "Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.\n(La constitution de ce jeu de données est toujours en cours.)"
+  },
+  {
+    "objectID": "bdd_omeka.html",
+    "href": "bdd_omeka.html",
+    "title": "Contexte d’exploitation",
+    "section": "",
+    "text": "Effectuer les différents imports (mise à jour, etc)\nEn stand-by, dans l’attente de l’installation du serveur web, d’Oméka S, etc… ## Importer les données Idem mais ça va être comment faire rentrer les données raw CSV dans Oméka, et le faire CORRECTEMENT (cf. mes multiples fails de l’été 2025) ## Importer le dictionnaire Ideeeeem mais ça va parler de web sémantique et tout\n\n\nAssurer la connexion entre les données importées\nmedI"
   }
 ]
