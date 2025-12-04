@@ -2,8 +2,71 @@
   {
     "objectID": "index.html",
     "href": "index.html",
+    "title": "Contexte d’exploitation",
+    "section": "",
+    "text": "Lorem ipsum d’introduction"
+  },
+  {
+    "objectID": "installations.html",
+    "href": "installations.html",
     "title": "Gestion des données du SVR",
     "section": "",
-    "text": "Accueil\nLorem ipsum\n\n\nSélection de la fiche méthodo\n\nEnvironnement de travail Construction des jeux de données Lorem Ipsum Lorem Ipsum"
+    "text": "PC puissant capable de traiter des données Ubuntu si possible, privilège administrateur au minimum.\n\n\n\nVN : Docker Desktop LLM : oLlama Wamp Server (sur Windows) :\n\n\n\nResana GitHub Visual Studio Code (recommandé)"
+  },
+  {
+    "objectID": "installations.html#matériel-requis",
+    "href": "installations.html#matériel-requis",
+    "title": "Gestion des données du SVR",
+    "section": "",
+    "text": "PC puissant capable de traiter des données Ubuntu si possible, privilège administrateur au minimum."
+  },
+  {
+    "objectID": "installations.html#logiciels-utilisés",
+    "href": "installations.html#logiciels-utilisés",
+    "title": "Gestion des données du SVR",
+    "section": "",
+    "text": "VN : Docker Desktop LLM : oLlama Wamp Server (sur Windows) :"
+  },
+  {
+    "objectID": "installations.html#autre-interfaces",
+    "href": "installations.html#autre-interfaces",
+    "title": "Gestion des données du SVR",
+    "section": "",
+    "text": "Resana GitHub Visual Studio Code (recommandé)"
+  },
+  {
+    "objectID": "instr_jeu2donnees.html",
+    "href": "instr_jeu2donnees.html",
+    "title": "Centralisation des données",
+    "section": "",
+    "text": "csv ; données provenant de plusieurs sources Lors de la mise à jour de données : s’assurer de l’uniformité (ne pas créer de doublons)\n\n\n\n\n\n\n\n\nUtilisation du Dublin Core, etc… AINSI que d’un vocabulaire personnalisé pour les besoins du service."
+  },
+  {
+    "objectID": "instr_jeu2donnees.html#les-jeux-de-données",
+    "href": "instr_jeu2donnees.html#les-jeux-de-données",
+    "title": "Centralisation des données",
+    "section": "",
+    "text": "csv ; données provenant de plusieurs sources Lors de la mise à jour de données : s’assurer de l’uniformité (ne pas créer de doublons)"
+  },
+  {
+    "objectID": "instr_jeu2donnees.html#la-base-de-donnée-relationnelle",
+    "href": "instr_jeu2donnees.html#la-base-de-donnée-relationnelle",
+    "title": "Centralisation des données",
+    "section": "",
+    "text": "Utilisation du Dublin Core, etc… AINSI que d’un vocabulaire personnalisé pour les besoins du service."
+  },
+  {
+    "objectID": "index.html#titre-2",
+    "href": "index.html#titre-2",
+    "title": "Contexte d’exploitation",
+    "section": "Titre 2",
+    "text": "Titre 2\nblabla"
+  },
+  {
+    "objectID": "index.html#titre-2-1",
+    "href": "index.html#titre-2-1",
+    "title": "Contexte d’exploitation",
+    "section": "Titre 2",
+    "text": "Titre 2\negerg"
   }
 ]
