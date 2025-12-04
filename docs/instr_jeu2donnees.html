@@ -90,17 +90,24 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Contexte d’exploitation</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-présentation-du-projet" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Présentation du projet</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-présentation-du-projet">    
+        <li>
+    <a class="dropdown-item" href="./index.html">
+ <span class="dropdown-text">Contexte antérieur et actuel du projet</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./pres_syst.html">
+ <span class="dropdown-text">Présentation du système actuel</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./installations.html"> 
-<span class="menu-text">Prérequis</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./pres_syst.html"> 
-<span class="menu-text">Présentation du système</span></a>
+<span class="menu-text">Prérequis pour travailler</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./instr_jeu2donnees.html" aria-current="page"> 
@@ -140,24 +147,190 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="centralisation-des-données" class="level1">
-<h1>Centralisation des données</h1>
-<section id="les-jeux-de-données" class="level2">
-<h2 class="anchored" data-anchor-id="les-jeux-de-données">Les jeux de données</h2>
-<p>csv ; données provenant de plusieurs sources Lors de la mise à jour de données : s’assurer de l’uniformité (ne pas créer de doublons)</p>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section"></h3>
+<section id="les-jeux-de-données" class="level1">
+<h1>Les jeux de données</h1>
+<p>Lors de la mise à jour de données : s’assurer de l’uniformité des données (ne pas créer de doublons) Utilisation de certaines normes du web sémantiques déjà répandues + création d’un dictionnaire de vocabulaire sémantique spécifique pour notre usage.</p>
+<section id="structuration-des-données-liées-aux-enseignants-chercheurs." class="level2">
+<h2 class="anchored" data-anchor-id="structuration-des-données-liées-aux-enseignants-chercheurs.">Structuration des données liées aux enseignants-chercheurs.</h2>
+<p>Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intitulé</th>
+<th>Dictionnaire</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dcterms:title</td>
+<td>Dublin Core</td>
+<td>Ici, combinaison “prénom+nom” servant à nommer l’objet dans la BDD.</td>
+</tr>
+<tr class="even">
+<td>foaf:givenName</td>
+<td>FoaF</td>
+<td>Prénom de l’enseignant-chercheur.</td>
+</tr>
+<tr class="odd">
+<td>foaf:familyName</td>
+<td>FoaF</td>
+<td>Nom de famille de l’enseignant-chercheur.</td>
+</tr>
+<tr class="even">
+<td>dcterms:identifier</td>
+<td>Dublin Core</td>
+<td>Numéro unique ORCID de l’enseignant-chercheur lorsque celui-ci est disponible.</td>
+</tr>
+<tr class="odd">
+<td>dcterms:isPartOf</td>
+<td>Dublin Core</td>
+<td>Laboratoire auquel est rattaché l’enseignant-chercheur.</td>
+</tr>
+<tr class="even">
+<td>dcterms:hasPart</td>
+<td>Dublin Core</td>
+<td>Sous-unité du laboratoire dans lequel l’enseignant-chercheur opère.</td>
+</tr>
+<tr class="odd">
+<td>valo:domaine</td>
+<td>Dict. personnalisé</td>
+<td>Panels disciplinaires dans lesquels le chercheur publie (selon la nomenclature du <a href="https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf">HCERES</a>.)</td>
+</tr>
+<tr class="even">
+<td>valo:obj_recherche</td>
+<td>Dict. personnalisé</td>
+<td>L’objet de recherche de l’enseignant-chercheur.</td>
+</tr>
+<tr class="odd">
+<td>valo:axe</td>
+<td>Dict. personnalisé</td>
+<td>Les axes de recherche portés par l’enseignant-chercheur.</td>
+</tr>
+<tr class="even">
+<td>valo:expertise</td>
+<td>Dict. personnalisé</td>
+<td>Expertises reconnus de l’enseignant-chercheur.</td>
+</tr>
+<tr class="odd">
+<td>valo:dir_these</td>
+<td>Dict. personnalisé</td>
+<td>Nombre de doctorants ayant publié une thèse sous la supervision de l’enseignant-chercheur.</td>
+</tr>
+<tr class="even">
+<td>valo:ecole_docto</td>
+<td>Dict. personnalisé</td>
+<td>Ecoles doctorales dont l’enseignant-chercheur est membre.</td>
+</tr>
+<tr class="odd">
+<td>valo:partenariats</td>
+<td>Dict. personnalisé</td>
+<td>Identifiants des “items” de la bdd correspondant aux partenaires non-académiques avec lesquelles l’enseignant-chercheur a travaillé.</td>
+</tr>
+<tr class="even">
+<td>foaf:mbox</td>
+<td>FoaF</td>
+<td>Boite mail professionnelle de l’enseignant-chercheur.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structuration-des-données-liées-aux-laboratoires-de-paris-8." class="level2">
+<h2 class="anchored" data-anchor-id="structuration-des-données-liées-aux-laboratoires-de-paris-8.">Structuration des données liées aux laboratoires de Paris 8.</h2>
+<p>Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intitulé</th>
+<th>Dictionnaire</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dcterms:title</td>
+<td>Dublin Core</td>
+<td>Nom de l’objet dans la bdd. Constitue généralement un diminutif communément utilisé.</td>
+</tr>
+<tr class="even">
+<td>dcterms:alternative</td>
+<td>Dublin Core</td>
+<td>Nom alternatif (souvent le nom complet) du laboratoire.</td>
+</tr>
+<tr class="odd">
+<td>dcterms:identifier</td>
+<td>Dublin Core</td>
+<td>Numéro unique RNSR du laboratoire.</td>
+</tr>
+<tr class="even">
+<td>valo:domaine_hceres</td>
+<td>Dict. personnalisé</td>
+<td>Panels scientifiques revendiqué par le labratoire, selon la nomenclature du <a href="https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf">HCERES</a>.</td>
+</tr>
+<tr class="odd">
+<td>valo:domaine_erc</td>
+<td>Dict. personnalisé</td>
+<td>Panels scientifiques revendiqué par le laboatoire, selon la nomenclature <a href="https://erc.europa.eu/sites/default/files/2023-03/ERC_panel_structure_2024_calls.pdf">ERC</a></td>
+</tr>
+<tr class="even">
+<td>valo:obj_recherche</td>
+<td>Dict. personnalisé</td>
+<td>Objet de recherche du laboratoire.</td>
+</tr>
+<tr class="odd">
+<td>valo:axe</td>
+<td>Dict. personnalisé</td>
+<td>Les axes de recherche du laboratoire.</td>
+</tr>
+<tr class="even">
+<td>valo:hey_themes</td>
+<td>Dict. personnalisé</td>
+<td>Thèmes renseignés dans l’annexe Mapping of research portfolio and partner organization.</td>
+</tr>
+<tr class="odd">
+<td>valo:expertise</td>
+<td>Dict. personnalisé</td>
+<td>Domaines de maitrise dont lesquels le laboratoire est reconnu.</td>
+</tr>
+<tr class="even">
+<td>foaf:mbox</td>
+<td>FoaF</td>
+<td>Courriel pour contacter directement le laboratoire</td>
+</tr>
+<tr class="odd">
+<td>dcterms:type</td>
+<td>Dublin Core</td>
+<td>Désigne l’ensemble des équipements, instruments, corpus, bibliothèques, … utilisés par le laboratoire.</td>
+</tr>
+<tr class="even">
+<td>valo:ecole_docto</td>
+<td>Dict. personnalisé</td>
+<td>Ecoles doctorales dont l’enseignant-chercheur est membre.</td>
+</tr>
+<tr class="odd">
+<td>valo:dir_these</td>
+<td>Dict. personnalisé</td>
+<td>Nombre de doctorants ayant publié une thèse sous la supervision de l’enseignant-chercheur.</td>
+</tr>
+<tr class="even">
+<td>valo:id_hal</td>
+<td>Dict. personnalisé</td>
+<td>Identifiant unique HAL du laboratoire, permettant à postériori l’extraction des publications du laboratoire</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés." class="level2">
+<h2 class="anchored" data-anchor-id="structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés.">Structuration des données liées aux partenaires non-académique déjà notés.</h2>
+<p>Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.</p>
+<p>(La constitution de ce jeu de données est toujours en cours.)</p>
 </section>
 </section>
-<section id="la-base-de-donnée-relationnelle" class="level2">
-<h2 class="anchored" data-anchor-id="la-base-de-donnée-relationnelle">La base de donnée relationnelle</h2>
-<section id="nomenclature" class="level3">
-<h3 class="anchored" data-anchor-id="nomenclature">Nomenclature</h3>
-<p>Utilisation du Dublin Core, etc… AINSI que d’un vocabulaire personnalisé pour les besoins du service.</p>
+<section id="la-base-de-donnée-relationnelle" class="level1">
+<h1>La base de donnée relationnelle</h1>
+<p>En stand-by pour le moment, dans l’attente d’accès à plus de droits.</p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

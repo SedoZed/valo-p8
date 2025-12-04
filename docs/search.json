@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "Contexte d’exploitation",
     "section": "",
-    "text": "Lorem ipsum d’introduction"
+    "text": "Au sein de la Direction des Services à la Recherche (DSR) de l’Université Paris 8, le Service de la Valorisation de la Recherche (SVR) a comme mission, entre autres, de développer des partenariats avec les acteurs non-académiques et de valoriser les expertises des laboratoires et des chercheurs de l’université Paris 8. Pour accomplir cette mission, le service de valorisation a besoin de bien connaitre ces expertises pour orienter la recherche de partenariats et bien les expliquer à des acteurs non académiques."
   },
   {
     "objectID": "installations.html",
     "href": "installations.html",
-    "title": "Gestion des données du SVR",
+    "title": "Prérequis",
     "section": "",
-    "text": "PC puissant capable de traiter des données Ubuntu si possible, privilège administrateur au minimum.\n\n\n\nVN : Docker Desktop LLM : oLlama Wamp Server (sur Windows) :\n\n\n\nResana GitHub Visual Studio Code (recommandé)"
+    "text": "Afin de"
   },
   {
     "objectID": "installations.html#matériel-requis",
@@ -39,7 +39,7 @@
     "href": "instr_jeu2donnees.html",
     "title": "Centralisation des données",
     "section": "",
-    "text": "csv ; données provenant de plusieurs sources Lors de la mise à jour de données : s’assurer de l’uniformité (ne pas créer de doublons)\n\n\n\n\n\n\n\n\nUtilisation du Dublin Core, etc… AINSI que d’un vocabulaire personnalisé pour les besoins du service."
+    "text": "Lors de la mise à jour de données : s’assurer de l’uniformité des données (ne pas créer de doublons) Utilisation de certaines normes du web sémantiques déjà répandues + création d’un dictionnaire de vocabulaire sémantique spécifique pour notre usage.\n\n\nUtilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.\n\n\n\nIntitulé\nDictionnaire\nDéfinition\n\n\n\n\ndcterms:title\nDublin Core\nIci, combinaison “prénom+nom” servant à nommer l’objet dans la BDD.\n\n\nfoaf:givenName\nFoaF\nPrénom de l’enseignant-chercheur.\n\n\nfoaf:familyName\nFoaF\nNom de famille de l’enseignant-chercheur.\n\n\ndcterms:identifier\nDublin Core\nNuméro unique ORCID de l’enseignant-chercheur lorsque celui-ci est disponible.\n\n\ndcterms:isPartOf\nDublin Core\nLaboratoire auquel est rattaché l’enseignant-chercheur.\n\n\ndcterms:hasPart\nDublin Core\nSous-unité du laboratoire dans lequel l’enseignant-chercheur opère.\n\n\nvalo:domaine\nDict. personnalisé\nPanels disciplinaires dans lesquels le chercheur publie (selon la nomenclature du HCERES.)\n\n\nvalo:obj_recherche\nDict. personnalisé\nL’objet de recherche de l’enseignant-chercheur.\n\n\nvalo:axe\nDict. personnalisé\nLes axes de recherche portés par l’enseignant-chercheur.\n\n\nvalo:expertise\nDict. personnalisé\nExpertises reconnus de l’enseignant-chercheur.\n\n\nvalo:dir_these\nDict. personnalisé\nNombre de doctorants ayant publié une thèse sous la supervision de l’enseignant-chercheur.\n\n\nvalo:ecole_docto\nDict. personnalisé\nEcoles doctorales dont l’enseignant-chercheur est membre.\n\n\nvalo:partenariats\nDict. personnalisé\nIdentifiants des “items” de la bdd correspondant aux partenaires non-académiques avec lesquelles l’enseignant-chercheur a travaillé.\n\n\nfoaf:mbox\nFoaF\nBoite mail professionnelle de l’enseignant-chercheur.\n\n\n\n\n\n\nUtilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.\n\n\n\nIntitulé\nDictionnaire\nDéfinition\n\n\n\n\ndcterms:title\nDublin Core\nNom de l’objet dans la bdd. Constitue généralement un diminutif communément utilisé.\n\n\ndcterms:alternative\nDublin Core\nNom alternatif (souvent le nom complet) du laboratoire.\n\n\ndcterms:identifier\nDublin Core\nNuméro unique RNSR du laboratoire.\n\n\nvalo:domaine_hceres\nDict. personnalisé\nPanels scientifiques revendiqué par le labratoire, selon la nomenclature du HCERES.\n\n\nvalo:domaine_erc\nDict. personnalisé\nPanels scientifiques revendiqué par le laboatoire, selon la nomenclature ERC\n\n\nvalo:obj_recherche\nDict. personnalisé\nObjet de recherche du laboratoire.\n\n\nvalo:axe\nDict. personnalisé\nLes axes de recherche du laboratoire.\n\n\nvalo:hey_themes\nDict. personnalisé\nThèmes renseignés dans l’annexe Mapping of research portfolio and partner organization.\n\n\nvalo:expertise\nDict. personnalisé\nDomaines de maitrise dont lesquels le laboratoire est reconnu.\n\n\nfoaf:mbox\nFoaF\nCourriel pour contacter directement le laboratoire\n\n\ndcterms:type\nDublin Core\nDésigne l’ensemble des équipements, instruments, corpus, bibliothèques, … utilisés par le laboratoire.\n\n\nvalo:ecole_docto\nDict. personnalisé\nEcoles doctorales dont l’enseignant-chercheur est membre.\n\n\nvalo:dir_these\nDict. personnalisé\nNombre de doctorants ayant publié une thèse sous la supervision de l’enseignant-chercheur.\n\n\nvalo:id_hal\nDict. personnalisé\nIdentifiant unique HAL du laboratoire, permettant à postériori l’extraction des publications du laboratoire\n\n\n\n\n\n\nUtilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.\n(La constitution de ce jeu de données est toujours en cours.)"
   },
   {
     "objectID": "instr_jeu2donnees.html#les-jeux-de-données",
@@ -75,5 +75,68 @@
     "title": "Contexte d’exploitation",
     "section": "Titre 2",
     "text": "Titre 2\nBlabla"
+  },
+  {
+    "objectID": "index.html#portée-du-projet",
+    "href": "index.html#portée-du-projet",
+    "title": "Contexte d’exploitation",
+    "section": "Portée du projet",
+    "text": "Portée du projet\nCe projet couvre plutôt le domaine de la recherche et moins celui de l’enseignement ou aux autres activités de la communauté universitaire dans la mesure où il s’agit d’un outil pour la direction des services à la recherche. Rien, cependant, n’interdit de penser l’outil de telle sorte qu’il intégre à l’avenir d’autres données."
+  },
+  {
+    "objectID": "index.html#les-concernés-par-le-projet",
+    "href": "index.html#les-concernés-par-le-projet",
+    "title": "Contexte d’exploitation",
+    "section": "Les concernés par le projet",
+    "text": "Les concernés par le projet\nLes cartographies s’adressent en priorité aux chargés de partenariat et de valorisation et aux chargés de montage de projets de la DSR qui ont besoin d’identifier les bons interlocuteurs et de les mettre en relation. En effet, les expertises nécessaires pour répondre à des appels aux projets ou des demandes exprimés par des acteurs externes doivent être identifiées par les équipes de la DSR afin de faire la meilleure mise en relation possible."
+  },
+  {
+    "objectID": "pres_syst.html",
+    "href": "pres_syst.html",
+    "title": "Présentation du système",
+    "section": "",
+    "text": "(à remplir une fois l’application de cartographie mise en place)"
+  },
+  {
+    "objectID": "installations.html#le-poste-informatique",
+    "href": "installations.html#le-poste-informatique",
+    "title": "Prérequis",
+    "section": "Le poste informatique",
+    "text": "Le poste informatique\nPC puissant capable de traiter des données (avec de la ram, un bon processeur et, si possible, un GPU avec une bonne VRAM) Ubuntu si possible, privilège administrateur au minimum."
+  },
+  {
+    "objectID": "installations.html#les-logiciels-importants",
+    "href": "installations.html#les-logiciels-importants",
+    "title": "Prérequis",
+    "section": "Les logiciels importants",
+    "text": "Les logiciels importants\nVN : Docker Desktop LLM : oLlama Wamp Server (sur Windows) :"
+  },
+  {
+    "objectID": "instr_jeu2donnees.html#nomenclature",
+    "href": "instr_jeu2donnees.html#nomenclature",
+    "title": "Centralisation des données",
+    "section": "Nomenclature",
+    "text": "Nomenclature\nUtilisation du Dublin Core, etc… AINSI que d’un vocabulaire personnalisé pour les besoins du service."
+  },
+  {
+    "objectID": "instr_jeu2donnees.html#structuration-des-données-liées-aux-enseignants-chercheurs.",
+    "href": "instr_jeu2donnees.html#structuration-des-données-liées-aux-enseignants-chercheurs.",
+    "title": "Centralisation des données",
+    "section": "",
+    "text": "Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.\n\n\n\nIntitulé\nDictionnaire\nDéfinition\n\n\n\n\ndcterms:title\nDublin Core\nIci, combinaison “prénom+nom” servant à nommer l’objet dans la BDD.\n\n\nfoaf:givenName\nFoaF\nPrénom de l’enseignant-chercheur.\n\n\nfoaf:familyName\nFoaF\nNom de famille de l’enseignant-chercheur.\n\n\ndcterms:identifier\nDublin Core\nNuméro unique ORCID de l’enseignant-chercheur lorsque celui-ci est disponible.\n\n\ndcterms:isPartOf\nDublin Core\nLaboratoire auquel est rattaché l’enseignant-chercheur.\n\n\ndcterms:hasPart\nDublin Core\nSous-unité du laboratoire dans lequel l’enseignant-chercheur opère.\n\n\nvalo:domaine\nDict. personnalisé\nPanels disciplinaires dans lesquels le chercheur publie (selon la nomenclature du HCERES.)\n\n\nvalo:obj_recherche\nDict. personnalisé\nL’objet de recherche de l’enseignant-chercheur.\n\n\nvalo:axe\nDict. personnalisé\nLes axes de recherche portés par l’enseignant-chercheur.\n\n\nvalo:expertise\nDict. personnalisé\nExpertises reconnus de l’enseignant-chercheur.\n\n\nvalo:dir_these\nDict. personnalisé\nNombre de doctorants ayant publié une thèse sous la supervision de l’enseignant-chercheur.\n\n\nvalo:ecole_docto\nDict. personnalisé\nEcoles doctorales dont l’enseignant-chercheur est membre.\n\n\nvalo:partenariats\nDict. personnalisé\nIdentifiants des “items” de la bdd correspondant aux partenaires non-académiques avec lesquelles l’enseignant-chercheur a travaillé.\n\n\nfoaf:mbox\nFoaF\nBoite mail professionnelle de l’enseignant-chercheur."
+  },
+  {
+    "objectID": "instr_jeu2donnees.html#structuration-des-données-liées-aux-laboratoires-de-paris-8.",
+    "href": "instr_jeu2donnees.html#structuration-des-données-liées-aux-laboratoires-de-paris-8.",
+    "title": "Centralisation des données",
+    "section": "",
+    "text": "Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.\n\n\n\nIntitulé\nDictionnaire\nDéfinition\n\n\n\n\ndcterms:title\nDublin Core\nNom de l’objet dans la bdd. Constitue généralement un diminutif communément utilisé.\n\n\ndcterms:alternative\nDublin Core\nNom alternatif (souvent le nom complet) du laboratoire.\n\n\ndcterms:identifier\nDublin Core\nNuméro unique RNSR du laboratoire.\n\n\nvalo:domaine_hceres\nDict. personnalisé\nPanels scientifiques revendiqué par le labratoire, selon la nomenclature du HCERES.\n\n\nvalo:domaine_erc\nDict. personnalisé\nPanels scientifiques revendiqué par le laboatoire, selon la nomenclature ERC\n\n\nvalo:obj_recherche\nDict. personnalisé\nObjet de recherche du laboratoire.\n\n\nvalo:axe\nDict. personnalisé\nLes axes de recherche du laboratoire.\n\n\nvalo:hey_themes\nDict. personnalisé\nThèmes renseignés dans l’annexe Mapping of research portfolio and partner organization.\n\n\nvalo:expertise\nDict. personnalisé\nDomaines de maitrise dont lesquels le laboratoire est reconnu.\n\n\nfoaf:mbox\nFoaF\nCourriel pour contacter directement le laboratoire\n\n\ndcterms:type\nDublin Core\nDésigne l’ensemble des équipements, instruments, corpus, bibliothèques, … utilisés par le laboratoire.\n\n\nvalo:ecole_docto\nDict. personnalisé\nEcoles doctorales dont l’enseignant-chercheur est membre.\n\n\nvalo:dir_these\nDict. personnalisé\nNombre de doctorants ayant publié une thèse sous la supervision de l’enseignant-chercheur.\n\n\nvalo:id_hal\nDict. personnalisé\nIdentifiant unique HAL du laboratoire, permettant à postériori l’extraction des publications du laboratoire"
+  },
+  {
+    "objectID": "instr_jeu2donnees.html#structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés.",
+    "href": "instr_jeu2donnees.html#structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés.",
+    "title": "Centralisation des données",
+    "section": "",
+    "text": "Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.\n(La constitution de ce jeu de données est toujours en cours.)"
   }
 ]

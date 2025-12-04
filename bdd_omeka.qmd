@@ -1,0 +1,15 @@
+---
+title: "Contexte d'exploitation"
+format: html
+lang: fr
+---
+
+# Effectuer les différents imports (mise à jour, etc)
+En stand-by, dans l'attente de l'installation du serveur web, d'Oméka S, etc...
+## Importer les données 
+Idem mais ça va être comment faire rentrer les données raw CSV dans Oméka, et le faire CORRECTEMENT (cf. mes multiples fails de l'été 2025)
+## Importer le dictionnaire
+Ideeeeem mais ça va parler de web sémantique et tout
+
+# Assurer la connexion entre les données importées
+medI

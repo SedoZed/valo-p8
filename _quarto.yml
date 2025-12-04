@@ -13,14 +13,20 @@ website:
     background: "#E30F1B"
     foreground: "white"
     left:
-      - text: "Contexte d'exploitation"
-        href: index.qmd
-      - text: "Prérequis"
+      - text: "Présentation du projet"
+        menu:
+        - text: "Contexte antérieur et actuel du projet"
+          href: index.qmd
+        - text: "Présentation du système actuel"
+          href: pres_syst.qmd
+      - text: "Prérequis pour travailler"
         href: installations.qmd
-      - text: "Présentation du système"
-        href: pres_syst.qmd
-      - text: "Naviguer dans les jeux de données"
-        href: instr_jeu2donnees.qmd
+      - text: "Organisation de la data"
+        menu:
+        - text: "Constitution des jeux de données"
+          href: instr_jeu2donnees.qmd
+        - text: "La base de données Oméka S"
+          href: bdd_omeka.qmd
   page-footer:
     left: "Direction de la Recherche de Paris 8"
     center: |

@@ -1,21 +1,25 @@
 ---
-title: "Gestion des données du SVR"
+title: "Prérequis"
 format: html
 lang: fr
 ---
 
-# Prérequis 
+Afin de 
 
-## Matériel requis
-PC puissant capable de traiter des données
+# Equipement à utiliser
+Dans le cas où l'agent effectue ses missions au sein des bureaux du DSR, voici un ensemble 
+
+## Le poste informatique 
+PC puissant capable de traiter des données (avec de la ram, un bon processeur et, si possible, un GPU avec une bonne VRAM)
 Ubuntu si possible, privilège administrateur au minimum. 
 
-## Logiciels utilisés
+
+## Les logiciels importants
 VN : Docker Desktop 
 LLM : oLlama
 Wamp Server (sur Windows) : 
 
-## Autre interfaces
-Resana
-GitHub
-Visual Studio Code (recommandé)
+# Autre outils utiles.
+Resana = pour les échanges de documents sensibles
+GitHub = pour héberger des documents plus techniques type Quarto, .ttl, etc. Attention : la privacy sur Github n'est pas assurée (appartenant à Microsoft), il est très important de ne RIEN poster de sensible sur le stockage Github.
+Visual Studio Code (recommandé) = Logiciel de développement open-source, modulable (compatible avec beaucoup de langages) et populaire. 

@@ -4,6 +4,4 @@ format: html
 lang: fr
 ---
 
-# Présentation de système 
-
-## 
+(à remplir une fois l'application de cartographie mise en place)

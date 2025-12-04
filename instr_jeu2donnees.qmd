@@ -4,14 +4,55 @@ format: html
 lang: fr
 ---
 
-# Centralisation des données
+# Les jeux de données
 
-## Les jeux de données
-csv ; données provenant de plusieurs sources
-Lors de la mise à jour de données : s'assurer de l'uniformité (ne pas créer de doublons)
+Lors de la mise à jour de données : s'assurer de l'uniformité des données (ne pas créer de doublons) 
+Utilisation de certaines normes du web sémantiques déjà répandues + création d'un dictionnaire de vocabulaire sémantique spécifique pour notre usage. 
 
-### 
+## Structuration des données liées aux enseignants-chercheurs.
+Utilisation d'un classeur "tableur" contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine. 
 
-## La base de donnée relationnelle
-### Nomenclature
-Utilisation du Dublin Core, etc... AINSI que d'un vocabulaire personnalisé pour les besoins du service.
+|  Intitulé  | Dictionnaire | Définition |
+|------------|--------------|------------|
+| dcterms:title | Dublin Core  | Ici, combinaison "prénom+nom" servant à nommer l'objet dans la BDD. |
+| foaf:givenName  | FoaF  | Prénom de l'enseignant-chercheur. |
+| foaf:familyName  | FoaF  | Nom de famille de l'enseignant-chercheur. |
+| dcterms:identifier | Dublin Core | Numéro unique ORCID de l'enseignant-chercheur lorsque celui-ci est disponible. |
+| dcterms:isPartOf | Dublin Core | Laboratoire auquel est rattaché l'enseignant-chercheur. |
+| dcterms:hasPart | Dublin Core | Sous-unité du laboratoire dans lequel l'enseignant-chercheur opère. |
+| valo:domaine | Dict. personnalisé | Panels disciplinaires dans lesquels le chercheur publie (selon la nomenclature du [HCERES](https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf).) |
+| valo:obj_recherche | Dict. personnalisé | L'objet de recherche de l'enseignant-chercheur. |
+| valo:axe | Dict. personnalisé | Les axes de recherche portés par l'enseignant-chercheur. |
+| valo:expertise | Dict. personnalisé | Expertises reconnus de l'enseignant-chercheur. |
+| valo:dir_these | Dict. personnalisé | Nombre de doctorants ayant publié une thèse sous la supervision de l'enseignant-chercheur. |
+| valo:ecole_docto | Dict. personnalisé | Ecoles doctorales dont l'enseignant-chercheur est membre. |
+| valo:partenariats | Dict. personnalisé | Identifiants des "items" de la bdd correspondant aux partenaires non-académiques avec lesquelles l'enseignant-chercheur a travaillé. |
+| foaf:mbox | FoaF | Boite mail professionnelle de l'enseignant-chercheur. |
+
+## Structuration des données liées aux laboratoires de Paris 8.
+Utilisation d'un classeur "tableur" contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine. 
+
+| Intitulé   | Dictionnaire | Définition |
+|------------|--------------|------------|
+| dcterms:title | Dublin Core  | Nom de l'objet dans la bdd. Constitue généralement un diminutif communément utilisé. |
+| dcterms:alternative  | Dublin Core  | Nom alternatif (souvent le nom complet) du laboratoire. |
+| dcterms:identifier | Dublin Core | Numéro unique RNSR du laboratoire. |
+| valo:domaine_hceres | Dict. personnalisé | Panels scientifiques revendiqué par le labratoire, selon la nomenclature du [HCERES](https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf). |
+| valo:domaine_erc | Dict. personnalisé | Panels scientifiques revendiqué par le laboatoire, selon la nomenclature [ERC](https://erc.europa.eu/sites/default/files/2023-03/ERC_panel_structure_2024_calls.pdf) |
+| valo:obj_recherche | Dict. personnalisé | Objet de recherche du laboratoire. |
+| valo:axe | Dict. personnalisé | Les axes de recherche du laboratoire. |
+| valo:hey_themes | Dict. personnalisé | Thèmes renseignés dans l’annexe Mapping of research portfolio and partner organization. |
+| valo:expertise | Dict. personnalisé | Domaines de maitrise dont lesquels le laboratoire est reconnu. |
+| foaf:mbox | FoaF | Courriel pour contacter directement le laboratoire |
+| dcterms:type | Dublin Core | Désigne l'ensemble des équipements, instruments, corpus, bibliothèques, ... utilisés par le laboratoire. |
+| valo:ecole_docto | Dict. personnalisé | Ecoles doctorales dont l'enseignant-chercheur est membre. |
+| valo:dir_these | Dict. personnalisé | Nombre de doctorants ayant publié une thèse sous la supervision de l'enseignant-chercheur. |
+| valo:id_hal | Dict. personnalisé | Identifiant unique HAL du laboratoire, permettant à postériori l'extraction des publications du laboratoire |
+
+## Structuration des données liées aux partenaires non-académique déjà notés.
+Utilisation d'un classeur "tableur" contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine. 
+
+(La constitution de ce jeu de données est toujours en cours.)
+
+# La base de donnée relationnelle
+En stand-by pour le moment, dans l'attente d'accès à plus de droits.
