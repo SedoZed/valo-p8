@@ -60,13 +60,20 @@
     "href": "index.html#titre-2",
     "title": "Contexte d’exploitation",
     "section": "Titre 2",
-    "text": "Titre 2\nblabla"
+    "text": "Titre 2\nBlabla"
   },
   {
     "objectID": "index.html#titre-2-1",
     "href": "index.html#titre-2-1",
     "title": "Contexte d’exploitation",
     "section": "Titre 2",
-    "text": "Titre 2\negerg"
+    "text": "Titre 2\nBlabla"
+  },
+  {
+    "objectID": "index.html#titre-2-2",
+    "href": "index.html#titre-2-2",
+    "title": "Contexte d’exploitation",
+    "section": "Titre 2",
+    "text": "Titre 2\nBlabla"
   }
 ]

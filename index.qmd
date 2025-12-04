@@ -8,11 +8,11 @@ Lorem ipsum d'introduction
 
 # Titre 1
 ## Titre 2
-blabla 
+Blabla
 
 ## Titre 2
-egerg
+Blabla
 
 # Titre 1
-
-
+## Titre 2
+Blabla

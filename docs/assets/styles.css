@@ -62,11 +62,12 @@
     color: white !important;
 }
 
-/* Logo discret, proportionné au footer Quarto */
+/* Logo discret, proportionné au footer Quarto et compatible GitHub Pages */
 .footer-logo {
-    height: 32px;          /* taille idéale pour un footer Quarto */
-    width: auto;           /* garde les proportions */
-    opacity: 0.9;          /* léger adoucissement visuel */
+    height: 32px !important;   /* force la hauteur */
+    width: auto !important;    /* garde les proportions */
+    max-width: none !important;/* empêche GitHub de l'étirer */
     display: block;
-    margin: 0 auto;        /* centrage horizontal */
+    margin: 0 auto;
+    opacity: 0.9;
 }
