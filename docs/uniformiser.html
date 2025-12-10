@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Présentation du système – Cartographie des données du SVR</title>
+<title>Uniformiser la data – Cartographie des données du SVR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -156,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Présentation du système</h1>
+<h1 class="title">Uniformiser la data</h1>
 </div>
 
 
@@ -173,9 +173,586 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>(à remplir une fois l’application de cartographie mise en place)</p>
+<p>A travers le différentes sources fournies, l’information peut être transmise avec une écriture variant, allant de la simple virgule de différente jusqu’à deux nomenclatures différentes utilisées. Dans le cadre de ce projet, il est important que lorsque les données sont transposées dans la base de donnée de la cartographie, celles-ci soient uniformisées afin de notamment éviter l’apparition de doublons dans la cartographie.</p>
+<p>Il reste cependant important de noter que ces conversions n’ont aucune valeur officielle car n’ont pas été validées par qui que ce soit.</p>
+<section id="travailler-sur-le-secteur-dactivité-dune-entité-physique-enseignant-chercheur-ou-morale-laboratoire." class="level1">
+<h1>Travailler sur le secteur d’activité d’une entité physique (enseignant-chercheur) ou morale (laboratoire).</h1>
+<section id="conversion-nomenclature-cnu-vers-hceres-2024" class="level2">
+<h2 class="anchored" data-anchor-id="conversion-nomenclature-cnu-vers-hceres-2024">Conversion nomenclature CNU vers HCERES (2024)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 32%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Code CNU</th>
+<th>Intitulé CNU</th>
+<th>Panel HCERES 2024</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1-01</td>
+<td>Droit privé</td>
+<td>DS1_1 – Droit privé</td>
+</tr>
+<tr class="even">
+<td>1-02</td>
+<td>Droit public</td>
+<td>DS1_2 – Droit public</td>
+</tr>
+<tr class="odd">
+<td>1-03</td>
+<td>Histoire du droit</td>
+<td>DS1_3 – Histoire du droit</td>
+</tr>
+<tr class="even">
+<td>1-04</td>
+<td>Science politique</td>
+<td>SHS3_1 – Science politique</td>
+</tr>
+<tr class="odd">
+<td>2-05</td>
+<td>Sciences économiques</td>
+<td>SHS1_1 – Économie</td>
+</tr>
+<tr class="even">
+<td>2-06</td>
+<td>Sciences de gestion</td>
+<td>SHS1_2 – Management</td>
+</tr>
+<tr class="odd">
+<td>3-01</td>
+<td>Mathématiques</td>
+<td>ST1_1 – Mathématiques fondamentales</td>
+</tr>
+<tr class="even">
+<td>3-02</td>
+<td>Physique</td>
+<td>ST2_1 – Physique fondamentale</td>
+</tr>
+<tr class="odd">
+<td>3-03</td>
+<td>Chimie</td>
+<td>ST3_1 – Chimie moléculaire</td>
+</tr>
+<tr class="even">
+<td>3-04</td>
+<td>Sciences de la Terre</td>
+<td>ST5_1 – Géosciences</td>
+</tr>
+<tr class="odd">
+<td>3-05</td>
+<td>Biologie fondamentale</td>
+<td>LS2 – Biologie cellulaire</td>
+</tr>
+<tr class="even">
+<td>3-06</td>
+<td>Sciences du vivant / écologie</td>
+<td>ST9_1 – Écologie</td>
+</tr>
+<tr class="odd">
+<td>3-07</td>
+<td>Mécanique</td>
+<td>ST7_1 – Mécanique</td>
+</tr>
+<tr class="even">
+<td>3-08</td>
+<td>Génie des procédés</td>
+<td>ST7_2 – Procédés</td>
+</tr>
+<tr class="odd">
+<td>3-09</td>
+<td>Électronique / automatique</td>
+<td>ST4_2 – Électronique</td>
+</tr>
+<tr class="even">
+<td>3-10</td>
+<td>Informatique</td>
+<td>ST4_1 – Informatique</td>
+</tr>
+<tr class="odd">
+<td>3-11</td>
+<td>Sciences de l’information</td>
+<td>SHS4_1 – Sciences de l’information et de la communication</td>
+</tr>
+<tr class="even">
+<td>3-12</td>
+<td>Génie civil</td>
+<td>ST7_3 – Génie civil</td>
+</tr>
+<tr class="odd">
+<td>3-13</td>
+<td>Génie mécanique</td>
+<td>ST7_1 – Mécanique</td>
+</tr>
+<tr class="even">
+<td>3-14</td>
+<td>Génie électrique</td>
+<td>ST4_2 – Électronique</td>
+</tr>
+<tr class="odd">
+<td>3-15</td>
+<td>Chimie physique</td>
+<td>ST3_2 – Chimie des matériaux</td>
+</tr>
+<tr class="even">
+<td>3-16</td>
+<td>Biologie cellulaire</td>
+<td>LS2 – Biologie cellulaire</td>
+</tr>
+<tr class="odd">
+<td>3-17</td>
+<td>Biologie des organismes</td>
+<td>LS3 – Biologie des organismes</td>
+</tr>
+<tr class="even">
+<td>3-18</td>
+<td>Écologie</td>
+<td>ST9_1 – Écologie</td>
+</tr>
+<tr class="odd">
+<td>3-19</td>
+<td>Astrophysique</td>
+<td>ST2_1 – Physique fondamentale</td>
+</tr>
+<tr class="even">
+<td>3-20</td>
+<td>Mathématiques appliquées</td>
+<td>ST1_2 – Mathématiques appliquées</td>
+</tr>
+<tr class="odd">
+<td>3-21</td>
+<td>Probabilités / statistiques</td>
+<td>ST1_2 – Mathématiques appliquées</td>
+</tr>
+<tr class="even">
+<td>3-22</td>
+<td>Informatique appliquée</td>
+<td>ST4_1 – Informatique</td>
+</tr>
+<tr class="odd">
+<td>3-23</td>
+<td>Neurosciences</td>
+<td>LS5 – Neurosciences</td>
+</tr>
+<tr class="even">
+<td>3-24</td>
+<td>Pharmacologie</td>
+<td>LS7 – Pharmacologie</td>
+</tr>
+<tr class="odd">
+<td>3-25</td>
+<td>Agronomie</td>
+<td>LS8 – Agronomie</td>
+</tr>
+<tr class="even">
+<td>3-26</td>
+<td>Matériaux</td>
+<td>ST8_1 – Matériaux</td>
+</tr>
+<tr class="odd">
+<td>3-27</td>
+<td>Nanosciences</td>
+<td>ST8_2 – Nanosciences</td>
+</tr>
+<tr class="even">
+<td>4-70</td>
+<td>Sciences de l’éducation</td>
+<td>SHS1_3 – Éducation</td>
+</tr>
+<tr class="odd">
+<td>4-71</td>
+<td>Sciences de l’information et de la communication</td>
+<td>SHS4_1 – SIC</td>
+</tr>
+<tr class="even">
+<td>4-72</td>
+<td>Sociologie</td>
+<td>SHS3_2 – Sociologie</td>
+</tr>
+<tr class="odd">
+<td>4-73</td>
+<td>Anthropologie</td>
+<td>SHS3_3 – Anthropologie</td>
+</tr>
+<tr class="even">
+<td>4-74</td>
+<td>Géographie</td>
+<td>SHS5_1 – Géographie</td>
+</tr>
+<tr class="odd">
+<td>4-75</td>
+<td>Urbanisme</td>
+<td>SHS5_2 – Urbanisme</td>
+</tr>
+<tr class="even">
+<td>4-76</td>
+<td>Sciences du langage</td>
+<td>SHS4_2 – Sciences du langage</td>
+</tr>
+<tr class="odd">
+<td>4-77</td>
+<td>Philosophie</td>
+<td>SHS2_1 – Philosophie</td>
+</tr>
+<tr class="even">
+<td>4-78</td>
+<td>Théologie</td>
+<td>SHS2_2 – Théologie</td>
+</tr>
+<tr class="odd">
+<td>4-79</td>
+<td>Psychologie</td>
+<td>SHS3_1 – Psychologie</td>
+</tr>
+<tr class="even">
+<td>4-80</td>
+<td>Histoire</td>
+<td>SHS6_1 – Histoire</td>
+</tr>
+<tr class="odd">
+<td>4-81</td>
+<td>Archéologie</td>
+<td>SHS6_2 – Archéologie</td>
+</tr>
+<tr class="even">
+<td>4-82</td>
+<td>Langues et littératures</td>
+<td>SHS4_3 – Langues et littératures</td>
+</tr>
+<tr class="odd">
+<td>4-83</td>
+<td>Études anglophones</td>
+<td>SHS4_3 – Langues et littératures</td>
+</tr>
+<tr class="even">
+<td>4-84</td>
+<td>Études germaniques</td>
+<td>SHS4_3 – Langues et littératures</td>
+</tr>
+<tr class="odd">
+<td>4-85</td>
+<td>Études romanes</td>
+<td>SHS4_3 – Langues et littératures</td>
+</tr>
+<tr class="even">
+<td>4-86</td>
+<td>Études slaves</td>
+<td>SHS4_3 – Langues et littératures</td>
+</tr>
+<tr class="odd">
+<td>4-87</td>
+<td>Études orientales</td>
+<td>SHS4_3 – Langues et littératures</td>
+</tr>
+<tr class="even">
+<td>4-88</td>
+<td>Arts</td>
+<td>SHS4_4 – Arts</td>
+</tr>
+<tr class="odd">
+<td>4-89</td>
+<td>Musique</td>
+<td>SHS4_4 – Arts</td>
+</tr>
+<tr class="even">
+<td>5-60</td>
+<td>STAPS</td>
+<td>ST6_1 – Sciences du sport</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="conversion-nomenclature-cnu-vers-hceres-ancien-modèle" class="level2">
+<h2 class="anchored" data-anchor-id="conversion-nomenclature-cnu-vers-hceres-ancien-modèle">Conversion nomenclature CNU vers HCERES (ancien modèle)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 32%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Code CNU</th>
+<th>Intitulé CNU</th>
+<th>Panel HCERES 2024</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CNU</td>
+<td>Intitulé CNU (ancienne nomenclature)</td>
+<td>Panel HCERES 2024</td>
+</tr>
+<tr class="even">
+<td>—–</td>
+<td>————————————–</td>
+<td>——————-</td>
+</tr>
+<tr class="odd">
+<td>01</td>
+<td>Droit privé</td>
+<td>DS1_1 – Droit privé</td>
+</tr>
+<tr class="even">
+<td>02</td>
+<td>Droit public</td>
+<td>DS1_2 – Droit public</td>
+</tr>
+<tr class="odd">
+<td>03</td>
+<td>Histoire du droit</td>
+<td>DS1_3 – Histoire du droit</td>
+</tr>
+<tr class="even">
+<td>04</td>
+<td>Science politique</td>
+<td>SHS3_1 – Science politique</td>
+</tr>
+<tr class="odd">
+<td>05</td>
+<td>Sciences économiques</td>
+<td>SHS1_1 – Économie</td>
+</tr>
+<tr class="even">
+<td>06</td>
+<td>Sciences de gestion</td>
+<td>SHS1_2 – Management</td>
+</tr>
+<tr class="odd">
+<td>07</td>
+<td>Sciences du langage</td>
+<td>SHS4_2 – Sciences du langage</td>
+</tr>
+<tr class="even">
+<td>08</td>
+<td>Langue et littérature françaises</td>
+<td>SHS4_3 – Langues et littératures</td>
+</tr>
+<tr class="odd">
+<td>09</td>
+<td>Langue et littérature anglaises</td>
+<td>SHS4_3 – Langues et littératures</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Littérature comparée</td>
+<td>SHS4_3 – Langues et littératures</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>Langue et littérature allemandes</td>
+<td>SHS4_3 – Langues et littératures</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>Langues et littératures slaves</td>
+<td>SHS4_3 – Langues et littératures</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>Langues et littératures arabes, chinoises, japonaises</td>
+<td>SHS4_3 – Langues et littératures</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>Langues et littératures romanes</td>
+<td>SHS4_3 – Langues et littératures</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>Langues et littératures anciennes</td>
+<td>SHS4_3 – Langues et littératures</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>Psychologie</td>
+<td>SHS3_1 – Psychologie</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>Philosophie</td>
+<td>SHS2_1 – Philosophie</td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>Sociologie</td>
+<td>SHS3_2 – Sociologie</td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>Anthropologie – ethnologie</td>
+<td>SHS3_3 – Anthropologie</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>Histoire</td>
+<td>SHS6_1 – Histoire</td>
+</tr>
+<tr class="odd">
+<td>21</td>
+<td>Archéologie</td>
+<td>SHS6_2 – Archéologie</td>
+</tr>
+<tr class="even">
+<td>22</td>
+<td>Géographie</td>
+<td>SHS5_1 – Géographie</td>
+</tr>
+<tr class="odd">
+<td>23</td>
+<td>Aménagement de l’espace – urbanisme</td>
+<td>SHS5_2 – Urbanisme</td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td>Sciences de l’éducation</td>
+<td>SHS1_3 – Éducation</td>
+</tr>
+<tr class="odd">
+<td>25</td>
+<td>Mathématiques</td>
+<td>ST1_1 – Mathématiques fondamentales</td>
+</tr>
+<tr class="even">
+<td>26</td>
+<td>Mathématiques appliquées</td>
+<td>ST1_2 – Mathématiques appliquées</td>
+</tr>
+<tr class="odd">
+<td>27</td>
+<td>Informatique</td>
+<td>ST4_1 – Informatique</td>
+</tr>
+<tr class="even">
+<td>28</td>
+<td>Physique</td>
+<td>ST2_1 – Physique fondamentale</td>
+</tr>
+<tr class="odd">
+<td>29</td>
+<td>Chimie</td>
+<td>ST3_1 – Chimie moléculaire</td>
+</tr>
+<tr class="even">
+<td>30</td>
+<td>Mécanique</td>
+<td>ST7_1 – Mécanique</td>
+</tr>
+<tr class="odd">
+<td>31</td>
+<td>Génie civil</td>
+<td>ST7_3 – Génie civil</td>
+</tr>
+<tr class="even">
+<td>32</td>
+<td>Génie mécanique</td>
+<td>ST7_1 – Mécanique</td>
+</tr>
+<tr class="odd">
+<td>33</td>
+<td>Génie électrique</td>
+<td>ST4_2 – Électronique</td>
+</tr>
+<tr class="even">
+<td>34</td>
+<td>Sciences de la Terre</td>
+<td>ST5_1 – Géosciences</td>
+</tr>
+<tr class="odd">
+<td>35</td>
+<td>Astronomie – astrophysique</td>
+<td>ST2_1 – Physique fondamentale</td>
+</tr>
+<tr class="even">
+<td>36</td>
+<td>Chimie physique</td>
+<td>ST3_2 – Chimie des matériaux</td>
+</tr>
+<tr class="odd">
+<td>37</td>
+<td>Biologie cellulaire</td>
+<td>LS2 – Biologie cellulaire</td>
+</tr>
+<tr class="even">
+<td>38</td>
+<td>Biologie des organismes</td>
+<td>LS3 – Biologie des organismes</td>
+</tr>
+<tr class="odd">
+<td>39</td>
+<td>Physiologie</td>
+<td>LS4 – Physiologie</td>
+</tr>
+<tr class="even">
+<td>40</td>
+<td>Neurosciences</td>
+<td>LS5 – Neurosciences</td>
+</tr>
+<tr class="odd">
+<td>41</td>
+<td>Biochimie et biologie moléculaire</td>
+<td>LS2 – Biologie cellulaire</td>
+</tr>
+<tr class="even">
+<td>42</td>
+<td>Microbiologie</td>
+<td>LS6 – Microbiologie</td>
+</tr>
+<tr class="odd">
+<td>43</td>
+<td>Immunologie</td>
+<td>LS6 – Immunologie</td>
+</tr>
+<tr class="even">
+<td>44</td>
+<td>Pharmacologie</td>
+<td>LS7 – Pharmacologie</td>
+</tr>
+<tr class="odd">
+<td>45</td>
+<td>Écologie</td>
+<td>ST9_1 – Écologie</td>
+</tr>
+<tr class="even">
+<td>46</td>
+<td>Sciences agronomiques</td>
+<td>LS8 – Agronomie</td>
+</tr>
+<tr class="odd">
+<td>47</td>
+<td>Sciences et techniques des activités physiques et sportives (STAPS)</td>
+<td>ST6_1 – Sciences du sport</td>
+</tr>
+<tr class="even">
+<td>48</td>
+<td>Sciences de l’information et de la communication</td>
+<td>SHS4_1 – SIC</td>
+</tr>
+<tr class="odd">
+<td>49</td>
+<td>Musique</td>
+<td>SHS4_4 – Arts</td>
+</tr>
+<tr class="even">
+<td>50</td>
+<td>Arts plastiques</td>
+<td>SHS4_4 – Arts</td>
+</tr>
+<tr class="odd">
+<td>51</td>
+<td>Théologie</td>
+<td>SHS2_2 – Théologie</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
