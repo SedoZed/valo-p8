@@ -1,0 +1,129 @@
+---
+title: "Uniformiser la data"
+format: html
+lang: fr
+---
+
+A travers le différentes sources fournies, l'information peut être transmise avec une écriture variant, allant de la simple virgule de différente jusqu'à deux nomenclatures différentes utilisées. Dans le cadre de ce projet, il est important que lorsque les données sont transposées dans la base de donnée de la cartographie, celles-ci soient uniformisées afin de notamment éviter l'apparition de doublons dans la cartographie.
+
+Il reste cependant important de noter que ces conversions n'ont aucune valeur officielle car n'ont pas été validées par qui que ce soit. 
+
+# Travailler sur le secteur d'activité d'une entité physique (enseignant-chercheur) ou morale (laboratoire).
+
+## Conversion nomenclature CNU vers HCERES (2024)
+
+| Code CNU | Intitulé CNU | Panel HCERES 2024 |
+|----------|--------------|-------------------|
+| 1-01 | Droit privé | DS1_1 – Droit privé |
+| 1-02 | Droit public | DS1_2 – Droit public |
+| 1-03 | Histoire du droit | DS1_3 – Histoire du droit |
+| 1-04 | Science politique | SHS3_1 – Science politique |
+| 2-05 | Sciences économiques | SHS1_1 – Économie |
+| 2-06 | Sciences de gestion | SHS1_2 – Management |
+| 3-01 | Mathématiques | ST1_1 – Mathématiques fondamentales |
+| 3-02 | Physique | ST2_1 – Physique fondamentale |
+| 3-03 | Chimie | ST3_1 – Chimie moléculaire |
+| 3-04 | Sciences de la Terre | ST5_1 – Géosciences |
+| 3-05 | Biologie fondamentale | LS2 – Biologie cellulaire |
+| 3-06 | Sciences du vivant / écologie | ST9_1 – Écologie |
+| 3-07 | Mécanique | ST7_1 – Mécanique |
+| 3-08 | Génie des procédés | ST7_2 – Procédés |
+| 3-09 | Électronique / automatique | ST4_2 – Électronique |
+| 3-10 | Informatique | ST4_1 – Informatique |
+| 3-11 | Sciences de l’information | SHS4_1 – Sciences de l’information et de la communication |
+| 3-12 | Génie civil | ST7_3 – Génie civil |
+| 3-13 | Génie mécanique | ST7_1 – Mécanique |
+| 3-14 | Génie électrique | ST4_2 – Électronique |
+| 3-15 | Chimie physique | ST3_2 – Chimie des matériaux |
+| 3-16 | Biologie cellulaire | LS2 – Biologie cellulaire |
+| 3-17 | Biologie des organismes | LS3 – Biologie des organismes |
+| 3-18 | Écologie | ST9_1 – Écologie |
+| 3-19 | Astrophysique | ST2_1 – Physique fondamentale |
+| 3-20 | Mathématiques appliquées | ST1_2 – Mathématiques appliquées |
+| 3-21 | Probabilités / statistiques | ST1_2 – Mathématiques appliquées |
+| 3-22 | Informatique appliquée | ST4_1 – Informatique |
+| 3-23 | Neurosciences | LS5 – Neurosciences |
+| 3-24 | Pharmacologie | LS7 – Pharmacologie |
+| 3-25 | Agronomie | LS8 – Agronomie |
+| 3-26 | Matériaux | ST8_1 – Matériaux |
+| 3-27 | Nanosciences | ST8_2 – Nanosciences |
+| 4-70 | Sciences de l’éducation | SHS1_3 – Éducation |
+| 4-71 | Sciences de l’information et de la communication | SHS4_1 – SIC |
+| 4-72 | Sociologie | SHS3_2 – Sociologie |
+| 4-73 | Anthropologie | SHS3_3 – Anthropologie |
+| 4-74 | Géographie | SHS5_1 – Géographie |
+| 4-75 | Urbanisme | SHS5_2 – Urbanisme |
+| 4-76 | Sciences du langage | SHS4_2 – Sciences du langage |
+| 4-77 | Philosophie | SHS2_1 – Philosophie |
+| 4-78 | Théologie | SHS2_2 – Théologie |
+| 4-79 | Psychologie | SHS3_1 – Psychologie |
+| 4-80 | Histoire | SHS6_1 – Histoire |
+| 4-81 | Archéologie | SHS6_2 – Archéologie |
+| 4-82 | Langues et littératures | SHS4_3 – Langues et littératures |
+| 4-83 | Études anglophones | SHS4_3 – Langues et littératures |
+| 4-84 | Études germaniques | SHS4_3 – Langues et littératures |
+| 4-85 | Études romanes | SHS4_3 – Langues et littératures |
+| 4-86 | Études slaves | SHS4_3 – Langues et littératures |
+| 4-87 | Études orientales | SHS4_3 – Langues et littératures |
+| 4-88 | Arts | SHS4_4 – Arts |
+| 4-89 | Musique | SHS4_4 – Arts |
+| 5-60 | STAPS | ST6_1 – Sciences du sport |
+
+
+## Conversion nomenclature CNU vers HCERES (ancien modèle)
+
+| Code CNU | Intitulé CNU | Panel HCERES 2024 |
+|----------|--------------|-------------------|
+| CNU | Intitulé CNU (ancienne nomenclature) | Panel HCERES 2024 |
+|-----|--------------------------------------|-------------------|
+| 01 | Droit privé | DS1_1 – Droit privé |
+| 02 | Droit public | DS1_2 – Droit public |
+| 03 | Histoire du droit | DS1_3 – Histoire du droit |
+| 04 | Science politique | SHS3_1 – Science politique |
+| 05 | Sciences économiques | SHS1_1 – Économie |
+| 06 | Sciences de gestion | SHS1_2 – Management |
+| 07 | Sciences du langage | SHS4_2 – Sciences du langage |
+| 08 | Langue et littérature françaises | SHS4_3 – Langues et littératures |
+| 09 | Langue et littérature anglaises | SHS4_3 – Langues et littératures |
+| 10 | Littérature comparée | SHS4_3 – Langues et littératures |
+| 11 | Langue et littérature allemandes | SHS4_3 – Langues et littératures |
+| 12 | Langues et littératures slaves | SHS4_3 – Langues et littératures |
+| 13 | Langues et littératures arabes, chinoises, japonaises | SHS4_3 – Langues et littératures |
+| 14 | Langues et littératures romanes | SHS4_3 – Langues et littératures |
+| 15 | Langues et littératures anciennes | SHS4_3 – Langues et littératures |
+| 16 | Psychologie | SHS3_1 – Psychologie |
+| 17 | Philosophie | SHS2_1 – Philosophie |
+| 18 | Sociologie | SHS3_2 – Sociologie |
+| 19 | Anthropologie – ethnologie | SHS3_3 – Anthropologie |
+| 20 | Histoire | SHS6_1 – Histoire |
+| 21 | Archéologie | SHS6_2 – Archéologie |
+| 22 | Géographie | SHS5_1 – Géographie |
+| 23 | Aménagement de l’espace – urbanisme | SHS5_2 – Urbanisme |
+| 24 | Sciences de l’éducation | SHS1_3 – Éducation |
+| 25 | Mathématiques | ST1_1 – Mathématiques fondamentales |
+| 26 | Mathématiques appliquées | ST1_2 – Mathématiques appliquées |
+| 27 | Informatique | ST4_1 – Informatique |
+| 28 | Physique | ST2_1 – Physique fondamentale |
+| 29 | Chimie | ST3_1 – Chimie moléculaire |
+| 30 | Mécanique | ST7_1 – Mécanique |
+| 31 | Génie civil | ST7_3 – Génie civil |
+| 32 | Génie mécanique | ST7_1 – Mécanique |
+| 33 | Génie électrique | ST4_2 – Électronique |
+| 34 | Sciences de la Terre | ST5_1 – Géosciences |
+| 35 | Astronomie – astrophysique | ST2_1 – Physique fondamentale |
+| 36 | Chimie physique | ST3_2 – Chimie des matériaux |
+| 37 | Biologie cellulaire | LS2 – Biologie cellulaire |
+| 38 | Biologie des organismes | LS3 – Biologie des organismes |
+| 39 | Physiologie | LS4 – Physiologie |
+| 40 | Neurosciences | LS5 – Neurosciences |
+| 41 | Biochimie et biologie moléculaire | LS2 – Biologie cellulaire |
+| 42 | Microbiologie | LS6 – Microbiologie |
+| 43 | Immunologie | LS6 – Immunologie |
+| 44 | Pharmacologie | LS7 – Pharmacologie |
+| 45 | Écologie | ST9_1 – Écologie |
+| 46 | Sciences agronomiques | LS8 – Agronomie |
+| 47 | Sciences et techniques des activités physiques et sportives (STAPS) | ST6_1 – Sciences du sport |
+| 48 | Sciences de l’information et de la communication | SHS4_1 – SIC |
+| 49 | Musique | SHS4_4 – Arts |
+| 50 | Arts plastiques | SHS4_4 – Arts |
+| 51 | Théologie | SHS2_2 – Théologie |

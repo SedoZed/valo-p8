@@ -27,6 +27,12 @@ website:
           href: instr_jeu2donnees.qmd
         - text: "La base de données Oméka S"
           href: bdd_omeka.qmd
+      - text: "Aides"
+        menu:
+        - text: "Uniformisation des données"
+          href: uniformiser.qmd
+        - text: "Utiliser DataMerge.py"
+          href: datamerge_use.qmd
   page-footer:
     left: "Direction de la Recherche de Paris 8"
     center: |
