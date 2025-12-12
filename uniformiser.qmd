@@ -10,6 +10,20 @@ Il reste cependant important de noter que ces conversions n'ont aucune valeur of
 
 # Travailler sur le secteur d'activité d'une entité physique (enseignant-chercheur) ou morale (laboratoire).
 
+Il existe de nombreuses nomenclatures servant à indiquer le domaine d'un enseignant chercheur ou d'un laboratoire, comme les nomenclature CNU ou HCERES par exemple. Au sein même de ces nomenclatures peuvent apparaître diverses versions, comme visible dans les tableau ci-dessous.
+
+Etablir des correspondances peut donc sembler être une bonne idée pour obtenir un certain nombre de données dans un premier temps. Voici la liste des laboratoires dont une nomenclature HCERES a été attibuée à ses membres en fonctione de ce qu'ils ont fournis (nomenclature CNU, etc) :
+- ARSCAN
+- CEMTI
+- CRESPPA
+- ESTCS
+- IFG-LAB
+- LED
+- LLCP
+- MeMo
+- Paragraphe
+- C
+
 ## Conversion nomenclature CNU vers HCERES (2024)
 
 | Code CNU | Intitulé CNU | Panel HCERES 2024 |

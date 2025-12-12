@@ -17,6 +17,7 @@ Utilisation d'un classeur "tableur" contenant deux feuilles, chacun avec une ori
 | dcterms:title | Dublin Core  | Ici, combinaison "prénom+nom" servant à nommer l'objet dans la BDD. |
 | foaf:givenName  | FoaF  | Prénom de l'enseignant-chercheur. |
 | foaf:familyName  | FoaF  | Nom de famille de l'enseignant-chercheur. |
+| vivo:role | VIVO Ontology | Statut de l'enseignant chercheur (PR, MDF, ...) |
 | dcterms:identifier | Dublin Core | Numéro unique ORCID de l'enseignant-chercheur lorsque celui-ci est disponible. |
 | dcterms:isPartOf | Dublin Core | Laboratoire auquel est rattaché l'enseignant-chercheur. |
 | dcterms:hasPart | Dublin Core | Sous-unité du laboratoire dans lequel l'enseignant-chercheur opère. |
@@ -53,6 +54,10 @@ Utilisation d'un classeur "tableur" contenant deux feuilles, chacun avec une ori
 Utilisation d'un classeur "tableur" contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine. 
 
 (La constitution de ce jeu de données est toujours en cours.)
+
+## Bibliographie : 
+- https://bioportal.bioontology.org/ontologies/VIVO?p=properties
+- 
 
 # La base de donnée relationnelle
 En stand-by pour le moment, dans l'attente d'accès à plus de droits.
