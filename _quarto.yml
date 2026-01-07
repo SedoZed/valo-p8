@@ -8,30 +8,30 @@ format:
     css: assets/styles.css
 
 website:
-  title: "Cartographie des données du SVR"
+  title: "CartoExpert"
   navbar:
     background: "#E30F1B"
     foreground: "white"
     left:
       - text: "Présentation du projet"
         menu:
-        - text: "Contexte antérieur et actuel du projet"
+        - text: "Contexte d'émergence du projet"
           href: index.qmd
         - text: "Présentation du système actuel"
           href: pres_syst.qmd
-      - text: "Prérequis pour travailler"
+      - text: "Prérequis"
         href: installations.qmd
       - text: "Organisation de la data"
         menu:
-        - text: "Constitution des jeux de données"
+        - text: "Structure des fichiers .csv"
           href: instr_jeu2donnees.qmd
-        - text: "La base de données Oméka S"
+        - text: "Structure de la base de données Oméka S"
           href: bdd_omeka.qmd
       - text: "Aides"
         menu:
-        - text: "Uniformisation des données"
-          href: uniformiser.qmd
-        - text: "Utiliser DataMerge.py"
+        - text: "Convertir certaines données"
+          href: interpretation.qmd
+        - text: "DataMerge - Documentation"
           href: datamerge_use.qmd
   page-footer:
     left: "Direction de la Recherche de Paris 8"
