@@ -1,0 +1,22 @@
+---
+title: "Récupération et renforcement des données"
+format: html
+lang: fr
+---
+
+Lorem ipsum [introduction]
+
+# Récupération des données
+
+## Données existantes fiables
+Rendus évaluation HCERES
+
+
+## Données manquantes ou non-fiables
+certaines données sont manquantes ou inscrites d'une façon ne permettant pas une identification fiable (autre nomenclature, ...)
+
+Solution possibles :
+- Formulaire à soumettre aux enseignants-chercheurs leur demandant de compléter les données
+- Permettre aux membres de laboratoires de consulter les données enregistrées et de faire des demandes d'édition facilement si besoin
+
+# Consolidation des données
