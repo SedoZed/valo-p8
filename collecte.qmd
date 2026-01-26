@@ -11,12 +11,13 @@ Les données dans l'état actuel des choses ne pas ou peu exploitables pour de n
 Cette première majeure partie du travail consiste donc à réunir toutes ces données différentes puis de les centraliser en un seul set de données, uniforme et facilement interprétable par une machine.
 
 # Récupération des données
-La première étape consiste donc à déterminer sur quelles sources s'appuyer 
+La première étape consiste donc à déterminer sur quelles sources s'appuyer = s'appuyer sur le cahier des charges
+
 
 ## Données existantes fiables
 Rendus évaluation HCERES
 Rapports produits par le DSR
-Données externe au service 
+Données externes au service ()
 
 ## Données manquantes ou non-fiables
 certaines données sont manquantes ou inscrites d'une façon ne permettant pas une identification fiable (autre nomenclature, ...)

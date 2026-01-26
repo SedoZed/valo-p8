@@ -10,17 +10,10 @@ Au sein de la Direction des Services à la Recherche (DSR) de l'Université Pari
 Pour bien identifier et faire connaitre ces expertises, le service a souhaité réaliser des cartographies représentant les activités, compétences, expertises, productions et savoir-faire des chercheurs et laboratoires d’UP8 et de disposer d’un outil qui lui permet de faire l’interface entre les acteurs non-académiques et leurs interlocuteurs dans la communauté scientifique d’UP8. 
 
 ## Portée du projet
-Ce projet couvre plutôt le domaine de la recherche et moins celui de l’enseignement ou aux autres
-activités de la communauté universitaire dans la mesure où il s’agit d’un outil pour la direction des
-services à la recherche. Rien, cependant, n’interdit de penser l’outil de telle sorte qu’il intégre à l’avenir
-d’autres données.
+Ce projet couvre plutôt le domaine de la recherche et moins celui de l’enseignement ou aux autres activités de la communauté universitaire dans la mesure où il s’agit d’un outil pour la direction des services à la recherche. Rien, cependant, n’interdit de penser l’outil de telle sorte qu’il intégre à l’avenir d’autres données.
 
 ## Les concernés par le projet
-Les cartographies s’adressent en priorité aux chargés de partenariat et de valorisation et aux chargés
-de montage de projets de la DSR qui ont besoin d’identifier les bons interlocuteurs et de les mettre en
-relation. En effet, les expertises nécessaires pour répondre à des appels aux projets ou des demandes
-exprimés par des acteurs externes doivent être identifiées par les équipes de la DSR afin de faire la
-meilleure mise en relation possible.
+Les cartographies s’adressent en priorité aux chargés de partenariat et de valorisation et aux chargés de montage de projets de la DSR qui ont besoin d’identifier les bons interlocuteurs et de les mettre en relation. En effet, les expertises nécessaires pour répondre à des appels aux projets ou des demandes exprimés par des acteurs externes doivent être identifiées par les équipes de la DSR afin de faire la meilleure mise en relation possible.
 
 # L'objectif maintenant
 (Une fois l'outil mis en place, il sera question de réfléchir à comment bien maintenir le système opérationnel et à savoir comment bien transmettre tous les savoirs)

@@ -12,48 +12,48 @@ Utilisation de certaines normes du web sémantiques déjà répandues + créatio
 ## Structuration des données liées aux enseignants-chercheurs.
 Utilisation d'un classeur "tableur" contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine. 
 
-|  Intitulé  | Dictionnaire | Définition | Encodage   |
-|------------|--------------|------------|------------|
-| dcterms:title | Dublin Core  | Ici, combinaison "prénom+nom" servant à nommer l'objet dans la BDD. | Texte brute (str) |
-| foaf:givenName  | FoaF  | Prénom de l'enseignant-chercheur. | Texte brute (str) |
-| foaf:familyName  | FoaF  | Nom de famille de l'enseignant-chercheur. | Texte brute (str) |
-| foaf:birthday | FoaF | Date de naissance de l'enseignant-chercheur. | Texte brute (str) ou date ? |
-| vivo:role | VIVO Ontology | Statut de l'enseignant chercheur (PR, MDF, ...) | ID Oméka* |
-| dcterms:identifier | Dublin Core | Numéro unique ORCID de l'enseignant-chercheur lorsque celui-ci est disponible. | Texte brute (str) |
-| dcterms:isPartOf | Dublin Core | Laboratoire auquel est rattaché l'enseignant-chercheur. | ID Oméka* |
-| dcterms:hasPart | Dublin Core | Sous-unité du laboratoire dans lequel l'enseignant-chercheur opère. | ID Oméka* |
-| valo:domaine_hceres | Dict. personnalisé | Panels disciplinaires dans lesquels le chercheur publie (selon la nomenclature du [HCERES](https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf).) | Texte brute (str) |
-| valo:obj_recherche | Dict. personnalisé | L'objet de recherche de l'enseignant-chercheur. | Texte brute (str) |
-| valo:hasAxe | Dict. personnalisé | Les axes de recherche portés par l'enseignant-chercheur. | Texte brute (str) |
-| valo:expertise | Dict. personnalisé | Expertises reconnus de l'enseignant-chercheur. | Texte brute (str) |
-| valo:dir_these | Dict. personnalisé | Nombre de doctorants ayant publié une thèse sous la supervision de l'enseignant-chercheur. | Texte brute (str) |
-| valo:ecole_docto | Dict. personnalisé | Ecoles doctorales dont l'enseignant-chercheur est membre. | Texte brute (str) ou ID Oméka* ? |
-| valo:partenariats | Dict. personnalisé | Identifiants des "items" de la bdd correspondant aux partenaires non-académiques avec lesquelles l'enseignant-chercheur a travaillé. | ID Oméka* |
-| foaf:mbox | FoaF | Boite mail professionnelle de l'enseignant-chercheur. | Texte brute (str) |
+|  Intitulé  | Dictionnaire | Définition | Encodage   | Source     | 
+|------------|--------------|------------|------------|------------|
+| dcterms:title | Dublin Core  | Ici, combinaison "prénom+nom" servant à nommer l'objet dans la BDD. | Texte brute (str) | --- |
+| foaf:givenName  | FoaF  | Prénom de l'enseignant-chercheur. | Texte brute (str) | researchers_Erua → "first_name" |
+| foaf:familyName  | FoaF  | Nom de famille de l'enseignant-chercheur. | Texte brute (str) | researchers_Erua → "surname_name" |
+| foaf:birthday | FoaF | Date de naissance de l'enseignant-chercheur. | Texte brute (str) ou date ? | Rapport HCERES → "Année de naissance" (nécessite tri) |
+| vivo:role | VIVO Ontology | Statut de l'enseignant chercheur (PR, MDF, ...) | ID Oméka* | Rapport HCERES → "Corps" (nécessite tri) |
+| dcterms:identifier | Dublin Core | Numéro unique ORCID de l'enseignant-chercheur lorsque celui-ci est disponible. | Texte brute (str) | --- |
+| dcterms:isPartOf | Dublin Core | Laboratoire auquel est rattaché l'enseignant-chercheur. | ID Oméka* | researchers_Erua → research_units |
+| dcterms:hasPart | Dublin Core | Sous-unité du laboratoire dans lequel l'enseignant-chercheur opère. | ID Oméka* |  Rapport HCERES → "Nom de l'équipe interne n°X" (nécessite tri) |
+| valo:domaine_hceres | Dict. personnalisé | Panels disciplinaires dans lesquels le chercheur publie (selon la nomenclature du [HCERES](https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf).) | Texte brute (str) |  --- |
+| valo:obj_recherche | Dict. personnalisé | L'objet de recherche de l'enseignant-chercheur. | Texte brute (str) | --- |
+| valo:hasAxe | Dict. personnalisé | Les axes de recherche portés par l'enseignant-chercheur. | Texte brute (str) | --- |
+| valo:expertise | Dict. personnalisé | Expertises reconnus de l'enseignant-chercheur. | Texte brute (str) | --- |
+| valo:dir_these | Dict. personnalisé | Nombre de doctorants ayant publié une thèse sous la supervision de l'enseignant-chercheur. | Texte brute (str) | --- |
+| valo:ecole_docto | Dict. personnalisé | Ecoles doctorales dont l'enseignant-chercheur est membre. | Texte brute (str) ou ID Oméka* ? | --- |
+| valo:partenariats | Dict. personnalisé | Identifiants des "items" de la bdd correspondant aux partenaires non-académiques avec lesquelles l'enseignant-chercheur a travaillé. | ID Oméka* | --- |
+| foaf:mbox | FoaF | Boite mail professionnelle de l'enseignant-chercheur. | Texte brute (str) | researchers_Erua → professional_email |
 
 ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d'effectuer des liens internes entre les objets dans la BDD.
 
 ## Structuration des données liées aux laboratoires de Paris 8.
 Utilisation d'un classeur "tableur" contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine. 
 
-| Intitulé   | Dictionnaire | Définition | Encodage   |
-|------------|--------------|------------|------------|
-| dcterms:title | Dublin Core  | Nom de l'objet dans la bdd. Constitue généralement un diminutif communément utilisé. | Texte brute (str) |
-| dcterms:alternative  | Dublin Core  | Nom alternatif (souvent le nom complet) du laboratoire. | Texte brute (str) |
-| dcterms:idRNSR | Dublin Core | Numéro unique RNSR du laboratoire. | Texte brute (str) |
-| valo:domaine_hceres | Dict. personnalisé | Panels scientifiques revendiqué par le labratoire, selon la nomenclature du [HCERES](https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf). | Texte brute (str) |
-| valo:domaine_erc | Dict. personnalisé | Panels scientifiques revendiqué par le laboatoire, selon la nomenclature [ERC](https://erc.europa.eu/sites/default/files/2023-03/ERC_panel_structure_2024_calls.pdf) | Texte brute (str) |
-| valo:obj_recherche | Dict. personnalisé | Objet de recherche du laboratoire. | Texte brute (str) |
-| valo:hasAxe | Dict. personnalisé | Les axes de recherche du laboratoire. | ID Oméka* |
-| valo:heywords | Dict. personnalisé | Mots-clés renseignés par les laboratoires dans le rendu HCERES des laboratoires. | Texte brute (str) ou ID Oméka* ? |
-| valo:keythemes | Dict. personnalisé  | Thèmes du laboratoire renseignés dans l’annexe Mapping of research portfolio and partner organization. | Texte brute (str) |
-| valo:expertise | Dict. personnalisé | Domaines de maitrise dont lesquels le laboratoire est reconnu. | Texte brute (str) |
-| foaf:mbox | FoaF | Courriel pour contacter directement le laboratoire. | Texte brute (str) |
-| dcterms:type | Dublin Core | Désigne l'ensemble des équipements, instruments, corpus, bibliothèques, ... utilisés par le laboratoire. | Texte brute (str) |
-| valo:ecole_docto | Dict. personnalisé | Ecoles doctorales dont l'enseignant-chercheur est membre. | Texte brute (str) ou ID Oméka* ? |
-| valo:dir_these | Dict. personnalisé | Nombre de doctorants ayant publié une thèse sous la supervision de l'enseignant-chercheur. | Texte brute (str) |
-| valo:collab | Dict. personnalisé | Partenariats de recherche avec le monde non-académique. (entrer leur ID Oméka) | ID Oméka* |
-| valo:idHAL | Dict. personnalisé | Identifiant unique HAL du laboratoire, permettant à postériori l'extraction des publications du laboratoire. | Texte brute (str) |
+| Intitulé   | Dictionnaire | Définition | Encodage   | Source     | 
+|------------|--------------|------------|------------|------------|
+| dcterms:title | Dublin Core  | Nom de l'objet dans la bdd. Constitue généralement un diminutif communément utilisé. | Texte brute (str) | Labos_Paris8 → "Acronyme" |
+| dcterms:alternative  | Dublin Core  | Nom alternatif (souvent le nom complet) du laboratoire. | Texte brute (str) | --- |
+| dcterms:idRNSR | Dublin Core | Numéro unique RNSR du laboratoire. | Texte brute (str) | --- |
+| valo:domaine_hceres | Dict. personnalisé | Panels scientifiques revendiqué par le labratoire, selon la nomenclature du [HCERES](https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf). | Texte brute (str) | --- |
+| valo:domaine_erc | Dict. personnalisé | Panels scientifiques revendiqué par le laboatoire, selon la nomenclature [ERC](https://erc.europa.eu/sites/default/files/2023-03/ERC_panel_structure_2024_calls.pdf) | Texte brute (str) | --- |
+| valo:obj_recherche | Dict. personnalisé | Objet de recherche du laboratoire. | Texte brute (str) | --- |
+| valo:hasAxe | Dict. personnalisé | Les axes de recherche du laboratoire. | ID Oméka* | --- |
+| valo:heywords | Dict. personnalisé | Mots-clés renseignés par les laboratoires dans le rendu HCERES des laboratoires. | Texte brute (str) ou ID Oméka* ? | --- |
+| valo:keythemes | Dict. personnalisé  | Thèmes du laboratoire renseignés dans l’annexe Mapping of research portfolio and partner organization. | Texte brute (str) | --- |
+| valo:expertise | Dict. personnalisé | Domaines de maitrise dont lesquels le laboratoire est reconnu. | Texte brute (str) | --- |
+| foaf:mbox | FoaF | Courriel pour contacter directement le laboratoire. | Texte brute (str) | --- |
+| dcterms:type | Dublin Core | Désigne l'ensemble des équipements, instruments, corpus, bibliothèques, ... utilisés par le laboratoire. | Texte brute (str) | --- |
+| valo:ecole_docto | Dict. personnalisé | Ecoles doctorales dont l'enseignant-chercheur est membre. | Texte brute (str) ou ID Oméka* ? | --- |
+| valo:dir_these | Dict. personnalisé | Nombre de doctorants ayant publié une thèse sous la supervision de l'enseignant-chercheur. | Texte brute (str) | --- |
+| valo:collab | Dict. personnalisé | Partenariats de recherche avec le monde non-académique. (entrer leur ID Oméka) | ID Oméka* | --- |
+| valo:idHAL | Dict. personnalisé | Identifiant unique HAL du laboratoire, permettant à postériori l'extraction des publications du laboratoire. | Texte brute (str) | --- |
 
 ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d'effectuer des liens internes entre les objets dans la BDD.
 
