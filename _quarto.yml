@@ -13,23 +13,28 @@ website:
     background: "#E30F1B"
     foreground: "white"
     left:
-      - text: "Présentation du projet"
+      - text: "Accueil"
+        href: index.qmd
         menu:
-        - text: "Contexte d'émergence du projet"
-          href: index.qmd
         - text: "Présentation du système actuel"
-          href: pres_syst.qmd
-      - text: "Prérequis"
-        href: installations.qmd
-      - text: "Organisation de la data"
+          href: qmd-accueil/pres_syst.qmd
+        - text: "Prérequis"
+          href: qmd-accueil/installations.qmd
+      - text: "Regrouper et nettoyer la data"
         menu:
         - text: "Structure des fichiers .csv"
           href: instr_jeu2donnees.qmd
         - text: "Structure de la base de données Oméka S"
           href: bdd_omeka.qmd
+      - text: "Base de donnée Oméka S"
+        menu:
+        - text: "[placeholder]"
+          href: "#"
+        - text: "[placeholder]"
+          href: "#"
       - text: "Aides"
         menu:
-        - text: "Convertir certaines données"
+        - text: "Liste des interprétations"
           href: interpretation.qmd
         - text: "DataMerge - Documentation"
           href: datamerge_use.qmd
