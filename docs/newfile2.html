@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Script de fusion de tableur : “DataMerge” – CartoExpert</title>
+<title>Construction en cours… – CartoExpert</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -97,15 +97,15 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-general">    
         <li>
     <a class="dropdown-item" href="./index.html">
- <span class="dropdown-text">Contexte d’exploitation</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./pres_syst.html">
- <span class="dropdown-text">Présentation du système actuel</span></a>
+ <span class="dropdown-text">Contexte du projet</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./installations.html">
- <span class="dropdown-text">Prérequis</span></a>
+ <span class="dropdown-text">Prérequis de travail</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./pres_syst.html">
+ <span class="dropdown-text">Présentation du système</span></a>
   </li>  
     </ul>
   </li>
@@ -116,11 +116,11 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-regrouper-et-nettoyer-la-data">    
         <li>
     <a class="dropdown-item" href="./instr_jeu2donnees.html">
- <span class="dropdown-text">Structure des fichiers .csv</span></a>
+ <span class="dropdown-text">Structure des fichiers CSV</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./bdd_omeka.html">
- <span class="dropdown-text">Structure de la base de données Oméka S</span></a>
+    <a class="dropdown-item" href="./newfile.html">
+ <span class="dropdown-text">Placeholder</span></a>
   </li>  
     </ul>
   </li>
@@ -130,20 +130,20 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-base-de-donnée-oméka-s">    
         <li>
-    <a class="dropdown-item" href="./newfile.html">
- <span class="dropdown-text">[placeholder]</span></a>
+    <a class="dropdown-item" href="./bdd_omeka.html">
+ <span class="dropdown-text">Mettre en place Oméka S et ses dépendances</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./newfile2.html">
- <span class="dropdown-text">[placeholder]</span></a>
+ <span class="dropdown-text">Naviguer, importer et modifier sur Oméka S</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-aides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Aides</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-divers" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Divers</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-aides">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-divers">    
         <li>
     <a class="dropdown-item" href="./interpretation.html">
  <span class="dropdown-text">Liste des interprétations</span></a>
@@ -171,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Script de fusion de tableur : “DataMerge”</h1>
+<h1 class="title">Construction en cours…</h1>
 </div>
 
 
@@ -188,22 +188,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>DataMerge est un outil artisanale conçu pour simplifier et fiabiliser la fusion de données issues de plusieurs fichiers Excel. Il permet d’associer automatiquement des informations provenant d’un fichier source vers un fichier cible en s’appuyant sur des clés de correspondance choisies par l’utilisateur (souvent un nom de famille). Même s’il reste rudimentaire, DataMerge accélère la collecte d’informations provenant de plusieurs tableurs en supprimant une partie des manipulations manuelles répétitives, longues et susceptibles de générer des erreurs.</p>
-<p>La conception de ce script a, avant tout, été motivé par l’idée d’effectuer cette automatisation localement plutôt que d’utiliser des algorithmes non-propriétaire dans un contexte où les données traitées sont souvent sensibles (données personnelles, données confidentielles, etc…). L’ensemble des fichiers permettant le fonctionnement du script sont disponible sur le GitHub du projet. Enfin, il est très programme que DataMerge soit amené à évoluer à l’avenir, auquel cas les informations d’utilisation seront mise à jour sur cette page?=.</p>
-<section id="exemple-dutilisation" class="level2">
-<h2 class="anchored" data-anchor-id="exemple-dutilisation">Exemple d’utilisation</h2>
-<p>Un service X de l’université transmet un fichier tableur contenant diverses informations sur des étudiants ou des personnels (adresses mises à jour, nouveaux statuts, changements administratifs, etc.). De notre côté, nous disposons déjà d’une base de données interne, mais seules certaines des informations envoyées nous concernent réellement. De plus, le fichier transmis peut contenir des noms ou identifiants qui n’existent pas dans notre propre base, et qu’il faut donc ignorer pour éviter des erreurs de mise à jour.</p>
-<p>Sans outil dédié, la procédure consiste à parcourir manuellement le fichier reçu, rechercher chaque personne dans notre tableau interne, vérifier si elle existe, puis reporter uniquement les données pertinentes. Cette opération est longue, répétitive et particulièrement sensible aux erreurs humaines. Avec DataMerge, il suffit de sélectionner dans l’ordre :</p>
-<ol type="1">
-<li><p>le fichier transmis par l’autre service <em>(ou une première extraction orientée “machine” de certaines données dudit fichier)</em>,</p></li>
-<li><p>notre fichier interne <em>(ou une extraction dudit fichier reprenant la structure des données)</em>,</p></li>
-<li><p>la colonne servant de clé d’identification <em>(souvent le nom de famille)</em>,</p></li>
-<li><p>la colonnes des données à ajouter / mettre à jour dans notre fichier interne.</p></li>
-</ol>
-<p>Le programme se charge alors de faire correspondre automatiquement les entrées présentes dans les deux fichiers (les noms de familles identiques par exemple), d’ignorer celles qui ne figurent pas dans notre base, et de mettre à jour uniquement les informations pertinentes.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

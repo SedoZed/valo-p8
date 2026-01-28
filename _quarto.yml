@@ -13,31 +13,38 @@ website:
     background: "#E30F1B"
     foreground: "white"
     left:
-      - text: "Accueil"
-        href: index.qmd
+      - text: "General"
         menu:
-        - text: "Présentation du système actuel"
-          href: qmd-accueil/pres_syst.qmd
-        - text: "Prérequis"
-          href: qmd-accueil/installations.qmd
-      - text: "Regrouper et nettoyer la data"
-        menu:
-        - text: "Structure des fichiers .csv"
-          href: instr_jeu2donnees.qmd
-        - text: "Structure de la base de données Oméka S"
-          href: bdd_omeka.qmd
-      - text: "Base de donnée Oméka S"
-        menu:
-        - text: "[placeholder]"
-          href: "#"
-        - text: "[placeholder]"
-          href: "#"
-      - text: "Aides"
-        menu:
-        - text: "Liste des interprétations"
-          href: interpretation.qmd
-        - text: "DataMerge - Documentation"
+        - text: "Contexte du projet"
+          href: index.qmd
+        - text: "Prérequis de travail"
+          href: installations.qmd
+        - text: "Outil DataMerge"
           href: datamerge_use.qmd
+      - text: "Préparation des données"
+        menu:
+        - text: "Repérer, centraliser, nettoyer les données"
+          href: instr_jeu2donnees.qmd
+        - text: "Liste des interprétations effectuées"
+          href: interpretation.qmd
+        - text: "Structurer les données en CSV"
+          href: newfile.qmd
+      - text: "Installation technique"
+        menu:
+        - text: "Mettre en place Oméka S, XAMPP, etc"
+          href: bdd_omeka.qmd
+        - text: "Naviguer, importer et modifier sur Oméka S"
+          href: newfile2.qmd
+      - text: "Exploitation"
+        menu:
+        - text: "Présentation du système"
+          href: pres_syst.qmd
+        - text: "placeholder"
+          href: newfile.qmd
+        - text: "placeholder"
+          href: newfile2.qmd
+
+
   page-footer:
     left: "Direction de la Recherche de Paris 8"
     center: |

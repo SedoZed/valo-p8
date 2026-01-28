@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,7 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-b83643112d1d985699274c310a6c44a8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -91,47 +91,62 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-présentation-du-projet" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Présentation du projet</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-general" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">General</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-présentation-du-projet">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-general">    
         <li>
     <a class="dropdown-item" href="./index.html">
- <span class="dropdown-text">Contexte d’émergence du projet</span></a>
+ <span class="dropdown-text">Contexte du projet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./installations.html">
+ <span class="dropdown-text">Prérequis de travail</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./pres_syst.html">
- <span class="dropdown-text">Présentation du système actuel</span></a>
+ <span class="dropdown-text">Présentation du système</span></a>
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./installations.html"> 
-<span class="menu-text">Prérequis</span></a>
-  </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-organisation-de-la-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Organisation de la data</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-regrouper-et-nettoyer-la-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Regrouper et nettoyer la data</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-organisation-de-la-data">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-regrouper-et-nettoyer-la-data">    
         <li>
     <a class="dropdown-item" href="./instr_jeu2donnees.html">
- <span class="dropdown-text">Structure des fichiers .csv</span></a>
+ <span class="dropdown-text">Structure des fichiers CSV</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./bdd_omeka.html">
- <span class="dropdown-text">Structure de la base de données Oméka S</span></a>
+    <a class="dropdown-item" href="./newfile.html">
+ <span class="dropdown-text">Placeholder</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-aides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Aides</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-base-de-donnée-oméka-s" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Base de donnée Oméka S</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-aides">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-base-de-donnée-oméka-s">    
+        <li>
+    <a class="dropdown-item" href="./bdd_omeka.html">
+ <span class="dropdown-text">Mettre en place Oméka S et ses dépendances</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./newfile2.html">
+ <span class="dropdown-text">Naviguer, importer et modifier sur Oméka S</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-divers" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Divers</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-divers">    
         <li>
     <a class="dropdown-item" href="./interpretation.html">
- <span class="dropdown-text">Convertir certaines données</span></a>
+ <span class="dropdown-text">Liste des interprétations</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./datamerge_use.html">
@@ -186,6 +201,7 @@ ul.task-list li input[type="checkbox"] {
 <th>Dictionnaire</th>
 <th>Définition</th>
 <th>Encodage</th>
+<th>Source</th>
 </tr>
 </thead>
 <tbody>
@@ -194,96 +210,112 @@ ul.task-list li input[type="checkbox"] {
 <td>Dublin Core</td>
 <td>Ici, combinaison “prénom+nom” servant à nommer l’objet dans la BDD.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="even">
 <td>foaf:givenName</td>
 <td>FoaF</td>
 <td>Prénom de l’enseignant-chercheur.</td>
 <td>Texte brute (str)</td>
+<td>researchers_Erua → “first_name”</td>
 </tr>
 <tr class="odd">
 <td>foaf:familyName</td>
 <td>FoaF</td>
 <td>Nom de famille de l’enseignant-chercheur.</td>
 <td>Texte brute (str)</td>
+<td>researchers_Erua → “surname_name”</td>
 </tr>
 <tr class="even">
 <td>foaf:birthday</td>
 <td>FoaF</td>
 <td>Date de naissance de l’enseignant-chercheur.</td>
 <td>Texte brute (str) ou date ?</td>
+<td>Rapport HCERES → “Année de naissance” (nécessite tri)</td>
 </tr>
 <tr class="odd">
 <td>vivo:role</td>
 <td>VIVO Ontology</td>
 <td>Statut de l’enseignant chercheur (PR, MDF, …)</td>
 <td>ID Oméka*</td>
+<td>Rapport HCERES → “Corps” (nécessite tri)</td>
 </tr>
 <tr class="even">
 <td>dcterms:identifier</td>
 <td>Dublin Core</td>
 <td>Numéro unique ORCID de l’enseignant-chercheur lorsque celui-ci est disponible.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="odd">
 <td>dcterms:isPartOf</td>
 <td>Dublin Core</td>
 <td>Laboratoire auquel est rattaché l’enseignant-chercheur.</td>
 <td>ID Oméka*</td>
+<td>researchers_Erua → research_units</td>
 </tr>
 <tr class="even">
 <td>dcterms:hasPart</td>
 <td>Dublin Core</td>
 <td>Sous-unité du laboratoire dans lequel l’enseignant-chercheur opère.</td>
 <td>ID Oméka*</td>
+<td>Rapport HCERES → “Nom de l’équipe interne n°X” (nécessite tri)</td>
 </tr>
 <tr class="odd">
 <td>valo:domaine_hceres</td>
 <td>Dict. personnalisé</td>
 <td>Panels disciplinaires dans lesquels le chercheur publie (selon la nomenclature du <a href="https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf">HCERES</a>.)</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="even">
 <td>valo:obj_recherche</td>
 <td>Dict. personnalisé</td>
 <td>L’objet de recherche de l’enseignant-chercheur.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="odd">
 <td>valo:hasAxe</td>
 <td>Dict. personnalisé</td>
 <td>Les axes de recherche portés par l’enseignant-chercheur.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="even">
 <td>valo:expertise</td>
 <td>Dict. personnalisé</td>
 <td>Expertises reconnus de l’enseignant-chercheur.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="odd">
 <td>valo:dir_these</td>
 <td>Dict. personnalisé</td>
 <td>Nombre de doctorants ayant publié une thèse sous la supervision de l’enseignant-chercheur.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="even">
 <td>valo:ecole_docto</td>
 <td>Dict. personnalisé</td>
 <td>Ecoles doctorales dont l’enseignant-chercheur est membre.</td>
 <td>Texte brute (str) ou ID Oméka* ?</td>
+<td>—</td>
 </tr>
 <tr class="odd">
 <td>valo:partenariats</td>
 <td>Dict. personnalisé</td>
 <td>Identifiants des “items” de la bdd correspondant aux partenaires non-académiques avec lesquelles l’enseignant-chercheur a travaillé.</td>
 <td>ID Oméka*</td>
+<td>—</td>
 </tr>
 <tr class="even">
 <td>foaf:mbox</td>
 <td>FoaF</td>
 <td>Boite mail professionnelle de l’enseignant-chercheur.</td>
 <td>Texte brute (str)</td>
+<td>researchers_Erua → professional_email</td>
 </tr>
 </tbody>
 </table>
@@ -299,6 +331,7 @@ ul.task-list li input[type="checkbox"] {
 <th>Dictionnaire</th>
 <th>Définition</th>
 <th>Encodage</th>
+<th>Source</th>
 </tr>
 </thead>
 <tbody>
@@ -307,96 +340,112 @@ ul.task-list li input[type="checkbox"] {
 <td>Dublin Core</td>
 <td>Nom de l’objet dans la bdd. Constitue généralement un diminutif communément utilisé.</td>
 <td>Texte brute (str)</td>
+<td>Labos_Paris8 → “Acronyme”</td>
 </tr>
 <tr class="even">
 <td>dcterms:alternative</td>
 <td>Dublin Core</td>
 <td>Nom alternatif (souvent le nom complet) du laboratoire.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="odd">
 <td>dcterms:idRNSR</td>
 <td>Dublin Core</td>
 <td>Numéro unique RNSR du laboratoire.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="even">
 <td>valo:domaine_hceres</td>
 <td>Dict. personnalisé</td>
 <td>Panels scientifiques revendiqué par le labratoire, selon la nomenclature du <a href="https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf">HCERES</a>.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="odd">
 <td>valo:domaine_erc</td>
 <td>Dict. personnalisé</td>
 <td>Panels scientifiques revendiqué par le laboatoire, selon la nomenclature <a href="https://erc.europa.eu/sites/default/files/2023-03/ERC_panel_structure_2024_calls.pdf">ERC</a></td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="even">
 <td>valo:obj_recherche</td>
 <td>Dict. personnalisé</td>
 <td>Objet de recherche du laboratoire.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="odd">
 <td>valo:hasAxe</td>
 <td>Dict. personnalisé</td>
 <td>Les axes de recherche du laboratoire.</td>
 <td>ID Oméka*</td>
+<td>—</td>
 </tr>
 <tr class="even">
 <td>valo:heywords</td>
 <td>Dict. personnalisé</td>
 <td>Mots-clés renseignés par les laboratoires dans le rendu HCERES des laboratoires.</td>
 <td>Texte brute (str) ou ID Oméka* ?</td>
+<td>—</td>
 </tr>
 <tr class="odd">
 <td>valo:keythemes</td>
 <td>Dict. personnalisé</td>
 <td>Thèmes du laboratoire renseignés dans l’annexe Mapping of research portfolio and partner organization.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="even">
 <td>valo:expertise</td>
 <td>Dict. personnalisé</td>
 <td>Domaines de maitrise dont lesquels le laboratoire est reconnu.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="odd">
 <td>foaf:mbox</td>
 <td>FoaF</td>
 <td>Courriel pour contacter directement le laboratoire.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="even">
 <td>dcterms:type</td>
 <td>Dublin Core</td>
 <td>Désigne l’ensemble des équipements, instruments, corpus, bibliothèques, … utilisés par le laboratoire.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="odd">
 <td>valo:ecole_docto</td>
 <td>Dict. personnalisé</td>
 <td>Ecoles doctorales dont l’enseignant-chercheur est membre.</td>
 <td>Texte brute (str) ou ID Oméka* ?</td>
+<td>—</td>
 </tr>
 <tr class="even">
 <td>valo:dir_these</td>
 <td>Dict. personnalisé</td>
 <td>Nombre de doctorants ayant publié une thèse sous la supervision de l’enseignant-chercheur.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 <tr class="odd">
 <td>valo:collab</td>
 <td>Dict. personnalisé</td>
 <td>Partenariats de recherche avec le monde non-académique. (entrer leur ID Oméka)</td>
 <td>ID Oméka*</td>
+<td>—</td>
 </tr>
 <tr class="even">
 <td>valo:idHAL</td>
 <td>Dict. personnalisé</td>
 <td>Identifiant unique HAL du laboratoire, permettant à postériori l’extraction des publications du laboratoire.</td>
 <td>Texte brute (str)</td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
