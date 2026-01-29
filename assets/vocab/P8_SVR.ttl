@@ -6,11 +6,10 @@
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix o: <http://omeka.org/s/vocabs/o#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix ma: <http://www.w3.org/ns/ma-ont#>.
-@prefix valo: <[insert link]> .
+@prefix ma: <http://www.w3.org/ns/ma-ont#> .
+@prefix valo: <https://jardindesconnaissances.univ-paris8.fr/onto/labo#> .
 
-
-<[insert-link]> a owl:Ontology ;
+<https://jardindesconnaissances.univ-paris8.fr/onto/labo#> a owl:Ontology ;
     dcterms:title "Vocabulaire personnalité SVR" .
 
 valo:EnseignantChercheur a rdfs:Class ;
@@ -30,73 +29,75 @@ valo:Axe a rdfs:Class ;
 
 valo:cnu2024 a rdf:Property ;
     rdfs:label "Nomenclature CNU post-réforme 2024" ;
-    rdfs:domaine o:Resource ;
+    rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
 valo:domaineHceres a rdf:Property ;
     rdfs:label "Nomenclature HCERES" ;
-    rdfs:domaine o:Resource ;
+    rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
 valo:domaineErc a rdf:Property ;
     rdfs:label "Nomenclature ERC" ;
-    rdfs:domaine o:Resource ;
+    rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
 valo:obj_Recherche a rdf:Property ;
     rdfs:label "Objet de recherche" ;
-    rdfs:domaine o:Resource ;
+    rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
 valo:hasAxe a rdf:Property ;
     rdfs:label "A comme axe de recherche" ;
-    rdfs:domaine o:Resource ;
+    rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
 valo:hasLabo a rdf:Property ;
     rdfs:label "A comme laboratoire" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
 
 valo:expertise a rdf:Property ;
     rdfs:label "Expertises revendiquées" ;
-    rdfs:domaine o:Resource ;
+    rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
 valo:keyThemes a rdf:Property ;
     rdfs:label "Thèmes clés" ;
-    rdfs:domaine o:Resource ;
+    rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
 valo:plateformes a rdf:Property ;
     rdfs:label "Plateformes exploitées" ;
-    rdfs:domaine o:Resource ;
+    rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
 valo:dir_these a rdf:Property ;
     rdfs:label "Nombre de thèses dirigées" ;
-    rdfs:domaine o:Resource ;
+    rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
 valo:ecole_doct a rdf:Property ;
     rdfs:label "Appartenance à une école doctorale" ;
-    rdfs:domaine o:Resource ;
+    rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
 valo:partenariats a rdf:Property ;
-    rdfs:label "A eu des parenariats avec" ;
-    rdfs:domaine o:Resource ;
+    rdfs:label "A eu des partenariats avec" ;
+    rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:orcid a rdfs:Property ;
-    rdfs:label "ORCId" ;
-    rdfs:domaine o:Resource ;
+valo:orcid a rdf:Property ;
+    rdfs:label "ORCID" ;
+    rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:idRNSR a rdfs:Property ;
+valo:idRNSR a rdf:Property ;
     rdfs:label "ID RNSR" ;
-    rdfs:domaine o:Resource ;
+    rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:idHAL a rdfs:Property ;
+valo:idHAL a rdf:Property ;
     rdfs:label "ID HAL" ;
-    rdfs:domaine o:Resource ;
+    rdfs:domain o:Resource ;
     vs:term_status "experimental" .
