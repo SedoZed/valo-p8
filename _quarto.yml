@@ -19,21 +19,25 @@ website:
           href: index.qmd
         - text: "Prérequis de travail"
           href: installations.qmd
-        - text: "Outil DataMerge"
-          href: datamerge_use.qmd
+        - text: "Recommandations autre"
+          menu:
+          - text: "Hypothes.is"
+            href: newfile1.qmd
+          - text: "Autre programmes"
+            href: datamerge_use.qmd
       - text: "Préparation des données"
         menu:
-        - text: "Repérer, centraliser, nettoyer les données"
+        - text: "Repérer et nettoyer les données"
           href: instr_jeu2donnees.qmd
-        - text: "Liste des interprétations effectuées"
-          href: interpretation.qmd
-        - text: "Structurer les données en CSV"
+        - text: "Standardiser les données en CSV"
           href: newfile.qmd
-      - text: "Installation technique"
+        - text: "Aide : Liste des interprétations effectuées"
+          href: interpretation.qmd
+      - text: "Modélisation les données"
         menu:
-        - text: "Mettre en place Oméka S, XAMPP, etc"
+        - text: "Ecrire le dictionnaire de métadonnées"
           href: bdd_omeka.qmd
-        - text: "Naviguer, importer et modifier sur Oméka S"
+        - text: "Importer et interconnecter les données"
           href: newfile2.qmd
       - text: "Exploitation"
         menu:

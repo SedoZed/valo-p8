@@ -4,16 +4,15 @@ format: html
 lang: fr
 ---
 
-Au sein de la Direction des Services à la Recherche (DSR) de l'Université Paris 8, le Service de la Valorisation de la Recherche (SVR) a comme mission, entre autres, de développer des partenariats avec les acteurs non-académiques et de valoriser les expertises des laboratoires et des chercheurs de l’université Paris 8. Pour accomplir cette mission, le service de valorisation a besoin de bien connaitre ces expertises pour orienter la recherche de partenariats et bien les expliquer à des acteurs non académiques.
-
-# L'objectif initial
-Pour bien identifier et faire connaitre ces expertises, le service a souhaité réaliser des cartographies représentant les activités, compétences, expertises, productions et savoir-faire des chercheurs et laboratoires d’UP8 et de disposer d’un outil qui lui permet de faire l’interface entre les acteurs non-académiques et leurs interlocuteurs dans la communauté scientifique d’UP8. 
+Au sein de la **Direction des Services à la Recherche** *(DSR)* de l'[Université Paris 8](https://www.univ-paris8.fr/), le **Service de la Valorisation de la Recherche** *(SVR)* a comme mission principale de développer des partenariats avec les acteurs non-académiques et de valoriser les expertises des laboratoires et des chercheurs de l’université. Pour accomplir cette mission, le *SVR* a besoin de bien connaitre ces expertises pour orienter la recherche de partenariats et bien les expliquer à des acteurs non académiques. Ainsi, pour assister son personnel dans sa mission, le service a souhaité réaliser des cartographies représentant les activités, compétences, expertises, productions et savoir-faire des chercheurs et laboratoires d’UP8 et de disposer d’un outil qui lui permet de faire l’interface entre les acteurs non-académiques et leurs interlocuteurs dans la communauté scientifique d’UP8. 
 
 ## Portée du projet
-Ce projet couvre plutôt le domaine de la recherche et moins celui de l’enseignement ou aux autres activités de la communauté universitaire dans la mesure où il s’agit d’un outil pour la direction des services à la recherche. Rien, cependant, n’interdit de penser l’outil de telle sorte qu’il intégre à l’avenir d’autres données.
+Ce projet, intitulé **CartoExpert**, réalisé en collaboration avec le [Laboratoire Paragraphe](https://paragraphe.univ-paris8.fr/), s’adressent en priorité aux chargés de partenariat et de valorisation et aux chargés de montage de projets de la DSR qui ont besoin d’identifier les bons interlocuteurs et de les mettre en relation. En effet, les expertises nécessaires pour répondre à des appels aux projets ou des demandes exprimés par des acteurs externes doivent être identifiées par les équipes de la DSR afin de faire la meilleure mise en relation possible.
 
-## Les concernés par le projet
-Les cartographies s’adressent en priorité aux chargés de partenariat et de valorisation et aux chargés de montage de projets de la DSR qui ont besoin d’identifier les bons interlocuteurs et de les mettre en relation. En effet, les expertises nécessaires pour répondre à des appels aux projets ou des demandes exprimés par des acteurs externes doivent être identifiées par les équipes de la DSR afin de faire la meilleure mise en relation possible.
+De plus, **CartoExpert** a plutôt pour vocation de couvrir le domaine de la recherche et moins celui de l’enseignement ou aux autres activités de la communauté universitaire dans la mesure où il s’agit d’un outil pour la direction des services à la recherche. Rien, cependant, n’interdit de penser l’outil de telle sorte qu’il intégre à l’avenir d’autres données.
 
-# L'objectif maintenant
-(Une fois l'outil mis en place, il sera question de réfléchir à comment bien maintenir le système opérationnel et à savoir comment bien transmettre tous les savoirs)
+# Quelle expertise est recommandée pour entretenir CartoExpert ?
+Humanités Numériques pur jus : faire la passerelle communicative entre l'Homme (les membres de la DSR) et le Numérique (données, outils de navigation, ...).
+
+A l'instar des professionnel•le•s des Humanités Numériques, la personne missionnée doit être en mesure de mobiliser des compétences en sciences humaines (analyse, compréhension de l'environnement, identification de besoins) et compétences numériques (données, outils, technologies) pour appréhender correctement l'environnement 
+

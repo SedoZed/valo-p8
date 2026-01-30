@@ -4,10 +4,7 @@ format: html
 lang: fr
 ---
 
-Le projet CartoExpert nécessite la mobilisation d'un certain nombre de ressources, qu'elles soient humaines, techniques ou logicielles pour pouvoir opérer efficacement. Cette page de la documentation se focalisera donc sur ces préreq
-
-# Profil de la personne chargée du maintien de l'outil
-A l'instar des professionnel•le•s des Humanités Numériques, la personne missionnée doit être en mesure de mobiliser des compétences en sciences humaines (analyse, compréhension de l'environnement, identification de besoins) et compétences numériques (données, outils, technologies) pour appréhender correctement l'environnement 
+Le projet CartoExpert nécessite la mobilisation d'un certain nombre de ressources, qu'elles soient humaines, techniques ou logicielles pour pouvoir opérer efficacement. Cette page de la documentation se focalisera donc sur ces prérequis.
 
 # Prérequis côté hardware
 Côté hardware, pour travailler de façon optimale, besoin d'une machine capable de supporter le multitasking lourd (développement, navigation dans des données, hébergement de serveur local, ...). Focus donc sur la RAM, le processeur et le stockage avant tout. _(Note pour plus tard : modifier ces infos en fonction des constats lié à oLlama)_
