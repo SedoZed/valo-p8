@@ -12,6 +12,8 @@
 <https://jardindesconnaissances.univ-paris8.fr/onto/labo#> a owl:Ontology ;
     dcterms:title "Vocabulaire personnalité SVR" .
 
+# Liste des classes custom utilisée dans la base de données OMEKA S
+
 valo:EnseignantChercheur a rdfs:Class ;
     rdfs:label "Enseignants-Chercheurs de Paris 8" ;
     rdfs:domain o:Resource ;
@@ -32,77 +34,89 @@ valo:Organisation a rdfs:Class ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:cnu2024 a rdf:Property ;
+# Liste des propriétés utilisées dans la base de données OMEKA S
+
+valo:cnu a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; 
     rdfs:label "Nomenclature CNU post-réforme 2024" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:domaineHceres a rdf:Property ;
+valo:domaineHceres a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; Laboratoires
     rdfs:label "Nomenclature HCERES" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:domaineErc a rdf:Property ;
+valo:domaineErc a rdf:Property ; # Utilisé dans : Laboratoires
     rdfs:label "Nomenclature ERC" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:obj_Recherche a rdf:Property ;
+valo:obj_Recherche a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; Laboratoires
     rdfs:label "Objet de recherche" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:hasAxe a rdf:Property ;
+valo:hasAxe a rdf:Property ; # Utilisé dans : Laboratoires
     rdfs:label "A comme axe de recherche" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:hasLabo a rdf:Property ;
-    rdfs:label "A comme laboratoire" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-valo:expertise a rdf:Property ;
+valo:expertise a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; Laboratoires
     rdfs:label "Expertises revendiquées" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:keyThemes a rdf:Property ;
+valo:keyThemes a rdf:Property ; # Utilisé dans : Laboratoires
     rdfs:label "Thèmes clés" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:plateformes a rdf:Property ;
-    rdfs:label "Plateformes exploitées" ;
+valo:plateformes a rdf:Property ; # Utilisé dans : Laboratoires
+    rdfs:label "Plateformes déclarées / exploitées" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:dir_these a rdf:Property ;
+valo:dir_these a rdf:Property ; # Utilisé dans : Enseignants chercheurs
     rdfs:label "Nombre de thèses dirigées" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:ecole_doct a rdf:Property ;
+valo:ecole_doct a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; Laboratoires
     rdfs:label "Appartenance à une école doctorale" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:partenariats a rdf:Property ;
+valo:partenariats a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; 
     rdfs:label "A eu des partenariats avec" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:orcid a rdf:Property ;
+valo:orcid a rdf:Property ; # Utilisé dans : Enseignants chercheurs
     rdfs:label "ORCID" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:idRNSR a rdf:Property ;
+valo:idRNSR a rdf:Property ; # Utilisé dans : Laboratoires
     rdfs:label "ID RNSR" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:idHAL a rdf:Property ;
+valo:idHAL a rdf:Property ; # Utilisé dans : Laboratoires
     rdfs:label "ID HAL" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:keywords a rdf:Property ; # Utilisé dans : Laboratoires
+    rdfs:label "Mots-clefs" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:dbt_research a rdf:Property ; # Utilisé dans : Laboratoires
+    rdfs:label "Début de recherche" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:axeRech a rdf:Property ; # Utilisé dans : Enseignants chercheurs
+    rdfs:label "Axe de recherche" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
