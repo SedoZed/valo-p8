@@ -1,25 +1,21 @@
 ---
-title: "Prérequis"
+title: "Prérequis pour mener à bien le travail"
 format: html
 lang: fr
 ---
 
-Afin de 
+Le projet CartoExpert nécessite la mobilisation d'un certain nombre de ressources, qu'elles soient humaines, techniques ou logicielles pour pouvoir opérer efficacement. Cette page de la documentation se focalisera donc sur ces préreq
 
-# Equipement à utiliser
-Dans le cas où l'agent effectue ses missions au sein des bureaux du DSR, voici un ensemble 
+# Profil de la personne chargée du maintien de l'outil
+Domaine des Humanités Numériques
+La personne missionnée doit être capable d'appréhender le projet c'est-à-dire savoir jongler entre compétences en sciences humaines (analyse, critique, compréhension des cultures) et compétences numériques (données, outils, technologies). Ce mélange ouvre des rôles très spécifiques, souvent transversaux, où l’on sert de pont entre les équipes techniques et les équipes éditoriales, culturelles ou scientifiques.
 
-## Le poste informatique 
-PC puissant capable de traiter des données (avec de la ram, un bon processeur et, si possible, un GPU avec une bonne VRAM)
-Ubuntu si possible, privilège administrateur au minimum. 
+# Le poste de travail requis
+Poste de travail à installer pour travailler sur CartoExpert 
 
+Côté hardware, pour travailler de façon optimale, besoin d'une machine capable de supporter le multitasking lourd (développement, navigation dans des données, hébergement de serveur local, ...). Focus donc sur la RAM, le processeur et le stockage avant tout. _(Note pour plus tard : modifier ces infos en fonction des constats lié à oLlama)
 
-## Les logiciels importants
-VN : Docker Desktop 
-LLM : oLlama
-Wamp Server (sur Windows) : 
+Avoir deux écrans est quasiment indispensable tant la navigation 
 
-# Autre outils utiles.
-Resana = pour les échanges de documents sensibles
-GitHub = pour héberger des documents plus techniques type Quarto, .ttl, etc. Attention : la privacy sur Github n'est pas assurée (appartenant à Microsoft), il est très important de ne RIEN poster de sensible sur le stockage Github.
-Visual Studio Code (recommandé) = Logiciel de développement open-source, modulable (compatible avec beaucoup de langages) et populaire. 
+# Outils logiciels requis
+Lorem ipsum
