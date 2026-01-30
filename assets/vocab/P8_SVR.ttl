@@ -28,10 +28,9 @@ valo:Axe a rdfs:Class ;
     vs:term_status "experimental" .
 
 valo:Organisation a rdfs:Class ;
-    rdfrdfs:label "Organisation Non-académique" ;
+    rdfs:label "Organisation Non-académique" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
-
 
 valo:cnu2024 a rdf:Property ;
     rdfs:label "Nomenclature CNU post-réforme 2024" ;
