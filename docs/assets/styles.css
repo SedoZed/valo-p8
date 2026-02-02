@@ -1,8 +1,7 @@
-/* Import de la police Poppins en adéquation avec la charte graphique de l'université */
+/* Import de la police Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-
-/* --- Enlève le style du header Quarto --- */
+/* --- Suppression du style du header Quarto --- */
 .quarto-title-block,
 .quarto-title-block-container {
     background: none !important;
@@ -20,10 +19,7 @@
 /* --- Titre complet dans la navbar --- */
 .navbar-brand {
     white-space: normal !important;
-    overflow: visible !important;
-    text-overflow: unset !important;
     max-width: none !important;
-
     display: flex !important;
     align-items: center !important;
     padding: 12px 0 !important;
@@ -33,26 +29,23 @@
 .navbar-nav .nav-link {
     color: white !important;
     font-weight: 600;
-
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-
     padding: 12px 20px !important;
     height: 100% !important;
-
     border-right: 2px solid rgba(255,255,255,0.5);
 }
 
-/* --- Dernier bouton : pas de bordure, mais un espace supplémentaire --- */
+/* --- Dernier bouton : pas de bordure + espace avant la loupe --- */
 .navbar-nav .nav-item:last-child .nav-link {
-    border-right: none !important;     /* on enlève la bordure */
-    margin-right: 40px !important;     /* espace avant la loupe */
+    border-right: none !important;
+    margin-right: 40px !important;
 }
 
-/* --- Espace AVANT la loupe (plus large pour un rendu épuré) --- */
+/* --- Espace avant la loupe --- */
 .navbar .navbar-nav.ms-auto {
-    margin-left: 50px !important; /* augmenté pour un espace plus visible */
+    margin-left: 50px !important;
 }
 
 /* --- Hover & actif --- */
@@ -62,12 +55,36 @@
     color: white !important;
 }
 
-/* Logo discret, proportionné au footer Quarto et compatible GitHub Pages */
+/* --- Logo du footer --- */
 .footer-logo {
-    height: 32px !important;   /* force la hauteur */
-    width: auto !important;    /* garde les proportions */
-    max-width: none !important;/* empêche GitHub de l'étirer */
+    height: 32px !important;
     display: block;
     margin: 0 auto;
     opacity: 0.9;
+}
+
+/* --- Cartes-boutons élégantes pour la section Outils --- */
+.tool-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.tool-card {
+    background: #E30F1B;
+    color: white;
+    padding: 18px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.15em;
+    transition: background 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.tool-card:hover {
+    background: #ca0d17;
+    transform: translateY(-3px);
 }

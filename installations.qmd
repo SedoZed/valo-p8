@@ -12,14 +12,21 @@ Côté hardware, pour travailler de façon optimale, besoin d'une machine capabl
 Avoir deux écrans est quasiment indispensable tant la navigation entre les fenêtres se fait tout le temps
 
 # Prérequis côté software
-OS : Windows 10/11 Pro (pas sûr que ça change grand chose)
+En terme d'OS, deux options sont envisageable :
+
+### Windows 10/11 Pro 
+-> Probablement le plus facile à obtenir auprès de la DSI
 -> DROITS ADMINISTRATEUR NECESSAIRES
--> Dans "Panneau de configuration > Système et sécurité > Outils d'administration > Services", passer **Serveur** = **Désactivé** en **Automatique**. 
+-> Dans "Panneau de configuration > Système et sécurité > Outils d'administration > Services", passer **Serveur** = **Désactivé** en **Automatique**.
+
+### Linux (Ubuntu, Debian, ...)
+-> Probablement le plus efficace (notamment avec Oméka S), mais plus difficile à obtenir auprès de la DSI + plus difficile à prendre en main pour quelqu'un ne connaissant pas
+-> Prérequis à déterminer pour cette voie.
 
 ## Logiciel d'écriture
 Les premiers logiciels à avoir. N'ont pas besoin de droit administrateur pour s'installer et/ou peuvent être installés parfois par défaut.
 
--> Microsoft 365 (Excel) pour naviguer/écrire dans les documents CSV.
+-> Microsoft 365 (Excel) ou autre tableur pour naviguer/écrire dans les documents CSV.
 -> Visual Studio pour écrire avec différents langages (.qmd pour la documentation et .ttl pour le dictionnaire RDF par exemple)
 -> GitHub Desktop (Import du repository localement & transfert des modifications effectué localement sur ledit repository via des MaJ)
 
@@ -42,4 +49,4 @@ Extraire le contenu du .ZIP dans XAMPP > HTDocs > [fichier de la BDD]
 Ouvrir l'interface administrateur en tapant dans le navigateur "localhost/[fichier de la BDD]/admin"
 
 ### Installer Docker Desktop
-(à compléter)
+(à compléter) (à priori pourrait permettre des imports de csv ?)

@@ -20,7 +20,7 @@ website:
         - text: "Prérequis de travail"
           href: installations.qmd
         - text: "Recommandations autre"
-          href: newfile.qmd
+          href: index.qmd#outil-utiles
       - text: "Préparation des données"
         menu:
         - text: "Repérer et nettoyer les données"

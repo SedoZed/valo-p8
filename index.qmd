@@ -16,3 +16,17 @@ Humanités Numériques pur jus : faire la passerelle communicative entre l'Homme
 
 A l'instar des professionnel•le•s des Humanités Numériques, la personne missionnée doit être en mesure de mobiliser des compétences en sciences humaines (analyse, compréhension de l'environnement, identification de besoins) et compétences numériques (données, outils, technologies) pour appréhender correctement l'environnement 
 
+# Outils utilisés {#outil-utiles}
+
+<div class="tool-grid">
+
+<a href="hypothesis.qmd" class="tool-card">
+  Guide Hypothesis
+</a>
+
+<a href="datamerge_use.qmd" class="tool-card">
+  Guide DataMerge
+</a>
+
+</div>
+
