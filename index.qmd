@@ -1,6 +1,5 @@
 ---
 title: "Contexte d'exploitation"
-format: html
 lang: fr
 ---
 

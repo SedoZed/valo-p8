@@ -1,6 +1,5 @@
 ---
 title: "Prérequis nécessaire au travail sur CartoExpert"
-format: html
 lang: fr
 ---
 
