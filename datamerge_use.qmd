@@ -1,6 +1,5 @@
 ---
 title: 'Script de fusion de tableur : "DataMerge"'
-format: html
 lang: fr
 ---
 

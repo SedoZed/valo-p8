@@ -19,16 +19,16 @@ website:
           href: index.qmd
         - text: "Prérequis de travail"
           href: installations.qmd
-        - text: "Recommandations autre"
+        - text: "Outils utiles"
           href: index.qmd#outil-utiles
       - text: "Préparation des données"
         menu:
         - text: "Repérer et nettoyer les données"
-          href: instr_jeu2donnees.qmd
+          href: sources_donnees.qmd
         - text: "Standardiser les données en CSV"
-          href: newfile.qmd
-        - text: "Aide : Liste des interprétations effectuées"
-          href: interpretation.qmd
+          href: standardiser_data2csv.qmd
+#        - text: "Liste des conversions effectuées"
+#          href: interpretation.qmd
       - text: "Modélisation les données"
         menu:
         - text: "Ecrire le dictionnaire de métadonnées"
@@ -39,10 +39,10 @@ website:
         menu:
         - text: "Présentation du système"
           href: pres_syst.qmd
-        - text: "placeholder"
-          href: newfile.qmd
-        - text: "placeholder"
-          href: newfile2.qmd
+        - text: "Mettre à jour les données"
+          href: placeholder.qmd
+        - text: "Placeholder"
+          href: placeholder.qmd
 
 
   page-footer:

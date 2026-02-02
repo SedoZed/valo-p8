@@ -1,0 +1,19 @@
+---
+title: 'Transformer des données format "humain" en format "ordinateur"'
+lang: fr
+---
+
+# Etablir une structure
+Pour permettre à la machine de lire les données, il a fallu les lui structurer 
+
+# Homogénéiser les données
+redir vers [DataMerge](datamerge_use.qmd) 
+Trouver identifiant unique (souvent le nom de l'entité physique ou morale) et y accrocher les données utiles trouvables dans tous les docs de façon uniforme 
+
+## Cas spécial : Effectuer des "approximations"
+Certaines façon d'écrire ou d'évoquer une information ne peut pas être aussi simplement uniformisé (par exemple, nomenclature HCERES2022 vers HCERES2024, plus précis) et nécessite quelques approximations et interprétations.
+TOUJOURS MENTIONNER QUE CES DONNEES SONT DES ESTIMATIONS + SUJETTE A MODIFICATION OFFICIELLE 
+
+# Fusionner les données entres-elles
+Dénominateur commun + info du doc1 + info du doc2 
+

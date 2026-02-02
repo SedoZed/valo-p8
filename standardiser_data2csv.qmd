@@ -1,6 +1,5 @@
 ---
 title: "Centralisation des données"
-format: html
 lang: fr
 ---
 

@@ -1,12 +1,15 @@
 ---
 title: "Récupération et renforcement des données"
-format: html
 lang: fr
 ---
 
 Les données dans l'état actuel des choses ne pas ou peu exploitables pour de nombreuses raisons dont deux principales :
-- Les tableaux sont créés de façon à être interprété par un humain (et non par une machine),
+- Les tableaux sont créés de façon à être interprété par un humain (et non par une machine).
+Exemple : [inserer image]
+
+
 - Les tableaux produits utilisent des structures ou des écritures variant les unes des autres.
+Exemple : [inserer image]
 
 Cette première majeure partie du travail consiste donc à réunir toutes ces données différentes puis de les centraliser en un seul set de données, uniforme et facilement interprétable par une machine.
 
@@ -25,17 +28,4 @@ certaines données sont manquantes ou inscrites d'une façon ne permettant pas u
 Solution possibles :
 - Formulaire à soumettre aux enseignants-chercheurs leur demandant de compléter les données
 - Permettre aux membres de laboratoires de consulter les données enregistrées et de faire des demandes d'édition facilement si besoin
-
-# Consolidation des données
-
-## Homogénéiser les données
-redir vers [DataMerge](datamerge_use.qmd) 
-Trouver identifiant unique (souvent le nom de l'entité physique ou morale) et y accrocher les données utiles trouvables dans tous les docs de façon uniforme 
-
-### Cas spécial : Effectuer des "approximations"
-Certaines façon d'écrire ou d'évoquer une information ne peut pas être aussi simplement uniformisé (par exemple, nomenclature HCERES2022 vers HCERES2024, plus précis) et nécessite quelques approximations et interprétations.
-TOUJOURS MENTIONNER QUE CES DONNEES SONT DES ESTIMATIONS + SUJETTE A MODIFICATION OFFICIELLE 
-
-## Fusionner les données entres-elles
-Dénominateur commun + info du doc1 + info du doc2 
 

@@ -1,6 +1,5 @@
 ---
 title: "Utiliser Hypothes.is comme outil collaboratif"
-format: html
 lang: fr
 ---
 
