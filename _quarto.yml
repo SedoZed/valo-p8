@@ -20,11 +20,7 @@ website:
         - text: "Prérequis de travail"
           href: installations.qmd
         - text: "Recommandations autre"
-          menu:
-          - text: "Hypothes.is"
-            href: newfile1.qmd
-          - text: "Autre programmes"
-            href: datamerge_use.qmd
+          href: newfile.qmd
       - text: "Préparation des données"
         menu:
         - text: "Repérer et nettoyer les données"

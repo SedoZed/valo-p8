@@ -1,0 +1,8 @@
+---
+title: "Outils et utilitaires"
+format: html
+lang: fr
+---
+
+- [Hypothes.is](hypothesis.qmd)
+- [Outils](datamerge.qmd)
