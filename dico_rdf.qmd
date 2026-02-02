@@ -1,0 +1,7 @@
+---
+title: "Ecrire le dictionnaire de métadonnées"
+lang: fr
+---
+
+## Importer le dictionnaire
+Natif à Oméka S + ça va parler de web sémantique et tout

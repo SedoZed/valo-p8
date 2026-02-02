@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Script de fusion de tableur : “DataMerge” – CartoExpert</title>
+<title>Centralisation des données – CartoExpert</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -175,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Script de fusion de tableur : “DataMerge”</h1>
+<h1 class="title">Centralisation des données</h1>
 </div>
 
 
@@ -192,19 +192,286 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>DataMerge est un outil artisanale conçu pour simplifier et fiabiliser la fusion de données issues de plusieurs fichiers Excel. Il permet d’associer automatiquement des informations provenant d’un fichier source vers un fichier cible en s’appuyant sur des clés de correspondance choisies par l’utilisateur (souvent un nom de famille). Même s’il reste rudimentaire, DataMerge accélère la collecte d’informations provenant de plusieurs tableurs en supprimant une partie des manipulations manuelles répétitives, longues et susceptibles de générer des erreurs.</p>
-<p>La conception de ce script a, avant tout, été motivé par l’idée d’effectuer cette automatisation localement plutôt que d’utiliser des algorithmes non-propriétaire dans un contexte où les données traitées sont souvent sensibles (données personnelles, données confidentielles, etc…). L’ensemble des fichiers permettant le fonctionnement du script sont disponible sur le GitHub du projet. Enfin, il est très programme que DataMerge soit amené à évoluer à l’avenir, auquel cas les informations d’utilisation seront mise à jour sur cette page?=.</p>
-<section id="exemple-dutilisation" class="level2">
-<h2 class="anchored" data-anchor-id="exemple-dutilisation">Exemple d’utilisation</h2>
-<p>Un service X de l’université transmet un fichier tableur contenant diverses informations sur des étudiants ou des personnels (adresses mises à jour, nouveaux statuts, changements administratifs, etc.). De notre côté, nous disposons déjà d’une base de données interne, mais seules certaines des informations envoyées nous concernent réellement. De plus, le fichier transmis peut contenir des noms ou identifiants qui n’existent pas dans notre propre base, et qu’il faut donc ignorer pour éviter des erreurs de mise à jour.</p>
-<p>Sans outil dédié, la procédure consiste à parcourir manuellement le fichier reçu, rechercher chaque personne dans notre tableau interne, vérifier si elle existe, puis reporter uniquement les données pertinentes. Cette opération est longue, répétitive et particulièrement sensible aux erreurs humaines. Avec DataMerge, il suffit de sélectionner dans l’ordre :</p>
-<ol type="1">
-<li><p>le fichier transmis par l’autre service <em>(ou une première extraction orientée “machine” de certaines données dudit fichier)</em>,</p></li>
-<li><p>notre fichier interne <em>(ou une extraction dudit fichier reprenant la structure des données)</em>,</p></li>
-<li><p>la colonne servant de clé d’identification <em>(souvent le nom de famille)</em>,</p></li>
-<li><p>la colonnes des données à ajouter / mettre à jour dans notre fichier interne.</p></li>
-</ol>
-<p>Le programme se charge alors de faire correspondre automatiquement les entrées présentes dans les deux fichiers (les noms de familles identiques par exemple), d’ignorer celles qui ne figurent pas dans notre base, et de mettre à jour uniquement les informations pertinentes.</p>
+<section id="les-jeux-de-données" class="level1">
+<h1>Les jeux de données</h1>
+<p>Lors de la mise à jour de données : s’assurer de l’uniformité des données (ne pas créer de doublons) Utilisation de certaines normes du web sémantiques déjà répandues + création d’un dictionnaire de vocabulaire sémantique spécifique pour notre usage.</p>
+<section id="structuration-des-données-liées-aux-enseignants-chercheurs." class="level2">
+<h2 class="anchored" data-anchor-id="structuration-des-données-liées-aux-enseignants-chercheurs.">Structuration des données liées aux enseignants-chercheurs.</h2>
+<p>Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intitulé</th>
+<th>Dictionnaire</th>
+<th>Définition</th>
+<th>Encodage</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dcterms:title</td>
+<td>Dublin Core</td>
+<td>Ici, combinaison “prénom+nom” servant à nommer l’objet dans la BDD.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>foaf:givenName</td>
+<td>FoaF</td>
+<td>Prénom de l’enseignant-chercheur.</td>
+<td>Texte brute (str)</td>
+<td>researchers_Erua → “first_name”</td>
+</tr>
+<tr class="odd">
+<td>foaf:familyName</td>
+<td>FoaF</td>
+<td>Nom de famille de l’enseignant-chercheur.</td>
+<td>Texte brute (str)</td>
+<td>researchers_Erua → “surname_name”</td>
+</tr>
+<tr class="even">
+<td>foaf:birthday</td>
+<td>FoaF</td>
+<td>Date de naissance de l’enseignant-chercheur.</td>
+<td>Texte brute (str) ou date ?</td>
+<td>Rapport HCERES → “Année de naissance” (nécessite tri)</td>
+</tr>
+<tr class="odd">
+<td>vivo:role</td>
+<td>VIVO Ontology</td>
+<td>Statut de l’enseignant chercheur (PR, MDF, …)</td>
+<td>ID Oméka*</td>
+<td>Rapport HCERES → “Corps” (nécessite tri)</td>
+</tr>
+<tr class="even">
+<td>dcterms:identifier</td>
+<td>Dublin Core</td>
+<td>Numéro unique ORCID de l’enseignant-chercheur lorsque celui-ci est disponible.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>dcterms:isPartOf</td>
+<td>Dublin Core</td>
+<td>Laboratoire auquel est rattaché l’enseignant-chercheur.</td>
+<td>ID Oméka*</td>
+<td>researchers_Erua → research_units</td>
+</tr>
+<tr class="even">
+<td>dcterms:hasPart</td>
+<td>Dublin Core</td>
+<td>Sous-unité du laboratoire dans lequel l’enseignant-chercheur opère.</td>
+<td>ID Oméka*</td>
+<td>Rapport HCERES → “Nom de l’équipe interne n°X” (nécessite tri)</td>
+</tr>
+<tr class="odd">
+<td>valo:domaine_hceres</td>
+<td>Dict. personnalisé</td>
+<td>Panels disciplinaires dans lesquels le chercheur publie (selon la nomenclature du <a href="https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf">HCERES</a>.)</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:obj_recherche</td>
+<td>Dict. personnalisé</td>
+<td>L’objet de recherche de l’enseignant-chercheur.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>valo:hasAxe</td>
+<td>Dict. personnalisé</td>
+<td>Les axes de recherche portés par l’enseignant-chercheur.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:expertise</td>
+<td>Dict. personnalisé</td>
+<td>Expertises reconnus de l’enseignant-chercheur.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>valo:dir_these</td>
+<td>Dict. personnalisé</td>
+<td>Nombre de doctorants ayant publié une thèse sous la supervision de l’enseignant-chercheur.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:ecole_docto</td>
+<td>Dict. personnalisé</td>
+<td>Ecoles doctorales dont l’enseignant-chercheur est membre.</td>
+<td>Texte brute (str) ou ID Oméka* ?</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>valo:partenariats</td>
+<td>Dict. personnalisé</td>
+<td>Identifiants des “items” de la bdd correspondant aux partenaires non-académiques avec lesquelles l’enseignant-chercheur a travaillé.</td>
+<td>ID Oméka*</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>foaf:mbox</td>
+<td>FoaF</td>
+<td>Boite mail professionnelle de l’enseignant-chercheur.</td>
+<td>Texte brute (str)</td>
+<td>researchers_Erua → professional_email</td>
+</tr>
+</tbody>
+</table>
+<p>ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD.</p>
+</section>
+<section id="structuration-des-données-liées-aux-laboratoires-de-paris-8." class="level2">
+<h2 class="anchored" data-anchor-id="structuration-des-données-liées-aux-laboratoires-de-paris-8.">Structuration des données liées aux laboratoires de Paris 8.</h2>
+<p>Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intitulé</th>
+<th>Dictionnaire</th>
+<th>Définition</th>
+<th>Encodage</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dcterms:title</td>
+<td>Dublin Core</td>
+<td>Nom de l’objet dans la bdd. Constitue généralement un diminutif communément utilisé.</td>
+<td>Texte brute (str)</td>
+<td>Labos_Paris8 → “Acronyme”</td>
+</tr>
+<tr class="even">
+<td>dcterms:alternative</td>
+<td>Dublin Core</td>
+<td>Nom alternatif (souvent le nom complet) du laboratoire.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>dcterms:idRNSR</td>
+<td>Dublin Core</td>
+<td>Numéro unique RNSR du laboratoire.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:domaine_hceres</td>
+<td>Dict. personnalisé</td>
+<td>Panels scientifiques revendiqué par le labratoire, selon la nomenclature du <a href="https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf">HCERES</a>.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>valo:domaine_erc</td>
+<td>Dict. personnalisé</td>
+<td>Panels scientifiques revendiqué par le laboatoire, selon la nomenclature <a href="https://erc.europa.eu/sites/default/files/2023-03/ERC_panel_structure_2024_calls.pdf">ERC</a></td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:obj_recherche</td>
+<td>Dict. personnalisé</td>
+<td>Objet de recherche du laboratoire.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>valo:hasAxe</td>
+<td>Dict. personnalisé</td>
+<td>Les axes de recherche du laboratoire.</td>
+<td>ID Oméka*</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:heywords</td>
+<td>Dict. personnalisé</td>
+<td>Mots-clés renseignés par les laboratoires dans le rendu HCERES des laboratoires.</td>
+<td>Texte brute (str) ou ID Oméka* ?</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>valo:keythemes</td>
+<td>Dict. personnalisé</td>
+<td>Thèmes du laboratoire renseignés dans l’annexe Mapping of research portfolio and partner organization.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:expertise</td>
+<td>Dict. personnalisé</td>
+<td>Domaines de maitrise dont lesquels le laboratoire est reconnu.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>foaf:mbox</td>
+<td>FoaF</td>
+<td>Courriel pour contacter directement le laboratoire.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>dcterms:type</td>
+<td>Dublin Core</td>
+<td>Désigne l’ensemble des équipements, instruments, corpus, bibliothèques, … utilisés par le laboratoire.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>valo:ecole_docto</td>
+<td>Dict. personnalisé</td>
+<td>Ecoles doctorales dont l’enseignant-chercheur est membre.</td>
+<td>Texte brute (str) ou ID Oméka* ?</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:dir_these</td>
+<td>Dict. personnalisé</td>
+<td>Nombre de doctorants ayant publié une thèse sous la supervision de l’enseignant-chercheur.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>valo:collab</td>
+<td>Dict. personnalisé</td>
+<td>Partenariats de recherche avec le monde non-académique. (entrer leur ID Oméka)</td>
+<td>ID Oméka*</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:idHAL</td>
+<td>Dict. personnalisé</td>
+<td>Identifiant unique HAL du laboratoire, permettant à postériori l’extraction des publications du laboratoire.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD.</p>
+</section>
+<section id="structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés." class="level2">
+<h2 class="anchored" data-anchor-id="structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés.">Structuration des données liées aux partenaires non-académique déjà notés.</h2>
+<p>Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.</p>
+<p>(La constitution de ce jeu de données est toujours en cours.)</p>
+<p>ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD.</p>
+</section>
+<section id="bibliographie" class="level2">
+<h2 class="anchored" data-anchor-id="bibliographie">Bibliographie :</h2>
+<ul>
+<li>https://bioportal.bioontology.org/ontologies/VIVO?p=properties</li>
+<li>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/</li>
+</ul>
+</section>
+</section>
+<section id="la-base-de-donnée-relationnelle" class="level1">
+<h1>La base de donnée relationnelle</h1>
+<p>En stand-by pour le moment, dans l’attente d’accès à plus de droits.</p>
 
 
 </section>

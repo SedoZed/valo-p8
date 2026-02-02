@@ -1,18 +1,10 @@
 ---
-title: "Contexte d'exploitation"
+title: "Importer et interconnecter les données"
 lang: fr
 ---
 
-# Effectuer les différents imports (mise à jour, etc)
-En stand-by, dans l'attente de l'installation du serveur web, d'Oméka S, etc...
 
-## Importer le dictionnaire
-Natif à Oméka S
-
-Ideeeeem mais ça va parler de web sémantique et tout
-
-## Importer les données 
-Idem mais ça va être comment faire rentrer les données raw CSV dans Oméka, et le faire CORRECTEMENT (cf. mes multiples fails de l'été 2025)
+Idem mais ça va être comment faire rentrer les données raw CSV dans Oméka, et le faire CORRECTEMENT (cf. mes multiples fails de l'été 2025) puis comment les ensuite mettre à jour dans les données
 
 Bulk Import
 

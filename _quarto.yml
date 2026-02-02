@@ -34,7 +34,7 @@ website:
         - text: "Ecrire le dictionnaire de métadonnées"
           href: bdd_omeka.qmd
         - text: "Importer et interconnecter les données"
-          href: newfile2.qmd
+          href: bdd_omeka.qmd
       - text: "Exploitation"
         menu:
         - text: "Présentation du système"
