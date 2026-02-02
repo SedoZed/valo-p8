@@ -1,6 +1,5 @@
 ---
 title: "Prérequis nécessaire au travail sur CartoExpert"
-format: html
 lang: fr
 ---
 
@@ -15,20 +14,20 @@ Avoir deux écrans est quasiment indispensable tant la navigation entre les fen�
 En terme d'OS, deux options sont envisageable :
 
 ### Windows 10/11 Pro 
--> Probablement le plus facile à obtenir auprès de la DSI
--> DROITS ADMINISTRATEUR NECESSAIRES
--> Dans "Panneau de configuration > Système et sécurité > Outils d'administration > Services", passer **Serveur** = **Désactivé** en **Automatique**.
+- Probablement le plus facile à obtenir auprès de la DSI
+- DROITS ADMINISTRATEUR NECESSAIRES
+- Dans "Panneau de configuration > Système et sécurité > Outils d'administration > Services", passer **Serveur** = **Désactivé** en **Automatique**.
 
 ### Linux (Ubuntu, Debian, ...)
--> Probablement le plus efficace (notamment avec Oméka S), mais plus difficile à obtenir auprès de la DSI + plus difficile à prendre en main pour quelqu'un ne connaissant pas
--> Prérequis à déterminer pour cette voie.
+- Probablement le plus efficace (notamment avec Oméka S), mais plus difficile à obtenir auprès de la DSI + plus difficile à prendre en main pour quelqu'un ne connaissant pas
+- Prérequis à déterminer pour cette voie.
 
 ## Logiciel d'écriture
 Les premiers logiciels à avoir. N'ont pas besoin de droit administrateur pour s'installer et/ou peuvent être installés parfois par défaut.
 
--> Microsoft 365 (Excel) ou autre tableur pour naviguer/écrire dans les documents CSV.
--> Visual Studio pour écrire avec différents langages (.qmd pour la documentation et .ttl pour le dictionnaire RDF par exemple)
--> GitHub Desktop (Import du repository localement & transfert des modifications effectué localement sur ledit repository via des MaJ)
+- Microsoft 365 (Excel) ou autre tableur pour naviguer/écrire dans les documents CSV.
+- Visual Studio pour écrire avec différents langages (.qmd pour la documentation et .ttl pour le dictionnaire RDF par exemple)
+- GitHub Desktop (Import du repository localement & transfert des modifications effectué localement sur ledit repository via des MaJ)
 
 ### Visual Studio Code 
 Liste de quelques modules à installer pour une utilisation efficace.
@@ -40,8 +39,8 @@ Liste de quelques modules à installer pour une utilisation efficace.
 Une fois les données préparées, il sera question de les manipuler dans un environnement local avant de les push sur le serveur du service.
 
 ### Installer & Utiliser XAMPP 
-installer dans un fichier à part entière
-ouvrir XAMPP et activer "Apache" et "MySQL" ()
+Installer dans un fichier à part entière
+Ouvrir XAMPP et activer "Apache" et "MySQL" ()
 Accès à l'interface web en tapant sur navigateur "localhost"
 
 ### Installer Oméka S sur le serveur local (localhost)
