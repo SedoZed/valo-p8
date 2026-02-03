@@ -1,0 +1,23 @@
+---
+title: "Faire tourner Omeka S avec XAMPP et Docker"
+lang: fr
+---
+
+Fichier "config" de XAMPP à avoir comme ça :
+user     = "root"
+password = "root"
+dbname   = "omk_valo"
+host     = "localhost"
+port     = "3306"
+;unix_socket = 
+;log_path = 
+
+
+BDD installé dans Docker, à sélectionner avec :
+    cd c:/docker-omk
+à lancer dans cmd avec :
+    docker compose up -d
+puis à éteindre avec :
+    docker compose down
+
+Connexion PHPmyAdmin avec : http://localhost:8081/
