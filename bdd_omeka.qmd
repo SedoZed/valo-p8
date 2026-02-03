@@ -9,4 +9,6 @@ Idem mais ça va être comment faire rentrer les données raw CSV dans Oméka, e
 Bulk Import
 
 # Assurer la connexion entre les données importées
-medI
+
+Notion importante : A chaque fois que l'on créé une ressource sur Oméka S, celui-ci se voit attriblé un "Internal ID" qui est visible au niveau de l'URL (ex : omk_valo/admin/item/**76**). C'est grâce à cet ID que la plupart des interconnexions se feront (EX : L'enseignant-chercheur a comme statut PR (ID=76). A l'inverse, on pourra voir que "PR" (ID=76) se retrouve dans les items "x, y, z, ..." )
+

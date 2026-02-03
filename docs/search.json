@@ -142,9 +142,9 @@
   {
     "objectID": "bdd_omeka.html",
     "href": "bdd_omeka.html",
-    "title": "Contexte d’exploitation",
+    "title": "Importer et interconnecter les données",
     "section": "",
-    "text": "En stand-by, dans l’attente de l’installation du serveur web, d’Oméka S, etc…\n\n\nNatif à Oméka S\nIdeeeeem mais ça va parler de web sémantique et tout\n\n\n\nIdem mais ça va être comment faire rentrer les données raw CSV dans Oméka, et le faire CORRECTEMENT (cf. mes multiples fails de l’été 2025)\nBulk Import"
+    "text": "Idem mais ça va être comment faire rentrer les données raw CSV dans Oméka, et le faire CORRECTEMENT (cf. mes multiples fails de l’été 2025) puis comment les ensuite mettre à jour dans les données\nBulk Import\n\nAssurer la connexion entre les données importées\nmedI"
   },
   {
     "objectID": "uniformiser.html",
@@ -359,15 +359,36 @@
   {
     "objectID": "sources_donnees.html",
     "href": "sources_donnees.html",
-    "title": "Transformer des données format “humain” en format “ordinateur”",
+    "title": "Réunir des données éparpillées en un endroit",
     "section": "",
     "text": "Pour permettre à la machine de lire les données, il a fallu les lui structurer"
   },
   {
     "objectID": "sources_donnees.html#cas-spécial-effectuer-des-approximations",
     "href": "sources_donnees.html#cas-spécial-effectuer-des-approximations",
-    "title": "Transformer des données format “humain” en format “ordinateur”",
+    "title": "Réunir des données éparpillées en un endroit",
     "section": "Cas spécial : Effectuer des “approximations”",
     "text": "Cas spécial : Effectuer des “approximations”\nCertaines façon d’écrire ou d’évoquer une information ne peut pas être aussi simplement uniformisé (par exemple, nomenclature HCERES2022 vers HCERES2024, plus précis) et nécessite quelques approximations et interprétations. TOUJOURS MENTIONNER QUE CES DONNEES SONT DES ESTIMATIONS + SUJETTE A MODIFICATION OFFICIELLE"
+  },
+  {
+    "objectID": "dico_rdf.html",
+    "href": "dico_rdf.html",
+    "title": "Ecrire le dictionnaire de métadonnées",
+    "section": "",
+    "text": "Pour que le projet de cartographie puisse fonctionner, nous allons faire appel à ce que l’on appelle le “web sémantique”. Cela consiste à définir en quoi consiste X donnée d’un document (XML, CSV, …). A l’internaitonal, il existe des dictionnaires utilisés unanimement (Dublin Core, FoaF, etc) mais il est également possible de créer un dictionnaire propre au projet."
+  },
+  {
+    "objectID": "dico_rdf.html#présentation-du-dictionnaire-personnalisé-de-la-dsr",
+    "href": "dico_rdf.html#présentation-du-dictionnaire-personnalisé-de-la-dsr",
+    "title": "Ecrire le dictionnaire de métadonnées",
+    "section": "Présentation du dictionnaire personnalisé de la DSR",
+    "text": "Présentation du dictionnaire personnalisé de la DSR\nStructure d’une classe\nvalo:NewClass a rdfs:Class ;\n    rdfs:label \"Nom complet de la classe\" ;\n    rdfs:domain o:Resource ;\n    vs:term_status \"experimental\" .\nvalo:idHAL a rdf:Property ;\n    rdfs:label \"ID HAL\" ;\n    rdfs:domain o:Resource ;\n    vs:term_status \"experimental\" ."
+  },
+  {
+    "objectID": "omeka_local.html",
+    "href": "omeka_local.html",
+    "title": "Faire tourner Omeka S avec XAMPP et Docker",
+    "section": "",
+    "text": "Fichier “config” de XAMPP à avoir comme ça : user = “root” password = “root” (ou vide si lancement uniquement via XAMPP) dbname = “omk_valo” host = “localhost” port = “3306” ;unix_socket = ;log_path =\nPour accéder à la BDD installée dans Docker, à sélectionner avec : cd c:/docker-omk à lancer dans cmd avec : docker compose up -d puis à éteindre avec : docker compose down\nConnexion PHPmyAdmin avec : http://localhost:8081/ NE PAS EXECUTER MySQL DE XAMPP DANS CE CAS"
   }
 ]

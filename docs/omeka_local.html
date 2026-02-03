@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Réunir des données éparpillées en un endroit – CartoExpert</title>
+<title>Faire tourner Omeka S avec XAMPP et Docker – CartoExpert</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -175,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Réunir des données éparpillées en un endroit</h1>
+<h1 class="title">Faire tourner Omeka S avec XAMPP et Docker</h1>
 </div>
 
 
@@ -192,24 +192,11 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="etablir-une-structure" class="level1">
-<h1>Etablir une structure</h1>
-<p>Pour permettre à la machine de lire les données, il a fallu les lui structurer</p>
-</section>
-<section id="homogénéiser-les-données" class="level1">
-<h1>Homogénéiser les données</h1>
-<p>redir vers <a href="./datamerge_use.html">DataMerge</a> Trouver identifiant unique (souvent le nom de l’entité physique ou morale) et y accrocher les données utiles trouvables dans tous les docs de façon uniforme</p>
-<section id="cas-spécial-effectuer-des-approximations" class="level2">
-<h2 class="anchored" data-anchor-id="cas-spécial-effectuer-des-approximations">Cas spécial : Effectuer des “approximations”</h2>
-<p>Certaines façon d’écrire ou d’évoquer une information ne peut pas être aussi simplement uniformisé (par exemple, nomenclature HCERES2022 vers HCERES2024, plus précis) et nécessite quelques approximations et interprétations. TOUJOURS MENTIONNER QUE CES DONNEES SONT DES ESTIMATIONS + SUJETTE A MODIFICATION OFFICIELLE</p>
-</section>
-</section>
-<section id="fusionner-les-données-entres-elles" class="level1">
-<h1>Fusionner les données entres-elles</h1>
-<p>Dénominateur commun + info du doc1 + info du doc2</p>
+<p>Fichier “config” de XAMPP à avoir comme ça : user = “root” password = “root” (ou vide si lancement uniquement via XAMPP) dbname = “omk_valo” host = “localhost” port = “3306” ;unix_socket = ;log_path =</p>
+<p>Pour accéder à la BDD installée dans Docker, à sélectionner avec : cd c:/docker-omk à lancer dans cmd avec : docker compose up -d puis à éteindre avec : docker compose down</p>
+<p>Connexion PHPmyAdmin avec : http://localhost:8081/ NE PAS EXECUTER MySQL DE XAMPP DANS CE CAS</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

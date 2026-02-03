@@ -5,7 +5,7 @@ lang: fr
 
 DataMerge est un outil artisanale conçu pour simplifier et fiabiliser la fusion de données issues de plusieurs fichiers Excel. Il permet d’associer automatiquement des informations provenant d’un fichier source vers un fichier cible en s’appuyant sur des clés de correspondance choisies par l’utilisateur (souvent un nom de famille). Même s’il reste rudimentaire, DataMerge accélère la collecte d’informations provenant de plusieurs tableurs en supprimant une partie des manipulations manuelles répétitives, longues et susceptibles de générer des erreurs.
 
-La conception de ce script a, avant tout, été motivé par l'idée d'effectuer cette automatisation localement plutôt que d'utiliser des algorithmes non-propriétaire dans un contexte où les données traitées sont souvent sensibles (données personnelles, données confidentielles, etc...). L'ensemble des fichiers permettant le fonctionnement du script sont disponible sur le GitHub du projet. Enfin, il est très programme que DataMerge soit amené à évoluer à l'avenir, auquel cas les informations d'utilisation seront mise à jour sur cette page?=.
+La conception de ce script a, avant tout, été motivé par l'idée d'effectuer cette automatisation localement plutôt que d'utiliser des algorithmes non-propriétaire dans un contexte où les données traitées sont souvent sensibles (données personnelles, données confidentielles, etc...). L'ensemble des fichiers permettant le fonctionnement du script sont disponible sur le GitHub du projet. Enfin, il est très programme que DataMerge soit amené à évoluer à l'avenir, auquel cas les informations d'utilisation seront mise à jour sur cette page.
 
 ## Exemple d'utilisation
 

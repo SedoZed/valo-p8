@@ -1,10 +1,16 @@
 ---
-title: 'Transformer des données format "humain" en format "ordinateur"'
+title: 'Réunir des données éparpillées en un endroit'
 lang: fr
 ---
 
+[introduction contexte]
+# Prendre connaissance des diverses données éparpillées
+Blabla + parler des sources connues
+
 # Etablir une structure
-Pour permettre à la machine de lire les données, il a fallu les lui structurer 
+Création d'une base centrale qui accueillera l'ensemble des données réunies (tableur, csv, ...). Conseil : se baser sur un jeu de donnée existant complet puis l'aggrémenter au fur et à mesure (nouvelles colonnes, autre données, ...)
+
+Image + descripion
 
 # Homogénéiser les données
 redir vers [DataMerge](datamerge_use.qmd) 

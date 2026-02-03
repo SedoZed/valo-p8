@@ -88,3 +88,11 @@
     background: #ca0d17;
     transform: translateY(-3px);
 }
+
+.codeblock {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 6px;
+  font-family: monospace;
+  white-space: pre-wrap;
+}

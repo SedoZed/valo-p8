@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Réunir des données éparpillées en un endroit – CartoExpert</title>
+<title>Ecrire le dictionnaire de métadonnées – CartoExpert</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -175,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Réunir des données éparpillées en un endroit</h1>
+<h1 class="title">Ecrire le dictionnaire de métadonnées</h1>
 </div>
 
 
@@ -192,23 +192,24 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="etablir-une-structure" class="level1">
-<h1>Etablir une structure</h1>
-<p>Pour permettre à la machine de lire les données, il a fallu les lui structurer</p>
-</section>
-<section id="homogénéiser-les-données" class="level1">
-<h1>Homogénéiser les données</h1>
-<p>redir vers <a href="./datamerge_use.html">DataMerge</a> Trouver identifiant unique (souvent le nom de l’entité physique ou morale) et y accrocher les données utiles trouvables dans tous les docs de façon uniforme</p>
-<section id="cas-spécial-effectuer-des-approximations" class="level2">
-<h2 class="anchored" data-anchor-id="cas-spécial-effectuer-des-approximations">Cas spécial : Effectuer des “approximations”</h2>
-<p>Certaines façon d’écrire ou d’évoquer une information ne peut pas être aussi simplement uniformisé (par exemple, nomenclature HCERES2022 vers HCERES2024, plus précis) et nécessite quelques approximations et interprétations. TOUJOURS MENTIONNER QUE CES DONNEES SONT DES ESTIMATIONS + SUJETTE A MODIFICATION OFFICIELLE</p>
-</section>
-</section>
-<section id="fusionner-les-données-entres-elles" class="level1">
-<h1>Fusionner les données entres-elles</h1>
-<p>Dénominateur commun + info du doc1 + info du doc2</p>
+<p>Pour que le projet de cartographie puisse fonctionner, nous allons faire appel à ce que l’on appelle le “web sémantique”. Cela consiste à définir en quoi consiste X donnée d’un document (XML, CSV, …). A l’internaitonal, il existe des dictionnaires utilisés unanimement (Dublin Core, FoaF, etc) mais il est également possible de créer un dictionnaire propre au projet.</p>
+<section id="créer-le-dictionnaire-personnalisé" class="level1">
+<h1>Créer le dictionnaire personnalisé</h1>
+<p>Partir des données ; ce qu’elles représentent d’un pdv humain (nom, prénom, titre, …), puis regarder s’il existe dans les autres dictionnaires internationaux des équivalents de nommage (foaf:firstName, dcterms:titmle, …), sinon créer les propriétés / les classes correspondantes.</p>
+<section id="présentation-du-dictionnaire-personnalisé-de-la-dsr" class="level2">
+<h2 class="anchored" data-anchor-id="présentation-du-dictionnaire-personnalisé-de-la-dsr">Présentation du dictionnaire personnalisé de la DSR</h2>
+<p>Structure d’une classe</p>
+<pre class="ttl"><code>valo:NewClass a rdfs:Class ;
+    rdfs:label "Nom complet de la classe" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .</code></pre>
+<pre class="ttl"><code>valo:idHAL a rdf:Property ;
+    rdfs:label "ID HAL" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .</code></pre>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
