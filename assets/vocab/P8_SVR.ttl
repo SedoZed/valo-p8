@@ -57,7 +57,7 @@ valo:obj_Recherche a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; L
     vs:term_status "experimental" .
 
 valo:hasAxe a rdf:Property ; # Utilisé dans : Laboratoires
-    rdfs:label "A comme axe de recherche" ;
+    rdfs:label "A comme axe/équipe de recherche" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
@@ -116,7 +116,7 @@ valo:dbt_research a rdf:Property ; # Utilisé dans : Laboratoires
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:axeRech a rdf:Property ; # Utilisé dans : Enseignants chercheurs
+valo:axeRech a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; Laboratoires
     rdfs:label "Axe de recherche" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .

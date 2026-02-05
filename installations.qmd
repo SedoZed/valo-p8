@@ -11,18 +11,7 @@ Côté hardware, pour travailler de façon optimale, besoin d'une machine capabl
 Avoir deux écrans est quasiment indispensable tant la navigation entre les fenêtres se fait tout le temps
 
 # Prérequis côté software
-En terme d'OS, deux options sont envisageable :
-
-### Windows 10/11 Pro 
-Probablement le plus facile à obtenir auprès de la DSI
-
-DROITS ADMINISTRATEUR NECESSAIRES
-
-Dans "Panneau de configuration > Système et sécurité > Outils d'administration > Services", passer **Serveur** = **Désactivé** en **Automatique**.
-
-### Linux (Ubuntu, Debian, ...)
-- Probablement le plus efficace (notamment avec Oméka S), mais plus difficile à obtenir auprès de la DSI + plus difficile à prendre en main pour quelqu'un ne connaissant pas
-- Prérequis à déterminer pour cette voie (pas expérimenté encore).
+En terme d'OS, le choix à privilégier est une base **Linux** car Oméka S semble rencontrer des problèmes sur Windows et nécessite trop de ressource pour le débugger.
 
 ## Logiciel d'écriture
 Les premiers logiciels à avoir. N'ont pas besoin de droit administrateur pour s'installer et/ou peuvent être installés parfois par défaut.
