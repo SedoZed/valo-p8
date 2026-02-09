@@ -71,8 +71,13 @@ valo:keyThemes a rdf:Property ; # Utilisé dans : Laboratoires
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:plateformes a rdf:Property ; # Utilisé dans : Laboratoires
-    rdfs:label "Plateformes déclarées / exploitées" ;
+valo:plateformes_txt a rdf:Property ; # Utilisé dans : Laboratoires
+    rdfs:label "Plateformes déclarées / exploitées (format texte)" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:plateformes_internalid a rdf:Property ; # Utilisé dans : Laboratoires
+    rdfs:label "Plateformes déclarées / exploitées (ID Interne Oméka)" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
