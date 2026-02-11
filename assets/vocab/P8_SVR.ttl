@@ -12,7 +12,7 @@
 <https://jardindesconnaissances.univ-paris8.fr/onto/labo#> a owl:Ontology ;
     dcterms:title "Vocabulaire personnalité SVR" .
 
-# Liste des classes custom utilisée dans la base de données OMEKA S
+# Liste des classes custom utilisée dans la base de données OMEKA S, notamment pour effectuer les modélisations
 
 valo:EnseignantChercheur a rdfs:Class ;
     rdfs:label "Enseignants-Chercheurs de Paris 8" ;
@@ -31,6 +31,71 @@ valo:Axe a rdfs:Class ;
 
 valo:Organisation a rdfs:Class ;
     rdfs:label "Organisation Non-académique" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:Keywords a rdfs:Class ;
+    rdfs:label "Mots Clefs" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:Expertises_all a rdfs:Class ;
+    rdfs:label "Expertises (Labo & Chercheurs réunis)" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:Expertises_labo a rdfs:Class ;
+    rdfs:label "Expertises déclarées par les laboratoires" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:Expertises_EC a rdfs:Class ;
+    rdfs:label "Expertises déclarées par les enseignants chercheurs" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:DomaineHCERES a rdfs:Class ;
+    rdfs:label "Codes de domaine HCERES" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:DomaineERC a rdfs:Class ;
+    rdfs:label "Codes de domaine ERC" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:PanelsERC a rdfs:Class ;
+    rdfs:label "Codes des panels ERC" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:DomaineCNU a rdfs:Class ;
+    rdfs:label "Codes des domaines CNU" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:AxesDeRech a rdfs:Class ;
+    rdfs:label "Axe de recherche" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:Ecole_Doctorale a rdfs:Class ;
+    rdfs:label "Ecole doctorale" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:Plateformes a rdfs:Class ;
+    rdfs:label "Plateformes créées et exploitées" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:ObjRecherche a rdfs:Class ;
+    rdfs:label "Objet de recherche" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:Statut_Universitaire a rdfs:Class ;
+    rdfs:label "Statut Universitaire" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
