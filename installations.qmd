@@ -11,7 +11,13 @@ Côté hardware, pour travailler de façon optimale, besoin d'une machine capabl
 Avoir deux écrans est quasiment indispensable tant la navigation entre les fenêtres se fait tout le temps
 
 # Prérequis côté software
-En terme d'OS, le choix à privilégier est une base **Linux** car Oméka S semble rencontrer des problèmes sur Windows et nécessite trop de ressource pour le débugger.
+En terme d'OS, le choix à privilégier est une base **Linux** car Oméka S semble rencontrer des problèmes sur Windows et nécessite trop de ressource pour le débugger. Plus précisément, un **Debian** est recommandé puisque les serveurs de la DSR fonctionnent sur une base Debian.
+
+Néanmoins, notamment dans la partie liées aux datasets (csv), pour plus de confort, un **Windows** peut être envisagé, installé en dual-boot sur la machine.
+
+Quelques recommandations vis-à-vis de l'install :
+
+RUFUS
 
 ## Logiciel d'écriture
 Les premiers logiciels à avoir. N'ont pas besoin de droit administrateur pour s'installer et/ou peuvent être installés parfois par défaut.

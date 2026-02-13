@@ -3,32 +3,6 @@ title: "Faire tourner Omeka S avec XAMPP et Docker"
 lang: fr
 ---
 
-Wamp
-[à ajouter]
-Pour installer d'un coup tous les Visual C++ requis : https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/
+A ce stade : le PC doit avoir été passé sur Linux (voir recommandations)
 
-XAMPP
-[à visionner pour patcher XAMPP qui est vexé]
-https://imagemagick.org/script/download.php#windows
-
-https://www.youtube.com/watch?v=AO1aBho3sA4
-
-Fichier "config" de XAMPP à avoir comme ça :
-user     = "root"
-password = "root" (ou vide si lancement uniquement via XAMPP)
-dbname   = "omk_valo"
-host     = "localhost"
-port     = "3306"
-;unix_socket = 
-;log_path = 
-
-Docker
-Pour accéder à la BDD installée dans Docker, à sélectionner avec :
-    cd c:/docker-omk
-à lancer dans cmd avec :
-    docker compose up -d
-puis à éteindre avec :
-    docker compose down
-
-Connexion PHPmyAdmin avec : http://localhost:8081/
-NE PAS EXECUTER MySQL DE XAMPP DANS CE CAS
+ça se fera la semaine prochaine je pense 
