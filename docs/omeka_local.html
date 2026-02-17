@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Faire tourner Omeka S avec XAMPP et Docker – CartoExpert</title>
+<title>Faire tourner Omeka S localement – CartoExpert</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b83643112d1d985699274c310a6c44a8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-66a63c344f183a26081cdb80a294f993.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -169,13 +169,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Faire tourner Omeka S avec XAMPP et Docker</h1>
+<h1 class="title">Faire tourner Omeka S localement</h1>
 </div>
 
 
@@ -192,9 +194,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Fichier “config” de XAMPP à avoir comme ça : user = “root” password = “root” (ou vide si lancement uniquement via XAMPP) dbname = “omk_valo” host = “localhost” port = “3306” ;unix_socket = ;log_path =</p>
-<p>Pour accéder à la BDD installée dans Docker, à sélectionner avec : cd c:/docker-omk à lancer dans cmd avec : docker compose up -d puis à éteindre avec : docker compose down</p>
-<p>Connexion PHPmyAdmin avec : http://localhost:8081/ NE PAS EXECUTER MySQL DE XAMPP DANS CE CAS</p>
+<p>A ce stade : le PC doit avoir été passé sur Linux (voir recommandations)</p>
+<p>ça se fera la semaine prochaine je pense</p>
 
 
 

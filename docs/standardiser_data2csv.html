@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Centralisation des données – CartoExpert</title>
+<title>Transformer des données format “humain” en format “ordinateur” – CartoExpert</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b83643112d1d985699274c310a6c44a8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-66a63c344f183a26081cdb80a294f993.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -134,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Ecrire le dictionnaire de métadonnées</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./newfile2.qmd">
+    <a class="dropdown-item" href="./bdd_omeka.html">
  <span class="dropdown-text">Importer et interconnecter les données</span></a>
   </li>  
     </ul>
@@ -169,13 +169,27 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sur cette page</h2>
+   
+  <ul>
+  <li><a href="#structuration-des-données-liées-aux-enseignants-chercheurs." id="toc-structuration-des-données-liées-aux-enseignants-chercheurs." class="nav-link active" data-scroll-target="#structuration-des-données-liées-aux-enseignants-chercheurs.">Structuration des données liées aux enseignants-chercheurs.</a></li>
+  <li><a href="#structuration-des-données-liées-aux-laboratoires-de-paris-8." id="toc-structuration-des-données-liées-aux-laboratoires-de-paris-8." class="nav-link" data-scroll-target="#structuration-des-données-liées-aux-laboratoires-de-paris-8.">Structuration des données liées aux laboratoires de Paris 8.</a>
+  <ul class="collapse">
+  <li><a href="#structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés." id="toc-structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés." class="nav-link" data-scroll-target="#structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés.">Structuration des données liées aux partenaires non-académique déjà notés.</a></li>
+  <li><a href="#bibliographie" id="toc-bibliographie" class="nav-link" data-scroll-target="#bibliographie">Bibliographie :</a></li>
+  </ul></li>
+  <li><a href="#la-base-de-donnée-relationnelle" id="toc-la-base-de-donnée-relationnelle" class="nav-link" data-scroll-target="#la-base-de-donnée-relationnelle">La base de donnée relationnelle</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Centralisation des données</h1>
+<h1 class="title">Transformer des données format “humain” en format “ordinateur”</h1>
 </div>
 
 
@@ -192,11 +206,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="les-jeux-de-données" class="level1">
-<h1>Les jeux de données</h1>
-<p>Lors de la mise à jour de données : s’assurer de l’uniformité des données (ne pas créer de doublons) Utilisation de certaines normes du web sémantiques déjà répandues + création d’un dictionnaire de vocabulaire sémantique spécifique pour notre usage.</p>
-<section id="structuration-des-données-liées-aux-enseignants-chercheurs." class="level2">
-<h2 class="anchored" data-anchor-id="structuration-des-données-liées-aux-enseignants-chercheurs.">Structuration des données liées aux enseignants-chercheurs.</h2>
+<p>Une fois les différentes sources</p>
+<section id="structuration-des-données-liées-aux-enseignants-chercheurs." class="level1">
+<h1>Structuration des données liées aux enseignants-chercheurs.</h1>
 <p>Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.</p>
 <table class="caption-top table">
 <thead>
@@ -325,8 +337,8 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p>ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD.</p>
 </section>
-<section id="structuration-des-données-liées-aux-laboratoires-de-paris-8." class="level2">
-<h2 class="anchored" data-anchor-id="structuration-des-données-liées-aux-laboratoires-de-paris-8.">Structuration des données liées aux laboratoires de Paris 8.</h2>
+<section id="structuration-des-données-liées-aux-laboratoires-de-paris-8." class="level1">
+<h1>Structuration des données liées aux laboratoires de Paris 8.</h1>
 <p>Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.</p>
 <table class="caption-top table">
 <thead>
@@ -454,7 +466,6 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD.</p>
-</section>
 <section id="structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés." class="level2">
 <h2 class="anchored" data-anchor-id="structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés.">Structuration des données liées aux partenaires non-académique déjà notés.</h2>
 <p>Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.</p>

@@ -9,7 +9,7 @@
   {
     "objectID": "installations.html",
     "href": "installations.html",
-    "title": "Prérequis nécessaire au travail sur CartoExpert",
+    "title": "Prérequis et installations",
     "section": "",
     "text": "Le projet CartoExpert nécessite la mobilisation d’un certain nombre de ressources, qu’elles soient humaines, techniques ou logicielles pour pouvoir opérer efficacement. Cette page de la documentation se focalisera donc sur ces prérequis."
   },
@@ -144,7 +144,7 @@
     "href": "bdd_omeka.html",
     "title": "Importer et interconnecter les données",
     "section": "",
-    "text": "Idem mais ça va être comment faire rentrer les données raw CSV dans Oméka, et le faire CORRECTEMENT (cf. mes multiples fails de l’été 2025) puis comment les ensuite mettre à jour dans les données\nBulk Import\n\nAssurer la connexion entre les données importées\nmedI"
+    "text": "Idem mais ça va être comment faire rentrer les données raw CSV dans Oméka, et le faire CORRECTEMENT (cf. mes multiples fails de l’été 2025) puis comment les ensuite mettre à jour dans les données\n\nAssurer la connexion entre les données importées\nNotion importante : A chaque fois que l’on créé une ressource sur Oméka S, celui-ci se voit attriblé un “Internal ID” qui est visible au niveau de l’URL (ex : omk_valo/admin/item/76). C’est grâce à cet ID que la plupart des interconnexions se feront (EX : L’enseignant-chercheur a comme statut PR (ID=76). A l’inverse, on pourra voir que “PR” (ID=76) se retrouve dans les items “x, y, z, …” )\nhttps://samszo.univ-paris8.fr/paragraphe/gestion/getIdFromItemSet.html# faire une documentation dessus"
   },
   {
     "objectID": "uniformiser.html",
@@ -275,7 +275,7 @@
   {
     "objectID": "installations.html#logiciel-décriture",
     "href": "installations.html#logiciel-décriture",
-    "title": "Prérequis nécessaire au travail sur CartoExpert",
+    "title": "Prérequis et installations",
     "section": "Logiciel d’écriture",
     "text": "Logiciel d’écriture\nLes premiers logiciels à avoir. N’ont pas besoin de droit administrateur pour s’installer et/ou peuvent être installés parfois par défaut.\n\nMicrosoft 365 (Excel) ou autre tableur pour naviguer/écrire dans les documents CSV.\nVisual Studio Code pour écrire avec différents langages (.qmd pour la documentation et .ttl pour le dictionnaire RDF par exemple)\nGitHub Desktop (Import du repository localement & transfert des modifications effectué localement sur ledit repository via des MaJ)\n\n\nDes plugins pour VSCode\nListe de quelques modules à installer pour une utilisation efficace.\n\nQuarto (_Quarto)\nPython (Microsoft)\nRDF Sketch (Zazuko)"
   },
@@ -303,9 +303,9 @@
   {
     "objectID": "standardiser_data2csv.html",
     "href": "standardiser_data2csv.html",
-    "title": "Centralisation des données",
+    "title": "Transformer des données format “humain” en format “ordinateur”",
     "section": "",
-    "text": "Lors de la mise à jour de données : s’assurer de l’uniformité des données (ne pas créer de doublons) Utilisation de certaines normes du web sémantiques déjà répandues + création d’un dictionnaire de vocabulaire sémantique spécifique pour notre usage.\n\n\nUtilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.\n\n\n\nIntitulé\nDictionnaire\nDéfinition\nEncodage\nSource\n\n\n\n\ndcterms:title\nDublin Core\nIci, combinaison “prénom+nom” servant à nommer l’objet dans la BDD.\nTexte brute (str)\n—\n\n\nfoaf:givenName\nFoaF\nPrénom de l’enseignant-chercheur.\nTexte brute (str)\nresearchers_Erua → “first_name”\n\n\nfoaf:familyName\nFoaF\nNom de famille de l’enseignant-chercheur.\nTexte brute (str)\nresearchers_Erua → “surname_name”\n\n\nfoaf:birthday\nFoaF\nDate de naissance de l’enseignant-chercheur.\nTexte brute (str) ou date ?\nRapport HCERES → “Année de naissance” (nécessite tri)\n\n\nvivo:role\nVIVO Ontology\nStatut de l’enseignant chercheur (PR, MDF, …)\nID Oméka*\nRapport HCERES → “Corps” (nécessite tri)\n\n\ndcterms:identifier\nDublin Core\nNuméro unique ORCID de l’enseignant-chercheur lorsque celui-ci est disponible.\nTexte brute (str)\n—\n\n\ndcterms:isPartOf\nDublin Core\nLaboratoire auquel est rattaché l’enseignant-chercheur.\nID Oméka*\nresearchers_Erua → research_units\n\n\ndcterms:hasPart\nDublin Core\nSous-unité du laboratoire dans lequel l’enseignant-chercheur opère.\nID Oméka*\nRapport HCERES → “Nom de l’équipe interne n°X” (nécessite tri)\n\n\nvalo:domaine_hceres\nDict. personnalisé\nPanels disciplinaires dans lesquels le chercheur publie (selon la nomenclature du HCERES.)\nTexte brute (str)\n—\n\n\nvalo:obj_recherche\nDict. personnalisé\nL’objet de recherche de l’enseignant-chercheur.\nTexte brute (str)\n—\n\n\nvalo:hasAxe\nDict. personnalisé\nLes axes de recherche portés par l’enseignant-chercheur.\nTexte brute (str)\n—\n\n\nvalo:expertise\nDict. personnalisé\nExpertises reconnus de l’enseignant-chercheur.\nTexte brute (str)\n—\n\n\nvalo:dir_these\nDict. personnalisé\nNombre de doctorants ayant publié une thèse sous la supervision de l’enseignant-chercheur.\nTexte brute (str)\n—\n\n\nvalo:ecole_docto\nDict. personnalisé\nEcoles doctorales dont l’enseignant-chercheur est membre.\nTexte brute (str) ou ID Oméka* ?\n—\n\n\nvalo:partenariats\nDict. personnalisé\nIdentifiants des “items” de la bdd correspondant aux partenaires non-académiques avec lesquelles l’enseignant-chercheur a travaillé.\nID Oméka*\n—\n\n\nfoaf:mbox\nFoaF\nBoite mail professionnelle de l’enseignant-chercheur.\nTexte brute (str)\nresearchers_Erua → professional_email\n\n\n\nID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD.\n\n\n\nUtilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.\n\n\n\nIntitulé\nDictionnaire\nDéfinition\nEncodage\nSource\n\n\n\n\ndcterms:title\nDublin Core\nNom de l’objet dans la bdd. Constitue généralement un diminutif communément utilisé.\nTexte brute (str)\nLabos_Paris8 → “Acronyme”\n\n\ndcterms:alternative\nDublin Core\nNom alternatif (souvent le nom complet) du laboratoire.\nTexte brute (str)\n—\n\n\ndcterms:idRNSR\nDublin Core\nNuméro unique RNSR du laboratoire.\nTexte brute (str)\n—\n\n\nvalo:domaine_hceres\nDict. personnalisé\nPanels scientifiques revendiqué par le labratoire, selon la nomenclature du HCERES.\nTexte brute (str)\n—\n\n\nvalo:domaine_erc\nDict. personnalisé\nPanels scientifiques revendiqué par le laboatoire, selon la nomenclature ERC\nTexte brute (str)\n—\n\n\nvalo:obj_recherche\nDict. personnalisé\nObjet de recherche du laboratoire.\nTexte brute (str)\n—\n\n\nvalo:hasAxe\nDict. personnalisé\nLes axes de recherche du laboratoire.\nID Oméka*\n—\n\n\nvalo:heywords\nDict. personnalisé\nMots-clés renseignés par les laboratoires dans le rendu HCERES des laboratoires.\nTexte brute (str) ou ID Oméka* ?\n—\n\n\nvalo:keythemes\nDict. personnalisé\nThèmes du laboratoire renseignés dans l’annexe Mapping of research portfolio and partner organization.\nTexte brute (str)\n—\n\n\nvalo:expertise\nDict. personnalisé\nDomaines de maitrise dont lesquels le laboratoire est reconnu.\nTexte brute (str)\n—\n\n\nfoaf:mbox\nFoaF\nCourriel pour contacter directement le laboratoire.\nTexte brute (str)\n—\n\n\ndcterms:type\nDublin Core\nDésigne l’ensemble des équipements, instruments, corpus, bibliothèques, … utilisés par le laboratoire.\nTexte brute (str)\n—\n\n\nvalo:ecole_docto\nDict. personnalisé\nEcoles doctorales dont l’enseignant-chercheur est membre.\nTexte brute (str) ou ID Oméka* ?\n—\n\n\nvalo:dir_these\nDict. personnalisé\nNombre de doctorants ayant publié une thèse sous la supervision de l’enseignant-chercheur.\nTexte brute (str)\n—\n\n\nvalo:collab\nDict. personnalisé\nPartenariats de recherche avec le monde non-académique. (entrer leur ID Oméka)\nID Oméka*\n—\n\n\nvalo:idHAL\nDict. personnalisé\nIdentifiant unique HAL du laboratoire, permettant à postériori l’extraction des publications du laboratoire.\nTexte brute (str)\n—\n\n\n\nID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD.\n\n\n\nUtilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.\n(La constitution de ce jeu de données est toujours en cours.)\nID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD.\n\n\n\n\nhttps://bioportal.bioontology.org/ontologies/VIVO?p=properties\nhttps://www.dublincore.org/specifications/dublin-core/dcmi-terms/"
+    "text": "Une fois les différentes sources"
   },
   {
     "objectID": "standardiser_data2csv.html#structuration-des-données-liées-aux-enseignants-chercheurs.",
@@ -324,16 +324,16 @@
   {
     "objectID": "standardiser_data2csv.html#structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés.",
     "href": "standardiser_data2csv.html#structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés.",
-    "title": "Centralisation des données",
-    "section": "",
-    "text": "Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.\n(La constitution de ce jeu de données est toujours en cours.)\nID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD."
+    "title": "Transformer des données format “humain” en format “ordinateur”",
+    "section": "Structuration des données liées aux partenaires non-académique déjà notés.",
+    "text": "Structuration des données liées aux partenaires non-académique déjà notés.\nUtilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.\n(La constitution de ce jeu de données est toujours en cours.)\nID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD."
   },
   {
     "objectID": "standardiser_data2csv.html#bibliographie",
     "href": "standardiser_data2csv.html#bibliographie",
-    "title": "Centralisation des données",
-    "section": "",
-    "text": "https://bioportal.bioontology.org/ontologies/VIVO?p=properties\nhttps://www.dublincore.org/specifications/dublin-core/dcmi-terms/"
+    "title": "Transformer des données format “humain” en format “ordinateur”",
+    "section": "Bibliographie :",
+    "text": "Bibliographie :\n\nhttps://bioportal.bioontology.org/ontologies/VIVO?p=properties\nhttps://www.dublincore.org/specifications/dublin-core/dcmi-terms/"
   },
   {
     "objectID": "bdd_omeka.html#importer-le-dictionnaire",
@@ -361,7 +361,7 @@
     "href": "sources_donnees.html",
     "title": "Réunir des données éparpillées en un endroit",
     "section": "",
-    "text": "Pour permettre à la machine de lire les données, il a fallu les lui structurer"
+    "text": "[introduction contexte] # Prendre connaissance des diverses données éparpillées Blabla + parler des sources connues"
   },
   {
     "objectID": "sources_donnees.html#cas-spécial-effectuer-des-approximations",
@@ -387,8 +387,22 @@
   {
     "objectID": "omeka_local.html",
     "href": "omeka_local.html",
-    "title": "Faire tourner Omeka S avec XAMPP et Docker",
+    "title": "Faire tourner Omeka S localement",
     "section": "",
-    "text": "Fichier “config” de XAMPP à avoir comme ça : user = “root” password = “root” (ou vide si lancement uniquement via XAMPP) dbname = “omk_valo” host = “localhost” port = “3306” ;unix_socket = ;log_path =\nPour accéder à la BDD installée dans Docker, à sélectionner avec : cd c:/docker-omk à lancer dans cmd avec : docker compose up -d puis à éteindre avec : docker compose down\nConnexion PHPmyAdmin avec : http://localhost:8081/ NE PAS EXECUTER MySQL DE XAMPP DANS CE CAS"
+    "text": "A ce stade : le PC doit avoir été passé sur Linux (voir recommandations)\nça se fera la semaine prochaine je pense"
+  },
+  {
+    "objectID": "installations.html#lamp-acronyme-pour-linux-apache-mysqlmariadb-php",
+    "href": "installations.html#lamp-acronyme-pour-linux-apache-mysqlmariadb-php",
+    "title": "Prérequis et installations",
+    "section": "LAMP = Acronyme pour “Linux, Apache, MySQL/MariaDB, PhP”",
+    "text": "LAMP = Acronyme pour “Linux, Apache, MySQL/MariaDB, PhP”\n\nApache\nLa première pierre de notre environnement préliminaire d’édition est le logiciel open-source Apache. Open-source et utilisé par près de la moitié des sites web du net, Apache va nous permettre de créer notre site internet (local) et d’y installer notre outil de gestion des données, tout en profitant de la très vaste documentation disponible pour faire fonctionner le serveur.\n\nhttps://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#A_Installer_Apache_sous_Debian_13\nhttps://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#B_Lemplacement_de_la_configuration_Apache2\n\n### MariaDB La seconde pierre angulaire de notre environnement préliminaire d’édition est le dérivé communautaire et open-source de MySQL : MariaDB. [a completer]\n\nhttps://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#D_Installer_MySQLMariaDB_sous_Debian_13\nhttps://phoenixnap.com/kb/how-to-create-mariadb-user-grant-privileges\n\n\n\nPhP (et PhPmyAdmin)\nEnfin, la troisième pierre angulaire de notre environnement préliminaire d’édition est le langage de programmation orienté objet : PHP. Celui-ci permet la création de page web dite dynamiques […] qui, à titre informatif, a notamment permis la création de Wikipédia ou de Facebook.\n\nhttps://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#C_Installer_PHP_sous_Debian_13\nhttps://tecadmin.net/how-to-install-php-on-debian-13/ (notamment pour certaines extensions)\nhttps://www.php.net/manual/en/mbstring.installation.php\n\nInstaller phpMyAdmin Pas vraiment une pierre angulaire dans notre cas, phpMyAdmin est une application web offrant une interface web de gestion pour MariaDB (entre autres) qu’il est malgré tout recommandé d’installer dans notre serveur local.\n\nhttps://www.it-connect.fr/installer-phpmyadmin-sur-debian-11-et-apache/"
+  },
+  {
+    "objectID": "installations.html#installer-oméka-s",
+    "href": "installations.html#installer-oméka-s",
+    "title": "Prérequis et installations",
+    "section": "Installer Oméka S",
+    "text": "Installer Oméka S\nTélécharger Oméka S et l’extraire ici : “var/www/html” puis, dans le dossier (renommé), aller dans “config” puis “database.ini”, définir un user / mdp / databasename puis “host=localhost”\nPour accéder ensuite à l’interface Oméka S : - localhost/[nom_dossier]/admin\nPour installer des modules (important) : Les télécharger ici puis les décompresser dans “var/www/html/[nom_dossier]/modules”"
   }
 ]
