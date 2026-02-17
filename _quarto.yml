@@ -6,6 +6,10 @@ format:
   html:
     theme: cosmo
     css: assets/styles.css
+    toc: true
+    toc-location: right
+    toc-depth: 3
+
 
 website:
   title: "CartoExpert"

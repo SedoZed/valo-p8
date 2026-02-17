@@ -1,5 +1,5 @@
 ---
-title: "Prérequis nécessaire au travail sur CartoExpert"
+title: "Prérequis et installations"
 lang: fr
 ---
 
@@ -13,11 +13,7 @@ Avoir deux écrans est quasiment indispensable tant la navigation entre les fen�
 # Prérequis côté software
 En terme d'OS, le choix à privilégier est une base **Linux** car Oméka S semble rencontrer des problèmes sur Windows et nécessite trop de ressource pour le débugger. Plus précisément, un **Debian** est recommandé puisque les serveurs de la DSR fonctionnent sur une base Debian.
 
-Néanmoins, notamment dans la partie liées aux datasets (csv), pour plus de confort, un **Windows** peut être envisagé, installé en dual-boot sur la machine.
-
-Quelques recommandations vis-à-vis de l'install :
-
-RUFUS
+**Note** : La navigation / l'écriture / ... sur Linux se fait plus facilement via lignes de commandes. Cependant pas de panique, la communauté a très bien documenté le tout, notamment pour ce que nous voulons faire.
 
 ## Logiciel d'écriture
 Les premiers logiciels à avoir. N'ont pas besoin de droit administrateur pour s'installer et/ou peuvent être installés parfois par défaut.
@@ -37,20 +33,43 @@ Liste de quelques modules à installer pour une utilisation efficace.
 
 - RDF Sketch (_Zazuko_)
 
-## Installation du serveur local
-Une fois les données préparées, il sera question de les manipuler dans un environnement local avant de les push sur le serveur du service.
+# Configurer le serveur local
 
-### Installer & Utiliser XAMPP 
-Installer dans un fichier à part entière
+[introduction sur pk configurer un serveur local, c-a-d de configurer la bdd de façon à pouvoir la téléverser directement sur les serveurs du SVR, eux mêmes tournant sur Debian]
 
-Ouvrir XAMPP et activer "Apache" et "MySQL" ()
+## LAMP = Acronyme pour "Linux, Apache, MySQL/MariaDB, PhP"
 
-Accès à l'interface web en tapant sur navigateur "localhost"
+### Apache
+La première pierre de notre environnement préliminaire d'édition est le logiciel open-source [Apache](https://www.hostinger.com/fr/tutoriels/quest-ce-quapache). Open-source et utilisé par près de la moitié des sites web du net, Apache va nous permettre de créer notre site internet (local) et d'y installer notre outil de gestion des données, tout en profitant de la très vaste documentation disponible pour faire fonctionner le serveur.
 
-### Installer Oméka S sur le serveur local (localhost)
-Extraire le contenu du .ZIP dans XAMPP > HTDocs > [fichier de la BDD]
+1. https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#A_Installer_Apache_sous_Debian_13
+2. https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#B_Lemplacement_de_la_configuration_Apache2
 
-Ouvrir l'interface administrateur en tapant dans le navigateur "localhost/[fichier de la BDD]/admin"
+### MariaDB
+La seconde pierre angulaire de notre environnement préliminaire d'édition est le dérivé communautaire et open-source de MySQL : [MariaDB](https://fr.wikipedia.org/wiki/MariaDB). [a completer]
 
-### Installer Docker Desktop
-(à compléter) (à priori pourrait permettre des imports de csv ?)
+1. https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#D_Installer_MySQLMariaDB_sous_Debian_13
+2. https://phoenixnap.com/kb/how-to-create-mariadb-user-grant-privileges
+
+### PhP (et PhPmyAdmin)
+Enfin, la troisième pierre angulaire de notre environnement préliminaire d'édition est le langage de programmation orienté objet : [PHP](https://fr.wikipedia.org/wiki/PHP). Celui-ci permet la création de page web dite dynamiques [...] qui, à titre informatif, a notamment permis la création de Wikipédia ou de Facebook.
+
+- https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#C_Installer_PHP_sous_Debian_13
+- https://tecadmin.net/how-to-install-php-on-debian-13/ (notamment pour certaines extensions)
+
+- https://www.php.net/manual/en/mbstring.installation.php
+
+**Installer phpMyAdmin**
+Pas vraiment une pierre angulaire dans notre cas, [phpMyAdmin](https://www.phpmyadmin.net/) est une application web offrant une interface web de gestion pour MariaDB (entre autres) qu'il est malgré tout recommandé d'installer dans notre serveur local.
+
+- https://www.it-connect.fr/installer-phpmyadmin-sur-debian-11-et-apache/
+
+
+## Installer Oméka S 
+
+[Télécharger Oméka S](omeka.org/s/download/) et l'extraire ici : "var/www/html" puis, dans le dossier (renommé), aller dans "config" puis "database.ini", définir un user / mdp / databasename puis "host=localhost"
+
+Pour accéder ensuite à l'interface Oméka S : 
+- localhost/[nom_dossier]/admin
+
+Pour installer des modules (important) : Les télécharger [ici](https://omeka.org/s/modules/) puis les décompresser dans "var/www/html/[nom_dossier]/modules"
