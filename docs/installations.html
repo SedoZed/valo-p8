@@ -174,9 +174,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#prérequis-côté-hardware" id="toc-prérequis-côté-hardware" class="nav-link active" data-scroll-target="#prérequis-côté-hardware">Prérequis côté hardware</a></li>
-  <li><a href="#prérequis-côté-software" id="toc-prérequis-côté-software" class="nav-link" data-scroll-target="#prérequis-côté-software">Prérequis côté software</a>
+  <li><a href="#prérequis" id="toc-prérequis" class="nav-link active" data-scroll-target="#prérequis">Prérequis</a>
   <ul class="collapse">
+  <li><a href="#côté-hardware" id="toc-côté-hardware" class="nav-link" data-scroll-target="#côté-hardware">Côté hardware</a></li>
+  <li><a href="#côté-software" id="toc-côté-software" class="nav-link" data-scroll-target="#côté-software">Côté software</a></li>
   <li><a href="#logiciel-décriture" id="toc-logiciel-décriture" class="nav-link" data-scroll-target="#logiciel-décriture">Logiciel d’écriture</a>
   <ul class="collapse">
   <li><a href="#des-plugins-pour-vscode" id="toc-des-plugins-pour-vscode" class="nav-link" data-scroll-target="#des-plugins-pour-vscode">Des plugins pour VSCode</a></li>
@@ -184,13 +185,11 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#configurer-le-serveur-local" id="toc-configurer-le-serveur-local" class="nav-link" data-scroll-target="#configurer-le-serveur-local">Configurer le serveur local</a>
   <ul class="collapse">
-  <li><a href="#lamp-acronyme-pour-linux-apache-mysqlmariadb-php" id="toc-lamp-acronyme-pour-linux-apache-mysqlmariadb-php" class="nav-link" data-scroll-target="#lamp-acronyme-pour-linux-apache-mysqlmariadb-php">LAMP = Acronyme pour “Linux, Apache, MySQL/MariaDB, PhP”</a>
-  <ul class="collapse">
-  <li><a href="#apache" id="toc-apache" class="nav-link" data-scroll-target="#apache">Apache</a></li>
-  <li><a href="#php-et-phpmyadmin" id="toc-php-et-phpmyadmin" class="nav-link" data-scroll-target="#php-et-phpmyadmin">PhP (et PhPmyAdmin)</a></li>
+  <li><a href="#apache-http-server" id="toc-apache-http-server" class="nav-link" data-scroll-target="#apache-http-server">Apache HTTP Server</a></li>
+  <li><a href="#mariadb-léquivalent-libre-de-mysql" id="toc-mariadb-léquivalent-libre-de-mysql" class="nav-link" data-scroll-target="#mariadb-léquivalent-libre-de-mysql">MariaDB: l’équivalent libre de MySQL</a></li>
+  <li><a href="#php-hypertext-preprocessor" id="toc-php-hypertext-preprocessor" class="nav-link" data-scroll-target="#php-hypertext-preprocessor">PHP: Hypertext Preprocessor</a></li>
   </ul></li>
-  <li><a href="#installer-oméka-s" id="toc-installer-oméka-s" class="nav-link" data-scroll-target="#installer-oméka-s">Installer Oméka S</a></li>
-  </ul></li>
+  <li><a href="#installer-le-logiciel-oméka-s" id="toc-installer-le-logiciel-oméka-s" class="nav-link" data-scroll-target="#installer-le-logiciel-oméka-s">Installer le logiciel Oméka S</a></li>
   </ul>
 </nav>
     </div>
@@ -216,55 +215,82 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Le projet CartoExpert nécessite la mobilisation d’un certain nombre de ressources, qu’elles soient humaines, techniques ou logicielles pour pouvoir opérer efficacement. Cette page de la documentation se focalisera donc sur ces prérequis.</p>
-<section id="prérequis-côté-hardware" class="level1">
-<h1>Prérequis côté hardware</h1>
-<p>Côté hardware, pour travailler de façon optimale, besoin d’une machine capable de supporter le multitasking lourd (développement, navigation dans des données, hébergement de serveur local, …). Focus donc sur la RAM, le processeur et le stockage avant tout. <em>(Note pour plus tard : modifier ces infos en fonction des constats lié à oLlama)</em></p>
-<p>Avoir deux écrans est quasiment indispensable tant la navigation entre les fenêtres se fait tout le temps</p>
+<p>Le projet CartoExpert nécessite la mobilisation d’un certain nombre de ressources, qu’elles soient humaines, techniques ou logicielles pour pouvoir opérer efficacement. Cette page de la documentation se focalisera donc sur ces prérequis, et sur les installations à effectuer.</p>
+<section id="prérequis" class="level1">
+<h1>Prérequis</h1>
+<section id="côté-hardware" class="level2">
+<h2 class="anchored" data-anchor-id="côté-hardware">Côté hardware</h2>
+<p>Premièrement, revenons sur l’environnement de travail “matériel” qu’il serait recommandée de mettre en place pour que l’opérateur puisse travailler efficacement.</p>
+<p>Côté hardware, pour travailler de façon optimale, une machine capable de supporter le multitasking lourd (développement, navigation dans de grandes bases de données, hébergement de serveur local, …) est requis. Un focus tout particuler doit donc être fait sur l’obtention d’une machine puissante, avec une puissance de calcule suffisante (CPU) et suffisamment de mémoire vive (RAM). Côté stockage, rien de très extravagant n’est requis, néanmoins un disque dur externe de 4To a été alloué au projet qu’il convient d’utiliser autant que nécessaire (tout en faisant attention aux problématiques de vol de données que cela peut engendrer).</p>
+<p>Au-delà du hardware pure, côté périphérique, notons qu’il est fortement recommandé d’accompagner le PC de deux écrans minimum. Également, parallèlement au HDD 4To, une clé USB est recommandé pour plus de flexibilité (installation d’OS, …).</p>
+<p><strong>Contrainte constatée</strong> : L’accès au réseau interne de la DSR a été refusé à cause du statut de stagiaire, d’où la nécessité d’avoir du stockage amovible. Également, l’accès au réseau ethernet peut nécessiter certaines configurations pointues.</p>
 </section>
-<section id="prérequis-côté-software" class="level1">
-<h1>Prérequis côté software</h1>
-<p>En terme d’OS, le choix à privilégier est une base <strong>Linux</strong> car Oméka S semble rencontrer des problèmes sur Windows et nécessite trop de ressource pour le débugger. Plus précisément, un <strong>Debian</strong> est recommandé puisque les serveurs de la DSR fonctionnent sur une base Debian.</p>
-<p><strong>Note</strong> : La navigation / l’écriture / … sur Linux se fait plus facilement via lignes de commandes. Cependant pas de panique, la communauté a très bien documenté le tout, notamment pour ce que nous voulons faire.</p>
+<section id="côté-software" class="level2">
+<h2 class="anchored" data-anchor-id="côté-software">Côté software</h2>
+<p>En terme d’OS, il est fortement recommandé de se tourner vers une <a href="https://fr.wikipedia.org/wiki/Distribution_Linux">distribution Linux</a> intitulée <a href="https://fr.wikipedia.org/wiki/Debian">Debian</a> plutôt que vers un environnement Windows car :</p>
+<ul>
+<li><p><a href="#installer-le-logiciel-oméka-s">Oméka S</a>, l’outil utilisé pour mapper nos données, tourne très mal sur Windows.</p></li>
+<li><p>Les serveurs de la DSR tournent eux aussi sur une distrio Debian. Avoir un environnement de travail similaire aux serveurs facilitera le transfert de données locales vers les serveurs le moment venu.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/img/illu-debian-gnome-wikipedia.png" class="img-fluid figure-img"></p>
+<figcaption>Visuel type de l’interface Debian GNOME, issu de la page Wikipédia de ce dernier</figcaption>
+</figure>
+</div>
+<p><strong>Notes</strong> :</p>
+<ul>
+<li><p>Bien que Debian possède généralement sa propre interface de bureautique (<a href="https://fr.wikipedia.org/wiki/GNOME">GNOME</a>) à l’instar d’un environnement Windows standard, l’expérience utilisateur générale reste moins intuitive que sur Windows (utilisation du Terminal, de lignes de codes, …). Ainsi, une connaissance plus avancée des interfaeces numériques est recommandée pour plus de fluidité (autrement, la quasi totalité des processus sont très bien documentés en ligne).</p></li>
+<li><p>L’installation de la distro sur une machine de l’Université peut nécessiter un certain temps, entre l’installation en elle-même en dual-boot (avoir Windows et Linux sur la même machine) et surtout le débloquage de certains verrous par la DSI (droits admin sur Windows, déverrouillage biOS, …). En attendant le débloquage de ces derniers verrous, travailler sur les données peut s’effectuer sur Windows.</p></li>
+</ul>
+</section>
 <section id="logiciel-décriture" class="level2">
 <h2 class="anchored" data-anchor-id="logiciel-décriture">Logiciel d’écriture</h2>
 <p>Les premiers logiciels à avoir. N’ont pas besoin de droit administrateur pour s’installer et/ou peuvent être installés parfois par défaut.</p>
 <ul>
-<li><p><strong>Microsoft 365</strong> (Excel) ou autre tableur pour naviguer/écrire dans les documents CSV.</p></li>
-<li><p><strong>Visual Studio Code</strong> pour écrire avec différents langages (.qmd pour la documentation et .ttl pour le dictionnaire RDF par exemple)</p></li>
-<li><p><strong>GitHub Desktop</strong> (Import du repository localement &amp; transfert des modifications effectué localement sur ledit repository via des MaJ)</p></li>
+<li><p><strong>LibreOffice Calc</strong>, préinstallé dans la distro Debian GNOME, utile pour la création et la modification des datasets CSV ;</p></li>
+<li><p><strong>Visual Studio Code</strong> pour écrire plus aisément dans divers types de fichiers (html, qmd, ttl, …) ;</p></li>
+<li><p><strong>GitHub Desktop</strong> pour téléverser certains fichiers sur GitHub, et héberger la documentation sur GitHub Pages. Notez que GitHub Desktop n’existe pas officiellement sur Linux, mais que des portages communautaires très fiables existent et sont trouvable facilement.</p></li>
 </ul>
 <section id="des-plugins-pour-vscode" class="level3">
 <h3 class="anchored" data-anchor-id="des-plugins-pour-vscode">Des plugins pour VSCode</h3>
-<p>Liste de quelques modules à installer pour une utilisation efficace.</p>
+<p>L’avantage d’utiliser VSCode, en plus qu’il gère nativement de nombreux langages informatiques, est qu’il est possible d’y attacher de nombreux modules pour peaufiner l’usage de VSCode. Voici quelques modules très utiles</p>
 <ul>
-<li><p>Quarto (_Quarto)</p></li>
-<li><p>Python (<em>Microsoft</em>)</p></li>
-<li><p>RDF Sketch (<em>Zazuko</em>)</p></li>
+<li><p><strong>Obligatoire</strong> : Quarto (<em>Quarto</em>)</p></li>
+<li><p><strong>Recommandé</strong> : RDF Sketch (<em>Zazuko</em>)</p></li>
+<li><p><strong>Secondaire</strong> : Python (<em>Microsoft</em>)</p></li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/img/vscode_module.png" class="img-fluid figure-img"></p>
+<figcaption>Image d’illustration sur l’apparence de l’interface VSCode lors de l’installation d’un module</figcaption>
+</figure>
+</div>
 </section>
 </section>
 </section>
 <section id="configurer-le-serveur-local" class="level1">
 <h1>Configurer le serveur local</h1>
 <p>[introduction sur pk configurer un serveur local, c-a-d de configurer la bdd de façon à pouvoir la téléverser directement sur les serveurs du SVR, eux mêmes tournant sur Debian]</p>
-<section id="lamp-acronyme-pour-linux-apache-mysqlmariadb-php" class="level2">
-<h2 class="anchored" data-anchor-id="lamp-acronyme-pour-linux-apache-mysqlmariadb-php">LAMP = Acronyme pour “Linux, Apache, MySQL/MariaDB, PhP”</h2>
-<section id="apache" class="level3">
-<h3 class="anchored" data-anchor-id="apache">Apache</h3>
+<p>On va devoir utiliser la “plateforme” open-source <a href="https://fr.wikipedia.org/wiki/LAMP">LAMP (Linux, Apache, MySQL/MariaDB, PHP)</a> pour créer ledit serveur.</p>
+<section id="apache-http-server" class="level2">
+<h2 class="anchored" data-anchor-id="apache-http-server">Apache HTTP Server</h2>
 <p>La première pierre de notre environnement préliminaire d’édition est le logiciel open-source <a href="https://www.hostinger.com/fr/tutoriels/quest-ce-quapache">Apache</a>. Open-source et utilisé par près de la moitié des sites web du net, Apache va nous permettre de créer notre site internet (local) et d’y installer notre outil de gestion des données, tout en profitant de la très vaste documentation disponible pour faire fonctionner le serveur.</p>
 <ol type="1">
 <li>https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#A_Installer_Apache_sous_Debian_13</li>
 <li>https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#B_Lemplacement_de_la_configuration_Apache2</li>
 </ol>
-<p>###&nbsp;MariaDB La seconde pierre angulaire de notre environnement préliminaire d’édition est le dérivé communautaire et open-source de MySQL : <a href="https://fr.wikipedia.org/wiki/MariaDB">MariaDB</a>. [a completer]</p>
+</section>
+<section id="mariadb-léquivalent-libre-de-mysql" class="level2">
+<h2 class="anchored" data-anchor-id="mariadb-léquivalent-libre-de-mysql">MariaDB: l’équivalent libre de MySQL</h2>
+<p>La seconde pierre angulaire de notre environnement préliminaire d’édition est le dérivé communautaire et open-source de MySQL : <a href="https://fr.wikipedia.org/wiki/MariaDB">MariaDB</a>. [a completer]</p>
 <ol type="1">
 <li>https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#D_Installer_MySQLMariaDB_sous_Debian_13</li>
 <li>https://phoenixnap.com/kb/how-to-create-mariadb-user-grant-privileges</li>
 </ol>
 </section>
-<section id="php-et-phpmyadmin" class="level3">
-<h3 class="anchored" data-anchor-id="php-et-phpmyadmin">PhP (et PhPmyAdmin)</h3>
+<section id="php-hypertext-preprocessor" class="level2">
+<h2 class="anchored" data-anchor-id="php-hypertext-preprocessor">PHP: Hypertext Preprocessor</h2>
 <p>Enfin, la troisième pierre angulaire de notre environnement préliminaire d’édition est le langage de programmation orienté objet : <a href="https://fr.wikipedia.org/wiki/PHP">PHP</a>. Celui-ci permet la création de page web dite dynamiques […] qui, à titre informatif, a notamment permis la création de Wikipédia ou de Facebook.</p>
 <ul>
 <li><p>https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#C_Installer_PHP_sous_Debian_13</p></li>
@@ -277,14 +303,14 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="installer-oméka-s" class="level2">
-<h2 class="anchored" data-anchor-id="installer-oméka-s">Installer Oméka S</h2>
+<section id="installer-le-logiciel-oméka-s" class="level1">
+<h1>Installer le logiciel Oméka S</h1>
+<p>Cette troisième partie va maintenant se focaliser sur l’installation et la configuration d’un logiciel de web sémantique essentiel dans le processus de mapping des données : <a href="https://fr.wikipedia.org/wiki/Omeka#Omeka_S">Oméka S</a>. Doit être fait QU’APRÈS L’<a href="#configurer-le-serveur-local">INSTALLATION DU SERVEUR LAMP</a> puisque celui-ci fonctionne sur serveur justement.</p>
 <p><a href="omeka.org/s/download/">Télécharger Oméka S</a> et l’extraire ici : “var/www/html” puis, dans le dossier (renommé), aller dans “config” puis “database.ini”, définir un user / mdp / databasename puis “host=localhost”</p>
 <p>Pour accéder ensuite à l’interface Oméka S : - localhost/[nom_dossier]/admin</p>
-<p>Pour installer des modules (important) : Les télécharger <a href="https://omeka.org/s/modules/">ici</a> puis les décompresser dans “var/www/html/[nom_dossier]/modules”</p>
+<p>Pour installer des modules (important) : Les télécharger <a href="https://omeka.org/s/modules/">ici</a> puis les décompresser dans “var/www/html/[nom_dossier]/modules”.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

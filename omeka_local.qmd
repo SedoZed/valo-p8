@@ -1,8 +1,0 @@
----
-title: "Faire tourner Omeka S localement"
-lang: fr
----
-
-A ce stade : le PC doit avoir été passé sur Linux (voir recommandations)
-
-ça se fera la semaine prochaine je pense 
