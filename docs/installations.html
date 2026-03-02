@@ -174,15 +174,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#prérequis" id="toc-prérequis" class="nav-link active" data-scroll-target="#prérequis">Prérequis</a>
-  <ul class="collapse">
-  <li><a href="#côté-hardware" id="toc-côté-hardware" class="nav-link" data-scroll-target="#côté-hardware">Côté hardware</a></li>
-  <li><a href="#côté-software" id="toc-côté-software" class="nav-link" data-scroll-target="#côté-software">Côté software</a></li>
-  <li><a href="#logiciel-décriture" id="toc-logiciel-décriture" class="nav-link" data-scroll-target="#logiciel-décriture">Logiciel d’écriture</a>
-  <ul class="collapse">
-  <li><a href="#des-plugins-pour-vscode" id="toc-des-plugins-pour-vscode" class="nav-link" data-scroll-target="#des-plugins-pour-vscode">Des plugins pour VSCode</a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#constituer-lécosystème-de-travail" id="toc-constituer-lécosystème-de-travail" class="nav-link active" data-scroll-target="#constituer-lécosystème-de-travail">Constituer l’écosystème de travail</a></li>
+  <li><a href="#logiciels-importants" id="toc-logiciels-importants" class="nav-link" data-scroll-target="#logiciels-importants">Logiciels importants</a></li>
   <li><a href="#configurer-le-serveur-local" id="toc-configurer-le-serveur-local" class="nav-link" data-scroll-target="#configurer-le-serveur-local">Configurer le serveur local</a>
   <ul class="collapse">
   <li><a href="#apache-http-server" id="toc-apache-http-server" class="nav-link" data-scroll-target="#apache-http-server">Apache HTTP Server</a></li>
@@ -215,45 +208,74 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Le projet CartoExpert nécessite la mobilisation d’un certain nombre de ressources, qu’elles soient humaines, techniques ou logicielles pour pouvoir opérer efficacement. Cette page de la documentation se focalisera donc sur ces prérequis, et sur les installations à effectuer.</p>
-<section id="prérequis" class="level1">
-<h1>Prérequis</h1>
-<section id="côté-hardware" class="level2">
-<h2 class="anchored" data-anchor-id="côté-hardware">Côté hardware</h2>
-<p>Premièrement, revenons sur l’environnement de travail “matériel” qu’il serait recommandée de mettre en place pour que l’opérateur puisse travailler efficacement.</p>
-<p>Côté hardware, pour travailler de façon optimale, une machine capable de supporter le multitasking lourd (développement, navigation dans de grandes bases de données, hébergement de serveur local, …) est requis. Un focus tout particuler doit donc être fait sur l’obtention d’une machine puissante, avec une puissance de calcule suffisante (CPU) et suffisamment de mémoire vive (RAM). Côté stockage, rien de très extravagant n’est requis, néanmoins un disque dur externe de 4To a été alloué au projet qu’il convient d’utiliser autant que nécessaire (tout en faisant attention aux problématiques de vol de données que cela peut engendrer).</p>
-<p>Au-delà du hardware pure, côté périphérique, notons qu’il est fortement recommandé d’accompagner le PC de deux écrans minimum. Également, parallèlement au HDD 4To, une clé USB est recommandé pour plus de flexibilité (installation d’OS, …).</p>
-<p><strong>Contrainte constatée</strong> : L’accès au réseau interne de la DSR a été refusé à cause du statut de stagiaire, d’où la nécessité d’avoir du stockage amovible. Également, l’accès au réseau ethernet peut nécessiter certaines configurations pointues.</p>
-</section>
-<section id="côté-software" class="level2">
-<h2 class="anchored" data-anchor-id="côté-software">Côté software</h2>
+<p>Le maintien opérationel du projet CartoExpert nécessite l’installation d’un poste de travail particulier, avec des paramètres et des contraintes physiques et logicielle à prendre en compte. Cette page de la documentation se focalisera donc sur ces prérequis à effectuer, et sur les installations à effectuer.</p>
+<section id="constituer-lécosystème-de-travail" class="level2">
+<h2 class="anchored" data-anchor-id="constituer-lécosystème-de-travail">Constituer l’écosystème de travail</h2>
+<p>Le premier point à aborder est la construction d’un poste de travail performant, fiable et confortable pour permettre à l’opérateur un travail fluide et efficace. Nous allons aborder cela en deux temps : le “hardware” et le “software”.</p>
+<p>Tout d’abord, le projet CartoExpert mènera l’opérateur à effectuer du <strong>multitasking important</strong> comme du développement, de la data-gestion de grande ampleur, de l’hébergement de serveur local, etc… Ainsi, un focus tout particuler doit donc être fait sur l’obtention d’une <strong>machine suffisamment puissante</strong>, offrant une puissance calculatoire supérieure (CPU) ainsi que suffisamment de mémoire vive (RAM). Côté stockage, rien de bien extravagant n’est requis, néanmoins un disque dur externe de 4To a été alloué au projet qu’il convient d’utiliser autant que nécessaire (tout en faisant attention aux problématiques de vol de données que cela peut engendrer).</p>
+<p>À côté de ça, notons qu’il est fortement recommandé d’accompagner le PC de deux écrans minimum, afin de faciliter la navigation entre les multiples fenêtres. Également, parallèlement au HDD 4To, une clé USB est recommandé pour plus de flexibilité (installation/réparation d’OS, …).</p>
+<hr>
 <p>En terme d’OS, il est fortement recommandé de se tourner vers une <a href="https://fr.wikipedia.org/wiki/Distribution_Linux">distribution Linux</a> intitulée <a href="https://fr.wikipedia.org/wiki/Debian">Debian</a> plutôt que vers un environnement Windows car :</p>
 <ul>
 <li><p><a href="#installer-le-logiciel-oméka-s">Oméka S</a>, l’outil utilisé pour mapper nos données, tourne très mal sur Windows.</p></li>
-<li><p>Les serveurs de la DSR tournent eux aussi sur une distrio Debian. Avoir un environnement de travail similaire aux serveurs facilitera le transfert de données locales vers les serveurs le moment venu.</p></li>
+<li><p>Les serveurs de la DSR <strong>tournent eux aussi sur une distrio Debian</strong>. Avoir un environnement de travail similaire aux serveurs facilitera le transfert de données locales vers les serveurs le moment venu.</p></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./assets/img/illu-debian-gnome-wikipedia.png" class="img-fluid figure-img"></p>
+<p><img src="./assets/img/illu-debian-gnome-wikipedia.png" class="img-fluid figure-img" style="width:70.0%"></p>
 <figcaption>Visuel type de l’interface Debian GNOME, issu de la page Wikipédia de ce dernier</figcaption>
 </figure>
 </div>
-<p><strong>Notes</strong> :</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mise en garde
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les machines standard de l’Université, fournies par la DSI, <strong>ne permettent pas en temps normal d’effectuer de telles manoeuvres</strong> comme l’installation d’un OS en dual-boot, <strong>ces derniers n’étant fourni avec aucun droit administrateur</strong> que ça soit du côté du Windows nativement installé que du côté biOS. Cet obstacle n’est pas à négliger et peut coûter du temps s’il n’est pas suffisamment traité à l’avance.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Quelques précisions…
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ul>
-<li><p>Bien que Debian possède généralement sa propre interface de bureautique (<a href="https://fr.wikipedia.org/wiki/GNOME">GNOME</a>) à l’instar d’un environnement Windows standard, l’expérience utilisateur générale reste moins intuitive que sur Windows (utilisation du Terminal, de lignes de codes, …). Ainsi, une connaissance plus avancée des interfaeces numériques est recommandée pour plus de fluidité (autrement, la quasi totalité des processus sont très bien documentés en ligne).</p></li>
+<li><p>Bien que Debian possède généralement sa propre interface de bureautique (<a href="https://fr.wikipedia.org/wiki/GNOME">GNOME</a>) à l’instar d’un environnement Windows standard, l’expérience utilisateur générale reste moins intuitive que sur Windows (utilisation du Terminal, de lignes de codes, …). Ainsi, une aisance dans la navigation des interfaces numériques est recommandée pour plus de fluidité (autrement, la quasi totalité des processus sont très bien documentés en ligne).</p></li>
 <li><p>L’installation de la distro sur une machine de l’Université peut nécessiter un certain temps, entre l’installation en elle-même en dual-boot (avoir Windows et Linux sur la même machine) et surtout le débloquage de certains verrous par la DSI (droits admin sur Windows, déverrouillage biOS, …). En attendant le débloquage de ces derniers verrous, travailler sur les données peut s’effectuer sur Windows.</p></li>
 </ul>
+</div>
+</div>
+</div>
 </section>
-<section id="logiciel-décriture" class="level2">
-<h2 class="anchored" data-anchor-id="logiciel-décriture">Logiciel d’écriture</h2>
-<p>Les premiers logiciels à avoir. N’ont pas besoin de droit administrateur pour s’installer et/ou peuvent être installés parfois par défaut.</p>
+<section id="logiciels-importants" class="level2">
+<h2 class="anchored" data-anchor-id="logiciels-importants">Logiciels importants</h2>
 <ul>
 <li><p><strong>LibreOffice Calc</strong>, préinstallé dans la distro Debian GNOME, utile pour la création et la modification des datasets CSV ;</p></li>
 <li><p><strong>Visual Studio Code</strong> pour écrire plus aisément dans divers types de fichiers (html, qmd, ttl, …) ;</p></li>
 <li><p><strong>GitHub Desktop</strong> pour téléverser certains fichiers sur GitHub, et héberger la documentation sur GitHub Pages. Notez que GitHub Desktop n’existe pas officiellement sur Linux, mais que des portages communautaires très fiables existent et sont trouvable facilement.</p></li>
 </ul>
-<section id="des-plugins-pour-vscode" class="level3">
-<h3 class="anchored" data-anchor-id="des-plugins-pour-vscode">Des plugins pour VSCode</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Quelques plugins à installer sur Visual Studio Code
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>L’avantage d’utiliser VSCode, en plus qu’il gère nativement de nombreux langages informatiques, est qu’il est possible d’y attacher de nombreux modules pour peaufiner l’usage de VSCode. Voici quelques modules très utiles</p>
 <ul>
 <li><p><strong>Obligatoire</strong> : Quarto (<em>Quarto</em>)</p></li>
@@ -262,20 +284,32 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./assets/img/vscode_module.png" class="img-fluid figure-img"></p>
+<p><img src="./assets/img/vscode_module.png" class="img-fluid figure-img" style="width:70.0%"></p>
 <figcaption>Image d’illustration sur l’apparence de l’interface VSCode lors de l’installation d’un module</figcaption>
 </figure>
 </div>
-</section>
-</section>
+</div>
+</div>
 </section>
 <section id="configurer-le-serveur-local" class="level1">
 <h1>Configurer le serveur local</h1>
-<p>[introduction sur pk configurer un serveur local, c-a-d de configurer la bdd de façon à pouvoir la téléverser directement sur les serveurs du SVR, eux mêmes tournant sur Debian]</p>
-<p>On va devoir utiliser la “plateforme” open-source <a href="https://fr.wikipedia.org/wiki/LAMP">LAMP (Linux, Apache, MySQL/MariaDB, PHP)</a> pour créer ledit serveur.</p>
+<p>Une fois l’environnement de travail installé, à l’intérieur de celui-ci doit être configuré un “serveur local” dans lequel l’opérateur effectuera l’ensemble des modifications sur les données puis de les importer sur le serveur du DSR à travers de mises à jours. Dans notre cas, on utilisera la “plateforme” open-source <a href="https://fr.wikipedia.org/wiki/LAMP">LAMP</a> <em>(Linux, Apache, MySQL/MariaDB, PHP)</em> pour créer ledit serveur. Revenons à présent sur les différents composants de cet ensemble logiciel, pour y voir plus clair.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mise en garde
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Choix a été fait de ne pas expliciter les différentes étapes d’installation de chacune de ces composantes directement sur cette page, mais plutôt de rediriger vers de la documentation disponible en ligne. Par ailleurs, dans le cas où la documentation citée n’est pas suffisante, de nombreuses autres documentations existent facilement sur le web.</p>
+</div>
+</div>
 <section id="apache-http-server" class="level2">
 <h2 class="anchored" data-anchor-id="apache-http-server">Apache HTTP Server</h2>
-<p>La première pierre de notre environnement préliminaire d’édition est le logiciel open-source <a href="https://www.hostinger.com/fr/tutoriels/quest-ce-quapache">Apache</a>. Open-source et utilisé par près de la moitié des sites web du net, Apache va nous permettre de créer notre site internet (local) et d’y installer notre outil de gestion des données, tout en profitant de la très vaste documentation disponible pour faire fonctionner le serveur.</p>
+<p>La première pierre de notre environnement préliminaire d’édition est le logiciel open-source <a href="https://www.hostinger.com/fr/tutoriels/quest-ce-quapache">Apache</a>. Open-source et utilisé par près de la moitié des sites web du net, Apache va nous permettre de créer notre site internet <em>(localement)</em> et d’y installer notre outil de gestion des données, tout en profitant de la très vaste documentation disponible pour faire fonctionner le serveur.</p>
 <ol type="1">
 <li>https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#A_Installer_Apache_sous_Debian_13</li>
 <li>https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#B_Lemplacement_de_la_configuration_Apache2</li>
@@ -283,15 +317,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="mariadb-léquivalent-libre-de-mysql" class="level2">
 <h2 class="anchored" data-anchor-id="mariadb-léquivalent-libre-de-mysql">MariaDB: l’équivalent libre de MySQL</h2>
-<p>La seconde pierre angulaire de notre environnement préliminaire d’édition est le dérivé communautaire et open-source de MySQL : <a href="https://fr.wikipedia.org/wiki/MariaDB">MariaDB</a>. [a completer]</p>
+<p>La seconde pierre angulaire de notre environnement préliminaire d’édition est le dérivé communautaire et open-source de MySQL : <a href="https://fr.wikipedia.org/wiki/MariaDB">MariaDB</a>. Suite au rachat de Sun Microsystems (MySQL) par Oracle, MariaDB est un système de gestion de bases de données relationnelles (SGBDR) de référence, alliant haute compatibilité avec MySQL, performances optimisées et gouvernance transparente portée par la communauté. C’est sur ce socle éprouvé que reposeront le stockage et la gestion structurée de l’ensemble de nos données éditoriales.</p>
 <ol type="1">
-<li>https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#D_Installer_MySQLMariaDB_sous_Debian_13</li>
-<li>https://phoenixnap.com/kb/how-to-create-mariadb-user-grant-privileges</li>
+<li><a href="https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#D_Installer_MySQLMariaDB_sous_Debian_13">It-Connect.fr - Installer MySQL/MariaDB sous Debian 13</a></li>
+<li><a href="https://phoenixnap.com/kb/how-to-create-mariadb-user-grant-privileges">PhoenixNAP - Créer un utilisateur MariaDB avec privilèges</a></li>
 </ol>
 </section>
 <section id="php-hypertext-preprocessor" class="level2">
 <h2 class="anchored" data-anchor-id="php-hypertext-preprocessor">PHP: Hypertext Preprocessor</h2>
-<p>Enfin, la troisième pierre angulaire de notre environnement préliminaire d’édition est le langage de programmation orienté objet : <a href="https://fr.wikipedia.org/wiki/PHP">PHP</a>. Celui-ci permet la création de page web dite dynamiques […] qui, à titre informatif, a notamment permis la création de Wikipédia ou de Facebook.</p>
+<p>Enfin, la troisième pierre angulaire de notre environnement préliminaire d’édition est le langage de programmation orienté objet : <a href="https://fr.wikipedia.org/wiki/PHP">PHP</a>. Celui-ci permet la création de page web dite dynamiques, c’est-à-dire des pages dont le contenu est généré à la volée par le serveur en fonction des interactions de l’utilisateur, des données stockées ou du contexte de la requête, par opposition aux pages statiques au contenu figé. À titre informatif, Wikipédia ou Facebook reposent sur PHP.</p>
 <ul>
 <li><p>https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#C_Installer_PHP_sous_Debian_13</p></li>
 <li><p>https://tecadmin.net/how-to-install-php-on-debian-13/ (notamment pour certaines extensions)</p></li>
@@ -301,14 +335,53 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>https://www.it-connect.fr/installer-phpmyadmin-sur-debian-11-et-apache/</li>
 </ul>
+<hr>
 </section>
 </section>
 <section id="installer-le-logiciel-oméka-s" class="level1">
 <h1>Installer le logiciel Oméka S</h1>
-<p>Cette troisième partie va maintenant se focaliser sur l’installation et la configuration d’un logiciel de web sémantique essentiel dans le processus de mapping des données : <a href="https://fr.wikipedia.org/wiki/Omeka#Omeka_S">Oméka S</a>. Doit être fait QU’APRÈS L’<a href="#configurer-le-serveur-local">INSTALLATION DU SERVEUR LAMP</a> puisque celui-ci fonctionne sur serveur justement.</p>
-<p><a href="omeka.org/s/download/">Télécharger Oméka S</a> et l’extraire ici : “var/www/html” puis, dans le dossier (renommé), aller dans “config” puis “database.ini”, définir un user / mdp / databasename puis “host=localhost”</p>
-<p>Pour accéder ensuite à l’interface Oméka S : - localhost/[nom_dossier]/admin</p>
-<p>Pour installer des modules (important) : Les télécharger <a href="https://omeka.org/s/modules/">ici</a> puis les décompresser dans “var/www/html/[nom_dossier]/modules”.</p>
+<p>Cette troisième partie va maintenant se focaliser sur l’installation et la configuration d’un logiciel de web sémantique essentiel dans le processus de mapping des données : <a href="https://fr.wikipedia.org/wiki/Omeka#Omeka_S">Oméka S</a>.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mise en garde
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cette étape ne peut être faite qu’après avoir correctement effectué l’installation du <a href="#configurer-le-serveur-local">Serveur LAMP</a> puisque Oméka S a besoin d’un serveur pour fonctionner.</p>
+</div>
+</div>
+<p><a href="omeka.org/s/download/">Télécharger Oméka S</a> et l’extraire ici :</p>
+<pre><code>&gt;&gt;&gt; var/www/html</code></pre>
+<p>puis, dans le dossier (renommé), aller dans :</p>
+<pre><code>&gt;&gt;&gt; /config/database.ini</code></pre>
+<p>définir un user / mdp / databasename puis “host=localhost”</p>
+<p>[image illustration]</p>
+<p>Une fois tout cela effectué, vérifions que tout fonctionne en nous connectant, via un navigateur type Firefox, à l’interface locale Oméka S via ce lien :</p>
+<pre><code>&gt;&gt;&gt; localhost/[nom_dossier]/admin</code></pre>
+<p>Si l’interface obtenue est similaire à celle ci-dessus, c’est-à-dire une page de connexion, ça veut dire que l’intallation a été correctement effecutée ! À l’avenir, l’accès à l’interface se fera toujours par l’URL cité précédemment.</p>
+<p>Enfin, pour opérer efficacement, nous aurons besoin de “modules”. Ceux-ci permettent l’ajout de fonctionnalités importantes directement dans l’interface Oméka S. Pour obtenir ces modules, téléchargez-les <a href="https://omeka.org/s/modules/">ici</a> puis décompressez-les dans :</p>
+<pre><code>&gt;&gt;&gt; var/www/html/[nom_dossier]/modules</code></pre>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Liste des modules à installer impérativement.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>coucou</p>
+</div>
+</div>
+</div>
+<p>Une fois les modules décompressés dans le fichier, ceux-ci apparaissent sur l’interface Oméka S dans la section “Modules”. Pour chacun d’entre eux, cliquer sur “Installer” pour les rendre opérationnels.</p>
 
 
 </section>
