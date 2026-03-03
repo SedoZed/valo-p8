@@ -3,7 +3,35 @@ title: 'Transformer des données format "humain" en format "ordinateur"'
 lang: fr
 ---
 
-Une fois les différentes sources 
+Page de documentation va s'articuler en deux temps : 1=comprendre les enjeux de cette standardisation (théorie) ; 2=comment mener à bien cette standardisation
+
+Les données dans l'état actuel des choses ne pas ou peu exploitables pour de nombreuses raisons dont deux principales :
+- Les tableaux sont créés de façon à être interprété par un humain (et non par une machine).
+Exemple : [inserer image]
+
+
+- Les tableaux produits utilisent des structures ou des écritures variant les unes des autres.
+Exemple : [inserer image]
+
+Cette première majeure partie du travail consiste donc à réunir toutes ces données différentes puis de les centraliser en un seul set de données, uniforme et facilement interprétable par une machine.
+
+# Récupération des données
+La première étape consiste donc à déterminer sur quelles sources s'appuyer = s'appuyer sur le cahier des charges
+
+
+## Données existantes fiables
+Rendus évaluation HCERES
+Rapports produits par le DSR
+Données externes au service (ScanR)
+
+## Données manquantes ou non-fiables
+certaines données sont manquantes ou inscrites d'une façon ne permettant pas une identification fiable (autre nomenclature, ...)
+
+Solution possibles :
+- Formulaire à soumettre aux enseignants-chercheurs leur demandant de compléter les données
+- Permettre aux membres de laboratoires de consulter les données enregistrées et de faire des demandes d'édition facilement si besoin
+
+
 
 # Structuration des données liées aux enseignants-chercheurs.
 Utilisation d'un classeur "tableur" contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine. 
@@ -34,24 +62,28 @@ Utilisation d'un classeur "tableur" contenant deux feuilles, chacun avec une ori
 
 | Intitulé   | Dictionnaire | Définition | Encodage   | Source     | 
 |------------|--------------|------------|------------|------------|
-| dcterms:title | Dublin Core  | Nom de l'objet dans la bdd. Constitue généralement un diminutif communément utilisé. | Texte brute (str) | Labos_Paris8 → "Acronyme" |
-| dcterms:alternative  | Dublin Core  | Nom alternatif (souvent le nom complet) du laboratoire. | Texte brute (str) | --- |
-| dcterms:idRNSR | Dublin Core | Numéro unique RNSR du laboratoire. | Texte brute (str) | --- |
+| dcterms:title | Dublin Core  | Nom de l'objet dans la bdd. Constitue généralement un diminutif communément utilisé. | Texte brute (str) | Labos_Paris8 → "Acronyme" ; Rapports HCERES |
+| dcterms:alternative  | Dublin Core  | Nom alternatif (souvent le nom complet) du laboratoire. | Texte brute (str) | Labos_Paris8 → "Intitulé" ; Rapports HCERES |
+| valo:idRNSR | Dublin Core | Numéro unique RNSR du laboratoire. | Texte brute (str) | ScanR (module Oméka S) |
+| valo:hasAxe | Dict. personnalisé | Ensemble des sous-équipes d'un laboratoire | ID Oméka* | Rapports HCERES |
 | valo:domaine_hceres | Dict. personnalisé | Panels scientifiques revendiqué par le labratoire, selon la nomenclature du [HCERES](https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf). | Texte brute (str) | --- |
 | valo:domaine_erc | Dict. personnalisé | Panels scientifiques revendiqué par le laboatoire, selon la nomenclature [ERC](https://erc.europa.eu/sites/default/files/2023-03/ERC_panel_structure_2024_calls.pdf) | Texte brute (str) | --- |
-| valo:obj_recherche | Dict. personnalisé | Objet de recherche du laboratoire. | Texte brute (str) | --- |
-| valo:hasAxe | Dict. personnalisé | Les axes de recherche du laboratoire. | ID Oméka* | --- |
-| valo:heywords | Dict. personnalisé | Mots-clés renseignés par les laboratoires dans le rendu HCERES des laboratoires. | Texte brute (str) ou ID Oméka* ? | --- |
-| valo:keythemes | Dict. personnalisé  | Thèmes du laboratoire renseignés dans l’annexe Mapping of research portfolio and partner organization. | Texte brute (str) | --- |
+| valo:obj_recherche | Dict. personnalisé | Objet de recherche du laboratoire. | Texte brute (str) | Labos_Paris8 → "Objets de la recherche" |
+| valo:hasAxe | Dict. personnalisé | Les axes de recherche du laboratoire. | ID Oméka* | Labos_Paris8 → "Axes de recherche" |
+| valo:heywords | Dict. personnalisé | Mots-clés renseignés par les laboratoires dans le rendu HCERES des laboratoires. | ID Oméka* ? | --- |
 | valo:expertise | Dict. personnalisé | Domaines de maitrise dont lesquels le laboratoire est reconnu. | Texte brute (str) | --- |
 | foaf:mbox | FoaF | Courriel pour contacter directement le laboratoire. | Texte brute (str) | --- |
+| valo:plateforme_txt | Dict. personnalisé | Plateformes déclarées par les laboratoire n'ayant pas été convertis en "item" sur Omeka S** | Texte brute (str) | Labos_Paris8 → "Plateformes" |
+| valo:plateforme_internalid | Dict. personnalisé | Plateformes déclarées par les laboratoire ayant été convertis en "item" sur Omeka S** | Texte brute (str) | Labos_Paris8 → "Plateformes" |
 | dcterms:type | Dublin Core | Désigne l'ensemble des équipements, instruments, corpus, bibliothèques, ... utilisés par le laboratoire. | Texte brute (str) | --- |
 | valo:ecole_docto | Dict. personnalisé | Ecoles doctorales dont l'enseignant-chercheur est membre. | Texte brute (str) ou ID Oméka* ? | --- |
 | valo:dir_these | Dict. personnalisé | Nombre de doctorants ayant publié une thèse sous la supervision de l'enseignant-chercheur. | Texte brute (str) | --- |
 | valo:collab | Dict. personnalisé | Partenariats de recherche avec le monde non-académique. (entrer leur ID Oméka) | ID Oméka* | --- |
 | valo:idHAL | Dict. personnalisé | Identifiant unique HAL du laboratoire, permettant à postériori l'extraction des publications du laboratoire. | Texte brute (str) | --- |
 
-ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d'effectuer des liens internes entre les objets dans la BDD.
+*ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d'effectuer des liens internes entre les objets dans la BDD.
+
+**Choix a été fait de convertir ou non les plateformes déclarées par les laboratoires en item en fonction de s'il s'agit d'une "entité" ou non (une chaine YouTube n'est pas une entité ; une start-up en est une).
 
 ## Structuration des données liées aux partenaires non-académique déjà notés.
 Utilisation d'un classeur "tableur" contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine. 

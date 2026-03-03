@@ -25,14 +25,8 @@ website:
           href: installations.qmd
         - text: "Outils utiles"
           href: index.qmd#outil-utiles
-      - text: "Préparation des données"
-        menu:
-        - text: "Repérer et nettoyer les données"
-          href: sources_donnees.qmd
-        - text: "Standardiser les données en CSV"
-          href: standardiser_data2csv.qmd
-#        - text: "Liste des conversions effectuées"
-#          href: interpretation.qmd
+      - text: "Standardiser les données en CSV"
+        href: standardiser_data2csv.qmd
       - text: "Modélisation les données"
         menu:
         - text: "Ecrire le dictionnaire de métadonnées"

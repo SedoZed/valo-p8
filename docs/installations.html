@@ -310,26 +310,26 @@ Mise en garde
 <section id="apache-http-server" class="level2">
 <h2 class="anchored" data-anchor-id="apache-http-server">Apache HTTP Server</h2>
 <p>La première pierre de notre environnement préliminaire d’édition est le logiciel open-source <a href="https://www.hostinger.com/fr/tutoriels/quest-ce-quapache">Apache</a>. Open-source et utilisé par près de la moitié des sites web du net, Apache va nous permettre de créer notre site internet <em>(localement)</em> et d’y installer notre outil de gestion des données, tout en profitant de la très vaste documentation disponible pour faire fonctionner le serveur.</p>
-<ol type="1">
-<li>https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#A_Installer_Apache_sous_Debian_13</li>
-<li>https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#B_Lemplacement_de_la_configuration_Apache2</li>
-</ol>
+<ul>
+<li>Doc1 : <a href="https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#A_Installer_Apache_sous_Debian_13">Installer Apache sous Debian 13 - It-Connect.fr</a></li>
+<li>Doc2 : <a href="https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#B_Lemplacement_de_la_configuration_Apache2">Où configurer Apache2 ? - It-Connect.fr</a></li>
+</ul>
 </section>
 <section id="mariadb-léquivalent-libre-de-mysql" class="level2">
 <h2 class="anchored" data-anchor-id="mariadb-léquivalent-libre-de-mysql">MariaDB: l’équivalent libre de MySQL</h2>
 <p>La seconde pierre angulaire de notre environnement préliminaire d’édition est le dérivé communautaire et open-source de MySQL : <a href="https://fr.wikipedia.org/wiki/MariaDB">MariaDB</a>. Suite au rachat de Sun Microsystems (MySQL) par Oracle, MariaDB est un système de gestion de bases de données relationnelles (SGBDR) de référence, alliant haute compatibilité avec MySQL, performances optimisées et gouvernance transparente portée par la communauté. C’est sur ce socle éprouvé que reposeront le stockage et la gestion structurée de l’ensemble de nos données éditoriales.</p>
-<ol type="1">
-<li><a href="https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#D_Installer_MySQLMariaDB_sous_Debian_13">It-Connect.fr - Installer MySQL/MariaDB sous Debian 13</a></li>
-<li><a href="https://phoenixnap.com/kb/how-to-create-mariadb-user-grant-privileges">PhoenixNAP - Créer un utilisateur MariaDB avec privilèges</a></li>
-</ol>
+<ul>
+<li>Doc1 : <a href="https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#D_Installer_MySQLMariaDB_sous_Debian_13">Installer MySQL/MariaDB sous Debian 13 - It-Connect.fr</a></li>
+<li>Doc2 : <a href="https://phoenixnap.com/kb/how-to-create-mariadb-user-grant-privileges">Créer un utilisateur MariaDB avec privilèges - PhoenixNAP</a></li>
+</ul>
 </section>
 <section id="php-hypertext-preprocessor" class="level2">
 <h2 class="anchored" data-anchor-id="php-hypertext-preprocessor">PHP: Hypertext Preprocessor</h2>
 <p>Enfin, la troisième pierre angulaire de notre environnement préliminaire d’édition est le langage de programmation orienté objet : <a href="https://fr.wikipedia.org/wiki/PHP">PHP</a>. Celui-ci permet la création de page web dite dynamiques, c’est-à-dire des pages dont le contenu est généré à la volée par le serveur en fonction des interactions de l’utilisateur, des données stockées ou du contexte de la requête, par opposition aux pages statiques au contenu figé. À titre informatif, Wikipédia ou Facebook reposent sur PHP.</p>
 <ul>
-<li><p>https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#C_Installer_PHP_sous_Debian_13</p></li>
-<li><p>https://tecadmin.net/how-to-install-php-on-debian-13/ (notamment pour certaines extensions)</p></li>
-<li><p>https://www.php.net/manual/en/mbstring.installation.php</p></li>
+<li>https://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#C_Installer_PHP_sous_Debian_13</li>
+<li>https://tecadmin.net/how-to-install-php-on-debian-13/ (notamment pour certaines extensions)</li>
+<li>https://www.php.net/manual/en/mbstring.installation.php</li>
 </ul>
 <p><strong>Installer phpMyAdmin</strong> Pas vraiment une pierre angulaire dans notre cas, <a href="https://www.phpmyadmin.net/">phpMyAdmin</a> est une application web offrant une interface web de gestion pour MariaDB (entre autres) qu’il est malgré tout recommandé d’installer dans notre serveur local.</p>
 <ul>
@@ -356,10 +356,10 @@ Mise en garde
 </div>
 <p><a href="omeka.org/s/download/">Télécharger Oméka S</a> et l’extraire ici :</p>
 <pre><code>&gt;&gt;&gt; var/www/html</code></pre>
-<p>puis, dans le dossier (renommé), aller dans :</p>
+<p>Renommer le dossier puis, dans le dossier, aller dans :</p>
 <pre><code>&gt;&gt;&gt; /config/database.ini</code></pre>
-<p>définir un user / mdp / databasename puis “host=localhost”</p>
-<p>[image illustration]</p>
+<p>Une fois dans le fichier, définir un “user”, un “password”, un “databasename” (basiquement le nom du dossier renommé plus tôt) puis compléter la ligne “host=localhost”</p>
+<p>[image illustration]sc-shot_database-ini.png <img src="./assets/img/sc-shot_database-ini.png" class="img-fluid quarto-figure quarto-figure-center" style="width:70.0%" alt="Voilà à quoi doit ressembler “database.ini”"></p>
 <p>Une fois tout cela effectué, vérifions que tout fonctionne en nous connectant, via un navigateur type Firefox, à l’interface locale Oméka S via ce lien :</p>
 <pre><code>&gt;&gt;&gt; localhost/[nom_dossier]/admin</code></pre>
 <p>Si l’interface obtenue est similaire à celle ci-dessus, c’est-à-dire une page de connexion, ça veut dire que l’intallation a été correctement effecutée ! À l’avenir, l’accès à l’interface se fera toujours par l’URL cité précédemment.</p>
@@ -377,7 +377,28 @@ Mise en garde
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>coucou</p>
+<ul>
+<li><strong>Advanced Resource Template</strong> <em>(Daniel Bethereau)</em> : Add new features to the resource templates to simplify and to improve the edition of resources: closed template, auto-completion, property groups, select language, lock, auto-filling, etc.</li>
+<li><strong>Advanced Search</strong> <em>(Daniel Bethereau)</em> : Improve search with new fields, aggregated properties, auto-suggest, filters, facets, specific pages, etc.</li>
+<li><strong>Advanced Search adapter for Solr</strong> <em>(Daniel Bethereau)</em> : Search Omeka resources instantly and deeply on any server with Apache Solr / Lucene, via the library Solarium</li>
+<li>Annotate <em>(Daniel Bethereau)</em> : Implement the W3C Web Annotation Ontology to let users annotate, tag, comment, rate, highlight, draw, etc. any resource in a normalized way</li>
+<li>Bulk Edit <em>(Daniel Bethereau)</em> : Add batch process to replace, remove, order, fill values suggest data, etc. to help curators to update and clean metadata over many resources quickly and easily</li>
+<li>Bulk Import <em>(Daniel Bethereau)</em> : Extensible bulk import module for xml, sql databases, spreedsheets, and json endpoints.</li>
+<li><del>ChaoticumSeminario <em>(Samuel Szoniecky, Laboratoire Paragraphe)</em> : Fragmentation chaotique d’un media</del></li>
+<li><strong>Common</strong> <em>(Daniel Bethereau)</em> : Internal features used in various modules: bulk functions, form elements, view helpers, one-time methods for install, etc.</li>
+<li><strong>CSV Import</strong> <em>(Omeka Team, Daniel Bethereau)</em> : Import and update content (items, item sets, media, users) from a CSV, a TSV or an ODS file</li>
+<li><strong>Custom Vocab</strong> <em>(Omeka Team)</em> : Describe your resources using vocabularies you create</li>
+<li><strong>Data Cleaning</strong> <em>(Omeka Team)</em> : Low-level auditing and cleaning of resource metadata</li>
+<li><strong>Data Visualisazion</strong> _(Omeka Team) : Visualize your data</li>
+<li><strong>Easy Admin</strong> (Daniel Bethereau) : Manage tasks from the admin interface: install modules and themes, check database and files, bulk upload without limits, run cron tasks</li>
+<li><del>Extract Metadata <em>(Omeka Team)</em> : Extract embedded metadata from files</del></li>
+<li><del>Faceted Browse <em>(Omeka Team)</em> : Add faceted browsing to your sites</del></li>
+<li><strong>Log</strong> <em>(Daniel Bethereau)</em> : Monitor all logging messages and background jobs directly in the admin board or in the cloud and make them translatable and easily checkable</li>
+<li><strong>Mapper</strong> <em>(Daniel Bethereau)</em> : Create mappings to convert values for filling, import, export from/to spreadsheet, json and xml</li>
+<li><strong>Mapping</strong> <em>(Omeka Team)</em> : Add location info to your items and sites</li>
+<li><strong>Numeric Data Types</strong> <em>(Omeka Team)</em> : Add data types for numbers and dates</li>
+<li><strong>Reference</strong> <em>(Daniel Bethereau)</em> : Add glossary pages and blocks with the alphabetical indexes of specified classes and properties</li>
+</ul>
 </div>
 </div>
 </div>

@@ -424,7 +424,7 @@
     "href": "installations.html#apache-http-server",
     "title": "Prérequis et installations",
     "section": "Apache HTTP Server",
-    "text": "Apache HTTP Server\nLa première pierre de notre environnement préliminaire d’édition est le logiciel open-source Apache. Open-source et utilisé par près de la moitié des sites web du net, Apache va nous permettre de créer notre site internet (localement) et d’y installer notre outil de gestion des données, tout en profitant de la très vaste documentation disponible pour faire fonctionner le serveur.\n\nhttps://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#A_Installer_Apache_sous_Debian_13\nhttps://www.it-connect.fr/installer-un-serveur-lamp-linux-apache-mariadb-php-sous-debian-11/#B_Lemplacement_de_la_configuration_Apache2"
+    "text": "Apache HTTP Server\nLa première pierre de notre environnement préliminaire d’édition est le logiciel open-source Apache. Open-source et utilisé par près de la moitié des sites web du net, Apache va nous permettre de créer notre site internet (localement) et d’y installer notre outil de gestion des données, tout en profitant de la très vaste documentation disponible pour faire fonctionner le serveur.\n\nDoc1 : Installer Apache sous Debian 13 - It-Connect.fr\nDoc2 : Où configurer Apache2 ? - It-Connect.fr"
   },
   {
     "objectID": "installations.html#php-hypertext-preprocessor",
@@ -445,7 +445,7 @@
     "href": "installations.html#mariadb-léquivalent-libre-de-mysql",
     "title": "Prérequis et installations",
     "section": "MariaDB: l’équivalent libre de MySQL",
-    "text": "MariaDB: l’équivalent libre de MySQL\nLa seconde pierre angulaire de notre environnement préliminaire d’édition est le dérivé communautaire et open-source de MySQL : MariaDB. Suite au rachat de Sun Microsystems (MySQL) par Oracle, MariaDB est un système de gestion de bases de données relationnelles (SGBDR) de référence, alliant haute compatibilité avec MySQL, performances optimisées et gouvernance transparente portée par la communauté. C’est sur ce socle éprouvé que reposeront le stockage et la gestion structurée de l’ensemble de nos données éditoriales.\n\nIt-Connect.fr - Installer MySQL/MariaDB sous Debian 13\nPhoenixNAP - Créer un utilisateur MariaDB avec privilèges"
+    "text": "MariaDB: l’équivalent libre de MySQL\nLa seconde pierre angulaire de notre environnement préliminaire d’édition est le dérivé communautaire et open-source de MySQL : MariaDB. Suite au rachat de Sun Microsystems (MySQL) par Oracle, MariaDB est un système de gestion de bases de données relationnelles (SGBDR) de référence, alliant haute compatibilité avec MySQL, performances optimisées et gouvernance transparente portée par la communauté. C’est sur ce socle éprouvé que reposeront le stockage et la gestion structurée de l’ensemble de nos données éditoriales.\n\nDoc1 : Installer MySQL/MariaDB sous Debian 13 - It-Connect.fr\nDoc2 : Créer un utilisateur MariaDB avec privilèges - PhoenixNAP"
   },
   {
     "objectID": "installations.html#assembler-un-poste-de-travail",

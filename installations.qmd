@@ -118,15 +118,15 @@ Cette étape ne peut être faite qu'après avoir correctement effectué l'instal
 >>> var/www/html
 ```
 
-puis, dans le dossier (renommé), aller dans :
+Renommer le dossier puis, dans le dossier, aller dans :
 
 ```
 >>> /config/database.ini
 ```
 
-définir un user / mdp / databasename puis "host=localhost"
+Une fois dans le fichier, définir un "user", un "password", un "databasename" (basiquement le nom du dossier renommé plus tôt) puis compléter la ligne "host=localhost"
 
-[image illustration]
+![Voilà à quoi doit ressembler "database.ini"](/assets/img/sc-shot_database-ini.png){width="70%" fig-align="center"}
 
 Une fois tout cela effectué, vérifions que tout fonctionne en nous connectant, via un navigateur type Firefox, à l'interface locale Oméka S via ce lien :
 
@@ -146,7 +146,26 @@ Enfin, pour opérer efficacement, nous aurons besoin de "modules". Ceux-ci perme
 
 ## Liste des modules à installer impérativement.
 
-coucou
+- **Advanced Resource Template** _(Daniel Bethereau)_ : Add new features to the resource templates to simplify and to improve the edition of resources: closed template, auto-completion, property groups, select language, lock, auto-filling, etc. 
+- **Advanced Search** _(Daniel Bethereau)_ : Improve search with new fields, aggregated properties, auto-suggest, filters, facets, specific pages, etc. 
+- **Advanced Search adapter for Solr** _(Daniel Bethereau)_ : Search Omeka resources instantly and deeply on any server with Apache Solr / Lucene, via the library Solarium
+- Annotate _(Daniel Bethereau)_ : Implement the W3C Web Annotation Ontology to let users annotate, tag, comment, rate, highlight, draw, etc. any resource in a normalized way
+- Bulk Edit _(Daniel Bethereau)_ : Add batch process to replace, remove, order, fill values suggest data, etc. to help curators to update and clean metadata over many resources quickly and easily
+- Bulk Import _(Daniel Bethereau)_ : Extensible bulk import module for xml, sql databases, spreedsheets, and json endpoints. 
+- ~~ChaoticumSeminario _(Samuel Szoniecky, Laboratoire Paragraphe)_ : Fragmentation chaotique d'un media~~ 
+- **Common** _(Daniel Bethereau)_ : Internal features used in various modules: bulk functions, form elements, view helpers, one-time methods for install, etc.
+- **CSV Import** _(Omeka Team, Daniel Bethereau)_ : Import and update content (items, item sets, media, users) from a CSV, a TSV or an ODS file
+- **Custom Vocab** _(Omeka Team)_ : Describe your resources using vocabularies you create
+- **Data Cleaning** _(Omeka Team)_ : Low-level auditing and cleaning of resource metadata 
+- **Data Visualisazion** _(Omeka Team) :  Visualize your data 
+- **Easy Admin** (Daniel Bethereau) : Manage tasks from the admin interface: install modules and themes, check database and files, bulk upload without limits, run cron tasks
+- ~~Extract Metadata _(Omeka Team)_ : Extract embedded metadata from files~~ 
+- ~~Faceted Browse _(Omeka Team)_ : Add faceted browsing to your sites~~ 
+- **Log** _(Daniel Bethereau)_ : Monitor all logging messages and background jobs directly in the admin board or in the cloud and make them translatable and easily checkable
+- **Mapper** _(Daniel Bethereau)_ : Create mappings to convert values for filling, import, export from/to spreadsheet, json and xml
+- **Mapping** _(Omeka Team)_ : Add location info to your items and sites
+- **Numeric Data Types** _(Omeka Team)_ : Add data types for numbers and dates
+- **Reference** _(Daniel Bethereau)_ :  Add glossary pages and blocks with the alphabetical indexes of specified classes and properties
 
 :::
 
