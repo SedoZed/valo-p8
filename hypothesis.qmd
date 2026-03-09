@@ -45,22 +45,20 @@ L'interface de Hypothes.is est accessible par deux moyens :
   ![Application via cette méthode, l'ajout dans l'URL surligné en jaune et avec l'interface d'ouverte à droite une fois la page chargée](/assets/img/screenshot_interface1.png)
 
 ::: {.callout-tip}
-Si vous n'avez qu'un nombre limité de pages à annoter, il est tout à fait envisageable de créer un marque-page de ladite page en appliquant la méthode mentionnée précédemment sur le lien du marque-page.
+Si vous n'avez qu'un nombre limité de pages à annoter, il est tout à fait envisageable de créer un marque-page des dites page en appliquant la méthode mentionnée précédemment directement sur le lien du marque-page.
 :::
 
 #### Via une extension de navigateur
 La méthode varie en fonction de votre navigateur, mais une fois installé la redondance n'est plus de mise. Voici quelques liens pour vous aider à installer ladite extension : 
 
   - Chrome / navigateurs basés sur Chromium : [Ajouter l’extension officielle](https://chromewebstore.google.com/detail/hypothesis-web-pdf-annota/bjfhmglciegochdpefhhlphglcehbmek)
-  - Safari : [Utiliser le bookmarklet](https://web.hypothes.is/help/installing-the-bookmarklet/)
-    - *Une aide d'installation en français est [disponible ici](https://vertigo.hypotheses.org/evaluations-et-commentaires-ouverts/tutoriel-dutilisation-de-loutil-dannotation-hypothes-is).*
   - Firefox : [Installer l’extension non-officielle](https://addons.mozilla.org/fr/firefox/addon/unofficial-hypothesis/)
 
   Une fois l’extension ou le favori installé, il suffit de l’activer sur la page web que vous souhaitez annoter.
 
-### Accéder au groupe collaboratif du laboratoire
+### Accéder à un groupe d'annotation collectif
 
-Pour rejoindre le groupe d’annotation du laboratoire Paragraphe, utilisez directement : [https://hypothes.is/groups/xkJe1Z1r/labo-paragraphe-comm](https://hypothes.is/groups/xkJe1Z1r/labo-paragraphe-comm)
+Pour rejoindre le groupe d’annotation du laboratoire Paragraphe, utilisez directement [ce lien](à créer). Autrement, il est également possible de créer ses propres groupes en allant dans  (à compléter)
 
 Dès lors qu'il sera question de poster une annotation sur le groupe, il faudra bien penser à sélectionner le groupe en question au risque de voir l'annotation apparaître dans le canal "Public" et d'avoir moins de chance d'être vue. En cliquant sur "Public" *(en haut de l'interface dynamique)*, puis sur le groupe rejoint. Si le groupe n'apparait pas, c'est qu'il n'a pas été intégré.
 
@@ -76,18 +74,12 @@ Une fois connecté à Hypopthes.is, l'interface ouverte et le groupe rejoint, il
 
 1. D'abord, s'assurer que Hypothes.is est bien lancé en vérifiant si le menu à droite de l'écran peut s'ouvrir. Si ce n'est le cas, cliquez sur votre extension ou assurez vous que votre URL est correctement modifié (cf. [Accéder à l'interface de Hypothes.is](#accéder-à-linterface-de-hypothes.is)).
 
-2. Sélectionner la partie du document à annoter en le surlignant. Une fois le surlignage effectué, une bulle va apparaître avec les options "Highlight" et "Annotate" : Le premier permet d'uniquement surligner tandis que l'autre permet de faire le surlignage ET d'annoter. La deuxièmem option est donc à privilégier.
+2. Sélectionner la partie du document à annoter en le surlignant. Une fois le surlignage effectué, une bulle va apparaître avec les options "Highlight" et "Annotate" : Le premier permet d'uniquement surligner tandis que le second **permet d'annoter l'élément** en plus de le surligner. La deuxièmem option est donc à privilégier du dialogue.
 
 3. Une fois "annotate" sélectionné, l'interface s'ouvre. Remplissez la zone de texte avec vos idées, ajoutez des mots-clés comme ("suggestion" ou "modifier" par exemple)  dans la zone en dessous. Enfin, cliquez sur "Post to [nom du groupe]". *NOTE : Si il est inscrit "Post to Public", c'est que vous êtes dans le canal Public de Hypothes.is. N'oubliez pas de le changer en haut de l'interface !*
 
 4. La note est maintenant publiée !
 
-## Instructions d'utilisation 
+## Protocole d'utilisation relatif au SVR
 
-Afin d'assurer une utilisation efficace de l'application et du processus de valorisation du laboratoire, voici quelques lignes d'instruction vis-à-vis de l'utilisation de Hypothes.is :
-
-- Les annotations peuvent être effectuées sur chacuns des sites sur lesquelles se trouvent des informations relative au laboratoire (site internet, HAL, ...).
-- L'annotation doit être accompagnée des informations à corriger (aucune exigence vis-à-vis du texte à inscrire, tant que celui-ci exprime bien les changements à apporter).
-- **Les annotations doivent impérativement être publiées dans le groupe privé du laboratoire** sans quoi celles-ci pourraient ne pas être vues.
-- N'hésitez pas à répondre aux annotations laissées par vos collègues pour approfondir si nécessaire (préciser, infirmer, etc.).
-- (Ce protocole est susceptible d'évoluer avec le temps)
+[à déterminer]
