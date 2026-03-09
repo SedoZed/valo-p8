@@ -1,5 +1,5 @@
 ---
-title: "Prérequis et installations"
+title: "Prérequis et installation"
 lang: fr
 ---
 
@@ -7,7 +7,7 @@ Le maintien opérationel du projet CartoExpert nécessite l'installation d'un po
 
 ## Constituer l'écosystème de travail
 
-Le premier point à aborder est la construction d'un poste de travail performant, fiable et confortable pour permettre à l'opérateur un travail fluide et efficace. Nous allons aborder cela en deux temps : le "hardware" et le "software".
+Le premier point à aborder est la construction d'un poste de travail performant, fiable et confortable pour permettre à l'opérateur un travail fluide et efficace. Nous allons aborder cela en deux temps : **[hardware]{.underline}** puis **[software]{.underline}**.
 
 Tout d'abord, le projet CartoExpert mènera l'opérateur à effectuer du **multitasking important** comme du développement, de la data-gestion de grande ampleur, de l'hébergement de serveur local, etc... Ainsi, un focus tout particuler doit donc être fait sur l'obtention d'une **machine suffisamment puissante**, offrant une puissance calculatoire supérieure (CPU) ainsi que suffisamment de mémoire vive (RAM). Côté stockage, rien de bien extravagant n'est requis, néanmoins un disque dur externe de 4To a été alloué au projet qu'il convient d'utiliser autant que nécessaire (tout en faisant attention aux problématiques de vol de données que cela peut engendrer). 
 

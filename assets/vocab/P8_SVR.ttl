@@ -7,9 +7,9 @@
 @prefix o: <http://omeka.org/s/vocabs/o#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix ma: <http://www.w3.org/ns/ma-ont#> .
-@prefix valo: <https://jardindesconnaissances.univ-paris8.fr/onto/labo#> .
+@prefix valo: <https://jardindesconnaissances.univ-paris8.fr/onto/valo#> .
 
-<https://jardindesconnaissances.univ-paris8.fr/onto/labo#> a owl:Ontology ;
+<https://jardindesconnaissances.univ-paris8.fr/onto/valo#> a owl:Ontology ;
     dcterms:title "Vocabulaire personnalité SVR" .
 
 # Liste des classes custom utilisée dans la base de données OMEKA S, notamment pour effectuer les modélisations
@@ -31,6 +31,16 @@ valo:Axe a rdfs:Class ;
 
 valo:Organisation a rdfs:Class ;
     rdfs:label "Organisation Non-académique" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:Orgacademique a rdfs:Class ;
+    rdfs:label "Organisation académique (Université, etc)" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:Organisation_all a rdfs:Class ;
+    rdfs:label "Tout Organisation" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
@@ -102,7 +112,7 @@ valo:Statut_Universitaire a rdfs:Class ;
 # Liste des propriétés utilisées dans la base de données OMEKA S
 
 valo:cnu a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; 
-    rdfs:label "Nomenclature CNU post-réforme 2024" ;
+    rdfs:label "Nomenclature CNU" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 

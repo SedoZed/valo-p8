@@ -3,7 +3,13 @@ title: 'Transformer des données format "humain" en format "ordinateur"'
 lang: fr
 ---
 
-Page de documentation va s'articuler en deux temps : 1=comprendre les enjeux de cette standardisation (théorie) ; 2=comment mener à bien cette standardisation
+Page de documentation va s'articuler en deux temps : 
+
+1. Comprendre les enjeux de cette standardisation (théorie) 
+2. Comment mener à bien cette standardisation
+
+# Récupération des données
+La première étape consiste donc à déterminer sur quelles sources s'appuyer = s'appuyer sur le cahier des charges
 
 Les données dans l'état actuel des choses ne pas ou peu exploitables pour de nombreuses raisons dont deux principales :
 - Les tableaux sont créés de façon à être interprété par un humain (et non par une machine).
@@ -11,29 +17,23 @@ Exemple : [inserer image]
 
 
 - Les tableaux produits utilisent des structures ou des écritures variant les unes des autres.
-Exemple : [inserer image]
+Exemple : [inserer image1] [inserer image2]
 
-Cette première majeure partie du travail consiste donc à réunir toutes ces données différentes puis de les centraliser en un seul set de données, uniforme et facilement interprétable par une machine.
-
-# Récupération des données
-La première étape consiste donc à déterminer sur quelles sources s'appuyer = s'appuyer sur le cahier des charges
-
+La première tache consiste donc à centraliser toutes ces données différentes puis de les centraliser en un seul set de données, uniforme et facilement interprétable par une machine.
 
 ## Données existantes fiables
 Rendus évaluation HCERES
 Rapports produits par le DSR
 Données externes au service (ScanR)
+DOBS ?
 
-## Données manquantes ou non-fiables
-certaines données sont manquantes ou inscrites d'une façon ne permettant pas une identification fiable (autre nomenclature, ...)
+::: {.callout-note}
 
-Solution possibles :
-- Formulaire à soumettre aux enseignants-chercheurs leur demandant de compléter les données
-- Permettre aux membres de laboratoires de consulter les données enregistrées et de faire des demandes d'édition facilement si besoin
+Au fur-et-à-mesure de votre processus de centralisation, vous constaterez que certaines informations peuvent manquer (ponctuellement ou largement). Celles-ci pourront être complétées à postériori via l'utilisation d'Oméka S (modules) ou en solicitant directement les enseignants chercheurs et les laboratoires par divers moyens (campagne de mailing, formulaires, ...)
 
+:::
 
-
-# Structuration des données liées aux enseignants-chercheurs.
+# Préparer les données pour Oméka S
 Utilisation d'un classeur "tableur" contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine. 
 
 |  Intitulé  | Dictionnaire | Définition | Encodage   | Source     | 
@@ -42,16 +42,16 @@ Utilisation d'un classeur "tableur" contenant deux feuilles, chacun avec une ori
 | foaf:givenName  | FoaF  | Prénom de l'enseignant-chercheur. | Texte brute (str) | researchers_Erua → "first_name" |
 | foaf:familyName  | FoaF  | Nom de famille de l'enseignant-chercheur. | Texte brute (str) | researchers_Erua → "surname_name" |
 | foaf:birthday | FoaF | Date de naissance de l'enseignant-chercheur. | Texte brute (str) ou date ? | Rapport HCERES → "Année de naissance" (nécessite tri) |
-| vivo:role | VIVO Ontology | Statut de l'enseignant chercheur (PR, MDF, ...) | ID Oméka* | Rapport HCERES → "Corps" (nécessite tri) |
-| dcterms:identifier | Dublin Core | Numéro unique ORCID de l'enseignant-chercheur lorsque celui-ci est disponible. | Texte brute (str) | --- |
+| curation:status | Curation | Statut de l'enseignant chercheur (PR, MDF, ...) | ID Oméka* | Rapport HCERES → "Corps" (nécessite tri) |
+| valo:orcid | Dublin Core | Numéro unique ORCID de l'enseignant-chercheur lorsque celui-ci est disponible. | Texte brute (str) | --- |
 | dcterms:isPartOf | Dublin Core | Laboratoire auquel est rattaché l'enseignant-chercheur. | ID Oméka* | researchers_Erua → research_units |
 | dcterms:hasPart | Dublin Core | Sous-unité du laboratoire dans lequel l'enseignant-chercheur opère. | ID Oméka* |  Rapport HCERES → "Nom de l'équipe interne n°X" (nécessite tri) |
-| valo:domaine_hceres | Dict. personnalisé | Panels disciplinaires dans lesquels le chercheur publie (selon la nomenclature du [HCERES](https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf).) | Texte brute (str) |  --- |
-| valo:obj_recherche | Dict. personnalisé | L'objet de recherche de l'enseignant-chercheur. | Texte brute (str) | --- |
-| valo:hasAxe | Dict. personnalisé | Les axes de recherche portés par l'enseignant-chercheur. | Texte brute (str) | --- |
+| valo:dbt_research | Dict. personnalisé | Date de début en tant que chercheur | Texte brute (str) / date ? | --- |
+| valo:cnu | Dict. personnalisé | Code CNU affilié à l'enseignant chercheur | ID Oméka* | --- |
+| valo:domaine_hceres | Dict. personnalisé | Panels disciplinaires dans lesquels le chercheur publie (selon la nomenclature du [HCERES](https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf).) | Texte brute (str) | --- |
 | valo:expertise | Dict. personnalisé | Expertises reconnus de l'enseignant-chercheur. | Texte brute (str) | --- |
 | valo:dir_these | Dict. personnalisé | Nombre de doctorants ayant publié une thèse sous la supervision de l'enseignant-chercheur. | Texte brute (str) | --- |
-| valo:ecole_docto | Dict. personnalisé | Ecoles doctorales dont l'enseignant-chercheur est membre. | Texte brute (str) ou ID Oméka* ? | --- |
+| valo:ecole_doct | Dict. personnalisé | Ecoles doctorales dont l'enseignant-chercheur est membre. | Texte brute (str) ou ID Oméka* ? | --- |
 | valo:partenariats | Dict. personnalisé | Identifiants des "items" de la bdd correspondant aux partenaires non-académiques avec lesquelles l'enseignant-chercheur a travaillé. | ID Oméka* | --- |
 | foaf:mbox | FoaF | Boite mail professionnelle de l'enseignant-chercheur. | Texte brute (str) | researchers_Erua → professional_email |
 
@@ -69,16 +69,15 @@ Utilisation d'un classeur "tableur" contenant deux feuilles, chacun avec une ori
 | valo:domaine_hceres | Dict. personnalisé | Panels scientifiques revendiqué par le labratoire, selon la nomenclature du [HCERES](https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf). | Texte brute (str) | --- |
 | valo:domaine_erc | Dict. personnalisé | Panels scientifiques revendiqué par le laboatoire, selon la nomenclature [ERC](https://erc.europa.eu/sites/default/files/2023-03/ERC_panel_structure_2024_calls.pdf) | Texte brute (str) | --- |
 | valo:obj_recherche | Dict. personnalisé | Objet de recherche du laboratoire. | Texte brute (str) | Labos_Paris8 → "Objets de la recherche" |
-| valo:hasAxe | Dict. personnalisé | Les axes de recherche du laboratoire. | ID Oméka* | Labos_Paris8 → "Axes de recherche" |
+| valo:axeRech | Dict. personnalisé | Les axes de recherche du laboratoire. | ID Oméka* | Labos_Paris8 → "Axes de recherche" |
 | valo:heywords | Dict. personnalisé | Mots-clés renseignés par les laboratoires dans le rendu HCERES des laboratoires. | ID Oméka* ? | --- |
 | valo:expertise | Dict. personnalisé | Domaines de maitrise dont lesquels le laboratoire est reconnu. | Texte brute (str) | --- |
 | foaf:mbox | FoaF | Courriel pour contacter directement le laboratoire. | Texte brute (str) | --- |
 | valo:plateforme_txt | Dict. personnalisé | Plateformes déclarées par les laboratoire n'ayant pas été convertis en "item" sur Omeka S** | Texte brute (str) | Labos_Paris8 → "Plateformes" |
 | valo:plateforme_internalid | Dict. personnalisé | Plateformes déclarées par les laboratoire ayant été convertis en "item" sur Omeka S** | Texte brute (str) | Labos_Paris8 → "Plateformes" |
-| dcterms:type | Dublin Core | Désigne l'ensemble des équipements, instruments, corpus, bibliothèques, ... utilisés par le laboratoire. | Texte brute (str) | --- |
-| valo:ecole_docto | Dict. personnalisé | Ecoles doctorales dont l'enseignant-chercheur est membre. | Texte brute (str) ou ID Oméka* ? | --- |
+| valo:ecole_doct | Dict. personnalisé | Ecoles doctorales dont l'enseignant-chercheur est membre. | Texte brute (str) ou ID Oméka* ? | --- |
 | valo:dir_these | Dict. personnalisé | Nombre de doctorants ayant publié une thèse sous la supervision de l'enseignant-chercheur. | Texte brute (str) | --- |
-| valo:collab | Dict. personnalisé | Partenariats de recherche avec le monde non-académique. (entrer leur ID Oméka) | ID Oméka* | --- |
+| valo:partenariats | Dict. personnalisé | Partenariats de recherche avec le monde non-académique. (entrer leur ID Oméka) | ID Oméka* | --- |
 | valo:idHAL | Dict. personnalisé | Identifiant unique HAL du laboratoire, permettant à postériori l'extraction des publications du laboratoire. | Texte brute (str) | --- |
 
 *ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d'effectuer des liens internes entre les objets dans la BDD.
@@ -97,4 +96,9 @@ ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d
 - https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
 
 # La base de donnée relationnelle
-En stand-by pour le moment, dans l'attente d'accès à plus de droits.
+
+::: {.callout-caution}
+À partir d'ici sera mentionné le logiciel [Oméka S](bdd_omeka.qmd). Il est donc conseillé d'avoir, à ce stade, eu l'occasion de manipuler l'interface Oméka S.
+:::
+
+Work in progress...

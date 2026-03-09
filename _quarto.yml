@@ -25,11 +25,11 @@ website:
           href: installations.qmd
         - text: "Outils utiles"
           href: index.qmd#outil-utiles
-      - text: "Standardiser les données en CSV"
+      - text: "Rassembler les données"
         href: standardiser_data2csv.qmd
-      - text: "Modélisation les données"
+      - text: "Modéliser les données"
         menu:
-        - text: "Ecrire le dictionnaire de métadonnées"
+        - text: "Définir l'ontologie des métadonnées"
           href: bdd_omeka.qmd
         - text: "Importer et interconnecter les données"
           href: bdd_omeka.qmd

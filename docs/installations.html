@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Prérequis et installations – CartoExpert</title>
+<title>Prérequis et installation – CartoExpert</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,21 +109,10 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-préparation-des-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Préparation des données</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-préparation-des-données">    
-        <li>
-    <a class="dropdown-item" href="./sources_donnees.html">
- <span class="dropdown-text">Repérer et nettoyer les données</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./standardiser_data2csv.html"> 
+<span class="menu-text">Standardiser les données en CSV</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./standardiser_data2csv.html">
- <span class="dropdown-text">Standardiser les données en CSV</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modélisation-les-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Modélisation les données</span>
@@ -191,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Prérequis et installations</h1>
+<h1 class="title">Prérequis et installation</h1>
 </div>
 
 
@@ -211,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Le maintien opérationel du projet CartoExpert nécessite l’installation d’un poste de travail particulier, avec des paramètres et des contraintes physiques et logicielle à prendre en compte. Cette page de la documentation se focalisera donc sur ces prérequis à effectuer, et sur les installations à effectuer.</p>
 <section id="constituer-lécosystème-de-travail" class="level2">
 <h2 class="anchored" data-anchor-id="constituer-lécosystème-de-travail">Constituer l’écosystème de travail</h2>
-<p>Le premier point à aborder est la construction d’un poste de travail performant, fiable et confortable pour permettre à l’opérateur un travail fluide et efficace. Nous allons aborder cela en deux temps : le “hardware” et le “software”.</p>
+<p>Le premier point à aborder est la construction d’un poste de travail performant, fiable et confortable pour permettre à l’opérateur un travail fluide et efficace. Nous allons aborder cela en deux temps : <strong><u>hardware</u></strong> puis <strong><u>software</u></strong>.</p>
 <p>Tout d’abord, le projet CartoExpert mènera l’opérateur à effectuer du <strong>multitasking important</strong> comme du développement, de la data-gestion de grande ampleur, de l’hébergement de serveur local, etc… Ainsi, un focus tout particuler doit donc être fait sur l’obtention d’une <strong>machine suffisamment puissante</strong>, offrant une puissance calculatoire supérieure (CPU) ainsi que suffisamment de mémoire vive (RAM). Côté stockage, rien de bien extravagant n’est requis, néanmoins un disque dur externe de 4To a été alloué au projet qu’il convient d’utiliser autant que nécessaire (tout en faisant attention aux problématiques de vol de données que cela peut engendrer).</p>
 <p>À côté de ça, notons qu’il est fortement recommandé d’accompagner le PC de deux écrans minimum, afin de faciliter la navigation entre les multiples fenêtres. Également, parallèlement au HDD 4To, une clé USB est recommandé pour plus de flexibilité (installation/réparation d’OS, …).</p>
 <hr>
@@ -359,7 +348,12 @@ Mise en garde
 <p>Renommer le dossier puis, dans le dossier, aller dans :</p>
 <pre><code>&gt;&gt;&gt; /config/database.ini</code></pre>
 <p>Une fois dans le fichier, définir un “user”, un “password”, un “databasename” (basiquement le nom du dossier renommé plus tôt) puis compléter la ligne “host=localhost”</p>
-<p>[image illustration]sc-shot_database-ini.png <img src="./assets/img/sc-shot_database-ini.png" class="img-fluid quarto-figure quarto-figure-center" style="width:70.0%" alt="Voilà à quoi doit ressembler “database.ini”"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/img/sc-shot_database-ini.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Voilà à quoi doit ressembler “database.ini”</figcaption>
+</figure>
+</div>
 <p>Une fois tout cela effectué, vérifions que tout fonctionne en nous connectant, via un navigateur type Firefox, à l’interface locale Oméka S via ce lien :</p>
 <pre><code>&gt;&gt;&gt; localhost/[nom_dossier]/admin</code></pre>
 <p>Si l’interface obtenue est similaire à celle ci-dessus, c’est-à-dire une page de connexion, ça veut dire que l’intallation a été correctement effecutée ! À l’avenir, l’accès à l’interface se fera toujours par l’URL cité précédemment.</p>

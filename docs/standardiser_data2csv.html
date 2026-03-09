@@ -109,21 +109,10 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-préparation-des-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Préparation des données</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-préparation-des-données">    
-        <li>
-    <a class="dropdown-item" href="./sources_donnees.html">
- <span class="dropdown-text">Repérer et nettoyer les données</span></a>
+  <li class="nav-item">
+    <a class="nav-link active" href="./standardiser_data2csv.html" aria-current="page"> 
+<span class="menu-text">Standardiser les données en CSV</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./standardiser_data2csv.html">
- <span class="dropdown-text">Standardiser les données en CSV</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modélisation-les-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Modélisation les données</span>
@@ -174,7 +163,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#structuration-des-données-liées-aux-enseignants-chercheurs." id="toc-structuration-des-données-liées-aux-enseignants-chercheurs." class="nav-link active" data-scroll-target="#structuration-des-données-liées-aux-enseignants-chercheurs.">Structuration des données liées aux enseignants-chercheurs.</a></li>
+  <li><a href="#récupération-des-données" id="toc-récupération-des-données" class="nav-link active" data-scroll-target="#récupération-des-données">Récupération des données</a>
+  <ul class="collapse">
+  <li><a href="#données-existantes-fiables" id="toc-données-existantes-fiables" class="nav-link" data-scroll-target="#données-existantes-fiables">Données existantes fiables</a></li>
+  </ul></li>
+  <li><a href="#préparer-les-données-pour-oméka-s" id="toc-préparer-les-données-pour-oméka-s" class="nav-link" data-scroll-target="#préparer-les-données-pour-oméka-s">Préparer les données pour Oméka S</a></li>
   <li><a href="#structuration-des-données-liées-aux-laboratoires-de-paris-8." id="toc-structuration-des-données-liées-aux-laboratoires-de-paris-8." class="nav-link" data-scroll-target="#structuration-des-données-liées-aux-laboratoires-de-paris-8.">Structuration des données liées aux laboratoires de Paris 8.</a>
   <ul class="collapse">
   <li><a href="#structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés." id="toc-structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés." class="nav-link" data-scroll-target="#structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés.">Structuration des données liées aux partenaires non-académique déjà notés.</a></li>
@@ -206,9 +199,39 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Une fois les différentes sources</p>
-<section id="structuration-des-données-liées-aux-enseignants-chercheurs." class="level1">
-<h1>Structuration des données liées aux enseignants-chercheurs.</h1>
+<p>Page de documentation va s’articuler en deux temps :</p>
+<ol type="1">
+<li>Comprendre les enjeux de cette standardisation (théorie)</li>
+<li>Comment mener à bien cette standardisation</li>
+</ol>
+<section id="récupération-des-données" class="level1">
+<h1>Récupération des données</h1>
+<p>La première étape consiste donc à déterminer sur quelles sources s’appuyer = s’appuyer sur le cahier des charges</p>
+<p>Les données dans l’état actuel des choses ne pas ou peu exploitables pour de nombreuses raisons dont deux principales : - Les tableaux sont créés de façon à être interprété par un humain (et non par une machine). Exemple : [inserer image]</p>
+<ul>
+<li>Les tableaux produits utilisent des structures ou des écritures variant les unes des autres. Exemple : [inserer image1] [inserer image2]</li>
+</ul>
+<p>La première tache consiste donc à centraliser toutes ces données différentes puis de les centraliser en un seul set de données, uniforme et facilement interprétable par une machine.</p>
+<section id="données-existantes-fiables" class="level2">
+<h2 class="anchored" data-anchor-id="données-existantes-fiables">Données existantes fiables</h2>
+<p>Rendus évaluation HCERES Rapports produits par le DSR Données externes au service (ScanR) DOBS ?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Au fur-et-à-mesure de votre processus de centralisation, vous constaterez que certaines informations peuvent manquer (ponctuellement ou largement). Celles-ci pourront être complétées à postériori via l’utilisation d’Oméka S (modules) ou en solicitant directement les enseignants chercheurs et les laboratoires par divers moyens (campagne de mailing, formulaires, …)</p>
+</div>
+</div>
+</section>
+</section>
+<section id="préparer-les-données-pour-oméka-s" class="level1">
+<h1>Préparer les données pour Oméka S</h1>
 <p>Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.</p>
 <table class="caption-top table">
 <thead>
@@ -250,14 +273,14 @@ ul.task-list li input[type="checkbox"] {
 <td>Rapport HCERES → “Année de naissance” (nécessite tri)</td>
 </tr>
 <tr class="odd">
-<td>vivo:role</td>
-<td>VIVO Ontology</td>
+<td>curation:status</td>
+<td>Curation</td>
 <td>Statut de l’enseignant chercheur (PR, MDF, …)</td>
 <td>ID Oméka*</td>
 <td>Rapport HCERES → “Corps” (nécessite tri)</td>
 </tr>
 <tr class="even">
-<td>dcterms:identifier</td>
+<td>valo:orcid</td>
 <td>Dublin Core</td>
 <td>Numéro unique ORCID de l’enseignant-chercheur lorsque celui-ci est disponible.</td>
 <td>Texte brute (str)</td>
@@ -278,23 +301,23 @@ ul.task-list li input[type="checkbox"] {
 <td>Rapport HCERES → “Nom de l’équipe interne n°X” (nécessite tri)</td>
 </tr>
 <tr class="odd">
-<td>valo:domaine_hceres</td>
+<td>valo:dbt_research</td>
 <td>Dict. personnalisé</td>
-<td>Panels disciplinaires dans lesquels le chercheur publie (selon la nomenclature du <a href="https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf">HCERES</a>.)</td>
-<td>Texte brute (str)</td>
+<td>Date de début en tant que chercheur</td>
+<td>Texte brute (str) / date ?</td>
 <td>—</td>
 </tr>
 <tr class="even">
-<td>valo:obj_recherche</td>
+<td>valo:cnu</td>
 <td>Dict. personnalisé</td>
-<td>L’objet de recherche de l’enseignant-chercheur.</td>
-<td>Texte brute (str)</td>
+<td>Code CNU affilié à l’enseignant chercheur</td>
+<td>ID Oméka*</td>
 <td>—</td>
 </tr>
 <tr class="odd">
-<td>valo:hasAxe</td>
+<td>valo:domaine_hceres</td>
 <td>Dict. personnalisé</td>
-<td>Les axes de recherche portés par l’enseignant-chercheur.</td>
+<td>Panels disciplinaires dans lesquels le chercheur publie (selon la nomenclature du <a href="https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf">HCERES</a>.)</td>
 <td>Texte brute (str)</td>
 <td>—</td>
 </tr>
@@ -313,7 +336,7 @@ ul.task-list li input[type="checkbox"] {
 <td>—</td>
 </tr>
 <tr class="even">
-<td>valo:ecole_docto</td>
+<td>valo:ecole_doct</td>
 <td>Dict. personnalisé</td>
 <td>Ecoles doctorales dont l’enseignant-chercheur est membre.</td>
 <td>Texte brute (str) ou ID Oméka* ?</td>
@@ -356,62 +379,62 @@ ul.task-list li input[type="checkbox"] {
 <td>Dublin Core</td>
 <td>Nom de l’objet dans la bdd. Constitue généralement un diminutif communément utilisé.</td>
 <td>Texte brute (str)</td>
-<td>Labos_Paris8 → “Acronyme”</td>
+<td>Labos_Paris8 → “Acronyme” ; Rapports HCERES</td>
 </tr>
 <tr class="even">
 <td>dcterms:alternative</td>
 <td>Dublin Core</td>
 <td>Nom alternatif (souvent le nom complet) du laboratoire.</td>
 <td>Texte brute (str)</td>
-<td>—</td>
+<td>Labos_Paris8 → “Intitulé” ; Rapports HCERES</td>
 </tr>
 <tr class="odd">
-<td>dcterms:idRNSR</td>
+<td>valo:idRNSR</td>
 <td>Dublin Core</td>
 <td>Numéro unique RNSR du laboratoire.</td>
 <td>Texte brute (str)</td>
-<td>—</td>
+<td>ScanR (module Oméka S)</td>
 </tr>
 <tr class="even">
+<td>valo:hasAxe</td>
+<td>Dict. personnalisé</td>
+<td>Ensemble des sous-équipes d’un laboratoire</td>
+<td>ID Oméka*</td>
+<td>Rapports HCERES</td>
+</tr>
+<tr class="odd">
 <td>valo:domaine_hceres</td>
 <td>Dict. personnalisé</td>
 <td>Panels scientifiques revendiqué par le labratoire, selon la nomenclature du <a href="https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf">HCERES</a>.</td>
 <td>Texte brute (str)</td>
 <td>—</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>valo:domaine_erc</td>
 <td>Dict. personnalisé</td>
 <td>Panels scientifiques revendiqué par le laboatoire, selon la nomenclature <a href="https://erc.europa.eu/sites/default/files/2023-03/ERC_panel_structure_2024_calls.pdf">ERC</a></td>
 <td>Texte brute (str)</td>
 <td>—</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>valo:obj_recherche</td>
 <td>Dict. personnalisé</td>
 <td>Objet de recherche du laboratoire.</td>
 <td>Texte brute (str)</td>
-<td>—</td>
+<td>Labos_Paris8 → “Objets de la recherche”</td>
 </tr>
-<tr class="odd">
-<td>valo:hasAxe</td>
+<tr class="even">
+<td>valo:axeRech</td>
 <td>Dict. personnalisé</td>
 <td>Les axes de recherche du laboratoire.</td>
 <td>ID Oméka*</td>
-<td>—</td>
+<td>Labos_Paris8 → “Axes de recherche”</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>valo:heywords</td>
 <td>Dict. personnalisé</td>
 <td>Mots-clés renseignés par les laboratoires dans le rendu HCERES des laboratoires.</td>
-<td>Texte brute (str) ou ID Oméka* ?</td>
-<td>—</td>
-</tr>
-<tr class="odd">
-<td>valo:keythemes</td>
-<td>Dict. personnalisé</td>
-<td>Thèmes du laboratoire renseignés dans l’annexe Mapping of research portfolio and partner organization.</td>
-<td>Texte brute (str)</td>
+<td>ID Oméka* ?</td>
 <td>—</td>
 </tr>
 <tr class="even">
@@ -429,34 +452,41 @@ ul.task-list li input[type="checkbox"] {
 <td>—</td>
 </tr>
 <tr class="even">
-<td>dcterms:type</td>
-<td>Dublin Core</td>
-<td>Désigne l’ensemble des équipements, instruments, corpus, bibliothèques, … utilisés par le laboratoire.</td>
+<td>valo:plateforme_txt</td>
+<td>Dict. personnalisé</td>
+<td>Plateformes déclarées par les laboratoire n’ayant pas été convertis en “item” sur Omeka S**</td>
 <td>Texte brute (str)</td>
-<td>—</td>
+<td>Labos_Paris8 → “Plateformes”</td>
 </tr>
 <tr class="odd">
-<td>valo:ecole_docto</td>
+<td>valo:plateforme_internalid</td>
+<td>Dict. personnalisé</td>
+<td>Plateformes déclarées par les laboratoire ayant été convertis en “item” sur Omeka S**</td>
+<td>Texte brute (str)</td>
+<td>Labos_Paris8 → “Plateformes”</td>
+</tr>
+<tr class="even">
+<td>valo:ecole_doct</td>
 <td>Dict. personnalisé</td>
 <td>Ecoles doctorales dont l’enseignant-chercheur est membre.</td>
 <td>Texte brute (str) ou ID Oméka* ?</td>
 <td>—</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>valo:dir_these</td>
 <td>Dict. personnalisé</td>
 <td>Nombre de doctorants ayant publié une thèse sous la supervision de l’enseignant-chercheur.</td>
 <td>Texte brute (str)</td>
 <td>—</td>
 </tr>
-<tr class="odd">
-<td>valo:collab</td>
+<tr class="even">
+<td>valo:partenariats</td>
 <td>Dict. personnalisé</td>
 <td>Partenariats de recherche avec le monde non-académique. (entrer leur ID Oméka)</td>
 <td>ID Oméka*</td>
 <td>—</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>valo:idHAL</td>
 <td>Dict. personnalisé</td>
 <td>Identifiant unique HAL du laboratoire, permettant à postériori l’extraction des publications du laboratoire.</td>
@@ -465,7 +495,8 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD.</p>
+<p>*ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD.</p>
+<p>**Choix a été fait de convertir ou non les plateformes déclarées par les laboratoires en item en fonction de s’il s’agit d’une “entité” ou non (une chaine YouTube n’est pas une entité ; une start-up en est une).</p>
 <section id="structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés." class="level2">
 <h2 class="anchored" data-anchor-id="structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés.">Structuration des données liées aux partenaires non-académique déjà notés.</h2>
 <p>Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.</p>
@@ -482,7 +513,20 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="la-base-de-donnée-relationnelle" class="level1">
 <h1>La base de donnée relationnelle</h1>
-<p>En stand-by pour le moment, dans l’attente d’accès à plus de droits.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mise en garde
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>À partir d’ici sera mentionné le logiciel <a href="./bdd_omeka.html">Oméka S</a>. Il est donc conseillé d’avoir, à ce stade, eu l’occasion de manipuler l’interface Oméka S.</p>
+</div>
+</div>
+<p>Work in progress…</p>
 
 
 </section>

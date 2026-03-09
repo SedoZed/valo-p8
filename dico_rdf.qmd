@@ -3,15 +3,33 @@ title: "Ecrire le dictionnaire de métadonnées"
 lang: fr
 ---
 
-Pour que le projet de cartographie puisse fonctionner, nous allons faire appel à ce que l'on appelle le "web sémantique". Cela consiste à définir en quoi consiste X donnée d'un document (XML, CSV, ...). A l'internaitonal, il existe des dictionnaires utilisés unanimement (Dublin Core, FoaF, etc) mais il est également possible de créer un dictionnaire propre au projet.
+<br>
 
-# Créer le dictionnaire personnalisé
-Partir des données ; ce qu'elles représentent d'un pdv humain (nom, prénom, titre, ...), puis regarder s'il existe dans les autres dictionnaires internationaux des équivalents de nommage (foaf:firstName, dcterms:titmle, ...), sinon créer les propriétés / les classes correspondantes.
+Pour que les **données** puisses être **mises en relation par la machine**, il faut que cette dernière soit capable d'**interpréter les éléments constituant la base**. En effet, là où notre vision humaine interprète naturellement qu'une personne est un "être vivant" avec un nom, un prénom, une ou plusieurs origines et un age, **la machine**, elle, **en est incapable** par défaut. Ainsi, expliquer à la machine que telle entité appartient au groupe "être vivant", qu'une chaine de caractères correspond à un prénom ou que tels nombres correspondent à un age est une composante primordiale.
 
-## Présentation du dictionnaire personnalisé de la DSR
+Pour ce faire, comme l'humanité l'a fait tout au long de son histoire pour définir les propriétés et les groupements d'objets (vivant ou non), nous allons faire appel à des **ontologies** : des structures formelles qui définissent des **concepts** et leurs **propriétés**  — un peu comme un dictionnaire enrichi pour la machine. C'est là tout l'intérêt de ce que l'on appelle le "**web sémantique**". 
+
+# Définir les dictionnaires à utiliser
+Ontologies internationales très largement utilisés comme [Dublin Core](https://www.bnf.fr/fr/dublin-core) ou [Friend of a Friend](https://fr.wikipedia.org/wiki/FOAF), mais également création d'un vocabulaire custom qui réponds à des besoins spécifiques, comme ceux de la DSR par exemple.
+
+Préfixe, pour différencier chaque dictionnaire utilisé car plusieurs propriétés ou classes peuvent s'écrire de la même façon mais ont leur sens propre. Le préfixe permet de les différencier.
+
+Partir des données ; ce qu'elles représentent d'un pdv humain (nom, prénom, titre, ...), puis regarder s'il existe dans les autres dictionnaires internationaux des équivalents de nommage (foaf:firstName, dcterms:title, ...), sinon créer les propriétés / les classes correspondantes.
+
+## Exemples de structures dans un document d'ontologie
+
+**Définition des préfixes / des vocabulaires utilisés (owl, ...)**
+```
+@prefix valo: <https://jardindesconnaissances.univ-paris8.fr/onto/labo#> .
+```
+
+**Titrage de l'ontologie**
+```ttl
+<https://jardindesconnaissances.univ-paris8.fr/onto/labo#> a owl:Ontology ;
+    dcterms:title "Vocabulaire personnalité SVR" .
+```
 
 **Structure d'une classe**
-
 ```ttl
 valo:NewClass a rdfs:Class ;
     rdfs:label "Nom complet de la classe" ;
@@ -22,8 +40,8 @@ valo:NewClass a rdfs:Class ;
 **Structure de propriété**
 
 ```ttl
-valo:idHAL a rdf:Property ;
-    rdfs:label "ID HAL" ;
+valo:NewProperty a rdf:Property ;
+    rdfs:label "Nom complet de la propriété" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 ```

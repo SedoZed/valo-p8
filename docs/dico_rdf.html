@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b83643112d1d985699274c310a6c44a8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-66a63c344f183a26081cdb80a294f993.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -109,21 +109,10 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-préparation-des-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Préparation des données</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-préparation-des-données">    
-        <li>
-    <a class="dropdown-item" href="./sources_donnees.html">
- <span class="dropdown-text">Repérer et nettoyer les données</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./standardiser_data2csv.html"> 
+<span class="menu-text">Standardiser les données en CSV</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./standardiser_data2csv.html">
- <span class="dropdown-text">Standardiser les données en CSV</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modélisation-les-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Modélisation les données</span>
@@ -169,7 +158,18 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sur cette page</h2>
+   
+  <ul>
+  <li><a href="#définir-les-dictionnaires-à-utiliser" id="toc-définir-les-dictionnaires-à-utiliser" class="nav-link active" data-scroll-target="#définir-les-dictionnaires-à-utiliser">Définir les dictionnaires à utiliser</a>
+  <ul class="collapse">
+  <li><a href="#exemples-de-structures-dans-un-document-dontologie" id="toc-exemples-de-structures-dans-un-document-dontologie" class="nav-link" data-scroll-target="#exemples-de-structures-dans-un-document-dontologie">Exemples de structures dans un document d’ontologie</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -192,19 +192,29 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Pour que le projet de cartographie puisse fonctionner, nous allons faire appel à ce que l’on appelle le “web sémantique”. Cela consiste à définir en quoi consiste X donnée d’un document (XML, CSV, …). A l’internaitonal, il existe des dictionnaires utilisés unanimement (Dublin Core, FoaF, etc) mais il est également possible de créer un dictionnaire propre au projet.</p>
-<section id="créer-le-dictionnaire-personnalisé" class="level1">
-<h1>Créer le dictionnaire personnalisé</h1>
-<p>Partir des données ; ce qu’elles représentent d’un pdv humain (nom, prénom, titre, …), puis regarder s’il existe dans les autres dictionnaires internationaux des équivalents de nommage (foaf:firstName, dcterms:titmle, …), sinon créer les propriétés / les classes correspondantes.</p>
-<section id="présentation-du-dictionnaire-personnalisé-de-la-dsr" class="level2">
-<h2 class="anchored" data-anchor-id="présentation-du-dictionnaire-personnalisé-de-la-dsr">Présentation du dictionnaire personnalisé de la DSR</h2>
-<p>Structure d’une classe</p>
+<p><br></p>
+<p>Pour que les <strong>données</strong> puisses être <strong>mises en relation par la machine</strong>, il faut que cette dernière soit capable d’<strong>interpréter les éléments constituant la base</strong>. En effet, là où notre vision humaine interprète naturellement qu’une personne est un “être vivant” avec un nom, un prénom, une ou plusieurs origines et un age, <strong>la machine</strong>, elle, <strong>en est incapable</strong> par défaut. Ainsi, expliquer à la machine que telle entité appartient au groupe “être vivant”, qu’une chaine de caractères correspond à un prénom ou que tels nombres correspondent à un age est une composante primordiale.</p>
+<p>Pour ce faire, comme l’humanité l’a fait tout au long de son histoire pour définir les propriétés et les groupements d’objets (vivant ou non), nous allons faire appel à des <strong>ontologies</strong> : des structures formelles qui définissent des <strong>concepts</strong> et leurs <strong>propriétés</strong> — un peu comme un dictionnaire enrichi pour la machine. C’est là tout l’intérêt de ce que l’on appelle le “<strong>web sémantique</strong>”.</p>
+<section id="définir-les-dictionnaires-à-utiliser" class="level1">
+<h1>Définir les dictionnaires à utiliser</h1>
+<p>Ontologies internationales très largement utilisés comme <a href="https://www.bnf.fr/fr/dublin-core">Dublin Core</a> ou <a href="https://fr.wikipedia.org/wiki/FOAF">Friend of a Friend</a>, mais également création d’un vocabulaire custom qui réponds à des besoins spécifiques, comme ceux de la DSR par exemple.</p>
+<p>Préfixe, pour différencier chaque dictionnaire utilisé car plusieurs propriétés ou classes peuvent s’écrire de la même façon mais ont leur sens propre. Le préfixe permet de les différencier.</p>
+<p>Partir des données ; ce qu’elles représentent d’un pdv humain (nom, prénom, titre, …), puis regarder s’il existe dans les autres dictionnaires internationaux des équivalents de nommage (foaf:firstName, dcterms:title, …), sinon créer les propriétés / les classes correspondantes.</p>
+<section id="exemples-de-structures-dans-un-document-dontologie" class="level2">
+<h2 class="anchored" data-anchor-id="exemples-de-structures-dans-un-document-dontologie">Exemples de structures dans un document d’ontologie</h2>
+<p><strong>Définition des préfixes / des vocabulaires utilisés (owl, …)</strong></p>
+<pre><code>@prefix valo: &lt;https://jardindesconnaissances.univ-paris8.fr/onto/labo#&gt; .</code></pre>
+<p><strong>Titrage de l’ontologie</strong></p>
+<pre class="ttl"><code>&lt;https://jardindesconnaissances.univ-paris8.fr/onto/labo#&gt; a owl:Ontology ;
+    dcterms:title "Vocabulaire personnalité SVR" .</code></pre>
+<p><strong>Structure d’une classe</strong></p>
 <pre class="ttl"><code>valo:NewClass a rdfs:Class ;
     rdfs:label "Nom complet de la classe" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .</code></pre>
-<pre class="ttl"><code>valo:idHAL a rdf:Property ;
-    rdfs:label "ID HAL" ;
+<p><strong>Structure de propriété</strong></p>
+<pre class="ttl"><code>valo:NewProperty a rdf:Property ;
+    rdfs:label "Nom complet de la propriété" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .</code></pre>
 
