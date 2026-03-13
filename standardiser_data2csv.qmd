@@ -3,7 +3,7 @@ title: 'Transformer des données format "humain" en format "ordinateur"'
 lang: fr
 ---
 
-Page de documentation va s'articuler en deux temps : 
+Page de documentation va s'articuler en deux temps :
 
 1. Comprendre les enjeux de cette standardisation (théorie) 
 2. Comment mener à bien cette standardisation

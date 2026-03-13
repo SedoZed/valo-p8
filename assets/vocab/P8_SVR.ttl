@@ -19,6 +19,11 @@ valo:EnseignantChercheur a rdfs:Class ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
+valo:EnseignantChercheurOutsider a rdfs:Class ;
+    rdfs:label "Enseignants-Chercheurs externes" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
 valo:Laboratoire a rdfs:Class ;
     rdfs:label "Laboratoires de Paris 8" ;
     rdfs:domain o:Resource ;
@@ -40,7 +45,7 @@ valo:Orgacademique a rdfs:Class ;
     vs:term_status "experimental" .
 
 valo:Organisation_all a rdfs:Class ;
-    rdfs:label "Tout Organisation" ;
+    rdfs:label "Organisations (toutes)" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 

@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b83643112d1d985699274c310a6c44a8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-66a63c344f183a26081cdb80a294f993.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -109,32 +109,21 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-préparation-des-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Préparation des données</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-préparation-des-données">    
-        <li>
-    <a class="dropdown-item" href="./sources_donnees.html">
- <span class="dropdown-text">Repérer et nettoyer les données</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./standardiser_data2csv.html"> 
+<span class="menu-text">Rassembler les données</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./standardiser_data2csv.html">
- <span class="dropdown-text">Standardiser les données en CSV</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modélisation-les-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Modélisation les données</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modéliser-les-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Modéliser les données</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-modélisation-les-données">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-modéliser-les-données">    
         <li>
     <a class="dropdown-item" href="./bdd_omeka.html">
- <span class="dropdown-text">Ecrire le dictionnaire de métadonnées</span></a>
+ <span class="dropdown-text">Définir l’ontologie des métadonnées</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./newfile2.qmd">
+    <a class="dropdown-item" href="./bdd_omeka.html">
  <span class="dropdown-text">Importer et interconnecter les données</span></a>
   </li>  
     </ul>
@@ -169,7 +158,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sur cette page</h2>
+   
+  <ul>
+  <li><a href="#exemple-dutilisation" id="toc-exemple-dutilisation" class="nav-link active" data-scroll-target="#exemple-dutilisation">Exemple d’utilisation</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -193,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>DataMerge est un outil artisanale conçu pour simplifier et fiabiliser la fusion de données issues de plusieurs fichiers Excel. Il permet d’associer automatiquement des informations provenant d’un fichier source vers un fichier cible en s’appuyant sur des clés de correspondance choisies par l’utilisateur (souvent un nom de famille). Même s’il reste rudimentaire, DataMerge accélère la collecte d’informations provenant de plusieurs tableurs en supprimant une partie des manipulations manuelles répétitives, longues et susceptibles de générer des erreurs.</p>
-<p>La conception de ce script a, avant tout, été motivé par l’idée d’effectuer cette automatisation localement plutôt que d’utiliser des algorithmes non-propriétaire dans un contexte où les données traitées sont souvent sensibles (données personnelles, données confidentielles, etc…). L’ensemble des fichiers permettant le fonctionnement du script sont disponible sur le GitHub du projet. Enfin, il est très programme que DataMerge soit amené à évoluer à l’avenir, auquel cas les informations d’utilisation seront mise à jour sur cette page?=.</p>
+<p>La conception de ce script a, avant tout, été motivé par l’idée d’effectuer cette automatisation localement plutôt que d’utiliser des algorithmes non-propriétaire dans un contexte où les données traitées sont souvent sensibles (données personnelles, données confidentielles, etc…). L’ensemble des fichiers permettant le fonctionnement du script sont disponible sur le GitHub du projet. Enfin, il est très programme que DataMerge soit amené à évoluer à l’avenir, auquel cas les informations d’utilisation seront mise à jour sur cette page.</p>
 <section id="exemple-dutilisation" class="level2">
 <h2 class="anchored" data-anchor-id="exemple-dutilisation">Exemple d’utilisation</h2>
 <p>Un service X de l’université transmet un fichier tableur contenant diverses informations sur des étudiants ou des personnels (adresses mises à jour, nouveaux statuts, changements administratifs, etc.). De notre côté, nous disposons déjà d’une base de données interne, mais seules certaines des informations envoyées nous concernent réellement. De plus, le fichier transmis peut contenir des noms ou identifiants qui n’existent pas dans notre propre base, et qu’il faut donc ignorer pour éviter des erreurs de mise à jour.</p>

@@ -170,10 +170,14 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#création-dun-compte-personnel" id="toc-création-dun-compte-personnel" class="nav-link" data-scroll-target="#création-dun-compte-personnel">Création d’un compte personnel</a></li>
   <li><a href="#accéder-à-linterface-de-hypothes.is" id="toc-accéder-à-linterface-de-hypothes.is" class="nav-link" data-scroll-target="#accéder-à-linterface-de-hypothes.is">Accéder à l’interface de Hypothes.is</a></li>
-  <li><a href="#accéder-au-groupe-collaboratif-du-laboratoire" id="toc-accéder-au-groupe-collaboratif-du-laboratoire" class="nav-link" data-scroll-target="#accéder-au-groupe-collaboratif-du-laboratoire">Accéder au groupe collaboratif du laboratoire</a></li>
+  <li><a href="#accéder-à-un-groupe-dannotation-collectif" id="toc-accéder-à-un-groupe-dannotation-collectif" class="nav-link" data-scroll-target="#accéder-à-un-groupe-dannotation-collectif">Accéder à un groupe d’annotation collectif</a></li>
   <li><a href="#commencer-à-annoter" id="toc-commencer-à-annoter" class="nav-link" data-scroll-target="#commencer-à-annoter">Commencer à annoter</a></li>
   </ul></li>
-  <li><a href="#instructions-dutilisation" id="toc-instructions-dutilisation" class="nav-link" data-scroll-target="#instructions-dutilisation">Instructions d’utilisation</a></li>
+  <li><a href="#protocole-dutilisation-pour-le-projet-cartoexpert" id="toc-protocole-dutilisation-pour-le-projet-cartoexpert" class="nav-link" data-scroll-target="#protocole-dutilisation-pour-le-projet-cartoexpert">Protocole d’utilisation pour le projet CartoExpert</a>
+  <ul class="collapse">
+  <li><a href="#pour-le-personnel-en-général" id="toc-pour-le-personnel-en-général" class="nav-link" data-scroll-target="#pour-le-personnel-en-général">Pour le personnel en général :</a></li>
+  <li><a href="#pour-lopérateur-chargé-du-maintien-de-cartoexpert" id="toc-pour-lopérateur-chargé-du-maintien-de-cartoexpert" class="nav-link" data-scroll-target="#pour-lopérateur-chargé-du-maintien-de-cartoexpert">Pour l’opérateur chargé du maintien de CartoExpert :</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -228,7 +232,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="accéder-à-linterface-de-hypothes.is">Accéder à l’interface de Hypothes.is</h3>
 <p>L’interface de Hypothes.is est accessible par deux moyens :</p>
 <section id="via-le-proxy-de-lapplication-hypothes.is" class="level4">
-<h4 class="anchored" data-anchor-id="via-le-proxy-de-lapplication-hypothes.is">Via le proxy de l’application Hypothes.is**</h4>
+<h4 class="anchored" data-anchor-id="via-le-proxy-de-lapplication-hypothes.is">Via le proxy de l’application Hypothes.is</h4>
 <p>C’est la méthode la plus simple, mais aussi la plus redondante : il suffit d’ajouter <code>https://via.hypothes.is/</code> avant l’URL de la page que l’on souhaite annoter.</p>
 <p><strong>Exemple</strong> : Pour annoter la page : <code>https://paragraphe.univ-paris8.fr/</code>, il faut ouvrir : https://via.hypothes.is/https://paragraphe.univ-paris8.fr/`. La page s’ouvrira avec le volet d’annotation activé, à droite de l’écran.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -247,27 +251,23 @@ Astuce
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Si vous n’avez qu’un nombre limité de pages à annoter, il est tout à fait envisageable de créer un marque-page de ladite page en appliquant la méthode mentionnée précédemment sur le lien du marque-page.</p>
+<p>Il est tout à fait envisageable de créer des marque-pages en appliquant la méthode mentionnée précédemment directement sur le lien du marque-page, notamment pour les pages web sur lesquelles vous revenez régulièrement.</p>
 </div>
 </div>
 </section>
 <section id="via-une-extension-de-navigateur" class="level4">
-<h4 class="anchored" data-anchor-id="via-une-extension-de-navigateur">Via une extension de navigateur**</h4>
+<h4 class="anchored" data-anchor-id="via-une-extension-de-navigateur">Via une extension de navigateur</h4>
 <p>La méthode varie en fonction de votre navigateur, mais une fois installé la redondance n’est plus de mise. Voici quelques liens pour vous aider à installer ladite extension :</p>
 <ul>
 <li>Chrome / navigateurs basés sur Chromium : <a href="https://chromewebstore.google.com/detail/hypothesis-web-pdf-annota/bjfhmglciegochdpefhhlphglcehbmek">Ajouter l’extension officielle</a></li>
-<li>Safari : <a href="https://web.hypothes.is/help/installing-the-bookmarklet/">Utiliser le bookmarklet</a>
-<ul>
-<li><em>Une aide d’installation en français est <a href="https://vertigo.hypotheses.org/evaluations-et-commentaires-ouverts/tutoriel-dutilisation-de-loutil-dannotation-hypothes-is">disponible ici</a>.</em></li>
-</ul></li>
 <li>Firefox : <a href="https://addons.mozilla.org/fr/firefox/addon/unofficial-hypothesis/">Installer l’extension non-officielle</a></li>
 </ul>
-<p>Une fois l’extension ou le favori installé, il suffit de l’activer sur la page web que vous souhaitez annoter.</p>
+<p>Une fois l’extension installée, il suffit de l’activer sur la page web que vous souhaitez annoter en cliquant sur l’icone d’Hypothes.is.</p>
 </section>
 </section>
-<section id="accéder-au-groupe-collaboratif-du-laboratoire" class="level3">
-<h3 class="anchored" data-anchor-id="accéder-au-groupe-collaboratif-du-laboratoire">Accéder au groupe collaboratif du laboratoire</h3>
-<p>Pour rejoindre le groupe d’annotation du laboratoire Paragraphe, utilisez directement : <a href="https://hypothes.is/groups/xkJe1Z1r/labo-paragraphe-comm">https://hypothes.is/groups/xkJe1Z1r/labo-paragraphe-comm</a></p>
+<section id="accéder-à-un-groupe-dannotation-collectif" class="level3">
+<h3 class="anchored" data-anchor-id="accéder-à-un-groupe-dannotation-collectif">Accéder à un groupe d’annotation collectif</h3>
+<p>Pour rejoindre le groupe d’annotation du laboratoire Paragraphe, utilisez directement <a href="à créer">ce lien</a>. Autrement, il est également possible de créer ses propres groupes en allant dans (à compléter)</p>
 <p>Dès lors qu’il sera question de poster une annotation sur le groupe, il faudra bien penser à sélectionner le groupe en question au risque de voir l’annotation apparaître dans le canal “Public” et d’avoir moins de chance d’être vue. En cliquant sur “Public” <em>(en haut de l’interface dynamique)</em>, puis sur le groupe rejoint. Si le groupe n’apparait pas, c’est qu’il n’a pas été intégré.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -286,26 +286,41 @@ Astuce
 </figure>
 </div>
 <p><strong>Description du GIF étape par étape</strong> :</p>
-<ol type="1">
-<li><p>D’abord, s’assurer que Hypothes.is est bien lancé en vérifiant si le menu à droite de l’écran peut s’ouvrir. Si ce n’est le cas, cliquez sur votre extension ou assurez vous que votre URL est correctement modifié (cf.&nbsp;<a href="#accéder-à-linterface-de-hypothes.is">Accéder à l’interface de Hypothes.is</a>).</p></li>
-<li><p>Sélectionner la partie du document à annoter en le surlignant. Une fois le surlignage effectué, une bulle va apparaître avec les options “Highlight” et “Annotate” : Le premier permet d’uniquement surligner tandis que l’autre permet de faire le surlignage ET d’annoter. La deuxièmem option est donc à privilégier.</p></li>
-<li><p>Une fois “annotate” sélectionné, l’interface s’ouvre. Remplissez la zone de texte avec vos idées, ajoutez des mots-clés comme (“suggestion” ou “modifier” par exemple) dans la zone en dessous. Enfin, cliquez sur “Post to [nom du groupe]”. <em>NOTE : Si il est inscrit “Post to Public”, c’est que vous êtes dans le canal Public de Hypothes.is. N’oubliez pas de le changer en haut de l’interface !</em></p></li>
-<li><p>La note est maintenant publiée !</p></li>
-</ol>
+<p><strong>Étape n°1</strong> : D’abord, s’assurer que Hypothes.is est bien lancé en vérifiant si le menu à droite de l’écran peut s’ouvrir. Si ce n’est le cas, cliquez sur l’icone de l’extension pour la démarrer ou assurez vous que <a href="#accéder-à-linterface-de-hypothes.is">votre URL est correctement modifié</a>).</p>
+<hr>
+<p><strong>Étape n°2</strong> : Sélectionner la partie du document à annoter en le surlignant. Une fois le surlignage effectué, une bulle va apparaître avec les options “Highlight” et “Annotate” : Le premier permet d’uniquement surligner tandis que le second <strong>permet d’annoter l’élément</strong> en plus de le surligner. La deuxièmem option est donc à privilégier du dialogue.</p>
+<hr>
+<p><strong>Étape n°3</strong> : Une fois “annotate” sélectionné, l’interface s’ouvre. Remplissez la zone de texte avec vos idées, ajoutez des mots clefs (<em>“suggestion”</em> ou <em>“modifier”</em> par exemple) dans la zone en dessous dédiée aux “tags”. Enfin, cliquez sur “Post to [nom du groupe]”.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Astuce
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si, au moment de publier, il est noté “Post to Public”, c’est que vous êtes resté dans le canal Public ! N’oubliez pas de le changer en haut de l’interface.</p>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Étape n°4</strong> : La note est maintenant publiée ! Les autres usagers sur le groupe peuvent maintenant lire et interagir avec votre annotation.</p>
 </section>
 </section>
-<section id="instructions-dutilisation" class="level2">
-<h2 class="anchored" data-anchor-id="instructions-dutilisation">Instructions d’utilisation</h2>
-<p>Afin d’assurer une utilisation efficace de l’application et du processus de valorisation du laboratoire, voici quelques lignes d’instruction vis-à-vis de l’utilisation de Hypothes.is :</p>
-<ul>
-<li>Les annotations peuvent être effectuées sur chacuns des sites sur lesquelles se trouvent des informations relative au laboratoire (site internet, HAL, …).</li>
-<li>L’annotation doit être accompagnée des informations à corriger (aucune exigence vis-à-vis du texte à inscrire, tant que celui-ci exprime bien les changements à apporter).</li>
-<li><strong>Les annotations doivent impérativement être publiées dans le groupe privé du laboratoire</strong> sans quoi celles-ci pourraient ne pas être vues.</li>
-<li>N’hésitez pas à répondre aux annotations laissées par vos collègues pour approfondir si nécessaire (préciser, infirmer, etc.).</li>
-<li>(Ce protocole est susceptible d’évoluer avec le temps)</li>
-</ul>
+<section id="protocole-dutilisation-pour-le-projet-cartoexpert" class="level2">
+<h2 class="anchored" data-anchor-id="protocole-dutilisation-pour-le-projet-cartoexpert">Protocole d’utilisation pour le projet CartoExpert</h2>
+<section id="pour-le-personnel-en-général" class="level3">
+<h3 class="anchored" data-anchor-id="pour-le-personnel-en-général">Pour le personnel en général :</h3>
+</section>
+<section id="pour-lopérateur-chargé-du-maintien-de-cartoexpert" class="level3">
+<h3 class="anchored" data-anchor-id="pour-lopérateur-chargé-du-maintien-de-cartoexpert">Pour l’opérateur chargé du maintien de CartoExpert :</h3>
 
 
+</section>
 </section>
 </section>
 

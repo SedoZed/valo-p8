@@ -5,7 +5,7 @@ lang: fr
 
 <br>
 
-Pour que les **données** puisses être **mises en relation par la machine**, il faut que cette dernière soit capable d'**interpréter les éléments constituant la base**. En effet, là où notre vision humaine interprète naturellement qu'une personne est un "être vivant" avec un nom, un prénom, une ou plusieurs origines et un age, **la machine**, elle, **en est incapable** par défaut. Ainsi, expliquer à la machine que telle entité appartient au groupe "être vivant", qu'une chaine de caractères correspond à un prénom ou que tels nombres correspondent à un age est une composante primordiale.
+Pour que les données puisses être mises en relation par la machine, il faut que cette dernière **soit capable d'interpréter les éléments constituant lesdites données**. En effet, là où notre vision humaine interprète naturellement qu'une personne est un "être vivant" avec un "nom", un "prénom", une ou plusieurs "origines" et une "date de naissance", **la machine**, elle, **en est incapable** par défaut, ne voyant qu'une suite de caractères dénué de sens. Ainsi, expliquer à la machine que telle entité appartient au groupe "être vivant", qu'une chaine de caractères correspond à un nom ou un prénom, ou encore que tels nombres correspondent à un année de naissance est une composante primordiale.
 
 Pour ce faire, comme l'humanité l'a fait tout au long de son histoire pour définir les propriétés et les groupements d'objets (vivant ou non), nous allons faire appel à des **ontologies** : des structures formelles qui définissent des **concepts** et leurs **propriétés**  — un peu comme un dictionnaire enrichi pour la machine. C'est là tout l'intérêt de ce que l'on appelle le "**web sémantique**". 
 
@@ -16,28 +16,59 @@ Préfixe, pour différencier chaque dictionnaire utilisé car plusieurs proprié
 
 Partir des données ; ce qu'elles représentent d'un pdv humain (nom, prénom, titre, ...), puis regarder s'il existe dans les autres dictionnaires internationaux des équivalents de nommage (foaf:firstName, dcterms:title, ...), sinon créer les propriétés / les classes correspondantes.
 
-## Exemples de structures dans un document d'ontologie
+## Éléments structurant un document d'ontologie
 
-**Définition des préfixes / des vocabulaires utilisés (owl, ...)**
+**Les préfixes**
+
+Dans un fichier Turtle, chaque concept est identifié par une URI complète. 
+Les préfixes sont des **raccourcis textuels** qui permettent d'abréger ces URIs 
+pour rendre le fichier lisible. Ils ne chargent aucun code : ils indiquent 
+simplement à la machine comment résoudre les abréviations qu'elle rencontrera 
+dans la suite du fichier.
+
 ```
-@prefix valo: <https://jardindesconnaissances.univ-paris8.fr/onto/labo#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+...
+@prefix valo:    <https://jardindesconnaissances.univ-paris8.fr/onto/valo#> .
 ```
 
-**Titrage de l'ontologie**
+- - -
+
+**Déclaration de l'ontologie**
+
+C'est la carte d'identité du fichier. On y dit : "ce fichier est une ontologie OWL dont le titre est "Nom personnalisé 4".
+
 ```ttl
 <https://jardindesconnaissances.univ-paris8.fr/onto/labo#> a owl:Ontology ;
-    dcterms:title "Vocabulaire personnalité SVR" .
+    dcterms:title "Nom personnalisé 4" .
 ```
 
+- - -
+
 **Structure d'une classe**
+
+Chaque classe définit un type d'entité dans la base. C'est l'équivalent d'une table dans une base de données relationnelle. Pour chaque classe, on trouve toujours 3 attributs :
+
+- rdfs:label → le nom lisible par un humain
+- rdfs:domain o:Resource → elle appartient au domaine des ressources Omeka S
+- vs:term_status "experimental" → le vocabulaire est encore en cours de stabilisation
+
 ```ttl
 valo:NewClass a rdfs:Class ;
     rdfs:label "Nom complet de la classe" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 ```
+::: {.callout-note}
+Lors de la création d'une classe, il est d'usage la première lettre après le préfixe ("valo:...") soit une lettre majuscule.
+::: 
 
-**Structure de propriété**
+- - -
+
+**Structure d'une propriété**
+
+Les propriétés sont les **relations ou attributs qu'on peut associer à une ressource**. C'est l'équivalent des colonnes d'une table.
 
 ```ttl
 valo:NewProperty a rdf:Property ;
@@ -45,3 +76,6 @@ valo:NewProperty a rdf:Property ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 ```
+::: {.callout-note}
+Lors de la création d'une propriété, il est d'usage la première lettre après le préfixe ("valo:...") soit une lettre minuscule.
+::: 

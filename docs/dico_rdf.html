@@ -111,16 +111,16 @@ ul.task-list li input[type="checkbox"] {
   </li>
   <li class="nav-item">
     <a class="nav-link" href="./standardiser_data2csv.html"> 
-<span class="menu-text">Standardiser les données en CSV</span></a>
+<span class="menu-text">Rassembler les données</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modélisation-les-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Modélisation les données</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modéliser-les-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Modéliser les données</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-modélisation-les-données">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-modéliser-les-données">    
         <li>
     <a class="dropdown-item" href="./bdd_omeka.html">
- <span class="dropdown-text">Ecrire le dictionnaire de métadonnées</span></a>
+ <span class="dropdown-text">Définir l’ontologie des métadonnées</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./bdd_omeka.html">
@@ -165,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#définir-les-dictionnaires-à-utiliser" id="toc-définir-les-dictionnaires-à-utiliser" class="nav-link active" data-scroll-target="#définir-les-dictionnaires-à-utiliser">Définir les dictionnaires à utiliser</a>
   <ul class="collapse">
-  <li><a href="#exemples-de-structures-dans-un-document-dontologie" id="toc-exemples-de-structures-dans-un-document-dontologie" class="nav-link" data-scroll-target="#exemples-de-structures-dans-un-document-dontologie">Exemples de structures dans un document d’ontologie</a></li>
+  <li><a href="#éléments-structurant-un-document-dontologie" id="toc-éléments-structurant-un-document-dontologie" class="nav-link" data-scroll-target="#éléments-structurant-un-document-dontologie">Éléments structurant un document d’ontologie</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -193,30 +193,71 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><br></p>
-<p>Pour que les <strong>données</strong> puisses être <strong>mises en relation par la machine</strong>, il faut que cette dernière soit capable d’<strong>interpréter les éléments constituant la base</strong>. En effet, là où notre vision humaine interprète naturellement qu’une personne est un “être vivant” avec un nom, un prénom, une ou plusieurs origines et un age, <strong>la machine</strong>, elle, <strong>en est incapable</strong> par défaut. Ainsi, expliquer à la machine que telle entité appartient au groupe “être vivant”, qu’une chaine de caractères correspond à un prénom ou que tels nombres correspondent à un age est une composante primordiale.</p>
+<p>Pour que les données puisses être mises en relation par la machine, il faut que cette dernière <strong>soit capable d’interpréter les éléments constituant lesdites données</strong>. En effet, là où notre vision humaine interprète naturellement qu’une personne est un “être vivant” avec un “nom”, un “prénom”, une ou plusieurs “origines” et une “date de naissance”, <strong>la machine</strong>, elle, <strong>en est incapable</strong> par défaut, ne voyant qu’une suite de caractères dénué de sens. Ainsi, expliquer à la machine que telle entité appartient au groupe “être vivant”, qu’une chaine de caractères correspond à un nom ou un prénom, ou encore que tels nombres correspondent à un année de naissance est une composante primordiale.</p>
 <p>Pour ce faire, comme l’humanité l’a fait tout au long de son histoire pour définir les propriétés et les groupements d’objets (vivant ou non), nous allons faire appel à des <strong>ontologies</strong> : des structures formelles qui définissent des <strong>concepts</strong> et leurs <strong>propriétés</strong> — un peu comme un dictionnaire enrichi pour la machine. C’est là tout l’intérêt de ce que l’on appelle le “<strong>web sémantique</strong>”.</p>
 <section id="définir-les-dictionnaires-à-utiliser" class="level1">
 <h1>Définir les dictionnaires à utiliser</h1>
 <p>Ontologies internationales très largement utilisés comme <a href="https://www.bnf.fr/fr/dublin-core">Dublin Core</a> ou <a href="https://fr.wikipedia.org/wiki/FOAF">Friend of a Friend</a>, mais également création d’un vocabulaire custom qui réponds à des besoins spécifiques, comme ceux de la DSR par exemple.</p>
 <p>Préfixe, pour différencier chaque dictionnaire utilisé car plusieurs propriétés ou classes peuvent s’écrire de la même façon mais ont leur sens propre. Le préfixe permet de les différencier.</p>
 <p>Partir des données ; ce qu’elles représentent d’un pdv humain (nom, prénom, titre, …), puis regarder s’il existe dans les autres dictionnaires internationaux des équivalents de nommage (foaf:firstName, dcterms:title, …), sinon créer les propriétés / les classes correspondantes.</p>
-<section id="exemples-de-structures-dans-un-document-dontologie" class="level2">
-<h2 class="anchored" data-anchor-id="exemples-de-structures-dans-un-document-dontologie">Exemples de structures dans un document d’ontologie</h2>
-<p><strong>Définition des préfixes / des vocabulaires utilisés (owl, …)</strong></p>
-<pre><code>@prefix valo: &lt;https://jardindesconnaissances.univ-paris8.fr/onto/labo#&gt; .</code></pre>
-<p><strong>Titrage de l’ontologie</strong></p>
+<section id="éléments-structurant-un-document-dontologie" class="level2">
+<h2 class="anchored" data-anchor-id="éléments-structurant-un-document-dontologie">Éléments structurant un document d’ontologie</h2>
+<p><strong>Les préfixes</strong></p>
+<p>Dans un fichier Turtle, chaque concept est identifié par une URI complète. Les préfixes sont des <strong>raccourcis textuels</strong> qui permettent d’abréger ces URIs pour rendre le fichier lisible. Ils ne chargent aucun code : ils indiquent simplement à la machine comment résoudre les abréviations qu’elle rencontrera dans la suite du fichier.</p>
+<pre><code>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix owl:     &lt;http://www.w3.org/2002/07/owl#&gt; .
+...
+@prefix valo:    &lt;https://jardindesconnaissances.univ-paris8.fr/onto/valo#&gt; .</code></pre>
+<hr>
+<p><strong>Déclaration de l’ontologie</strong></p>
+<p>C’est la carte d’identité du fichier. On y dit : “ce fichier est une ontologie OWL dont le titre est”Nom personnalisé 4”.</p>
 <pre class="ttl"><code>&lt;https://jardindesconnaissances.univ-paris8.fr/onto/labo#&gt; a owl:Ontology ;
-    dcterms:title "Vocabulaire personnalité SVR" .</code></pre>
+    dcterms:title "Nom personnalisé 4" .</code></pre>
+<hr>
 <p><strong>Structure d’une classe</strong></p>
+<p>Chaque classe définit un type d’entité dans la base. C’est l’équivalent d’une table dans une base de données relationnelle. Pour chaque classe, on trouve toujours 3 attributs :</p>
+<ul>
+<li>rdfs:label → le nom lisible par un humain</li>
+<li>rdfs:domain o:Resource → elle appartient au domaine des ressources Omeka S</li>
+<li>vs:term_status “experimental” → le vocabulaire est encore en cours de stabilisation</li>
+</ul>
 <pre class="ttl"><code>valo:NewClass a rdfs:Class ;
     rdfs:label "Nom complet de la classe" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .</code></pre>
-<p><strong>Structure de propriété</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Lors de la création d’une classe, il est d’usage la première lettre après le préfixe (“valo:…”) soit une lettre majuscule.</p>
+</div>
+</div>
+<hr>
+<p><strong>Structure d’une propriété</strong></p>
+<p>Les propriétés sont les <strong>relations ou attributs qu’on peut associer à une ressource</strong>. C’est l’équivalent des colonnes d’une table.</p>
 <pre class="ttl"><code>valo:NewProperty a rdf:Property ;
     rdfs:label "Nom complet de la propriété" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .</code></pre>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Lors de la création d’une propriété, il est d’usage la première lettre après le préfixe (“valo:…”) soit une lettre minuscule.</p>
+</div>
+</div>
 
 
 </section>

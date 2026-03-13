@@ -45,7 +45,7 @@ L'interface de Hypothes.is est accessible par deux moyens :
   ![Application via cette méthode, l'ajout dans l'URL surligné en jaune et avec l'interface d'ouverte à droite une fois la page chargée](/assets/img/screenshot_interface1.png)
 
 ::: {.callout-tip}
-Si vous n'avez qu'un nombre limité de pages à annoter, il est tout à fait envisageable de créer un marque-page des dites page en appliquant la méthode mentionnée précédemment directement sur le lien du marque-page.
+Il est tout à fait envisageable de créer des marque-pages en appliquant la méthode mentionnée précédemment directement sur le lien du marque-page, notamment pour les pages web sur lesquelles vous revenez régulièrement.
 :::
 
 #### Via une extension de navigateur
@@ -54,7 +54,7 @@ La méthode varie en fonction de votre navigateur, mais une fois installé la re
   - Chrome / navigateurs basés sur Chromium : [Ajouter l’extension officielle](https://chromewebstore.google.com/detail/hypothesis-web-pdf-annota/bjfhmglciegochdpefhhlphglcehbmek)
   - Firefox : [Installer l’extension non-officielle](https://addons.mozilla.org/fr/firefox/addon/unofficial-hypothesis/)
 
-  Une fois l’extension ou le favori installé, il suffit de l’activer sur la page web que vous souhaitez annoter.
+Une fois l’extension installée, il suffit de l’activer sur la page web que vous souhaitez annoter en cliquant sur l'icone d'Hypothes.is.
 
 ### Accéder à un groupe d'annotation collectif
 
@@ -72,14 +72,26 @@ Une fois connecté à Hypopthes.is, l'interface ouverte et le groupe rejoint, il
 
 **Description du GIF étape par étape** :
 
-1. D'abord, s'assurer que Hypothes.is est bien lancé en vérifiant si le menu à droite de l'écran peut s'ouvrir. Si ce n'est le cas, cliquez sur votre extension ou assurez vous que votre URL est correctement modifié (cf. [Accéder à l'interface de Hypothes.is](#accéder-à-linterface-de-hypothes.is)).
+**Étape n°1** : D'abord, s'assurer que Hypothes.is est bien lancé en vérifiant si le menu à droite de l'écran peut s'ouvrir. Si ce n'est le cas, cliquez sur l'icone de l'extension pour la démarrer ou assurez vous que [votre URL est correctement modifié](#accéder-à-linterface-de-hypothes.is)).
 
-2. Sélectionner la partie du document à annoter en le surlignant. Une fois le surlignage effectué, une bulle va apparaître avec les options "Highlight" et "Annotate" : Le premier permet d'uniquement surligner tandis que le second **permet d'annoter l'élément** en plus de le surligner. La deuxièmem option est donc à privilégier du dialogue.
+- - -
 
-3. Une fois "annotate" sélectionné, l'interface s'ouvre. Remplissez la zone de texte avec vos idées, ajoutez des mots-clés comme ("suggestion" ou "modifier" par exemple)  dans la zone en dessous. Enfin, cliquez sur "Post to [nom du groupe]". *NOTE : Si il est inscrit "Post to Public", c'est que vous êtes dans le canal Public de Hypothes.is. N'oubliez pas de le changer en haut de l'interface !*
+**Étape n°2** : Sélectionner la partie du document à annoter en le surlignant. Une fois le surlignage effectué, une bulle va apparaître avec les options "Highlight" et "Annotate" : Le premier permet d'uniquement surligner tandis que le second **permet d'annoter l'élément** en plus de le surligner. La deuxièmem option est donc à privilégier du dialogue.
 
-4. La note est maintenant publiée !
+- - -
 
-## Protocole d'utilisation relatif au SVR
+**Étape n°3** : Une fois "annotate" sélectionné, l'interface s'ouvre. Remplissez la zone de texte avec vos idées, ajoutez des mots clefs (*"suggestion"* ou *"modifier"* par exemple) dans la zone en dessous dédiée aux "tags". Enfin, cliquez sur "Post to [nom du groupe]". 
 
-[à déterminer]
+::: {.callout-tip collapse="true"}
+Si, au moment de publier, il est noté "Post to Public", c'est que vous êtes resté dans le canal Public ! N'oubliez pas de le changer en haut de l'interface.
+:::
+
+- - -
+
+**Étape n°4** : La note est maintenant publiée ! Les autres usagers sur le groupe peuvent maintenant lire et interagir avec votre annotation.
+
+## Protocole d'utilisation pour le projet CartoExpert
+
+### Pour le personnel en général :
+
+### Pour l'opérateur chargé du maintien de CartoExpert :
