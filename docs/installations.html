@@ -91,10 +91,10 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-general" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">General</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-général" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Général</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-general">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-général">    
         <li>
     <a class="dropdown-item" href="./index.html">
  <span class="dropdown-text">Contexte du projet</span></a>
@@ -102,29 +102,6 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="./installations.html">
  <span class="dropdown-text">Prérequis de travail</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./index.html#outil-utiles">
- <span class="dropdown-text">Outils utiles</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./standardiser_data2csv.html"> 
-<span class="menu-text">Standardiser les données en CSV</span></a>
-  </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modélisation-les-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Modélisation les données</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-modélisation-les-données">    
-        <li>
-    <a class="dropdown-item" href="./bdd_omeka.html">
- <span class="dropdown-text">Ecrire le dictionnaire de métadonnées</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./bdd_omeka.html">
- <span class="dropdown-text">Importer et interconnecter les données</span></a>
   </li>  
     </ul>
   </li>
@@ -135,15 +112,57 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-exploitation">    
         <li>
     <a class="dropdown-item" href="./pres_syst.html">
- <span class="dropdown-text">Présentation du système</span></a>
+ <span class="dropdown-text">Utiliser CartoExpert au quotidien</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./standardiser_data2csv.html">
+ <span class="dropdown-text">Centraliser les données</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./placeholder.html">
- <span class="dropdown-text">Mettre à jour les données</span></a>
+ <span class="dropdown-text">Interconnecter les données via Oméka S</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modéliser-les-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Modéliser les données</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-modéliser-les-données">    
+        <li>
+    <a class="dropdown-item" href="./bdd_omeka.html">
+ <span class="dropdown-text">Définir l’ontologie des métadonnées</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./placeholder.html">
- <span class="dropdown-text">Placeholder</span></a>
+    <a class="dropdown-item" href="./bdd_omeka.html">
+ <span class="dropdown-text">Importer et interconnecter les données</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-boite-à-outils" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Boite à outils</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-boite-à-outils">    
+        <li>
+    <a class="dropdown-item" href="./hypothesis.html">
+ <span class="dropdown-text">Hypothes.is comme outil collaboratif</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./listmonk.html">
+ <span class="dropdown-text">ListMonk pour gérer les campagnes de mailing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./scanr_extract.html">
+ <span class="dropdown-text">ScanR comme source de données</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./dico_rdf.html">
+ <span class="dropdown-text">Exploiter le web sémantique pour les métadonnées</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./iag.html">
+ <span class="dropdown-text">Utilisation de l’IA Générative</span></a>
   </li>  
     </ul>
   </li>
@@ -197,6 +216,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p><br></p>
 <p>Le maintien opérationel du projet CartoExpert nécessite l’installation d’un poste de travail particulier, avec des paramètres et des contraintes physiques et logicielle à prendre en compte. Cette page de la documentation se focalisera donc sur ces prérequis à effectuer, et sur les installations à effectuer.</p>
 <section id="constituer-lécosystème-de-travail" class="level2">
 <h2 class="anchored" data-anchor-id="constituer-lécosystème-de-travail">Constituer l’écosystème de travail</h2>
@@ -241,7 +261,7 @@ Mise en garde
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><p>Bien que Debian possède généralement sa propre interface de bureautique (<a href="https://fr.wikipedia.org/wiki/GNOME">GNOME</a>) à l’instar d’un environnement Windows standard, l’expérience utilisateur générale reste moins intuitive que sur Windows (utilisation du Terminal, de lignes de codes, …). Ainsi, une aisance dans la navigation des interfaces numériques est recommandée pour plus de fluidité (autrement, la quasi totalité des processus sont très bien documentés en ligne).</p></li>
+<li><p>Bien que Debian possède généralement sa propre interface bureautique (<a href="https://fr.wikipedia.org/wiki/GNOME">GNOME</a>) à l’instar d’un environnement Windows standard, l’expérience utilisateur générale reste moins intuitive que sur Windows (utilisation du Terminal, de lignes de codes, …). Ainsi, une aisance dans la navigation des interfaces numériques est recommandée pour plus de fluidité (autrement, la quasi totalité des processus sont très bien documentés en ligne).</p></li>
 <li><p>L’installation de la distro sur une machine de l’Université peut nécessiter un certain temps, entre l’installation en elle-même en dual-boot (avoir Windows et Linux sur la même machine) et surtout le débloquage de certains verrous par la DSI (droits admin sur Windows, déverrouillage biOS, …). En attendant le débloquage de ces derniers verrous, travailler sur les données peut s’effectuer sur Windows.</p></li>
 </ul>
 </div>

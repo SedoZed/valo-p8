@@ -17,31 +17,32 @@ website:
     background: "#E30F1B"
     foreground: "white"
     left:
-      - text: "General"
+      - text: "Général"
         menu:
         - text: "Contexte du projet"
           href: index.qmd
         - text: "Prérequis de travail"
           href: installations.qmd
-        - text: "Outils utiles"
-          href: index.qmd#outil-utiles
-      - text: "Rassembler les données"
-        href: standardiser_data2csv.qmd
-      - text: "Modéliser les données"
-        menu:
-        - text: "Définir l'ontologie des métadonnées"
-          href: bdd_omeka.qmd
-        - text: "Importer et interconnecter les données"
-          href: bdd_omeka.qmd
       - text: "Exploitation"
         menu:
-        - text: "Présentation du système"
+        - text: "Utiliser CartoExpert au quotidien"
           href: pres_syst.qmd
-        - text: "Mettre à jour les données"
-          href: placeholder.qmd
-        - text: "Placeholder"
-          href: placeholder.qmd
-
+        - text: "Centraliser les données"
+          href: standardiser_data2csv.qmd
+        - text: "Interconnecter les données via Oméka S"
+          href: bdd_omeka.qmd
+      - text: "Boite à outils"
+        menu:
+        - text: "Hypothes.is comme outil collaboratif"
+          href: hypothesis.qmd
+        - text: "ListMonk pour gérer les campagnes de mailing"
+          href: listmonk.qmd
+        - text: "ScanR comme source de données"
+          href: scanr_extract.qmd
+        - text: "Exploiter le web sémantique pour les métadonnées"
+          href: dico_rdf.qmd
+        - text: "Utilisation de l'IA Générative"
+          href: iag.qmd
 
   page-footer:
     left: "Direction de la Recherche de Paris 8"

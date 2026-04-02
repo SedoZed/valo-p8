@@ -94,11 +94,3 @@ ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d
 ## Bibliographie : 
 - https://bioportal.bioontology.org/ontologies/VIVO?p=properties
 - https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
-
-# La base de donnée relationnelle
-
-::: {.callout-caution}
-À partir d'ici sera mentionné le logiciel [Oméka S](bdd_omeka.qmd). Il est donc conseillé d'avoir, à ce stade, eu l'occasion de manipuler l'interface Oméka S.
-:::
-
-Work in progress...

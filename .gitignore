@@ -1,3 +1,5 @@
 /.quarto/
 **/*.quarto_ipynb
 assets/tools/datamerge/output/merged.xlsx
+docs/brouillon.html
+brouillon.qmd

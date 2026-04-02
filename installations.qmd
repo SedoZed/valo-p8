@@ -3,6 +3,8 @@ title: "Prérequis et installation"
 lang: fr
 ---
 
+</br>
+
 Le maintien opérationel du projet CartoExpert nécessite l'installation d'un poste de travail particulier, avec des paramètres et des contraintes physiques et logicielle à prendre en compte. Cette page de la documentation se focalisera donc sur ces prérequis à effectuer, et sur les installations à effectuer.
 
 ## Constituer l'écosystème de travail
@@ -33,7 +35,7 @@ Les machines standard de l'Université, fournies par la DSI, **ne permettent pas
 
 ## Quelques précisions...
 
-- Bien que Debian possède généralement sa propre interface de bureautique ([GNOME](https://fr.wikipedia.org/wiki/GNOME)) à l'instar d'un environnement Windows standard, l'expérience utilisateur générale reste moins intuitive que sur Windows (utilisation du Terminal, de lignes de codes, ...). Ainsi, une aisance dans la navigation des interfaces numériques est recommandée pour plus de fluidité (autrement, la quasi totalité des processus sont très bien documentés en ligne).
+- Bien que Debian possède généralement sa propre interface bureautique ([GNOME](https://fr.wikipedia.org/wiki/GNOME)) à l'instar d'un environnement Windows standard, l'expérience utilisateur générale reste moins intuitive que sur Windows (utilisation du Terminal, de lignes de codes, ...). Ainsi, une aisance dans la navigation des interfaces numériques est recommandée pour plus de fluidité (autrement, la quasi totalité des processus sont très bien documentés en ligne).
 
 - L'installation de la distro sur une machine de l'Université peut nécessiter un certain temps, entre l'installation en elle-même en dual-boot (avoir Windows et Linux sur la même machine) et surtout le débloquage de certains verrous par la DSI (droits admin sur Windows, déverrouillage biOS, ...). En attendant le débloquage de ces derniers verrous, travailler sur les données peut s'effectuer sur Windows.
 

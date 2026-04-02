@@ -91,10 +91,10 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-general" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">General</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-général" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Général</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-general">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-général">    
         <li>
     <a class="dropdown-item" href="./index.html">
  <span class="dropdown-text">Contexte du projet</span></a>
@@ -103,16 +103,27 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./installations.html">
  <span class="dropdown-text">Prérequis de travail</span></a>
   </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exploitation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exploitation</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exploitation">    
         <li>
-    <a class="dropdown-item" href="./index.html#outil-utiles">
- <span class="dropdown-text">Outils utiles</span></a>
+    <a class="dropdown-item" href="./pres_syst.html">
+ <span class="dropdown-text">Utiliser CartoExpert au quotidien</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./standardiser_data2csv.html">
+ <span class="dropdown-text">Centraliser les données</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./placeholder.html">
+ <span class="dropdown-text">Interconnecter les données via Oméka S</span></a>
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./standardiser_data2csv.html"> 
-<span class="menu-text">Rassembler les données</span></a>
-  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modéliser-les-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Modéliser les données</span>
@@ -129,21 +140,29 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exploitation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Exploitation</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-boite-à-outils" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Boite à outils</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-exploitation">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-boite-à-outils">    
         <li>
-    <a class="dropdown-item" href="./pres_syst.html">
- <span class="dropdown-text">Présentation du système</span></a>
+    <a class="dropdown-item" href="./hypothesis.html">
+ <span class="dropdown-text">Hypothes.is comme outil collaboratif</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./placeholder.html">
- <span class="dropdown-text">Mettre à jour les données</span></a>
+    <a class="dropdown-item" href="./listmonk.html">
+ <span class="dropdown-text">ListMonk pour gérer les campagnes de mailing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./placeholder.html">
- <span class="dropdown-text">Placeholder</span></a>
+    <a class="dropdown-item" href="./scanr_extract.html">
+ <span class="dropdown-text">ScanR comme source de données</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./dico_rdf.html">
+ <span class="dropdown-text">Exploiter le web sémantique pour les métadonnées</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./iag.html">
+ <span class="dropdown-text">Utilisation de l’IA Générative</span></a>
   </li>  
     </ul>
   </li>
@@ -189,11 +208,13 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Intro générale (voir le .html généré par ClaudeAI)</p>
 <p>Idem mais ça va être comment faire rentrer les données raw CSV dans Oméka, et le faire CORRECTEMENT (cf.&nbsp;mes multiples fails de l’été 2025) puis comment les ensuite mettre à jour dans les données</p>
+<p>Ordre d’import des données (sens inverse d’une arborescence classique du + général au + détaillé)</p>
 <section id="assurer-la-connexion-entre-les-données-importées" class="level1">
 <h1>Assurer la connexion entre les données importées</h1>
-<p>Notion importante : A chaque fois que l’on créé une ressource sur Oméka S, celui-ci se voit attriblé un “Internal ID” qui est visible au niveau de l’URL (ex : omk_valo/admin/item/<strong>76</strong>). C’est grâce à cet ID que la plupart des interconnexions se feront (EX : L’enseignant-chercheur a comme statut PR (ID=76). A l’inverse, on pourra voir que “PR” (ID=76) se retrouve dans les items “x, y, z, …” )</p>
-<p>https://samszo.univ-paris8.fr/paragraphe/gestion/getIdFromItemSet.html# faire une documentation dessus</p>
+<p>Notion importante : A chaque fois que l’on créé une ressource sur Oméka S, celui-ci se voit attriblé un “Internal ID” qui est visible au niveau de l’URL (ex : omk_valo/admin/item/<strong>76</strong>). C’est grâce à cet ID que la plupart des interconnexions se feront (ex : L’enseignant-chercheur a comme statut PR (ID = 76). À l’inverse, on pourra voir que “PR” (ID=76) se retrouve dans les items “x, y, z, …”)</p>
+<p>https://samszo.univ-paris8.fr/paragraphe/gestion/getIdFromItemSet.html# faire une documentation dessus (quand ça fonctionnera lol)</p>
 
 
 </section>

@@ -3,6 +3,7 @@ title: "Importer et interconnecter les données"
 lang: fr
 ---
 
+Intro générale (voir le .html généré par ClaudeAI)
 
 Idem mais ça va être comment faire rentrer les données raw CSV dans Oméka, et le faire CORRECTEMENT (cf. mes multiples fails de l'été 2025) puis comment les ensuite mettre à jour dans les données
 
@@ -12,4 +13,4 @@ Ordre d'import des données (sens inverse d'une arborescence classique du + gén
 
 Notion importante : A chaque fois que l'on créé une ressource sur Oméka S, celui-ci se voit attriblé un "Internal ID" qui est visible au niveau de l'URL (ex : omk_valo/admin/item/**76**). C'est grâce à cet ID que la plupart des interconnexions se feront (ex : L'enseignant-chercheur a comme statut PR (ID = 76). À l'inverse, on pourra voir que "PR" (ID=76) se retrouve dans les items "x, y, z, ...")
 
-https://samszo.univ-paris8.fr/paragraphe/gestion/getIdFromItemSet.html# faire une documentation dessus.
+https://samszo.univ-paris8.fr/paragraphe/gestion/getIdFromItemSet.html# faire une documentation dessus (quand ça fonctionnera lol)

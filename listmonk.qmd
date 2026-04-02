@@ -1,0 +1,20 @@
+---
+title: "Gérer les campagnes de mailing avec ListMonk"
+lang: fr
+---
+
+<br/>
+
+[Listmonk](https://listmonk.app/) est une application web open source d'auto-hébergement dédiée à la gestion de listes de diffusion et à l'envoi de campagnes d'e-mailing. Légère, rapide et indépendante de tout service tiers, elle permet de gérer intégralement un système de newsletter : inscription et désabonnement des abonnés, création de listes segmentées, rédaction et envoi de campagnes depuis une interface d'administration moderne, ainsi que le suivi de statistiques détaillées *(taux d'ouverture, de clics, de désabonnement, ...)*. Développée en Go et en Vue.js, Listmonk s'appuie sur une base de données PostgreSQL et peut expédier ses messages via n'importe quel serveur SMTP ou fournisseur de messagerie transactionnelle (*Amazon SES, Postmark, Mailgun, etc.*).
+
+![Logo de Listmonk](/assets/img/listmonk.png)
+
+[Listmonk](https://listmonk.app/) s'inscrit pleinement dans une démarche de souveraineté numérique : en hébergeant soi-même l'application, on conserve un contrôle total sur les données des abonnés — sans dépendance à une plateforme commerciale, sans frais proportionnels au volume envoyé et sans exposition des listes à un tiers. Cela en fait un outil particulièrement adapté aux structures souhaitant communiquer à grande échelle tout en respectant leurs obligations en matière de protection des données personnelles (RGPD), et en maîtrisant l'intégralité de leur infrastructure de communication. 
+
+## Listmonk et Oméka S 
+
+Ce qui rend l'usage de Listmonk particulièrement pertinent dans notre contexte, c'est la possibilité de le connecter directement à la base de données Omeka S. Plutôt que de gérer deux listes de contacts en parallèle, les données saisies dans Omeka S alimentent automatiquement les listes de diffusion de Listmonk. Toute modification apportée dans Omeka S (ajout d'un contact, mise à jour d'une adresse, ...) se répercute ainsi dans Listmonk, sans aucune intervention manuelle supplémentaire.
+
+::: {.callout-note}
+La base de données Omeka S reste donc le seul point d'entrée pour la gestion des contacts : c'est là que les informations doivent être saisies ou corrigées, et non directement dans Listmonk.
+:::

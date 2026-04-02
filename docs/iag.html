@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Contexte d’exploitation – CartoExpert</title>
+<title>Utilisation des IA Génératives dans diverses tâches – CartoExpert</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,6 +105,25 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./standardiser_data2csv.html"> 
+<span class="menu-text">Rassembler les données</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modéliser-les-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Modéliser les données</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-modéliser-les-données">    
+        <li>
+    <a class="dropdown-item" href="./bdd_omeka.html">
+ <span class="dropdown-text">Définir l’ontologie des métadonnées</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./bdd_omeka.html">
+ <span class="dropdown-text">Importer et interconnecter les données</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exploitation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Exploitation</span>
@@ -112,15 +131,15 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-exploitation">    
         <li>
     <a class="dropdown-item" href="./pres_syst.html">
- <span class="dropdown-text">Utiliser CartoExpert au quotidien</span></a>
+ <span class="dropdown-text">Protocoles d’exploitation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./standardiser_data2csv.html">
- <span class="dropdown-text">Centraliser les données</span></a>
+    <a class="dropdown-item" href="./placeholder.html">
+ <span class="dropdown-text">Mettre à jour les données</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./bdd_omeka.html">
- <span class="dropdown-text">Interconnecter les données via Oméka S</span></a>
+    <a class="dropdown-item" href="./placeholder.html">
+ <span class="dropdown-text">Placeholder</span></a>
   </li>  
     </ul>
   </li>
@@ -140,10 +159,6 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="./scanr_extract.html">
  <span class="dropdown-text">ScanR comme source de données</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./dico_rdf.html">
- <span class="dropdown-text">Exploiter le web sémantique pour les métadonnées</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./iag.html">
@@ -167,8 +182,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#portée-du-projet" id="toc-portée-du-projet" class="nav-link active" data-scroll-target="#portée-du-projet">Portée du projet</a></li>
-  <li><a href="#quelles-expertises-requises" id="toc-quelles-expertises-requises" class="nav-link" data-scroll-target="#quelles-expertises-requises">Quelles expertises requises ?</a></li>
+  <li><a href="#work-in-progress" id="toc-work-in-progress" class="nav-link active" data-scroll-target="#work-in-progress">Work in progress…</a></li>
   </ul>
 </nav>
     </div>
@@ -177,7 +191,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Contexte d’exploitation</h1>
+<h1 class="title">Utilisation des IA Génératives dans diverses tâches</h1>
 </div>
 
 
@@ -194,17 +208,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><br></p>
-<p>Au sein de la <strong>Direction des Services à la Recherche</strong> <em>(DSR)</em> de l’<a href="https://www.univ-paris8.fr/">Université Paris 8</a>, le <strong>Service de la Valorisation de la Recherche</strong> <em>(SVR)</em> a pour principale mission de développer des partenariats avec les acteurs non-académiques et de valoriser les expertises des laboratoires et des chercheurs de l’université. Pour accomplir cette mission, le <em>SVR</em> a besoin de bien connaitre ces expertises pour orienter la recherche de partenariats et bien les expliquer à des acteurs non académiques. Ainsi, pour assister son personnel dans sa mission, le service a souhaité réaliser des cartographies représentant les activités, compétences, expertises, productions et savoir-faire des chercheurs et laboratoires d’UP8 et de disposer d’un outil qui lui permet de faire l’interface entre les acteurs non-académiques et leurs interlocuteurs dans la communauté scientifique d’UP8.</p>
-<section id="portée-du-projet" class="level2">
-<h2 class="anchored" data-anchor-id="portée-du-projet">Portée du projet</h2>
-<p>Ce projet, intitulé <strong>CartoExpert</strong>, réalisé en collaboration avec le <a href="https://paragraphe.univ-paris8.fr/">Laboratoire Paragraphe</a>, s’adressent en priorité aux chargés de partenariat et de valorisation et aux chargés de montage de projets de la DSR qui ont besoin d’identifier les bons interlocuteurs et de les mettre en relation. En effet, les expertises nécessaires pour répondre à des appels aux projets ou des demandes exprimés par des acteurs externes doivent être identifiées par les équipes de la DSR afin de faire la meilleure mise en relation possible.</p>
-<p>De plus, <strong>CartoExpert</strong> a plutôt pour vocation de couvrir le domaine de la recherche et moins celui de l’enseignement ou aux autres activités de la communauté universitaire dans la mesure où il s’agit d’un outil pour la direction des services à la recherche. Rien, cependant, n’interdit de penser l’outil de telle sorte qu’il intégre à l’avenir d’autres données.</p>
-<hr>
-</section>
-<section id="quelles-expertises-requises" class="level1">
-<h1>Quelles expertises requises ?</h1>
-<p>Expertises liées aux Humanités Numériques dans son optique de faire la passerelle entre l’Homme et la machine (convertir connaissances humaines fines en données numériques lisibles par machines ; profiter du traitement agile &amp; d’interfaces permis par le numérique pour en ressortir d’autres informations).</p>
+<section id="work-in-progress" class="level1">
+<h1>Work in progress…</h1>
 
 
 </section>

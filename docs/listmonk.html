@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Contexte d’exploitation – CartoExpert</title>
+<title>Gérer les campagnes de mailing avec ListMonk – CartoExpert</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,8 +119,23 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Centraliser les données</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./bdd_omeka.html">
+    <a class="dropdown-item" href="./placeholder.html">
  <span class="dropdown-text">Interconnecter les données via Oméka S</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modéliser-les-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Modéliser les données</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-modéliser-les-données">    
+        <li>
+    <a class="dropdown-item" href="./bdd_omeka.html">
+ <span class="dropdown-text">Définir l’ontologie des métadonnées</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./bdd_omeka.html">
+ <span class="dropdown-text">Importer et interconnecter les données</span></a>
   </li>  
     </ul>
   </li>
@@ -167,8 +182,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#portée-du-projet" id="toc-portée-du-projet" class="nav-link active" data-scroll-target="#portée-du-projet">Portée du projet</a></li>
-  <li><a href="#quelles-expertises-requises" id="toc-quelles-expertises-requises" class="nav-link" data-scroll-target="#quelles-expertises-requises">Quelles expertises requises ?</a></li>
+  <li><a href="#listmonk-et-oméka-s" id="toc-listmonk-et-oméka-s" class="nav-link active" data-scroll-target="#listmonk-et-oméka-s">Listmonk et Oméka S</a></li>
   </ul>
 </nav>
     </div>
@@ -177,7 +191,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Contexte d’exploitation</h1>
+<h1 class="title">Gérer les campagnes de mailing avec ListMonk</h1>
 </div>
 
 
@@ -195,16 +209,30 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><br></p>
-<p>Au sein de la <strong>Direction des Services à la Recherche</strong> <em>(DSR)</em> de l’<a href="https://www.univ-paris8.fr/">Université Paris 8</a>, le <strong>Service de la Valorisation de la Recherche</strong> <em>(SVR)</em> a pour principale mission de développer des partenariats avec les acteurs non-académiques et de valoriser les expertises des laboratoires et des chercheurs de l’université. Pour accomplir cette mission, le <em>SVR</em> a besoin de bien connaitre ces expertises pour orienter la recherche de partenariats et bien les expliquer à des acteurs non académiques. Ainsi, pour assister son personnel dans sa mission, le service a souhaité réaliser des cartographies représentant les activités, compétences, expertises, productions et savoir-faire des chercheurs et laboratoires d’UP8 et de disposer d’un outil qui lui permet de faire l’interface entre les acteurs non-académiques et leurs interlocuteurs dans la communauté scientifique d’UP8.</p>
-<section id="portée-du-projet" class="level2">
-<h2 class="anchored" data-anchor-id="portée-du-projet">Portée du projet</h2>
-<p>Ce projet, intitulé <strong>CartoExpert</strong>, réalisé en collaboration avec le <a href="https://paragraphe.univ-paris8.fr/">Laboratoire Paragraphe</a>, s’adressent en priorité aux chargés de partenariat et de valorisation et aux chargés de montage de projets de la DSR qui ont besoin d’identifier les bons interlocuteurs et de les mettre en relation. En effet, les expertises nécessaires pour répondre à des appels aux projets ou des demandes exprimés par des acteurs externes doivent être identifiées par les équipes de la DSR afin de faire la meilleure mise en relation possible.</p>
-<p>De plus, <strong>CartoExpert</strong> a plutôt pour vocation de couvrir le domaine de la recherche et moins celui de l’enseignement ou aux autres activités de la communauté universitaire dans la mesure où il s’agit d’un outil pour la direction des services à la recherche. Rien, cependant, n’interdit de penser l’outil de telle sorte qu’il intégre à l’avenir d’autres données.</p>
-<hr>
-</section>
-<section id="quelles-expertises-requises" class="level1">
-<h1>Quelles expertises requises ?</h1>
-<p>Expertises liées aux Humanités Numériques dans son optique de faire la passerelle entre l’Homme et la machine (convertir connaissances humaines fines en données numériques lisibles par machines ; profiter du traitement agile &amp; d’interfaces permis par le numérique pour en ressortir d’autres informations).</p>
+<p><a href="https://listmonk.app/">Listmonk</a> est une application web open source d’auto-hébergement dédiée à la gestion de listes de diffusion et à l’envoi de campagnes d’e-mailing. Légère, rapide et indépendante de tout service tiers, elle permet de gérer intégralement un système de newsletter : inscription et désabonnement des abonnés, création de listes segmentées, rédaction et envoi de campagnes depuis une interface d’administration moderne, ainsi que le suivi de statistiques détaillées <em>(taux d’ouverture, de clics, de désabonnement, …)</em>. Développée en Go et en Vue.js, Listmonk s’appuie sur une base de données PostgreSQL et peut expédier ses messages via n’importe quel serveur SMTP ou fournisseur de messagerie transactionnelle (<em>Amazon SES, Postmark, Mailgun, etc.</em>).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/img/listmonk.png" class="img-fluid figure-img"></p>
+<figcaption>Logo de Listmonk</figcaption>
+</figure>
+</div>
+<p><a href="https://listmonk.app/">Listmonk</a> s’inscrit pleinement dans une démarche de souveraineté numérique : en hébergeant soi-même l’application, on conserve un contrôle total sur les données des abonnés — sans dépendance à une plateforme commerciale, sans frais proportionnels au volume envoyé et sans exposition des listes à un tiers. Cela en fait un outil particulièrement adapté aux structures souhaitant communiquer à grande échelle tout en respectant leurs obligations en matière de protection des données personnelles (RGPD), et en maîtrisant l’intégralité de leur infrastructure de communication.</p>
+<section id="listmonk-et-oméka-s" class="level2">
+<h2 class="anchored" data-anchor-id="listmonk-et-oméka-s">Listmonk et Oméka S</h2>
+<p>Ce qui rend l’usage de Listmonk particulièrement pertinent dans notre contexte, c’est la possibilité de le connecter directement à la base de données Omeka S. Plutôt que de gérer deux listes de contacts en parallèle, les données saisies dans Omeka S alimentent automatiquement les listes de diffusion de Listmonk. Toute modification apportée dans Omeka S (ajout d’un contact, mise à jour d’une adresse, …) se répercute ainsi dans Listmonk, sans aucune intervention manuelle supplémentaire.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La base de données Omeka S reste donc le seul point d’entrée pour la gestion des contacts : c’est là que les informations doivent être saisies ou corrigées, et non directement dans Listmonk.</p>
+</div>
+</div>
 
 
 </section>
