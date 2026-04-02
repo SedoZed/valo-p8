@@ -106,7 +106,7 @@ Pas vraiment une pierre angulaire dans notre cas, [phpMyAdmin](https://www.phpmy
 
 # Installer le logiciel Oméka S 
 
-Cette troisième partie va maintenant se focaliser sur l'installation et la configuration d'un logiciel de web sémantique essentiel dans le processus de mapping des données : [Oméka S](https://fr.wikipedia.org/wiki/Omeka#Omeka_S). 
+Cette troisième partie va maintenant se focaliser sur l'installation et la configuration d'un logiciel de web sémantique essentiel dans le processus de mapping des données : [Oméka S](https://fr.wikipedia.org/wiki/Omeka#Omeka_S).
 
 ::: {.callout-caution}
 

@@ -119,23 +119,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Centraliser les données</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./placeholder.html">
+    <a class="dropdown-item" href="./bdd_omeka.html">
  <span class="dropdown-text">Interconnecter les données via Oméka S</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modéliser-les-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Modéliser les données</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-modéliser-les-données">    
-        <li>
-    <a class="dropdown-item" href="./bdd_omeka.html">
- <span class="dropdown-text">Définir l’ontologie des métadonnées</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./bdd_omeka.html">
- <span class="dropdown-text">Importer et interconnecter les données</span></a>
   </li>  
     </ul>
   </li>
@@ -208,12 +193,26 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Intro générale (voir le .html généré par ClaudeAI)</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mise en garde
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>À partir d’ici sera mentionné le logiciel <a href="./bdd_omeka.html">Oméka S</a>. Il est donc conseillé d’avoir, à ce stade, eu l’occasion de manipuler l’interface Oméka S.</p>
+</div>
+</div>
+<p>Work in progress…</p>
+<p>Intro générale (voir le .html généré par Claude-AI)</p>
 <p>Idem mais ça va être comment faire rentrer les données raw CSV dans Oméka, et le faire CORRECTEMENT (cf.&nbsp;mes multiples fails de l’été 2025) puis comment les ensuite mettre à jour dans les données</p>
 <p>Ordre d’import des données (sens inverse d’une arborescence classique du + général au + détaillé)</p>
 <section id="assurer-la-connexion-entre-les-données-importées" class="level1">
 <h1>Assurer la connexion entre les données importées</h1>
-<p>Notion importante : A chaque fois que l’on créé une ressource sur Oméka S, celui-ci se voit attriblé un “Internal ID” qui est visible au niveau de l’URL (ex : omk_valo/admin/item/<strong>76</strong>). C’est grâce à cet ID que la plupart des interconnexions se feront (ex : L’enseignant-chercheur a comme statut PR (ID = 76). À l’inverse, on pourra voir que “PR” (ID=76) se retrouve dans les items “x, y, z, …”)</p>
+<p>Notion importante : A chaque fois que l’on créé une ressource sur Oméka S, celui-ci se voit attriblé un “Internal ID” qui est visible au niveau de l’URL (ex : omk_valo/admin/item/<strong>76</strong>). C’est grâce à cet ID que la plupart des interconnexions se feront (ex : L’enseignant-chercheur a comme statut PR (ID = 76). À l’inverse, on pourra voir que “PR” (ID = <strong>76</strong>) se retrouve dans les items “x, y, z, …”)</p>
 <p>https://samszo.univ-paris8.fr/paragraphe/gestion/getIdFromItemSet.html# faire une documentation dessus (quand ça fonctionnera lol)</p>
 
 
