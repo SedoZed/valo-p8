@@ -11,87 +11,109 @@ lang: fr
 
 L’application [Hypothes.is](https://web.hypothes.is/) s'ancre par ailleurs pleinement dans les enjeux académiques des Humanités Numériques en soutenant des pratiques de science ouverte, en favorisant la transparence des processus intellectuels et en offrant un support pour l’écriture critique collective. Intégrée aux environnements de recherche en ligne, Hypothes.is permet ainsi d’ancrer la lecture dans un dialogue actif, rigoureux et collaboratif — au service de la production et de la circulation du savoir.
 
-## Usage d'Hypothes.is dans notre cadre professionnel 
+# Prise en main d'Hypothes.is
 
-Dans notre cas, nous allons exploiter le concept d'annotation comme moyen collaboratif de maintenir à jour les données de CartoExpert : dès lors qu'un membre du service repère une coquille *(information à préciser, qui n'est plus d'actualité, ...)*, celui-ci pourra laisser une annotation sur l'interface qui, par la suite, pourra être consultée par les opérateurs chargés du maintien du logiciel afin d'y apporter (ou non) les modifications nécessaires.
+Dans l'ensemble, *Hypothes.is* est une application très facile à installer et à utiliser. Les points ci-dessous vous guideront de l'inscription/installation jusqu'à l'intégration du groupe privé Hypothes.is. Mais **avant tout chose**, pensez bien à vous [créer un compte](https://hypothes.is/signup). 
 
-Par cette nouvelle méthode, l'actualisation des données pourra se faire en continu en plus d'ajouter une dimension collaborative au maintien à jour des données du service. 
+## Installer l'extension sur votre machine
 
+Aujourd'hui, la façon la plus simple d'accéder à *Hypothes.is* est de passer par son extension de navigateur. Voici quelques liens pour vous aider à installer ladite extension : 
 
-# Prise en main du logiciel
-Dans l'ensemble, [Hypothes.is](https://web.hypothes.is/) est une application très facile à installer et à utiliser lors de la navigation web, celle-ci ayant été pensée comme une extension au navigateur. Les points ci-dessous vous guideront de l'inscription/installation jusqu'à l'intégration du groupe privé Hypothes.is de communication du laboratoire.  
+  - Google Chrome (extension officielle) : [Ajouter l’extension](https://chromewebstore.google.com/detail/hypothesis-web-pdf-annota/bjfhmglciegochdpefhhlphglcehbmek)
+  - Firefox (extension non-officielle) : [Ajouter l’extension](https://addons.mozilla.org/fr/firefox/addon/unofficial-hypothesis/)
 
-## Rendre Hypothes.is fonctionnel (simple et efficace)
-### Création d'un compte personnel
+Une fois l’extension installée, rendez-vous sur la page à annoter puis activez *Hypothes.is* en cliquant sur l'icone de l'extension. Connectez-vous en cliquant sur "log-in" et voilà, *Hypothes.is* est prêt à être utilisé !
 
-Afin d'avoir accès aux services proposés par *Hypothes.is* et ainsi partager avec d'autres utiliateurs vos annotations, **il est nécessaire avant tout de se créer un compte**. Plusieurs formules sont disponibles, payantes comme gratuites. Pour l'usage que nous voulons en faire, cette dernière suffit amplement.
-- Création de compte : [https://web.hypothes.is/web-app-start/](https://web.hypothes.is/web-app-start/)
+::: {.callout-note}
+L'extension officielle de Hypothes.is est aussi disponible sur l'ensemble des navigateurs étant basés sur [Chromium](https://fr.wikipedia.org/wiki/Chromium#Autres_navigateurs_fondés_sur_Chromium) (*Microsoft Edge*, *Opéra*, *Brave*, ...).
 
-**__NOTE__** : **Afin de permettre une bonne identification du personnel du laboratoire, il est préférable d'utiliser des identifiants public facilement reconnaissable**, comme à titre d'exemple :
-- Prenom_InitialNom
-- Nom_Prenom
-- E-mail
-- Etc.
-
-### Accéder à l'interface de Hypothes.is
-
-L'interface de Hypothes.is est accessible par deux moyens :
-
-#### Via le proxy de l’application Hypothes.is
-  C’est la méthode la plus simple, mais aussi la plus redondante : il suffit d’ajouter `https://via.hypothes.is/` avant l’URL de la page que l’on souhaite annoter.
-
-  __Exemple__ : Pour annoter la page : `https://paragraphe.univ-paris8.fr/`, il faut ouvrir : https://via.hypothes.is/https://paragraphe.univ-paris8.fr/`. La page s’ouvrira avec le volet d’annotation activé, à droite de l'écran.
-
-  ![Application via cette méthode, l'ajout dans l'URL surligné en jaune et avec l'interface d'ouverte à droite une fois la page chargée](/assets/img/screenshot_interface1.png)
-
-::: {.callout-tip}
-Il est tout à fait envisageable de créer des marque-pages en appliquant la méthode mentionnée précédemment directement sur le lien du marque-page, notamment pour les pages web sur lesquelles vous revenez régulièrement.
+À contrario, pour *Safari*, aucune extension officielle ou officieuse n'existe pour le moment.
 :::
 
-#### Via une extension de navigateur
-La méthode varie en fonction de votre navigateur, mais une fois installé la redondance n'est plus de mise. Voici quelques liens pour vous aider à installer ladite extension : 
 
-  - Chrome / navigateurs basés sur Chromium : [Ajouter l’extension officielle](https://chromewebstore.google.com/detail/hypothesis-web-pdf-annota/bjfhmglciegochdpefhhlphglcehbmek)
-  - Firefox : [Installer l’extension non-officielle](https://addons.mozilla.org/fr/firefox/addon/unofficial-hypothesis/)
+## Commencer à annoter
 
-Une fois l’extension installée, il suffit de l’activer sur la page web que vous souhaitez annoter en cliquant sur l'icone d'Hypothes.is.
-
-### Accéder à un groupe d'annotation collectif
-
-Pour rejoindre le groupe d’annotation du laboratoire Paragraphe, utilisez directement [ce lien](à créer). Autrement, il est également possible de créer ses propres groupes en allant dans  (à compléter)
-
-Dès lors qu'il sera question de poster une annotation sur le groupe, il faudra bien penser à sélectionner le groupe en question au risque de voir l'annotation apparaître dans le canal "Public" et d'avoir moins de chance d'être vue. En cliquant sur "Public" *(en haut de l'interface dynamique)*, puis sur le groupe rejoint. Si le groupe n'apparait pas, c'est qu'il n'a pas été intégré.
-
-![Choix du canal de publication](/assets/img/screenshot_interface2.png)
-
-### Commencer à annoter
-
-Une fois connecté à Hypopthes.is, l'interface ouverte et le groupe rejoint, il est temps de commencer à annoter ! 
+Une fois connecté à *Hypothes.is*, l'interface ouverte et le groupe rejoint, il est temps de commencer à annoter ! 
 
 ![Gif montrant comment annoter. Si celui-ci ne se lance pas, référez-vous au texte ci-dessous](/assets/img/Animation.gif)
 
 **Description du GIF étape par étape** :
 
-**Étape n°1** : D'abord, s'assurer que Hypothes.is est bien lancé en vérifiant si le menu à droite de l'écran peut s'ouvrir. Si ce n'est le cas, cliquez sur l'icone de l'extension pour la démarrer ou assurez vous que [votre URL est correctement modifié](#accéder-à-linterface-de-hypothes.is)).
+**Étape n°1** : D'abord, assurez-vous que *Hypothes.is* est bien lancé en vérifiant si le menu à droite de l'écran peut s'ouvrir. Si ce n'est le cas, cliquez sur l'icone de l'extension pour la démarrer.
 
 - - -
 
-**Étape n°2** : Sélectionner la partie du document à annoter en le surlignant. Une fois le surlignage effectué, une bulle va apparaître avec les options "Highlight" et "Annotate" : Le premier permet d'uniquement surligner tandis que le second **permet d'annoter l'élément** en plus de le surligner. La deuxièmem option est donc à privilégier du dialogue.
+**Étape n°2** : Sélectionnez la partie du document à annoter en le surlignant. Une fois le surlignage effectué, une bulle va apparaître avec les options "Highlight" et "Annotate" : Le premier permet d'uniquement surligner tandis que le second **permet d'annoter l'élément** en plus de le surligner. La deuxième option est donc à privilégier pour ajouter du détail.
 
 - - -
 
-**Étape n°3** : Une fois "annotate" sélectionné, l'interface s'ouvre. Remplissez la zone de texte avec vos idées, ajoutez des mots clefs (*"suggestion"* ou *"modifier"* par exemple) dans la zone en dessous dédiée aux "tags". Enfin, cliquez sur "Post to [nom du groupe]". 
-
-::: {.callout-tip collapse="true"}
-Si, au moment de publier, il est noté "Post to Public", c'est que vous êtes resté dans le canal Public ! N'oubliez pas de le changer en haut de l'interface.
-:::
+**Étape n°3** : Une fois "annotate" sélectionné, l'interface s'ouvre. Remplissez la zone de texte avec vos idées, ajoutez des mots clefs dans la zone en dessous dédiée aux "tags". Enfin, cliquez sur "Post to *groupname*" (vérifiez bien d'être dans le bon [groupe](#accéder-à-un-groupe-dannotation-collectif)). 
 
 - - -
 
 **Étape n°4** : La note est maintenant publiée ! Les autres usagers sur le groupe peuvent maintenant lire et interagir avec votre annotation.
 
-## Protocole d'utilisation pour le projet CartoExpert
+## Interagir avec une annotation existante
 
-### Pour le personnel en général :
+Peut-être que, pendant votre lecture, vous trouverez d'autres annotations laissées par d'autres utilisateurs. Et pourquoi ne pas interagir avec ?
 
-### Pour l'opérateur chargé du maintien de CartoExpert :
+**Description du GIF étape par étape** : 
+
+**Étape n°1** : D'abord, assurez-vous que *Hypothes.is* est bien lancé en vérifiant si le menu à droite de l'écran peut s'ouvrir. Si ce n'est le cas, cliquez sur l'icone de l'extension pour la démarrer. 
+
+- - -
+
+**Étape n°2** : Les annotations déjà publiées sont visibles à travers le texte surligné jaune. Cliquez sur l'annotation sur laquelle vous voulez interagir pour ouvrir l'interface, avec l'annotation.
+
+- - -
+
+**Étape n°3** : En bas à droite de l'annotation, cliquez sur l'icone de flèche "**Reply**" pour faire apparaître une boite de texte.
+
+- - -
+
+**Étape n°4** : Ajoutez votre texte, vos tags, puis cliquez sur "Post to *groupname*". Votre réponse est maintenant publiée, et une conversation entamée !
+
+## Accéder à un groupe d'annotation collectif
+
+Comme évoqué en introduction, Hypothes.is mets à disposition deux moyens de diffusion pour les annotations :
+
+- Le canal **Public** : Celui par défaut, où les utilisateurs du monde entier peuvent ajouter des annotations, consulter et interagir avec celles-ci.  
+- Les **groupes privés** : À créer manuellement, pour permettent une diffusion plus restreinte des annotations.
+
+![Choix du canal de publication, avec ici le canal "Public" natif et le  groupe privé "Labo Paragraphe"](/assets/img/screenshot_interface2.png)
+
+### Créer et partager son propre groupe d'annotation privé
+N'importe quel utilisateur de *Hypothes.is* peut créer ses propres groupes privés d'annotation. 
+
+[À compléter]
+
+**Étape n°1** : D'abord, assurez-vous que *Hypothes.is* est bien lancé en vérifiant si le menu à droite de l'écran peut s'ouvrir. Si ce n'est le cas, cliquez sur l'icone de l'extension pour la démarrer.
+
+- - -
+
+**Étape n°2** : Ouvrez le panneau latéral de l'extension. Cliquez sur "Public", puis sur "Create new group", ce qui vous redirigera sur la [page de création de groupe](https://hypothes.is/groups/new).
+
+- - -
+
+**Étape n°3** : Renseignez un nom de groupe (obligatoire) et une description (optionnel) puis cliquez simplement sur "*Create group*".
+
+- - -
+
+**Étape n°4** : Votre groupe d'annotation est prêt ! Envoyez le lien présents dans "*Invite new members*" pour inviter d'autres utilisateurs de *Hypothes.is* dans votre groupe.  
+
+
+# Pourquoi utiliser Hypothes.is ?
+
+## Dans un contexte d'utilisation général (personnel, professionnel, ...)
+
+Repenser notre façon de lire et d'interagir dans le numérique
+
+Usage personnel = lecture d'articles de journaux, lecture de documentation, ... pour annoter pour vous et/ou pour les autres
+
+Usage professionnel = avec groupe privé, peut permettre des relectures collaboratives et interactives de documents.
+
+## Dans le contexte de la cartographie "CartoExpert "
+
+Dans le cadre du projet CartoExpert, nous allons exploiter le concept d'annotation comme moyen collaboratif de maintenir à jour les données de CartoExpert : dès lors qu'un membre du service repère une coquille *(information à préciser, qui n'est plus d'actualité, ...)*, celui-ci pourra laisser une annotation sur l'interface qui, par la suite, pourra être consultée par les opérateurs chargés du maintien du logiciel afin d'y apporter (ou non) les modifications nécessaires.
+
+Par cette nouvelle méthode, l'actualisation des données pourra se faire en continu en plus d'ajouter une dimension collaborative au maintien à jour des données du service. 
