@@ -13,23 +13,25 @@ L’application [Hypothes.is](https://web.hypothes.is/) s'ancre par ailleurs ple
 
 # Prise en main d'Hypothes.is
 
-Dans l'ensemble, *Hypothes.is* est une application très facile à installer et à utiliser. Les points ci-dessous vous guideront de l'inscription/installation jusqu'à l'intégration du groupe privé Hypothes.is. Mais **avant tout chose**, pensez bien à vous [créer un compte](https://hypothes.is/signup). 
+Les points ci-dessous vous guideront dans le processus d'installation de *Hypothes.is* jusqu'à l'intégration du groupe privé Hypothes.is. Mais **avant tout chose**, pensez bien à vous [créer un compte](https://hypothes.is/signup). 
 
-## Installer l'extension sur votre machine
+## Configurer l'interface sur votre navigateur
 
-Aujourd'hui, la façon la plus simple d'accéder à *Hypothes.is* est de passer par son extension de navigateur. Voici quelques liens pour vous aider à installer ladite extension : 
+Aujourd'hui, la méthode pour installer *Hypothes.is* varie en fonction du navigateur que vous utilisez quotidiennement. Le premier cas, concernant les utilisateurs de navigateurs type **Google Chrome, Microsoft Edge, Opéra** ou tout autre navigateur basé sur [Chromium](https://fr.wikipedia.org/wiki/Chromium), il suffit simplement d'ajouter l'[extension officielle](https://chromewebstore.google.com/detail/hypothesis-web-pdf-annota/bjfhmglciegochdpefhhlphglcehbmek). Pour les autres navigateurs comme **Firefox ou Safari**, la méthode est différente puisqu'il faut passer par ce que l'on appelle un [Bookmarklet](https://fr.wikipedia.org/wiki/Bookmarklet).
 
-  - Google Chrome (extension officielle) : [Ajouter l’extension](https://chromewebstore.google.com/detail/hypothesis-web-pdf-annota/bjfhmglciegochdpefhhlphglcehbmek)
-  - Firefox (extension non-officielle) : [Ajouter l’extension](https://addons.mozilla.org/fr/firefox/addon/unofficial-hypothesis/)
-
-Une fois l’extension installée, rendez-vous sur la page à annoter puis activez *Hypothes.is* en cliquant sur l'icone de l'extension. Connectez-vous en cliquant sur "log-in" et voilà, *Hypothes.is* est prêt à être utilisé !
+Une fois l’extension ou le Bookmarklet mis en place sur votre navigateur, rendez-vous sur la page à annoter puis activez *Hypothes.is* en cliquant sur l'icone de l'extension ou sur le marque-page. Ensuite, connectez-vous en cliquant sur "log-in" et voilà, *Hypothes.is* est prêt à être utilisé !
 
 ::: {.callout-note}
-L'extension officielle de Hypothes.is est aussi disponible sur l'ensemble des navigateurs étant basés sur [Chromium](https://fr.wikipedia.org/wiki/Chromium#Autres_navigateurs_fondés_sur_Chromium) (*Microsoft Edge*, *Opéra*, *Brave*, ...).
 
-À contrario, pour *Safari*, aucune extension officielle ou officieuse n'existe pour le moment.
+À noter que, pour Firefox, il existe une [extension non-officielle](https://addons.mozilla.org/fr/firefox/addon/unofficial-hypothesis/) répliqnant l'expérience de la version officielle pour Chromium. ***Cependant, celle-ci ne permet pas d'annoter les PDF téléchargés localement***.
+
 :::
 
+### Mettre en place le Bookmarklet
+
+Retrouver le Bookmarklet de Hypothes.is : [https://web.hypothes.is/help/installing-the-bookmarklet/](placeholder)
+
+[À compléter]
 
 ## Commencer à annoter
 

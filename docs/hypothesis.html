@@ -169,7 +169,10 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#prise-en-main-dhypothes.is" id="toc-prise-en-main-dhypothes.is" class="nav-link active" data-scroll-target="#prise-en-main-dhypothes.is">Prise en main d’Hypothes.is</a>
   <ul class="collapse">
-  <li><a href="#installer-lextension-sur-votre-machine" id="toc-installer-lextension-sur-votre-machine" class="nav-link" data-scroll-target="#installer-lextension-sur-votre-machine">Installer l’extension sur votre machine</a></li>
+  <li><a href="#configurer-linterface-sur-votre-navigateur" id="toc-configurer-linterface-sur-votre-navigateur" class="nav-link" data-scroll-target="#configurer-linterface-sur-votre-navigateur">Configurer l’interface sur votre navigateur</a>
+  <ul class="collapse">
+  <li><a href="#mettre-en-place-le-bookmarklet" id="toc-mettre-en-place-le-bookmarklet" class="nav-link" data-scroll-target="#mettre-en-place-le-bookmarklet">Mettre en place le Bookmarklet</a></li>
+  </ul></li>
   <li><a href="#commencer-à-annoter" id="toc-commencer-à-annoter" class="nav-link" data-scroll-target="#commencer-à-annoter">Commencer à annoter</a></li>
   <li><a href="#interagir-avec-une-annotation-existante" id="toc-interagir-avec-une-annotation-existante" class="nav-link" data-scroll-target="#interagir-avec-une-annotation-existante">Interagir avec une annotation existante</a></li>
   <li><a href="#accéder-à-un-groupe-dannotation-collectif" id="toc-accéder-à-un-groupe-dannotation-collectif" class="nav-link" data-scroll-target="#accéder-à-un-groupe-dannotation-collectif">Accéder à un groupe d’annotation collectif</a>
@@ -218,15 +221,11 @@ ul.task-list li input[type="checkbox"] {
 <p>L’application <a href="https://web.hypothes.is/">Hypothes.is</a> s’ancre par ailleurs pleinement dans les enjeux académiques des Humanités Numériques en soutenant des pratiques de science ouverte, en favorisant la transparence des processus intellectuels et en offrant un support pour l’écriture critique collective. Intégrée aux environnements de recherche en ligne, Hypothes.is permet ainsi d’ancrer la lecture dans un dialogue actif, rigoureux et collaboratif — au service de la production et de la circulation du savoir.</p>
 <section id="prise-en-main-dhypothes.is" class="level1">
 <h1>Prise en main d’Hypothes.is</h1>
-<p>Dans l’ensemble, <em>Hypothes.is</em> est une application très facile à installer et à utiliser. Les points ci-dessous vous guideront de l’inscription/installation jusqu’à l’intégration du groupe privé Hypothes.is. Mais <strong>avant tout chose</strong>, pensez bien à vous <a href="https://hypothes.is/signup">créer un compte</a>.</p>
-<section id="installer-lextension-sur-votre-machine" class="level2">
-<h2 class="anchored" data-anchor-id="installer-lextension-sur-votre-machine">Installer l’extension sur votre machine</h2>
-<p>Aujourd’hui, la façon la plus simple d’accéder à <em>Hypothes.is</em> est de passer par son extension de navigateur. Voici quelques liens pour vous aider à installer ladite extension :</p>
-<ul>
-<li>Google Chrome (extension officielle) : <a href="https://chromewebstore.google.com/detail/hypothesis-web-pdf-annota/bjfhmglciegochdpefhhlphglcehbmek">Ajouter l’extension</a></li>
-<li>Firefox (extension non-officielle) : <a href="https://addons.mozilla.org/fr/firefox/addon/unofficial-hypothesis/">Ajouter l’extension</a></li>
-</ul>
-<p>Une fois l’extension installée, rendez-vous sur la page à annoter puis activez <em>Hypothes.is</em> en cliquant sur l’icone de l’extension. Connectez-vous en cliquant sur “log-in” et voilà, <em>Hypothes.is</em> est prêt à être utilisé !</p>
+<p>Les points ci-dessous vous guideront dans le processus d’installation de <em>Hypothes.is</em> jusqu’à l’intégration du groupe privé Hypothes.is. Mais <strong>avant tout chose</strong>, pensez bien à vous <a href="https://hypothes.is/signup">créer un compte</a>.</p>
+<section id="configurer-linterface-sur-votre-navigateur" class="level2">
+<h2 class="anchored" data-anchor-id="configurer-linterface-sur-votre-navigateur">Configurer l’interface sur votre navigateur</h2>
+<p>Aujourd’hui, la méthode pour installer <em>Hypothes.is</em> varie en fonction du navigateur que vous utilisez quotidiennement. Le premier cas, concernant les utilisateurs de navigateurs type <strong>Google Chrome, Microsoft Edge, Opéra</strong> ou tout autre navigateur basé sur <a href="https://fr.wikipedia.org/wiki/Chromium">Chromium</a>, il suffit simplement d’ajouter l’<a href="https://chromewebstore.google.com/detail/hypothesis-web-pdf-annota/bjfhmglciegochdpefhhlphglcehbmek">extension officielle</a>. Pour les autres navigateurs comme <strong>Firefox ou Safari</strong>, la méthode est différente puisqu’il faut passer par ce que l’on appelle un <a href="https://fr.wikipedia.org/wiki/Bookmarklet">Bookmarklet</a>.</p>
+<p>Une fois l’extension ou le Bookmarklet mis en place sur votre navigateur, rendez-vous sur la page à annoter puis activez <em>Hypothes.is</em> en cliquant sur l’icone de l’extension ou sur le marque-page. Ensuite, connectez-vous en cliquant sur “log-in” et voilà, <em>Hypothes.is</em> est prêt à être utilisé !</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -237,10 +236,14 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>L’extension officielle de Hypothes.is est aussi disponible sur l’ensemble des navigateurs étant basés sur <a href="https://fr.wikipedia.org/wiki/Chromium#Autres_navigateurs_fondés_sur_Chromium">Chromium</a> (<em>Microsoft Edge</em>, <em>Opéra</em>, <em>Brave</em>, …).</p>
-<p>À contrario, pour <em>Safari</em>, aucune extension officielle ou officieuse n’existe pour le moment.</p>
+<p>À noter que, pour Firefox, il existe une <a href="https://addons.mozilla.org/fr/firefox/addon/unofficial-hypothesis/">extension non-officielle</a> répliqnant l’expérience de la version officielle pour Chromium. <strong><em>Cependant, celle-ci ne permet pas d’annoter les PDF téléchargés localement</em></strong>.</p>
 </div>
 </div>
+<section id="mettre-en-place-le-bookmarklet" class="level3">
+<h3 class="anchored" data-anchor-id="mettre-en-place-le-bookmarklet">Mettre en place le Bookmarklet</h3>
+<p>Retrouver le Bookmarklet de Hypothes.is : https://web.hypothes.is/help/installing-the-bookmarklet/</p>
+<p>[À compléter]</p>
+</section>
 </section>
 <section id="commencer-à-annoter" class="level2">
 <h2 class="anchored" data-anchor-id="commencer-à-annoter">Commencer à annoter</h2>

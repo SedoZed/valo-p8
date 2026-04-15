@@ -670,5 +670,19 @@
     "title": "Hypothes.is comme outil collaboratif",
     "section": "Interagir avec une annotation existante",
     "text": "Interagir avec une annotation existante\nPeut-être que, pendant votre lecture, vous trouverez d’autres annotations laissées par d’autres utilisateurs. Et pourquoi ne pas interagir avec ?\nDescription du GIF étape par étape :\nÉtape n°1 : D’abord, assurez-vous que Hypothes.is est bien lancé en vérifiant si le menu à droite de l’écran peut s’ouvrir. Si ce n’est le cas, cliquez sur l’icone de l’extension pour la démarrer.\n\nÉtape n°2 : Les annotations déjà publiées sont visibles à travers le texte surligné jaune. Cliquez sur l’annotation sur laquelle vous voulez interagir pour ouvrir l’interface, avec l’annotation.\n\nÉtape n°3 : En bas à droite de l’annotation, cliquez sur l’icone de flèche “Reply” pour faire apparaître une boite de texte.\n\nÉtape n°4 : Ajoutez votre texte, vos tags, puis cliquez sur “Post to groupname”. Votre réponse est maintenant publiée, et une conversation entamée !"
+  },
+  {
+    "objectID": "hypothesis.html#accéder-à-linterface-hypothes.is",
+    "href": "hypothesis.html#accéder-à-linterface-hypothes.is",
+    "title": "Hypothes.is comme outil collaboratif",
+    "section": "Accéder à l’interface Hypothes.is",
+    "text": "Accéder à l’interface Hypothes.is\nÀ l’heure actuelle, il existe deux moyens d’accéder à l’interface Hypothes.is\nAujourd’hui, la façon la plus simple d’accéder à Hypothes.is est de passer par son extension de navigateur. Voici quelques liens pour vous aider à installer ladite extension :\n\nGoogle Chrome (extension officielle) : Ajouter l’extension\n\nUne fois l’extension installée, rendez-vous sur la page à annoter puis activez Hypothes.is en cliquant sur l’icone de l’extension. Connectez-vous en cliquant sur “log-in” et voilà, Hypothes.is est prêt à être utilisé !\n\n\n\n\n\n\nNote\n\n\n\nÀ noter que, pour Firefox, il existe une extension non-officielle répliqnant l’expérience de la version officielle pour Chromium. Cependant, celle-ci ne permets pas d’annoter les PDF téléchargés en local."
+  },
+  {
+    "objectID": "hypothesis.html#configurer-linterface-sur-votre-navigateur",
+    "href": "hypothesis.html#configurer-linterface-sur-votre-navigateur",
+    "title": "Hypothes.is comme outil collaboratif",
+    "section": "Configurer l’interface sur votre navigateur",
+    "text": "Configurer l’interface sur votre navigateur\nAujourd’hui, la méthode pour installer Hypothes.is varie en fonction du navigateur que vous utilisez quotidiennement. Le premier cas, concernant les utilisateurs de navigateurs type Google Chrome, Microsoft Edge, Opéra ou tout autre navigateur basé sur Chromium, il suffit simplement d’ajouter l’extension officielle. Pour les autres navigateurs comme Firefox ou Safari, la méthode est différente puisqu’il faut passer par ce que l’on appelle un Bookmarklet.\nUne fois l’extension ou le Bookmarklet mis en place sur votre navigateur, rendez-vous sur la page à annoter puis activez Hypothes.is en cliquant sur l’icone de l’extension ou sur le marque-page. Ensuite, connectez-vous en cliquant sur “log-in” et voilà, Hypothes.is est prêt à être utilisé !\n\n\n\n\n\n\nNote\n\n\n\nÀ noter que, pour Firefox, il existe une extension non-officielle répliqnant l’expérience de la version officielle pour Chromium. Cependant, celle-ci ne permet pas d’annoter les PDF téléchargés localement.\n\n\n\nMettre en place le Bookmarklet\nRetrouver le Bookmarklet de Hypothes.is : https://web.hypothes.is/help/installing-the-bookmarklet/\n[À compléter]"
   }
 ]
