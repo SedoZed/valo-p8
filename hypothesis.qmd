@@ -29,9 +29,21 @@ Une fois l’extension ou le Bookmarklet mis en place sur votre navigateur, rend
 
 ### Mettre en place le Bookmarklet
 
-Retrouver le Bookmarklet de Hypothes.is : [https://web.hypothes.is/help/installing-the-bookmarklet/](placeholder)
+Comme mentionné précédemment, les navigateurs hors-Chromium ne possèdent pas officiellement d'extension. La solution officielle proposée par *Hypothes.is* est **de mettre en place un Bookmarklet**, c'est-à-dire une injection *JavaScript* dans la page. Cette section va montrer vous présenter comment mettre en place, facilement, ce Bookmarklet. 
 
-[À compléter]
+![GIF montrant comment rendre actif *Hypothes.is* sur Firefox.](assets/img/bookmarklet_install.gif)
+
+**Description du GIF étape par étape** :
+
+**Étape n°1** : Rendez vous sur le site d'*Hypothes.is* dédié à son Bookmarklet ([Cliquez ici](https://web.hypothes.is/help/installing-the-bookmarklet/)), puis scrollez jusqu'à "*For most browsers (except mobile devices)*".
+
+- - -
+
+**Étape n°2** : Repérez le bouton "*Hypothes.is Bookmarklet*", attrapez le en maintenant clic gauche puis glissez-le jusqu'à vos marques-pages. 
+
+- - -
+
+**Étape n°3** : Rendez vous sur la page à annoter puis cliquez sur le marque-page pour ouvrir l'interface Hypothes.is. Voilà, *Hypothes.is* est prêt à être utilisé !
 
 ## Commencer à annoter
 
@@ -41,7 +53,7 @@ Une fois connecté à *Hypothes.is*, l'interface ouverte et le groupe rejoint, i
 
 **Description du GIF étape par étape** :
 
-**Étape n°1** : D'abord, assurez-vous que *Hypothes.is* est bien lancé en vérifiant si le menu à droite de l'écran peut s'ouvrir. Si ce n'est le cas, cliquez sur l'icone de l'extension pour la démarrer.
+**Étape n°1** : D'abord, assurez-vous que *Hypothes.is* est bien lancé en vérifiant si le menu à droite de l'écran peut s'ouvrir. Si ce n'est le cas, cliquez sur l'icone de l'extension ou du Bookmarklet pour la démarrer.
 
 - - -
 
@@ -61,7 +73,7 @@ Peut-être que, pendant votre lecture, vous trouverez d'autres annotations laiss
 
 **Description du GIF étape par étape** : 
 
-**Étape n°1** : D'abord, assurez-vous que *Hypothes.is* est bien lancé en vérifiant si le menu à droite de l'écran peut s'ouvrir. Si ce n'est le cas, cliquez sur l'icone de l'extension pour la démarrer. 
+**Étape n°1** : D'abord, assurez-vous que *Hypothes.is* est bien lancé en vérifiant si le menu à droite de l'écran peut s'ouvrir. Si ce n'est le cas, cliquez sur l'icone de l'extension ou du Bookmarklet pour la démarrer. 
 
 - - -
 
@@ -87,9 +99,9 @@ Comme évoqué en introduction, Hypothes.is mets à disposition deux moyens de d
 ### Créer et partager son propre groupe d'annotation privé
 N'importe quel utilisateur de *Hypothes.is* peut créer ses propres groupes privés d'annotation. 
 
-[À compléter]
+![GIF montrant comment créer un groupe collaboratif](assets/img/creer_groupe.gif)
 
-**Étape n°1** : D'abord, assurez-vous que *Hypothes.is* est bien lancé en vérifiant si le menu à droite de l'écran peut s'ouvrir. Si ce n'est le cas, cliquez sur l'icone de l'extension pour la démarrer.
+**Étape n°1** : D'abord, assurez-vous que *Hypothes.is* est bien lancé en vérifiant si le menu à droite de l'écran peut s'ouvrir. Si ce n'est le cas, cliquez sur l'icone de l'extension ou du Bookmarklet pour la démarrer.
 
 - - -
 
