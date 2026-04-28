@@ -205,3 +205,8 @@ valo:axeRech a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; Laborat
     rdfs:label "Axe de recherche" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
+
+valo:estResponsableDe a rdfs:Property ; # Utilisé pour lié les chargées de valorisation à leurs laboratoires
+    rdfs:label "Est responsable de" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
