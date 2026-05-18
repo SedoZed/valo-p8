@@ -192,16 +192,14 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#objectif" id="toc-objectif" class="nav-link" data-scroll-target="#objectif">Objectif</a></li>
   <li><a href="#configuration-initiale" id="toc-configuration-initiale" class="nav-link" data-scroll-target="#configuration-initiale">Configuration initiale</a></li>
-  <li><a href="#scanner-les-doublons" id="toc-scanner-les-doublons" class="nav-link" data-scroll-target="#scanner-les-doublons">Scanner les doublons</a>
+  <li><a href="#longlet-doublons" id="toc-longlet-doublons" class="nav-link" data-scroll-target="#longlet-doublons">L’onglet Doublons</a>
   <ul class="collapse">
-  <li><a href="#scan-lettre-par-lettre" id="toc-scan-lettre-par-lettre" class="nav-link" data-scroll-target="#scan-lettre-par-lettre">Scan lettre par lettre</a></li>
-  <li><a href="#scan-complet" id="toc-scan-complet" class="nav-link" data-scroll-target="#scan-complet">Scan complet</a></li>
-  </ul></li>
+  <li><a href="#scanner-les-doublons" id="toc-scanner-les-doublons" class="nav-link" data-scroll-target="#scanner-les-doublons">Scanner les doublons</a></li>
   <li><a href="#types-de-doublons-détectés" id="toc-types-de-doublons-détectés" class="nav-link" data-scroll-target="#types-de-doublons-détectés">Types de doublons détectés</a></li>
-  <li><a href="#traiter-une-paire-suspecte" id="toc-traiter-une-paire-suspecte" class="nav-link" data-scroll-target="#traiter-une-paire-suspecte">Traiter une paire suspecte</a>
-  <ul class="collapse">
-  <li><a href="#fenêtre-de-fusion" id="toc-fenêtre-de-fusion" class="nav-link" data-scroll-target="#fenêtre-de-fusion">Fenêtre de fusion</a></li>
+  <li><a href="#traiter-un-cluster" id="toc-traiter-un-cluster" class="nav-link" data-scroll-target="#traiter-un-cluster">Traiter un cluster</a></li>
+  <li><a href="#concepts-obsolètes" id="toc-concepts-obsolètes" class="nav-link" data-scroll-target="#concepts-obsolètes">Concepts obsolètes</a></li>
   </ul></li>
+  <li><a href="#longlet-tous-les-concepts" id="toc-longlet-tous-les-concepts" class="nav-link" data-scroll-target="#longlet-tous-les-concepts">L’onglet Tous les concepts</a></li>
   <li><a href="#bonnes-pratiques" id="toc-bonnes-pratiques" class="nav-link" data-scroll-target="#bonnes-pratiques">Bonnes pratiques</a></li>
   </ul></li>
   <li><a href="#validexpertises" id="toc-validexpertises" class="nav-link" data-scroll-target="#validexpertises">✅ validExpertises</a>
@@ -326,37 +324,23 @@ Astuce
 <li>Cliquer sur <strong>Enregistrer</strong>.</li>
 </ol>
 </section>
-<section id="scanner-les-doublons" class="level2">
-<h2 class="anchored" data-anchor-id="scanner-les-doublons">Scanner les doublons</h2>
-<section id="scan-lettre-par-lettre" class="level3">
-<h3 class="anchored" data-anchor-id="scan-lettre-par-lettre">Scan lettre par lettre</h3>
-<ol type="1">
-<li>Cliquer sur une <strong>lettre</strong> dans l’interface pour analyser tous les concepts commençant par cette lettre.</li>
-<li>Les paires suspectes détectées s’affichent avec leur type et un score de similarité.</li>
-<li>Trier les résultats par <strong>Score</strong>, <strong>Taille</strong> ou <strong>A–Z</strong> selon vos besoins.</li>
-</ol>
+<section id="longlet-doublons" class="level2">
+<h2 class="anchored" data-anchor-id="longlet-doublons">L’onglet Doublons</h2>
+<p>C’est la vue principale. Les concepts similaires sont regroupés en <strong>clusters</strong> (cartes).</p>
+<section id="scanner-les-doublons" class="level3">
+<h3 class="anchored" data-anchor-id="scanner-les-doublons">Scanner les doublons</h3>
+<p><strong>Lettre par lettre</strong> — cliquer sur une lettre analyse tous les concepts commençant par cette lettre. La lettre passe en vert une fois traitée.</p>
+<p><strong>Scan complet</strong> — le bouton <strong>⚡ Tout scanner</strong> parcourt les 26 lettres en séquence avec une barre de progression. L’opération peut prendre entre 30 secondes et quelques minutes selon la taille de la base.</p>
+<p><strong>Cache</strong> — après chaque scan, les résultats sont sauvegardés localement et restaurés au rechargement suivant sans nouvelle requête. Le bandeau de cache indique la date du dernier scan. <strong>🔄 Actualiser</strong> efface le cache et repart de zéro.</p>
+<p><strong>Filtrer et trier</strong> — une barre de recherche filtre les clusters en temps réel. Le menu déroulant permet de trier par score de similarité, par nombre de concepts ou par ordre alphabétique.</p>
 </section>
-<section id="scan-complet" class="level3">
-<h3 class="anchored" data-anchor-id="scan-complet">Scan complet</h3>
-<p>Le bouton <strong>⚡ Tout scanner</strong> analyse l’ensemble du référentiel d’un coup. Les résultats sont mis en cache (date visible à l’écran) et restent disponibles jusqu’au prochain clic sur <strong>🔄 Actualiser</strong>.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Avertissement
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Le scan complet peut être long sur un référentiel volumineux. Préférez le scan lettre par lettre pour une vérification ciblée.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="types-de-doublons-détectés" class="level2">
-<h2 class="anchored" data-anchor-id="types-de-doublons-détectés">Types de doublons détectés</h2>
+<section id="types-de-doublons-détectés" class="level3">
+<h3 class="anchored" data-anchor-id="types-de-doublons-détectés">Types de doublons détectés</h3>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Type</th>
@@ -365,43 +349,31 @@ Avertissement
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Wikidata</strong></td>
-<td>Concepts pointant vers la même entité Wikidata</td>
-</tr>
-<tr class="even">
 <td><strong>Textuel</strong></td>
-<td>Libellés identiques ou quasi-identiques</td>
-</tr>
-<tr class="odd">
-<td><strong>Variante ortho.</strong></td>
-<td>Même terme avec des graphies différentes</td>
+<td>Libellés identiques après normalisation (minuscules, sans accents)</td>
 </tr>
 <tr class="even">
 <td><strong>Singulier / pluriel</strong></td>
 <td>Ex. : “réseau” et “réseaux”</td>
 </tr>
 <tr class="odd">
+<td><strong>Variante ortho.</strong></td>
+<td>Distance orthographique faible (Levenshtein ≤ 2)</td>
+</tr>
+<tr class="even">
 <td><strong>Termes inclus</strong></td>
-<td>Un terme contenu dans un autre plus long</td>
+<td>Tous les mots significatifs du label court présents dans le long</td>
 </tr>
 </tbody>
 </table>
-<p>Utilisez les filtres en haut de liste pour n’afficher qu’un type à la fois.</p>
 </section>
-<section id="traiter-une-paire-suspecte" class="level2">
-<h2 class="anchored" data-anchor-id="traiter-une-paire-suspecte">Traiter une paire suspecte</h2>
-<p>Pour chaque paire affichée :</p>
-<ul>
-<li><strong>Rejeter</strong> → faux positif, les deux concepts sont légitimement distincts, la paire disparaît de la liste</li>
-<li><strong>Fusionner →</strong> → ouvre la fenêtre de confirmation</li>
-</ul>
-<section id="fenêtre-de-fusion" class="level3">
-<h3 class="anchored" data-anchor-id="fenêtre-de-fusion">Fenêtre de fusion</h3>
-<p>La fenêtre affiche :</p>
-<ul>
-<li>le concept <strong>Source</strong> (sera supprimé)</li>
-<li>le concept <strong>Cible</strong> (sera conservé)</li>
-</ul>
+<section id="traiter-un-cluster" class="level3">
+<h3 class="anchored" data-anchor-id="traiter-un-cluster">Traiter un cluster</h3>
+<p>Chaque carte affiche les concepts du groupe, leur score de similarité et la raison détectée.</p>
+<p><strong>Choisir le concept à conserver</strong> — les boutons radio permettent de sélectionner lequel sera conservé. Les autres seront supprimés. Par défaut, le premier de la liste est sélectionné.</p>
+<p><strong>Exclure un concept du groupe</strong> — survoler une ligne fait apparaître un bouton <strong>✕</strong> pour retirer un concept du cluster sans modifier la base. Si le cluster tombe à un seul concept, la carte disparaît.</p>
+<p><strong>Fusionner en 2 clics</strong> — le bouton <strong>Fusionner →</strong> exécute directement la fusion avec le concept sélectionné, sans étape intermédiaire.</p>
+<p><strong>Fusionner avec aperçu (3 clics)</strong> — le bouton <strong>Détails ↓</strong> ouvre un accordéon qui affiche le nombre d’ECs et d’Expertises qui seront mis à jour, puis propose un bouton <strong>Fusionner →</strong> pour confirmer.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -412,23 +384,29 @@ Mise en garde
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Vérifiez bien quel concept est Source et lequel est Cible avant de confirmer. <strong>La fusion est définitive et irréversible.</strong></p>
-<p>En cas de doute sur le sens à choisir, préférer conserver le concept le plus utilisé (taille la plus grande) comme Cible.</p>
+<p><strong>La fusion est définitive.</strong> En cas de doute sur quel concept conserver, préférer celui avec le plus grand nombre d’ECs associés (visible dans l’aperçu Détails).</p>
 </div>
 </div>
-<ol type="1">
-<li>Vérifier Source → Cible.</li>
-<li>Cliquer sur <strong>Fusionner définitivement</strong>.</li>
-<li>L’opération apparaît dans le <strong>Journal des opérations</strong> en bas de page.</li>
-</ol>
+<p><strong>Rejeter</strong> — marque le cluster comme faux positif. Il n’apparaîtra plus lors des prochains scans.</p>
 </section>
+<section id="concepts-obsolètes" class="level3">
+<h3 class="anchored" data-anchor-id="concepts-obsolètes">Concepts obsolètes</h3>
+<p>Après une fusion, les concepts supprimés qui apparaissent encore dans d’autres clusters affichés sont automatiquement <strong>barrés et grisés</strong>. Si un cluster n’a plus qu’un seul concept actif, il est marqué <strong>⚠ À réviser</strong> et ses boutons de fusion sont désactivés.</p>
+</section>
+</section>
+<section id="longlet-tous-les-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="longlet-tous-les-concepts">L’onglet Tous les concepts</h2>
+<p>Cet onglet affiche la liste paginée de <strong>tous les concepts</strong> de la base, avec une barre de recherche et un tri par titre ou par date.</p>
+<p>Les concepts présents dans un cluster de doublons affichent un badge <strong>⚠ X groupe(s)</strong>. Un clic sur ce badge bascule vers l’onglet Doublons et scrolle directement vers le cluster concerné.</p>
+<p>Les boutons <strong>→ Source</strong> et <strong>→ Cible</strong> permettent de sélectionner deux concepts pour une <strong>fusion manuelle</strong> via le formulaire en bas de page. Cette fusion passe par une modale de confirmation.</p>
 </section>
 <section id="bonnes-pratiques" class="level2">
 <h2 class="anchored" data-anchor-id="bonnes-pratiques">Bonnes pratiques</h2>
 <ul>
-<li>Travailler lettre par lettre plutôt que tout scanner d’un coup lors des premières sessions — cela permet de s’approprier le référentiel.</li>
-<li>Consulter le <strong>Journal des opérations</strong> en fin de session pour vérifier qu’aucune fusion non voulue n’a eu lieu.</li>
-<li>Ne pas lancer cleanKeywords et validExpertises simultanément sur le même référentiel.</li>
+<li>Travailler lettre par lettre lors des premières sessions pour s’approprier le référentiel avant de lancer un scan complet.</li>
+<li>Utiliser <strong>Détails ↓</strong> avant de fusionner des clusters importants pour vérifier l’impact.</li>
+<li>Consulter le <strong>Journal des opérations</strong> en fin de session.</li>
+<li>Ne pas faire tourner cleanKeywords et validExpertises simultanément sur le même référentiel.</li>
 </ul>
 <hr>
 </section>
@@ -999,7 +977,7 @@ Avertissement
 </div>   
     <div class="nav-footer-center">
 <div class="footer-img">
-<p><img src="../assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo"></p>
+<p><img src="https://sedozed.github.io/valo-p8/assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo"></p>
 </div>
 </div>
     <div class="nav-footer-right">

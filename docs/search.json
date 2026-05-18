@@ -1208,7 +1208,7 @@
     "href": "outils/guide_operateur_validata.html#bonnes-pratiques",
     "title": "ValiDatas — Guide opérateur",
     "section": "Bonnes pratiques",
-    "text": "Bonnes pratiques\n\nTravailler lettre par lettre plutôt que tout scanner d’un coup lors des premières sessions — cela permet de s’approprier le référentiel.\nConsulter le Journal des opérations en fin de session pour vérifier qu’aucune fusion non voulue n’a eu lieu.\nNe pas lancer cleanKeywords et validExpertises simultanément sur le même référentiel."
+    "text": "Bonnes pratiques\n\nTravailler lettre par lettre lors des premières sessions pour s’approprier le référentiel avant de lancer un scan complet.\nUtiliser Détails ↓ avant de fusionner des clusters importants pour vérifier l’impact.\nConsulter le Journal des opérations en fin de session.\nNe pas faire tourner cleanKeywords et validExpertises simultanément sur le même référentiel."
   },
   {
     "objectID": "outils/guide_operateur_validata.html#objectif-1",
@@ -1299,21 +1299,21 @@
     "href": "outils/doc_tech_validata.html",
     "title": "ValiDatas — Documentation technique",
     "section": "",
-    "text": "Note\n\n\n\nCette documentation s’adresse aux personnes chargées d’installer, configurer, maintenir ou faire évoluer les outils de la suite ValiDatas.\nDépôts GitHub : samszo/cleanKeywords · samszo/validExpertises"
+    "text": "Note\n\n\n\nCette documentation s’adresse aux personnes chargées d’installer, configurer, maintenir ou faire évoluer les outils de la suite ValiDatas.\nDépôts GitHub : SedoZed/validKeyword · samszo/validExpertises"
   },
   {
     "objectID": "outils/doc_tech_validata.html#vue-densemble-technique",
     "href": "outils/doc_tech_validata.html#vue-densemble-technique",
     "title": "ValiDatas — Documentation technique",
     "section": "Vue d’ensemble technique",
-    "text": "Vue d’ensemble technique\nLes deux outils sont des applications web front-end uniquement (HTML + CSS + JavaScript vanilla), sans back-end propre. Toutes les données transitent via l’API REST d’Oméka S. Ils partagent la même structure de configuration et les mêmes conventions de code.\n\n\n\n\n\n\n\n\n\ncleanKeywords\nvalidExpertises\n\n\n\n\nVersion\nv0.1.3\nv0.2.3\n\n\nDépendances JS\nD3 (local)\nD3 (local)\n\n\nStockage config\nlocalStorage\nlocalStorage\n\n\nClé localStorage\ncleanKeywords_cfg\nvalidExpertises_cfg\n\n\nDroits API requis\nLecture + Écriture + Suppression\nLecture + Écriture"
+    "text": "Vue d’ensemble technique\nLes deux outils sont des applications web front-end uniquement (HTML + CSS + JavaScript vanilla), sans back-end propre. Toutes les données transitent via l’API REST d’Oméka S. Ils partagent la même structure de configuration et les mêmes conventions de code.\n\n\n\n\n\n\n\n\n\ncleanKeywords\nvalidExpertises\n\n\n\n\nVersion\nv0.1.3\nv0.2.3\n\n\nDépendances JS\nD3 (local) + similarity.js\nD3 (local)\n\n\nStockage config\nlocalStorage\nlocalStorage\n\n\nClé localStorage config\ncleanKeywords_cfg\nvalidExpertises_cfg\n\n\nDroits API requis\nLecture + Écriture + Suppression\nLecture + Écriture"
   },
   {
     "objectID": "outils/doc_tech_validata.html#architecture",
     "href": "outils/doc_tech_validata.html#architecture",
     "title": "ValiDatas — Documentation technique",
     "section": "Architecture",
-    "text": "Architecture\ncleanKeywords/\n├── index.html\n└── assets/\n    ├── main.css\n    └── js/\n        ├── appUrl.js\n        ├── auth.js\n        ├── authParams.js\n        └── omk.js"
+    "text": "Architecture\ncleanKeywords/\n├── index.html\n├── CHANGELOG.md\n└── assets/\n    ├── main.css\n    └── js/\n        ├── appUrl.js\n        ├── auth.js\n        ├── authParams.js\n        ├── omk.js\n        ├── similarity.js   ← algorithmes de détection et clustering\n        └── d3.min.js\nsimilarity.js est isolé du reste de l’application — il contient uniquement les algorithmes de comparaison et de clustering, sans dépendance vers l’API ou l’UI."
   },
   {
     "objectID": "outils/doc_tech_validata.html#prérequis-spécifiques",
@@ -1327,7 +1327,7 @@
     "href": "outils/doc_tech_validata.html#paramètres-de-configuration",
     "title": "ValiDatas — Documentation technique",
     "section": "Paramètres de configuration",
-    "text": "Paramètres de configuration\n\n\n\n\n\n\n\nParamètre\nDescription\n\n\n\n\napiOmk\nURL de base de l’API Oméka S\n\n\nmail\nMail du propriétaire de la clé API\n\n\nident\nkey_identity\n\n\nkey\nkey_credential\n\n\ncreatorId\nID Oméka S de l’évaluateur (détermine les laboratoires autorisés via valo:responsableDe)\n\n\npersonPropExp\nPropriétés mots-clefs des personnes, séparées par des virgules"
+    "text": "Paramètres de configuration\n\n\n\n\n\n\n\nParamètre\nDescription\n\n\n\n\napiOmk\nURL de base de l’API Oméka S\n\n\nmail\nMail du propriétaire de la clé API\n\n\nident\nkey_identity\n\n\nkey\nkey_credential\n\n\npersonPropExp\nPropriétés mots-clefs des personnes, séparées par des virgules — utilisées lors des fusions pour mettre à jour les ECs"
   },
   {
     "objectID": "outils/doc_tech_validata.html#flux-api-détection-de-doublons",
@@ -1341,14 +1341,14 @@
     "href": "outils/doc_tech_validata.html#flux-api-fusion",
     "title": "ValiDatas — Documentation technique",
     "section": "Flux API — fusion",
-    "text": "Flux API — fusion\nLa fusion s’opère en plusieurs étapes :\n\nRécupérer les items liés au concept Source (EC, Expertises) via leurs propriétés de relation.\nMettre à jour chaque item lié pour remplacer la référence Source par la référence Cible — PUT /items/{id}.\nSupprimer le concept Source — DELETE /items/{id_source}.\n\n\n\n\n\n\n\nMise en garde\n\n\n\nLa suppression est définitive. Il n’existe pas de mécanisme d’annulation côté application. En cas d’erreur, la restauration passe par un accès direct à Oméka S (interface admin ou API)."
+    "text": "Flux API — fusion\nLa fusion s’opère en quatre étapes séquentielles :\n\nMettre à jour les items ECs dont une propriété dans personPropExp pointe vers le concept Source → PUT /items/{id_ec}.\nMettre à jour les items Expertise dont valo:expertise pointe vers le concept Source → PUT /items/{id_expertise}.\nAjouter dcterms:replaces sur le concept Cible pour tracer la fusion → PUT /items/{id_cible}.\nSupprimer le concept Source → DELETE /items/{id_source}.\n\n\n\n\n\n\n\nMise en garde\n\n\n\nSi une erreur survient aux étapes 1 ou 2, la fusion est interrompue et le concept Source n’est pas supprimé — la base reste dans un état cohérent. La suppression n’est jamais exécutée si le transfert des relations a échoué.\n\n\n\n\n\n\n\n\nNote\n\n\n\nLa traçabilité est assurée par dcterms:replaces sur le concept Cible. Il est possible de retrouver rétrospectivement quels concepts ont été fusionnés directement dans Oméka S."
   },
   {
     "objectID": "outils/doc_tech_validata.html#journal-des-opérations",
     "href": "outils/doc_tech_validata.html#journal-des-opérations",
     "title": "ValiDatas — Documentation technique",
     "section": "Journal des opérations",
-    "text": "Journal des opérations\nChaque fusion est tracée dans le journal affiché en bas de page. Ce journal est en mémoire uniquement (non persisté) — il est perdu au rechargement de la page.\n\n\n\n\n\n\nAvertissement\n\n\n\nSi la traçabilité des opérations est critique, envisager d’ajouter une persistance du journal (localStorage ou export CSV) comme évolution future."
+    "text": "Journal des opérations\nChaque fusion est tracée en temps réel dans le journal affiché en bas de page. Ce journal est en mémoire uniquement — il est perdu au rechargement de la page.\n\n\n\n\n\n\nAvertissement\n\n\n\nSi la traçabilité session-à-session est critique, envisager un export CSV du journal comme évolution future."
   },
   {
     "objectID": "outils/doc_tech_validata.html#architecture-1",
@@ -1383,35 +1383,35 @@
     "href": "outils/doc_tech_validata.html#vocabulaires-oméka-s-requis",
     "title": "ValiDatas — Documentation technique",
     "section": "Vocabulaires Oméka S requis",
-    "text": "Vocabulaires Oméka S requis\n\n\n\n\n\n\n\n\nPréfixe\nPropriété\nUsage\n\n\n\n\nskos\nskos:hasTopConcept\nPropriété par défaut des mots-clefs\n\n\ndcterms\ndcterms:subject\nPropriété complémentaire\n\n\ndcterms\ndcterms:creator\nLien évaluateur ↔︎ Expertise\n\n\ndcterms\ndcterms:source\nLien personne ↔︎ Expertise\n\n\ncuration\ncuration:rank\nValeur d’expertise\n\n\nvalo\nvalo:expertise\nType d’item Expertise\n\n\nvalo\nvalo:EnseignantChercheur\nType de personne autorisé\n\n\nvalo\nvalo:Laboratoire\nClasse pour le menu laboratoires\n\n\nvalo\nvalo:responsableDe\nLien évaluateur ↔︎ laboratoires (cleanKeywords)"
+    "text": "Vocabulaires Oméka S requis\n\n\n\n\n\n\n\n\nPréfixe\nPropriété\nUsage\n\n\n\n\nskos\nskos:Concept\nClasse des concepts/mots-clefs\n\n\nskos\nskos:hasTopConcept\nPropriété par défaut des mots-clefs d’un EC\n\n\ndcterms\ndcterms:subject\nPropriété complémentaire des mots-clefs\n\n\ndcterms\ndcterms:title\nLabel des concepts (utilisé pour le scan)\n\n\ndcterms\ndcterms:replaces\nTraçabilité des fusions (cleanKeywords)\n\n\ndcterms\ndcterms:creator\nLien évaluateur ↔︎ Expertise\n\n\ndcterms\ndcterms:source\nLien personne ↔︎ Expertise\n\n\ncuration\ncuration:rank\nValeur d’expertise\n\n\nvalo\nvalo:expertise\nPropriété de lien vers un concept dans un item Expertise\n\n\nvalo\nvalo:EnseignantChercheur\nType de personne autorisé\n\n\nvalo\nvalo:Laboratoire\nClasse pour le menu laboratoires"
   },
   {
     "objectID": "outils/doc_tech_validata.html#installation",
     "href": "outils/doc_tech_validata.html#installation",
     "title": "ValiDatas — Documentation technique",
     "section": "Installation",
-    "text": "Installation\n# Cloner les deux dépôts\ngit clone https://github.com/samszo/cleanKeywords.git\ngit clone https://github.com/samszo/validExpertises.git\n\n# Servir depuis un serveur web local\ncd cleanKeywords && python3 -m http.server 8080\ncd validExpertises && python3 -m http.server 8081\n\n\n\n\n\n\nAvertissement\n\n\n\nCORS : si Oméka S est sur un domaine différent, configurer les en-têtes CORS sur le serveur Oméka S pour les deux origines."
+    "text": "Installation\n# Cloner les deux dépôts\ngit clone https://github.com/SedoZed/validKeyword.git\ngit clone https://github.com/samszo/validExpertises.git\n\n# Servir depuis un serveur web local\ncd validKeyword && python3 -m http.server 8080\ncd validExpertises && python3 -m http.server 8081\n\n\n\n\n\n\nAvertissement\n\n\n\nCORS : si Oméka S est sur un domaine différent, configurer les en-têtes CORS côté Oméka S pour les deux origines. Les requêtes OPTIONS doivent retourner un code 200.\nHeader set Access-Control-Allow-Origin \"https://valorisation.humanum-p8.fr\"\nHeader set Access-Control-Allow-Methods \"GET, POST, PUT, DELETE, OPTIONS\"\nHeader set Access-Control-Allow-Headers \"Content-Type\""
   },
   {
     "objectID": "outils/doc_tech_validata.html#sécurité",
     "href": "outils/doc_tech_validata.html#sécurité",
     "title": "ValiDatas — Documentation technique",
     "section": "Sécurité",
-    "text": "Sécurité\n\nNe jamais committer key_identity / key_credential dans authParams.js si les dépôts sont publics.\nCréer des clés API avec les privilèges minimaux nécessaires à chaque outil.\ncleanKeywords requiert des droits de suppression — limiter son accès aux opérateurs de confiance."
+    "text": "Sécurité\n\nNe jamais committer key_identity / key_credential dans authParams.js si les dépôts sont publics.\nCréer des clés API avec les privilèges minimaux nécessaires à chaque outil.\ncleanKeywords requiert des droits de suppression — réserver son accès aux administrateurs du référentiel."
   },
   {
     "objectID": "outils/doc_tech_validata.html#requêtes-synchrones-xmlhttprequest",
     "href": "outils/doc_tech_validata.html#requêtes-synchrones-xmlhttprequest",
     "title": "ValiDatas — Documentation technique",
     "section": "Requêtes synchrones (XMLHttpRequest)",
-    "text": "Requêtes synchrones (XMLHttpRequest)\n\n\n\n\n\n\nAvertissement\n\n\n\nLes deux outils utilisent des XMLHttpRequest synchrones dans certaines parties de omk.js. Ce comportement est déprécié. Une migration vers fetch() avec async/await est recommandée comme priorité d’évolution."
+    "text": "Requêtes synchrones (XMLHttpRequest)\n\n\n\n\n\n\nAvertissement\n\n\n\nLes deux outils utilisent des XMLHttpRequest synchrones dans certaines parties de omk.js. Ce comportement est déprécié par les navigateurs modernes. Une migration vers fetch() avec async/await est recommandée comme priorité d’évolution."
   },
   {
     "objectID": "outils/doc_tech_validata.html#cohérence-inter-outils",
     "href": "outils/doc_tech_validata.html#cohérence-inter-outils",
     "title": "ValiDatas — Documentation technique",
     "section": "Cohérence inter-outils",
-    "text": "Cohérence inter-outils\nAprès une session de fusion dans cleanKeywords, les items Expertise dans validExpertises qui référençaient le concept Source sont automatiquement mis à jour (la fusion le garantit). Vérifier toutefois après une fusion massive que les évaluations existantes sont bien rattachées au bon concept."
+    "text": "Cohérence inter-outils\nAprès une session de fusion dans cleanKeywords, les items Expertise référençant le concept Source sont automatiquement transférés vers le Cible (étape 2 de la fusion). Après une fusion massive, vérifier dans Oméka S que les évaluations sont bien rattachées aux bons concepts."
   },
   {
     "objectID": "outils/doc_tech_validata.html#mise-à-jour-de-d3",
@@ -1425,7 +1425,7 @@
     "href": "outils/doc_tech_validata.html#dépannage",
     "title": "ValiDatas — Documentation technique",
     "section": "Dépannage",
-    "text": "Dépannage\n\n\n\n\n\n\n\n\nSymptôme\nCause probable\nAction\n\n\n\n\nÉvaluateur absent de l’en-tête\ncreatorId incorrect\nVérifier l’ID dans les paramètres\n\n\nAucun concept affiché\npersonPropExp mal configuré\nVérifier les propriétés\n\n\nFusion sans effet visible\nDroits API insuffisants\nVérifier les droits de suppression\n\n\nErreurs CORS en console\nOméka S sur domaine différent\nConfigurer les en-têtes CORS côté Oméka S\n\n\nCache obsolète (cleanKeywords)\nScan ancien\nCliquer sur 🔄 Actualiser"
+    "text": "Dépannage\n\n\n\n\n\n\n\n\nSymptôme\nCause probable\nAction\n\n\n\n\nAucun concept trouvé au scan\nskos:Concept absent ou droits insuffisants\nVérifier la classe et les droits de lecture\n\n\nFusion sans effet visible\nDroits d’écriture ou de suppression insuffisants\nVérifier les droits de la clé API\n\n\nConcepts encore visibles après fusion\nCache non actualisé\nCliquer sur 🔄 Actualiser\n\n\nErreurs CORS en console\nOméka S sur domaine différent\nConfigurer les en-têtes CORS côté serveur\n\n\nÉvaluateur absent de l’en-tête (validExpertises)\ncreatorId incorrect\nVérifier l’ID dans les paramètres\n\n\nAucun mot-clef affiché (validExpertises)\npersonPropExp mal configuré\nVérifier les propriétés"
   },
   {
     "objectID": "outils/validatas/doc_tech_validata.html",
@@ -1699,5 +1699,47 @@
     "title": "ValiDatas — Présentation de la suite",
     "section": "Accès aux outils",
     "text": "Accès aux outils\n\n🧹 cleanKeywords : valorisation.humanum-p8.fr/outils/validKeyword/\n✅ validExpertises : valorisation.humanum-p8.fr/outils/validExpertises/\n\n\n\n\n\n\n\nNote\n\n\n\nLes deux outils se référencent mutuellement dans leur barre de navigation — il est possible de passer de l’un à l’autre sans revenir à cette page."
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#données-locales-localstorage",
+    "href": "outils/doc_tech_validata.html#données-locales-localstorage",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Données locales (localStorage)",
+    "text": "Données locales (localStorage)\n\n\n\n\n\n\n\nClé\nContenu\n\n\n\n\ncleanKeywords_cfg\nConfiguration (API, clés, propriétés)\n\n\ncleanKeywords_scan_cache\nRésultats du dernier scan (clusters)\n\n\ncleanKeywords_done\nLettres déjà scannées\n\n\ncleanKeywords_rejected\nPaires rejetées manuellement\n\n\ncleanKeywords_deleted\nIDs des concepts supprimés durant la session\n\n\ncleanKeywords_scroll\nPosition de scroll (restaurée au rechargement)\n\n\n\nToutes ces clés sont effacées par le bouton 🔄 Actualiser."
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#algorithmes-de-détection-similarity.js",
+    "href": "outils/doc_tech_validata.html#algorithmes-de-détection-similarity.js",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Algorithmes de détection (similarity.js)",
+    "text": "Algorithmes de détection (similarity.js)\nLa similarité entre deux labels est évaluée par quatre règles appliquées dans l’ordre :\n\n\n\n\n\n\n\n\nRègle\nCondition\nScore\n\n\n\n\nIdentiques normalisés\nMême label en minuscules, sans accents ni ponctuation\n1.0\n\n\nSingulier / pluriel\nMême label après suppression du s ou x final\n0.95\n\n\nVariante orthographique\nDistance de Levenshtein ≤ 2, longueurs proches\n≥ 0.70\n\n\nTermes inclus\nTous les tokens significatifs (≥ 4 chars, hors mots courants) du label court présents dans le long, couverture ≥ 60%\n≥ 0.70\n\n\n\nLes paires avec un score inférieur à 0.70 sont ignorées. Les clusters sont construits par union-find avec un score minimum de 0.75 et une taille maximale de 6 concepts pour éviter les chaînes de faux positifs."
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#flux-api-scan",
+    "href": "outils/doc_tech_validata.html#flux-api-scan",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Flux API — scan",
+    "text": "Flux API — scan\nGET /items?resource_class_id[]=&lt;id_skos_Concept&gt;\n          &property[0][property]=dcterms:title\n          &property[0][type]=sw\n          &property[0][text]=&lt;lettre&gt;\nLa comparaison des paires est entièrement côté client via similarity.js — aucune requête supplémentaire n’est émise pour la phase de détection."
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#modifier-les-algorithmes-de-détection",
+    "href": "outils/doc_tech_validata.html#modifier-les-algorithmes-de-détection",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Modifier les algorithmes de détection",
+    "text": "Modifier les algorithmes de détection\nToute évolution des seuils ou des règles de similarité se fait uniquement dans similarity.js, sans toucher au reste de l’application. Points clés à ajuster si nécessaire :\n\nSeuil de score minimum : 0.70 (paires ignorées en dessous)\nSeuil de clustering union-find : 0.75\nTaille maximale d’un cluster : 6 concepts\nLongueur minimale des tokens : 4 caractères"
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#longlet-doublons",
+    "href": "outils/guide_operateur_validata.html#longlet-doublons",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "L’onglet Doublons",
+    "text": "L’onglet Doublons\nC’est la vue principale. Les concepts similaires sont regroupés en clusters (cartes).\n\nScanner les doublons\nLettre par lettre — cliquer sur une lettre analyse tous les concepts commençant par cette lettre. La lettre passe en vert une fois traitée.\nScan complet — le bouton ⚡ Tout scanner parcourt les 26 lettres en séquence avec une barre de progression. L’opération peut prendre entre 30 secondes et quelques minutes selon la taille de la base.\nCache — après chaque scan, les résultats sont sauvegardés localement et restaurés au rechargement suivant sans nouvelle requête. Le bandeau de cache indique la date du dernier scan. 🔄 Actualiser efface le cache et repart de zéro.\nFiltrer et trier — une barre de recherche filtre les clusters en temps réel. Le menu déroulant permet de trier par score de similarité, par nombre de concepts ou par ordre alphabétique.\n\n\nTypes de doublons détectés\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nTextuel\nLibellés identiques après normalisation (minuscules, sans accents)\n\n\nSingulier / pluriel\nEx. : “réseau” et “réseaux”\n\n\nVariante ortho.\nDistance orthographique faible (Levenshtein ≤ 2)\n\n\nTermes inclus\nTous les mots significatifs du label court présents dans le long\n\n\n\n\n\nTraiter un cluster\nChaque carte affiche les concepts du groupe, leur score de similarité et la raison détectée.\nChoisir le concept à conserver — les boutons radio permettent de sélectionner lequel sera conservé. Les autres seront supprimés. Par défaut, le premier de la liste est sélectionné.\nExclure un concept du groupe — survoler une ligne fait apparaître un bouton ✕ pour retirer un concept du cluster sans modifier la base. Si le cluster tombe à un seul concept, la carte disparaît.\nFusionner en 2 clics — le bouton Fusionner → exécute directement la fusion avec le concept sélectionné, sans étape intermédiaire.\nFusionner avec aperçu (3 clics) — le bouton Détails ↓ ouvre un accordéon qui affiche le nombre d’ECs et d’Expertises qui seront mis à jour, puis propose un bouton Fusionner → pour confirmer.\n\n\n\n\n\n\nMise en garde\n\n\n\nLa fusion est définitive. En cas de doute sur quel concept conserver, préférer celui avec le plus grand nombre d’ECs associés (visible dans l’aperçu Détails).\n\n\nRejeter — marque le cluster comme faux positif. Il n’apparaîtra plus lors des prochains scans.\n\n\nConcepts obsolètes\nAprès une fusion, les concepts supprimés qui apparaissent encore dans d’autres clusters affichés sont automatiquement barrés et grisés. Si un cluster n’a plus qu’un seul concept actif, il est marqué ⚠ À réviser et ses boutons de fusion sont désactivés."
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#longlet-tous-les-concepts",
+    "href": "outils/guide_operateur_validata.html#longlet-tous-les-concepts",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "L’onglet Tous les concepts",
+    "text": "L’onglet Tous les concepts\nCet onglet affiche la liste paginée de tous les concepts de la base, avec une barre de recherche et un tri par titre ou par date.\nLes concepts présents dans un cluster de doublons affichent un badge ⚠ X groupe(s). Un clic sur ce badge bascule vers l’onglet Doublons et scrolle directement vers le cluster concerné.\nLes boutons → Source et → Cible permettent de sélectionner deux concepts pour une fusion manuelle via le formulaire en bas de page. Cette fusion passe par une modale de confirmation."
   }
 ]

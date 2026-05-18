@@ -59,6 +59,6 @@ website:
     left: "Direction de la Recherche de Paris 8"
     center: |
       <div class="footer-img">
-        <img src="../assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo">
+        <img src="https://sedozed.github.io/valo-p8/assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo">
       </div>
     right: "Documentation interne, ne pas diffuser"

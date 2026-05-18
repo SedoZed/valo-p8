@@ -226,13 +226,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#cleankeywords" id="toc-cleankeywords" class="nav-link" data-scroll-target="#cleankeywords">🧹 cleanKeywords</a>
   <ul class="collapse">
   <li><a href="#architecture" id="toc-architecture" class="nav-link" data-scroll-target="#architecture">Architecture</a></li>
-  <li><a href="#prérequis-spécifiques" id="toc-prérequis-spécifiques" class="nav-link" data-scroll-target="#prérequis-spécifiques">Prérequis spécifiques</a></li>
   <li><a href="#paramètres-de-configuration" id="toc-paramètres-de-configuration" class="nav-link" data-scroll-target="#paramètres-de-configuration">Paramètres de configuration</a></li>
-  <li><a href="#flux-api-détection-de-doublons" id="toc-flux-api-détection-de-doublons" class="nav-link" data-scroll-target="#flux-api-détection-de-doublons">Flux API — détection de doublons</a>
-  <ul class="collapse">
-  <li><a href="#scan-par-lettre" id="toc-scan-par-lettre" class="nav-link" data-scroll-target="#scan-par-lettre">Scan par lettre</a></li>
-  <li><a href="#comparaison-des-paires" id="toc-comparaison-des-paires" class="nav-link" data-scroll-target="#comparaison-des-paires">Comparaison des paires</a></li>
-  </ul></li>
+  <li><a href="#données-locales-localstorage" id="toc-données-locales-localstorage" class="nav-link" data-scroll-target="#données-locales-localstorage">Données locales (localStorage)</a></li>
+  <li><a href="#algorithmes-de-détection-similarity.js" id="toc-algorithmes-de-détection-similarity.js" class="nav-link" data-scroll-target="#algorithmes-de-détection-similarity.js">Algorithmes de détection (<code>similarity.js</code>)</a></li>
+  <li><a href="#flux-api-scan" id="toc-flux-api-scan" class="nav-link" data-scroll-target="#flux-api-scan">Flux API — scan</a></li>
   <li><a href="#flux-api-fusion" id="toc-flux-api-fusion" class="nav-link" data-scroll-target="#flux-api-fusion">Flux API — fusion</a></li>
   <li><a href="#journal-des-opérations" id="toc-journal-des-opérations" class="nav-link" data-scroll-target="#journal-des-opérations">Journal des opérations</a></li>
   </ul></li>
@@ -252,6 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#points-dattention-pour-la-maintenance" id="toc-points-dattention-pour-la-maintenance" class="nav-link" data-scroll-target="#points-dattention-pour-la-maintenance">Points d’attention pour la maintenance</a>
   <ul class="collapse">
   <li><a href="#requêtes-synchrones-xmlhttprequest" id="toc-requêtes-synchrones-xmlhttprequest" class="nav-link" data-scroll-target="#requêtes-synchrones-xmlhttprequest">Requêtes synchrones (XMLHttpRequest)</a></li>
+  <li><a href="#modifier-les-algorithmes-de-détection" id="toc-modifier-les-algorithmes-de-détection" class="nav-link" data-scroll-target="#modifier-les-algorithmes-de-détection">Modifier les algorithmes de détection</a></li>
   <li><a href="#cohérence-inter-outils" id="toc-cohérence-inter-outils" class="nav-link" data-scroll-target="#cohérence-inter-outils">Cohérence inter-outils</a></li>
   <li><a href="#mise-à-jour-de-d3" id="toc-mise-à-jour-de-d3" class="nav-link" data-scroll-target="#mise-à-jour-de-d3">Mise à jour de D3</a></li>
   <li><a href="#dépannage" id="toc-dépannage" class="nav-link" data-scroll-target="#dépannage">Dépannage</a></li>
@@ -292,7 +290,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>Cette documentation s’adresse aux personnes chargées d’installer, configurer, maintenir ou faire évoluer les outils de la suite ValiDatas.</p>
-<p>Dépôts GitHub : <a href="https://github.com/samszo/cleanKeywords">samszo/cleanKeywords</a> · <a href="https://github.com/samszo/validExpertises">samszo/validExpertises</a></p>
+<p>Dépôts GitHub : <a href="https://github.com/SedoZed/validKeyword">SedoZed/validKeyword</a> · <a href="https://github.com/samszo/validExpertises">samszo/validExpertises</a></p>
 </div>
 </div>
 <hr>
@@ -320,7 +318,7 @@ Note
 </tr>
 <tr class="even">
 <td>Dépendances JS</td>
-<td>D3 (local)</td>
+<td>D3 (local) + <code>similarity.js</code></td>
 <td>D3 (local)</td>
 </tr>
 <tr class="odd">
@@ -329,7 +327,7 @@ Note
 <td><code>localStorage</code></td>
 </tr>
 <tr class="even">
-<td>Clé localStorage</td>
+<td>Clé localStorage config</td>
 <td><code>cleanKeywords_cfg</code></td>
 <td><code>validExpertises_cfg</code></td>
 </tr>
@@ -348,22 +346,17 @@ Note
 <h2 class="anchored" data-anchor-id="architecture">Architecture</h2>
 <pre><code>cleanKeywords/
 ├── index.html
+├── CHANGELOG.md
 └── assets/
     ├── main.css
     └── js/
         ├── appUrl.js
         ├── auth.js
         ├── authParams.js
-        └── omk.js</code></pre>
-</section>
-<section id="prérequis-spécifiques" class="level2">
-<h2 class="anchored" data-anchor-id="prérequis-spécifiques">Prérequis spécifiques</h2>
-<p>En plus des prérequis communs (voir section suivante), cleanKeywords requiert :</p>
-<ul>
-<li>Des droits de <strong>suppression</strong> sur les items Oméka S (la fusion supprime le concept Source).</li>
-<li>La propriété <code>valo:responsableDe</code> pour identifier les laboratoires de l’évaluateur.</li>
-<li>Les concepts accessibles via les propriétés listées dans <code>personPropExp</code>.</li>
-</ul>
+        ├── omk.js
+        ├── similarity.js   ← algorithmes de détection et clustering
+        └── d3.min.js</code></pre>
+<p><code>similarity.js</code> est isolé du reste de l’application — il contient uniquement les algorithmes de comparaison et de clustering, sans dépendance vers l’API ou l’UI.</p>
 </section>
 <section id="paramètres-de-configuration" class="level2">
 <h2 class="anchored" data-anchor-id="paramètres-de-configuration">Paramètres de configuration</h2>
@@ -396,37 +389,111 @@ Note
 <td><code>key_credential</code></td>
 </tr>
 <tr class="odd">
-<td><code>creatorId</code></td>
-<td>ID Oméka S de l’évaluateur (détermine les laboratoires autorisés via <code>valo:responsableDe</code>)</td>
-</tr>
-<tr class="even">
 <td><code>personPropExp</code></td>
-<td>Propriétés mots-clefs des personnes, séparées par des virgules</td>
+<td>Propriétés mots-clefs des personnes, séparées par des virgules — utilisées lors des fusions pour mettre à jour les ECs</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="flux-api-détection-de-doublons" class="level2">
-<h2 class="anchored" data-anchor-id="flux-api-détection-de-doublons">Flux API — détection de doublons</h2>
-<section id="scan-par-lettre" class="level3">
-<h3 class="anchored" data-anchor-id="scan-par-lettre">Scan par lettre</h3>
-<pre><code>GET /items?item_type[]=&lt;type_concept&gt;
+<section id="données-locales-localstorage" class="level2">
+<h2 class="anchored" data-anchor-id="données-locales-localstorage">Données locales (localStorage)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Clé</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>cleanKeywords_cfg</code></td>
+<td>Configuration (API, clés, propriétés)</td>
+</tr>
+<tr class="even">
+<td><code>cleanKeywords_scan_cache</code></td>
+<td>Résultats du dernier scan (clusters)</td>
+</tr>
+<tr class="odd">
+<td><code>cleanKeywords_done</code></td>
+<td>Lettres déjà scannées</td>
+</tr>
+<tr class="even">
+<td><code>cleanKeywords_rejected</code></td>
+<td>Paires rejetées manuellement</td>
+</tr>
+<tr class="odd">
+<td><code>cleanKeywords_deleted</code></td>
+<td>IDs des concepts supprimés durant la session</td>
+</tr>
+<tr class="even">
+<td><code>cleanKeywords_scroll</code></td>
+<td>Position de scroll (restaurée au rechargement)</td>
+</tr>
+</tbody>
+</table>
+<p>Toutes ces clés sont effacées par le bouton <strong>🔄 Actualiser</strong>.</p>
+</section>
+<section id="algorithmes-de-détection-similarity.js" class="level2">
+<h2 class="anchored" data-anchor-id="algorithmes-de-détection-similarity.js">Algorithmes de détection (<code>similarity.js</code>)</h2>
+<p>La similarité entre deux labels est évaluée par quatre règles appliquées dans l’ordre :</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Règle</th>
+<th>Condition</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Identiques normalisés</td>
+<td>Même label en minuscules, sans accents ni ponctuation</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>Singulier / pluriel</td>
+<td>Même label après suppression du <code>s</code> ou <code>x</code> final</td>
+<td>0.95</td>
+</tr>
+<tr class="odd">
+<td>Variante orthographique</td>
+<td>Distance de Levenshtein ≤ 2, longueurs proches</td>
+<td>≥ 0.70</td>
+</tr>
+<tr class="even">
+<td>Termes inclus</td>
+<td>Tous les tokens significatifs (≥ 4 chars, hors mots courants) du label court présents dans le long, couverture ≥ 60%</td>
+<td>≥ 0.70</td>
+</tr>
+</tbody>
+</table>
+<p>Les paires avec un score inférieur à <strong>0.70</strong> sont ignorées. Les clusters sont construits par <strong>union-find</strong> avec un score minimum de 0.75 et une taille maximale de <strong>6 concepts</strong> pour éviter les chaînes de faux positifs.</p>
+</section>
+<section id="flux-api-scan" class="level2">
+<h2 class="anchored" data-anchor-id="flux-api-scan">Flux API — scan</h2>
+<pre><code>GET /items?resource_class_id[]=&lt;id_skos_Concept&gt;
           &amp;property[0][property]=dcterms:title
           &amp;property[0][type]=sw
           &amp;property[0][text]=&lt;lettre&gt;</code></pre>
-</section>
-<section id="comparaison-des-paires" class="level3">
-<h3 class="anchored" data-anchor-id="comparaison-des-paires">Comparaison des paires</h3>
-<p>La détection se fait côté client : les libellés sont comparés par algorithme de similarité textuelle, recoupés avec les identifiants Wikidata des concepts (<code>skos:exactMatch</code> ou équivalent) pour identifier les doublons sémantiques.</p>
-</section>
+<p>La comparaison des paires est entièrement <strong>côté client</strong> via <code>similarity.js</code> — aucune requête supplémentaire n’est émise pour la phase de détection.</p>
 </section>
 <section id="flux-api-fusion" class="level2">
 <h2 class="anchored" data-anchor-id="flux-api-fusion">Flux API — fusion</h2>
-<p>La fusion s’opère en plusieurs étapes :</p>
+<p>La fusion s’opère en quatre étapes séquentielles :</p>
 <ol type="1">
-<li><strong>Récupérer les items liés au concept Source</strong> (EC, Expertises) via leurs propriétés de relation.</li>
-<li><strong>Mettre à jour chaque item lié</strong> pour remplacer la référence Source par la référence Cible — <code>PUT /items/{id}</code>.</li>
-<li><strong>Supprimer le concept Source</strong> — <code>DELETE /items/{id_source}</code>.</li>
+<li>Mettre à jour les <strong>items ECs</strong> dont une propriété dans <code>personPropExp</code> pointe vers le concept Source → <code>PUT /items/{id_ec}</code>.</li>
+<li>Mettre à jour les <strong>items Expertise</strong> dont <code>valo:expertise</code> pointe vers le concept Source → <code>PUT /items/{id_expertise}</code>.</li>
+<li>Ajouter <code>dcterms:replaces</code> sur le <strong>concept Cible</strong> pour tracer la fusion → <code>PUT /items/{id_cible}</code>.</li>
+<li>Supprimer le <strong>concept Source</strong> → <code>DELETE /items/{id_source}</code>.</li>
 </ol>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -438,13 +505,26 @@ Mise en garde
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La suppression est définitive. Il n’existe pas de mécanisme d’annulation côté application. En cas d’erreur, la restauration passe par un accès direct à Oméka S (interface admin ou API).</p>
+<p>Si une erreur survient aux étapes 1 ou 2, la fusion est <strong>interrompue</strong> et le concept Source n’est pas supprimé — la base reste dans un état cohérent. La suppression n’est jamais exécutée si le transfert des relations a échoué.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La traçabilité est assurée par <code>dcterms:replaces</code> sur le concept Cible. Il est possible de retrouver rétrospectivement quels concepts ont été fusionnés directement dans Oméka S.</p>
 </div>
 </div>
 </section>
 <section id="journal-des-opérations" class="level2">
 <h2 class="anchored" data-anchor-id="journal-des-opérations">Journal des opérations</h2>
-<p>Chaque fusion est tracée dans le journal affiché en bas de page. Ce journal est en mémoire uniquement (non persisté) — il est perdu au rechargement de la page.</p>
+<p>Chaque fusion est tracée en temps réel dans le journal affiché en bas de page. Ce journal est <strong>en mémoire uniquement</strong> — il est perdu au rechargement de la page.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -455,7 +535,7 @@ Avertissement
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Si la traçabilité des opérations est critique, envisager d’ajouter une persistance du journal (localStorage ou export CSV) comme évolution future.</p>
+<p>Si la traçabilité session-à-session est critique, envisager un export CSV du journal comme évolution future.</p>
 </div>
 </div>
 <hr>
@@ -616,48 +696,58 @@ Avertissement
 <tbody>
 <tr class="odd">
 <td><code>skos</code></td>
+<td><code>skos:Concept</code></td>
+<td>Classe des concepts/mots-clefs</td>
+</tr>
+<tr class="even">
+<td><code>skos</code></td>
 <td><code>skos:hasTopConcept</code></td>
-<td>Propriété par défaut des mots-clefs</td>
+<td>Propriété par défaut des mots-clefs d’un EC</td>
+</tr>
+<tr class="odd">
+<td><code>dcterms</code></td>
+<td><code>dcterms:subject</code></td>
+<td>Propriété complémentaire des mots-clefs</td>
 </tr>
 <tr class="even">
 <td><code>dcterms</code></td>
-<td><code>dcterms:subject</code></td>
-<td>Propriété complémentaire</td>
+<td><code>dcterms:title</code></td>
+<td>Label des concepts (utilisé pour le scan)</td>
 </tr>
 <tr class="odd">
+<td><code>dcterms</code></td>
+<td><code>dcterms:replaces</code></td>
+<td>Traçabilité des fusions (cleanKeywords)</td>
+</tr>
+<tr class="even">
 <td><code>dcterms</code></td>
 <td><code>dcterms:creator</code></td>
 <td>Lien évaluateur ↔︎ Expertise</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>dcterms</code></td>
 <td><code>dcterms:source</code></td>
 <td>Lien personne ↔︎ Expertise</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>curation</code></td>
 <td><code>curation:rank</code></td>
 <td>Valeur d’expertise</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>valo</code></td>
 <td><code>valo:expertise</code></td>
-<td>Type d’item Expertise</td>
+<td>Propriété de lien vers un concept dans un item Expertise</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>valo</code></td>
 <td><code>valo:EnseignantChercheur</code></td>
 <td>Type de personne autorisé</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>valo</code></td>
 <td><code>valo:Laboratoire</code></td>
 <td>Classe pour le menu laboratoires</td>
-</tr>
-<tr class="odd">
-<td><code>valo</code></td>
-<td><code>valo:responsableDe</code></td>
-<td>Lien évaluateur ↔︎ laboratoires (cleanKeywords)</td>
 </tr>
 </tbody>
 </table>
@@ -665,11 +755,11 @@ Avertissement
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cloner les deux dépôts</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/samszo/cleanKeywords.git</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/SedoZed/validKeyword.git</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/samszo/validExpertises.git</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Servir depuis un serveur web local</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> cleanKeywords <span class="kw">&amp;&amp;</span> <span class="ex">python3</span> <span class="at">-m</span> http.server 8080</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> validKeyword <span class="kw">&amp;&amp;</span> <span class="ex">python3</span> <span class="at">-m</span> http.server 8080</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> validExpertises <span class="kw">&amp;&amp;</span> <span class="ex">python3</span> <span class="at">-m</span> http.server 8081</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -681,7 +771,10 @@ Avertissement
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>CORS :</strong> si Oméka S est sur un domaine différent, configurer les en-têtes CORS sur le serveur Oméka S pour les deux origines.</p>
+<p><strong>CORS :</strong> si Oméka S est sur un domaine différent, configurer les en-têtes CORS côté Oméka S pour les deux origines. Les requêtes <code>OPTIONS</code> doivent retourner un code 200.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode apache code-with-copy"><code class="sourceCode apache"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Header<span class="st"> set Access-Control-Allow-Origin "https://valorisation.humanum-p8.fr"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Header<span class="st"> set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Header<span class="st"> set Access-Control-Allow-Headers "Content-Type"</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -690,7 +783,7 @@ Avertissement
 <ul>
 <li>Ne jamais committer <code>key_identity</code> / <code>key_credential</code> dans <code>authParams.js</code> si les dépôts sont publics.</li>
 <li>Créer des clés API avec les privilèges minimaux nécessaires à chaque outil.</li>
-<li>cleanKeywords requiert des droits de suppression — limiter son accès aux opérateurs de confiance.</li>
+<li>cleanKeywords requiert des droits de suppression — réserver son accès aux administrateurs du référentiel.</li>
 </ul>
 <hr>
 </section>
@@ -709,13 +802,23 @@ Avertissement
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Les deux outils utilisent des <code>XMLHttpRequest</code> synchrones dans certaines parties de <code>omk.js</code>. Ce comportement est déprécié. Une migration vers <code>fetch()</code> avec <code>async/await</code> est recommandée comme priorité d’évolution.</p>
+<p>Les deux outils utilisent des <code>XMLHttpRequest</code> synchrones dans certaines parties de <code>omk.js</code>. Ce comportement est déprécié par les navigateurs modernes. Une migration vers <code>fetch()</code> avec <code>async/await</code> est recommandée comme priorité d’évolution.</p>
 </div>
 </div>
 </section>
+<section id="modifier-les-algorithmes-de-détection" class="level2">
+<h2 class="anchored" data-anchor-id="modifier-les-algorithmes-de-détection">Modifier les algorithmes de détection</h2>
+<p>Toute évolution des seuils ou des règles de similarité se fait <strong>uniquement dans <code>similarity.js</code></strong>, sans toucher au reste de l’application. Points clés à ajuster si nécessaire :</p>
+<ul>
+<li>Seuil de score minimum : <code>0.70</code> (paires ignorées en dessous)</li>
+<li>Seuil de clustering union-find : <code>0.75</code></li>
+<li>Taille maximale d’un cluster : <code>6</code> concepts</li>
+<li>Longueur minimale des tokens : <code>4</code> caractères</li>
+</ul>
+</section>
 <section id="cohérence-inter-outils" class="level2">
 <h2 class="anchored" data-anchor-id="cohérence-inter-outils">Cohérence inter-outils</h2>
-<p>Après une session de fusion dans cleanKeywords, les items Expertise dans validExpertises qui référençaient le concept Source sont automatiquement mis à jour (la fusion le garantit). Vérifier toutefois après une fusion massive que les évaluations existantes sont bien rattachées au bon concept.</p>
+<p>Après une session de fusion dans cleanKeywords, les items Expertise référençant le concept Source sont automatiquement transférés vers le Cible (étape 2 de la fusion). Après une fusion massive, vérifier dans Oméka S que les évaluations sont bien rattachées aux bons concepts.</p>
 </section>
 <section id="mise-à-jour-de-d3" class="level2">
 <h2 class="anchored" data-anchor-id="mise-à-jour-de-d3">Mise à jour de D3</h2>
@@ -738,29 +841,34 @@ Avertissement
 </thead>
 <tbody>
 <tr class="odd">
-<td>Évaluateur absent de l’en-tête</td>
-<td><code>creatorId</code> incorrect</td>
-<td>Vérifier l’ID dans les paramètres</td>
+<td>Aucun concept trouvé au scan</td>
+<td><code>skos:Concept</code> absent ou droits insuffisants</td>
+<td>Vérifier la classe et les droits de lecture</td>
 </tr>
 <tr class="even">
-<td>Aucun concept affiché</td>
-<td><code>personPropExp</code> mal configuré</td>
-<td>Vérifier les propriétés</td>
+<td>Fusion sans effet visible</td>
+<td>Droits d’écriture ou de suppression insuffisants</td>
+<td>Vérifier les droits de la clé API</td>
 </tr>
 <tr class="odd">
-<td>Fusion sans effet visible</td>
-<td>Droits API insuffisants</td>
-<td>Vérifier les droits de suppression</td>
+<td>Concepts encore visibles après fusion</td>
+<td>Cache non actualisé</td>
+<td>Cliquer sur 🔄 Actualiser</td>
 </tr>
 <tr class="even">
 <td>Erreurs CORS en console</td>
 <td>Oméka S sur domaine différent</td>
-<td>Configurer les en-têtes CORS côté Oméka S</td>
+<td>Configurer les en-têtes CORS côté serveur</td>
 </tr>
 <tr class="odd">
-<td>Cache obsolète (cleanKeywords)</td>
-<td>Scan ancien</td>
-<td>Cliquer sur 🔄 Actualiser</td>
+<td>Évaluateur absent de l’en-tête (validExpertises)</td>
+<td><code>creatorId</code> incorrect</td>
+<td>Vérifier l’ID dans les paramètres</td>
+</tr>
+<tr class="even">
+<td>Aucun mot-clef affiché (validExpertises)</td>
+<td><code>personPropExp</code> mal configuré</td>
+<td>Vérifier les propriétés</td>
 </tr>
 </tbody>
 </table>
@@ -1178,7 +1286,7 @@ Avertissement
 </div>   
     <div class="nav-footer-center">
 <div class="footer-img">
-<p><img src="../assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo"></p>
+<p><img src="https://sedozed.github.io/valo-p8/assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo"></p>
 </div>
 </div>
     <div class="nav-footer-right">
