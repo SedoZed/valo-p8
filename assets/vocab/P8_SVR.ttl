@@ -206,7 +206,7 @@ valo:axeRech a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; Laborat
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:directeurs a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; Laboratoires
-    rdfs:label "Directeur(s) de laboratoire" ;
+valo:responsableDe a rdf:Property ; 
+    rdfs:label "Est responsable de" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
