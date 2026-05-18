@@ -10,7 +10,6 @@ format:
     toc-location: right
     toc-depth: 3
 
-
 website:
   title: "CartoExpert"
   navbar:
@@ -19,35 +18,47 @@ website:
     left:
       - text: "Général"
         menu:
-        - text: "Contexte du projet"
-          href: index.qmd
-        - text: "Prérequis de travail"
-          href: installations.qmd
-      - text: "Exploitation"
+          - text: "Contexte du projet"
+            href: index.qmd
+          - text: "Prérequis de travail"
+            href: installations.qmd
+
+      - text: "Données"
         menu:
-        - text: "Utiliser CartoExpert au quotidien"
-          href: pres_syst.qmd
-        - text: "Centraliser les données"
-          href: standardiser_data2csv.qmd
-        - text: "Interconnecter les données via Oméka S"
-          href: bdd_omeka.qmd
-      - text: "Boite à outils"
+          - text: "Préparer les données (CSV)"
+            href: donnees/standardiser_data2csv.qmd
+          - text: "Importer dans Oméka S"
+            href: donnees/bdd_omeka.qmd
+          - text: "Extraire depuis ScanR"
+            href: donnees/scanr_extract.qmd
+
+      - text: "Outils"
         menu:
-        - text: "Hypothes.is comme outil collaboratif"
-          href: hypothesis.qmd
-        - text: "ListMonk pour gérer les campagnes de mailing"
-          href: listmonk.qmd
-        - text: "ScanR comme source de données"
-          href: scanr_extract.qmd
-        - text: "Exploiter le web sémantique pour les métadonnées"
-          href: dico_rdf.qmd
-        - text: "Utilisation de l'IA Générative"
-          href: iag.qmd
+          - text: "CartoExpert — présentation"
+            href: outils/pres_syst.qmd
+          - text: "---"
+          - text: "ValiDatas"
+            href: outils/introduction_validata.qmd
+          - text: "↳ Guide opérateur"
+            href: outils/guide_operateur_validata.qmd
+          - text: "↳ Documentation technique"
+            href: outils/doc_tech_validata.qmd
+
+      - text: "Ressources"
+        menu:
+          - text: "Hypothes.is comme outil collaboratif"
+            href: ressources/hypothesis.qmd
+          - text: "ListMonk pour les campagnes de mailing"
+            href: ressources/listmonk.qmd
+          - text: "Web sémantique & RDF"
+            href: ressources/dico_rdf.qmd
+          - text: "Utilisation de l'IA Générative"
+            href: ressources/iag.qmd
 
   page-footer:
     left: "Direction de la Recherche de Paris 8"
     center: |
       <div class="footer-img">
-        <img src="assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo">
-      </div>  
+        <img src="../assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo">
+      </div>
     right: "Documentation interne, ne pas diffuser"

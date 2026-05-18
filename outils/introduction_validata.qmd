@@ -1,0 +1,64 @@
+---
+title: "ValiDatas — Présentation de la suite"
+lang: fr
+---
+
+**ValiDatas** est une suite de deux outils web complémentaires, conçue pour préparer et valider les données d'expertise des Enseignants-Chercheurs dans Oméka S. Elle fait partie de l'écosystème **CartoExpert** du Laboratoire Paragraphe (Paris 8).
+
+| Outil | Version | Rôle |
+|---|---|---|
+| 🧹 **cleanKeywords** | v0.1.3 | Nettoyer le référentiel de concepts (doublons, variantes) |
+| ✅ **validExpertises** | v0.2.3 | Évaluer les expertises des EC sur les concepts nettoyés |
+
+Les deux outils sont accessibles depuis la même barre de navigation et partagent la même configuration API Oméka S.
+
+---
+
+## Le pipeline
+
+Les deux outils s'utilisent dans un **ordre précis** :
+
+```
+Oméka S
+   │
+   ▼
+🧹 cleanKeywords ──── Détecte et fusionne les concepts en doublon
+   │                  (doublons Wikidata, variantes ortho., singulier/pluriel…)
+   │
+   ▼
+✅ validExpertises ── Évalue les expertises des EC sur les concepts fiables
+   │
+   ▼
+Oméka S  ←── Items Expertise créés/mis à jour
+```
+
+::: {.callout-warning}
+Utiliser validExpertises sur un référentiel non nettoyé revient à évaluer des doublons séparément — les scores se retrouvent dispersés sur plusieurs concepts au lieu d'être consolidés sur un seul.
+:::
+
+---
+
+## Quand utiliser chaque outil ?
+
+**cleanKeywords** est à utiliser :
+
+- lors de l'import initial d'un nouveau jeu de concepts dans Oméka S
+- périodiquement, si de nouveaux concepts sont ajoutés par différentes sources
+- avant toute campagne d'évaluation collective
+
+**validExpertises** est à utiliser :
+
+- lors des campagnes d'évaluation planifiées par la DSR
+- au quotidien, pour mettre à jour ponctuellement une expertise
+- après chaque passage dans cleanKeywords, pour intégrer les fusions opérées
+
+---
+
+## Accès aux outils
+
+- 🧹 cleanKeywords : [valorisation.humanum-p8.fr/outils/validKeyword/](https://valorisation.humanum-p8.fr/outils/validKeyword/index.html) — dépôt : [SedoZed/validKeyword](https://github.com/SedoZed/validKeyword)
+- ✅ validExpertises : [valorisation.humanum-p8.fr/outils/validExpertises/](https://valorisation.humanum-p8.fr/outils/validExpertises/index.html) — dépôt : [samszo/validExpertises](https://github.com/samszo/validExpertises)
+
+::: {.callout-note}
+Les deux outils se référencent mutuellement dans leur barre de navigation — il est possible de passer de l'un à l'autre sans revenir à cette page.
+:::

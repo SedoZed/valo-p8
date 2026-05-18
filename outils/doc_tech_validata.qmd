@@ -1,0 +1,259 @@
+---
+title: "ValiDatas — Documentation technique"
+lang: fr
+---
+
+::: {.callout-note}
+Cette documentation s'adresse aux personnes chargées d'installer, configurer, maintenir ou faire évoluer les outils de la suite ValiDatas.
+
+Dépôts GitHub : [SedoZed/validKeyword](https://github.com/SedoZed/validKeyword) · [samszo/validExpertises](https://github.com/samszo/validExpertises)
+:::
+
+---
+
+## Vue d'ensemble technique
+
+Les deux outils sont des applications web **front-end uniquement** (HTML + CSS + JavaScript vanilla), sans back-end propre. Toutes les données transitent via l'**API REST d'Oméka S**. Ils partagent la même structure de configuration et les mêmes conventions de code.
+
+| | cleanKeywords | validExpertises |
+|---|---|---|
+| Version | v0.1.3 | v0.2.3 |
+| Dépendances JS | D3 (local) + `similarity.js` | D3 (local) |
+| Stockage config | `localStorage` | `localStorage` |
+| Clé localStorage config | `cleanKeywords_cfg` | `validExpertises_cfg` |
+| Droits API requis | Lecture + Écriture + Suppression | Lecture + Écriture |
+
+---
+
+# 🧹 cleanKeywords
+
+## Architecture
+
+```
+cleanKeywords/
+├── index.html
+├── CHANGELOG.md
+└── assets/
+    ├── main.css
+    └── js/
+        ├── appUrl.js
+        ├── auth.js
+        ├── authParams.js
+        ├── omk.js
+        ├── similarity.js   ← algorithmes de détection et clustering
+        └── d3.min.js
+```
+
+`similarity.js` est isolé du reste de l'application — il contient uniquement les algorithmes de comparaison et de clustering, sans dépendance vers l'API ou l'UI.
+
+## Paramètres de configuration
+
+| Paramètre | Description |
+|---|---|
+| `apiOmk` | URL de base de l'API Oméka S |
+| `mail` | Mail du propriétaire de la clé API |
+| `ident` | `key_identity` |
+| `key` | `key_credential` |
+| `personPropExp` | Propriétés mots-clefs des personnes, séparées par des virgules — utilisées lors des fusions pour mettre à jour les ECs |
+
+## Données locales (localStorage)
+
+| Clé | Contenu |
+|---|---|
+| `cleanKeywords_cfg` | Configuration (API, clés, propriétés) |
+| `cleanKeywords_scan_cache` | Résultats du dernier scan (clusters) |
+| `cleanKeywords_done` | Lettres déjà scannées |
+| `cleanKeywords_rejected` | Paires rejetées manuellement |
+| `cleanKeywords_deleted` | IDs des concepts supprimés durant la session |
+| `cleanKeywords_scroll` | Position de scroll (restaurée au rechargement) |
+
+Toutes ces clés sont effacées par le bouton **🔄 Actualiser**.
+
+## Algorithmes de détection (`similarity.js`)
+
+La similarité entre deux labels est évaluée par quatre règles appliquées dans l'ordre :
+
+| Règle | Condition | Score |
+|---|---|---|
+| Identiques normalisés | Même label en minuscules, sans accents ni ponctuation | 1.0 |
+| Singulier / pluriel | Même label après suppression du `s` ou `x` final | 0.95 |
+| Variante orthographique | Distance de Levenshtein ≤ 2, longueurs proches | ≥ 0.70 |
+| Termes inclus | Tous les tokens significatifs (≥ 4 chars, hors mots courants) du label court présents dans le long, couverture ≥ 60% | ≥ 0.70 |
+
+Les paires avec un score inférieur à **0.70** sont ignorées. Les clusters sont construits par **union-find** avec un score minimum de 0.75 et une taille maximale de **6 concepts** pour éviter les chaînes de faux positifs.
+
+## Flux API — scan
+
+```
+GET /items?resource_class_id[]=<id_skos_Concept>
+          &property[0][property]=dcterms:title
+          &property[0][type]=sw
+          &property[0][text]=<lettre>
+```
+
+La comparaison des paires est entièrement **côté client** via `similarity.js` — aucune requête supplémentaire n'est émise pour la phase de détection.
+
+## Flux API — fusion
+
+La fusion s'opère en quatre étapes séquentielles :
+
+1. Mettre à jour les **items ECs** dont une propriété dans `personPropExp` pointe vers le concept Source → `PUT /items/{id_ec}`.
+2. Mettre à jour les **items Expertise** dont `valo:expertise` pointe vers le concept Source → `PUT /items/{id_expertise}`.
+3. Ajouter `dcterms:replaces` sur le **concept Cible** pour tracer la fusion → `PUT /items/{id_cible}`.
+4. Supprimer le **concept Source** → `DELETE /items/{id_source}`.
+
+::: {.callout-caution}
+Si une erreur survient aux étapes 1 ou 2, la fusion est **interrompue** et le concept Source n'est pas supprimé — la base reste dans un état cohérent. La suppression n'est jamais exécutée si le transfert des relations a échoué.
+:::
+
+::: {.callout-note}
+La traçabilité est assurée par `dcterms:replaces` sur le concept Cible. Il est possible de retrouver rétrospectivement quels concepts ont été fusionnés directement dans Oméka S.
+:::
+
+## Journal des opérations
+
+Chaque fusion est tracée en temps réel dans le journal affiché en bas de page. Ce journal est **en mémoire uniquement** — il est perdu au rechargement de la page.
+
+::: {.callout-warning}
+Si la traçabilité session-à-session est critique, envisager un export CSV du journal comme évolution future.
+:::
+
+---
+
+# ✅ validExpertises
+
+## Architecture
+
+```
+validExpertises/
+├── index.html
+├── CHANGELOG.md
+└── assets/
+    ├── main.css
+    ├── data/
+    │   └── expertise.json
+    └── js/
+        ├── appUrl.js
+        ├── auth.js
+        ├── authParams.js
+        ├── omk.js
+        └── d3.min.js
+```
+
+## Paramètres de configuration
+
+| Paramètre | Description |
+|---|---|
+| `apiOmk` | URL de base de l'API Oméka S |
+| `mail` | Mail du propriétaire de la clé API |
+| `ident` | `key_identity` |
+| `key` | `key_credential` |
+| `creatorId` | ID Oméka S de l'évaluateur |
+| `personTypeAllow` | Type d'item autorisé pour la personne (ex. `valo:EnseignantChercheur`) |
+| `personPropExp` | Propriétés des mots-clefs, séparées par des virgules |
+| `rankProp` | Propriété stockant la valeur d'expertise (défaut : `curation:rank`) |
+
+## Paramètres URL
+
+| Paramètre | Effet |
+|---|---|
+| `idCreator` | Surcharge l'ID évaluateur |
+| `idAuthor` | Charge automatiquement la personne à l'ouverture |
+
+## Flux API principaux
+
+| Action | Requête |
+|---|---|
+| Recherche de personnes | `GET /items?property[0][type]=in&...` |
+| Chargement d'une personne | `GET /items/{id}` |
+| Récupération des mots-clefs | `GET /items?property[0][property]=<prop>&property[0][val]={id}` |
+| Recherche des Expertises existantes | `GET /items?property=dcterms:source&resource_template_id[]=...` |
+| Création d'une Expertise | `POST /items` (payload JSON-LD) |
+| Modification d'une Expertise | `PUT /items/{id}` |
+| Suppression d'une Expertise | `DELETE /items/{id}` |
+
+---
+
+# Prérequis et installation communs
+
+## Vocabulaires Oméka S requis
+
+| Préfixe | Propriété | Usage |
+|---|---|---|
+| `skos` | `skos:Concept` | Classe des concepts/mots-clefs |
+| `skos` | `skos:hasTopConcept` | Propriété par défaut des mots-clefs d'un EC |
+| `dcterms` | `dcterms:subject` | Propriété complémentaire des mots-clefs |
+| `dcterms` | `dcterms:title` | Label des concepts (utilisé pour le scan) |
+| `dcterms` | `dcterms:replaces` | Traçabilité des fusions (cleanKeywords) |
+| `dcterms` | `dcterms:creator` | Lien évaluateur ↔ Expertise |
+| `dcterms` | `dcterms:source` | Lien personne ↔ Expertise |
+| `curation` | `curation:rank` | Valeur d'expertise |
+| `valo` | `valo:expertise` | Propriété de lien vers un concept dans un item Expertise |
+| `valo` | `valo:EnseignantChercheur` | Type de personne autorisé |
+| `valo` | `valo:Laboratoire` | Classe pour le menu laboratoires |
+
+## Installation
+
+```bash
+# Cloner les deux dépôts
+git clone https://github.com/SedoZed/validKeyword.git
+git clone https://github.com/samszo/validExpertises.git
+
+# Servir depuis un serveur web local
+cd validKeyword && python3 -m http.server 8080
+cd validExpertises && python3 -m http.server 8081
+```
+
+::: {.callout-warning}
+**CORS :** si Oméka S est sur un domaine différent, configurer les en-têtes CORS côté Oméka S pour les deux origines. Les requêtes `OPTIONS` doivent retourner un code 200.
+
+```apache
+Header set Access-Control-Allow-Origin "https://valorisation.humanum-p8.fr"
+Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+Header set Access-Control-Allow-Headers "Content-Type"
+```
+:::
+
+## Sécurité
+
+- Ne jamais committer `key_identity` / `key_credential` dans `authParams.js` si les dépôts sont publics.
+- Créer des clés API avec les privilèges minimaux nécessaires à chaque outil.
+- cleanKeywords requiert des droits de suppression — réserver son accès aux administrateurs du référentiel.
+
+---
+
+# Points d'attention pour la maintenance
+
+## Requêtes synchrones (XMLHttpRequest)
+
+::: {.callout-warning}
+Les deux outils utilisent des `XMLHttpRequest` synchrones dans certaines parties de `omk.js`. Ce comportement est déprécié par les navigateurs modernes. Une migration vers `fetch()` avec `async/await` est recommandée comme priorité d'évolution.
+:::
+
+## Modifier les algorithmes de détection
+
+Toute évolution des seuils ou des règles de similarité se fait **uniquement dans `similarity.js`**, sans toucher au reste de l'application. Points clés à ajuster si nécessaire :
+
+- Seuil de score minimum : `0.70` (paires ignorées en dessous)
+- Seuil de clustering union-find : `0.75`
+- Taille maximale d'un cluster : `6` concepts
+- Longueur minimale des tokens : `4` caractères
+
+## Cohérence inter-outils
+
+Après une session de fusion dans cleanKeywords, les items Expertise référençant le concept Source sont automatiquement transférés vers le Cible (étape 2 de la fusion). Après une fusion massive, vérifier dans Oméka S que les évaluations sont bien rattachées aux bons concepts.
+
+## Mise à jour de D3
+
+D3 est chargé localement dans les deux outils (`assets/js/d3.min.js`). Mettre à jour les deux fichiers simultanément pour éviter des divergences de comportement.
+
+## Dépannage
+
+| Symptôme | Cause probable | Action |
+|---|---|---|
+| Aucun concept trouvé au scan | `skos:Concept` absent ou droits insuffisants | Vérifier la classe et les droits de lecture |
+| Fusion sans effet visible | Droits d'écriture ou de suppression insuffisants | Vérifier les droits de la clé API |
+| Concepts encore visibles après fusion | Cache non actualisé | Cliquer sur 🔄 Actualiser |
+| Erreurs CORS en console | Oméka S sur domaine différent | Configurer les en-têtes CORS côté serveur |
+| Évaluateur absent de l'en-tête (validExpertises) | `creatorId` incorrect | Vérifier l'ID dans les paramètres |
+| Aucun mot-clef affiché (validExpertises) | `personPropExp` mal configuré | Vérifier les propriétés |

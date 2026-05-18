@@ -1,0 +1,188 @@
+---
+title: "ValiDatas — Guide opérateur"
+lang: fr
+---
+
+::: {.callout-note}
+Ce guide s'adresse aux personnes qui utilisent la suite ValiDatas pour nettoyer les concepts et évaluer les expertises. Aucune intervention technique n'est requise.
+
+Ordre recommandé : **cleanKeywords d'abord**, validExpertises ensuite.
+:::
+
+---
+
+## Avant de commencer
+
+Les deux outils partagent la même configuration. Vérifiez que vous disposez de :
+
+| Élément | Description |
+|---|---|
+| URL de l'API Oméka S | Ex. : `https://omk.univ-paris8.fr/api/` |
+| Mail du propriétaire | L'adresse mail associée à la clé API |
+| `key_identity` | Premier jeton de la clé API |
+| `key_credential` | Second jeton de la clé API |
+| ID évaluateur | Votre identifiant Oméka S (pour validExpertises) |
+
+::: {.callout-tip}
+La configuration est sauvegardée séparément dans chaque outil. Si vous utilisez les deux régulièrement, pensez à renseigner les paramètres dans chacun lors de votre première session.
+:::
+
+---
+
+# 🧹 cleanKeywords
+
+## Objectif
+
+cleanKeywords détecte les **concepts en doublon** dans Oméka S et vous permet de les fusionner. La fusion transfère automatiquement les liens vers les EC et les évaluations existantes vers le concept conservé, puis supprime l'autre.
+
+## Configuration initiale
+
+1. Ouvrir [cleanKeywords](https://valorisation.humanum-p8.fr/outils/validKeyword/index.html) dans le navigateur.
+2. Cliquer sur **⚙ Paramètres**.
+3. Renseigner l'URL de l'API, le mail, `key_identity`, `key_credential` et l'ID évaluateur.
+4. Dans le champ **Propriétés mots-clefs des personnes**, saisir les propriétés utilisées (ex. `skos:hasTopConcept,dcterms:subject`).
+5. Cliquer sur **Enregistrer**.
+
+## L'onglet Doublons
+
+C'est la vue principale. Les concepts similaires sont regroupés en **clusters** (cartes).
+
+### Scanner les doublons
+
+**Lettre par lettre** — cliquer sur une lettre analyse tous les concepts commençant par cette lettre. La lettre passe en vert une fois traitée.
+
+**Scan complet** — le bouton **⚡ Tout scanner** parcourt les 26 lettres en séquence avec une barre de progression. L'opération peut prendre entre 30 secondes et quelques minutes selon la taille de la base.
+
+**Cache** — après chaque scan, les résultats sont sauvegardés localement et restaurés au rechargement suivant sans nouvelle requête. Le bandeau de cache indique la date du dernier scan. **🔄 Actualiser** efface le cache et repart de zéro.
+
+**Filtrer et trier** — une barre de recherche filtre les clusters en temps réel. Le menu déroulant permet de trier par score de similarité, par nombre de concepts ou par ordre alphabétique.
+
+### Types de doublons détectés
+
+| Type | Description |
+|---|---|
+| **Textuel** | Libellés identiques après normalisation (minuscules, sans accents) |
+| **Singulier / pluriel** | Ex. : "réseau" et "réseaux" |
+| **Variante ortho.** | Distance orthographique faible (Levenshtein ≤ 2) |
+| **Termes inclus** | Tous les mots significatifs du label court présents dans le long |
+
+### Traiter un cluster
+
+Chaque carte affiche les concepts du groupe, leur score de similarité et la raison détectée.
+
+**Choisir le concept à conserver** — les boutons radio permettent de sélectionner lequel sera conservé. Les autres seront supprimés. Par défaut, le premier de la liste est sélectionné.
+
+**Exclure un concept du groupe** — survoler une ligne fait apparaître un bouton **✕** pour retirer un concept du cluster sans modifier la base. Si le cluster tombe à un seul concept, la carte disparaît.
+
+**Fusionner en 2 clics** — le bouton **Fusionner →** exécute directement la fusion avec le concept sélectionné, sans étape intermédiaire.
+
+**Fusionner avec aperçu (3 clics)** — le bouton **Détails ↓** ouvre un accordéon qui affiche le nombre d'ECs et d'Expertises qui seront mis à jour, puis propose un bouton **Fusionner →** pour confirmer.
+
+::: {.callout-caution}
+**La fusion est définitive.** En cas de doute sur quel concept conserver, préférer celui avec le plus grand nombre d'ECs associés (visible dans l'aperçu Détails).
+:::
+
+**Rejeter** — marque le cluster comme faux positif. Il n'apparaîtra plus lors des prochains scans.
+
+### Concepts obsolètes
+
+Après une fusion, les concepts supprimés qui apparaissent encore dans d'autres clusters affichés sont automatiquement **barrés et grisés**. Si un cluster n'a plus qu'un seul concept actif, il est marqué **⚠ À réviser** et ses boutons de fusion sont désactivés.
+
+## L'onglet Tous les concepts
+
+Cet onglet affiche la liste paginée de **tous les concepts** de la base, avec une barre de recherche et un tri par titre ou par date.
+
+Les concepts présents dans un cluster de doublons affichent un badge **⚠ X groupe(s)**. Un clic sur ce badge bascule vers l'onglet Doublons et scrolle directement vers le cluster concerné.
+
+Les boutons **→ Source** et **→ Cible** permettent de sélectionner deux concepts pour une **fusion manuelle** via le formulaire en bas de page. Cette fusion passe par une modale de confirmation.
+
+## Bonnes pratiques
+
+- Travailler lettre par lettre lors des premières sessions pour s'approprier le référentiel avant de lancer un scan complet.
+- Utiliser **Détails ↓** avant de fusionner des clusters importants pour vérifier l'impact.
+- Consulter le **Journal des opérations** en fin de session.
+- Ne pas faire tourner cleanKeywords et validExpertises simultanément sur le même référentiel.
+
+---
+
+# ✅ validExpertises
+
+## Objectif
+
+validExpertises permet d'attribuer une **valeur d'expertise** (`-100` à `+100`) à chaque concept associé à un EC, et de stocker cette évaluation dans Oméka S sous forme d'item Expertise.
+
+## Configuration initiale
+
+1. Ouvrir [validExpertises](https://valorisation.humanum-p8.fr/outils/validExpertises/index.html) dans le navigateur.
+2. Cliquer sur **⚙ Paramètres**.
+3. Renseigner les mêmes informations API que pour cleanKeywords, ainsi que l'**ID évaluateur**.
+4. Cliquer sur **Enregistrer**.
+
+::: {.callout-note}
+**Résultat attendu :** votre nom apparaît dans l'en-tête à côté de la mention *Expert*. Sinon, vérifier l'URL de l'API et l'ID évaluateur.
+:::
+
+## Démarrer une évaluation
+
+### Par laboratoire
+
+1. Sélectionner un laboratoire dans le menu déroulant **Enseignants-Chercheurs**.
+2. Naviguer entre les EC avec **← Précédent** / **Suivant →**.
+3. Cliquer sur un EC pour charger sa fiche.
+
+### Par recherche directe
+
+Taper quelques lettres dans le champ **Recherche…** et sélectionner la personne dans l'autocomplétion.
+
+::: {.callout-tip}
+Un lien avec `?idAuthor=XXX` dans l'URL charge la personne automatiquement à l'ouverture.
+:::
+
+## Évaluer les expertises
+
+Une fois une personne chargée, ses concepts s'affichent sous forme de cartes.
+
+1. Déplacer le **slider** entre `-100` et `+100`.
+2. Cliquer sur **Ajouter** (nouveau) ou **Modifier** (existant) pour enregistrer.
+
+::: {.callout-warning}
+Déplacer le slider ne suffit pas — il faut cliquer sur **Ajouter** ou **Modifier** pour sauvegarder dans Oméka S.
+:::
+
+### Échelle recommandée
+
+| Plage | Signification |
+|---|---|
+| `-100` à `-30` | Expertise faible ou non pertinente |
+| `-29` à `+29` | Neutre / incertain |
+| `+30` à `+100` | Expertise confirmée |
+
+## Ajouter un mot-clé manquant
+
+1. Utiliser le champ **Ajouter un mot-clé…** avec autocomplétion.
+2. Vérifier que la carte apparaît avant de saisir une valeur.
+
+## Filtrer et trier
+
+| Filtre | Effet |
+|---|---|
+| **Sans votre expertise** | Concepts non encore évalués |
+| **Avec votre expertise** | Concepts déjà évalués |
+| **Positifs / Négatifs** | Filtrer par polarité |
+
+Les colonnes **Titre** et **Rang** sont triables. Les concepts avec un score < 5 sont masqués par défaut — **Tout afficher** les révèle.
+
+## Bonnes pratiques
+
+- Utiliser le filtre **Sans votre expertise** pour avancer méthodiquement.
+- Recharger la personne après une série d'évaluations pour vérifier la persistance.
+- Utiliser une échelle cohérente d'un EC à l'autre.
+
+---
+
+## Checklist de fin de session (les deux outils)
+
+- [ ] Les fusions cleanKeywords ont été vérifiées dans le journal des opérations.
+- [ ] Toutes les personnes prévues dans validExpertises ont été traitées.
+- [ ] Aucun message d'erreur non résolu n'est visible dans l'un ou l'autre outil.
+- [ ] Les paramètres sont corrects pour la prochaine session.

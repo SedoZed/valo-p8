@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Contexte d’exploitation – CartoExpert</title>
+<title>Transformer des données format “humain” en format “ordinateur” – CartoExpert</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-66a63c344f183a26081cdb80a294f993.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-66a63c344f183a26081cdb80a294f993.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="../assets/styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">CartoExpert</span>
     </a>
   </div>
@@ -96,11 +96,11 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-général">    
         <li>
-    <a class="dropdown-item" href="./index.html">
+    <a class="dropdown-item" href="../index.html">
  <span class="dropdown-text">Contexte du projet</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./installations.html">
+    <a class="dropdown-item" href="../installations.html">
  <span class="dropdown-text">Prérequis de travail</span></a>
   </li>  
     </ul>
@@ -111,15 +111,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-données">    
         <li>
-    <a class="dropdown-item" href="./donnees/standardiser_data2csv.html">
+    <a class="dropdown-item" href="../donnees/standardiser_data2csv.html">
  <span class="dropdown-text">Préparer les données (CSV)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./donnees/bdd_omeka.html">
+    <a class="dropdown-item" href="../donnees/bdd_omeka.html">
  <span class="dropdown-text">Importer dans Oméka S</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./donnees/scanr_extract.html">
+    <a class="dropdown-item" href="../donnees/scanr_extract.html">
  <span class="dropdown-text">Extraire depuis ScanR</span></a>
   </li>  
     </ul>
@@ -130,21 +130,16 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-outils">    
         <li>
-    <a class="dropdown-item" href="./outils/pres_syst.html">
+    <a class="dropdown-item" href="../outils/pres_syst.html">
  <span class="dropdown-text">CartoExpert — présentation</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./outils/introduction_validata.html">
- <span class="dropdown-text">ValiDatas</span></a>
+    <a class="dropdown-item" href="../outils/validexpertises_guide.html">
+ <span class="dropdown-text">validExpertises — guide opérateur</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./outils/guide_operateur_validata.html">
- <span class="dropdown-text">↳ Guide opérateur</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./outils/doc_tech_validata.html">
- <span class="dropdown-text">↳ Documentation technique</span></a>
+    <a class="dropdown-item" href="../outils/validexpertises_tech.html">
+ <span class="dropdown-text">validExpertises — documentation technique</span></a>
   </li>  
     </ul>
   </li>
@@ -154,19 +149,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-ressources">    
         <li>
-    <a class="dropdown-item" href="./ressources/hypothesis.html">
+    <a class="dropdown-item" href="../ressources/hypothesis.html">
  <span class="dropdown-text">Hypothes.is comme outil collaboratif</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./ressources/listmonk.html">
+    <a class="dropdown-item" href="../ressources/listmonk.html">
  <span class="dropdown-text">ListMonk pour les campagnes de mailing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./ressources/dico_rdf.html">
+    <a class="dropdown-item" href="../ressources/dico_rdf.html">
  <span class="dropdown-text">Web sémantique &amp; RDF</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./ressources/iag.html">
+    <a class="dropdown-item" href="../ressources/iag.html">
  <span class="dropdown-text">Utilisation de l’IA Générative</span></a>
   </li>  
     </ul>
@@ -187,8 +182,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#portée-du-projet" id="toc-portée-du-projet" class="nav-link active" data-scroll-target="#portée-du-projet">Portée du projet</a></li>
-  <li><a href="#quelles-expertises-requises" id="toc-quelles-expertises-requises" class="nav-link" data-scroll-target="#quelles-expertises-requises">Quelles expertises requises ?</a></li>
+  <li><a href="#récupération-des-données" id="toc-récupération-des-données" class="nav-link active" data-scroll-target="#récupération-des-données">Récupération des données</a>
+  <ul class="collapse">
+  <li><a href="#données-existantes-fiables" id="toc-données-existantes-fiables" class="nav-link" data-scroll-target="#données-existantes-fiables">Données existantes fiables</a></li>
+  </ul></li>
+  <li><a href="#préparer-les-données-pour-oméka-s" id="toc-préparer-les-données-pour-oméka-s" class="nav-link" data-scroll-target="#préparer-les-données-pour-oméka-s">Préparer les données pour Oméka S</a></li>
+  <li><a href="#structuration-des-données-liées-aux-laboratoires-de-paris-8." id="toc-structuration-des-données-liées-aux-laboratoires-de-paris-8." class="nav-link" data-scroll-target="#structuration-des-données-liées-aux-laboratoires-de-paris-8.">Structuration des données liées aux laboratoires de Paris 8.</a>
+  <ul class="collapse">
+  <li><a href="#structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés." id="toc-structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés." class="nav-link" data-scroll-target="#structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés.">Structuration des données liées aux partenaires non-académique déjà notés.</a></li>
+  <li><a href="#bibliographie" id="toc-bibliographie" class="nav-link" data-scroll-target="#bibliographie">Bibliographie :</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -197,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Contexte d’exploitation</h1>
+<h1 class="title">Transformer des données format “humain” en format “ordinateur”</h1>
 </div>
 
 
@@ -214,19 +217,319 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><br></p>
-<p>Au sein de la <strong>Direction des Services à la Recherche</strong> <em>(DSR)</em> de l’<a href="https://www.univ-paris8.fr/">Université Paris 8</a>, le <strong>Service de la Valorisation de la Recherche</strong> <em>(SVR)</em> a pour principale mission de développer des partenariats avec les acteurs non-académiques et de valoriser les expertises des laboratoires et des chercheurs de l’université. Pour accomplir cette mission, le <em>SVR</em> a besoin de bien connaitre ces expertises pour orienter la recherche de partenariats et bien les expliquer à des acteurs non académiques. Ainsi, pour assister son personnel dans sa mission, le service a souhaité réaliser des cartographies représentant les activités, compétences, expertises, productions et savoir-faire des chercheurs et laboratoires d’UP8 et de disposer d’un outil qui lui permet de faire l’interface entre les acteurs non-académiques et leurs interlocuteurs dans la communauté scientifique d’UP8.</p>
-<section id="portée-du-projet" class="level2">
-<h2 class="anchored" data-anchor-id="portée-du-projet">Portée du projet</h2>
-<p>Ce projet, intitulé <strong>CartoExpert</strong>, réalisé en collaboration avec le <a href="https://paragraphe.univ-paris8.fr/">Laboratoire Paragraphe</a>, s’adressent en priorité aux chargés de partenariat et de valorisation et aux chargés de montage de projets de la DSR qui ont besoin d’identifier les bons interlocuteurs et de les mettre en relation. En effet, les expertises nécessaires pour répondre à des appels aux projets ou des demandes exprimés par des acteurs externes doivent être identifiées par les équipes de la DSR afin de faire la meilleure mise en relation possible.</p>
-<p>De plus, <strong>CartoExpert</strong> a plutôt pour vocation de couvrir le domaine de la recherche et moins celui de l’enseignement ou aux autres activités de la communauté universitaire dans la mesure où il s’agit d’un outil pour la direction des services à la recherche. Rien, cependant, n’interdit de penser l’outil de telle sorte qu’il intégre à l’avenir d’autres données.</p>
-<hr>
+<p>Page de documentation va s’articuler en deux temps :</p>
+<ol type="1">
+<li>Comprendre les enjeux de cette standardisation (théorie)</li>
+<li>Comment mener à bien cette standardisation</li>
+</ol>
+<section id="récupération-des-données" class="level1">
+<h1>Récupération des données</h1>
+<p>La première étape consiste donc à déterminer sur quelles sources s’appuyer = s’appuyer sur le cahier des charges</p>
+<p>Les données dans l’état actuel des choses ne pas ou peu exploitables pour de nombreuses raisons dont deux principales : - Les tableaux sont créés de façon à être interprété par un humain (et non par une machine). Exemple : [inserer image]</p>
+<ul>
+<li>Les tableaux produits utilisent des structures ou des écritures variant les unes des autres. Exemple : [inserer image1] [inserer image2]</li>
+</ul>
+<p>La première tache consiste donc à centraliser toutes ces données différentes puis de les centraliser en un seul set de données, uniforme et facilement interprétable par une machine.</p>
+<section id="données-existantes-fiables" class="level2">
+<h2 class="anchored" data-anchor-id="données-existantes-fiables">Données existantes fiables</h2>
+<p>Rendus évaluation HCERES Rapports produits par le DSR Données externes au service (ScanR) DOBS ?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Au fur-et-à-mesure de votre processus de centralisation, vous constaterez que certaines informations peuvent manquer (ponctuellement ou largement). Celles-ci pourront être complétées à postériori via l’utilisation d’Oméka S (modules) ou en solicitant directement les enseignants chercheurs et les laboratoires par divers moyens (campagne de mailing, formulaires, …)</p>
+</div>
+</div>
 </section>
-<section id="quelles-expertises-requises" class="level1">
-<h1>Quelles expertises requises ?</h1>
-<p>Expertises liées aux Humanités Numériques dans son optique de faire la passerelle entre l’Homme et la machine (convertir connaissances humaines fines en données numériques lisibles par machines ; profiter du traitement agile &amp; d’interfaces permis par le numérique pour en ressortir d’autres informations).</p>
+</section>
+<section id="préparer-les-données-pour-oméka-s" class="level1">
+<h1>Préparer les données pour Oméka S</h1>
+<p>Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intitulé</th>
+<th>Dictionnaire</th>
+<th>Définition</th>
+<th>Encodage</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dcterms:title</td>
+<td>Dublin Core</td>
+<td>Ici, combinaison “prénom+nom” servant à nommer l’objet dans la BDD.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>foaf:givenName</td>
+<td>FoaF</td>
+<td>Prénom de l’enseignant-chercheur.</td>
+<td>Texte brute (str)</td>
+<td>researchers_Erua → “first_name”</td>
+</tr>
+<tr class="odd">
+<td>foaf:familyName</td>
+<td>FoaF</td>
+<td>Nom de famille de l’enseignant-chercheur.</td>
+<td>Texte brute (str)</td>
+<td>researchers_Erua → “surname_name”</td>
+</tr>
+<tr class="even">
+<td>foaf:birthday</td>
+<td>FoaF</td>
+<td>Date de naissance de l’enseignant-chercheur.</td>
+<td>Texte brute (str) ou date ?</td>
+<td>Rapport HCERES → “Année de naissance” (nécessite tri)</td>
+</tr>
+<tr class="odd">
+<td>curation:status</td>
+<td>Curation</td>
+<td>Statut de l’enseignant chercheur (PR, MDF, …)</td>
+<td>ID Oméka*</td>
+<td>Rapport HCERES → “Corps” (nécessite tri)</td>
+</tr>
+<tr class="even">
+<td>valo:orcid</td>
+<td>Dublin Core</td>
+<td>Numéro unique ORCID de l’enseignant-chercheur lorsque celui-ci est disponible.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>dcterms:isPartOf</td>
+<td>Dublin Core</td>
+<td>Laboratoire auquel est rattaché l’enseignant-chercheur.</td>
+<td>ID Oméka*</td>
+<td>researchers_Erua → research_units</td>
+</tr>
+<tr class="even">
+<td>dcterms:hasPart</td>
+<td>Dublin Core</td>
+<td>Sous-unité du laboratoire dans lequel l’enseignant-chercheur opère.</td>
+<td>ID Oméka*</td>
+<td>Rapport HCERES → “Nom de l’équipe interne n°X” (nécessite tri)</td>
+</tr>
+<tr class="odd">
+<td>valo:dbt_research</td>
+<td>Dict. personnalisé</td>
+<td>Date de début en tant que chercheur</td>
+<td>Texte brute (str) / date ?</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:cnu</td>
+<td>Dict. personnalisé</td>
+<td>Code CNU affilié à l’enseignant chercheur</td>
+<td>ID Oméka*</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>valo:domaine_hceres</td>
+<td>Dict. personnalisé</td>
+<td>Panels disciplinaires dans lesquels le chercheur publie (selon la nomenclature du <a href="https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf">HCERES</a>.)</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:expertise</td>
+<td>Dict. personnalisé</td>
+<td>Expertises reconnus de l’enseignant-chercheur.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>valo:dir_these</td>
+<td>Dict. personnalisé</td>
+<td>Nombre de doctorants ayant publié une thèse sous la supervision de l’enseignant-chercheur.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:ecole_doct</td>
+<td>Dict. personnalisé</td>
+<td>Ecoles doctorales dont l’enseignant-chercheur est membre.</td>
+<td>Texte brute (str) ou ID Oméka* ?</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>valo:partenariats</td>
+<td>Dict. personnalisé</td>
+<td>Identifiants des “items” de la bdd correspondant aux partenaires non-académiques avec lesquelles l’enseignant-chercheur a travaillé.</td>
+<td>ID Oméka*</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>foaf:mbox</td>
+<td>FoaF</td>
+<td>Boite mail professionnelle de l’enseignant-chercheur.</td>
+<td>Texte brute (str)</td>
+<td>researchers_Erua → professional_email</td>
+</tr>
+</tbody>
+</table>
+<p>ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD.</p>
+</section>
+<section id="structuration-des-données-liées-aux-laboratoires-de-paris-8." class="level1">
+<h1>Structuration des données liées aux laboratoires de Paris 8.</h1>
+<p>Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intitulé</th>
+<th>Dictionnaire</th>
+<th>Définition</th>
+<th>Encodage</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dcterms:title</td>
+<td>Dublin Core</td>
+<td>Nom de l’objet dans la bdd. Constitue généralement un diminutif communément utilisé.</td>
+<td>Texte brute (str)</td>
+<td>Labos_Paris8 → “Acronyme” ; Rapports HCERES</td>
+</tr>
+<tr class="even">
+<td>dcterms:alternative</td>
+<td>Dublin Core</td>
+<td>Nom alternatif (souvent le nom complet) du laboratoire.</td>
+<td>Texte brute (str)</td>
+<td>Labos_Paris8 → “Intitulé” ; Rapports HCERES</td>
+</tr>
+<tr class="odd">
+<td>valo:idRNSR</td>
+<td>Dublin Core</td>
+<td>Numéro unique RNSR du laboratoire.</td>
+<td>Texte brute (str)</td>
+<td>ScanR (module Oméka S)</td>
+</tr>
+<tr class="even">
+<td>valo:hasAxe</td>
+<td>Dict. personnalisé</td>
+<td>Ensemble des sous-équipes d’un laboratoire</td>
+<td>ID Oméka*</td>
+<td>Rapports HCERES</td>
+</tr>
+<tr class="odd">
+<td>valo:domaine_hceres</td>
+<td>Dict. personnalisé</td>
+<td>Panels scientifiques revendiqué par le labratoire, selon la nomenclature du <a href="https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/liste_panel_disciplinaire.pdf">HCERES</a>.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:domaine_erc</td>
+<td>Dict. personnalisé</td>
+<td>Panels scientifiques revendiqué par le laboatoire, selon la nomenclature <a href="https://erc.europa.eu/sites/default/files/2023-03/ERC_panel_structure_2024_calls.pdf">ERC</a></td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>valo:obj_recherche</td>
+<td>Dict. personnalisé</td>
+<td>Objet de recherche du laboratoire.</td>
+<td>Texte brute (str)</td>
+<td>Labos_Paris8 → “Objets de la recherche”</td>
+</tr>
+<tr class="even">
+<td>valo:axeRech</td>
+<td>Dict. personnalisé</td>
+<td>Les axes de recherche du laboratoire.</td>
+<td>ID Oméka*</td>
+<td>Labos_Paris8 → “Axes de recherche”</td>
+</tr>
+<tr class="odd">
+<td>valo:heywords</td>
+<td>Dict. personnalisé</td>
+<td>Mots-clés renseignés par les laboratoires dans le rendu HCERES des laboratoires.</td>
+<td>ID Oméka* ?</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:expertise</td>
+<td>Dict. personnalisé</td>
+<td>Domaines de maitrise dont lesquels le laboratoire est reconnu.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>foaf:mbox</td>
+<td>FoaF</td>
+<td>Courriel pour contacter directement le laboratoire.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:plateforme_txt</td>
+<td>Dict. personnalisé</td>
+<td>Plateformes déclarées par les laboratoire n’ayant pas été convertis en “item” sur Omeka S**</td>
+<td>Texte brute (str)</td>
+<td>Labos_Paris8 → “Plateformes”</td>
+</tr>
+<tr class="odd">
+<td>valo:plateforme_internalid</td>
+<td>Dict. personnalisé</td>
+<td>Plateformes déclarées par les laboratoire ayant été convertis en “item” sur Omeka S**</td>
+<td>Texte brute (str)</td>
+<td>Labos_Paris8 → “Plateformes”</td>
+</tr>
+<tr class="even">
+<td>valo:ecole_doct</td>
+<td>Dict. personnalisé</td>
+<td>Ecoles doctorales dont l’enseignant-chercheur est membre.</td>
+<td>Texte brute (str) ou ID Oméka* ?</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>valo:dir_these</td>
+<td>Dict. personnalisé</td>
+<td>Nombre de doctorants ayant publié une thèse sous la supervision de l’enseignant-chercheur.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>valo:partenariats</td>
+<td>Dict. personnalisé</td>
+<td>Partenariats de recherche avec le monde non-académique. (entrer leur ID Oméka)</td>
+<td>ID Oméka*</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>valo:idHAL</td>
+<td>Dict. personnalisé</td>
+<td>Identifiant unique HAL du laboratoire, permettant à postériori l’extraction des publications du laboratoire.</td>
+<td>Texte brute (str)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>*ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD.</p>
+<p>**Choix a été fait de convertir ou non les plateformes déclarées par les laboratoires en item en fonction de s’il s’agit d’une “entité” ou non (une chaine YouTube n’est pas une entité ; une start-up en est une).</p>
+<section id="structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés." class="level2">
+<h2 class="anchored" data-anchor-id="structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés.">Structuration des données liées aux partenaires non-académique déjà notés.</h2>
+<p>Utilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.</p>
+<p>(La constitution de ce jeu de données est toujours en cours.)</p>
+<p>ID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD.</p>
+</section>
+<section id="bibliographie" class="level2">
+<h2 class="anchored" data-anchor-id="bibliographie">Bibliographie :</h2>
+<ul>
+<li>https://bioportal.bioontology.org/ontologies/VIVO?p=properties</li>
+<li>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -638,7 +941,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
 <div class="footer-img">
-<p><img src="../assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo"></p>
+<p><img src="assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo"></p>
 </div>
 </div>
     <div class="nav-footer-right">

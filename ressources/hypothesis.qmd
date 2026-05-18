@@ -1,6 +1,7 @@
 ---
 title: "Hypothes.is comme outil collaboratif"
 lang: fr
+date: last-modified
 ---
 
 <br/>

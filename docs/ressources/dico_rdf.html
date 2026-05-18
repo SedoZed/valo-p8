@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Contexte d’exploitation – CartoExpert</title>
+<title>Ecrire le dictionnaire de métadonnées – CartoExpert</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-66a63c344f183a26081cdb80a294f993.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-66a63c344f183a26081cdb80a294f993.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="../assets/styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">CartoExpert</span>
     </a>
   </div>
@@ -96,11 +96,11 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-général">    
         <li>
-    <a class="dropdown-item" href="./index.html">
+    <a class="dropdown-item" href="../index.html">
  <span class="dropdown-text">Contexte du projet</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./installations.html">
+    <a class="dropdown-item" href="../installations.html">
  <span class="dropdown-text">Prérequis de travail</span></a>
   </li>  
     </ul>
@@ -111,15 +111,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-données">    
         <li>
-    <a class="dropdown-item" href="./donnees/standardiser_data2csv.html">
+    <a class="dropdown-item" href="../donnees/standardiser_data2csv.html">
  <span class="dropdown-text">Préparer les données (CSV)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./donnees/bdd_omeka.html">
+    <a class="dropdown-item" href="../donnees/bdd_omeka.html">
  <span class="dropdown-text">Importer dans Oméka S</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./donnees/scanr_extract.html">
+    <a class="dropdown-item" href="../donnees/scanr_extract.html">
  <span class="dropdown-text">Extraire depuis ScanR</span></a>
   </li>  
     </ul>
@@ -130,21 +130,16 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-outils">    
         <li>
-    <a class="dropdown-item" href="./outils/pres_syst.html">
+    <a class="dropdown-item" href="../outils/pres_syst.html">
  <span class="dropdown-text">CartoExpert — présentation</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./outils/introduction_validata.html">
- <span class="dropdown-text">ValiDatas</span></a>
+    <a class="dropdown-item" href="../outils/validexpertises_guide.html">
+ <span class="dropdown-text">validExpertises — guide opérateur</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./outils/guide_operateur_validata.html">
- <span class="dropdown-text">↳ Guide opérateur</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./outils/doc_tech_validata.html">
- <span class="dropdown-text">↳ Documentation technique</span></a>
+    <a class="dropdown-item" href="../outils/validexpertises_tech.html">
+ <span class="dropdown-text">validExpertises — documentation technique</span></a>
   </li>  
     </ul>
   </li>
@@ -154,19 +149,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-ressources">    
         <li>
-    <a class="dropdown-item" href="./ressources/hypothesis.html">
+    <a class="dropdown-item" href="../ressources/hypothesis.html">
  <span class="dropdown-text">Hypothes.is comme outil collaboratif</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./ressources/listmonk.html">
+    <a class="dropdown-item" href="../ressources/listmonk.html">
  <span class="dropdown-text">ListMonk pour les campagnes de mailing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./ressources/dico_rdf.html">
+    <a class="dropdown-item" href="../ressources/dico_rdf.html">
  <span class="dropdown-text">Web sémantique &amp; RDF</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./ressources/iag.html">
+    <a class="dropdown-item" href="../ressources/iag.html">
  <span class="dropdown-text">Utilisation de l’IA Générative</span></a>
   </li>  
     </ul>
@@ -187,8 +182,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#portée-du-projet" id="toc-portée-du-projet" class="nav-link active" data-scroll-target="#portée-du-projet">Portée du projet</a></li>
-  <li><a href="#quelles-expertises-requises" id="toc-quelles-expertises-requises" class="nav-link" data-scroll-target="#quelles-expertises-requises">Quelles expertises requises ?</a></li>
+  <li><a href="#définir-les-dictionnaires-à-utiliser" id="toc-définir-les-dictionnaires-à-utiliser" class="nav-link active" data-scroll-target="#définir-les-dictionnaires-à-utiliser">Définir les dictionnaires à utiliser</a>
+  <ul class="collapse">
+  <li><a href="#éléments-structurant-un-document-dontologie" id="toc-éléments-structurant-un-document-dontologie" class="nav-link" data-scroll-target="#éléments-structurant-un-document-dontologie">Éléments structurant un document d’ontologie</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -197,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Contexte d’exploitation</h1>
+<h1 class="title">Ecrire le dictionnaire de métadonnées</h1>
 </div>
 
 
@@ -215,18 +212,74 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><br></p>
-<p>Au sein de la <strong>Direction des Services à la Recherche</strong> <em>(DSR)</em> de l’<a href="https://www.univ-paris8.fr/">Université Paris 8</a>, le <strong>Service de la Valorisation de la Recherche</strong> <em>(SVR)</em> a pour principale mission de développer des partenariats avec les acteurs non-académiques et de valoriser les expertises des laboratoires et des chercheurs de l’université. Pour accomplir cette mission, le <em>SVR</em> a besoin de bien connaitre ces expertises pour orienter la recherche de partenariats et bien les expliquer à des acteurs non académiques. Ainsi, pour assister son personnel dans sa mission, le service a souhaité réaliser des cartographies représentant les activités, compétences, expertises, productions et savoir-faire des chercheurs et laboratoires d’UP8 et de disposer d’un outil qui lui permet de faire l’interface entre les acteurs non-académiques et leurs interlocuteurs dans la communauté scientifique d’UP8.</p>
-<section id="portée-du-projet" class="level2">
-<h2 class="anchored" data-anchor-id="portée-du-projet">Portée du projet</h2>
-<p>Ce projet, intitulé <strong>CartoExpert</strong>, réalisé en collaboration avec le <a href="https://paragraphe.univ-paris8.fr/">Laboratoire Paragraphe</a>, s’adressent en priorité aux chargés de partenariat et de valorisation et aux chargés de montage de projets de la DSR qui ont besoin d’identifier les bons interlocuteurs et de les mettre en relation. En effet, les expertises nécessaires pour répondre à des appels aux projets ou des demandes exprimés par des acteurs externes doivent être identifiées par les équipes de la DSR afin de faire la meilleure mise en relation possible.</p>
-<p>De plus, <strong>CartoExpert</strong> a plutôt pour vocation de couvrir le domaine de la recherche et moins celui de l’enseignement ou aux autres activités de la communauté universitaire dans la mesure où il s’agit d’un outil pour la direction des services à la recherche. Rien, cependant, n’interdit de penser l’outil de telle sorte qu’il intégre à l’avenir d’autres données.</p>
+<p>Pour que les données puisses être mises en relation par la machine, il faut que cette dernière <strong>soit capable d’interpréter les éléments constituant lesdites données</strong>. En effet, là où notre vision humaine interprète naturellement qu’une personne est un “être vivant” avec un “nom”, un “prénom”, une ou plusieurs “origines” et une “date de naissance”, <strong>la machine</strong>, elle, <strong>en est incapable</strong> par défaut, ne voyant qu’une suite de caractères dénué de sens. Ainsi, expliquer à la machine que telle entité appartient au groupe “être vivant”, qu’une chaine de caractères correspond à un nom ou un prénom, ou encore que tels nombres correspondent à un année de naissance est une composante primordiale.</p>
+<p>Pour ce faire, comme l’humanité l’a fait tout au long de son histoire pour définir les propriétés et les groupements d’objets (vivant ou non), nous allons faire appel à des <strong>ontologies</strong> : des structures formelles qui définissent des <strong>concepts</strong> et leurs <strong>propriétés</strong> — un peu comme un dictionnaire enrichi pour la machine. C’est là tout l’intérêt de ce que l’on appelle le “<strong>web sémantique</strong>”.</p>
+<section id="définir-les-dictionnaires-à-utiliser" class="level1">
+<h1>Définir les dictionnaires à utiliser</h1>
+<p>Ontologies internationales très largement utilisés comme <a href="https://www.bnf.fr/fr/dublin-core">Dublin Core</a> ou <a href="https://fr.wikipedia.org/wiki/FOAF">Friend of a Friend</a>, mais également création d’un vocabulaire custom qui réponds à des besoins spécifiques, comme ceux de la DSR par exemple.</p>
+<p>Préfixe, pour différencier chaque dictionnaire utilisé car plusieurs propriétés ou classes peuvent s’écrire de la même façon mais ont leur sens propre. Le préfixe permet de les différencier.</p>
+<p>Partir des données ; ce qu’elles représentent d’un pdv humain (nom, prénom, titre, …), puis regarder s’il existe dans les autres dictionnaires internationaux des équivalents de nommage (foaf:firstName, dcterms:title, …), sinon créer les propriétés / les classes correspondantes.</p>
+<section id="éléments-structurant-un-document-dontologie" class="level2">
+<h2 class="anchored" data-anchor-id="éléments-structurant-un-document-dontologie">Éléments structurant un document d’ontologie</h2>
+<p><strong>Les préfixes</strong></p>
+<p>Dans un fichier Turtle, chaque concept est identifié par une URI complète. Les préfixes sont des <strong>raccourcis textuels</strong> qui permettent d’abréger ces URIs pour rendre le fichier lisible. Ils ne chargent aucun code : ils indiquent simplement à la machine comment résoudre les abréviations qu’elle rencontrera dans la suite du fichier.</p>
+<pre><code>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix owl:     &lt;http://www.w3.org/2002/07/owl#&gt; .
+...
+@prefix valo:    &lt;https://jardindesconnaissances.univ-paris8.fr/onto/valo#&gt; .</code></pre>
 <hr>
+<p><strong>Déclaration de l’ontologie</strong></p>
+<p>C’est la carte d’identité du fichier. On y dit : “ce fichier est une ontologie OWL dont le titre est”Nom personnalisé 4”.</p>
+<pre class="ttl"><code>&lt;https://jardindesconnaissances.univ-paris8.fr/onto/labo#&gt; a owl:Ontology ;
+    dcterms:title "Nom personnalisé 4" .</code></pre>
+<hr>
+<p><strong>Structure d’une classe</strong></p>
+<p>Chaque classe définit un type d’entité dans la base. C’est l’équivalent d’une table dans une base de données relationnelle. Pour chaque classe, on trouve toujours 3 attributs :</p>
+<ul>
+<li>rdfs:label → le nom lisible par un humain</li>
+<li>rdfs:domain o:Resource → elle appartient au domaine des ressources Omeka S</li>
+<li>vs:term_status “experimental” → le vocabulaire est encore en cours de stabilisation</li>
+</ul>
+<pre class="ttl"><code>valo:NewClass a rdfs:Class ;
+    rdfs:label "Nom complet de la classe" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .</code></pre>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Lors de la création d’une classe, il est d’usage la première lettre après le préfixe (“valo:…”) soit une lettre majuscule.</p>
+</div>
+</div>
+<hr>
+<p><strong>Structure d’une propriété</strong></p>
+<p>Les propriétés sont les <strong>relations ou attributs qu’on peut associer à une ressource</strong>. C’est l’équivalent des colonnes d’une table.</p>
+<pre class="ttl"><code>valo:NewProperty a rdf:Property ;
+    rdfs:label "Nom complet de la propriété" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .</code></pre>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Lors de la création d’une propriété, il est d’usage la première lettre après le préfixe (“valo:…”) soit une lettre minuscule.</p>
+</div>
+</div>
+
+
 </section>
-<section id="quelles-expertises-requises" class="level1">
-<h1>Quelles expertises requises ?</h1>
-<p>Expertises liées aux Humanités Numériques dans son optique de faire la passerelle entre l’Homme et la machine (convertir connaissances humaines fines en données numériques lisibles par machines ; profiter du traitement agile &amp; d’interfaces permis par le numérique pour en ressortir d’autres informations).</p>
-
-
 </section>
 
 </main> <!-- /main -->
@@ -638,7 +691,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
 <div class="footer-img">
-<p><img src="../assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo"></p>
+<p><img src="assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo"></p>
 </div>
 </div>
     <div class="nav-footer-right">

@@ -684,5 +684,1020 @@
     "title": "Hypothes.is comme outil collaboratif",
     "section": "Configurer l’interface sur votre navigateur",
     "text": "Configurer l’interface sur votre navigateur\nAujourd’hui, la méthode pour installer Hypothes.is varie en fonction du navigateur que vous utilisez quotidiennement. Le premier cas, concernant les utilisateurs de navigateurs type Google Chrome, Microsoft Edge, Opéra ou tout autre navigateur basé sur Chromium, il suffit simplement d’ajouter l’extension officielle. Pour les autres navigateurs comme Firefox ou Safari, la méthode est différente puisqu’il faut passer par ce que l’on appelle un Bookmarklet.\nUne fois l’extension ou le Bookmarklet mis en place sur votre navigateur, rendez-vous sur la page à annoter puis activez Hypothes.is en cliquant sur l’icone de l’extension ou sur le marque-page. Ensuite, connectez-vous en cliquant sur “log-in” et voilà, Hypothes.is est prêt à être utilisé !\n\n\n\n\n\n\nNote\n\n\n\nÀ noter que, pour Firefox, il existe une extension non-officielle répliqnant l’expérience de la version officielle pour Chromium. Cependant, celle-ci ne permet pas d’annoter les PDF téléchargés localement.\n\n\n\nMettre en place le Bookmarklet\nRetrouver le Bookmarklet de Hypothes.is : https://web.hypothes.is/help/installing-the-bookmarklet/\n\n\n\nGIF montrant comment rendre actif Hypothes.is sur FireFox\n\n\n[À compléter]"
+  },
+  {
+    "objectID": "validexpertises_guide.html",
+    "href": "validexpertises_guide.html",
+    "title": "validExpertises — Guide opérateur",
+    "section": "",
+    "text": "Note\n\n\n\nCe guide s’adresse aux personnes qui utilisent l’application pour évaluer des expertises au quotidien. Aucune intervention technique sur le code n’est nécessaire.\nVersion courte imprimable disponible sur le dépôt GitHub : FICHE_OPERATEUR_1_PAGE.md."
+  },
+  {
+    "objectID": "validexpertises_guide.html#quest-ce-que-validexpertises",
+    "href": "validexpertises_guide.html#quest-ce-que-validexpertises",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Qu’est-ce que validExpertises ?",
+    "text": "Qu’est-ce que validExpertises ?\nvalidExpertises est une application web qui permet d’évaluer les expertises thématiques des Enseignants-Chercheurs (EC) rattachés au Laboratoire Paragraphe (Paris 8).\nConcrètement, pour chaque EC chargé dans l’application, vous visualisez ses mots-clés (concepts scientifiques extraits d’Oméka S), et vous pouvez attribuer à chacun une valeur d’expertise allant de -100 (non pertinent) à +100 (fortement pertinent). Ces évaluations sont enregistrées directement dans Oméka S via l’API.\nL’outil fait partie de l’écosystème CartoExpert ; il est accessible à l’adresse : 👉 https://valorisation.humanum-p8.fr/outils/validExpertises/"
+  },
+  {
+    "objectID": "validexpertises_guide.html#avant-de-commencer",
+    "href": "validexpertises_guide.html#avant-de-commencer",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Avant de commencer",
+    "text": "Avant de commencer\nAvant d’ouvrir l’application, vérifiez que vous disposez des informations suivantes :\n\n\n\nÉlément\nDescription\n\n\n\n\nURL de l’API Oméka S\nEx. : https://omk.univ-paris8.fr/api/\n\n\nMail du propriétaire\nL’adresse mail associée à la clé API\n\n\nkey_identity\nPremier jeton de la clé API Oméka S\n\n\nkey_credential\nSecond jeton de la clé API Oméka S\n\n\nID évaluateur\nL’identifiant Oméka S de votre fiche personnelle\n\n\n\n\n\n\n\n\n\nAstuce\n\n\n\nCes informations sont fournies par l’administrateur technique du projet. Si vous ne les avez pas, contactez la Direction de la Recherche de Paris 8."
+  },
+  {
+    "objectID": "validexpertises_guide.html#configuration-initiale-une-seule-fois",
+    "href": "validexpertises_guide.html#configuration-initiale-une-seule-fois",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Configuration initiale (une seule fois)",
+    "text": "Configuration initiale (une seule fois)\nLa configuration n’est à réaliser qu’une seule fois par navigateur. Elle est ensuite conservée automatiquement.\n\nOuvrir l’application dans votre navigateur.\nCliquer sur le bouton ⚙ Paramètres en haut de page.\nRenseigner les champs de la fenêtre :\n\nURL de base de l’API → coller l’URL fournie\nMail de l’utilisateur Oméka S → votre mail\nkey_identity et key_credential → les deux jetons de la clé\nID évaluateur → votre identifiant Oméka S\nLaisser les autres champs à leur valeur par défaut sauf indication contraire\n\nCliquer sur Enregistrer.\n\n\n\n\n\n\n\nNote\n\n\n\nRésultat attendu : votre nom (ou identifiant) apparaît dans l’en-tête de la page, à côté de la mention Expert. Si rien n’apparaît, vérifiez l’URL de l’API et l’ID évaluateur."
+  },
+  {
+    "objectID": "validexpertises_guide.html#démarrer-une-session-dévaluation",
+    "href": "validexpertises_guide.html#démarrer-une-session-dévaluation",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Démarrer une session d’évaluation",
+    "text": "Démarrer une session d’évaluation\n\nSélectionner un EC par laboratoire\nLe menu déroulant Enseignants-Chercheurs vous permet de parcourir les EC par laboratoire.\n\nSélectionner un laboratoire dans la liste déroulante.\nNaviguer entre les EC avec les boutons ← Précédent et Suivant →.\nCliquer sur un EC pour charger sa fiche.\n\n\n\nRechercher directement une personne\n\nTaper quelques lettres du nom dans le champ Recherche… (autocomplétion).\nSélectionner la bonne personne dans la liste proposée.\nVérifier que le bandeau affiche bien le nom et l’identifiant de la personne chargée.\n\n\n\n\n\n\n\nAstuce\n\n\n\nRaccourci possible : si quelqu’un vous partage un lien avec un paramètre ?idAuthor=XXX dans l’URL, la personne est chargée automatiquement à l’ouverture — pas besoin de rechercher."
+  },
+  {
+    "objectID": "validexpertises_guide.html#évaluer-les-expertises",
+    "href": "validexpertises_guide.html#évaluer-les-expertises",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Évaluer les expertises",
+    "text": "Évaluer les expertises\nUne fois une personne chargée, ses mots-clés s’affichent sous forme de cartes.\n\nLire une carte\nChaque carte affiche :\n\nle titre du mot-clé (concept scientifique)\nla propriété source (d’où vient ce mot-clé dans Oméka S)\nun slider de -100 à +100\nvotre évaluation existante, si elle a déjà été saisie\n\n\n\nSaisir ou modifier une valeur\n\nDéplacer le slider vers la valeur souhaitée.\nSelon la situation :\n\nAjouter → si aucune évaluation n’existe encore pour ce mot-clé\nModifier → si vous souhaitez corriger une valeur existante\nSupprimer → pour retirer complètement votre évaluation\n\n\n\n\n\n\n\n\nAvertissement\n\n\n\nCliquer sur Ajouter ou Modifier est indispensable pour enregistrer la valeur dans Oméka S. Déplacer le slider seul ne suffit pas.\n\n\n\n\nÉchelle de valeurs recommandée\n\n\n\nPlage\nSignification\n\n\n\n\n-100 à -30\nExpertise faible ou non pertinente\n\n\n-29 à +29\nNeutre / incertain\n\n\n+30 à +100\nExpertise confirmée"
+  },
+  {
+    "objectID": "validexpertises_guide.html#ajouter-un-mot-clé-avant-évaluation",
+    "href": "validexpertises_guide.html#ajouter-un-mot-clé-avant-évaluation",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Ajouter un mot-clé avant évaluation",
+    "text": "Ajouter un mot-clé avant évaluation\nSi un concept pertinent n’est pas encore présent dans la liste de la personne :\n\nUtiliser le champ Ajouter un mot-clé… (avec autocomplétion).\nTaper quelques lettres et sélectionner le concept dans la liste.\nVérifier que la carte apparaît dans la grille avant de saisir une valeur.\n\n\n\n\n\n\n\nMise en garde\n\n\n\nLe mot-clé ajouté doit exister dans Oméka S pour apparaître dans l’autocomplétion. Si vous ne le trouvez pas, signalez-le à l’administrateur pour qu’il soit créé au préalable."
+  },
+  {
+    "objectID": "validexpertises_guide.html#filtrer-et-trier-les-mots-clés",
+    "href": "validexpertises_guide.html#filtrer-et-trier-les-mots-clés",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Filtrer et trier les mots-clés",
+    "text": "Filtrer et trier les mots-clés\nDes outils sont disponibles pour travailler de manière systématique sur de longues listes.\n\nFiltres disponibles\n\n\n\n\n\n\n\nFiltre\nEffet\n\n\n\n\nTous\nAffiche tous les mots-clés\n\n\nSans votre expertise\nMots-clés que vous n’avez pas encore évalués\n\n\nAvec votre expertise\nMots-clés que vous avez déjà évalués\n\n\nPositifs\nUniquement les valeurs &gt; 0\n\n\nNégatifs\nUniquement les valeurs &lt; 0\n\n\n\n\n\nTri\nLes colonnes Titre et Rang sont triables par clic sur leur en-tête (↕).\n\n\nMots-clés peu pertinents\nPar défaut, les mots-clés dont le score est inférieur à 5 et qui figurent au-delà des 20 premiers sont masqués automatiquement. Le bouton Tout afficher permet de les révéler."
+  },
+  {
+    "objectID": "validexpertises_guide.html#bonnes-pratiques-opérateur",
+    "href": "validexpertises_guide.html#bonnes-pratiques-opérateur",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Bonnes pratiques opérateur",
+    "text": "Bonnes pratiques opérateur\n\nUtiliser une échelle cohérente d’une personne à l’autre pour que les comparaisons soient exploitables.\nPréférer le filtre Sans votre expertise pour avancer méthodiquement sans oubli.\nEn cas de doute sur une valeur, noter l’ID Oméka S de la personne et reprendre plus tard.\nToujours recharger la personne après une série d’évaluations pour vérifier la persistance des données."
+  },
+  {
+    "objectID": "validexpertises_guide.html#résolution-de-problèmes-fréquents",
+    "href": "validexpertises_guide.html#résolution-de-problèmes-fréquents",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Résolution de problèmes fréquents",
+    "text": "Résolution de problèmes fréquents\n\nErreur HTTP au chargement\nCauses possibles : URL de l’API incorrecte, clés API expirées, instance Oméka S inaccessible.\nAction : Vérifier les paramètres (⚙), relancer depuis zéro si nécessaire.\n\n\nAucun mot-clé ne s’affiche\nCauses possibles : La personne ne possède pas de concepts dans la propriété configurée, ou le type de la personne n’est pas autorisé.\nAction : Vérifier avec l’administrateur que la fiche Oméka S de la personne est correctement renseignée.\n\n\nImpossible d’enregistrer (bouton Ajouter sans effet)\nCauses possibles : Droits insuffisants sur la clé API, propriétés cibles inexistantes dans Oméka S.\nAction : Contacter l’administrateur pour vérifier les droits de la clé API.\n\n\nLe bon nom n’apparaît pas dans l’autocomplétion\nAction : Essayer une autre partie du nom, ou utiliser directement le paramètre URL ?idAuthor=ID_OMEKA."
+  },
+  {
+    "objectID": "validexpertises_guide.html#checklist-de-fin-de-session",
+    "href": "validexpertises_guide.html#checklist-de-fin-de-session",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Checklist de fin de session",
+    "text": "Checklist de fin de session\nAvant de fermer l’application, vérifier :\n\nToutes les personnes prévues ont été traitées.\nAucun message d’erreur non résolu n’est visible.\nLes valeurs critiques ont été vérifiées une seconde fois (recharger la personne).\nLes paramètres opérateur sont toujours corrects pour la prochaine session."
+  },
+  {
+    "objectID": "validexpertises_guide.html#procédure-de-reprise-après-interruption",
+    "href": "validexpertises_guide.html#procédure-de-reprise-après-interruption",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Procédure de reprise après interruption",
+    "text": "Procédure de reprise après interruption\nEn cas de doute sur l’état de sauvegarde :\n\nNotez l’ID Oméka S de la personne en cours.\nRechargez la page.\nRouvrez ⚙ Paramètres et vérifiez les valeurs.\nRechargez la personne via l’autocomplétion ou ?idAuthor=ID.\nVérifiez les valeurs affichées avant toute nouvelle modification."
+  },
+  {
+    "objectID": "validexpertises_tech.html",
+    "href": "validexpertises_tech.html",
+    "title": "validExpertises — Documentation technique",
+    "section": "",
+    "text": "Note\n\n\n\nCette documentation s’adresse aux personnes chargées d’installer, configurer, maintenir ou faire évoluer l’application validExpertises. Elle suppose une familiarité de base avec JavaScript, les API REST et Oméka S.\nDépôt GitHub officiel : samszo/validExpertises"
+  },
+  {
+    "objectID": "validexpertises_tech.html#vue-densemble",
+    "href": "validexpertises_tech.html#vue-densemble",
+    "title": "validExpertises — Documentation technique",
+    "section": "Vue d’ensemble",
+    "text": "Vue d’ensemble\nvalidExpertises est une application web front-end uniquement (HTML + CSS + JavaScript vanilla), conçue pour le Laboratoire Paragraphe de Paris 8. Elle n’a pas de back-end propre : toutes les données sont lues et écrites directement via l’API REST d’Oméka S.\nSon rôle dans l’écosystème CartoExpert : permettre à un évaluateur de parcourir des personnes (EC), de consulter leurs mots-clés/concepts d’expertise et d’y attacher une valeur numérique (-100 à +100), stockée sous forme d’item Expertise dans Oméka S.\nVersion courante : v0.2.3"
+  },
+  {
+    "objectID": "validexpertises_tech.html#architecture-du-projet",
+    "href": "validexpertises_tech.html#architecture-du-projet",
+    "title": "validExpertises — Documentation technique",
+    "section": "Architecture du projet",
+    "text": "Architecture du projet\nvalidExpertises/\n├── index.html                  ← point d'entrée unique (SPA)\n├── CHANGELOG.md\n├── GUIDE_OPERATEUR.md\n├── FICHE_OPERATEUR_1_PAGE.md\n└── assets/\n    ├── main.css\n    ├── data/\n    │   └── expertise.json      ← données statiques de référence\n    └── js/\n        ├── appUrl.js           ← lecture des paramètres URL\n        ├── auth.js             ← gestion de la session et de l'évaluateur\n        ├── authParams.js       ← valeurs par défaut de configuration\n        ├── omk.js              ← couche d'accès à l'API Oméka S\n        └── d3.min.js           ← D3.js (chargé localement)\n\n\n\n\n\n\nMise en garde\n\n\n\nL’application est une SPA rendue entièrement côté client. Il n’y a aucun build, aucun bundler (webpack, vite…). Les modifications de fichiers JS/CSS sont effectives immédiatement après rechargement du navigateur."
+  },
+  {
+    "objectID": "validexpertises_tech.html#prérequis-techniques",
+    "href": "validexpertises_tech.html#prérequis-techniques",
+    "title": "validExpertises — Documentation technique",
+    "section": "Prérequis techniques",
+    "text": "Prérequis techniques\n\n\n\n\n\n\n\nÉlément\nDescription\n\n\n\n\nServeur web\nApache, Nginx, ou python -m http.server (pas de CORS avec file://)\n\n\nInstance Oméka S\nAccessible en HTTP(S), avec API REST activée\n\n\nClé API Oméka S\nAvec droits lecture et écriture sur les ressources cibles\n\n\nVocabulaires RDF\nVoir tableau ci-dessous\n\n\n\n\nVocabulaires et propriétés requis dans Oméka S\n\n\n\n\n\n\n\n\nPréfixe\nPropriété\nUsage dans l’application\n\n\n\n\nskos\nskos:hasTopConcept\nPropriété par défaut des mots-clés\n\n\ndcterms\ndcterms:subject\nPropriété complémentaire des mots-clés\n\n\ndcterms\ndcterms:creator\nLien évaluateur ↔︎ item Expertise\n\n\ndcterms\ndcterms:source\nLien personne ↔︎ item Expertise\n\n\ncuration\ncuration:rank\nStockage de la valeur d’expertise\n\n\nvalo\nvalo:expertise\nType d’item Expertise\n\n\nvalo\nvalo:EnseignantChercheur\nType de personne autorisé (par défaut)\n\n\nvalo\nvalo:Laboratoire\nClasse utilisée pour le menu laboratoires\n\n\n\n\n\n\n\n\n\nAstuce\n\n\n\nCes préfixes sont configurables depuis l’interface ⚙ Paramètres ou dans authParams.js. L’application n’est pas liée à ces valeurs en dur — elles peuvent être adaptées à d’autres instances Oméka S."
+  },
+  {
+    "objectID": "validexpertises_tech.html#installation-et-déploiement",
+    "href": "validexpertises_tech.html#installation-et-déploiement",
+    "title": "validExpertises — Documentation technique",
+    "section": "Installation et déploiement",
+    "text": "Installation et déploiement\n\nInstallation minimale (développement local)\n# 1. Cloner le dépôt\ngit clone https://github.com/samszo/validExpertises.git\ncd validExpertises\n\n# 2. Servir le dossier via un serveur web local\npython3 -m http.server 8080\n\n# 3. Ouvrir dans le navigateur\n# → http://localhost:8080\n\n\nDéploiement en production\nCopier le contenu du dossier validExpertises/ vers l’emplacement servi par votre serveur web. Exemple avec Apache :\ncp -r validExpertises/ /var/www/html/outils/validExpertises/\n\n\n\n\n\n\nAvertissement\n\n\n\nCORS : si Oméka S est sur un domaine différent de celui qui sert l’application, configurer les en-têtes CORS sur Oméka S pour autoriser les requêtes depuis le domaine de l’application."
+  },
+  {
+    "objectID": "validexpertises_tech.html#configuration",
+    "href": "validexpertises_tech.html#configuration",
+    "title": "validExpertises — Documentation technique",
+    "section": "Configuration",
+    "text": "Configuration\n\nFichier assets/js/authParams.js\nCe fichier définit les valeurs par défaut de tous les paramètres. Il est chargé à l’initialisation avant la lecture du localStorage.\n// Exemple de contenu minimal\nconst authParams = {\n  apiOmk: \"https://votre-instance.omeka.fr/api/\",\n  mail: \"admin@univ-paris8.fr\",\n  ident: \"\",            // key_identity — NE PAS VERSIONNER\n  key: \"\",              // key_credential — NE PAS VERSIONNER\n  creatorId: \"\",        // ID Oméka S de l'évaluateur par défaut\n  personTypeAllow: \"valo:EnseignantChercheur\",\n  personPropExp: \"skos:hasTopConcept,dcterms:subject\",\n  rankProp: \"curation:rank\"\n};\n\n\n\n\n\n\nMise en garde\n\n\n\nSécurité : ne jamais committer key_identity et key_credential dans ce fichier si le dépôt est public. Préférer une injection côté serveur (.htaccess, variable d’environnement, fichier de config non versionné) ou demander à chaque opérateur de saisir ses propres clés via l’interface.\n\n\n\n\nSurcharge via l’interface (localStorage)\nLes paramètres saisis via ⚙ Paramètres dans l’UI sont stockés dans le localStorage du navigateur, sous la clé validExpertises_cfg.\n// Structure stockée dans localStorage\n{\n  \"apiOmk\": \"https://...\",\n  \"mail\": \"...\",\n  \"ident\": \"...\",\n  \"key\": \"...\",\n  \"creatorId\": \"...\",\n  \"personTypeAllow\": \"...\",\n  \"personPropExp\": \"...\",\n  \"rankProp\": \"...\"\n}\nLa priorité de résolution des paramètres est : localStorage &gt; authParams.js."
+  },
+  {
+    "objectID": "validexpertises_tech.html#paramètres-url",
+    "href": "validexpertises_tech.html#paramètres-url",
+    "title": "validExpertises — Documentation technique",
+    "section": "Paramètres URL",
+    "text": "Paramètres URL\nL’application lit les paramètres suivants dans l’URL à l’ouverture :\n\n\n\n\n\n\n\nParamètre\nEffet\n\n\n\n\nidCreator\nSurcharge l’ID évaluateur défini dans les paramètres\n\n\nidAuthor\nCharge automatiquement la personne Oméka S correspondante\n\n\n\nExemple :\nhttp://localhost:8080/?idCreator=7457&idAuthor=123"
+  },
+  {
+    "objectID": "validexpertises_tech.html#flux-api-oméka-s",
+    "href": "validexpertises_tech.html#flux-api-oméka-s",
+    "title": "validExpertises — Documentation technique",
+    "section": "Flux API Oméka S",
+    "text": "Flux API Oméka S\n\nRecherche de personnes (autocomplétion)\nGET /items?property[0][property]=dcterms:title\n         &property[0][type]=in\n         &property[0][text]=&lt;saisie&gt;\n         &item_type[]=&lt;personTypeAllow&gt;\n\n\nLecture d’une personne\nGET /items/{id}\n\n\nRécupération des mots-clés d’une personne\nPour chaque propriété listée dans personPropExp :\nGET /items?property[0][property]=&lt;prop&gt;\n         &property[0][type]=res\n         &property[0][val]={id_personne}\n\n\nRecherche des items Expertise existants\nGET /items?property[0][property]=dcterms:source\n         &property[0][type]=res\n         &property[0][val]={id_personne}\n         &resource_template_id[]={id_template_expertise}\n\n\nCréation d’un item Expertise\nVia omk.createItem(payload) — POST sur /items avec le payload JSON-LD complet incluant le type valo:expertise, les liens dcterms:creator et dcterms:source, et la valeur curation:rank.\n\n\nModification d’un item Expertise\nVia omk.updateRessource(id, payload) — PUT sur /items/{id}.\n\n\nSuppression d’un item Expertise\nVia omk.deleteItem(id) — DELETE sur /items/{id}."
+  },
+  {
+    "objectID": "validexpertises_tech.html#points-dattention-pour-la-maintenance",
+    "href": "validexpertises_tech.html#points-dattention-pour-la-maintenance",
+    "title": "validExpertises — Documentation technique",
+    "section": "Points d’attention pour la maintenance",
+    "text": "Points d’attention pour la maintenance\n\nRequêtes synchrones (XMLHttpRequest)\n\n\n\n\n\n\nAvertissement\n\n\n\nCertaines requêtes de lecture dans omk.js utilisent des XMLHttpRequest synchrones. Ce comportement est déprécié par les navigateurs modernes et peut provoquer des avertissements en console ou des blocages. Une migration vers fetch() avec async/await est recommandée comme évolution prioritaire (voir issue ouverte sur le dépôt).\n\n\n\n\nMise à jour de D3\nD3 est chargé localement depuis assets/js/d3.min.js. En cas de mise à jour de D3, remplacer ce fichier manuellement. Vérifier la compatibilité de l’API D3 utilisée dans le code (la v7 a introduit des breaking changes par rapport aux v5/v6).\n\n\nÉvolution des vocabulaires Oméka S\nSi les propriétés ou types Oméka S changent (renommage, suppression), mettre à jour :\n\nauthParams.js (valeurs par défaut)\nLa documentation des vocabulaires requis\nTester les flux de lecture et d’écriture après chaque changement\n\n\n\nGestion des versions\nLe fichier CHANGELOG.md à la racine du dépôt tracent les évolutions. Mettre à jour ce fichier à chaque release avec :\n\nla version (ex. v0.3.0)\nla date\nles ajouts, corrections, changements cassants"
+  },
+  {
+    "objectID": "validexpertises_tech.html#sécurité",
+    "href": "validexpertises_tech.html#sécurité",
+    "title": "validExpertises — Documentation technique",
+    "section": "Sécurité",
+    "text": "Sécurité\n\n\n\n\n\n\n\nRisque\nRecommandation\n\n\n\n\nClés API versionnées\nNe jamais committer ident/key dans authParams.js si repo public\n\n\nClés API trop permissives\nCréer des clés limitées en lecture/écriture sur les seuls types nécessaires\n\n\nAccès non contrôlé à l’UI\nProtéger le dossier par authentification serveur (.htaccess, Nginx auth) si besoin\n\n\nExposition via URL\nLes paramètres idCreator/idAuthor dans l’URL sont lisibles — éviter d’y mettre des infos sensibles"
+  },
+  {
+    "objectID": "validexpertises_tech.html#dépannage-technique",
+    "href": "validexpertises_tech.html#dépannage-technique",
+    "title": "validExpertises — Documentation technique",
+    "section": "Dépannage technique",
+    "text": "Dépannage technique\n\nL’évaluateur n’apparaît pas dans l’en-tête\nVérifier que creatorId correspond bien à un item Oméka S existant du bon type. Tester directement :\nGET /items/{creatorId}\n\n\nLes laboratoires ne se chargent pas\nVérifier que la classe valo:Laboratoire est présente dans le vocabulaire Oméka S et que des items de ce type existent.\n\n\nLes items Expertise créés ne sont pas retrouvés\nVérifier que le resource_template_id utilisé pour les items Expertise est cohérent entre la création et la recherche. Si le template a été modifié ou recréé dans Oméka S, son ID aura changé.\n\n\nErreurs CORS en console\nAccess to XMLHttpRequest at 'https://omk...' from origin 'https://...' has been blocked by CORS policy\nConfigurer les en-têtes CORS sur le serveur Oméka S pour autoriser l’origine de l’application. Sur Apache, ajouter dans la configuration ou le .htaccess d’Oméka S :\nHeader set Access-Control-Allow-Origin \"https://valorisation.humanum-p8.fr\"\nHeader set Access-Control-Allow-Methods \"GET, POST, PUT, DELETE, OPTIONS\"\nHeader set Access-Control-Allow-Headers \"Content-Type\""
+  },
+  {
+    "objectID": "validexpertises_tech.html#intégration-dans-lécosystème-cartoexpert",
+    "href": "validexpertises_tech.html#intégration-dans-lécosystème-cartoexpert",
+    "title": "validExpertises — Documentation technique",
+    "section": "Intégration dans l’écosystème CartoExpert",
+    "text": "Intégration dans l’écosystème CartoExpert\nvalidExpertises est un outil parmi d’autres dans la chaîne de valorisation des données de recherche de Paris 8. Il s’articule notamment avec :\n\ncleanKeywords (/outils/validKeyword/) : nettoyage des mots-clés avant évaluation\nOméka S : base de données centrale qui stocke toutes les ressources (personnes, concepts, expertises)\nLaboratoire Paragraphe : producteur et mainteneur de l’outillage\n\nPour tout ajout ou modification structurelle, se référer à la documentation générale CartoExpert et s’assurer de la cohérence avec les autres outils du même serveur."
+  },
+  {
+    "objectID": "outils/validexpertises_tech.html",
+    "href": "outils/validexpertises_tech.html",
+    "title": "validExpertises — Documentation technique",
+    "section": "",
+    "text": "Note\n\n\n\nCette documentation s’adresse aux personnes chargées d’installer, configurer, maintenir ou faire évoluer l’application validExpertises. Elle suppose une familiarité de base avec JavaScript, les API REST et Oméka S.\nDépôt GitHub officiel : samszo/validExpertises"
+  },
+  {
+    "objectID": "outils/validexpertises_tech.html#vue-densemble",
+    "href": "outils/validexpertises_tech.html#vue-densemble",
+    "title": "validExpertises — Documentation technique",
+    "section": "Vue d’ensemble",
+    "text": "Vue d’ensemble\nvalidExpertises est une application web front-end uniquement (HTML + CSS + JavaScript vanilla), conçue pour le Laboratoire Paragraphe de Paris 8. Elle n’a pas de back-end propre : toutes les données sont lues et écrites directement via l’API REST d’Oméka S.\nSon rôle dans l’écosystème CartoExpert : permettre à un évaluateur de parcourir des personnes (EC), de consulter leurs mots-clés/concepts d’expertise et d’y attacher une valeur numérique (-100 à +100), stockée sous forme d’item Expertise dans Oméka S.\nVersion courante : v0.2.3"
+  },
+  {
+    "objectID": "outils/validexpertises_tech.html#architecture-du-projet",
+    "href": "outils/validexpertises_tech.html#architecture-du-projet",
+    "title": "validExpertises — Documentation technique",
+    "section": "Architecture du projet",
+    "text": "Architecture du projet\nvalidExpertises/\n├── index.html                  ← point d'entrée unique (SPA)\n├── CHANGELOG.md\n├── GUIDE_OPERATEUR.md\n├── FICHE_OPERATEUR_1_PAGE.md\n└── assets/\n    ├── main.css\n    ├── data/\n    │   └── expertise.json      ← données statiques de référence\n    └── js/\n        ├── appUrl.js           ← lecture des paramètres URL\n        ├── auth.js             ← gestion de la session et de l'évaluateur\n        ├── authParams.js       ← valeurs par défaut de configuration\n        ├── omk.js              ← couche d'accès à l'API Oméka S\n        └── d3.min.js           ← D3.js (chargé localement)\n\n\n\n\n\n\nMise en garde\n\n\n\nL’application est une SPA rendue entièrement côté client. Il n’y a aucun build, aucun bundler (webpack, vite…). Les modifications de fichiers JS/CSS sont effectives immédiatement après rechargement du navigateur."
+  },
+  {
+    "objectID": "outils/validexpertises_tech.html#prérequis-techniques",
+    "href": "outils/validexpertises_tech.html#prérequis-techniques",
+    "title": "validExpertises — Documentation technique",
+    "section": "Prérequis techniques",
+    "text": "Prérequis techniques\n\n\n\n\n\n\n\nÉlément\nDescription\n\n\n\n\nServeur web\nApache, Nginx, ou python -m http.server (pas de CORS avec file://)\n\n\nInstance Oméka S\nAccessible en HTTP(S), avec API REST activée\n\n\nClé API Oméka S\nAvec droits lecture et écriture sur les ressources cibles\n\n\nVocabulaires RDF\nVoir tableau ci-dessous\n\n\n\n\nVocabulaires et propriétés requis dans Oméka S\n\n\n\n\n\n\n\n\nPréfixe\nPropriété\nUsage dans l’application\n\n\n\n\nskos\nskos:hasTopConcept\nPropriété par défaut des mots-clés\n\n\ndcterms\ndcterms:subject\nPropriété complémentaire des mots-clés\n\n\ndcterms\ndcterms:creator\nLien évaluateur ↔︎ item Expertise\n\n\ndcterms\ndcterms:source\nLien personne ↔︎ item Expertise\n\n\ncuration\ncuration:rank\nStockage de la valeur d’expertise\n\n\nvalo\nvalo:expertise\nType d’item Expertise\n\n\nvalo\nvalo:EnseignantChercheur\nType de personne autorisé (par défaut)\n\n\nvalo\nvalo:Laboratoire\nClasse utilisée pour le menu laboratoires\n\n\n\n\n\n\n\n\n\nAstuce\n\n\n\nCes préfixes sont configurables depuis l’interface ⚙ Paramètres ou dans authParams.js. L’application n’est pas liée à ces valeurs en dur — elles peuvent être adaptées à d’autres instances Oméka S."
+  },
+  {
+    "objectID": "outils/validexpertises_tech.html#installation-et-déploiement",
+    "href": "outils/validexpertises_tech.html#installation-et-déploiement",
+    "title": "validExpertises — Documentation technique",
+    "section": "Installation et déploiement",
+    "text": "Installation et déploiement\n\nInstallation minimale (développement local)\n# 1. Cloner le dépôt\ngit clone https://github.com/samszo/validExpertises.git\ncd validExpertises\n\n# 2. Servir le dossier via un serveur web local\npython3 -m http.server 8080\n\n# 3. Ouvrir dans le navigateur\n# → http://localhost:8080\n\n\nDéploiement en production\nCopier le contenu du dossier validExpertises/ vers l’emplacement servi par votre serveur web. Exemple avec Apache :\ncp -r validExpertises/ /var/www/html/outils/validExpertises/\n\n\n\n\n\n\nAvertissement\n\n\n\nCORS : si Oméka S est sur un domaine différent de celui qui sert l’application, configurer les en-têtes CORS sur Oméka S pour autoriser les requêtes depuis le domaine de l’application."
+  },
+  {
+    "objectID": "outils/validexpertises_tech.html#configuration",
+    "href": "outils/validexpertises_tech.html#configuration",
+    "title": "validExpertises — Documentation technique",
+    "section": "Configuration",
+    "text": "Configuration\n\nFichier assets/js/authParams.js\nCe fichier définit les valeurs par défaut de tous les paramètres. Il est chargé à l’initialisation avant la lecture du localStorage.\n// Exemple de contenu minimal\nconst authParams = {\n  apiOmk: \"https://votre-instance.omeka.fr/api/\",\n  mail: \"admin@univ-paris8.fr\",\n  ident: \"\",            // key_identity — NE PAS VERSIONNER\n  key: \"\",              // key_credential — NE PAS VERSIONNER\n  creatorId: \"\",        // ID Oméka S de l'évaluateur par défaut\n  personTypeAllow: \"valo:EnseignantChercheur\",\n  personPropExp: \"skos:hasTopConcept,dcterms:subject\",\n  rankProp: \"curation:rank\"\n};\n\n\n\n\n\n\nMise en garde\n\n\n\nSécurité : ne jamais committer key_identity et key_credential dans ce fichier si le dépôt est public. Préférer une injection côté serveur (.htaccess, variable d’environnement, fichier de config non versionné) ou demander à chaque opérateur de saisir ses propres clés via l’interface.\n\n\n\n\nSurcharge via l’interface (localStorage)\nLes paramètres saisis via ⚙ Paramètres dans l’UI sont stockés dans le localStorage du navigateur, sous la clé validExpertises_cfg.\n// Structure stockée dans localStorage\n{\n  \"apiOmk\": \"https://...\",\n  \"mail\": \"...\",\n  \"ident\": \"...\",\n  \"key\": \"...\",\n  \"creatorId\": \"...\",\n  \"personTypeAllow\": \"...\",\n  \"personPropExp\": \"...\",\n  \"rankProp\": \"...\"\n}\nLa priorité de résolution des paramètres est : localStorage &gt; authParams.js."
+  },
+  {
+    "objectID": "outils/validexpertises_tech.html#paramètres-url",
+    "href": "outils/validexpertises_tech.html#paramètres-url",
+    "title": "validExpertises — Documentation technique",
+    "section": "Paramètres URL",
+    "text": "Paramètres URL\nL’application lit les paramètres suivants dans l’URL à l’ouverture :\n\n\n\n\n\n\n\nParamètre\nEffet\n\n\n\n\nidCreator\nSurcharge l’ID évaluateur défini dans les paramètres\n\n\nidAuthor\nCharge automatiquement la personne Oméka S correspondante\n\n\n\nExemple :\nhttp://localhost:8080/?idCreator=7457&idAuthor=123"
+  },
+  {
+    "objectID": "outils/validexpertises_tech.html#flux-api-oméka-s",
+    "href": "outils/validexpertises_tech.html#flux-api-oméka-s",
+    "title": "validExpertises — Documentation technique",
+    "section": "Flux API Oméka S",
+    "text": "Flux API Oméka S\n\nRecherche de personnes (autocomplétion)\nGET /items?property[0][property]=dcterms:title\n         &property[0][type]=in\n         &property[0][text]=&lt;saisie&gt;\n         &item_type[]=&lt;personTypeAllow&gt;\n\n\nLecture d’une personne\nGET /items/{id}\n\n\nRécupération des mots-clés d’une personne\nPour chaque propriété listée dans personPropExp :\nGET /items?property[0][property]=&lt;prop&gt;\n         &property[0][type]=res\n         &property[0][val]={id_personne}\n\n\nRecherche des items Expertise existants\nGET /items?property[0][property]=dcterms:source\n         &property[0][type]=res\n         &property[0][val]={id_personne}\n         &resource_template_id[]={id_template_expertise}\n\n\nCréation d’un item Expertise\nVia omk.createItem(payload) — POST sur /items avec le payload JSON-LD complet incluant le type valo:expertise, les liens dcterms:creator et dcterms:source, et la valeur curation:rank.\n\n\nModification d’un item Expertise\nVia omk.updateRessource(id, payload) — PUT sur /items/{id}.\n\n\nSuppression d’un item Expertise\nVia omk.deleteItem(id) — DELETE sur /items/{id}."
+  },
+  {
+    "objectID": "outils/validexpertises_tech.html#points-dattention-pour-la-maintenance",
+    "href": "outils/validexpertises_tech.html#points-dattention-pour-la-maintenance",
+    "title": "validExpertises — Documentation technique",
+    "section": "Points d’attention pour la maintenance",
+    "text": "Points d’attention pour la maintenance\n\nRequêtes synchrones (XMLHttpRequest)\n\n\n\n\n\n\nAvertissement\n\n\n\nCertaines requêtes de lecture dans omk.js utilisent des XMLHttpRequest synchrones. Ce comportement est déprécié par les navigateurs modernes et peut provoquer des avertissements en console ou des blocages. Une migration vers fetch() avec async/await est recommandée comme évolution prioritaire (voir issue ouverte sur le dépôt).\n\n\n\n\nMise à jour de D3\nD3 est chargé localement depuis assets/js/d3.min.js. En cas de mise à jour de D3, remplacer ce fichier manuellement. Vérifier la compatibilité de l’API D3 utilisée dans le code (la v7 a introduit des breaking changes par rapport aux v5/v6).\n\n\nÉvolution des vocabulaires Oméka S\nSi les propriétés ou types Oméka S changent (renommage, suppression), mettre à jour :\n\nauthParams.js (valeurs par défaut)\nLa documentation des vocabulaires requis\nTester les flux de lecture et d’écriture après chaque changement\n\n\n\nGestion des versions\nLe fichier CHANGELOG.md à la racine du dépôt tracent les évolutions. Mettre à jour ce fichier à chaque release avec :\n\nla version (ex. v0.3.0)\nla date\nles ajouts, corrections, changements cassants"
+  },
+  {
+    "objectID": "outils/validexpertises_tech.html#sécurité",
+    "href": "outils/validexpertises_tech.html#sécurité",
+    "title": "validExpertises — Documentation technique",
+    "section": "Sécurité",
+    "text": "Sécurité\n\n\n\n\n\n\n\nRisque\nRecommandation\n\n\n\n\nClés API versionnées\nNe jamais committer ident/key dans authParams.js si repo public\n\n\nClés API trop permissives\nCréer des clés limitées en lecture/écriture sur les seuls types nécessaires\n\n\nAccès non contrôlé à l’UI\nProtéger le dossier par authentification serveur (.htaccess, Nginx auth) si besoin\n\n\nExposition via URL\nLes paramètres idCreator/idAuthor dans l’URL sont lisibles — éviter d’y mettre des infos sensibles"
+  },
+  {
+    "objectID": "outils/validexpertises_tech.html#dépannage-technique",
+    "href": "outils/validexpertises_tech.html#dépannage-technique",
+    "title": "validExpertises — Documentation technique",
+    "section": "Dépannage technique",
+    "text": "Dépannage technique\n\nL’évaluateur n’apparaît pas dans l’en-tête\nVérifier que creatorId correspond bien à un item Oméka S existant du bon type. Tester directement :\nGET /items/{creatorId}\n\n\nLes laboratoires ne se chargent pas\nVérifier que la classe valo:Laboratoire est présente dans le vocabulaire Oméka S et que des items de ce type existent.\n\n\nLes items Expertise créés ne sont pas retrouvés\nVérifier que le resource_template_id utilisé pour les items Expertise est cohérent entre la création et la recherche. Si le template a été modifié ou recréé dans Oméka S, son ID aura changé.\n\n\nErreurs CORS en console\nAccess to XMLHttpRequest at 'https://omk...' from origin 'https://...' has been blocked by CORS policy\nConfigurer les en-têtes CORS sur le serveur Oméka S pour autoriser l’origine de l’application. Sur Apache, ajouter dans la configuration ou le .htaccess d’Oméka S :\nHeader set Access-Control-Allow-Origin \"https://valorisation.humanum-p8.fr\"\nHeader set Access-Control-Allow-Methods \"GET, POST, PUT, DELETE, OPTIONS\"\nHeader set Access-Control-Allow-Headers \"Content-Type\""
+  },
+  {
+    "objectID": "outils/validexpertises_tech.html#intégration-dans-lécosystème-cartoexpert",
+    "href": "outils/validexpertises_tech.html#intégration-dans-lécosystème-cartoexpert",
+    "title": "validExpertises — Documentation technique",
+    "section": "Intégration dans l’écosystème CartoExpert",
+    "text": "Intégration dans l’écosystème CartoExpert\nvalidExpertises est un outil parmi d’autres dans la chaîne de valorisation des données de recherche de Paris 8. Il s’articule notamment avec :\n\ncleanKeywords (/outils/validKeyword/) : nettoyage des mots-clés avant évaluation\nOméka S : base de données centrale qui stocke toutes les ressources (personnes, concepts, expertises)\nLaboratoire Paragraphe : producteur et mainteneur de l’outillage\n\nPour tout ajout ou modification structurelle, se référer à la documentation générale CartoExpert et s’assurer de la cohérence avec les autres outils du même serveur."
+  },
+  {
+    "objectID": "ressources/listmonk.html",
+    "href": "ressources/listmonk.html",
+    "title": "Gérer les campagnes de mailing avec ListMonk",
+    "section": "",
+    "text": "Listmonk est une application web open source d’auto-hébergement dédiée à la gestion de listes de diffusion et à l’envoi de campagnes d’e-mailing. Légère, rapide et indépendante de tout service tiers, elle permet de gérer intégralement un système de newsletter : inscription et désabonnement des abonnés, création de listes segmentées, rédaction et envoi de campagnes depuis une interface d’administration moderne, ainsi que le suivi de statistiques détaillées (taux d’ouverture, de clics, de désabonnement, …). Développée en Go et en Vue.js, Listmonk s’appuie sur une base de données PostgreSQL et peut expédier ses messages via n’importe quel serveur SMTP ou fournisseur de messagerie transactionnelle (Amazon SES, Postmark, Mailgun, etc.).\nListmonk s’inscrit pleinement dans une démarche de souveraineté numérique : en hébergeant soi-même l’application, on conserve un contrôle total sur les données des abonnés — sans dépendance à une plateforme commerciale, sans frais proportionnels au volume envoyé et sans exposition des listes à un tiers. Cela en fait un outil particulièrement adapté aux structures souhaitant communiquer à grande échelle tout en respectant leurs obligations en matière de protection des données personnelles (RGPD), et en maîtrisant l’intégralité de leur infrastructure de communication."
+  },
+  {
+    "objectID": "ressources/listmonk.html#listmonk-et-oméka-s",
+    "href": "ressources/listmonk.html#listmonk-et-oméka-s",
+    "title": "Gérer les campagnes de mailing avec ListMonk",
+    "section": "Listmonk et Oméka S",
+    "text": "Listmonk et Oméka S\nCe qui rend l’usage de Listmonk particulièrement pertinent dans notre contexte, c’est la possibilité de le connecter directement à la base de données Omeka S. Plutôt que de gérer deux listes de contacts en parallèle, les données saisies dans Omeka S alimentent automatiquement les listes de diffusion de Listmonk. Toute modification apportée dans Omeka S (ajout d’un contact, mise à jour d’une adresse, …) se répercute ainsi dans Listmonk, sans aucune intervention manuelle supplémentaire.\n\n\n\n\n\n\nNote\n\n\n\nLa base de données Omeka S reste donc le seul point d’entrée pour la gestion des contacts : c’est là que les informations doivent être saisies ou corrigées, et non directement dans Listmonk."
+  },
+  {
+    "objectID": "ressources/dico_rdf.html",
+    "href": "ressources/dico_rdf.html",
+    "title": "Ecrire le dictionnaire de métadonnées",
+    "section": "",
+    "text": "Pour que les données puisses être mises en relation par la machine, il faut que cette dernière soit capable d’interpréter les éléments constituant lesdites données. En effet, là où notre vision humaine interprète naturellement qu’une personne est un “être vivant” avec un “nom”, un “prénom”, une ou plusieurs “origines” et une “date de naissance”, la machine, elle, en est incapable par défaut, ne voyant qu’une suite de caractères dénué de sens. Ainsi, expliquer à la machine que telle entité appartient au groupe “être vivant”, qu’une chaine de caractères correspond à un nom ou un prénom, ou encore que tels nombres correspondent à un année de naissance est une composante primordiale.\nPour ce faire, comme l’humanité l’a fait tout au long de son histoire pour définir les propriétés et les groupements d’objets (vivant ou non), nous allons faire appel à des ontologies : des structures formelles qui définissent des concepts et leurs propriétés — un peu comme un dictionnaire enrichi pour la machine. C’est là tout l’intérêt de ce que l’on appelle le “web sémantique”."
+  },
+  {
+    "objectID": "ressources/dico_rdf.html#éléments-structurant-un-document-dontologie",
+    "href": "ressources/dico_rdf.html#éléments-structurant-un-document-dontologie",
+    "title": "Ecrire le dictionnaire de métadonnées",
+    "section": "Éléments structurant un document d’ontologie",
+    "text": "Éléments structurant un document d’ontologie\nLes préfixes\nDans un fichier Turtle, chaque concept est identifié par une URI complète. Les préfixes sont des raccourcis textuels qui permettent d’abréger ces URIs pour rendre le fichier lisible. Ils ne chargent aucun code : ils indiquent simplement à la machine comment résoudre les abréviations qu’elle rencontrera dans la suite du fichier.\n@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .\n@prefix owl:     &lt;http://www.w3.org/2002/07/owl#&gt; .\n...\n@prefix valo:    &lt;https://jardindesconnaissances.univ-paris8.fr/onto/valo#&gt; .\n\nDéclaration de l’ontologie\nC’est la carte d’identité du fichier. On y dit : “ce fichier est une ontologie OWL dont le titre est”Nom personnalisé 4”.\n&lt;https://jardindesconnaissances.univ-paris8.fr/onto/labo#&gt; a owl:Ontology ;\n    dcterms:title \"Nom personnalisé 4\" .\n\nStructure d’une classe\nChaque classe définit un type d’entité dans la base. C’est l’équivalent d’une table dans une base de données relationnelle. Pour chaque classe, on trouve toujours 3 attributs :\n\nrdfs:label → le nom lisible par un humain\nrdfs:domain o:Resource → elle appartient au domaine des ressources Omeka S\nvs:term_status “experimental” → le vocabulaire est encore en cours de stabilisation\n\nvalo:NewClass a rdfs:Class ;\n    rdfs:label \"Nom complet de la classe\" ;\n    rdfs:domain o:Resource ;\n    vs:term_status \"experimental\" .\n\n\n\n\n\n\nNote\n\n\n\nLors de la création d’une classe, il est d’usage la première lettre après le préfixe (“valo:…”) soit une lettre majuscule.\n\n\n\nStructure d’une propriété\nLes propriétés sont les relations ou attributs qu’on peut associer à une ressource. C’est l’équivalent des colonnes d’une table.\nvalo:NewProperty a rdf:Property ;\n    rdfs:label \"Nom complet de la propriété\" ;\n    rdfs:domain o:Resource ;\n    vs:term_status \"experimental\" .\n\n\n\n\n\n\nNote\n\n\n\nLors de la création d’une propriété, il est d’usage la première lettre après le préfixe (“valo:…”) soit une lettre minuscule."
+  },
+  {
+    "objectID": "outils/pres_syst.html",
+    "href": "outils/pres_syst.html",
+    "title": "Présentation du système",
+    "section": "",
+    "text": "(à remplir une fois l’application de cartographie mise en place)"
+  },
+  {
+    "objectID": "donnees/scanr_extract.html",
+    "href": "donnees/scanr_extract.html",
+    "title": "ScanR comme source d’extraction de données",
+    "section": "",
+    "text": "Work in progress…"
+  },
+  {
+    "objectID": "donnees/standardiser_data2csv.html",
+    "href": "donnees/standardiser_data2csv.html",
+    "title": "Transformer des données format “humain” en format “ordinateur”",
+    "section": "",
+    "text": "Page de documentation va s’articuler en deux temps :"
+  },
+  {
+    "objectID": "donnees/standardiser_data2csv.html#données-existantes-fiables",
+    "href": "donnees/standardiser_data2csv.html#données-existantes-fiables",
+    "title": "Transformer des données format “humain” en format “ordinateur”",
+    "section": "Données existantes fiables",
+    "text": "Données existantes fiables\nRendus évaluation HCERES Rapports produits par le DSR Données externes au service (ScanR) DOBS ?\n\n\n\n\n\n\nNote\n\n\n\nAu fur-et-à-mesure de votre processus de centralisation, vous constaterez que certaines informations peuvent manquer (ponctuellement ou largement). Celles-ci pourront être complétées à postériori via l’utilisation d’Oméka S (modules) ou en solicitant directement les enseignants chercheurs et les laboratoires par divers moyens (campagne de mailing, formulaires, …)"
+  },
+  {
+    "objectID": "donnees/standardiser_data2csv.html#structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés.",
+    "href": "donnees/standardiser_data2csv.html#structuration-des-données-liées-aux-partenaires-non-académique-déjà-notés.",
+    "title": "Transformer des données format “humain” en format “ordinateur”",
+    "section": "Structuration des données liées aux partenaires non-académique déjà notés.",
+    "text": "Structuration des données liées aux partenaires non-académique déjà notés.\nUtilisation d’un classeur “tableur” contenant deux feuilles, chacun avec une orientation de lecture différente : une première version orientée humain ; une seconde version orientée machine.\n(La constitution de ce jeu de données est toujours en cours.)\nID Oméka : ID unique donné à chaque item généré sur Oméka S, permettant d’effectuer des liens internes entre les objets dans la BDD."
+  },
+  {
+    "objectID": "donnees/standardiser_data2csv.html#bibliographie",
+    "href": "donnees/standardiser_data2csv.html#bibliographie",
+    "title": "Transformer des données format “humain” en format “ordinateur”",
+    "section": "Bibliographie :",
+    "text": "Bibliographie :\n\nhttps://bioportal.bioontology.org/ontologies/VIVO?p=properties\nhttps://www.dublincore.org/specifications/dublin-core/dcmi-terms/"
+  },
+  {
+    "objectID": "donnees/bdd_omeka.html",
+    "href": "donnees/bdd_omeka.html",
+    "title": "Importer et interconnecter les données",
+    "section": "",
+    "text": "Mise en garde\n\n\n\nÀ partir d’ici sera mentionné le logiciel Oméka S. Il est donc conseillé d’avoir, à ce stade, eu l’occasion de manipuler l’interface Oméka S.\n\n\nWork in progress…\nIntro générale (voir le .html généré par Claude-AI)\nIdem mais ça va être comment faire rentrer les données raw CSV dans Oméka, et le faire CORRECTEMENT (cf. mes multiples fails de l’été 2025) puis comment les ensuite mettre à jour dans les données\nOrdre d’import des données (sens inverse d’une arborescence classique du + général au + détaillé)\n\nAssurer la connexion entre les données importées\nNotion importante : A chaque fois que l’on créé une ressource sur Oméka S, celui-ci se voit attriblé un “Internal ID” qui est visible au niveau de l’URL (ex : omk_valo/admin/item/76). C’est grâce à cet ID que la plupart des interconnexions se feront (ex : L’enseignant-chercheur a comme statut PR (ID = 76). À l’inverse, on pourra voir que “PR” (ID = 76) se retrouve dans les items “x, y, z, …”)\nhttps://samszo.univ-paris8.fr/paragraphe/gestion/getIdFromItemSet.html# faire une documentation dessus (quand ça fonctionnera lol)"
+  },
+  {
+    "objectID": "outils/validexpertises_guide.html",
+    "href": "outils/validexpertises_guide.html",
+    "title": "validExpertises — Guide opérateur",
+    "section": "",
+    "text": "Note\n\n\n\nCe guide s’adresse aux personnes qui utilisent l’application pour évaluer des expertises au quotidien. Aucune intervention technique sur le code n’est nécessaire.\nVersion courte imprimable disponible sur le dépôt GitHub : FICHE_OPERATEUR_1_PAGE.md."
+  },
+  {
+    "objectID": "outils/validexpertises_guide.html#quest-ce-que-validexpertises",
+    "href": "outils/validexpertises_guide.html#quest-ce-que-validexpertises",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Qu’est-ce que validExpertises ?",
+    "text": "Qu’est-ce que validExpertises ?\nvalidExpertises est une application web qui permet d’évaluer les expertises thématiques des Enseignants-Chercheurs (EC) rattachés au Laboratoire Paragraphe (Paris 8).\nConcrètement, pour chaque EC chargé dans l’application, vous visualisez ses mots-clés (concepts scientifiques extraits d’Oméka S), et vous pouvez attribuer à chacun une valeur d’expertise allant de -100 (non pertinent) à +100 (fortement pertinent). Ces évaluations sont enregistrées directement dans Oméka S via l’API.\nL’outil fait partie de l’écosystème CartoExpert ; il est accessible à l’adresse : 👉 https://valorisation.humanum-p8.fr/outils/validExpertises/"
+  },
+  {
+    "objectID": "outils/validexpertises_guide.html#avant-de-commencer",
+    "href": "outils/validexpertises_guide.html#avant-de-commencer",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Avant de commencer",
+    "text": "Avant de commencer\nAvant d’ouvrir l’application, vérifiez que vous disposez des informations suivantes :\n\n\n\nÉlément\nDescription\n\n\n\n\nURL de l’API Oméka S\nEx. : https://omk.univ-paris8.fr/api/\n\n\nMail du propriétaire\nL’adresse mail associée à la clé API\n\n\nkey_identity\nPremier jeton de la clé API Oméka S\n\n\nkey_credential\nSecond jeton de la clé API Oméka S\n\n\nID évaluateur\nL’identifiant Oméka S de votre fiche personnelle\n\n\n\n\n\n\n\n\n\nAstuce\n\n\n\nCes informations sont fournies par l’administrateur technique du projet. Si vous ne les avez pas, contactez la Direction de la Recherche de Paris 8."
+  },
+  {
+    "objectID": "outils/validexpertises_guide.html#configuration-initiale-une-seule-fois",
+    "href": "outils/validexpertises_guide.html#configuration-initiale-une-seule-fois",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Configuration initiale (une seule fois)",
+    "text": "Configuration initiale (une seule fois)\nLa configuration n’est à réaliser qu’une seule fois par navigateur. Elle est ensuite conservée automatiquement.\n\nOuvrir l’application dans votre navigateur.\nCliquer sur le bouton ⚙ Paramètres en haut de page.\nRenseigner les champs de la fenêtre :\n\nURL de base de l’API → coller l’URL fournie\nMail de l’utilisateur Oméka S → votre mail\nkey_identity et key_credential → les deux jetons de la clé\nID évaluateur → votre identifiant Oméka S\nLaisser les autres champs à leur valeur par défaut sauf indication contraire\n\nCliquer sur Enregistrer.\n\n\n\n\n\n\n\nNote\n\n\n\nRésultat attendu : votre nom (ou identifiant) apparaît dans l’en-tête de la page, à côté de la mention Expert. Si rien n’apparaît, vérifiez l’URL de l’API et l’ID évaluateur."
+  },
+  {
+    "objectID": "outils/validexpertises_guide.html#démarrer-une-session-dévaluation",
+    "href": "outils/validexpertises_guide.html#démarrer-une-session-dévaluation",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Démarrer une session d’évaluation",
+    "text": "Démarrer une session d’évaluation\n\nSélectionner un EC par laboratoire\nLe menu déroulant Enseignants-Chercheurs vous permet de parcourir les EC par laboratoire.\n\nSélectionner un laboratoire dans la liste déroulante.\nNaviguer entre les EC avec les boutons ← Précédent et Suivant →.\nCliquer sur un EC pour charger sa fiche.\n\n\n\nRechercher directement une personne\n\nTaper quelques lettres du nom dans le champ Recherche… (autocomplétion).\nSélectionner la bonne personne dans la liste proposée.\nVérifier que le bandeau affiche bien le nom et l’identifiant de la personne chargée.\n\n\n\n\n\n\n\nAstuce\n\n\n\nRaccourci possible : si quelqu’un vous partage un lien avec un paramètre ?idAuthor=XXX dans l’URL, la personne est chargée automatiquement à l’ouverture — pas besoin de rechercher."
+  },
+  {
+    "objectID": "outils/validexpertises_guide.html#évaluer-les-expertises",
+    "href": "outils/validexpertises_guide.html#évaluer-les-expertises",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Évaluer les expertises",
+    "text": "Évaluer les expertises\nUne fois une personne chargée, ses mots-clés s’affichent sous forme de cartes.\n\nLire une carte\nChaque carte affiche :\n\nle titre du mot-clé (concept scientifique)\nla propriété source (d’où vient ce mot-clé dans Oméka S)\nun slider de -100 à +100\nvotre évaluation existante, si elle a déjà été saisie\n\n\n\nSaisir ou modifier une valeur\n\nDéplacer le slider vers la valeur souhaitée.\nSelon la situation :\n\nAjouter → si aucune évaluation n’existe encore pour ce mot-clé\nModifier → si vous souhaitez corriger une valeur existante\nSupprimer → pour retirer complètement votre évaluation\n\n\n\n\n\n\n\n\nAvertissement\n\n\n\nCliquer sur Ajouter ou Modifier est indispensable pour enregistrer la valeur dans Oméka S. Déplacer le slider seul ne suffit pas.\n\n\n\n\nÉchelle de valeurs recommandée\n\n\n\nPlage\nSignification\n\n\n\n\n-100 à -30\nExpertise faible ou non pertinente\n\n\n-29 à +29\nNeutre / incertain\n\n\n+30 à +100\nExpertise confirmée"
+  },
+  {
+    "objectID": "outils/validexpertises_guide.html#ajouter-un-mot-clé-avant-évaluation",
+    "href": "outils/validexpertises_guide.html#ajouter-un-mot-clé-avant-évaluation",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Ajouter un mot-clé avant évaluation",
+    "text": "Ajouter un mot-clé avant évaluation\nSi un concept pertinent n’est pas encore présent dans la liste de la personne :\n\nUtiliser le champ Ajouter un mot-clé… (avec autocomplétion).\nTaper quelques lettres et sélectionner le concept dans la liste.\nVérifier que la carte apparaît dans la grille avant de saisir une valeur.\n\n\n\n\n\n\n\nMise en garde\n\n\n\nLe mot-clé ajouté doit exister dans Oméka S pour apparaître dans l’autocomplétion. Si vous ne le trouvez pas, signalez-le à l’administrateur pour qu’il soit créé au préalable."
+  },
+  {
+    "objectID": "outils/validexpertises_guide.html#filtrer-et-trier-les-mots-clés",
+    "href": "outils/validexpertises_guide.html#filtrer-et-trier-les-mots-clés",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Filtrer et trier les mots-clés",
+    "text": "Filtrer et trier les mots-clés\nDes outils sont disponibles pour travailler de manière systématique sur de longues listes.\n\nFiltres disponibles\n\n\n\n\n\n\n\nFiltre\nEffet\n\n\n\n\nTous\nAffiche tous les mots-clés\n\n\nSans votre expertise\nMots-clés que vous n’avez pas encore évalués\n\n\nAvec votre expertise\nMots-clés que vous avez déjà évalués\n\n\nPositifs\nUniquement les valeurs &gt; 0\n\n\nNégatifs\nUniquement les valeurs &lt; 0\n\n\n\n\n\nTri\nLes colonnes Titre et Rang sont triables par clic sur leur en-tête (↕).\n\n\nMots-clés peu pertinents\nPar défaut, les mots-clés dont le score est inférieur à 5 et qui figurent au-delà des 20 premiers sont masqués automatiquement. Le bouton Tout afficher permet de les révéler."
+  },
+  {
+    "objectID": "outils/validexpertises_guide.html#bonnes-pratiques-opérateur",
+    "href": "outils/validexpertises_guide.html#bonnes-pratiques-opérateur",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Bonnes pratiques opérateur",
+    "text": "Bonnes pratiques opérateur\n\nUtiliser une échelle cohérente d’une personne à l’autre pour que les comparaisons soient exploitables.\nPréférer le filtre Sans votre expertise pour avancer méthodiquement sans oubli.\nEn cas de doute sur une valeur, noter l’ID Oméka S de la personne et reprendre plus tard.\nToujours recharger la personne après une série d’évaluations pour vérifier la persistance des données."
+  },
+  {
+    "objectID": "outils/validexpertises_guide.html#résolution-de-problèmes-fréquents",
+    "href": "outils/validexpertises_guide.html#résolution-de-problèmes-fréquents",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Résolution de problèmes fréquents",
+    "text": "Résolution de problèmes fréquents\n\nErreur HTTP au chargement\nCauses possibles : URL de l’API incorrecte, clés API expirées, instance Oméka S inaccessible.\nAction : Vérifier les paramètres (⚙), relancer depuis zéro si nécessaire.\n\n\nAucun mot-clé ne s’affiche\nCauses possibles : La personne ne possède pas de concepts dans la propriété configurée, ou le type de la personne n’est pas autorisé.\nAction : Vérifier avec l’administrateur que la fiche Oméka S de la personne est correctement renseignée.\n\n\nImpossible d’enregistrer (bouton Ajouter sans effet)\nCauses possibles : Droits insuffisants sur la clé API, propriétés cibles inexistantes dans Oméka S.\nAction : Contacter l’administrateur pour vérifier les droits de la clé API.\n\n\nLe bon nom n’apparaît pas dans l’autocomplétion\nAction : Essayer une autre partie du nom, ou utiliser directement le paramètre URL ?idAuthor=ID_OMEKA."
+  },
+  {
+    "objectID": "outils/validexpertises_guide.html#checklist-de-fin-de-session",
+    "href": "outils/validexpertises_guide.html#checklist-de-fin-de-session",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Checklist de fin de session",
+    "text": "Checklist de fin de session\nAvant de fermer l’application, vérifier :\n\nToutes les personnes prévues ont été traitées.\nAucun message d’erreur non résolu n’est visible.\nLes valeurs critiques ont été vérifiées une seconde fois (recharger la personne).\nLes paramètres opérateur sont toujours corrects pour la prochaine session."
+  },
+  {
+    "objectID": "outils/validexpertises_guide.html#procédure-de-reprise-après-interruption",
+    "href": "outils/validexpertises_guide.html#procédure-de-reprise-après-interruption",
+    "title": "validExpertises — Guide opérateur",
+    "section": "Procédure de reprise après interruption",
+    "text": "Procédure de reprise après interruption\nEn cas de doute sur l’état de sauvegarde :\n\nNotez l’ID Oméka S de la personne en cours.\nRechargez la page.\nRouvrez ⚙ Paramètres et vérifiez les valeurs.\nRechargez la personne via l’autocomplétion ou ?idAuthor=ID.\nVérifiez les valeurs affichées avant toute nouvelle modification."
+  },
+  {
+    "objectID": "ressources/hypothesis.html",
+    "href": "ressources/hypothesis.html",
+    "title": "Hypothes.is comme outil collaboratif",
+    "section": "",
+    "text": "Hypothes.is est une application web open source ayant pour objectif principal d’enrichir la lecture en ligne via des annotations collaboratives. En effet, l’application offre aux utilisateurs la possibilité de surligner ou d’annoter des pages web ou des documents PDF comme dans un livre, puis d’y lancer des discussions entre utilisateurs à partir même de ces annotations. Ces annotations peuvent être consultées par les utilisateurs du monde entier, via un canal Public par défaut, ou par un nombre de collaborateurs plus restreint, via la création simple et rapide de groupes collaboratifs privés.\nL’application Hypothes.is s’ancre par ailleurs pleinement dans les enjeux académiques des Humanités Numériques en soutenant des pratiques de science ouverte, en favorisant la transparence des processus intellectuels et en offrant un support pour l’écriture critique collective. Intégrée aux environnements de recherche en ligne, Hypothes.is permet ainsi d’ancrer la lecture dans un dialogue actif, rigoureux et collaboratif — au service de la production et de la circulation du savoir."
+  },
+  {
+    "objectID": "ressources/hypothesis.html#configurer-linterface-sur-votre-navigateur",
+    "href": "ressources/hypothesis.html#configurer-linterface-sur-votre-navigateur",
+    "title": "Hypothes.is comme outil collaboratif",
+    "section": "Configurer l’interface sur votre navigateur",
+    "text": "Configurer l’interface sur votre navigateur\nAujourd’hui, la méthode pour installer Hypothes.is varie en fonction du navigateur que vous utilisez quotidiennement. Le premier cas, concernant les utilisateurs de navigateurs type Google Chrome, Microsoft Edge, Opéra ou tout autre navigateur basé sur Chromium, il suffit simplement d’ajouter l’extension officielle. Pour les autres navigateurs comme Firefox ou Safari, la méthode est différente puisqu’il faut passer par ce que l’on appelle un Bookmarklet.\nUne fois l’extension ou le Bookmarklet mis en place sur votre navigateur, rendez-vous sur la page à annoter puis activez Hypothes.is en cliquant sur l’icone de l’extension ou sur le marque-page. Ensuite, connectez-vous en cliquant sur “log-in” et voilà, Hypothes.is est prêt à être utilisé !\n\n\n\n\n\n\nNote\n\n\n\nÀ noter que, pour Firefox, il existe une extension non-officielle répliqnant l’expérience de la version officielle pour Chromium. Cependant, celle-ci ne permet pas d’annoter les PDF téléchargés localement.\n\n\n\nMettre en place le Bookmarklet\nComme mentionné précédemment, les navigateurs hors-Chromium ne possèdent pas officiellement d’extension. La solution officielle proposée par Hypothes.is est de mettre en place un Bookmarklet, c’est-à-dire une injection JavaScript dans la page. Cette section va montrer vous présenter comment mettre en place, facilement, ce Bookmarklet.\n\n\n\nGIF montrant comment rendre actif Hypothes.is sur Firefox.\n\n\nDescription du GIF étape par étape :\nÉtape n°1 : Rendez vous sur le site d’Hypothes.is dédié à son Bookmarklet (Cliquez ici), puis scrollez jusqu’à “For most browsers (except mobile devices)”.\n\nÉtape n°2 : Repérez le bouton “Hypothes.is Bookmarklet”, attrapez le en maintenant clic gauche puis glissez-le jusqu’à vos marques-pages.\n\nÉtape n°3 : Rendez vous sur la page à annoter puis cliquez sur le marque-page pour ouvrir l’interface Hypothes.is. Voilà, Hypothes.is est prêt à être utilisé !"
+  },
+  {
+    "objectID": "ressources/hypothesis.html#commencer-à-annoter",
+    "href": "ressources/hypothesis.html#commencer-à-annoter",
+    "title": "Hypothes.is comme outil collaboratif",
+    "section": "Commencer à annoter",
+    "text": "Commencer à annoter\nUne fois connecté à Hypothes.is, l’interface ouverte et le groupe rejoint, il est temps de commencer à annoter !\n\n\n\nGif montrant comment annoter. Si celui-ci ne se lance pas, référez-vous au texte ci-dessous\n\n\nDescription du GIF étape par étape :\nÉtape n°1 : D’abord, assurez-vous que Hypothes.is est bien lancé en vérifiant si le menu à droite de l’écran peut s’ouvrir. Si ce n’est le cas, cliquez sur l’icone de l’extension ou du Bookmarklet pour la démarrer.\n\nÉtape n°2 : Sélectionnez la partie du document à annoter en le surlignant. Une fois le surlignage effectué, une bulle va apparaître avec les options “Highlight” et “Annotate” : Le premier permet d’uniquement surligner tandis que le second permet d’annoter l’élément en plus de le surligner. La deuxième option est donc à privilégier pour ajouter du détail.\n\nÉtape n°3 : Une fois “annotate” sélectionné, l’interface s’ouvre. Remplissez la zone de texte avec vos idées, ajoutez des mots clefs dans la zone en dessous dédiée aux “tags”. Enfin, cliquez sur “Post to groupname” (vérifiez bien d’être dans le bon groupe).\n\nÉtape n°4 : La note est maintenant publiée ! Les autres usagers sur le groupe peuvent maintenant lire et interagir avec votre annotation."
+  },
+  {
+    "objectID": "ressources/hypothesis.html#interagir-avec-une-annotation-existante",
+    "href": "ressources/hypothesis.html#interagir-avec-une-annotation-existante",
+    "title": "Hypothes.is comme outil collaboratif",
+    "section": "Interagir avec une annotation existante",
+    "text": "Interagir avec une annotation existante\nPeut-être que, pendant votre lecture, vous trouverez d’autres annotations laissées par d’autres utilisateurs. Et pourquoi ne pas interagir avec ?\nDescription du GIF étape par étape :\nÉtape n°1 : D’abord, assurez-vous que Hypothes.is est bien lancé en vérifiant si le menu à droite de l’écran peut s’ouvrir. Si ce n’est le cas, cliquez sur l’icone de l’extension ou du Bookmarklet pour la démarrer.\n\nÉtape n°2 : Les annotations déjà publiées sont visibles à travers le texte surligné jaune. Cliquez sur l’annotation sur laquelle vous voulez interagir pour ouvrir l’interface, avec l’annotation.\n\nÉtape n°3 : En bas à droite de l’annotation, cliquez sur l’icone de flèche “Reply” pour faire apparaître une boite de texte.\n\nÉtape n°4 : Ajoutez votre texte, vos tags, puis cliquez sur “Post to groupname”. Votre réponse est maintenant publiée, et une conversation entamée !"
+  },
+  {
+    "objectID": "ressources/hypothesis.html#accéder-à-un-groupe-dannotation-collectif",
+    "href": "ressources/hypothesis.html#accéder-à-un-groupe-dannotation-collectif",
+    "title": "Hypothes.is comme outil collaboratif",
+    "section": "Accéder à un groupe d’annotation collectif",
+    "text": "Accéder à un groupe d’annotation collectif\nComme évoqué en introduction, Hypothes.is mets à disposition deux moyens de diffusion pour les annotations :\n\nLe canal Public : Celui par défaut, où les utilisateurs du monde entier peuvent ajouter des annotations, consulter et interagir avec celles-ci.\n\nLes groupes privés : À créer manuellement, pour permettent une diffusion plus restreinte des annotations.\n\n\n\n\nChoix du canal de publication, avec ici le canal “Public” natif et le groupe privé “Labo Paragraphe”\n\n\n\nCréer et partager son propre groupe d’annotation privé\nN’importe quel utilisateur de Hypothes.is peut créer ses propres groupes privés d’annotation.\n\n\n\nGIF montrant comment créer un groupe collaboratif\n\n\nÉtape n°1 : D’abord, assurez-vous que Hypothes.is est bien lancé en vérifiant si le menu à droite de l’écran peut s’ouvrir. Si ce n’est le cas, cliquez sur l’icone de l’extension ou du Bookmarklet pour la démarrer.\n\nÉtape n°2 : Ouvrez le panneau latéral de l’extension. Cliquez sur “Public”, puis sur “Create new group”, ce qui vous redirigera sur la page de création de groupe.\n\nÉtape n°3 : Renseignez un nom de groupe (obligatoire) et une description (optionnel) puis cliquez simplement sur “Create group”.\n\nÉtape n°4 : Votre groupe d’annotation est prêt ! Envoyez le lien présents dans “Invite new members” pour inviter d’autres utilisateurs de Hypothes.is dans votre groupe."
+  },
+  {
+    "objectID": "ressources/hypothesis.html#dans-un-contexte-dutilisation-général-personnel-professionnel",
+    "href": "ressources/hypothesis.html#dans-un-contexte-dutilisation-général-personnel-professionnel",
+    "title": "Hypothes.is comme outil collaboratif",
+    "section": "Dans un contexte d’utilisation général (personnel, professionnel, …)",
+    "text": "Dans un contexte d’utilisation général (personnel, professionnel, …)\nRepenser notre façon de lire et d’interagir dans le numérique\nUsage personnel = lecture d’articles de journaux, lecture de documentation, … pour annoter pour vous et/ou pour les autres\nUsage professionnel = avec groupe privé, peut permettre des relectures collaboratives et interactives de documents."
+  },
+  {
+    "objectID": "ressources/hypothesis.html#dans-le-contexte-de-la-cartographie-cartoexpert",
+    "href": "ressources/hypothesis.html#dans-le-contexte-de-la-cartographie-cartoexpert",
+    "title": "Hypothes.is comme outil collaboratif",
+    "section": "Dans le contexte de la cartographie “CartoExpert”",
+    "text": "Dans le contexte de la cartographie “CartoExpert”\nDans le cadre du projet CartoExpert, nous allons exploiter le concept d’annotation comme moyen collaboratif de maintenir à jour les données de CartoExpert : dès lors qu’un membre du service repère une coquille (information à préciser, qui n’est plus d’actualité, …), celui-ci pourra laisser une annotation sur l’interface qui, par la suite, pourra être consultée par les opérateurs chargés du maintien du logiciel afin d’y apporter (ou non) les modifications nécessaires.\nPar cette nouvelle méthode, l’actualisation des données pourra se faire en continu en plus d’ajouter une dimension collaborative au maintien à jour des données du service."
+  },
+  {
+    "objectID": "ressources/iag.html",
+    "href": "ressources/iag.html",
+    "title": "Utilisation des IA Génératives dans diverses tâches",
+    "section": "",
+    "text": "Work in progress…"
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html",
+    "href": "outils/guide_operateur_validata.html",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "",
+    "text": "Note\n\n\n\nCe guide s’adresse aux personnes qui utilisent la suite ValiDatas pour nettoyer les concepts et évaluer les expertises. Aucune intervention technique n’est requise.\nOrdre recommandé : cleanKeywords d’abord, validExpertises ensuite."
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#avant-de-commencer",
+    "href": "outils/guide_operateur_validata.html#avant-de-commencer",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Avant de commencer",
+    "text": "Avant de commencer\nLes deux outils partagent la même configuration. Vérifiez que vous disposez de :\n\n\n\nÉlément\nDescription\n\n\n\n\nURL de l’API Oméka S\nEx. : https://omk.univ-paris8.fr/api/\n\n\nMail du propriétaire\nL’adresse mail associée à la clé API\n\n\nkey_identity\nPremier jeton de la clé API\n\n\nkey_credential\nSecond jeton de la clé API\n\n\nID évaluateur\nVotre identifiant Oméka S (pour validExpertises)\n\n\n\n\n\n\n\n\n\nAstuce\n\n\n\nLa configuration est sauvegardée séparément dans chaque outil. Si vous utilisez les deux régulièrement, pensez à renseigner les paramètres dans chacun lors de votre première session."
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#objectif",
+    "href": "outils/guide_operateur_validata.html#objectif",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Objectif",
+    "text": "Objectif\ncleanKeywords détecte les concepts en doublon dans Oméka S et vous permet de les fusionner. La fusion transfère automatiquement les liens vers les EC et les évaluations existantes vers le concept conservé, puis supprime l’autre."
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#configuration-initiale",
+    "href": "outils/guide_operateur_validata.html#configuration-initiale",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Configuration initiale",
+    "text": "Configuration initiale\n\nOuvrir cleanKeywords dans le navigateur.\nCliquer sur ⚙ Paramètres.\nRenseigner l’URL de l’API, le mail, key_identity, key_credential et l’ID évaluateur.\nDans le champ Propriétés mots-clefs des personnes, saisir les propriétés utilisées (ex. skos:hasTopConcept,dcterms:subject).\nCliquer sur Enregistrer."
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#scanner-les-doublons",
+    "href": "outils/guide_operateur_validata.html#scanner-les-doublons",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Scanner les doublons",
+    "text": "Scanner les doublons\n\nScan lettre par lettre\n\nCliquer sur une lettre dans l’interface pour analyser tous les concepts commençant par cette lettre.\nLes paires suspectes détectées s’affichent avec leur type et un score de similarité.\nTrier les résultats par Score, Taille ou A–Z selon vos besoins.\n\n\n\nScan complet\nLe bouton ⚡ Tout scanner analyse l’ensemble du référentiel d’un coup. Les résultats sont mis en cache (date visible à l’écran) et restent disponibles jusqu’au prochain clic sur 🔄 Actualiser.\n\n\n\n\n\n\nAvertissement\n\n\n\nLe scan complet peut être long sur un référentiel volumineux. Préférez le scan lettre par lettre pour une vérification ciblée."
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#types-de-doublons-détectés",
+    "href": "outils/guide_operateur_validata.html#types-de-doublons-détectés",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Types de doublons détectés",
+    "text": "Types de doublons détectés\n\n\n\nType\nDescription\n\n\n\n\nWikidata\nConcepts pointant vers la même entité Wikidata\n\n\nTextuel\nLibellés identiques ou quasi-identiques\n\n\nVariante ortho.\nMême terme avec des graphies différentes\n\n\nSingulier / pluriel\nEx. : “réseau” et “réseaux”\n\n\nTermes inclus\nUn terme contenu dans un autre plus long\n\n\n\nUtilisez les filtres en haut de liste pour n’afficher qu’un type à la fois."
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#traiter-une-paire-suspecte",
+    "href": "outils/guide_operateur_validata.html#traiter-une-paire-suspecte",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Traiter une paire suspecte",
+    "text": "Traiter une paire suspecte\nPour chaque paire affichée :\n\nRejeter → faux positif, les deux concepts sont légitimement distincts, la paire disparaît de la liste\nFusionner → → ouvre la fenêtre de confirmation\n\n\nFenêtre de fusion\nLa fenêtre affiche :\n\nle concept Source (sera supprimé)\nle concept Cible (sera conservé)\n\n\n\n\n\n\n\nMise en garde\n\n\n\nVérifiez bien quel concept est Source et lequel est Cible avant de confirmer. La fusion est définitive et irréversible.\nEn cas de doute sur le sens à choisir, préférer conserver le concept le plus utilisé (taille la plus grande) comme Cible.\n\n\n\nVérifier Source → Cible.\nCliquer sur Fusionner définitivement.\nL’opération apparaît dans le Journal des opérations en bas de page."
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#bonnes-pratiques",
+    "href": "outils/guide_operateur_validata.html#bonnes-pratiques",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Bonnes pratiques",
+    "text": "Bonnes pratiques\n\nTravailler lettre par lettre plutôt que tout scanner d’un coup lors des premières sessions — cela permet de s’approprier le référentiel.\nConsulter le Journal des opérations en fin de session pour vérifier qu’aucune fusion non voulue n’a eu lieu.\nNe pas lancer cleanKeywords et validExpertises simultanément sur le même référentiel."
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#objectif-1",
+    "href": "outils/guide_operateur_validata.html#objectif-1",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Objectif",
+    "text": "Objectif\nvalidExpertises permet d’attribuer une valeur d’expertise (-100 à +100) à chaque concept associé à un EC, et de stocker cette évaluation dans Oméka S sous forme d’item Expertise."
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#configuration-initiale-1",
+    "href": "outils/guide_operateur_validata.html#configuration-initiale-1",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Configuration initiale",
+    "text": "Configuration initiale\n\nOuvrir validExpertises dans le navigateur.\nCliquer sur ⚙ Paramètres.\nRenseigner les mêmes informations API que pour cleanKeywords, ainsi que l’ID évaluateur.\nCliquer sur Enregistrer.\n\n\n\n\n\n\n\nNote\n\n\n\nRésultat attendu : votre nom apparaît dans l’en-tête à côté de la mention Expert. Sinon, vérifier l’URL de l’API et l’ID évaluateur."
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#démarrer-une-évaluation",
+    "href": "outils/guide_operateur_validata.html#démarrer-une-évaluation",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Démarrer une évaluation",
+    "text": "Démarrer une évaluation\n\nPar laboratoire\n\nSélectionner un laboratoire dans le menu déroulant Enseignants-Chercheurs.\nNaviguer entre les EC avec ← Précédent / Suivant →.\nCliquer sur un EC pour charger sa fiche.\n\n\n\nPar recherche directe\nTaper quelques lettres dans le champ Recherche… et sélectionner la personne dans l’autocomplétion.\n\n\n\n\n\n\nAstuce\n\n\n\nUn lien avec ?idAuthor=XXX dans l’URL charge la personne automatiquement à l’ouverture."
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#évaluer-les-expertises",
+    "href": "outils/guide_operateur_validata.html#évaluer-les-expertises",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Évaluer les expertises",
+    "text": "Évaluer les expertises\nUne fois une personne chargée, ses concepts s’affichent sous forme de cartes.\n\nDéplacer le slider entre -100 et +100.\nCliquer sur Ajouter (nouveau) ou Modifier (existant) pour enregistrer.\n\n\n\n\n\n\n\nAvertissement\n\n\n\nDéplacer le slider ne suffit pas — il faut cliquer sur Ajouter ou Modifier pour sauvegarder dans Oméka S.\n\n\n\nÉchelle recommandée\n\n\n\nPlage\nSignification\n\n\n\n\n-100 à -30\nExpertise faible ou non pertinente\n\n\n-29 à +29\nNeutre / incertain\n\n\n+30 à +100\nExpertise confirmée"
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#ajouter-un-mot-clé-manquant",
+    "href": "outils/guide_operateur_validata.html#ajouter-un-mot-clé-manquant",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Ajouter un mot-clé manquant",
+    "text": "Ajouter un mot-clé manquant\n\nUtiliser le champ Ajouter un mot-clé… avec autocomplétion.\nVérifier que la carte apparaît avant de saisir une valeur."
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#filtrer-et-trier",
+    "href": "outils/guide_operateur_validata.html#filtrer-et-trier",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Filtrer et trier",
+    "text": "Filtrer et trier\n\n\n\nFiltre\nEffet\n\n\n\n\nSans votre expertise\nConcepts non encore évalués\n\n\nAvec votre expertise\nConcepts déjà évalués\n\n\nPositifs / Négatifs\nFiltrer par polarité\n\n\n\nLes colonnes Titre et Rang sont triables. Les concepts avec un score &lt; 5 sont masqués par défaut — Tout afficher les révèle."
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#bonnes-pratiques-1",
+    "href": "outils/guide_operateur_validata.html#bonnes-pratiques-1",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Bonnes pratiques",
+    "text": "Bonnes pratiques\n\nUtiliser le filtre Sans votre expertise pour avancer méthodiquement.\nRecharger la personne après une série d’évaluations pour vérifier la persistance.\nUtiliser une échelle cohérente d’un EC à l’autre."
+  },
+  {
+    "objectID": "outils/guide_operateur_validata.html#checklist-de-fin-de-session-les-deux-outils",
+    "href": "outils/guide_operateur_validata.html#checklist-de-fin-de-session-les-deux-outils",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Checklist de fin de session (les deux outils)",
+    "text": "Checklist de fin de session (les deux outils)\n\nLes fusions cleanKeywords ont été vérifiées dans le journal des opérations.\nToutes les personnes prévues dans validExpertises ont été traitées.\nAucun message d’erreur non résolu n’est visible dans l’un ou l’autre outil.\nLes paramètres sont corrects pour la prochaine session."
+  },
+  {
+    "objectID": "outils/introduction_validata.html",
+    "href": "outils/introduction_validata.html",
+    "title": "ValiDatas — Présentation de la suite",
+    "section": "",
+    "text": "ValiDatas est une suite de deux outils web complémentaires, conçue pour préparer et valider les données d’expertise des Enseignants-Chercheurs dans Oméka S. Elle fait partie de l’écosystème CartoExpert du Laboratoire Paragraphe (Paris 8).\nLes deux outils sont accessibles depuis la même barre de navigation et partagent la même configuration API Oméka S."
+  },
+  {
+    "objectID": "outils/introduction_validata.html#le-pipeline",
+    "href": "outils/introduction_validata.html#le-pipeline",
+    "title": "ValiDatas — Présentation de la suite",
+    "section": "Le pipeline",
+    "text": "Le pipeline\nLes deux outils s’utilisent dans un ordre précis :\nOméka S\n   │\n   ▼\n🧹 cleanKeywords ──── Détecte et fusionne les concepts en doublon\n   │                  (doublons Wikidata, variantes ortho., singulier/pluriel…)\n   │\n   ▼\n✅ validExpertises ── Évalue les expertises des EC sur les concepts fiables\n   │\n   ▼\nOméka S  ←── Items Expertise créés/mis à jour\n\n\n\n\n\n\nAvertissement\n\n\n\nUtiliser validExpertises sur un référentiel non nettoyé revient à évaluer des doublons séparément — les scores se retrouvent dispersés sur plusieurs concepts au lieu d’être consolidés sur un seul."
+  },
+  {
+    "objectID": "outils/introduction_validata.html#quand-utiliser-chaque-outil",
+    "href": "outils/introduction_validata.html#quand-utiliser-chaque-outil",
+    "title": "ValiDatas — Présentation de la suite",
+    "section": "Quand utiliser chaque outil ?",
+    "text": "Quand utiliser chaque outil ?\ncleanKeywords est à utiliser :\n\nlors de l’import initial d’un nouveau jeu de concepts dans Oméka S\npériodiquement, si de nouveaux concepts sont ajoutés par différentes sources\navant toute campagne d’évaluation collective\n\nvalidExpertises est à utiliser :\n\nlors des campagnes d’évaluation planifiées par la DSR\nau quotidien, pour mettre à jour ponctuellement une expertise\naprès chaque passage dans cleanKeywords, pour intégrer les fusions opérées"
+  },
+  {
+    "objectID": "outils/introduction_validata.html#accès-aux-outils",
+    "href": "outils/introduction_validata.html#accès-aux-outils",
+    "title": "ValiDatas — Présentation de la suite",
+    "section": "Accès aux outils",
+    "text": "Accès aux outils\n\n🧹 cleanKeywords : valorisation.humanum-p8.fr/outils/validKeyword/ — dépôt : SedoZed/validKeyword\n✅ validExpertises : valorisation.humanum-p8.fr/outils/validExpertises/ — dépôt : samszo/validExpertises\n\n\n\n\n\n\n\nNote\n\n\n\nLes deux outils se référencent mutuellement dans leur barre de navigation — il est possible de passer de l’un à l’autre sans revenir à cette page."
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html",
+    "href": "outils/doc_tech_validata.html",
+    "title": "ValiDatas — Documentation technique",
+    "section": "",
+    "text": "Note\n\n\n\nCette documentation s’adresse aux personnes chargées d’installer, configurer, maintenir ou faire évoluer les outils de la suite ValiDatas.\nDépôts GitHub : samszo/cleanKeywords · samszo/validExpertises"
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#vue-densemble-technique",
+    "href": "outils/doc_tech_validata.html#vue-densemble-technique",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Vue d’ensemble technique",
+    "text": "Vue d’ensemble technique\nLes deux outils sont des applications web front-end uniquement (HTML + CSS + JavaScript vanilla), sans back-end propre. Toutes les données transitent via l’API REST d’Oméka S. Ils partagent la même structure de configuration et les mêmes conventions de code.\n\n\n\n\n\n\n\n\n\ncleanKeywords\nvalidExpertises\n\n\n\n\nVersion\nv0.1.3\nv0.2.3\n\n\nDépendances JS\nD3 (local)\nD3 (local)\n\n\nStockage config\nlocalStorage\nlocalStorage\n\n\nClé localStorage\ncleanKeywords_cfg\nvalidExpertises_cfg\n\n\nDroits API requis\nLecture + Écriture + Suppression\nLecture + Écriture"
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#architecture",
+    "href": "outils/doc_tech_validata.html#architecture",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Architecture",
+    "text": "Architecture\ncleanKeywords/\n├── index.html\n└── assets/\n    ├── main.css\n    └── js/\n        ├── appUrl.js\n        ├── auth.js\n        ├── authParams.js\n        └── omk.js"
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#prérequis-spécifiques",
+    "href": "outils/doc_tech_validata.html#prérequis-spécifiques",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Prérequis spécifiques",
+    "text": "Prérequis spécifiques\nEn plus des prérequis communs (voir section suivante), cleanKeywords requiert :\n\nDes droits de suppression sur les items Oméka S (la fusion supprime le concept Source).\nLa propriété valo:responsableDe pour identifier les laboratoires de l’évaluateur.\nLes concepts accessibles via les propriétés listées dans personPropExp."
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#paramètres-de-configuration",
+    "href": "outils/doc_tech_validata.html#paramètres-de-configuration",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Paramètres de configuration",
+    "text": "Paramètres de configuration\n\n\n\n\n\n\n\nParamètre\nDescription\n\n\n\n\napiOmk\nURL de base de l’API Oméka S\n\n\nmail\nMail du propriétaire de la clé API\n\n\nident\nkey_identity\n\n\nkey\nkey_credential\n\n\ncreatorId\nID Oméka S de l’évaluateur (détermine les laboratoires autorisés via valo:responsableDe)\n\n\npersonPropExp\nPropriétés mots-clefs des personnes, séparées par des virgules"
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#flux-api-détection-de-doublons",
+    "href": "outils/doc_tech_validata.html#flux-api-détection-de-doublons",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Flux API — détection de doublons",
+    "text": "Flux API — détection de doublons\n\nScan par lettre\nGET /items?item_type[]=&lt;type_concept&gt;\n          &property[0][property]=dcterms:title\n          &property[0][type]=sw\n          &property[0][text]=&lt;lettre&gt;\n\n\nComparaison des paires\nLa détection se fait côté client : les libellés sont comparés par algorithme de similarité textuelle, recoupés avec les identifiants Wikidata des concepts (skos:exactMatch ou équivalent) pour identifier les doublons sémantiques."
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#flux-api-fusion",
+    "href": "outils/doc_tech_validata.html#flux-api-fusion",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Flux API — fusion",
+    "text": "Flux API — fusion\nLa fusion s’opère en plusieurs étapes :\n\nRécupérer les items liés au concept Source (EC, Expertises) via leurs propriétés de relation.\nMettre à jour chaque item lié pour remplacer la référence Source par la référence Cible — PUT /items/{id}.\nSupprimer le concept Source — DELETE /items/{id_source}.\n\n\n\n\n\n\n\nMise en garde\n\n\n\nLa suppression est définitive. Il n’existe pas de mécanisme d’annulation côté application. En cas d’erreur, la restauration passe par un accès direct à Oméka S (interface admin ou API)."
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#journal-des-opérations",
+    "href": "outils/doc_tech_validata.html#journal-des-opérations",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Journal des opérations",
+    "text": "Journal des opérations\nChaque fusion est tracée dans le journal affiché en bas de page. Ce journal est en mémoire uniquement (non persisté) — il est perdu au rechargement de la page.\n\n\n\n\n\n\nAvertissement\n\n\n\nSi la traçabilité des opérations est critique, envisager d’ajouter une persistance du journal (localStorage ou export CSV) comme évolution future."
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#architecture-1",
+    "href": "outils/doc_tech_validata.html#architecture-1",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Architecture",
+    "text": "Architecture\nvalidExpertises/\n├── index.html\n├── CHANGELOG.md\n└── assets/\n    ├── main.css\n    ├── data/\n    │   └── expertise.json\n    └── js/\n        ├── appUrl.js\n        ├── auth.js\n        ├── authParams.js\n        ├── omk.js\n        └── d3.min.js"
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#paramètres-de-configuration-1",
+    "href": "outils/doc_tech_validata.html#paramètres-de-configuration-1",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Paramètres de configuration",
+    "text": "Paramètres de configuration\n\n\n\n\n\n\n\nParamètre\nDescription\n\n\n\n\napiOmk\nURL de base de l’API Oméka S\n\n\nmail\nMail du propriétaire de la clé API\n\n\nident\nkey_identity\n\n\nkey\nkey_credential\n\n\ncreatorId\nID Oméka S de l’évaluateur\n\n\npersonTypeAllow\nType d’item autorisé pour la personne (ex. valo:EnseignantChercheur)\n\n\npersonPropExp\nPropriétés des mots-clefs, séparées par des virgules\n\n\nrankProp\nPropriété stockant la valeur d’expertise (défaut : curation:rank)"
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#paramètres-url",
+    "href": "outils/doc_tech_validata.html#paramètres-url",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Paramètres URL",
+    "text": "Paramètres URL\n\n\n\nParamètre\nEffet\n\n\n\n\nidCreator\nSurcharge l’ID évaluateur\n\n\nidAuthor\nCharge automatiquement la personne à l’ouverture"
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#flux-api-principaux",
+    "href": "outils/doc_tech_validata.html#flux-api-principaux",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Flux API principaux",
+    "text": "Flux API principaux\n\n\n\n\n\n\n\nAction\nRequête\n\n\n\n\nRecherche de personnes\nGET /items?property[0][type]=in&...\n\n\nChargement d’une personne\nGET /items/{id}\n\n\nRécupération des mots-clefs\nGET /items?property[0][property]=&lt;prop&gt;&property[0][val]={id}\n\n\nRecherche des Expertises existantes\nGET /items?property=dcterms:source&resource_template_id[]=...\n\n\nCréation d’une Expertise\nPOST /items (payload JSON-LD)\n\n\nModification d’une Expertise\nPUT /items/{id}\n\n\nSuppression d’une Expertise\nDELETE /items/{id}"
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#vocabulaires-oméka-s-requis",
+    "href": "outils/doc_tech_validata.html#vocabulaires-oméka-s-requis",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Vocabulaires Oméka S requis",
+    "text": "Vocabulaires Oméka S requis\n\n\n\n\n\n\n\n\nPréfixe\nPropriété\nUsage\n\n\n\n\nskos\nskos:hasTopConcept\nPropriété par défaut des mots-clefs\n\n\ndcterms\ndcterms:subject\nPropriété complémentaire\n\n\ndcterms\ndcterms:creator\nLien évaluateur ↔︎ Expertise\n\n\ndcterms\ndcterms:source\nLien personne ↔︎ Expertise\n\n\ncuration\ncuration:rank\nValeur d’expertise\n\n\nvalo\nvalo:expertise\nType d’item Expertise\n\n\nvalo\nvalo:EnseignantChercheur\nType de personne autorisé\n\n\nvalo\nvalo:Laboratoire\nClasse pour le menu laboratoires\n\n\nvalo\nvalo:responsableDe\nLien évaluateur ↔︎ laboratoires (cleanKeywords)"
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#installation",
+    "href": "outils/doc_tech_validata.html#installation",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Installation",
+    "text": "Installation\n# Cloner les deux dépôts\ngit clone https://github.com/samszo/cleanKeywords.git\ngit clone https://github.com/samszo/validExpertises.git\n\n# Servir depuis un serveur web local\ncd cleanKeywords && python3 -m http.server 8080\ncd validExpertises && python3 -m http.server 8081\n\n\n\n\n\n\nAvertissement\n\n\n\nCORS : si Oméka S est sur un domaine différent, configurer les en-têtes CORS sur le serveur Oméka S pour les deux origines."
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#sécurité",
+    "href": "outils/doc_tech_validata.html#sécurité",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Sécurité",
+    "text": "Sécurité\n\nNe jamais committer key_identity / key_credential dans authParams.js si les dépôts sont publics.\nCréer des clés API avec les privilèges minimaux nécessaires à chaque outil.\ncleanKeywords requiert des droits de suppression — limiter son accès aux opérateurs de confiance."
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#requêtes-synchrones-xmlhttprequest",
+    "href": "outils/doc_tech_validata.html#requêtes-synchrones-xmlhttprequest",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Requêtes synchrones (XMLHttpRequest)",
+    "text": "Requêtes synchrones (XMLHttpRequest)\n\n\n\n\n\n\nAvertissement\n\n\n\nLes deux outils utilisent des XMLHttpRequest synchrones dans certaines parties de omk.js. Ce comportement est déprécié. Une migration vers fetch() avec async/await est recommandée comme priorité d’évolution."
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#cohérence-inter-outils",
+    "href": "outils/doc_tech_validata.html#cohérence-inter-outils",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Cohérence inter-outils",
+    "text": "Cohérence inter-outils\nAprès une session de fusion dans cleanKeywords, les items Expertise dans validExpertises qui référençaient le concept Source sont automatiquement mis à jour (la fusion le garantit). Vérifier toutefois après une fusion massive que les évaluations existantes sont bien rattachées au bon concept."
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#mise-à-jour-de-d3",
+    "href": "outils/doc_tech_validata.html#mise-à-jour-de-d3",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Mise à jour de D3",
+    "text": "Mise à jour de D3\nD3 est chargé localement dans les deux outils (assets/js/d3.min.js). Mettre à jour les deux fichiers simultanément pour éviter des divergences de comportement."
+  },
+  {
+    "objectID": "outils/doc_tech_validata.html#dépannage",
+    "href": "outils/doc_tech_validata.html#dépannage",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Dépannage",
+    "text": "Dépannage\n\n\n\n\n\n\n\n\nSymptôme\nCause probable\nAction\n\n\n\n\nÉvaluateur absent de l’en-tête\ncreatorId incorrect\nVérifier l’ID dans les paramètres\n\n\nAucun concept affiché\npersonPropExp mal configuré\nVérifier les propriétés\n\n\nFusion sans effet visible\nDroits API insuffisants\nVérifier les droits de suppression\n\n\nErreurs CORS en console\nOméka S sur domaine différent\nConfigurer les en-têtes CORS côté Oméka S\n\n\nCache obsolète (cleanKeywords)\nScan ancien\nCliquer sur 🔄 Actualiser"
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html",
+    "href": "outils/validatas/doc_tech_validata.html",
+    "title": "ValiDatas — Documentation technique",
+    "section": "",
+    "text": "Note\n\n\n\nCette documentation s’adresse aux personnes chargées d’installer, configurer, maintenir ou faire évoluer les outils de la suite ValiDatas.\nDépôts GitHub : samszo/cleanKeywords · samszo/validExpertises"
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#vue-densemble-technique",
+    "href": "outils/validatas/doc_tech_validata.html#vue-densemble-technique",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Vue d’ensemble technique",
+    "text": "Vue d’ensemble technique\nLes deux outils sont des applications web front-end uniquement (HTML + CSS + JavaScript vanilla), sans back-end propre. Toutes les données transitent via l’API REST d’Oméka S. Ils partagent la même structure de configuration et les mêmes conventions de code.\n\n\n\n\n\n\n\n\n\ncleanKeywords\nvalidExpertises\n\n\n\n\nVersion\nv0.1.3\nv0.2.3\n\n\nDépendances JS\nD3 (local)\nD3 (local)\n\n\nStockage config\nlocalStorage\nlocalStorage\n\n\nClé localStorage\ncleanKeywords_cfg\nvalidExpertises_cfg\n\n\nDroits API requis\nLecture + Écriture + Suppression\nLecture + Écriture"
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#architecture",
+    "href": "outils/validatas/doc_tech_validata.html#architecture",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Architecture",
+    "text": "Architecture\ncleanKeywords/\n├── index.html\n└── assets/\n    ├── main.css\n    └── js/\n        ├── appUrl.js\n        ├── auth.js\n        ├── authParams.js\n        └── omk.js"
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#prérequis-spécifiques",
+    "href": "outils/validatas/doc_tech_validata.html#prérequis-spécifiques",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Prérequis spécifiques",
+    "text": "Prérequis spécifiques\nEn plus des prérequis communs (voir section suivante), cleanKeywords requiert :\n\nDes droits de suppression sur les items Oméka S (la fusion supprime le concept Source).\nLa propriété valo:responsableDe pour identifier les laboratoires de l’évaluateur.\nLes concepts accessibles via les propriétés listées dans personPropExp."
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#paramètres-de-configuration",
+    "href": "outils/validatas/doc_tech_validata.html#paramètres-de-configuration",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Paramètres de configuration",
+    "text": "Paramètres de configuration\n\n\n\n\n\n\n\nParamètre\nDescription\n\n\n\n\napiOmk\nURL de base de l’API Oméka S\n\n\nmail\nMail du propriétaire de la clé API\n\n\nident\nkey_identity\n\n\nkey\nkey_credential\n\n\ncreatorId\nID Oméka S de l’évaluateur (détermine les laboratoires autorisés via valo:responsableDe)\n\n\npersonPropExp\nPropriétés mots-clefs des personnes, séparées par des virgules"
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#flux-api-détection-de-doublons",
+    "href": "outils/validatas/doc_tech_validata.html#flux-api-détection-de-doublons",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Flux API — détection de doublons",
+    "text": "Flux API — détection de doublons\n\nScan par lettre\nGET /items?item_type[]=&lt;type_concept&gt;\n          &property[0][property]=dcterms:title\n          &property[0][type]=sw\n          &property[0][text]=&lt;lettre&gt;\n\n\nComparaison des paires\nLa détection se fait côté client : les libellés sont comparés par algorithme de similarité textuelle, recoupés avec les identifiants Wikidata des concepts (skos:exactMatch ou équivalent) pour identifier les doublons sémantiques."
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#flux-api-fusion",
+    "href": "outils/validatas/doc_tech_validata.html#flux-api-fusion",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Flux API — fusion",
+    "text": "Flux API — fusion\nLa fusion s’opère en plusieurs étapes :\n\nRécupérer les items liés au concept Source (EC, Expertises) via leurs propriétés de relation.\nMettre à jour chaque item lié pour remplacer la référence Source par la référence Cible — PUT /items/{id}.\nSupprimer le concept Source — DELETE /items/{id_source}.\n\n\n\n\n\n\n\nMise en garde\n\n\n\nLa suppression est définitive. Il n’existe pas de mécanisme d’annulation côté application. En cas d’erreur, la restauration passe par un accès direct à Oméka S (interface admin ou API)."
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#journal-des-opérations",
+    "href": "outils/validatas/doc_tech_validata.html#journal-des-opérations",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Journal des opérations",
+    "text": "Journal des opérations\nChaque fusion est tracée dans le journal affiché en bas de page. Ce journal est en mémoire uniquement (non persisté) — il est perdu au rechargement de la page.\n\n\n\n\n\n\nAvertissement\n\n\n\nSi la traçabilité des opérations est critique, envisager d’ajouter une persistance du journal (localStorage ou export CSV) comme évolution future."
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#architecture-1",
+    "href": "outils/validatas/doc_tech_validata.html#architecture-1",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Architecture",
+    "text": "Architecture\nvalidExpertises/\n├── index.html\n├── CHANGELOG.md\n└── assets/\n    ├── main.css\n    ├── data/\n    │   └── expertise.json\n    └── js/\n        ├── appUrl.js\n        ├── auth.js\n        ├── authParams.js\n        ├── omk.js\n        └── d3.min.js"
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#paramètres-de-configuration-1",
+    "href": "outils/validatas/doc_tech_validata.html#paramètres-de-configuration-1",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Paramètres de configuration",
+    "text": "Paramètres de configuration\n\n\n\n\n\n\n\nParamètre\nDescription\n\n\n\n\napiOmk\nURL de base de l’API Oméka S\n\n\nmail\nMail du propriétaire de la clé API\n\n\nident\nkey_identity\n\n\nkey\nkey_credential\n\n\ncreatorId\nID Oméka S de l’évaluateur\n\n\npersonTypeAllow\nType d’item autorisé pour la personne (ex. valo:EnseignantChercheur)\n\n\npersonPropExp\nPropriétés des mots-clefs, séparées par des virgules\n\n\nrankProp\nPropriété stockant la valeur d’expertise (défaut : curation:rank)"
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#paramètres-url",
+    "href": "outils/validatas/doc_tech_validata.html#paramètres-url",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Paramètres URL",
+    "text": "Paramètres URL\n\n\n\nParamètre\nEffet\n\n\n\n\nidCreator\nSurcharge l’ID évaluateur\n\n\nidAuthor\nCharge automatiquement la personne à l’ouverture"
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#flux-api-principaux",
+    "href": "outils/validatas/doc_tech_validata.html#flux-api-principaux",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Flux API principaux",
+    "text": "Flux API principaux\n\n\n\n\n\n\n\nAction\nRequête\n\n\n\n\nRecherche de personnes\nGET /items?property[0][type]=in&...\n\n\nChargement d’une personne\nGET /items/{id}\n\n\nRécupération des mots-clefs\nGET /items?property[0][property]=&lt;prop&gt;&property[0][val]={id}\n\n\nRecherche des Expertises existantes\nGET /items?property=dcterms:source&resource_template_id[]=...\n\n\nCréation d’une Expertise\nPOST /items (payload JSON-LD)\n\n\nModification d’une Expertise\nPUT /items/{id}\n\n\nSuppression d’une Expertise\nDELETE /items/{id}"
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#vocabulaires-oméka-s-requis",
+    "href": "outils/validatas/doc_tech_validata.html#vocabulaires-oméka-s-requis",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Vocabulaires Oméka S requis",
+    "text": "Vocabulaires Oméka S requis\n\n\n\n\n\n\n\n\nPréfixe\nPropriété\nUsage\n\n\n\n\nskos\nskos:hasTopConcept\nPropriété par défaut des mots-clefs\n\n\ndcterms\ndcterms:subject\nPropriété complémentaire\n\n\ndcterms\ndcterms:creator\nLien évaluateur ↔︎ Expertise\n\n\ndcterms\ndcterms:source\nLien personne ↔︎ Expertise\n\n\ncuration\ncuration:rank\nValeur d’expertise\n\n\nvalo\nvalo:expertise\nType d’item Expertise\n\n\nvalo\nvalo:EnseignantChercheur\nType de personne autorisé\n\n\nvalo\nvalo:Laboratoire\nClasse pour le menu laboratoires\n\n\nvalo\nvalo:responsableDe\nLien évaluateur ↔︎ laboratoires (cleanKeywords)"
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#installation",
+    "href": "outils/validatas/doc_tech_validata.html#installation",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Installation",
+    "text": "Installation\n# Cloner les deux dépôts\ngit clone https://github.com/samszo/cleanKeywords.git\ngit clone https://github.com/samszo/validExpertises.git\n\n# Servir depuis un serveur web local\ncd cleanKeywords && python3 -m http.server 8080\ncd validExpertises && python3 -m http.server 8081\n\n\n\n\n\n\nAvertissement\n\n\n\nCORS : si Oméka S est sur un domaine différent, configurer les en-têtes CORS sur le serveur Oméka S pour les deux origines."
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#sécurité",
+    "href": "outils/validatas/doc_tech_validata.html#sécurité",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Sécurité",
+    "text": "Sécurité\n\nNe jamais committer key_identity / key_credential dans authParams.js si les dépôts sont publics.\nCréer des clés API avec les privilèges minimaux nécessaires à chaque outil.\ncleanKeywords requiert des droits de suppression — limiter son accès aux opérateurs de confiance."
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#requêtes-synchrones-xmlhttprequest",
+    "href": "outils/validatas/doc_tech_validata.html#requêtes-synchrones-xmlhttprequest",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Requêtes synchrones (XMLHttpRequest)",
+    "text": "Requêtes synchrones (XMLHttpRequest)\n\n\n\n\n\n\nAvertissement\n\n\n\nLes deux outils utilisent des XMLHttpRequest synchrones dans certaines parties de omk.js. Ce comportement est déprécié. Une migration vers fetch() avec async/await est recommandée comme priorité d’évolution."
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#cohérence-inter-outils",
+    "href": "outils/validatas/doc_tech_validata.html#cohérence-inter-outils",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Cohérence inter-outils",
+    "text": "Cohérence inter-outils\nAprès une session de fusion dans cleanKeywords, les items Expertise dans validExpertises qui référençaient le concept Source sont automatiquement mis à jour (la fusion le garantit). Vérifier toutefois après une fusion massive que les évaluations existantes sont bien rattachées au bon concept."
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#mise-à-jour-de-d3",
+    "href": "outils/validatas/doc_tech_validata.html#mise-à-jour-de-d3",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Mise à jour de D3",
+    "text": "Mise à jour de D3\nD3 est chargé localement dans les deux outils (assets/js/d3.min.js). Mettre à jour les deux fichiers simultanément pour éviter des divergences de comportement."
+  },
+  {
+    "objectID": "outils/validatas/doc_tech_validata.html#dépannage",
+    "href": "outils/validatas/doc_tech_validata.html#dépannage",
+    "title": "ValiDatas — Documentation technique",
+    "section": "Dépannage",
+    "text": "Dépannage\n\n\n\n\n\n\n\n\nSymptôme\nCause probable\nAction\n\n\n\n\nÉvaluateur absent de l’en-tête\ncreatorId incorrect\nVérifier l’ID dans les paramètres\n\n\nAucun concept affiché\npersonPropExp mal configuré\nVérifier les propriétés\n\n\nFusion sans effet visible\nDroits API insuffisants\nVérifier les droits de suppression\n\n\nErreurs CORS en console\nOméka S sur domaine différent\nConfigurer les en-têtes CORS côté Oméka S\n\n\nCache obsolète (cleanKeywords)\nScan ancien\nCliquer sur 🔄 Actualiser"
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html",
+    "href": "outils/validatas/guide_operateur_validata.html",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "",
+    "text": "Note\n\n\n\nCe guide s’adresse aux personnes qui utilisent la suite ValiDatas pour nettoyer les concepts et évaluer les expertises. Aucune intervention technique n’est requise.\nOrdre recommandé : cleanKeywords d’abord, validExpertises ensuite."
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html#avant-de-commencer",
+    "href": "outils/validatas/guide_operateur_validata.html#avant-de-commencer",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Avant de commencer",
+    "text": "Avant de commencer\nLes deux outils partagent la même configuration. Vérifiez que vous disposez de :\n\n\n\nÉlément\nDescription\n\n\n\n\nURL de l’API Oméka S\nEx. : https://omk.univ-paris8.fr/api/\n\n\nMail du propriétaire\nL’adresse mail associée à la clé API\n\n\nkey_identity\nPremier jeton de la clé API\n\n\nkey_credential\nSecond jeton de la clé API\n\n\nID évaluateur\nVotre identifiant Oméka S (pour validExpertises)\n\n\n\n\n\n\n\n\n\nAstuce\n\n\n\nLa configuration est sauvegardée séparément dans chaque outil. Si vous utilisez les deux régulièrement, pensez à renseigner les paramètres dans chacun lors de votre première session."
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html#objectif",
+    "href": "outils/validatas/guide_operateur_validata.html#objectif",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Objectif",
+    "text": "Objectif\ncleanKeywords détecte les concepts en doublon dans Oméka S et vous permet de les fusionner. La fusion transfère automatiquement les liens vers les EC et les évaluations existantes vers le concept conservé, puis supprime l’autre."
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html#configuration-initiale",
+    "href": "outils/validatas/guide_operateur_validata.html#configuration-initiale",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Configuration initiale",
+    "text": "Configuration initiale\n\nOuvrir cleanKeywords dans le navigateur.\nCliquer sur ⚙ Paramètres.\nRenseigner l’URL de l’API, le mail, key_identity, key_credential et l’ID évaluateur.\nDans le champ Propriétés mots-clefs des personnes, saisir les propriétés utilisées (ex. skos:hasTopConcept,dcterms:subject).\nCliquer sur Enregistrer."
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html#scanner-les-doublons",
+    "href": "outils/validatas/guide_operateur_validata.html#scanner-les-doublons",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Scanner les doublons",
+    "text": "Scanner les doublons\n\nScan lettre par lettre\n\nCliquer sur une lettre dans l’interface pour analyser tous les concepts commençant par cette lettre.\nLes paires suspectes détectées s’affichent avec leur type et un score de similarité.\nTrier les résultats par Score, Taille ou A–Z selon vos besoins.\n\n\n\nScan complet\nLe bouton ⚡ Tout scanner analyse l’ensemble du référentiel d’un coup. Les résultats sont mis en cache (date visible à l’écran) et restent disponibles jusqu’au prochain clic sur 🔄 Actualiser.\n\n\n\n\n\n\nAvertissement\n\n\n\nLe scan complet peut être long sur un référentiel volumineux. Préférez le scan lettre par lettre pour une vérification ciblée."
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html#types-de-doublons-détectés",
+    "href": "outils/validatas/guide_operateur_validata.html#types-de-doublons-détectés",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Types de doublons détectés",
+    "text": "Types de doublons détectés\n\n\n\nType\nDescription\n\n\n\n\nWikidata\nConcepts pointant vers la même entité Wikidata\n\n\nTextuel\nLibellés identiques ou quasi-identiques\n\n\nVariante ortho.\nMême terme avec des graphies différentes\n\n\nSingulier / pluriel\nEx. : “réseau” et “réseaux”\n\n\nTermes inclus\nUn terme contenu dans un autre plus long\n\n\n\nUtilisez les filtres en haut de liste pour n’afficher qu’un type à la fois."
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html#traiter-une-paire-suspecte",
+    "href": "outils/validatas/guide_operateur_validata.html#traiter-une-paire-suspecte",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Traiter une paire suspecte",
+    "text": "Traiter une paire suspecte\nPour chaque paire affichée :\n\nRejeter → faux positif, les deux concepts sont légitimement distincts, la paire disparaît de la liste\nFusionner → → ouvre la fenêtre de confirmation\n\n\nFenêtre de fusion\nLa fenêtre affiche :\n\nle concept Source (sera supprimé)\nle concept Cible (sera conservé)\n\n\n\n\n\n\n\nMise en garde\n\n\n\nVérifiez bien quel concept est Source et lequel est Cible avant de confirmer. La fusion est définitive et irréversible.\nEn cas de doute sur le sens à choisir, préférer conserver le concept le plus utilisé (taille la plus grande) comme Cible.\n\n\n\nVérifier Source → Cible.\nCliquer sur Fusionner définitivement.\nL’opération apparaît dans le Journal des opérations en bas de page."
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html#bonnes-pratiques",
+    "href": "outils/validatas/guide_operateur_validata.html#bonnes-pratiques",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Bonnes pratiques",
+    "text": "Bonnes pratiques\n\nTravailler lettre par lettre plutôt que tout scanner d’un coup lors des premières sessions — cela permet de s’approprier le référentiel.\nConsulter le Journal des opérations en fin de session pour vérifier qu’aucune fusion non voulue n’a eu lieu.\nNe pas lancer cleanKeywords et validExpertises simultanément sur le même référentiel."
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html#objectif-1",
+    "href": "outils/validatas/guide_operateur_validata.html#objectif-1",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Objectif",
+    "text": "Objectif\nvalidExpertises permet d’attribuer une valeur d’expertise (-100 à +100) à chaque concept associé à un EC, et de stocker cette évaluation dans Oméka S sous forme d’item Expertise."
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html#configuration-initiale-1",
+    "href": "outils/validatas/guide_operateur_validata.html#configuration-initiale-1",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Configuration initiale",
+    "text": "Configuration initiale\n\nOuvrir validExpertises dans le navigateur.\nCliquer sur ⚙ Paramètres.\nRenseigner les mêmes informations API que pour cleanKeywords, ainsi que l’ID évaluateur.\nCliquer sur Enregistrer.\n\n\n\n\n\n\n\nNote\n\n\n\nRésultat attendu : votre nom apparaît dans l’en-tête à côté de la mention Expert. Sinon, vérifier l’URL de l’API et l’ID évaluateur."
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html#démarrer-une-évaluation",
+    "href": "outils/validatas/guide_operateur_validata.html#démarrer-une-évaluation",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Démarrer une évaluation",
+    "text": "Démarrer une évaluation\n\nPar laboratoire\n\nSélectionner un laboratoire dans le menu déroulant Enseignants-Chercheurs.\nNaviguer entre les EC avec ← Précédent / Suivant →.\nCliquer sur un EC pour charger sa fiche.\n\n\n\nPar recherche directe\nTaper quelques lettres dans le champ Recherche… et sélectionner la personne dans l’autocomplétion.\n\n\n\n\n\n\nAstuce\n\n\n\nUn lien avec ?idAuthor=XXX dans l’URL charge la personne automatiquement à l’ouverture."
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html#évaluer-les-expertises",
+    "href": "outils/validatas/guide_operateur_validata.html#évaluer-les-expertises",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Évaluer les expertises",
+    "text": "Évaluer les expertises\nUne fois une personne chargée, ses concepts s’affichent sous forme de cartes.\n\nDéplacer le slider entre -100 et +100.\nCliquer sur Ajouter (nouveau) ou Modifier (existant) pour enregistrer.\n\n\n\n\n\n\n\nAvertissement\n\n\n\nDéplacer le slider ne suffit pas — il faut cliquer sur Ajouter ou Modifier pour sauvegarder dans Oméka S.\n\n\n\nÉchelle recommandée\n\n\n\nPlage\nSignification\n\n\n\n\n-100 à -30\nExpertise faible ou non pertinente\n\n\n-29 à +29\nNeutre / incertain\n\n\n+30 à +100\nExpertise confirmée"
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html#ajouter-un-mot-clé-manquant",
+    "href": "outils/validatas/guide_operateur_validata.html#ajouter-un-mot-clé-manquant",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Ajouter un mot-clé manquant",
+    "text": "Ajouter un mot-clé manquant\n\nUtiliser le champ Ajouter un mot-clé… avec autocomplétion.\nVérifier que la carte apparaît avant de saisir une valeur."
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html#filtrer-et-trier",
+    "href": "outils/validatas/guide_operateur_validata.html#filtrer-et-trier",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Filtrer et trier",
+    "text": "Filtrer et trier\n\n\n\nFiltre\nEffet\n\n\n\n\nSans votre expertise\nConcepts non encore évalués\n\n\nAvec votre expertise\nConcepts déjà évalués\n\n\nPositifs / Négatifs\nFiltrer par polarité\n\n\n\nLes colonnes Titre et Rang sont triables. Les concepts avec un score &lt; 5 sont masqués par défaut — Tout afficher les révèle."
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html#bonnes-pratiques-1",
+    "href": "outils/validatas/guide_operateur_validata.html#bonnes-pratiques-1",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Bonnes pratiques",
+    "text": "Bonnes pratiques\n\nUtiliser le filtre Sans votre expertise pour avancer méthodiquement.\nRecharger la personne après une série d’évaluations pour vérifier la persistance.\nUtiliser une échelle cohérente d’un EC à l’autre."
+  },
+  {
+    "objectID": "outils/validatas/guide_operateur_validata.html#checklist-de-fin-de-session-les-deux-outils",
+    "href": "outils/validatas/guide_operateur_validata.html#checklist-de-fin-de-session-les-deux-outils",
+    "title": "ValiDatas — Guide opérateur",
+    "section": "Checklist de fin de session (les deux outils)",
+    "text": "Checklist de fin de session (les deux outils)\n\nLes fusions cleanKeywords ont été vérifiées dans le journal des opérations.\nToutes les personnes prévues dans validExpertises ont été traitées.\nAucun message d’erreur non résolu n’est visible dans l’un ou l’autre outil.\nLes paramètres sont corrects pour la prochaine session."
+  },
+  {
+    "objectID": "outils/validatas/introduction_validata.html",
+    "href": "outils/validatas/introduction_validata.html",
+    "title": "ValiDatas — Présentation de la suite",
+    "section": "",
+    "text": "ValiDatas est une suite de deux outils web complémentaires, conçue pour préparer et valider les données d’expertise des Enseignants-Chercheurs dans Oméka S. Elle fait partie de l’écosystème CartoExpert du Laboratoire Paragraphe (Paris 8).\nLes deux outils sont accessibles depuis la même barre de navigation et partagent la même configuration API Oméka S."
+  },
+  {
+    "objectID": "outils/validatas/introduction_validata.html#le-pipeline",
+    "href": "outils/validatas/introduction_validata.html#le-pipeline",
+    "title": "ValiDatas — Présentation de la suite",
+    "section": "Le pipeline",
+    "text": "Le pipeline\nLes deux outils s’utilisent dans un ordre précis :\nOméka S\n   │\n   ▼\n🧹 cleanKeywords ──── Détecte et fusionne les concepts en doublon\n   │                  (doublons Wikidata, variantes ortho., singulier/pluriel…)\n   │\n   ▼\n✅ validExpertises ── Évalue les expertises des EC sur les concepts fiables\n   │\n   ▼\nOméka S  ←── Items Expertise créés/mis à jour\n\n\n\n\n\n\nAvertissement\n\n\n\nUtiliser validExpertises sur un référentiel non nettoyé revient à évaluer des doublons séparément — les scores se retrouvent dispersés sur plusieurs concepts au lieu d’être consolidés sur un seul."
+  },
+  {
+    "objectID": "outils/validatas/introduction_validata.html#quand-utiliser-chaque-outil",
+    "href": "outils/validatas/introduction_validata.html#quand-utiliser-chaque-outil",
+    "title": "ValiDatas — Présentation de la suite",
+    "section": "Quand utiliser chaque outil ?",
+    "text": "Quand utiliser chaque outil ?\ncleanKeywords est à utiliser :\n\nlors de l’import initial d’un nouveau jeu de concepts dans Oméka S\npériodiquement, si de nouveaux concepts sont ajoutés par différentes sources\navant toute campagne d’évaluation collective\n\nvalidExpertises est à utiliser :\n\nlors des campagnes d’évaluation planifiées par la DSR\nau quotidien, pour mettre à jour ponctuellement une expertise\naprès chaque passage dans cleanKeywords, pour intégrer les fusions opérées"
+  },
+  {
+    "objectID": "outils/validatas/introduction_validata.html#accès-aux-outils",
+    "href": "outils/validatas/introduction_validata.html#accès-aux-outils",
+    "title": "ValiDatas — Présentation de la suite",
+    "section": "Accès aux outils",
+    "text": "Accès aux outils\n\n🧹 cleanKeywords : valorisation.humanum-p8.fr/outils/validKeyword/\n✅ validExpertises : valorisation.humanum-p8.fr/outils/validExpertises/\n\n\n\n\n\n\n\nNote\n\n\n\nLes deux outils se référencent mutuellement dans leur barre de navigation — il est possible de passer de l’un à l’autre sans revenir à cette page."
   }
 ]
