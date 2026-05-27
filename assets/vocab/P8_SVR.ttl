@@ -114,6 +114,11 @@ valo:Statut_Universitaire a rdfs:Class ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
+valo:CodeNAF a rdfs:Class ;
+    rdfs:label "Code NAF/APE" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
 # Liste des propriétés utilisées dans la base de données OMEKA S
 
 valo:cnu a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; 
@@ -206,7 +211,22 @@ valo:axeRech a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; Laborat
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:responsableDe a rdf:Property ; 
+valo:responsableDe a rdf:Property ; # Utilisé dans : Enseignants chercheurs
     rdfs:label "Est responsable de" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:siret a rdf:Property ; # Utilisé dans : Partenaires
+    rdfs:label "A comme numéro SIRET" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:siren a rdf:Property ; # Utilisé dans : Partenaires
+    rdfs:label "A comme numéro SIREN" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:codeNaf a rdf:Property ; # Utilisé dans : Partenaires
+    rdfs:label "A le code NAF/APE" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
