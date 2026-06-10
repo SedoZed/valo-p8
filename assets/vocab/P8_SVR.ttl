@@ -119,6 +119,16 @@ valo:CodeNAF a rdfs:Class ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
+valo:PartenairesOPE a rdfs:Class ;
+    rdfs:label "Partenaires (OPE)" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:OPE a rdfs:Class ;
+    rdfs:label "OPEs" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
 # Liste des propriétés utilisées dans la base de données OMEKA S
 
 valo:cnu a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; 
@@ -228,5 +238,15 @@ valo:siren a rdf:Property ; # Utilisé dans : Partenaires
 
 valo:codeNaf a rdf:Property ; # Utilisé dans : Partenaires
     rdfs:label "A le code NAF/APE" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:opeCollabExterne a rdf:Property ; # Utilisé dans : Partenaires
+    rdfs:label "OPE en collaboration avec..." ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:opeCollabLabo a rdf:Property ; # Utilisé dans : Partenaires
+    rdfs:label "OPE porté par le laboratoire..." ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
