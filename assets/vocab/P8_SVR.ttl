@@ -241,12 +241,17 @@ valo:codeNaf a rdf:Property ; # Utilisé dans : Partenaires
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:opeCollabExterne a rdf:Property ; # Utilisé dans : Partenaires
+valo:opeCollabExterne a rdf:Property ; # Utilisé dans : OPE
     rdfs:label "OPE en collaboration avec..." ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:opeCollabLabo a rdf:Property ; # Utilisé dans : Partenaires
+valo:opeCollabLabo a rdf:Property ; # Utilisé dans : OPE
     rdfs:label "OPE porté par le laboratoire..." ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:ecImplique a rdf:Property ; # Utilisé dans : OPE
+    rdfs:label "Enseignant chercheur impliqué..." ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
