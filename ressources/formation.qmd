@@ -1,0 +1,281 @@
+---
+title: "Formation Omeka S pour Non-Informaticiens"
+subtitle: "Guide de prise en main de l'interface d'administration"
+author: "Cédric BOUCLY "
+date: "07/13/2026"
+lang: fr
+keywords: [Omeka S, base de données, métadonnées, ontologies, formation, initiation]
+---
+
+<br>
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## Préambule
+
+Cette formation concerne uniquement la **gestion de données** dans Omeka S. La partie CMS/Site et l'API d'exposition ne sont pas abordées.
+
+<u>**Public Cible**</u> : Contributeurs non-techniciens devant modifier des données dans Omeka S via l'interface d'administration.
+
+<u>**Objectifs**</u> : À la fin de la formation, les participants seront capables de :
+
+1. Comprendre la logique interne d'Omeka S _(Items, Item Sets, Relations, etc)_
+2. Naviguer dans la base de données sans confusion entre les différents types d'objets
+3. Effectuer 2-3 modifications spécifiques directement dans l'interface Omeka S.
+:::
+
+## Module 1 — Le Paysage Global {#mod1}
+
+::: {.callout-tip appearance="simple"}
+## Objectif
+
+Comprendre la logique interne d'Omeka S.
+:::
+
+### Concepts Clés
+
+| Concept | Définition Simplifiée |
+|---------|----------------------|
+| **Base de données** | Là où on crée, modifie, organise le contenu |
+| **Site/CMS** | Exposition publique (non abordé ici) |
+| **API** | Mécanisme d'exposition des données (hors scope) |
+
+---
+
+## Module 2 — L'Item, Unité de Base {#mod2}
+
+::: {.callout-tip appearance="simple"}
+## Objectif 
+
+Comprendre qu'un item est l'entrée fondamentale dans la base.
+:::
+
+### Anatomie d'un Item
+
+Un item = une entrée dans la base de données. Il contient trois parties :
+
+##### ITEM
+
+| Élément | Description |
+|---------|-------------|
+| **ID** (`o:id`) | Numéro unique |
+| **Métadonnées** | Champs descriptifs |
+| **Médias** | Fichiers attachés |
+
+### L'identifiant "o:id"
+**Définition** : Numéro unique attribué automatiquement à la création
+
+**Utilité** : Ne change jamais, même si le titre ou les métadonnées changent
+
+**À retenir** : "C'est le numéro de matricule de l'item"
+
+## Module 3 — Vocabulaires et Propriétés {#mod3}
+
+::: {.callout-tip appearance="simple"} 
+## Objectif
+
+Comprendre d'où viennent les champs lorsqu'on ouvre un item.
+:::
+
+### Principe
+Les métadonnées d'un item ne sont pas inventées au hasard. Elles proviennent de vocabulaires, qui définissent :
+
+- Quels champs existent
+- Ce que chaque champ signifie
+- Quel type de valeur est attendu
+
+Exemple Concret : Dublin Core (dcterms:xxx) → Le vocabulaire le plus utilisé, présent par défaut dans Omeka S, ayant comme propriété...
+
+|Propriété | Signification | Type Attendu
+| --- | --- | --- |
+|dcterms:title | Titre de l'item | Texte |
+|dcterms:creator | Créateur | Texte / Ressource |
+|dcterms:date | Date | Texte (format ISO recommandé) |
+|dcterms:description |Description	| Texte long
+| ... | ... | ... |
+
+### Deux Types de Valeurs
+Certaines propriétés acceptent :
+
+- Texte libre → On écrit directement (ex: titre, description)
+- Ressource → On pointe vers un autre item (ex: dcterms:creator peut lier à un item "Personne")
+
+::: {.callout-important appearance="simple"} 
+## Attention
+
+Ceci prépare le Module 4 sur les relations. 
+:::
+
+**Où voir cela**
+
+Onglet "Vocabularies" dans l'interface. Utile pour comprendre, pas pour modifier quotidiennement.
+
+## Module 4 — Organisation et Relations {#mod4}
+
+::: {.callout-tip appearance="simple"} 
+## Objectif
+
+Comprendre comment les items s'organisent et se lient entre eux. 
+:::
+
+### Partie A : Les Item Sets
+
+**Définition**
+
+Un Item Set = un regroupement logique d'items (fonds, collection thématique, période, etc.)
+
+**Analogie**
+
+- Item → Item Set
+- Un livre → Une étagère
+- Un objet → Une vitrine muséale
+- Une entrée BDD → Une collection logique
+
+**Règles Importantes**
+
+- Un item peut appartenir à plusieurs Item Sets
+- Un Item Set ne contient pas de médias directs (seulement des références à des items)
+
+**Manipulation**
+- Voir les Item Sets existants
+- Créer un nouveau Item Set
+- Ajouter un item à un Item Set
+
+### Partie B : Relations Entre Items via o:id
+
+**Pourquoi les Relations ?**
+Omeka S n'est pas une simple liste de fiches indépendantes. C'est un réseau de données reliées.
+
+**Le Mécanisme**
+Une propriété de type "ressource" permet de pointer vers un autre item plutôt que d'écrire du texte libre.
+
+**Exemple**
+
+Item "Document historique" (o:id: 142)
+  └── dcterms:creator → Item "Personne" (o:id: 89)
+La relation est faite via le o:id de l'item cible.
+
+**Pourquoi pas juste du Texte ?**
+Relation via o:id	Texte Libre
+Données structurées et interrogables	Impossible de faire des requêtes
+Liens exploitables par l'API	Informations perdues
+Mise à jour centralisée	Duplication des données
+
+**Démonstration Requise**
+Créer une liaison entre deux items existants via une propriété de type ressource.
+
+::: {.callout-warning appearance="simple"}
+## Cas d'Erreur Courant
+
+"J'ai créé une relation mais elle n'apparaît pas sur le site" → Vérifier :
+
+- La propriété utilisée accepte-t-elle une ressource ?
+- L'item cible est-il publié/visible ?
+- L'API expose-t-elle ce type de relation ? 
+
+::: 
+
+## Module 5 — Le module "ScanR" {#mod5}
+Deux façon d'utiliser le module : import massif ; import individuel
+
+Limites : Peut avoir parfois du mal à trouver certains noms (nom composé, ...) ; concepts basés sur les publications de l'EC, ce qui peut biaiser l'extraction
+
+## Module 6 — Pratique : Vos Modifications {#mod6}
+
+::: {.callout-tip appearance="simple"} 
+## Objectif
+
+Appliquer immédiatement les concepts dans des tâches réelles. 
+:::
+
+
+Structure Recommandée
+Pour chaque modification demandée :
+
+Démonstration par le formateur
+Reproduction guidée par les stagiaires (sur items de test ou réels)
+
+Validation : vérification que le changement est bien enregistré
+
+Checklist par tâche
+
+- Identifier l'item concerné (via recherche ou navigation)
+- Ouvrir l'item et repérer la section à modifier
+- Appliquer la modification
+- Sauvegarder
+- Vérifier le résultat dans la liste ou via une recherche
+
+Si une relation est à créer
+
+- Identifier l'item source et l'item cible
+- Trouver le o:id de l'item cible (dans l'URL ou les infos de l'item)
+- Utiliser la propriété appropriée de type "ressource"
+- Sélectionner l'item cible dans l'interface (ne pas taper manuellement le o:id)
+- Sauvegarder et tester
+
+
+## Synthèse et Repères
+
+::: {.callout-tip appearance="simple"} 
+## Objectif
+
+Consolider les acquis et donner des repères pour l'autonomie. 
+:::
+
+
+Schéma Récapitulatif
+                    ┌───────────────┐
+                    │  Vocabulaires │
+                    │  (définissent)│
+                    └───────┬───────┘
+                            ↓
+                   ┌─────────────────┐
+                   │   Propriétés    │ ← Textuelles ou Ressources
+                   │   (les champs)  │
+                   └────────┬────────┘
+                            ↓
+              ┌───────────────────────────┐
+              │         ITEMS             │
+              │  • o:id (identifiant unique)
+              │  • Métadonnées            │
+              │  • Médias                 │
+              └───────┬───────────────────┘
+                      │
+         ┌────────────┼────────────┐
+         ↓            ↓            ↓
+   ┌─────────┐  ┌─────────┐  ┌─────────┐
+   │Item Sets│  │Relation │  │Relations│
+   │(groupes)│  │(via o:id)│  │(via API)│
+   └─────────┘  └─────────┘  └─────────┘
+Questions À Se Poser
+Avant toute action, identifier :
+
+Je veux...	Je dois aller vers...
+Modifier le titre/description d'un item	L'item lui-même
+Regrouper plusieurs items	Créer un Item Set
+Relier un item à un autre	Utiliser une propriété de type "ressource"
+Ajouter un fichier	Section "Médias" de l'item
+Quand Appeler l'Administrateur
+Besoin de créer un nouveau vocabulaire
+Problème de connexion ou droits d'accès
+Erreur système après sauvegarde
+Besoin de modifications hors du périmètre autorisé
+
+## Annexes
+
+### Glossaire rapide
+
+| Terme | Signification |
+| --- | --- |
+| Item | Entrée dans la base (photo, document, objet...) |
+| o:id | Identifiant unique permanent |
+| Item Set | Regroupement d'items |
+| Vocabulaire | Ensemble de propriétés possibles |
+| Propriété | Champ spécifique (ex: dcterms:title) |
+| Média | Fichier attaché à un item |
+| Ressource | Propriété qui pointe vers un autre item |
+
+### Liens Utiles
+
+Documentation officielle Omeka S : https://omeka.org/s/docs/
+
+Interface d'administration : https://valorisation.humanum-p8.fr/admin

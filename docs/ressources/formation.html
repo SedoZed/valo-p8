@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Cédric BOUCLY">
+<meta name="keywords" content="Omeka S, base de données, métadonnées, ontologies, formation, initiation">
+
+<title>Formation Omeka S pour Non-Informaticiens – CartoExpert</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-66a63c344f183a26081cdb80a294f993.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CartoExpert</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Recherche"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Basculer la navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-général" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Général</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-général">    
+        <li>
+    <a class="dropdown-item" href="../index.html">
+ <span class="dropdown-text">Contexte du projet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../installations.html">
+ <span class="dropdown-text">Prérequis de travail</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Données</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-données">    
+        <li>
+    <a class="dropdown-item" href="../donnees/standardiser_data2csv.html">
+ <span class="dropdown-text">Préparer les données (CSV)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../donnees/bdd_omeka.html">
+ <span class="dropdown-text">Importer dans Oméka S</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../donnees/scanr_extract.html">
+ <span class="dropdown-text">Extraire depuis ScanR</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-outils" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Outils</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-outils">    
+        <li>
+    <a class="dropdown-item" href="../outils/pres_syst.html">
+ <span class="dropdown-text">CartoExpert — présentation</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../outils/introduction_validata.html">
+ <span class="dropdown-text">ValiDatas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../outils/guide_operateur_validata.html">
+ <span class="dropdown-text">↳ Guide opérateur</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../outils/doc_tech_validata.html">
+ <span class="dropdown-text">↳ Documentation technique</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ressources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ressources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-ressources">    
+        <li>
+    <a class="dropdown-item" href="../ressources/hypothesis.html">
+ <span class="dropdown-text">Hypothes.is comme outil collaboratif</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ressources/listmonk.html">
+ <span class="dropdown-text">ListMonk pour les campagnes de mailing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ressources/dico_rdf.html">
+ <span class="dropdown-text">Web sémantique &amp; RDF</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ressources/iag.html">
+ <span class="dropdown-text">Utilisation de l’IA Générative</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sur cette page</h2>
+   
+  <ul>
+  <li><a href="#mod1" id="toc-mod1" class="nav-link active" data-scroll-target="#mod1">Module 1 — Le Paysage Global</a>
+  <ul class="collapse">
+  <li><a href="#concepts-clés" id="toc-concepts-clés" class="nav-link" data-scroll-target="#concepts-clés">Concepts Clés</a></li>
+  </ul></li>
+  <li><a href="#mod2" id="toc-mod2" class="nav-link" data-scroll-target="#mod2">Module 2 — L’Item, Unité de Base</a>
+  <ul class="collapse">
+  <li><a href="#anatomie-dun-item" id="toc-anatomie-dun-item" class="nav-link" data-scroll-target="#anatomie-dun-item">Anatomie d’un Item</a></li>
+  <li><a href="#lidentifiant-oid" id="toc-lidentifiant-oid" class="nav-link" data-scroll-target="#lidentifiant-oid">L’identifiant “o:id”</a></li>
+  </ul></li>
+  <li><a href="#mod3" id="toc-mod3" class="nav-link" data-scroll-target="#mod3">Module 3 — Vocabulaires et Propriétés</a>
+  <ul class="collapse">
+  <li><a href="#principe" id="toc-principe" class="nav-link" data-scroll-target="#principe">Principe</a></li>
+  <li><a href="#deux-types-de-valeurs" id="toc-deux-types-de-valeurs" class="nav-link" data-scroll-target="#deux-types-de-valeurs">Deux Types de Valeurs</a></li>
+  </ul></li>
+  <li><a href="#mod4" id="toc-mod4" class="nav-link" data-scroll-target="#mod4">Module 4 — Organisation et Relations</a>
+  <ul class="collapse">
+  <li><a href="#partie-a-les-item-sets" id="toc-partie-a-les-item-sets" class="nav-link" data-scroll-target="#partie-a-les-item-sets">Partie A : Les Item Sets</a></li>
+  <li><a href="#partie-b-relations-entre-items-via-oid" id="toc-partie-b-relations-entre-items-via-oid" class="nav-link" data-scroll-target="#partie-b-relations-entre-items-via-oid">Partie B : Relations Entre Items via o:id</a></li>
+  </ul></li>
+  <li><a href="#mod5" id="toc-mod5" class="nav-link" data-scroll-target="#mod5">Module 5 — Le module “ScanR”</a></li>
+  <li><a href="#mod6" id="toc-mod6" class="nav-link" data-scroll-target="#mod6">Module 6 — Pratique : Vos Modifications</a></li>
+  <li><a href="#synthèse-et-repères" id="toc-synthèse-et-repères" class="nav-link" data-scroll-target="#synthèse-et-repères">Synthèse et Repères</a></li>
+  <li><a href="#annexes" id="toc-annexes" class="nav-link" data-scroll-target="#annexes">Annexes</a>
+  <ul class="collapse">
+  <li><a href="#glossaire-rapide" id="toc-glossaire-rapide" class="nav-link" data-scroll-target="#glossaire-rapide">Glossaire rapide</a></li>
+  <li><a href="#liens-utiles" id="toc-liens-utiles" class="nav-link" data-scroll-target="#liens-utiles">Liens Utiles</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Formation Omeka S pour Non-Informaticiens</h1>
+<p class="subtitle lead">Guide de prise en main de l’interface d’administration</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Auteur·rice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Cédric BOUCLY </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Date de publication</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">13 juillet 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Mots clés</div>
+    <p>Omeka S, base de données, métadonnées, ontologies, formation, initiation</p>
+  </div>
+</div>
+
+</header>
+
+
+<p><br></p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Préambule
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Cette formation concerne uniquement la <strong>gestion de données</strong> dans Omeka S. La partie CMS/Site et l’API d’exposition ne sont pas abordées.</p>
+<p><u><strong>Public Cible</strong></u> : Contributeurs non-techniciens devant modifier des données dans Omeka S via l’interface d’administration.</p>
+<p><u><strong>Objectifs</strong></u> : À la fin de la formation, les participants seront capables de :</p>
+<ol type="1">
+<li>Comprendre la logique interne d’Omeka S <em>(Items, Item Sets, Relations, etc)</em></li>
+<li>Naviguer dans la base de données sans confusion entre les différents types d’objets</li>
+<li>Effectuer 2-3 modifications spécifiques directement dans l’interface Omeka S.</li>
+</ol>
+</div>
+</div>
+</div>
+<section id="mod1" class="level2">
+<h2 class="anchored" data-anchor-id="mod1">Module 1 — Le Paysage Global</h2>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Objectif
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Comprendre la logique interne d’Omeka S.</p>
+</div>
+</div>
+<section id="concepts-clés" class="level3">
+<h3 class="anchored" data-anchor-id="concepts-clés">Concepts Clés</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Définition Simplifiée</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Base de données</strong></td>
+<td>Là où on crée, modifie, organise le contenu</td>
+</tr>
+<tr class="even">
+<td><strong>Site/CMS</strong></td>
+<td>Exposition publique (non abordé ici)</td>
+</tr>
+<tr class="odd">
+<td><strong>API</strong></td>
+<td>Mécanisme d’exposition des données (hors scope)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="mod2" class="level2">
+<h2 class="anchored" data-anchor-id="mod2">Module 2 — L’Item, Unité de Base</h2>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Objectif
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Comprendre qu’un item est l’entrée fondamentale dans la base.</p>
+</div>
+</div>
+<section id="anatomie-dun-item" class="level3">
+<h3 class="anchored" data-anchor-id="anatomie-dun-item">Anatomie d’un Item</h3>
+<p>Un item = une entrée dans la base de données. Il contient trois parties :</p>
+<section id="item" class="level5">
+<h5 class="anchored" data-anchor-id="item">ITEM</h5>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Élément</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>ID</strong> (<code>o:id</code>)</td>
+<td>Numéro unique</td>
+</tr>
+<tr class="even">
+<td><strong>Métadonnées</strong></td>
+<td>Champs descriptifs</td>
+</tr>
+<tr class="odd">
+<td><strong>Médias</strong></td>
+<td>Fichiers attachés</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="lidentifiant-oid" class="level3">
+<h3 class="anchored" data-anchor-id="lidentifiant-oid">L’identifiant “o:id”</h3>
+<p><strong>Définition</strong> : Numéro unique attribué automatiquement à la création</p>
+<p><strong>Utilité</strong> : Ne change jamais, même si le titre ou les métadonnées changent</p>
+<p><strong>À retenir</strong> : “C’est le numéro de matricule de l’item”</p>
+</section>
+</section>
+<section id="mod3" class="level2">
+<h2 class="anchored" data-anchor-id="mod3">Module 3 — Vocabulaires et Propriétés</h2>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Objectif
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Comprendre d’où viennent les champs lorsqu’on ouvre un item.</p>
+</div>
+</div>
+<section id="principe" class="level3">
+<h3 class="anchored" data-anchor-id="principe">Principe</h3>
+<p>Les métadonnées d’un item ne sont pas inventées au hasard. Elles proviennent de vocabulaires, qui définissent :</p>
+<ul>
+<li>Quels champs existent</li>
+<li>Ce que chaque champ signifie</li>
+<li>Quel type de valeur est attendu</li>
+</ul>
+<p>Exemple Concret : Dublin Core (dcterms:xxx) → Le vocabulaire le plus utilisé, présent par défaut dans Omeka S, ayant comme propriété…</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Propriété</th>
+<th>Signification</th>
+<th>Type Attendu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dcterms:title</td>
+<td>Titre de l’item</td>
+<td>Texte</td>
+</tr>
+<tr class="even">
+<td>dcterms:creator</td>
+<td>Créateur</td>
+<td>Texte / Ressource</td>
+</tr>
+<tr class="odd">
+<td>dcterms:date</td>
+<td>Date</td>
+<td>Texte (format ISO recommandé)</td>
+</tr>
+<tr class="even">
+<td>dcterms:description</td>
+<td>Description</td>
+<td>Texte long</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="deux-types-de-valeurs" class="level3">
+<h3 class="anchored" data-anchor-id="deux-types-de-valeurs">Deux Types de Valeurs</h3>
+<p>Certaines propriétés acceptent :</p>
+<ul>
+<li>Texte libre → On écrit directement (ex: titre, description)</li>
+<li>Ressource → On pointe vers un autre item (ex: dcterms:creator peut lier à un item “Personne”)</li>
+</ul>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Attention
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ceci prépare le Module 4 sur les relations.</p>
+</div>
+</div>
+<p><strong>Où voir cela</strong></p>
+<p>Onglet “Vocabularies” dans l’interface. Utile pour comprendre, pas pour modifier quotidiennement.</p>
+</section>
+</section>
+<section id="mod4" class="level2">
+<h2 class="anchored" data-anchor-id="mod4">Module 4 — Organisation et Relations</h2>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Objectif
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Comprendre comment les items s’organisent et se lient entre eux.</p>
+</div>
+</div>
+<section id="partie-a-les-item-sets" class="level3">
+<h3 class="anchored" data-anchor-id="partie-a-les-item-sets">Partie A : Les Item Sets</h3>
+<p><strong>Définition</strong></p>
+<p>Un Item Set = un regroupement logique d’items (fonds, collection thématique, période, etc.)</p>
+<p><strong>Analogie</strong></p>
+<ul>
+<li>Item → Item Set</li>
+<li>Un livre → Une étagère</li>
+<li>Un objet → Une vitrine muséale</li>
+<li>Une entrée BDD → Une collection logique</li>
+</ul>
+<p><strong>Règles Importantes</strong></p>
+<ul>
+<li>Un item peut appartenir à plusieurs Item Sets</li>
+<li>Un Item Set ne contient pas de médias directs (seulement des références à des items)</li>
+</ul>
+<p><strong>Manipulation</strong> - Voir les Item Sets existants - Créer un nouveau Item Set - Ajouter un item à un Item Set</p>
+</section>
+<section id="partie-b-relations-entre-items-via-oid" class="level3">
+<h3 class="anchored" data-anchor-id="partie-b-relations-entre-items-via-oid">Partie B : Relations Entre Items via o:id</h3>
+<p><strong>Pourquoi les Relations ?</strong> Omeka S n’est pas une simple liste de fiches indépendantes. C’est un réseau de données reliées.</p>
+<p><strong>Le Mécanisme</strong> Une propriété de type “ressource” permet de pointer vers un autre item plutôt que d’écrire du texte libre.</p>
+<p><strong>Exemple</strong></p>
+<p>Item “Document historique” (o:id: 142) └── dcterms:creator → Item “Personne” (o:id: 89) La relation est faite via le o:id de l’item cible.</p>
+<p><strong>Pourquoi pas juste du Texte ?</strong> Relation via o:id Texte Libre Données structurées et interrogables Impossible de faire des requêtes Liens exploitables par l’API Informations perdues Mise à jour centralisée Duplication des données</p>
+<p><strong>Démonstration Requise</strong> Créer une liaison entre deux items existants via une propriété de type ressource.</p>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Cas d’Erreur Courant
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>“J’ai créé une relation mais elle n’apparaît pas sur le site” → Vérifier :</p>
+<ul>
+<li>La propriété utilisée accepte-t-elle une ressource ?</li>
+<li>L’item cible est-il publié/visible ?</li>
+<li>L’API expose-t-elle ce type de relation ?</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="mod5" class="level2">
+<h2 class="anchored" data-anchor-id="mod5">Module 5 — Le module “ScanR”</h2>
+<p>Deux façon d’utiliser le module : import massif ; import individuel</p>
+<p>Limites : Peut avoir parfois du mal à trouver certains noms (nom composé, …) ; concepts basés sur les publications de l’EC, ce qui peut biaiser l’extraction</p>
+</section>
+<section id="mod6" class="level2">
+<h2 class="anchored" data-anchor-id="mod6">Module 6 — Pratique : Vos Modifications</h2>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Objectif
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Appliquer immédiatement les concepts dans des tâches réelles.</p>
+</div>
+</div>
+<p>Structure Recommandée Pour chaque modification demandée :</p>
+<p>Démonstration par le formateur Reproduction guidée par les stagiaires (sur items de test ou réels)</p>
+<p>Validation : vérification que le changement est bien enregistré</p>
+<p>Checklist par tâche</p>
+<ul>
+<li>Identifier l’item concerné (via recherche ou navigation)</li>
+<li>Ouvrir l’item et repérer la section à modifier</li>
+<li>Appliquer la modification</li>
+<li>Sauvegarder</li>
+<li>Vérifier le résultat dans la liste ou via une recherche</li>
+</ul>
+<p>Si une relation est à créer</p>
+<ul>
+<li>Identifier l’item source et l’item cible</li>
+<li>Trouver le o:id de l’item cible (dans l’URL ou les infos de l’item)</li>
+<li>Utiliser la propriété appropriée de type “ressource”</li>
+<li>Sélectionner l’item cible dans l’interface (ne pas taper manuellement le o:id)</li>
+<li>Sauvegarder et tester</li>
+</ul>
+</section>
+<section id="synthèse-et-repères" class="level2">
+<h2 class="anchored" data-anchor-id="synthèse-et-repères">Synthèse et Repères</h2>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Objectif
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consolider les acquis et donner des repères pour l’autonomie.</p>
+</div>
+</div>
+<p>Schéma Récapitulatif ┌───────────────┐ │ Vocabulaires │ │ (définissent)│ └───────┬───────┘ ↓ ┌─────────────────┐ │ Propriétés │ ← Textuelles ou Ressources │ (les champs) │ └────────┬────────┘ ↓ ┌───────────────────────────┐ │ ITEMS │ │ • o:id (identifiant unique) │ • Métadonnées │ │ • Médias │ └───────┬───────────────────┘ │ ┌────────────┼────────────┐ ↓ ↓ ↓ ┌─────────┐ ┌─────────┐ ┌─────────┐ │Item Sets│ │Relation │ │Relations│ │(groupes)│ │(via o:id)│ │(via API)│ └─────────┘ └─────────┘ └─────────┘ Questions À Se Poser Avant toute action, identifier :</p>
+<p>Je veux… Je dois aller vers… Modifier le titre/description d’un item L’item lui-même Regrouper plusieurs items Créer un Item Set Relier un item à un autre Utiliser une propriété de type “ressource” Ajouter un fichier Section “Médias” de l’item Quand Appeler l’Administrateur Besoin de créer un nouveau vocabulaire Problème de connexion ou droits d’accès Erreur système après sauvegarde Besoin de modifications hors du périmètre autorisé</p>
+</section>
+<section id="annexes" class="level2">
+<h2 class="anchored" data-anchor-id="annexes">Annexes</h2>
+<section id="glossaire-rapide" class="level3">
+<h3 class="anchored" data-anchor-id="glossaire-rapide">Glossaire rapide</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Terme</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Item</td>
+<td>Entrée dans la base (photo, document, objet…)</td>
+</tr>
+<tr class="even">
+<td>o:id</td>
+<td>Identifiant unique permanent</td>
+</tr>
+<tr class="odd">
+<td>Item Set</td>
+<td>Regroupement d’items</td>
+</tr>
+<tr class="even">
+<td>Vocabulaire</td>
+<td>Ensemble de propriétés possibles</td>
+</tr>
+<tr class="odd">
+<td>Propriété</td>
+<td>Champ spécifique (ex: dcterms:title)</td>
+</tr>
+<tr class="even">
+<td>Média</td>
+<td>Fichier attaché à un item</td>
+</tr>
+<tr class="odd">
+<td>Ressource</td>
+<td>Propriété qui pointe vers un autre item</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="liens-utiles" class="level3">
+<h3 class="anchored" data-anchor-id="liens-utiles">Liens Utiles</h3>
+<p>Documentation officielle Omeka S : https://omeka.org/s/docs/</p>
+<p>Interface d’administration : https://valorisation.humanum-p8.fr/admin</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copié");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copié");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Direction de la Recherche de Paris 8</p>
+</div>   
+    <div class="nav-footer-center">
+<div class="footer-img">
+<p><img src="https://sedozed.github.io/valo-p8/assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo"></p>
+</div>
+</div>
+    <div class="nav-footer-right">
+<p>Documentation interne, ne pas diffuser</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
