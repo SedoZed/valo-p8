@@ -255,3 +255,8 @@ valo:ecImplique a rdf:Property ; # Utilisé dans : OPE
     rdfs:label "Enseignant chercheur impliqué..." ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
+
+valo:rankValidated a rdf:Property ; # Utilisé dans : Enseignant-chercheur (annotation uniquement
+    rdfs:label "Pertinence d'un concept (post-vérification par EC)" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
