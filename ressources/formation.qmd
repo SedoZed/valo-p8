@@ -111,30 +111,47 @@ Avant de modifier un item, il faut d'abord le repérer.
 
 | Méthode                    | Comment faire                              | Quand l'utiliser                          |
 |----------------------------|--------------------------------------------|-------------------------------------------|
-| **Barre de recherche**     | En haut de la page <kbd>Items</kbd>        | Mot-clé, titre, fragment de contenu       |
+| **Barre de recherche**     | En haut du menu latéral gauche             | Mot-clé, titre, fragment de contenu       |
 | **Filtre par Item Set**    | Menu latéral → <kbd>Item Sets</kbd>        | Chercher dans une collection précise      |
-| **Accès direct par o:id**  | URL `/admin/item/1543`                     | Quand l'`o:id` est déjà connu             |
+| **Accès direct par o:id**  | URL `/admin/item/7457`                     | Quand l'`o:id` est déjà connu             |
 
 ::: {.callout-tip appearance="simple"}
 ## Astuce
 
-L'URL d'édition suit le même schéma : `/admin/item/1543/edit`. Inversement, si vous êtes en train d'éditer un item, son `o:id` se lit directement dans la barre d'adresse.
+L'URL d'édition suit le même schéma : `/admin/item/7457/edit`. Inversement, si vous êtes en train d'éditer un item, son `o:id` se lit directement dans la barre d'adresse.
 :::
 
-#### Le module Advanced Search
+::: {.callout-warning title="Trois surprises de la barre de recherche" appearance="simple"}
+- **Elle ne cherche que dans les items.** Les trois points de suspension à côté du champ permettent de basculer vers <kbd>Item Sets</kbd> ou <kbd>Media</kbd>. Sans cela, chercher un item set renvoie zéro résultat — et laisse croire qu'il n'existe pas.
+- **Plusieurs mots séparés par un espace élargissent la recherche**, au lieu de la restreindre. Les termes sont traités comme des alternatives ; le tri par pertinence se contente de remonter en tête ce qui contient les deux. Tout ce qui contient l'un *ou* l'autre reste dans la liste.
+- **Pas de troncature.** Il faut saisir le mot entier : « laborat » ne trouvera pas « laboratoire ».
 
-Le module **Advanced Search** enrichit la recherche de base. Il permet de :
+Hors recherche, la liste est triée par `o:id` décroissant — donc les items créés le plus récemment en premier. L'ordre n'est pas arbitraire, il en a juste l'air.
+:::
 
-- combiner plusieurs critères simultanément (*titre + date + créateur*) ;
+#### La recherche avancée
+
+Le bouton <kbd>Advanced search</kbd>, au-dessus de la liste des items, ouvre un formulaire permettant de :
+
+- croiser plusieurs critères (*titre + date + concept*) ;
 - filtrer par classe de ressource, par item set, ou selon qu'une propriété est renseignée ou vide ;
 - trier les résultats (date, titre, classe, pertinence) ;
 - partager une recherche : tous les critères sont inscrits dans l'URL, qui peut être copiée telle quelle.
 
-| Action      | Emplacement                                        | Résultat                        |
-|-------------|----------------------------------------------------|---------------------------------|
-| Rechercher  | Bouton <kbd>Recherche avancée</kbd>, au-dessus de la liste | Formulaire à champs multiples |
-| Filtrer     | Panneau latéral gauche                             | Affiner par item set, vocabulaire… |
-| Trier       | Menu déroulant <kbd>Trier par</kbd>                | Réordonner les résultats        |
+::: {.callout-warning title="Deux blocs se ressemblent — un seul fait le travail" appearance="simple"}
+Le formulaire contient **deux sections voisines et d'apparence identique** :
+
+| Section | Ce qu'elle permet |
+|---------|-------------------|
+| **Search by value** | Un critère à la fois, sans choix entre ET et OU |
+| **Filters** | Plusieurs critères, avec un menu déroulant **AND / OR** entre chaque ligne |
+
+**Pour croiser des critères, utilisez « Filters ».** Rien dans l'interface ne l'indique.
+
+Autre piège, dans « Search by value » : une ligne dont le champ texte reste vide est **supprimée sans avertissement** à la validation. Le symptôme n'est pas une erreur ni une liste vide — c'est une liste *trop longue*, qui ressemble à une recherche réussie.
+:::
+
+Le détail des opérateurs et des cas particuliers se trouve dans l'[aide-mémoire en annexe](#aidememoire).
 
 ## 3. Vocabulaires et propriétés {#mod3}
 
@@ -154,7 +171,26 @@ Le plus connu est [Dublin Core](https://www.dublincore.org/specifications/dublin
 | `dcterms:creator`     | Créateur           | Texte ou ressource              |
 | `dcterms:date`        | Date               | Texte (format ISO recommandé)   |
 | `dcterms:description` | Description        | Texte long                      |
-| `dcterms:type`        | Type de ressource  | Texte ou vocabulaire contrôlé   |
+| `dcterms:type`        | Type de ressource  | Texte ou URI                    |
+
+### Classes et propriétés
+
+Un vocabulaire contient en réalité **deux sortes de termes**, qu'il ne faut pas confondre. La distinction tient en une phrase : la classe dit ce que la chose *est*, la propriété dit ce qu'on en *dit*.
+
+|                     | Classe                              | Propriété                        |
+|---------------------|-------------------------------------|----------------------------------|
+| Question posée      | « De quelle nature est cet item ? » | « Quelle information je saisis ? » |
+| Nombre par item     | Une seule, et elle est facultative  | Autant qu'on veut                |
+| Dans l'interface    | Le champ <kbd>Resource class</kbd>  | Les champs de saisie             |
+| Exemples            | `foaf:Person`, `dctype:Image`       | `dcterms:title`, `foaf:name`     |
+
+Dublin Core Terms fournit 55 propriétés — dont Title et Creator — et 22 classes. Pour les classes, le vocabulaire de référence est plutôt Dublin Core Type et ses 12 entrées : Image, Moving Image, Sound, Text, Physical Object, etc.
+
+::: {.callout-warning title="Un mot, deux sens" appearance="simple"}
+Les **vocabulaires** d'Omeka S ne sont pas des **vocabulaires contrôlés**.
+
+Les premiers sont des ensembles de classes et de propriétés, c'est-à-dire des *champs*. Les seconds sont des listes de termes autorisés, c'est-à-dire des *valeurs* — et ils se gèrent par d'autres modules (Value Suggest, Custom Vocab).
+:::
 
 ### Deux types de valeurs
 
@@ -164,6 +200,12 @@ Le plus connu est [Dublin Core](https://www.dublincore.org/specifications/dublin
 | **Ressource**   | Un lien vers un autre item           | `dcterms:creator` pointant vers l'item « Jean Dupont » (o:id 89) |
 
 ![Le sélecteur de type de valeur, en mode édition d'un item.](../assets/img/formation2.png){#fig-types fig-alt="Sélecteur permettant de choisir entre une valeur texte, une ressource ou une URI"}
+
+::: {.callout-important title="Omeka ne vérifie rien" appearance="simple"}
+Le logiciel n'impose **aucune** des règles définies par les vocabulaires. Une propriété censée pointer vers une autre ressource acceptera sans broncher du texte libre, et personne ne vous signalera l'erreur.
+
+La cohérence des données repose donc entièrement sur la personne qui saisit — ce qui est précisément la raison d'être de cette formation. Seuls les **modèles de ressource** (*resource templates*) permettent d'imposer un type de valeur sur un champ donné.
+:::
 
 ::: {.callout-tip appearance="simple"}
 ## Où consulter les vocabulaires ?
@@ -205,6 +247,8 @@ flowchart LR
     A["Item « Document historique »<br/>o:id 142"] -->|dcterms:creator| B["Item « Jean Dupont »<br/>o:id 89"]
 ```
 
+Sans ce mécanisme, une même notion se retrouve écrite de plusieurs façons et devient introuvable. Notre propre base en donne l'illustration : les concepts **« Multimodality »**, **« Multimodalité »**, **« Multimodal »** et **« interface multimodale »** y coexistent comme quatre items distincts. Une recherche sur l'un d'eux ignore les trois autres.
+
 **Pourquoi ne pas simplement écrire le nom en texte ?**
 
 | Relation via `o:id`                  | Texte libre                        |
@@ -228,7 +272,7 @@ Savoir importer une fiche « personne » depuis ScanR, et connaître les limites
 ScanR est la plateforme du Ministère de l'Enseignement Supérieur et de la Recherche qui recense les chercheurs, leurs affiliations et leurs publications. Le module Omeka S correspondant, développé par **Samuel Szoniecky**, permet d'en importer les fiches directement dans la base.
 
 ::: {.callout-note appearance="simple"}
-Ce module ne couvre que la manipulation dans Omeka S. Pour le fonctionnement de la source elle-même, la structure des données et les cas d'usage plus larges, voir la page [ScanR comme source de données](scanr_extract.qmd).
+Ce module ne couvre que la manipulation dans Omeka S. Pour le fonctionnement de la source elle-même, la structure des données et les cas d'usage plus larges, voir la page [ScanR comme source de données](../donnees/scanr_extract.qmd).
 :::
 
 ### Effectuer un import
@@ -332,12 +376,52 @@ flowchart TD
 
 ## Annexes
 
+### Aide-mémoire : la recherche avancée {#aidememoire}
+
+#### Les deux sections du formulaire
+
+| Section | Origine | Ce qu'elle permet |
+|---------|---------|-------------------|
+| **Search by value** | Cœur d'Omeka S | Un critère, sans joncteur visible |
+| **Filters** | Module Advanced Search | Plusieurs critères, avec menu **AND / OR** |
+
+Les deux cohabitent parce que le module reprend progressivement les fonctions du cœur. Pour toute recherche à plusieurs critères, c'est **Filters**.
+
+#### Les opérateurs disponibles
+
+| Opérateur | Ce qu'il fait |
+|-----------|---------------|
+| `is exactly` / `is not exactly` | Valeur strictement identique |
+| `contains` / `does not contain` | Recherche de sous-chaîne |
+| `is resource with ID` / `is not resource with ID` | Pointe vers l'item dont l'`o:id` est indiqué |
+| `has any value` / `has no values` | La propriété est renseignée, ou vide |
+| `has data type` / `does not have data type` | Filtre sur le type de valeur |
+
+#### Trois comportements à connaître
+
+**`contains` est une recherche de sous-chaîne brute.** Ni lemmatisation, ni tolérance orthographique. Chercher « travail » ramène « Travail collaboratif », mais **ni** « Travelling » **ni** « traveller » — alors qu'un lecteur pressé pourrait s'y attendre.
+
+**`is resource with ID` est plus fiable que `contains`** dès qu'on cherche un concept précis : il vise l'`o:id` de la cible et ne dépend donc pas de l'orthographe de son titre. C'est aussi l'opérateur qui répond à la question « quels items pointent vers celui-ci ? ».
+
+**Les critères ne se groupent pas.** Les joncteurs s'appliquent en séquence, sans parenthèses : une requête du type `(A OU B) ET C` n'est pas exprimable dans le formulaire.
+
+#### Vérifier ce qui a réellement été envoyé
+
+Après avoir lancé une recherche, l'URL contient tous les critères. Chaque critère y apparaît sous la forme `filter[0]`, `filter[1]`, etc. — les crochets étant affichés par le navigateur sous leur forme encodée, `%5B0%5D` et `%5B1%5D`.
+
+Compter ces numéros permet de vérifier combien de critères ont réellement été pris en compte. Un `%5B1%5D` sans `%5B0%5D` signale qu'une ligne a été supprimée parce qu'elle était vide.
+
+Cette URL est par ailleurs partageable telle quelle : c'est le moyen le plus simple de transmettre une recherche à un collègue.
+
 ### Glossaire
 
 | Terme            | Signification                                                              |
 |------------------|----------------------------------------------------------------------------|
 | API              | Mécanisme d'exposition des données vers d'autres systèmes (hors périmètre) |
 | Base de données  | Stockage central où sont créées, modifiées et organisées les données       |
+| Classe           | Nature d'un item (`foaf:Person`…) ; une seule par item, facultative        |
+| Facette          | Filtre proposé à partir des résultats, pour affiner par clics successifs   |
+| Filtre           | Critère de recherche combinable, dans la section « Filters »               |
 | Item             | Entrée dans la base (photo, document, personne, objet…)                    |
 | Item Set         | Regroupement logique d'items (collection, fonds thématique)                |
 | Média            | Fichier attaché à un item                                                  |
@@ -346,7 +430,7 @@ flowchart TD
 | Propriété        | Champ spécifique issu d'un vocabulaire (ex. `dcterms:title`)               |
 | Relation         | Lien actif entre deux items, via une propriété de type ressource           |
 | Ressource        | Valeur pointant vers un autre item, par opposition au texte libre          |
-| Vocabulaire      | Ensemble de propriétés et de classes définissant les champs disponibles    |
+| Vocabulaire      | Ensemble de classes et de propriétés définissant les champs disponibles — à ne pas confondre avec un vocabulaire contrôlé, qui est une liste de valeurs autorisées |
 
 ### Liens utiles
 

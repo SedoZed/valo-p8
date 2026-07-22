@@ -89,6 +89,11 @@ valo:DomaineCNU a rdfs:Class ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
+valo:CodeNAF a rdfs:Class ;
+    rdfs:label "Code NAF/APE" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
 valo:AxesDeRech a rdfs:Class ;
     rdfs:label "Axe de recherche" ;
     rdfs:domain o:Resource ;
@@ -111,11 +116,6 @@ valo:ObjRecherche a rdfs:Class ;
 
 valo:Statut_Universitaire a rdfs:Class ;
     rdfs:label "Statut Universitaire" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-valo:CodeNAF a rdfs:Class ;
-    rdfs:label "Code NAF/APE" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
