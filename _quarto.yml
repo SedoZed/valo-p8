@@ -46,6 +46,8 @@ website:
 
       - text: "Ressources"
         menu:
+          - text: "Formation Omeka S pour non-informaticiens"
+            href: ressources/formation.qmd
           - text: "Hypothes.is comme outil collaboratif"
             href: ressources/hypothesis.qmd
           - text: "ListMonk pour les campagnes de mailing"

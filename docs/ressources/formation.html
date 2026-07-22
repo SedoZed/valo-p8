@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Cédric BOUCLY">
-<meta name="keywords" content="Omeka S, base de données, métadonnées, ontologies, formation, initiation">
+<meta name="keywords" content="Omeka S, base de données, métadonnées, ontologies, initiation">
 
-<title>Formation Omeka S pour Non-Informaticiens – CartoExpert</title>
+<title>Formation Omeka S pour non-informaticiens – CartoExpert</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -156,6 +156,10 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-ressources">    
         <li>
+    <a class="dropdown-item" href="../ressources/formation.html">
+ <span class="dropdown-text">Formation Omeka S pour non-informaticiens</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../ressources/hypothesis.html">
  <span class="dropdown-text">Hypothes.is comme outil collaboratif</span></a>
   </li>  
@@ -189,28 +193,39 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#mod1" id="toc-mod1" class="nav-link active" data-scroll-target="#mod1">Module 1 — Le Paysage Global</a>
+  <li><a href="#préambule" id="toc-préambule" class="nav-link active" data-scroll-target="#préambule">Préambule</a></li>
+  <li><a href="#mod1" id="toc-mod1" class="nav-link" data-scroll-target="#mod1">1. Le paysage global</a>
   <ul class="collapse">
   <li><a href="#concepts-clés" id="toc-concepts-clés" class="nav-link" data-scroll-target="#concepts-clés">Concepts Clés</a></li>
+  <li><a href="#pourquoi-omeka-s" id="toc-pourquoi-omeka-s" class="nav-link" data-scroll-target="#pourquoi-omeka-s">Pourquoi Omeka S ?</a></li>
   </ul></li>
-  <li><a href="#mod2" id="toc-mod2" class="nav-link" data-scroll-target="#mod2">Module 2 — L’Item, Unité de Base</a>
+  <li><a href="#mod2" id="toc-mod2" class="nav-link" data-scroll-target="#mod2">2. L’Item, Unité de Base</a>
   <ul class="collapse">
   <li><a href="#anatomie-dun-item" id="toc-anatomie-dun-item" class="nav-link" data-scroll-target="#anatomie-dun-item">Anatomie d’un Item</a></li>
-  <li><a href="#lidentifiant-oid" id="toc-lidentifiant-oid" class="nav-link" data-scroll-target="#lidentifiant-oid">L’identifiant “o:id”</a></li>
+  <li><a href="#trouver-un-item" id="toc-trouver-un-item" class="nav-link" data-scroll-target="#trouver-un-item">Trouver un Item</a></li>
+  <li><a href="#utiliser-advanced-search" id="toc-utiliser-advanced-search" class="nav-link" data-scroll-target="#utiliser-advanced-search">Utiliser “Advanced Search”</a></li>
   </ul></li>
-  <li><a href="#mod3" id="toc-mod3" class="nav-link" data-scroll-target="#mod3">Module 3 — Vocabulaires et Propriétés</a>
+  <li><a href="#mod3" id="toc-mod3" class="nav-link" data-scroll-target="#mod3">3. Vocabulaires et Propriétés</a>
   <ul class="collapse">
   <li><a href="#principe" id="toc-principe" class="nav-link" data-scroll-target="#principe">Principe</a></li>
-  <li><a href="#deux-types-de-valeurs" id="toc-deux-types-de-valeurs" class="nav-link" data-scroll-target="#deux-types-de-valeurs">Deux Types de Valeurs</a></li>
+  <li><a href="#deux-principaux-types-de-valeurs" id="toc-deux-principaux-types-de-valeurs" class="nav-link" data-scroll-target="#deux-principaux-types-de-valeurs">Deux principaux types de valeurs</a></li>
   </ul></li>
-  <li><a href="#mod4" id="toc-mod4" class="nav-link" data-scroll-target="#mod4">Module 4 — Organisation et Relations</a>
+  <li><a href="#mod4" id="toc-mod4" class="nav-link" data-scroll-target="#mod4">4. Organisation et Relations</a>
   <ul class="collapse">
   <li><a href="#partie-a-les-item-sets" id="toc-partie-a-les-item-sets" class="nav-link" data-scroll-target="#partie-a-les-item-sets">Partie A : Les Item Sets</a></li>
   <li><a href="#partie-b-relations-entre-items-via-oid" id="toc-partie-b-relations-entre-items-via-oid" class="nav-link" data-scroll-target="#partie-b-relations-entre-items-via-oid">Partie B : Relations Entre Items via o:id</a></li>
   </ul></li>
-  <li><a href="#mod5" id="toc-mod5" class="nav-link" data-scroll-target="#mod5">Module 5 — Le module “ScanR”</a></li>
-  <li><a href="#mod6" id="toc-mod6" class="nav-link" data-scroll-target="#mod6">Module 6 — Pratique : Vos Modifications</a></li>
-  <li><a href="#synthèse-et-repères" id="toc-synthèse-et-repères" class="nav-link" data-scroll-target="#synthèse-et-repères">Synthèse et Repères</a></li>
+  <li><a href="#mod5" id="toc-mod5" class="nav-link" data-scroll-target="#mod5">5. Le module “ScanR”</a>
+  <ul class="collapse">
+  <li><a href="#quest-ce-que-scanr" id="toc-quest-ce-que-scanr" class="nav-link" data-scroll-target="#quest-ce-que-scanr">Qu’est-ce que ScanR ?</a></li>
+  <li><a href="#effectuer-un-import" id="toc-effectuer-un-import" class="nav-link" data-scroll-target="#effectuer-un-import">Effectuer un import :</a></li>
+  <li><a href="#limites-à-connaître" id="toc-limites-à-connaître" class="nav-link" data-scroll-target="#limites-à-connaître">Limites à connaître</a></li>
+  </ul></li>
+  <li><a href="#mod6" id="toc-mod6" class="nav-link" data-scroll-target="#mod6">6. Atelier Pratique</a></li>
+  <li><a href="#synthèse-et-repères" id="toc-synthèse-et-repères" class="nav-link" data-scroll-target="#synthèse-et-repères">Synthèse et Repères</a>
+  <ul class="collapse">
+  <li><a href="#en-résumé" id="toc-en-résumé" class="nav-link" data-scroll-target="#en-résumé">En résumé</a></li>
+  </ul></li>
   <li><a href="#annexes" id="toc-annexes" class="nav-link" data-scroll-target="#annexes">Annexes</a>
   <ul class="collapse">
   <li><a href="#glossaire-rapide" id="toc-glossaire-rapide" class="nav-link" data-scroll-target="#glossaire-rapide">Glossaire rapide</a></li>
@@ -224,8 +239,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Formation Omeka S pour Non-Informaticiens</h1>
-<p class="subtitle lead">Guide de prise en main de l’interface d’administration</p>
+<h1 class="title">Formation Omeka S pour non-informaticiens</h1>
+<p class="subtitle lead">Guide de prise en main basique de l’interface d’administration</p>
 </div>
 
 
@@ -242,7 +257,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">13 juillet 2026</p>
+      <p class="date">13 octobre 2027</p>
     </div>
   </div>
   
@@ -253,7 +268,7 @@ ul.task-list li input[type="checkbox"] {
 <div>
   <div class="keywords">
     <div class="block-title">Mots clés</div>
-    <p>Omeka S, base de données, métadonnées, ontologies, formation, initiation</p>
+    <p>Omeka S, base de données, métadonnées, ontologies, initiation</p>
   </div>
 </div>
 
@@ -261,31 +276,19 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><br></p>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Préambule
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Cette formation concerne uniquement la <strong>gestion de données</strong> dans Omeka S. La partie CMS/Site et l’API d’exposition ne sont pas abordées.</p>
-<p><u><strong>Public Cible</strong></u> : Contributeurs non-techniciens devant modifier des données dans Omeka S via l’interface d’administration.</p>
+<section id="préambule" class="level2">
+<h2 class="anchored" data-anchor-id="préambule">Préambule</h2>
 <p><u><strong>Objectifs</strong></u> : À la fin de la formation, les participants seront capables de :</p>
 <ol type="1">
 <li>Comprendre la logique interne d’Omeka S <em>(Items, Item Sets, Relations, etc)</em></li>
 <li>Naviguer dans la base de données sans confusion entre les différents types d’objets</li>
-<li>Effectuer 2-3 modifications spécifiques directement dans l’interface Omeka S.</li>
+<li>Effectuer quelques modifications spécifiques directement dans l’interface Omeka S.</li>
 </ol>
-</div>
-</div>
-</div>
+<hr>
+<p><br></p>
+</section>
 <section id="mod1" class="level2">
-<h2 class="anchored" data-anchor-id="mod1">Module 1 — Le Paysage Global</h2>
+<h2 class="anchored" data-anchor-id="mod1">1. Le paysage global</h2>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -302,32 +305,44 @@ ul.task-list li input[type="checkbox"] {
 <section id="concepts-clés" class="level3">
 <h3 class="anchored" data-anchor-id="concepts-clés">Concepts Clés</h3>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 56%">
+<col style="width: 21%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Concept</th>
 <th>Définition Simplifiée</th>
+<th>À retenir</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>Base de données</strong></td>
 <td>Là où on crée, modifie, organise le contenu</td>
+<td>Interface principale de travail</td>
 </tr>
 <tr class="even">
 <td><strong>Site/CMS</strong></td>
-<td>Exposition publique (non abordé ici)</td>
+<td>Outil de déploiement &amp; configuration de site interne à Omeka S</td>
+<td>Non utilisé pour le moment</td>
 </tr>
 <tr class="odd">
 <td><strong>API</strong></td>
-<td>Mécanisme d’exposition des données (hors scope)</td>
+<td>Mécanisme d’exposition programmatique des données</td>
+<td>Export/Connexion vers des outils externes</td>
 </tr>
 </tbody>
 </table>
-<hr>
+</section>
+<section id="pourquoi-omeka-s" class="level3">
+<h3 class="anchored" data-anchor-id="pourquoi-omeka-s">Pourquoi Omeka S ?</h3>
+<p>Omeka S est conçu pour structurer des collections patrimoniales (<em>musées, archives, bibliothèques</em>) où les métadonnées sont aussi importantes que les fichiers eux-mêmes. L’accent est mis sur la <strong>qualité et l’interopérabilité des données</strong> : chaque item est décrit selon des vocabulaires standards, ce qui rend les informations fiables, cohérentes et réutilisables.</p>
 </section>
 </section>
 <section id="mod2" class="level2">
-<h2 class="anchored" data-anchor-id="mod2">Module 2 — L’Item, Unité de Base</h2>
+<h2 class="anchored" data-anchor-id="mod2">2. L’Item, Unité de Base</h2>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -344,8 +359,6 @@ ul.task-list li input[type="checkbox"] {
 <section id="anatomie-dun-item" class="level3">
 <h3 class="anchored" data-anchor-id="anatomie-dun-item">Anatomie d’un Item</h3>
 <p>Un item = une entrée dans la base de données. Il contient trois parties :</p>
-<section id="item" class="level5">
-<h5 class="anchored" data-anchor-id="item">ITEM</h5>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -355,7 +368,7 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>ID</strong> (<code>o:id</code>)</td>
+<td><strong><a href="#lidentifiant-oid">o:id</a></strong> (<code>o:id</code>)</td>
 <td>Numéro unique</td>
 </tr>
 <tr class="even">
@@ -364,21 +377,129 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td><strong>Médias</strong></td>
-<td>Fichiers attachés</td>
+<td>Fichiers attachés (pas vraiment utile ici)</td>
 </tr>
 </tbody>
 </table>
-</section>
-</section>
-<section id="lidentifiant-oid" class="level3">
-<h3 class="anchored" data-anchor-id="lidentifiant-oid">L’identifiant “o:id”</h3>
+<p><br> <br></p>
+<p><strong>EXEMPLE</strong> :</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Élément</th>
+<th>Valeur d’exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>o:id</td>
+<td>1543</td>
+</tr>
+<tr class="even">
+<td>dcterms:title</td>
+<td>“<em>Carte postale du viaduc de Caen, 1995</em>”</td>
+</tr>
+<tr class="odd">
+<td>dcterms:creator</td>
+<td>Archives départementales</td>
+</tr>
+<tr class="even">
+<td>dcterms:date</td>
+<td>2014-06-12</td>
+</tr>
+<tr class="odd">
+<td>Média(s)</td>
+<td>carte_postale_caen.jpg (2,4 Mo)</td>
+</tr>
+</tbody>
+</table>
+<section id="lidentifiant-oid" class="level4">
+<h4 class="anchored" data-anchor-id="lidentifiant-oid">L’identifiant “o:id”</h4>
 <p><strong>Définition</strong> : Numéro unique attribué automatiquement à la création</p>
 <p><strong>Utilité</strong> : Ne change jamais, même si le titre ou les métadonnées changent</p>
 <p><strong>À retenir</strong> : “C’est le numéro de matricule de l’item”</p>
 </section>
 </section>
+<section id="trouver-un-item" class="level3">
+<h3 class="anchored" data-anchor-id="trouver-un-item">Trouver un Item</h3>
+<p>Avant de modifier un item, il faut d’abord le repérer.</p>
+<section id="méthodes-de-recherche" class="level4">
+<h4 class="anchored" data-anchor-id="méthodes-de-recherche">Méthodes de Recherche</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Méthode</th>
+<th>Comment faire</th>
+<th>Quand l’utiliser</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Barre de recherche</strong></td>
+<td>En haut de la page Items</td>
+<td>Mot-clé, un titre, ou une partie du contenu</td>
+</tr>
+<tr class="even">
+<td><strong>Filtres par Item Set</strong></td>
+<td>Menu latéral → “Item Sets”</td>
+<td>Chercher dans une collection spécifique</td>
+</tr>
+<tr class="odd">
+<td><strong>Navigation via <a href="#lidentifiant-oid">o:id</a></strong></td>
+<td>URL directe (<code>/admin/show/items/[NUMÉRO]</code>)</td>
+<td>Si l’o:id précis est déjà connu</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="utiliser-advanced-search" class="level3">
+<h3 class="anchored" data-anchor-id="utiliser-advanced-search">Utiliser “Advanced Search”</h3>
+<p>Le module <strong>Advanced Search</strong> enrichit la recherche de base avec des filtres avancés. Celui-ci permet de :</p>
+<ul>
+<li>Recherche par plusieurs critères simultanément <em>(ex: titre + date + créateur)</em></li>
+<li>Tri personnalisable : par date, par titre, par classe/item set, par pertinence, etc.</li>
+<li>De faire des requêtes “noSQL”</li>
+</ul>
+<section id="comment-lutiliser" class="level4">
+<h4 class="anchored" data-anchor-id="comment-lutiliser">Comment l’utiliser</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 41%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Action</th>
+<th>Emplacement</th>
+<th>Résultat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rechercher</td>
+<td>Bouton “Recherche avancée” au-dessus de la liste</td>
+<td>Formulaire avec champs multiples</td>
+</tr>
+<tr class="even">
+<td>Filtrer</td>
+<td>Panneau latéral gauche</td>
+<td>Affiner par Item Set, vocabulaire, etc.</td>
+</tr>
+<tr class="odd">
+<td>Trier</td>
+<td>Menu déroulant “Trier par”</td>
+<td>Ordonner les résultats</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
 <section id="mod3" class="level2">
-<h2 class="anchored" data-anchor-id="mod3">Module 3 — Vocabulaires et Propriétés</h2>
+<h2 class="anchored" data-anchor-id="mod3">3. Vocabulaires et Propriétés</h2>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -400,13 +521,18 @@ ul.task-list li input[type="checkbox"] {
 <li>Ce que chaque champ signifie</li>
 <li>Quel type de valeur est attendu</li>
 </ul>
-<p>Exemple Concret : Dublin Core (dcterms:xxx) → Le vocabulaire le plus utilisé, présent par défaut dans Omeka S, ayant comme propriété…</p>
+<p>Exemple connu : <a href="https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/">Dublin Core</a> (dcterms:xxx) → Le vocabulaire le plus utilisé internationalement, présent par défaut dans Omeka S, et ayant des propriétés comme…</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 35%">
+<col style="width: 37%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Propriété</th>
 <th>Signification</th>
-<th>Type Attendu</th>
+<th>Type attendu</th>
 </tr>
 </thead>
 <tbody>
@@ -423,7 +549,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>dcterms:date</td>
 <td>Date</td>
-<td>Texte (format ISO recommandé)</td>
+<td>Texte (ISO recommandé)</td>
 </tr>
 <tr class="even">
 <td>dcterms:description</td>
@@ -431,39 +557,59 @@ ul.task-list li input[type="checkbox"] {
 <td>Texte long</td>
 </tr>
 <tr class="odd">
-<td>…</td>
-<td>…</td>
-<td>…</td>
+<td>dcterms:type</td>
+<td>Type de ressource</td>
+<td>Texte / Controlled vocabulary</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="deux-types-de-valeurs" class="level3">
-<h3 class="anchored" data-anchor-id="deux-types-de-valeurs">Deux Types de Valeurs</h3>
-<p>Certaines propriétés acceptent :</p>
-<ul>
-<li>Texte libre → On écrit directement (ex: titre, description)</li>
-<li>Ressource → On pointe vers un autre item (ex: dcterms:creator peut lier à un item “Personne”)</li>
-</ul>
-<div class="callout callout-style-simple callout-important callout-titled">
+<section id="deux-principaux-types-de-valeurs" class="level3">
+<h3 class="anchored" data-anchor-id="deux-principaux-types-de-valeurs">Deux principaux types de valeurs</h3>
+<p>Les valeurs contenues dans chacune des propriétés peuvent être de différents types, dont deux principaux :</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 46%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Texte libre</strong></td>
+<td>Du texte classique, écrit directement</td>
+<td>Titre, description, dates (parfois), …</td>
+</tr>
+<tr class="even">
+<td><strong>Ressource</strong></td>
+<td>Pointe vers un autre item</td>
+<td>“<em>dcterms:creator</em>” pointant vers l’item “Jean Dupont” (o:id 86), …</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Attention
+<span class="screen-reader-only">Astuce</span>Où consulter le vocabulaire ?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Ceci prépare le Module 4 sur les relations.</p>
+<p>Les vocabulaires gérés par l’instance Omeka S sont consultables dans l’onglet <strong>“Vocabularies”</strong> de l’interface (utile pour se renseigner). Les propriétés apparaissent directement lors de la création ou de l’édition d’un item.</p>
 </div>
 </div>
-<p><strong>Où voir cela</strong></p>
-<p>Onglet “Vocabularies” dans l’interface. Utile pour comprendre, pas pour modifier quotidiennement.</p>
 </section>
 </section>
 <section id="mod4" class="level2">
-<h2 class="anchored" data-anchor-id="mod4">Module 4 — Organisation et Relations</h2>
+<h2 class="anchored" data-anchor-id="mod4">4. Organisation et Relations</h2>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -480,112 +626,258 @@ ul.task-list li input[type="checkbox"] {
 <section id="partie-a-les-item-sets" class="level3">
 <h3 class="anchored" data-anchor-id="partie-a-les-item-sets">Partie A : Les Item Sets</h3>
 <p><strong>Définition</strong></p>
-<p>Un Item Set = un regroupement logique d’items (fonds, collection thématique, période, etc.)</p>
+<p>Un Item Set est un regroupement logique d’items (collection thématique, période, etc.)</p>
 <p><strong>Analogie</strong></p>
 <ul>
 <li>Item → Item Set</li>
 <li>Un livre → Une étagère</li>
 <li>Un objet → Une vitrine muséale</li>
-<li>Une entrée BDD → Une collection logique</li>
 </ul>
 <p><strong>Règles Importantes</strong></p>
 <ul>
 <li>Un item peut appartenir à plusieurs Item Sets</li>
 <li>Un Item Set ne contient pas de médias directs (seulement des références à des items)</li>
 </ul>
-<p><strong>Manipulation</strong> - Voir les Item Sets existants - Créer un nouveau Item Set - Ajouter un item à un Item Set</p>
 </section>
 <section id="partie-b-relations-entre-items-via-oid" class="level3">
 <h3 class="anchored" data-anchor-id="partie-b-relations-entre-items-via-oid">Partie B : Relations Entre Items via o:id</h3>
-<p><strong>Pourquoi les Relations ?</strong> Omeka S n’est pas une simple liste de fiches indépendantes. C’est un réseau de données reliées.</p>
-<p><strong>Le Mécanisme</strong> Une propriété de type “ressource” permet de pointer vers un autre item plutôt que d’écrire du texte libre.</p>
+<p>Omeka S n’est pas une simple liste de fiches indépendantes, mais plutôt un réseau de données reliées entre elles grâce aux propriétés ayant un contenu de type “ressource”, c’est-à-dire une redirection vers un autre item — comme un lien hypertexte plutôt que de recopier un titre.</p>
 <p><strong>Exemple</strong></p>
 <p>Item “Document historique” (o:id: 142) └── dcterms:creator → Item “Personne” (o:id: 89) La relation est faite via le o:id de l’item cible.</p>
-<p><strong>Pourquoi pas juste du Texte ?</strong> Relation via o:id Texte Libre Données structurées et interrogables Impossible de faire des requêtes Liens exploitables par l’API Informations perdues Mise à jour centralisée Duplication des données</p>
-<p><strong>Démonstration Requise</strong> Créer une liaison entre deux items existants via une propriété de type ressource.</p>
+<p><strong>Pourquoi pas juste du texte ?</strong> | Relation via o:id | Texte Libre | | —————– | ———– | | Données structurées et interrogables | Impossible de faire des requêtes | | Liens exploitables par l’API |&nbsp;Informations limitées | | Mise à jour centralisée | Duplication des données |</p>
+<p><strong>Retenir</strong> : Les deux approches ont leur place. Mais dès qu’une donnée peut pointer vers autre chose, faites-le : vos données seront plus riches et cohérentes.</p>
+</section>
+</section>
+<section id="mod5" class="level2">
+<h2 class="anchored" data-anchor-id="mod5">5. Le module “ScanR”</h2>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Objectif
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Comprendre comment importer des données externes (personnes) via l’API ScanR.</p>
+</div>
+</div>
+<section id="quest-ce-que-scanr" class="level3">
+<h3 class="anchored" data-anchor-id="quest-ce-que-scanr">Qu’est-ce que ScanR ?</h3>
+<p>ScanR est la plateforme du Ministère de l’Enseignement Supérieur et de la Recherche qui recense :</p>
+<ul>
+<li>Chercheurs et leurs affiliations</li>
+<li>Domaines de recherche</li>
+<li>Publications et distinctions</li>
+</ul>
+<p>Le module ScanR pour Omeka S, développé par Samuel Szoniecky, permet d’importer directement sur Omeka S les fiches personnes depuis cette base.</p>
+</section>
+<section id="effectuer-un-import" class="level3">
+<h3 class="anchored" data-anchor-id="effectuer-un-import">Effectuer un import :</h3>
+<p>Il existe deux façons d’importer les données depuis la base ScanR :</p>
+<hr>
+<p><br></p>
+<section id="import-individuel" class="level5">
+<h5 class="anchored" data-anchor-id="import-individuel">Import individuel</h5>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 32%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Étape</th>
+<th>Action</th>
+<th>Résultat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Accéder à l’onglet “ScanR” dans l’interface</td>
+<td>Formulaire de recherche</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Rechercher une personne (<strong>nom</strong>, ORCID, structure)</td>
+<td>Résultats depuis ScanR</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Sélectionner et valider l’import</td>
+<td>Création ou modification de l’item “Personne” avec les métadonnées de ScanR</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Vérifier/mettre à jour les liens (ex: dcterms:creator → structure)</td>
+<td>Données cohérentes</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</section>
+<section id="import-massif" class="level5">
+<h5 class="anchored" data-anchor-id="import-massif">Import massif</h5>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 32%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Étape</th>
+<th>Action</th>
+<th>Résultat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Accéder à la liste souhaitée d’items, et sélectionner ces derniers</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Cliquer sur “Batch actions”, puis “Edit selected”, puis sur le bouton “Go”</td>
+<td>Une nouvelle fenêtre s’ouvre</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Cocher la case “Merge item data with Scanr first response”, puis “Submit”</td>
+<td>Retour à la liste des items, l’import se fait en arrière-plan</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Vérifier/mettre à jour les liens (ex: dcterms:creator → structure)</td>
+<td>Données cohérentes</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="limites-à-connaître" class="level3">
+<h3 class="anchored" data-anchor-id="limites-à-connaître">Limites à connaître</h3>
+<ul>
+<li><strong>Noms complexes</strong> : Certaines orthographes ou noms composés peuvent poser problème à l’extraction</li>
+<li><strong>Biais de couverture</strong> : Les concepts sont basés sur les publications du MESR → certaines communautés peuvent être moins représentées</li>
+<li><strong>Résultats consultables limités</strong> : Un bug empêche d’afficher les EC trouvés au-delà de trois noms (import indiviuel uniquement)</li>
+<li><strong>Configuration préalable</strong> : Nécessite un template et un item set dédiés aux personnes importées</li>
+</ul>
+</section>
+</section>
+<section id="mod6" class="level2">
+<h2 class="anchored" data-anchor-id="mod6">6. Atelier Pratique</h2>
+<p><strong>Consignes</strong> : Accéder à l’item qui vous désigne, et éditez-le pour ajouter des informations complémentaires. Ces données doivent contenir au moins <strong>une fois du texte</strong> et <strong>une fois une ressource</strong>. Assurez-vous aussi que l’item que vous éditez est bien dans un Item Set <strong>cohérent</strong> (<em>le rajouter ou le modifier si besoin</em>).</p>
+<ul>
+<li>Exemple d’éléments à inclure : description, date de naissance, un/des laboratoire(s), …</li>
+</ul>
+<p><strong>Critère de réussite</strong> : Les nouvelles informations apparaissent sur la fiche, et l’élément “ressource” redirige bien vers un autre item.</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Une fois l’exercice validé…
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Envie de vous exercer sur autre chose ? N’hésitez pas, tant que le formateur se trouve pas loin pour vous aider ! :)</p>
+</div>
+</div>
+</section>
+<section id="synthèse-et-repères" class="level2">
+<h2 class="anchored" data-anchor-id="synthèse-et-repères">Synthèse et Repères</h2>
+<p>Schéma Récapitulatif</p>
+<pre><code>                    ┌───────────────┐
+                    │  Vocabulaires │
+                    └───────┬───────┘
+                            ↓
+                   ┌─────────────────┐
+                   │   Propriétés    │
+                   └────────┬────────┘
+                            ↓
+              ┌───────────────────────────┐
+              │         ITEMS             │
+              │  • "o:id" (id unique)     │
+              │  • Métadonnées            │
+              │  • Médias                 │
+              └─────────────┬─────────────┘
+                            │
+         ┌──────────────────┼──────────────────┐
+         ↓                  ↓                  ↓
+  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+  │  Item Sets  │    │  Relations  │    │  Site/API   │
+  │  (groupes)  │    │ (o:id → id) │    │(exposition) │
+  └─────────────┘    └─────────────┘    └─────────────┘</code></pre>
+<section id="en-résumé" class="level3">
+<h3 class="anchored" data-anchor-id="en-résumé">En résumé</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 68%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ce que tu veux faire</th>
+<th>Où aller</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Modifier le titre/description d’un item</td>
+<td>L’item lui-même (édition)</td>
+</tr>
+<tr class="even">
+<td>Regrouper plusieurs items</td>
+<td>Créer un Item Set</td>
+</tr>
+<tr class="odd">
+<td>Relier un item à un autre</td>
+<td>Utiliser une propriété de type “ressource”</td>
+</tr>
+<tr class="even">
+<td>Ajouter un fichier</td>
+<td>Section “Médias” de l’item</td>
+</tr>
+<tr class="odd">
+<td>Chercher un item</td>
+<td>Barre de recherche ou navigation par ID</td>
+</tr>
+</tbody>
+</table>
 <div class="callout callout-style-simple callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avertissement</span>Cas d’Erreur Courant
+<span class="screen-reader-only">Avertissement</span>Quand appeler l’administrateur
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>“J’ai créé une relation mais elle n’apparaît pas sur le site” → Vérifier :</p>
 <ul>
-<li>La propriété utilisée accepte-t-elle une ressource ?</li>
-<li>L’item cible est-il publié/visible ?</li>
-<li>L’API expose-t-elle ce type de relation ?</li>
+<li>Besoin de créer un nouveau vocabulaire</li>
+<li>Problème de connexion ou droits d’accès</li>
+<li>Erreur système après sauvegarde</li>
+<li>Besoin de modifications hors du périmètre autorisé</li>
 </ul>
 </div>
 </div>
 </section>
-</section>
-<section id="mod5" class="level2">
-<h2 class="anchored" data-anchor-id="mod5">Module 5 — Le module “ScanR”</h2>
-<p>Deux façon d’utiliser le module : import massif ; import individuel</p>
-<p>Limites : Peut avoir parfois du mal à trouver certains noms (nom composé, …) ; concepts basés sur les publications de l’EC, ce qui peut biaiser l’extraction</p>
-</section>
-<section id="mod6" class="level2">
-<h2 class="anchored" data-anchor-id="mod6">Module 6 — Pratique : Vos Modifications</h2>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Astuce</span>Objectif
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Appliquer immédiatement les concepts dans des tâches réelles.</p>
-</div>
-</div>
-<p>Structure Recommandée Pour chaque modification demandée :</p>
-<p>Démonstration par le formateur Reproduction guidée par les stagiaires (sur items de test ou réels)</p>
-<p>Validation : vérification que le changement est bien enregistré</p>
-<p>Checklist par tâche</p>
-<ul>
-<li>Identifier l’item concerné (via recherche ou navigation)</li>
-<li>Ouvrir l’item et repérer la section à modifier</li>
-<li>Appliquer la modification</li>
-<li>Sauvegarder</li>
-<li>Vérifier le résultat dans la liste ou via une recherche</li>
-</ul>
-<p>Si une relation est à créer</p>
-<ul>
-<li>Identifier l’item source et l’item cible</li>
-<li>Trouver le o:id de l’item cible (dans l’URL ou les infos de l’item)</li>
-<li>Utiliser la propriété appropriée de type “ressource”</li>
-<li>Sélectionner l’item cible dans l’interface (ne pas taper manuellement le o:id)</li>
-<li>Sauvegarder et tester</li>
-</ul>
-</section>
-<section id="synthèse-et-repères" class="level2">
-<h2 class="anchored" data-anchor-id="synthèse-et-repères">Synthèse et Repères</h2>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Astuce</span>Objectif
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Consolider les acquis et donner des repères pour l’autonomie.</p>
-</div>
-</div>
-<p>Schéma Récapitulatif ┌───────────────┐ │ Vocabulaires │ │ (définissent)│ └───────┬───────┘ ↓ ┌─────────────────┐ │ Propriétés │ ← Textuelles ou Ressources │ (les champs) │ └────────┬────────┘ ↓ ┌───────────────────────────┐ │ ITEMS │ │ • o:id (identifiant unique) │ • Métadonnées │ │ • Médias │ └───────┬───────────────────┘ │ ┌────────────┼────────────┐ ↓ ↓ ↓ ┌─────────┐ ┌─────────┐ ┌─────────┐ │Item Sets│ │Relation │ │Relations│ │(groupes)│ │(via o:id)│ │(via API)│ └─────────┘ └─────────┘ └─────────┘ Questions À Se Poser Avant toute action, identifier :</p>
-<p>Je veux… Je dois aller vers… Modifier le titre/description d’un item L’item lui-même Regrouper plusieurs items Créer un Item Set Relier un item à un autre Utiliser une propriété de type “ressource” Ajouter un fichier Section “Médias” de l’item Quand Appeler l’Administrateur Besoin de créer un nouveau vocabulaire Problème de connexion ou droits d’accès Erreur système après sauvegarde Besoin de modifications hors du périmètre autorisé</p>
 </section>
 <section id="annexes" class="level2">
 <h2 class="anchored" data-anchor-id="annexes">Annexes</h2>
 <section id="glossaire-rapide" class="level3">
 <h3 class="anchored" data-anchor-id="glossaire-rapide">Glossaire rapide</h3>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Terme</th>
@@ -594,32 +886,48 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
+<td>API</td>
+<td>Mécanisme technique d’exposition des données vers d’autres systèmes (hors scope)</td>
+</tr>
+<tr class="even">
+<td>Base de données</td>
+<td>Stockage central où sont créées, modifiées et organisées toutes les données</td>
+</tr>
+<tr class="odd">
+<td>Module</td>
+<td>Extension qui ajoute des fonctionnalités à Omeka S (ex: ScanR)</td>
+</tr>
+<tr class="even">
 <td>Item</td>
 <td>Entrée dans la base (photo, document, objet…)</td>
 </tr>
-<tr class="even">
-<td>o:id</td>
-<td>Identifiant unique permanent</td>
-</tr>
 <tr class="odd">
 <td>Item Set</td>
-<td>Regroupement d’items</td>
-</tr>
-<tr class="even">
-<td>Vocabulaire</td>
-<td>Ensemble de propriétés possibles</td>
-</tr>
-<tr class="odd">
-<td>Propriété</td>
-<td>Champ spécifique (ex: dcterms:title)</td>
+<td>Regroupement logique d’items (collection, fonds thématique)</td>
 </tr>
 <tr class="even">
 <td>Média</td>
-<td>Fichier attaché à un item</td>
+<td>Fichier attaché à un item (peu évoqué dans notre cas)</td>
 </tr>
 <tr class="odd">
+<td>o:id</td>
+<td>Identifiant unique permanent attribué automatiquement</td>
+</tr>
+<tr class="even">
+<td>Propriété</td>
+<td>Champ spécifique (ex: dcterms:title)</td>
+</tr>
+<tr class="odd">
+<td>Relation</td>
+<td>Lien actif entre items via une propriété de type “ressource”</td>
+</tr>
+<tr class="even">
 <td>Ressource</td>
-<td>Propriété qui pointe vers un autre item</td>
+<td>Propriété pointant vers un autre item (vs.&nbsp;texte libre)</td>
+</tr>
+<tr class="odd">
+<td>Vocabulaire</td>
+<td>Ensemble de propriétés et de classes définissant les champs possibles</td>
 </tr>
 </tbody>
 </table>
