@@ -1,6 +1,31 @@
 /* Import de la police Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+/* --- Application de Poppins aux titres uniquement --- */
+h1, h2, h3, h4, h5, h6,
+.navbar-brand,
+.quarto-title .title,
+.quarto-title .subtitle {
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.01em;
+}
+
+/* --- Accent rouge sous les titres de section --- */
+main h2::after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 3px;
+    background: #E30F1B;
+    margin-top: 0.65rem;
+}
+
+/* Les titres d'encadres et d'onglets ne sont pas des sections */
+main .callout h2::after,
+main .panel-tabset h2::after {
+    display: none;
+}
+
 /* --- Suppression du style du header Quarto --- */
 .quarto-title-block,
 .quarto-title-block-container {
@@ -12,8 +37,12 @@
     box-shadow: none !important;
 }
 
+/* --- Respiration sous le bloc de titre --- */
 #title-block-header {
-    margin-bottom: 0 !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 3.5rem !important;
+    padding-bottom: 2rem !important;
+    border-bottom: 1px solid #e5e5e5 !important;
 }
 
 /* --- Titre complet dans la navbar --- */
@@ -63,10 +92,11 @@
     opacity: 0.9;
 }
 
-/* --- Cartes-boutons élégantes pour la section Outils --- */
+/* --- Cartes-boutons elegantes pour la section Outils --- */
 .tool-grid {
     display: flex;
     justify-content: center;
+    align-items: stretch;
     gap: 30px;
     flex-wrap: wrap;
     margin-top: 30px;
@@ -81,7 +111,9 @@
     font-weight: 600;
     font-size: 1.15em;
     transition: background 0.2s ease, transform 0.2s ease;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 
 .tool-card:hover {
@@ -95,4 +127,22 @@
   border-radius: 6px;
   font-family: monospace;
   white-space: pre-wrap;
+}
+
+/* --- Impression : deplier les onglets --- */
+/* Sans cette regle, seul l'onglet actif sort a l'impression et au PDF.  */
+.print-only { display: none; }
+
+@media print {
+    .panel-tabset .nav-tabs { display: none !important; }
+    .panel-tabset .tab-content > .tab-pane {
+        display: block !important;
+        opacity: 1 !important;
+    }
+    .print-only {
+        display: block;
+        font-weight: 600;
+        font-size: 1.05em;
+        margin: 1.25rem 0 0.5rem;
+    }
 }

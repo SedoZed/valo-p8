@@ -1,333 +1,357 @@
 ---
 title: "Formation Omeka S pour non-informaticiens"
 subtitle: "Guide de prise en main basique de l'interface d'administration"
-author: "Cédric BOUCLY "
-date: "22/13/2026"
+author: "Cédric BOUCLY"
+date: "2026-07-22"
+date-format: "D MMMM YYYY"
 lang: fr
 keywords: [Omeka S, base de données, métadonnées, ontologies, initiation]
 ---
 
-<br>
-
 ## Préambule
 
-<u>**Objectifs**</u> : À la fin de la formation, les participants seront capables de :
+**Durée : ~1 heure.** À la fin de la formation, les participants seront capables de :
 
-1. Comprendre la logique interne d'Omeka S _(Items, Item Sets, Relations, etc)_
-2. Naviguer dans la base de données sans confusion entre les différents types d'objets
-3. Effectuer quelques modifications spécifiques directement dans l'interface Omeka S.
+::: {.grid}
+::: {.g-col-12 .g-col-md-4}
+**1. Comprendre**
 
----------
+La logique interne d'Omeka S : items, item sets, relations.
+:::
+::: {.g-col-12 .g-col-md-4}
+**2. Naviguer**
 
-<br>
+Se repérer dans la base sans confondre les types d'objets.
+:::
+::: {.g-col-12 .g-col-md-4}
+**3. Modifier**
+
+Effectuer des modifications ciblées directement dans l'interface.
+:::
+:::
+
+::: {.callout-note appearance="simple"}
+## Comment lire ce document
+
+Les libellés de l'interface sont notés comme ceci : <kbd>Batch actions</kbd>.
+Les noms de champs sont notés comme cela : `dcterms:title`.
+:::
 
 ## 1. Le paysage global {#mod1}
 
-::: {.callout-tip appearance="simple"}
-## Objectif
-
+::: {.callout-note title="Objectif" appearance="simple"}
 Comprendre la logique interne d'Omeka S.
 :::
 
-### Concepts Clés
+### Concepts clés
 
-| Concept | Définition Simplifiée | À retenir |
-|---------|-----------------------| --------- |
-| **Base de données** | Là où on crée, modifie, organise le contenu | Interface principale de travail |
-| **Site/CMS** | Outil de déploiement & configuration de site interne à Omeka S | Non utilisé pour le moment | 
-| **API** | Mécanisme d'exposition programmatique des données | Export/Connexion vers des outils externes |
+| Concept              | Définition simplifiée                                    | À retenir                          |
+|----------------------|----------------------------------------------------------|------------------------------------|
+| **Base de données**  | Là où on crée, modifie et organise le contenu             | Interface principale de travail    |
+| **Site / CMS**       | Outil de déploiement de sites publics, interne à Omeka S  | Non utilisé pour le moment         |
+| **API**              | Mécanisme d'exposition programmatique des données         | Export vers des outils externes    |
+
+### Se repérer dans l'interface
+
+L'administration compte une dizaine d'entrées dans son menu latéral. Trois seulement seront utilisées pendant cette formation :
+
+| Entrée du menu | À quoi elle sert | Vu au module |
+|---|---|---|
+| <kbd>Items</kbd> | Les entrées individuelles de la base | 2 |
+| <kbd>Item Sets</kbd> | Les regroupements d'items | 4 |
+| <kbd>ScanR</kbd> | L'import de fiches personnes | 5 |
+
+Le reste du menu relève de l'administration de l'instance et n'est pas abordé ici.
 
 ### Pourquoi Omeka S ?
 
-Omeka S est conçu pour structurer des collections patrimoniales (_musées, archives, bibliothèques_) où les métadonnées sont aussi importantes que les fichiers eux-mêmes. L'accent est mis sur la **qualité et l'interopérabilité des données** : chaque item est décrit selon des vocabulaires standards, ce qui rend les informations fiables, cohérentes et réutilisables.
+Omeka S est conçu pour structurer des collections patrimoniales (*musées, archives, bibliothèques*) où les métadonnées comptent autant que les fichiers eux-mêmes. L'accent est mis sur la **qualité et l'interopérabilité des données** : chaque item est décrit selon des vocabulaires standards, ce qui rend les informations fiables, cohérentes et réutilisables.
 
-## 2. L'Item, Unité de Base {#mod2}
+## 2. L'item, unité de base {#mod2}
 
-::: {.callout-tip appearance="simple"}
-## Objectif 
-
-Comprendre qu'un item est l'entrée fondamentale dans la base.
+::: {.callout-note title="Objectif" appearance="simple"}
+Comprendre qu'un item est l'entrée fondamentale dans la base, et savoir le retrouver.
 :::
 
-### Anatomie d'un Item
+### Anatomie d'un item
 
 Un item = une entrée dans la base de données. Il contient trois parties :
 
-| Élément | Description |
-|---------|-------------|
-| **[o:id](#lidentifiant-oid)** (`o:id`) | Numéro unique |
-| **Métadonnées** | Champs descriptifs |
-| **Médias** | Fichiers attachés (pas vraiment utile ici) |
+| Élément                          | Description                                  |
+|----------------------------------|----------------------------------------------|
+| **[`o:id`](#oid)**               | Numéro unique, attribué automatiquement      |
+| **Métadonnées**                  | Champs descriptifs                           |
+| **Médias**                       | Fichiers attachés (peu utilisés ici)         |
 
-<br>
-<br>
+**Exemple concret :**
 
-**EXEMPLE** :
+![Fiche d'un item dans l'administration. Le numéro `o:id` figure dans le volet de droite.](../assets/img/formation1.png){#fig-item fig-alt="Page d'affichage d'un item, montrant ses métadonnées, son identifiant et ses médias"}
 
-| Élément	| Valeur d'exemple |
-| ------- | ---------------- |
-| o:id | 1543 |
-| dcterms:title |	"_Carte postale du viaduc de Caen, 1995_" |
-| dcterms:creator |	Archives départementales |
-| dcterms:date | 2014-06-12 |
-| Média(s) | carte_postale_caen.jpg (2,4 Mo) |
+| Élément           | Valeur                                                  |
+|-------------------|---------------------------------------------------------|
+| `o:id`            | 7457                                                    |
+| `dcterms:title`   | *Samuel SZONIECKY*                                      |
+| `dcterms:isPartOf`| → Item « PARAGRAPHE » (o:id 1954)                       |
+| `foaf:birthday`   | 1971                                                    |
+| Média(s)          | `pfp_SSZ.jpg` (2,4 Mo)                       |
 
-#### L'identifiant "o:id"
+Notez que `dcterms:isPartOf` ne contient pas du texte, mais un **lien vers un autre item**. On y revient au [module 4](#mod4).
 
-**Définition** : Numéro unique attribué automatiquement à la création
+#### L'identifiant `o:id` {#oid}
 
-**Utilité** : Ne change jamais, même si le titre ou les métadonnées changent
+::: {.column-margin}
+**`o:id`** — le numéro de matricule de l'item. Il ne change jamais.
+:::
 
-**À retenir** : "C'est le numéro de matricule de l'item"
+Numéro unique attribué automatiquement à la création. Il ne change **jamais**, même si le titre ou l'ensemble des métadonnées sont modifiés. C'est donc le seul point d'accroche fiable pour désigner un item.
 
-### Trouver un Item
+### Trouver un item
 
 Avant de modifier un item, il faut d'abord le repérer.
 
-#### Méthodes de Recherche
+| Méthode                    | Comment faire                              | Quand l'utiliser                          |
+|----------------------------|--------------------------------------------|-------------------------------------------|
+| **Barre de recherche**     | En haut de la page <kbd>Items</kbd>        | Mot-clé, titre, fragment de contenu       |
+| **Filtre par Item Set**    | Menu latéral → <kbd>Item Sets</kbd>        | Chercher dans une collection précise      |
+| **Accès direct par o:id**  | URL `/admin/item/1543`                     | Quand l'`o:id` est déjà connu             |
 
-| Méthode | Comment faire | Quand l'utiliser |
-|---------|---------------|------------------|
-| **Barre de recherche** | En haut de la page Items | Mot-clé, un titre, ou une partie du contenu |
-| **Filtres par Item Set** | Menu latéral → "Item Sets" | Chercher dans une collection spécifique |
-| **Navigation via [o:id](#lidentifiant-oid)** | URL directe (`/admin/show/items/[NUMÉRO]`) | Si l'o:id précis est déjà connu |
+::: {.callout-tip appearance="simple"}
+## Astuce
 
----
+L'URL d'édition suit le même schéma : `/admin/item/1543/edit`. Inversement, si vous êtes en train d'éditer un item, son `o:id` se lit directement dans la barre d'adresse.
+:::
 
-### Utiliser "Advanced Search"
+#### Le module Advanced Search
 
-Le module **Advanced Search** enrichit la recherche de base avec des filtres avancés. Celui-ci permet de :
+Le module **Advanced Search** enrichit la recherche de base. Il permet de :
 
-- Recherche par plusieurs critères simultanément _(ex: titre + date + créateur)_
-- Tri personnalisable : par date, par titre, par classe/item set, par pertinence, etc.
-- De faire des requêtes "noSQL"
+- combiner plusieurs critères simultanément (*titre + date + créateur*) ;
+- filtrer par classe de ressource, par item set, ou selon qu'une propriété est renseignée ou vide ;
+- trier les résultats (date, titre, classe, pertinence) ;
+- partager une recherche : tous les critères sont inscrits dans l'URL, qui peut être copiée telle quelle.
 
-#### Comment l'utiliser
+| Action      | Emplacement                                        | Résultat                        |
+|-------------|----------------------------------------------------|---------------------------------|
+| Rechercher  | Bouton <kbd>Recherche avancée</kbd>, au-dessus de la liste | Formulaire à champs multiples |
+| Filtrer     | Panneau latéral gauche                             | Affiner par item set, vocabulaire… |
+| Trier       | Menu déroulant <kbd>Trier par</kbd>                | Réordonner les résultats        |
 
-| Action | Emplacement | Résultat |
-|--------|-------------|----------|
-| Rechercher | Bouton "Recherche avancée" au-dessus de la liste | Formulaire avec champs multiples |
-| Filtrer | Panneau latéral gauche | Affiner par Item Set, vocabulaire, etc. |
-| Trier | Menu déroulant "Trier par" | Ordonner les résultats |
+## 3. Vocabulaires et propriétés {#mod3}
 
-## 3. Vocabulaires et Propriétés {#mod3}
-
-::: {.callout-tip appearance="simple"} 
-## Objectif
-
-Comprendre d'où viennent les champs lorsqu'on ouvre un item.
+::: {.callout-note title="Objectif" appearance="simple"}
+Comprendre d'où viennent les champs que l'on voit en ouvrant un item.
 :::
 
 ### Principe
-Les métadonnées d'un item ne sont pas inventées au hasard. Elles proviennent de vocabulaires, qui définissent :
 
-- Quels champs existent
-- Ce que chaque champ signifie
-- Quel type de valeur est attendu
+Les métadonnées d'un item ne sont pas inventées au hasard. Elles proviennent de **vocabulaires**, qui définissent trois choses : quels champs existent, ce que chaque champ signifie, et quel type de valeur est attendu.
 
-Exemple connu : [Dublin Core](https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/) (dcterms:xxx) → Le vocabulaire le plus utilisé internationalement, présent par défaut dans Omeka S, et ayant des propriétés comme...
+Le plus connu est [Dublin Core](https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/) (préfixe `dcterms:`) : c'est le vocabulaire le plus utilisé internationalement, présent par défaut dans Omeka S.
 
-| Propriété       | Signification        | Type attendu          |
-|-----------------|----------------------|-----------------------|
-| dcterms:title   | Titre de l'item      | Texte                 |
-| dcterms:creator | Créateur             | Texte / Ressource     |
-| dcterms:date    | Date                 | Texte (ISO recommandé)|
-| dcterms:description | Description      | Texte long            |
-| dcterms:type    | Type de ressource    | Texte / Controlled vocabulary |
+| Propriété             | Signification      | Type attendu                    |
+|-----------------------|--------------------|---------------------------------|
+| `dcterms:title`       | Titre de l'item    | Texte                           |
+| `dcterms:creator`     | Créateur           | Texte ou ressource              |
+| `dcterms:date`        | Date               | Texte (format ISO recommandé)   |
+| `dcterms:description` | Description        | Texte long                      |
+| `dcterms:type`        | Type de ressource  | Texte ou vocabulaire contrôlé   |
 
-### Deux principaux types de valeurs
+### Deux types de valeurs
 
-Les valeurs contenues dans chacune des propriétés peuvent être de différents types, dont deux principaux :
+| Type            | Description                          | Exemple                                                |
+|-----------------|--------------------------------------|--------------------------------------------------------|
+| **Texte libre** | Du texte saisi directement           | Un titre, une description, parfois une date            |
+| **Ressource**   | Un lien vers un autre item           | `dcterms:creator` pointant vers l'item « Jean Dupont » (o:id 89) |
 
-| Type | Description | Exemple |
-|------|-------------|---------|
-| **Texte libre** | Du texte classique, écrit directement | Titre, description, dates (parfois), ... |
-| **Ressource** | Pointe vers un autre item | "_dcterms:creator_"  pointant vers l'item "Jean Dupont" (o:id 86), ... |
+![Le sélecteur de type de valeur, en mode édition d'un item.](../assets/img/formation2.png){#fig-types fig-alt="Sélecteur permettant de choisir entre une valeur texte, une ressource ou une URI"}
 
 ::: {.callout-tip appearance="simple"}
-## Où consulter le vocabulaire ?
+## Où consulter les vocabulaires ?
 
-Les vocabulaires gérés par l'instance Omeka S sont consultables dans l'onglet **"Vocabularies"** de l'interface (utile pour se renseigner). Les propriétés apparaissent directement lors de la création ou de l'édition d'un item.
+Les vocabulaires installés sur l'instance sont listés dans l'onglet <kbd>Vocabularies</kbd> de l'interface. Les propriétés, elles, apparaissent directement au moment de créer ou d'éditer un item.
+
+Pour le détail des vocabulaires et de leur logique sous-jacente, voir la page [Exploiter le web sémantique pour les métadonnées](dico_rdf.qmd).
 :::
 
-## 4. Organisation et Relations {#mod4}
+## 4. Organisation et relations {#mod4}
 
-::: {.callout-tip appearance="simple"} 
-## Objectif
-
-Comprendre comment les items s'organisent et se lient entre eux. 
+::: {.callout-note title="Objectif" appearance="simple"}
+Comprendre comment les items s'organisent et se lient entre eux.
 :::
 
-### Partie A : Les Item Sets
+### A. Les Item Sets
 
-**Définition**
+Un Item Set est un **regroupement logique d'items** : collection thématique, période, fonds, etc.
 
-Un Item Set est un regroupement logique d'items (collection thématique, période, etc.)
+| Dans Omeka S | En bibliothèque | Au musée      |
+|--------------|-----------------|---------------|
+| Item         | Un livre        | Un objet      |
+| Item Set     | Une étagère     | Une vitrine   |
 
-**Analogie**
+::: {.callout-warning appearance="simple"}
+## Deux règles à ne pas oublier
 
-- Item → Item Set
-- Un livre → Une étagère
-- Un objet → Une vitrine muséale
-
-**Règles Importantes**
-
-- Un item peut appartenir à plusieurs Item Sets
-- Un Item Set ne contient pas de médias directs (seulement des références à des items)
-
-### Partie B : Relations Entre Items via o:id
-
-Omeka S n'est pas une simple liste de fiches indépendantes, mais plutôt un réseau de données reliées entre elles grâce aux propriétés ayant un contenu de type "ressource", c'est-à-dire une redirection vers un autre item — comme un lien hypertexte plutôt que de recopier un titre.
-
-**Exemple**
-
-Item "Document historique" (o:id: 142)
-  └── dcterms:creator → Item "Personne" (o:id: 89)
-La relation est faite via le o:id de l'item cible.
-
-**Pourquoi pas juste du texte ?**
-| Relation via o:id	| Texte Libre |
-| ----------------- | ----------- |
-| Données structurées et interrogables | Impossible de faire des requêtes |
-| Liens exploitables par l'API | Informations limitées |
-| Mise à jour centralisée |	Duplication des données |
-
-**Retenir** : Les deux approches ont leur place. Mais dès qu'une donnée peut pointer vers autre chose, faites-le : vos données seront plus riches et cohérentes.
-
-## 5. Le module "ScanR" {#mod5}
-
-::: {.callout-tip appearance="simple"} 
-## Objectif
-
-Comprendre comment importer des données externes (personnes) via l'API ScanR.
+- Un item peut appartenir à **plusieurs** Item Sets simultanément.
+- Un Item Set ne contient **pas de médias** en propre, uniquement des références à des items.
 :::
 
-### Qu'est-ce que ScanR ?
+### B. Les relations entre items
 
-ScanR est la plateforme du Ministère de l'Enseignement Supérieur et de la Recherche qui recense :
+Omeka S n'est pas une liste de fiches indépendantes, mais un **réseau de données reliées**. Le lien se fait via les propriétés de type « ressource » : plutôt que de recopier un titre, on pointe vers l'item concerné — comme un lien hypertexte.
 
-- Chercheurs et leurs affiliations
-- Domaines de recherche
-- Publications et distinctions
+```{mermaid}
+%%| fig-align: center
+flowchart LR
+    A["Item « Document historique »<br/>o:id 142"] -->|dcterms:creator| B["Item « Jean Dupont »<br/>o:id 89"]
+```
 
-Le module ScanR pour Omeka S, développé par Samuel Szoniecky, permet d'importer directement sur Omeka S les fiches personnes depuis cette base.
+**Pourquoi ne pas simplement écrire le nom en texte ?**
 
-### Effectuer un import :
+| Relation via `o:id`                  | Texte libre                        |
+|--------------------------------------|------------------------------------|
+| Données structurées et interrogeables | Impossible d'en faire des requêtes |
+| Liens exploitables par l'API          | Information isolée                 |
+| Mise à jour centralisée               | Duplication des données            |
 
-Il existe deux façons d'importer les données depuis la base ScanR :
+::: {.callout-tip appearance="simple"}
+## À retenir
 
----
+Les deux approches ont leur place. Mais dès qu'une donnée **peut** pointer vers un autre item, faites-le : vos données seront plus riches et plus cohérentes.
+:::
+
+## 5. Le module ScanR {#mod5}
+
+::: {.callout-note title="Objectif" appearance="simple"}
+Savoir importer une fiche « personne » depuis ScanR, et connaître les limites de l'opération.
+:::
+
+ScanR est la plateforme du Ministère de l'Enseignement Supérieur et de la Recherche qui recense les chercheurs, leurs affiliations et leurs publications. Le module Omeka S correspondant, développé par **Samuel Szoniecky**, permet d'en importer les fiches directement dans la base.
+
+::: {.callout-note appearance="simple"}
+Ce module ne couvre que la manipulation dans Omeka S. Pour le fonctionnement de la source elle-même, la structure des données et les cas d'usage plus larges, voir la page [ScanR comme source de données](scanr_extract.qmd).
+:::
+
+### Effectuer un import
+
+Il existe deux chemins, à choisir selon le volume à traiter.
+
+::: {.panel-tabset}
+
+#### Import individuel
+
+[Import individuel]{.print-only}
+
+| Étape | Action                                                          | Résultat                                              |
+|:-----:|-----------------------------------------------------------------|-------------------------------------------------------|
+| 1     | Ouvrir l'onglet <kbd>ScanR</kbd> de l'interface                 | Le formulaire de recherche s'affiche                  |
+| 2     | Rechercher une personne (**nom**, ORCID, structure)             | Résultats renvoyés par ScanR                          |
+| 3     | Sélectionner le bon résultat et valider l'import                | Création ou mise à jour de l'item « Personne »        |
+| 4     | Vérifier les liens (ex. `dcterms:subject` → concept)          | Données cohérentes                                    |
+
 <br>
 
-##### Import individuel
+![Résultats renvoyés par ScanR après une recherche par nom.](../assets/img/formation3.png){#fig-scanr-indiv fig-alt="Formulaire de recherche ScanR et liste de résultats"}
 
-| Étape | Action | Résultat |
-|-------|--------|----------|
-| 1 | Accéder à l'onglet "ScanR" dans l'interface | Formulaire de recherche |
-| 2 | Rechercher une personne (**nom**, ORCID, structure) | Résultats depuis ScanR |
-| 3 | Sélectionner et valider l'import | Création ou modification de l'item "Personne" avec les métadonnées de ScanR  |
-| 4 | Vérifier/mettre à jour les liens (ex: dcterms:creator → structure) | Données cohérentes |
+#### Import massif
+
+[Import massif]{.print-only}
+
+| Étape | Action                                                                                        | Résultat                                        |
+|:-----:|-----------------------------------------------------------------------------------------------|-------------------------------------------------|
+| 1     | Afficher la liste d'items voulue, puis cocher les items concernés                              | —                                               |
+| 2     | <kbd>Batch actions</kbd> → <kbd>Edit selected</kbd> → <kbd>Go</kbd>                             | Une nouvelle fenêtre s'ouvre                    |
+| 3     | Cocher <kbd>Merge item data with Scanr first response</kbd>, puis <kbd>Submit</kbd>            | L'import se lance en arrière-plan               |
+| 4     | Vérifier les liens (ex. `dcterms:creator` → structure)                                          | Données cohérentes                              |
 
 <br>
 
-##### Import massif
+![La case à cocher de fusion, dans la fenêtre d'édition par lot.](../assets/img/formation4.png){#fig-scanr-massif fig-alt="Fenêtre Edit selected avec l'option de fusion des données ScanR"}
 
-| Étape | Action | Résultat |
-|-------|--------|----------|
-| 1 | Accéder à la liste souhaitée d'items, et sélectionner ces derniers | --- |
-| 2 | Cliquer sur "Batch actions", puis "Edit selected", puis sur le bouton "Go" | Une nouvelle fenêtre s'ouvre |
-| 3 | Cocher la case "Merge item data with Scanr first response", puis "Submit" | Retour à la liste des items, l'import se fait en arrière-plan |
-| 4 | Vérifier/mettre à jour les liens (ex: dcterms:creator → structure) | Données cohérentes |
-
-### Limites à connaître
-
-- **Noms complexes** : Certaines orthographes ou noms composés peuvent poser problème à l'extraction
-- **Biais de couverture** : Les concepts sont basés sur les publications du MESR → certaines communautés peuvent être moins représentées
-- **Résultats consultables limités** : Un bug empêche d'afficher les EC trouvés au-delà de trois noms (import indiviuel uniquement)
-- **Configuration préalable** : Nécessite un template et un item set dédiés aux personnes importées
-
-## 6. Atelier Pratique {#mod6}
-
-**Consignes** : Accéder à l'item qui vous désigne, et éditez-le pour ajouter des informations complémentaires. Ces données doivent contenir au moins **une fois du texte** et **une fois une ressource**. Assurez-vous aussi que l'item que vous éditez est bien dans un Item Set **cohérent** (_le rajouter ou le modifier si besoin_).
-
-- Exemple d'éléments à inclure : description, date de naissance, un/des laboratoire(s), ...
-
-**Critère de réussite** : Les nouvelles informations apparaissent sur la fiche, et l'élément "ressource" redirige bien vers un autre item.
-
-::: {.callout-tip appearance="simple"} 
-## Une fois l'exercice validé...
-
-Envie de vous exercer sur autre chose ? N'hésitez pas, tant que le formateur se trouve pas loin pour vous aider ! :)
 :::
 
-## Synthèse et Repères
+::: {.callout-warning appearance="simple"}
+## Quatre points de vigilance
 
+- **Noms complexes** — certaines orthographes ou noms composés mettent l'extraction en défaut.
+- **Biais de couverture** — les concepts reposent sur les publications recensées par le MESR ; certaines communautés y sont moins représentées.
+- **Affichage limité** — un bug empêche d'afficher plus de trois résultats lors d'un import individuel.
+- **Configuration préalable** — un template et un item set dédiés aux personnes importées sont nécessaires.
+:::
 
-Schéma Récapitulatif
-``` 
-                    ┌───────────────┐
-                    │  Vocabulaires │
-                    └───────┬───────┘
-                            ↓
-                   ┌─────────────────┐
-                   │   Propriétés    │
-                   └────────┬────────┘
-                            ↓
-              ┌───────────────────────────┐
-              │         ITEMS             │
-              │  • "o:id" (id unique)     │
-              │  • Métadonnées            │
-              │  • Médias                 │
-              └─────────────┬─────────────┘
-                            │
-         ┌──────────────────┼──────────────────┐
-         ↓                  ↓                  ↓
-  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-  │  Item Sets  │    │  Relations  │    │  Site/API   │
-  │  (groupes)  │    │ (o:id → id) │    │(exposition) │
-  └─────────────┘    └─────────────┘    └─────────────┘
+## 6. Atelier pratique {#mod6}
+
+::: {.callout-note title="Objectif" appearance="simple"}
+Mettre en pratique l'édition d'un item et la création d'une relation.
+:::
+
+**Consigne** — accédez à l'item qui vous désigne et enrichissez-le.
+
+- [ ] Ajouter au moins **une valeur en texte libre** (description, date de naissance…)
+- [ ] Ajouter au moins **une valeur de type ressource** (un laboratoire, une structure…)
+- [ ] Vérifier que l'item appartient à un Item Set **cohérent** (le corriger ou l'ajouter si besoin)
+- [ ] Enregistrer, puis recharger la fiche
+
+**Critère de réussite** : les nouvelles informations apparaissent sur la fiche, et la valeur de type ressource redirige bien vers un autre item lorsqu'on clique dessus.
+
+::: {.callout-tip appearance="simple"}
+## Exercice terminé ?
+
+Envie de vous exercer sur autre chose ? N'hésitez pas, tant que le formateur n'est pas loin pour vous aider !
+:::
+
+## Synthèse et repères
+
+```{mermaid}
+%%| fig-align: center
+flowchart TD
+    V["Vocabulaires"] --> P["Propriétés"]
+    P --> I["ITEM<br/>o:id · métadonnées · médias"]
+    I --> S["Item Sets<br/>(regroupements)"]
+    I --> R["Relations<br/>(o:id → o:id)"]
+    I --> A["Site / API<br/>(exposition)"]
 ```
 
 ### En résumé
 
-| Ce que tu veux faire | Où aller |
-|----------------------|----------|
-| Modifier le titre/description d'un item | L'item lui-même (édition) |
-| Regrouper plusieurs items | Créer un Item Set |
-| Relier un item à un autre | Utiliser une propriété de type "ressource" |
-| Ajouter un fichier | Section "Médias" de l'item |
-| Chercher un item | Barre de recherche ou navigation par ID |
+| Ce que vous voulez faire                | Où aller                                  |
+|-----------------------------------------|-------------------------------------------|
+| Modifier le titre ou la description     | L'item lui-même, en mode édition          |
+| Regrouper plusieurs items               | Créer un Item Set                         |
+| Relier un item à un autre               | Une propriété de type « ressource »       |
+| Ajouter un fichier                      | Section « Médias » de l'item              |
+| Retrouver un item                       | Barre de recherche, ou URL `/admin/item/…` |
 
-::: {.callout-warning appearance="simple"}
-### Quand appeler l'administrateur
+::: {.callout-important appearance="simple"}
+## Quand appeler l'administrateur
 
 - Besoin de créer un nouveau vocabulaire
-- Problème de connexion ou droits d'accès
-- Erreur système après sauvegarde
+- Problème de connexion ou de droits d'accès
+- Erreur système après une sauvegarde
 - Besoin de modifications hors du périmètre autorisé
 :::
 
 ## Annexes
 
-### Glossaire rapide
+### Glossaire
 
-| Terme | Signification |
-| --- | --- |
-| API | Mécanisme technique d'exposition des données vers d'autres systèmes (hors scope) |
-| Base de données | Stockage central où sont créées, modifiées et organisées toutes les données |
-| Module | Extension qui ajoute des fonctionnalités à Omeka S (ex: ScanR) |
-| Item | Entrée dans la base (photo, document, objet...) |
-| Item Set | Regroupement logique d'items (collection, fonds thématique) |
-| Média | Fichier attaché à un item (peu évoqué dans notre cas) |
-| o:id | Identifiant unique permanent attribué automatiquement |
-| Propriété | Champ spécifique (ex: dcterms:title) |
-| Relation | Lien actif entre items via une propriété de type "ressource" |
-| Ressource | Propriété pointant vers un autre item (vs. texte libre) |
-| Vocabulaire | Ensemble de propriétés et de classes définissant les champs possibles |
+| Terme            | Signification                                                              |
+|------------------|----------------------------------------------------------------------------|
+| API              | Mécanisme d'exposition des données vers d'autres systèmes (hors périmètre) |
+| Base de données  | Stockage central où sont créées, modifiées et organisées les données       |
+| Item             | Entrée dans la base (photo, document, personne, objet…)                    |
+| Item Set         | Regroupement logique d'items (collection, fonds thématique)                |
+| Média            | Fichier attaché à un item                                                  |
+| Module           | Extension ajoutant des fonctionnalités à Omeka S (ex. ScanR)               |
+| `o:id`           | Identifiant unique et permanent, attribué automatiquement                  |
+| Propriété        | Champ spécifique issu d'un vocabulaire (ex. `dcterms:title`)               |
+| Relation         | Lien actif entre deux items, via une propriété de type ressource           |
+| Ressource        | Valeur pointant vers un autre item, par opposition au texte libre          |
+| Vocabulaire      | Ensemble de propriétés et de classes définissant les champs disponibles    |
 
-### Liens Utiles
+### Liens utiles
 
-Documentation officielle Omeka S : https://omeka.org/s/docs/
-
-Interface d'administration : https://valorisation.humanum-p8.fr/admin
-
+<div class="tool-grid" style="column-gap: 55px; row-gap: 20px;">
+  <a class="tool-card" href="https://omeka.org/s/docs/">Documentation Omeka S</a>
+  <a class="tool-card" href="https://valorisation.humanum-p8.fr/admin">Interface d'administration</a>
+  <a class="tool-card" href="https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/">Référentiel Dublin Core</a>
+</div>

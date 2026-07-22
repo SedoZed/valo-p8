@@ -43,6 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-66a63c344f183a26081cdb80a294f993.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,6 +73,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Recherche"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../assets/styles.css">
@@ -196,46 +202,44 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#préambule" id="toc-préambule" class="nav-link active" data-scroll-target="#préambule">Préambule</a></li>
   <li><a href="#mod1" id="toc-mod1" class="nav-link" data-scroll-target="#mod1">1. Le paysage global</a>
   <ul class="collapse">
-  <li><a href="#concepts-clés" id="toc-concepts-clés" class="nav-link" data-scroll-target="#concepts-clés">Concepts Clés</a></li>
+  <li><a href="#concepts-clés" id="toc-concepts-clés" class="nav-link" data-scroll-target="#concepts-clés">Concepts clés</a></li>
+  <li><a href="#se-repérer-dans-linterface" id="toc-se-repérer-dans-linterface" class="nav-link" data-scroll-target="#se-repérer-dans-linterface">Se repérer dans l’interface</a></li>
   <li><a href="#pourquoi-omeka-s" id="toc-pourquoi-omeka-s" class="nav-link" data-scroll-target="#pourquoi-omeka-s">Pourquoi Omeka S ?</a></li>
   </ul></li>
-  <li><a href="#mod2" id="toc-mod2" class="nav-link" data-scroll-target="#mod2">2. L’Item, Unité de Base</a>
+  <li><a href="#mod2" id="toc-mod2" class="nav-link" data-scroll-target="#mod2">2. L’item, unité de base</a>
   <ul class="collapse">
-  <li><a href="#anatomie-dun-item" id="toc-anatomie-dun-item" class="nav-link" data-scroll-target="#anatomie-dun-item">Anatomie d’un Item</a></li>
-  <li><a href="#trouver-un-item" id="toc-trouver-un-item" class="nav-link" data-scroll-target="#trouver-un-item">Trouver un Item</a></li>
-  <li><a href="#utiliser-advanced-search" id="toc-utiliser-advanced-search" class="nav-link" data-scroll-target="#utiliser-advanced-search">Utiliser “Advanced Search”</a></li>
+  <li><a href="#anatomie-dun-item" id="toc-anatomie-dun-item" class="nav-link" data-scroll-target="#anatomie-dun-item">Anatomie d’un item</a></li>
+  <li><a href="#trouver-un-item" id="toc-trouver-un-item" class="nav-link" data-scroll-target="#trouver-un-item">Trouver un item</a></li>
   </ul></li>
-  <li><a href="#mod3" id="toc-mod3" class="nav-link" data-scroll-target="#mod3">3. Vocabulaires et Propriétés</a>
+  <li><a href="#mod3" id="toc-mod3" class="nav-link" data-scroll-target="#mod3">3. Vocabulaires et propriétés</a>
   <ul class="collapse">
   <li><a href="#principe" id="toc-principe" class="nav-link" data-scroll-target="#principe">Principe</a></li>
-  <li><a href="#deux-principaux-types-de-valeurs" id="toc-deux-principaux-types-de-valeurs" class="nav-link" data-scroll-target="#deux-principaux-types-de-valeurs">Deux principaux types de valeurs</a></li>
+  <li><a href="#deux-types-de-valeurs" id="toc-deux-types-de-valeurs" class="nav-link" data-scroll-target="#deux-types-de-valeurs">Deux types de valeurs</a></li>
   </ul></li>
-  <li><a href="#mod4" id="toc-mod4" class="nav-link" data-scroll-target="#mod4">4. Organisation et Relations</a>
+  <li><a href="#mod4" id="toc-mod4" class="nav-link" data-scroll-target="#mod4">4. Organisation et relations</a>
   <ul class="collapse">
-  <li><a href="#partie-a-les-item-sets" id="toc-partie-a-les-item-sets" class="nav-link" data-scroll-target="#partie-a-les-item-sets">Partie A : Les Item Sets</a></li>
-  <li><a href="#partie-b-relations-entre-items-via-oid" id="toc-partie-b-relations-entre-items-via-oid" class="nav-link" data-scroll-target="#partie-b-relations-entre-items-via-oid">Partie B : Relations Entre Items via o:id</a></li>
+  <li><a href="#a.-les-item-sets" id="toc-a.-les-item-sets" class="nav-link" data-scroll-target="#a.-les-item-sets">A. Les Item Sets</a></li>
+  <li><a href="#b.-les-relations-entre-items" id="toc-b.-les-relations-entre-items" class="nav-link" data-scroll-target="#b.-les-relations-entre-items">B. Les relations entre items</a></li>
   </ul></li>
-  <li><a href="#mod5" id="toc-mod5" class="nav-link" data-scroll-target="#mod5">5. Le module “ScanR”</a>
+  <li><a href="#mod5" id="toc-mod5" class="nav-link" data-scroll-target="#mod5">5. Le module ScanR</a>
   <ul class="collapse">
-  <li><a href="#quest-ce-que-scanr" id="toc-quest-ce-que-scanr" class="nav-link" data-scroll-target="#quest-ce-que-scanr">Qu’est-ce que ScanR ?</a></li>
-  <li><a href="#effectuer-un-import" id="toc-effectuer-un-import" class="nav-link" data-scroll-target="#effectuer-un-import">Effectuer un import :</a></li>
-  <li><a href="#limites-à-connaître" id="toc-limites-à-connaître" class="nav-link" data-scroll-target="#limites-à-connaître">Limites à connaître</a></li>
+  <li><a href="#effectuer-un-import" id="toc-effectuer-un-import" class="nav-link" data-scroll-target="#effectuer-un-import">Effectuer un import</a></li>
   </ul></li>
-  <li><a href="#mod6" id="toc-mod6" class="nav-link" data-scroll-target="#mod6">6. Atelier Pratique</a></li>
-  <li><a href="#synthèse-et-repères" id="toc-synthèse-et-repères" class="nav-link" data-scroll-target="#synthèse-et-repères">Synthèse et Repères</a>
+  <li><a href="#mod6" id="toc-mod6" class="nav-link" data-scroll-target="#mod6">6. Atelier pratique</a></li>
+  <li><a href="#synthèse-et-repères" id="toc-synthèse-et-repères" class="nav-link" data-scroll-target="#synthèse-et-repères">Synthèse et repères</a>
   <ul class="collapse">
   <li><a href="#en-résumé" id="toc-en-résumé" class="nav-link" data-scroll-target="#en-résumé">En résumé</a></li>
   </ul></li>
   <li><a href="#annexes" id="toc-annexes" class="nav-link" data-scroll-target="#annexes">Annexes</a>
   <ul class="collapse">
-  <li><a href="#glossaire-rapide" id="toc-glossaire-rapide" class="nav-link" data-scroll-target="#glossaire-rapide">Glossaire rapide</a></li>
-  <li><a href="#liens-utiles" id="toc-liens-utiles" class="nav-link" data-scroll-target="#liens-utiles">Liens Utiles</a></li>
+  <li><a href="#glossaire" id="toc-glossaire" class="nav-link" data-scroll-target="#glossaire">Glossaire</a></li>
+  <li><a href="#liens-utiles" id="toc-liens-utiles" class="nav-link" data-scroll-target="#liens-utiles">Liens utiles</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -257,7 +261,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">13 octobre 2027</p>
+      <p class="date">22 juillet 2026</p>
     </div>
   </div>
   
@@ -275,27 +279,46 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><br></p>
 <section id="préambule" class="level2">
 <h2 class="anchored" data-anchor-id="préambule">Préambule</h2>
-<p><u><strong>Objectifs</strong></u> : À la fin de la formation, les participants seront capables de :</p>
-<ol type="1">
-<li>Comprendre la logique interne d’Omeka S <em>(Items, Item Sets, Relations, etc)</em></li>
-<li>Naviguer dans la base de données sans confusion entre les différents types d’objets</li>
-<li>Effectuer quelques modifications spécifiques directement dans l’interface Omeka S.</li>
-</ol>
-<hr>
-<p><br></p>
-</section>
-<section id="mod1" class="level2">
-<h2 class="anchored" data-anchor-id="mod1">1. Le paysage global</h2>
-<div class="callout callout-style-simple callout-tip callout-titled">
+<p><strong>Durée : ~1 heure.</strong> À la fin de la formation, les participants seront capables de :</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-4">
+<p><strong>1. Comprendre</strong></p>
+<p>La logique interne d’Omeka S : items, item sets, relations.</p>
+</div>
+<div class="g-col-12 g-col-md-4">
+<p><strong>2. Naviguer</strong></p>
+<p>Se repérer dans la base sans confondre les types d’objets.</p>
+</div>
+<div class="g-col-12 g-col-md-4">
+<p><strong>3. Modifier</strong></p>
+<p>Effectuer des modifications ciblées directement dans l’interface.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Astuce</span>Objectif
+<span class="screen-reader-only">Note</span>Comment lire ce document
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les libellés de l’interface sont notés comme ceci : <kbd>Batch actions</kbd>. Les noms de champs sont notés comme cela : <code>dcterms:title</code>.</p>
+</div>
+</div>
+</section>
+<section id="mod1" class="level2">
+<h2 class="anchored" data-anchor-id="mod1">1. Le paysage global</h2>
+<div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Objectif
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -303,61 +326,92 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <section id="concepts-clés" class="level3">
-<h3 class="anchored" data-anchor-id="concepts-clés">Concepts Clés</h3>
+<h3 class="anchored" data-anchor-id="concepts-clés">Concepts clés</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 21%">
-<col style="width: 56%">
-<col style="width: 21%">
+<col style="width: 18%">
+<col style="width: 50%">
+<col style="width: 31%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Concept</th>
-<th>Définition Simplifiée</th>
+<th>Définition simplifiée</th>
 <th>À retenir</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>Base de données</strong></td>
-<td>Là où on crée, modifie, organise le contenu</td>
+<td>Là où on crée, modifie et organise le contenu</td>
 <td>Interface principale de travail</td>
 </tr>
 <tr class="even">
-<td><strong>Site/CMS</strong></td>
-<td>Outil de déploiement &amp; configuration de site interne à Omeka S</td>
+<td><strong>Site / CMS</strong></td>
+<td>Outil de déploiement de sites publics, interne à Omeka S</td>
 <td>Non utilisé pour le moment</td>
 </tr>
 <tr class="odd">
 <td><strong>API</strong></td>
 <td>Mécanisme d’exposition programmatique des données</td>
-<td>Export/Connexion vers des outils externes</td>
+<td>Export vers des outils externes</td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="se-repérer-dans-linterface" class="level3">
+<h3 class="anchored" data-anchor-id="se-repérer-dans-linterface">Se repérer dans l’interface</h3>
+<p>L’administration compte une dizaine d’entrées dans son menu latéral. Trois seulement seront utilisées pendant cette formation :</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Entrée du menu</th>
+<th>À quoi elle sert</th>
+<th>Vu au module</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><kbd>Items</kbd></td>
+<td>Les entrées individuelles de la base</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td><kbd>Item Sets</kbd></td>
+<td>Les regroupements d’items</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td><kbd>ScanR</kbd></td>
+<td>L’import de fiches personnes</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>Le reste du menu relève de l’administration de l’instance et n’est pas abordé ici.</p>
+</section>
 <section id="pourquoi-omeka-s" class="level3">
 <h3 class="anchored" data-anchor-id="pourquoi-omeka-s">Pourquoi Omeka S ?</h3>
-<p>Omeka S est conçu pour structurer des collections patrimoniales (<em>musées, archives, bibliothèques</em>) où les métadonnées sont aussi importantes que les fichiers eux-mêmes. L’accent est mis sur la <strong>qualité et l’interopérabilité des données</strong> : chaque item est décrit selon des vocabulaires standards, ce qui rend les informations fiables, cohérentes et réutilisables.</p>
+<p>Omeka S est conçu pour structurer des collections patrimoniales (<em>musées, archives, bibliothèques</em>) où les métadonnées comptent autant que les fichiers eux-mêmes. L’accent est mis sur la <strong>qualité et l’interopérabilité des données</strong> : chaque item est décrit selon des vocabulaires standards, ce qui rend les informations fiables, cohérentes et réutilisables.</p>
 </section>
 </section>
-<section id="mod2" class="level2">
-<h2 class="anchored" data-anchor-id="mod2">2. L’Item, Unité de Base</h2>
-<div class="callout callout-style-simple callout-tip callout-titled">
+<section id="mod2" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="mod2">2. L’item, unité de base</h2>
+<div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Astuce</span>Objectif
+<span class="screen-reader-only">Note</span>Objectif
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Comprendre qu’un item est l’entrée fondamentale dans la base.</p>
+<p>Comprendre qu’un item est l’entrée fondamentale dans la base, et savoir le retrouver.</p>
 </div>
 </div>
-<section id="anatomie-dun-item" class="level3">
-<h3 class="anchored" data-anchor-id="anatomie-dun-item">Anatomie d’un Item</h3>
+<section id="anatomie-dun-item" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="anatomie-dun-item">Anatomie d’un item</h3>
 <p>Un item = une entrée dans la base de données. Il contient trois parties :</p>
 <table class="caption-top table">
 <thead>
@@ -368,8 +422,8 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong><a href="#lidentifiant-oid">o:id</a></strong> (<code>o:id</code>)</td>
-<td>Numéro unique</td>
+<td><strong><a href="#oid"><code>o:id</code></a></strong></td>
+<td>Numéro unique, attribué automatiquement</td>
 </tr>
 <tr class="even">
 <td><strong>Métadonnées</strong></td>
@@ -377,55 +431,73 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td><strong>Médias</strong></td>
-<td>Fichiers attachés (pas vraiment utile ici)</td>
+<td>Fichiers attachés (peu utilisés ici)</td>
 </tr>
 </tbody>
 </table>
-<p><br> <br></p>
-<p><strong>EXEMPLE</strong> :</p>
+<p><strong>Exemple concret :</strong></p>
+<div id="fig-item" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Page d'affichage d'un item, montrant ses métadonnées, son identifiant et ses médias">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-item-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../assets/img/formation1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro o:id figure dans le volet de droite."><img src="../assets/img/formation1.png" class="img-fluid figure-img" alt="Page d'affichage d'un item, montrant ses métadonnées, son identifiant et ses médias"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-item-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id</code> figure dans le volet de droite.
+</figcaption>
+</figure>
+</div>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Élément</th>
-<th>Valeur d’exemple</th>
+<th>Valeur</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>o:id</td>
-<td>1543</td>
+<td><code>o:id</code></td>
+<td>7457</td>
 </tr>
 <tr class="even">
-<td>dcterms:title</td>
-<td>“<em>Carte postale du viaduc de Caen, 1995</em>”</td>
+<td><code>dcterms:title</code></td>
+<td><em>Samuel SZONIECKY</em></td>
 </tr>
 <tr class="odd">
-<td>dcterms:creator</td>
-<td>Archives départementales</td>
+<td><code>dcterms:isPartOf</code></td>
+<td>→ Item « PARAGRAPHE » (o:id 1954)</td>
 </tr>
 <tr class="even">
-<td>dcterms:date</td>
-<td>2014-06-12</td>
+<td><code>foaf:birthday</code></td>
+<td>1971</td>
 </tr>
 <tr class="odd">
 <td>Média(s)</td>
-<td>carte_postale_caen.jpg (2,4 Mo)</td>
+<td><code>pfp_SSZ.jpg</code> (2,4 Mo)</td>
 </tr>
 </tbody>
 </table>
-<section id="lidentifiant-oid" class="level4">
-<h4 class="anchored" data-anchor-id="lidentifiant-oid">L’identifiant “o:id”</h4>
-<p><strong>Définition</strong> : Numéro unique attribué automatiquement à la création</p>
-<p><strong>Utilité</strong> : Ne change jamais, même si le titre ou les métadonnées changent</p>
-<p><strong>À retenir</strong> : “C’est le numéro de matricule de l’item”</p>
+<p>Notez que <code>dcterms:isPartOf</code> ne contient pas du texte, mais un <strong>lien vers un autre item</strong>. On y revient au <a href="#mod4">module 4</a>.</p>
+<section id="oid" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="oid">L’identifiant <code>o:id</code></h4>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong><code>o:id</code></strong> — le numéro de matricule de l’item. Il ne change jamais.</p>
+</div></div><p>Numéro unique attribué automatiquement à la création. Il ne change <strong>jamais</strong>, même si le titre ou l’ensemble des métadonnées sont modifiés. C’est donc le seul point d’accroche fiable pour désigner un item.</p>
 </section>
 </section>
 <section id="trouver-un-item" class="level3">
-<h3 class="anchored" data-anchor-id="trouver-un-item">Trouver un Item</h3>
+<h3 class="anchored" data-anchor-id="trouver-un-item">Trouver un item</h3>
 <p>Avant de modifier un item, il faut d’abord le repérer.</p>
-<section id="méthodes-de-recherche" class="level4">
-<h4 class="anchored" data-anchor-id="méthodes-de-recherche">Méthodes de Recherche</h4>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 38%">
+<col style="width: 37%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Méthode</th>
@@ -436,39 +508,48 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td><strong>Barre de recherche</strong></td>
-<td>En haut de la page Items</td>
-<td>Mot-clé, un titre, ou une partie du contenu</td>
+<td>En haut de la page <kbd>Items</kbd></td>
+<td>Mot-clé, titre, fragment de contenu</td>
 </tr>
 <tr class="even">
-<td><strong>Filtres par Item Set</strong></td>
-<td>Menu latéral → “Item Sets”</td>
-<td>Chercher dans une collection spécifique</td>
+<td><strong>Filtre par Item Set</strong></td>
+<td>Menu latéral → <kbd>Item Sets</kbd></td>
+<td>Chercher dans une collection précise</td>
 </tr>
 <tr class="odd">
-<td><strong>Navigation via <a href="#lidentifiant-oid">o:id</a></strong></td>
-<td>URL directe (<code>/admin/show/items/[NUMÉRO]</code>)</td>
-<td>Si l’o:id précis est déjà connu</td>
+<td><strong>Accès direct par o:id</strong></td>
+<td>URL <code>/admin/item/1543</code></td>
+<td>Quand l’<code>o:id</code> est déjà connu</td>
 </tr>
 </tbody>
 </table>
-<hr>
-</section>
-</section>
-<section id="utiliser-advanced-search" class="level3">
-<h3 class="anchored" data-anchor-id="utiliser-advanced-search">Utiliser “Advanced Search”</h3>
-<p>Le module <strong>Advanced Search</strong> enrichit la recherche de base avec des filtres avancés. Celui-ci permet de :</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Astuce
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>L’URL d’édition suit le même schéma : <code>/admin/item/1543/edit</code>. Inversement, si vous êtes en train d’éditer un item, son <code>o:id</code> se lit directement dans la barre d’adresse.</p>
+</div>
+</div>
+<section id="le-module-advanced-search" class="level4">
+<h4 class="anchored" data-anchor-id="le-module-advanced-search">Le module Advanced Search</h4>
+<p>Le module <strong>Advanced Search</strong> enrichit la recherche de base. Il permet de :</p>
 <ul>
-<li>Recherche par plusieurs critères simultanément <em>(ex: titre + date + créateur)</em></li>
-<li>Tri personnalisable : par date, par titre, par classe/item set, par pertinence, etc.</li>
-<li>De faire des requêtes “noSQL”</li>
+<li>combiner plusieurs critères simultanément (<em>titre + date + créateur</em>) ;</li>
+<li>filtrer par classe de ressource, par item set, ou selon qu’une propriété est renseignée ou vide ;</li>
+<li>trier les résultats (date, titre, classe, pertinence) ;</li>
+<li>partager une recherche : tous les critères sont inscrits dans l’URL, qui peut être copiée telle quelle.</li>
 </ul>
-<section id="comment-lutiliser" class="level4">
-<h4 class="anchored" data-anchor-id="comment-lutiliser">Comment l’utiliser</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 41%">
-<col style="width: 32%">
+<col style="width: 13%">
+<col style="width: 53%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -480,18 +561,18 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>Rechercher</td>
-<td>Bouton “Recherche avancée” au-dessus de la liste</td>
-<td>Formulaire avec champs multiples</td>
+<td>Bouton <kbd>Recherche avancée</kbd>, au-dessus de la liste</td>
+<td>Formulaire à champs multiples</td>
 </tr>
 <tr class="even">
 <td>Filtrer</td>
 <td>Panneau latéral gauche</td>
-<td>Affiner par Item Set, vocabulaire, etc.</td>
+<td>Affiner par item set, vocabulaire…</td>
 </tr>
 <tr class="odd">
 <td>Trier</td>
-<td>Menu déroulant “Trier par”</td>
-<td>Ordonner les résultats</td>
+<td>Menu déroulant <kbd>Trier par</kbd></td>
+<td>Réordonner les résultats</td>
 </tr>
 </tbody>
 </table>
@@ -499,34 +580,29 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 <section id="mod3" class="level2">
-<h2 class="anchored" data-anchor-id="mod3">3. Vocabulaires et Propriétés</h2>
-<div class="callout callout-style-simple callout-tip callout-titled">
+<h2 class="anchored" data-anchor-id="mod3">3. Vocabulaires et propriétés</h2>
+<div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Astuce</span>Objectif
+<span class="screen-reader-only">Note</span>Objectif
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Comprendre d’où viennent les champs lorsqu’on ouvre un item.</p>
+<p>Comprendre d’où viennent les champs que l’on voit en ouvrant un item.</p>
 </div>
 </div>
 <section id="principe" class="level3">
 <h3 class="anchored" data-anchor-id="principe">Principe</h3>
-<p>Les métadonnées d’un item ne sont pas inventées au hasard. Elles proviennent de vocabulaires, qui définissent :</p>
-<ul>
-<li>Quels champs existent</li>
-<li>Ce que chaque champ signifie</li>
-<li>Quel type de valeur est attendu</li>
-</ul>
-<p>Exemple connu : <a href="https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/">Dublin Core</a> (dcterms:xxx) → Le vocabulaire le plus utilisé internationalement, présent par défaut dans Omeka S, et ayant des propriétés comme…</p>
+<p>Les métadonnées d’un item ne sont pas inventées au hasard. Elles proviennent de <strong>vocabulaires</strong>, qui définissent trois choses : quels champs existent, ce que chaque champ signifie, et quel type de valeur est attendu.</p>
+<p>Le plus connu est <a href="https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/">Dublin Core</a> (préfixe <code>dcterms:</code>) : c’est le vocabulaire le plus utilisé internationalement, présent par défaut dans Omeka S.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 27%">
-<col style="width: 35%">
-<col style="width: 37%">
+<col style="width: 30%">
+<col style="width: 26%">
+<col style="width: 43%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -537,41 +613,40 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>dcterms:title</td>
+<td><code>dcterms:title</code></td>
 <td>Titre de l’item</td>
 <td>Texte</td>
 </tr>
 <tr class="even">
-<td>dcterms:creator</td>
+<td><code>dcterms:creator</code></td>
 <td>Créateur</td>
-<td>Texte / Ressource</td>
+<td>Texte ou ressource</td>
 </tr>
 <tr class="odd">
-<td>dcterms:date</td>
+<td><code>dcterms:date</code></td>
 <td>Date</td>
-<td>Texte (ISO recommandé)</td>
+<td>Texte (format ISO recommandé)</td>
 </tr>
 <tr class="even">
-<td>dcterms:description</td>
+<td><code>dcterms:description</code></td>
 <td>Description</td>
 <td>Texte long</td>
 </tr>
 <tr class="odd">
-<td>dcterms:type</td>
+<td><code>dcterms:type</code></td>
 <td>Type de ressource</td>
-<td>Texte / Controlled vocabulary</td>
+<td>Texte ou vocabulaire contrôlé</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="deux-principaux-types-de-valeurs" class="level3">
-<h3 class="anchored" data-anchor-id="deux-principaux-types-de-valeurs">Deux principaux types de valeurs</h3>
-<p>Les valeurs contenues dans chacune des propriétés peuvent être de différents types, dont deux principaux :</p>
+<section id="deux-types-de-valeurs" class="level3">
+<h3 class="anchored" data-anchor-id="deux-types-de-valeurs">Deux types de valeurs</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 21%">
-<col style="width: 46%">
-<col style="width: 32%">
+<col style="width: 15%">
+<col style="width: 34%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -583,269 +658,78 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td><strong>Texte libre</strong></td>
-<td>Du texte classique, écrit directement</td>
-<td>Titre, description, dates (parfois), …</td>
+<td>Du texte saisi directement</td>
+<td>Un titre, une description, parfois une date</td>
 </tr>
 <tr class="even">
 <td><strong>Ressource</strong></td>
-<td>Pointe vers un autre item</td>
-<td>“<em>dcterms:creator</em>” pointant vers l’item “Jean Dupont” (o:id 86), …</td>
+<td>Un lien vers un autre item</td>
+<td><code>dcterms:creator</code> pointant vers l’item « Jean Dupont » (o:id 89)</td>
 </tr>
 </tbody>
 </table>
+<div id="fig-types" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Sélecteur permettant de choisir entre une valeur texte, une ressource ou une URI">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../assets/img/formation2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Le sélecteur de type de valeur, en mode édition d’un item."><img src="../assets/img/formation2.png" class="img-fluid figure-img" alt="Sélecteur permettant de choisir entre une valeur texte, une ressource ou une URI"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Le sélecteur de type de valeur, en mode édition d’un item.
+</figcaption>
+</figure>
+</div>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Astuce</span>Où consulter le vocabulaire ?
+<span class="screen-reader-only">Astuce</span>Où consulter les vocabulaires ?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Les vocabulaires gérés par l’instance Omeka S sont consultables dans l’onglet <strong>“Vocabularies”</strong> de l’interface (utile pour se renseigner). Les propriétés apparaissent directement lors de la création ou de l’édition d’un item.</p>
+<p>Les vocabulaires installés sur l’instance sont listés dans l’onglet <kbd>Vocabularies</kbd> de l’interface. Les propriétés, elles, apparaissent directement au moment de créer ou d’éditer un item.</p>
+<p>Pour le détail des vocabulaires et de leur logique sous-jacente, voir la page <a href="../ressources/dico_rdf.html">Exploiter le web sémantique pour les métadonnées</a>.</p>
 </div>
 </div>
 </section>
 </section>
 <section id="mod4" class="level2">
-<h2 class="anchored" data-anchor-id="mod4">4. Organisation et Relations</h2>
-<div class="callout callout-style-simple callout-tip callout-titled">
+<h2 class="anchored" data-anchor-id="mod4">4. Organisation et relations</h2>
+<div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Astuce</span>Objectif
+<span class="screen-reader-only">Note</span>Objectif
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>Comprendre comment les items s’organisent et se lient entre eux.</p>
 </div>
 </div>
-<section id="partie-a-les-item-sets" class="level3">
-<h3 class="anchored" data-anchor-id="partie-a-les-item-sets">Partie A : Les Item Sets</h3>
-<p><strong>Définition</strong></p>
-<p>Un Item Set est un regroupement logique d’items (collection thématique, période, etc.)</p>
-<p><strong>Analogie</strong></p>
-<ul>
-<li>Item → Item Set</li>
-<li>Un livre → Une étagère</li>
-<li>Un objet → Une vitrine muséale</li>
-</ul>
-<p><strong>Règles Importantes</strong></p>
-<ul>
-<li>Un item peut appartenir à plusieurs Item Sets</li>
-<li>Un Item Set ne contient pas de médias directs (seulement des références à des items)</li>
-</ul>
-</section>
-<section id="partie-b-relations-entre-items-via-oid" class="level3">
-<h3 class="anchored" data-anchor-id="partie-b-relations-entre-items-via-oid">Partie B : Relations Entre Items via o:id</h3>
-<p>Omeka S n’est pas une simple liste de fiches indépendantes, mais plutôt un réseau de données reliées entre elles grâce aux propriétés ayant un contenu de type “ressource”, c’est-à-dire une redirection vers un autre item — comme un lien hypertexte plutôt que de recopier un titre.</p>
-<p><strong>Exemple</strong></p>
-<p>Item “Document historique” (o:id: 142) └── dcterms:creator → Item “Personne” (o:id: 89) La relation est faite via le o:id de l’item cible.</p>
-<p><strong>Pourquoi pas juste du texte ?</strong> | Relation via o:id | Texte Libre | | —————– | ———– | | Données structurées et interrogables | Impossible de faire des requêtes | | Liens exploitables par l’API |&nbsp;Informations limitées | | Mise à jour centralisée | Duplication des données |</p>
-<p><strong>Retenir</strong> : Les deux approches ont leur place. Mais dès qu’une donnée peut pointer vers autre chose, faites-le : vos données seront plus riches et cohérentes.</p>
-</section>
-</section>
-<section id="mod5" class="level2">
-<h2 class="anchored" data-anchor-id="mod5">5. Le module “ScanR”</h2>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Astuce</span>Objectif
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Comprendre comment importer des données externes (personnes) via l’API ScanR.</p>
-</div>
-</div>
-<section id="quest-ce-que-scanr" class="level3">
-<h3 class="anchored" data-anchor-id="quest-ce-que-scanr">Qu’est-ce que ScanR ?</h3>
-<p>ScanR est la plateforme du Ministère de l’Enseignement Supérieur et de la Recherche qui recense :</p>
-<ul>
-<li>Chercheurs et leurs affiliations</li>
-<li>Domaines de recherche</li>
-<li>Publications et distinctions</li>
-</ul>
-<p>Le module ScanR pour Omeka S, développé par Samuel Szoniecky, permet d’importer directement sur Omeka S les fiches personnes depuis cette base.</p>
-</section>
-<section id="effectuer-un-import" class="level3">
-<h3 class="anchored" data-anchor-id="effectuer-un-import">Effectuer un import :</h3>
-<p>Il existe deux façons d’importer les données depuis la base ScanR :</p>
-<hr>
-<p><br></p>
-<section id="import-individuel" class="level5">
-<h5 class="anchored" data-anchor-id="import-individuel">Import individuel</h5>
+<section id="a.-les-item-sets" class="level3">
+<h3 class="anchored" data-anchor-id="a.-les-item-sets">A. Les Item Sets</h3>
+<p>Un Item Set est un <strong>regroupement logique d’items</strong> : collection thématique, période, fonds, etc.</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 28%">
-<col style="width: 32%">
-<col style="width: 40%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>Étape</th>
-<th>Action</th>
-<th>Résultat</th>
+<th>Dans Omeka S</th>
+<th>En bibliothèque</th>
+<th>Au musée</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1</td>
-<td>Accéder à l’onglet “ScanR” dans l’interface</td>
-<td>Formulaire de recherche</td>
+<td>Item</td>
+<td>Un livre</td>
+<td>Un objet</td>
 </tr>
 <tr class="even">
-<td>2</td>
-<td>Rechercher une personne (<strong>nom</strong>, ORCID, structure)</td>
-<td>Résultats depuis ScanR</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>Sélectionner et valider l’import</td>
-<td>Création ou modification de l’item “Personne” avec les métadonnées de ScanR</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>Vérifier/mettre à jour les liens (ex: dcterms:creator → structure)</td>
-<td>Données cohérentes</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-</section>
-<section id="import-massif" class="level5">
-<h5 class="anchored" data-anchor-id="import-massif">Import massif</h5>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 28%">
-<col style="width: 32%">
-<col style="width: 40%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Étape</th>
-<th>Action</th>
-<th>Résultat</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>Accéder à la liste souhaitée d’items, et sélectionner ces derniers</td>
-<td>—</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>Cliquer sur “Batch actions”, puis “Edit selected”, puis sur le bouton “Go”</td>
-<td>Une nouvelle fenêtre s’ouvre</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>Cocher la case “Merge item data with Scanr first response”, puis “Submit”</td>
-<td>Retour à la liste des items, l’import se fait en arrière-plan</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>Vérifier/mettre à jour les liens (ex: dcterms:creator → structure)</td>
-<td>Données cohérentes</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="limites-à-connaître" class="level3">
-<h3 class="anchored" data-anchor-id="limites-à-connaître">Limites à connaître</h3>
-<ul>
-<li><strong>Noms complexes</strong> : Certaines orthographes ou noms composés peuvent poser problème à l’extraction</li>
-<li><strong>Biais de couverture</strong> : Les concepts sont basés sur les publications du MESR → certaines communautés peuvent être moins représentées</li>
-<li><strong>Résultats consultables limités</strong> : Un bug empêche d’afficher les EC trouvés au-delà de trois noms (import indiviuel uniquement)</li>
-<li><strong>Configuration préalable</strong> : Nécessite un template et un item set dédiés aux personnes importées</li>
-</ul>
-</section>
-</section>
-<section id="mod6" class="level2">
-<h2 class="anchored" data-anchor-id="mod6">6. Atelier Pratique</h2>
-<p><strong>Consignes</strong> : Accéder à l’item qui vous désigne, et éditez-le pour ajouter des informations complémentaires. Ces données doivent contenir au moins <strong>une fois du texte</strong> et <strong>une fois une ressource</strong>. Assurez-vous aussi que l’item que vous éditez est bien dans un Item Set <strong>cohérent</strong> (<em>le rajouter ou le modifier si besoin</em>).</p>
-<ul>
-<li>Exemple d’éléments à inclure : description, date de naissance, un/des laboratoire(s), …</li>
-</ul>
-<p><strong>Critère de réussite</strong> : Les nouvelles informations apparaissent sur la fiche, et l’élément “ressource” redirige bien vers un autre item.</p>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Astuce</span>Une fois l’exercice validé…
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Envie de vous exercer sur autre chose ? N’hésitez pas, tant que le formateur se trouve pas loin pour vous aider ! :)</p>
-</div>
-</div>
-</section>
-<section id="synthèse-et-repères" class="level2">
-<h2 class="anchored" data-anchor-id="synthèse-et-repères">Synthèse et Repères</h2>
-<p>Schéma Récapitulatif</p>
-<pre><code>                    ┌───────────────┐
-                    │  Vocabulaires │
-                    └───────┬───────┘
-                            ↓
-                   ┌─────────────────┐
-                   │   Propriétés    │
-                   └────────┬────────┘
-                            ↓
-              ┌───────────────────────────┐
-              │         ITEMS             │
-              │  • "o:id" (id unique)     │
-              │  • Métadonnées            │
-              │  • Médias                 │
-              └─────────────┬─────────────┘
-                            │
-         ┌──────────────────┼──────────────────┐
-         ↓                  ↓                  ↓
-  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-  │  Item Sets  │    │  Relations  │    │  Site/API   │
-  │  (groupes)  │    │ (o:id → id) │    │(exposition) │
-  └─────────────┘    └─────────────┘    └─────────────┘</code></pre>
-<section id="en-résumé" class="level3">
-<h3 class="anchored" data-anchor-id="en-résumé">En résumé</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 68%">
-<col style="width: 31%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Ce que tu veux faire</th>
-<th>Où aller</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Modifier le titre/description d’un item</td>
-<td>L’item lui-même (édition)</td>
-</tr>
-<tr class="even">
-<td>Regrouper plusieurs items</td>
-<td>Créer un Item Set</td>
-</tr>
-<tr class="odd">
-<td>Relier un item à un autre</td>
-<td>Utiliser une propriété de type “ressource”</td>
-</tr>
-<tr class="even">
-<td>Ajouter un fichier</td>
-<td>Section “Médias” de l’item</td>
-</tr>
-<tr class="odd">
-<td>Chercher un item</td>
-<td>Barre de recherche ou navigation par ID</td>
+<td>Item Set</td>
+<td>Une étagère</td>
+<td>Une vitrine</td>
 </tr>
 </tbody>
 </table>
@@ -855,14 +739,335 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avertissement</span>Quand appeler l’administrateur
+<span class="screen-reader-only">Avertissement</span>Deux règles à ne pas oublier
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Un item peut appartenir à <strong>plusieurs</strong> Item Sets simultanément.</li>
+<li>Un Item Set ne contient <strong>pas de médias</strong> en propre, uniquement des références à des items.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="b.-les-relations-entre-items" class="level3">
+<h3 class="anchored" data-anchor-id="b.-les-relations-entre-items">B. Les relations entre items</h3>
+<p>Omeka S n’est pas une liste de fiches indépendantes, mais un <strong>réseau de données reliées</strong>. Le lien se fait via les propriétés de type « ressource » : plutôt que de recopier un titre, on pointe vers l’item concerné — comme un lien hypertexte.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A["Item « Document historique »&lt;br/&gt;o:id 142"] --&gt;|dcterms:creator| B["Item « Jean Dupont »&lt;br/&gt;o:id 89"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p><strong>Pourquoi ne pas simplement écrire le nom en texte ?</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 51%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Relation via <code>o:id</code></th>
+<th>Texte libre</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Données structurées et interrogeables</td>
+<td>Impossible d’en faire des requêtes</td>
+</tr>
+<tr class="even">
+<td>Liens exploitables par l’API</td>
+<td>Information isolée</td>
+</tr>
+<tr class="odd">
+<td>Mise à jour centralisée</td>
+<td>Duplication des données</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>À retenir
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les deux approches ont leur place. Mais dès qu’une donnée <strong>peut</strong> pointer vers un autre item, faites-le : vos données seront plus riches et plus cohérentes.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="mod5" class="level2">
+<h2 class="anchored" data-anchor-id="mod5">5. Le module ScanR</h2>
+<div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Objectif
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Savoir importer une fiche « personne » depuis ScanR, et connaître les limites de l’opération.</p>
+</div>
+</div>
+<p>ScanR est la plateforme du Ministère de l’Enseignement Supérieur et de la Recherche qui recense les chercheurs, leurs affiliations et leurs publications. Le module Omeka S correspondant, développé par <strong>Samuel Szoniecky</strong>, permet d’en importer les fiches directement dans la base.</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Ce module ne couvre que la manipulation dans Omeka S. Pour le fonctionnement de la source elle-même, la structure des données et les cas d’usage plus larges, voir la page <a href="scanr_extract.qmd">ScanR comme source de données</a>.</p>
+</div>
+</div>
+</div>
+<section id="effectuer-un-import" class="level3">
+<h3 class="anchored" data-anchor-id="effectuer-un-import">Effectuer un import</h3>
+<p>Il existe deux chemins, à choisir selon le volume à traiter.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Import individuel</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Import massif</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><span class="print-only">Import individuel</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 51%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Étape</th>
+<th>Action</th>
+<th>Résultat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td>Ouvrir l’onglet <kbd>ScanR</kbd> de l’interface</td>
+<td>Le formulaire de recherche s’affiche</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td>Rechercher une personne (<strong>nom</strong>, ORCID, structure)</td>
+<td>Résultats renvoyés par ScanR</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td>Sélectionner le bon résultat et valider l’import</td>
+<td>Création ou mise à jour de l’item « Personne »</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td>Vérifier les liens (ex. <code>dcterms:subject</code> → concept)</td>
+<td>Données cohérentes</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<div id="fig-scanr-indiv" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Formulaire de recherche ScanR et liste de résultats">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scanr-indiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../assets/img/formation3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Résultats renvoyés par ScanR après une recherche par nom."><img src="../assets/img/formation3.png" class="img-fluid figure-img" alt="Formulaire de recherche ScanR et liste de résultats"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scanr-indiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Résultats renvoyés par ScanR après une recherche par nom.
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><span class="print-only">Import massif</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 62%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Étape</th>
+<th>Action</th>
+<th>Résultat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td>Afficher la liste d’items voulue, puis cocher les items concernés</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td><kbd>Batch actions</kbd> → <kbd>Edit selected</kbd> → <kbd>Go</kbd></td>
+<td>Une nouvelle fenêtre s’ouvre</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td>Cocher <kbd>Merge item data with Scanr first response</kbd>, puis <kbd>Submit</kbd></td>
+<td>L’import se lance en arrière-plan</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td>Vérifier les liens (ex. <code>dcterms:creator</code> → structure)</td>
+<td>Données cohérentes</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<div id="fig-scanr-massif" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Fenêtre Edit selected avec l'option de fusion des données ScanR">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scanr-massif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../assets/img/formation4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: La case à cocher de fusion, dans la fenêtre d’édition par lot."><img src="../assets/img/formation4.png" class="img-fluid figure-img" alt="Fenêtre Edit selected avec l'option de fusion des données ScanR"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scanr-massif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: La case à cocher de fusion, dans la fenêtre d’édition par lot.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Quatre points de vigilance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Noms complexes</strong> — certaines orthographes ou noms composés mettent l’extraction en défaut.</li>
+<li><strong>Biais de couverture</strong> — les concepts reposent sur les publications recensées par le MESR ; certaines communautés y sont moins représentées.</li>
+<li><strong>Affichage limité</strong> — un bug empêche d’afficher plus de trois résultats lors d’un import individuel.</li>
+<li><strong>Configuration préalable</strong> — un template et un item set dédiés aux personnes importées sont nécessaires.</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="mod6" class="level2">
+<h2 class="anchored" data-anchor-id="mod6">6. Atelier pratique</h2>
+<div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Objectif
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Mettre en pratique l’édition d’un item et la création d’une relation.</p>
+</div>
+</div>
+<p><strong>Consigne</strong> — accédez à l’item qui vous désigne et enrichissez-le.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Ajouter au moins <strong>une valeur en texte libre</strong> (description, date de naissance…)</label></li>
+<li><label><input type="checkbox">Ajouter au moins <strong>une valeur de type ressource</strong> (un laboratoire, une structure…)</label></li>
+<li><label><input type="checkbox">Vérifier que l’item appartient à un Item Set <strong>cohérent</strong> (le corriger ou l’ajouter si besoin)</label></li>
+<li><label><input type="checkbox">Enregistrer, puis recharger la fiche</label></li>
+</ul>
+<p><strong>Critère de réussite</strong> : les nouvelles informations apparaissent sur la fiche, et la valeur de type ressource redirige bien vers un autre item lorsqu’on clique dessus.</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Exercice terminé ?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Envie de vous exercer sur autre chose ? N’hésitez pas, tant que le formateur n’est pas loin pour vous aider !</p>
+</div>
+</div>
+</section>
+<section id="synthèse-et-repères" class="level2">
+<h2 class="anchored" data-anchor-id="synthèse-et-repères">Synthèse et repères</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    V["Vocabulaires"] --&gt; P["Propriétés"]
+    P --&gt; I["ITEM&lt;br/&gt;o:id · métadonnées · médias"]
+    I --&gt; S["Item Sets&lt;br/&gt;(regroupements)"]
+    I --&gt; R["Relations&lt;br/&gt;(o:id → o:id)"]
+    I --&gt; A["Site / API&lt;br/&gt;(exposition)"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<section id="en-résumé" class="level3">
+<h3 class="anchored" data-anchor-id="en-résumé">En résumé</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 48%">
+<col style="width: 51%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ce que vous voulez faire</th>
+<th>Où aller</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Modifier le titre ou la description</td>
+<td>L’item lui-même, en mode édition</td>
+</tr>
+<tr class="even">
+<td>Regrouper plusieurs items</td>
+<td>Créer un Item Set</td>
+</tr>
+<tr class="odd">
+<td>Relier un item à un autre</td>
+<td>Une propriété de type « ressource »</td>
+</tr>
+<tr class="even">
+<td>Ajouter un fichier</td>
+<td>Section « Médias » de l’item</td>
+</tr>
+<tr class="odd">
+<td>Retrouver un item</td>
+<td>Barre de recherche, ou URL <code>/admin/item/…</code></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Quand appeler l’administrateur
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
 <li>Besoin de créer un nouveau vocabulaire</li>
-<li>Problème de connexion ou droits d’accès</li>
-<li>Erreur système après sauvegarde</li>
+<li>Problème de connexion ou de droits d’accès</li>
+<li>Erreur système après une sauvegarde</li>
 <li>Besoin de modifications hors du périmètre autorisé</li>
 </ul>
 </div>
@@ -871,12 +1076,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="annexes" class="level2">
 <h2 class="anchored" data-anchor-id="annexes">Annexes</h2>
-<section id="glossaire-rapide" class="level3">
-<h3 class="anchored" data-anchor-id="glossaire-rapide">Glossaire rapide</h3>
+<section id="glossaire" class="level3">
+<h3 class="anchored" data-anchor-id="glossaire">Glossaire</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 19%">
+<col style="width: 80%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -887,55 +1092,56 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>API</td>
-<td>Mécanisme technique d’exposition des données vers d’autres systèmes (hors scope)</td>
+<td>Mécanisme d’exposition des données vers d’autres systèmes (hors périmètre)</td>
 </tr>
 <tr class="even">
 <td>Base de données</td>
-<td>Stockage central où sont créées, modifiées et organisées toutes les données</td>
+<td>Stockage central où sont créées, modifiées et organisées les données</td>
 </tr>
 <tr class="odd">
-<td>Module</td>
-<td>Extension qui ajoute des fonctionnalités à Omeka S (ex: ScanR)</td>
+<td>Item</td>
+<td>Entrée dans la base (photo, document, personne, objet…)</td>
 </tr>
 <tr class="even">
-<td>Item</td>
-<td>Entrée dans la base (photo, document, objet…)</td>
-</tr>
-<tr class="odd">
 <td>Item Set</td>
 <td>Regroupement logique d’items (collection, fonds thématique)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Média</td>
-<td>Fichier attaché à un item (peu évoqué dans notre cas)</td>
+<td>Fichier attaché à un item</td>
+</tr>
+<tr class="even">
+<td>Module</td>
+<td>Extension ajoutant des fonctionnalités à Omeka S (ex. ScanR)</td>
 </tr>
 <tr class="odd">
-<td>o:id</td>
-<td>Identifiant unique permanent attribué automatiquement</td>
+<td><code>o:id</code></td>
+<td>Identifiant unique et permanent, attribué automatiquement</td>
 </tr>
 <tr class="even">
 <td>Propriété</td>
-<td>Champ spécifique (ex: dcterms:title)</td>
+<td>Champ spécifique issu d’un vocabulaire (ex. <code>dcterms:title</code>)</td>
 </tr>
 <tr class="odd">
 <td>Relation</td>
-<td>Lien actif entre items via une propriété de type “ressource”</td>
+<td>Lien actif entre deux items, via une propriété de type ressource</td>
 </tr>
 <tr class="even">
 <td>Ressource</td>
-<td>Propriété pointant vers un autre item (vs.&nbsp;texte libre)</td>
+<td>Valeur pointant vers un autre item, par opposition au texte libre</td>
 </tr>
 <tr class="odd">
 <td>Vocabulaire</td>
-<td>Ensemble de propriétés et de classes définissant les champs possibles</td>
+<td>Ensemble de propriétés et de classes définissant les champs disponibles</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="liens-utiles" class="level3">
-<h3 class="anchored" data-anchor-id="liens-utiles">Liens Utiles</h3>
-<p>Documentation officielle Omeka S : https://omeka.org/s/docs/</p>
-<p>Interface d’administration : https://valorisation.humanum-p8.fr/admin</p>
+<h3 class="anchored" data-anchor-id="liens-utiles">Liens utiles</h3>
+<div class="tool-grid" style="column-gap: 55px; row-gap: 20px;">
+<p><a class="tool-card" href="https://omeka.org/s/docs/">Documentation Omeka S</a> <a class="tool-card" href="https://valorisation.humanum-p8.fr/admin">Interface d’administration</a> <a class="tool-card" href="https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/">Référentiel Dublin Core</a></p>
+</div>
 
 
 </section>
@@ -1029,6 +1235,11 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -1358,6 +1569,38 @@ ul.task-list li input[type="checkbox"] {
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

@@ -9,6 +9,8 @@ format:
     toc: true
     toc-location: right
     toc-depth: 3
+    lightbox: true
+    link-external-newwindow: true
 
 website:
   title: "CartoExpert"
