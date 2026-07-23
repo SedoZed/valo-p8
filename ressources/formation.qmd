@@ -57,9 +57,9 @@ L'administration compte une dizaine d'entrées dans son menu latéral. Trois seu
 
 | Entrée du menu | À quoi elle sert | Vu au module |
 |---|---|---|
-| <kbd>Items</kbd> | Les entrées individuelles de la base | 2 |
-| <kbd>Item Sets</kbd> | Les regroupements d'items | 4 |
-| <kbd>ScanR</kbd> | L'import de fiches personnes | 5 |
+| <kbd>Items</kbd> | Les entrées individuelles de la base | 2 et 3 |
+| <kbd>Item Sets</kbd> | Les regroupements d'items | 5 |
+| <kbd>ScanR</kbd> | L'import de fiches personnes | 6 |
 
 Le reste du menu relève de l'administration de l'instance et n'est pas abordé ici.
 
@@ -70,7 +70,7 @@ Omeka S est conçu pour structurer des collections patrimoniales (*musées, arch
 ## 2. L'item, unité de base {#mod2}
 
 ::: {.callout-note title="Objectif" appearance="simple"}
-Comprendre qu'un item est l'entrée fondamentale dans la base, et savoir le retrouver.
+Comprendre qu'un item est l'entrée fondamentale dans la base, et savoir de quoi il est composé.
 :::
 
 ### Anatomie d'un item
@@ -81,33 +81,39 @@ Un item = une entrée dans la base de données. Il contient trois parties :
 |----------------------------------|----------------------------------------------|
 | **[`o:id`](#oid)**               | Numéro unique, attribué automatiquement      |
 | **Métadonnées**                  | Champs descriptifs                           |
-| **Médias**                       | Fichiers attachés (peu utilisés ici)         |
+| **Médias**                       | Fichiers attachés (peu utilisé ici)         |
 
-**Exemple concret :**
+**Exemple :**
 
 ![Fiche d'un item dans l'administration. Le numéro `o:id` figure dans le volet de droite.](../assets/img/formation1.png){#fig-item fig-alt="Page d'affichage d'un item, montrant ses métadonnées, son identifiant et ses médias"}
 
-| Élément           | Valeur                                                  |
-|-------------------|---------------------------------------------------------|
-| `o:id`            | 7457                                                    |
-| `dcterms:title`   | *Samuel SZONIECKY*                                      |
-| `dcterms:isPartOf`| → Item « PARAGRAPHE » (o:id 1954)                       |
-| `foaf:birthday`   | 1971                                                    |
-| Média(s)          | `pfp_SSZ.jpg` (2,4 Mo)                       |
+| Élément            | Valeur                            | Propriété            |
+|--------------------|-----------------------------------|----------------------|
+| Identifiant unique | 7457                              | `o:id`               |
+| Métadonnée         | *Samuel SZONIECKY*                | `dcterms:title`      |
+| Métadonnée         | → Item « PARAGRAPHE » (o:id 1954) | `dcterms:isPartOf`   |
+| Métadonnée         | 1971                              | `foaf:birthday`      |
+| Média              | `pfp_SSZ.jpg` (2,4 Mo)            |                      |
 
-Notez que `dcterms:isPartOf` ne contient pas du texte, mais un **lien vers un autre item**. On y revient au [module 4](#mod4).
+À noter : `dcterms:isPartOf` ne contient pas du texte, mais plutôt une sorte d'**hyperlien**. On y revient au [module 5](#mod5).
 
 #### L'identifiant `o:id` {#oid}
 
+Numéro unique attribué automatiquement à la création d'un item. Il ne change **jamais**, même en cas de modification ou de suppression de l'item. C'est donc le seul point d'accroche fiable pour désigner un item.
+
 ::: {.column-margin}
-**`o:id`** — le numéro de matricule de l'item. Il ne change jamais.
+**`o:id`** — En cas de suppression, l'identifiant ne sera jamais réattribué à un autre item.
 :::
 
-Numéro unique attribué automatiquement à la création. Il ne change **jamais**, même si le titre ou l'ensemble des métadonnées sont modifiés. C'est donc le seul point d'accroche fiable pour désigner un item.
+## 3. Trouver un item {#mod3}
 
-### Trouver un item
+::: {.callout-note title="Objectif" appearance="simple"}
+Savoir retrouver un item dans la base, et croiser plusieurs critères de recherche sans se tromper d'outil.
+:::
 
-Avant de modifier un item, il faut d'abord le repérer.
+Avant de modifier un item, il faut d'abord le repérer. Trois méthodes, de la plus rapide à la plus précise.
+
+### Les trois méthodes
 
 | Méthode                    | Comment faire                              | Quand l'utiliser                          |
 |----------------------------|--------------------------------------------|-------------------------------------------|
@@ -125,11 +131,30 @@ L'URL d'édition suit le même schéma : `/admin/item/7457/edit`. Inversement, s
 - **Elle ne cherche que dans les items.** Les trois points de suspension à côté du champ permettent de basculer vers <kbd>Item Sets</kbd> ou <kbd>Media</kbd>. Sans cela, chercher un item set renvoie zéro résultat — et laisse croire qu'il n'existe pas.
 - **Plusieurs mots séparés par un espace élargissent la recherche**, au lieu de la restreindre. Les termes sont traités comme des alternatives ; le tri par pertinence se contente de remonter en tête ce qui contient les deux. Tout ce qui contient l'un *ou* l'autre reste dans la liste.
 - **Pas de troncature.** Il faut saisir le mot entier : « laborat » ne trouvera pas « laboratoire ».
-
-Hors recherche, la liste est triée par `o:id` décroissant — donc les items créés le plus récemment en premier. L'ordre n'est pas arbitraire, il en a juste l'air.
 :::
 
-#### La recherche avancée
+::: {.callout-note title="Ce qui se passe quand vous validez une recherche" collapse="true"}
+**L'index.** Omeka ne relit pas les items un par un au moment de la requête. À chaque enregistrement, il fabrique une version « à plat » de l'item — titre et valeurs mis bout à bout — qu'il range dans une table d'index. C'est elle que la recherche interroge, pas les fiches elles-mêmes. Elle est découpée en **mots entiers**, d'où l'absence de troncature : « laborat » n'y figure pas, « laboratoire » oui.
+
+**Le classement — et pourquoi il trompe.** Une recherche plein texte ne produit pas une sélection, mais un **classement**. Tout item contenant *au moins un* des termes saisis entre dans la liste ; ceux qui les contiennent tous sont simplement placés devant. Un terme répété, ou situé dans un champ court, fait encore remonter l'item.
+
+C'est précisément ce qui induit en erreur : les premières lignes semblent répondre exactement à la question posée, et rien n'indique à partir d'où la liste décroche. Il n'y a pas de seuil, seulement une pente. Pour obtenir une véritable sélection, il faut passer par la section **Filters** de la recherche avancée, décrite ci-dessous.
+
+**Hors recherche.** La liste est triée par `o:id` décroissant, donc les items créés le plus récemment en premier : l'ordre paraît arbitraire, il ne l'est pas. Et quel que soit le critère de tri retenu, les valeurs vides sont toujours renvoyées en fin de liste.
+
+Conséquence pratique : la barre de recherche et l'opérateur `contains` de la recherche avancée ne travaillent pas du tout de la même manière.
+
+|                                        | Barre de recherche | `contains` (Filters)    |
+|----------------------------------------|--------------------|-------------------------|
+| Unité comparée                         | Le mot entier      | La suite de caractères  |
+| « trav » trouve-t-il « travail » ?     | Non                | Oui                     |
+| « travail » trouve-t-il « Travail collaboratif » ? | Oui    | Oui                     |
+| Classement des résultats               | Par pertinence     | Aucun                   |
+
+Deux réserves : les mots très courts (deux ou trois lettres) sont généralement ignorés par l'index, et un item modifié en dehors de l'interface peut ne pas y être à jour.
+:::
+
+### La recherche avancée
 
 Le bouton <kbd>Advanced search</kbd>, au-dessus de la liste des items, ouvre un formulaire permettant de :
 
@@ -153,7 +178,7 @@ Autre piège, dans « Search by value » : une ligne dont le champ texte reste v
 
 Le détail des opérateurs et des cas particuliers se trouve dans l'[aide-mémoire en annexe](#aidememoire).
 
-## 3. Vocabulaires et propriétés {#mod3}
+## 4. Vocabulaires et propriétés {#mod4}
 
 ::: {.callout-note title="Objectif" appearance="simple"}
 Comprendre d'où viennent les champs que l'on voit en ouvrant un item.
@@ -162,6 +187,8 @@ Comprendre d'où viennent les champs que l'on voit en ouvrant un item.
 ### Principe
 
 Les métadonnées d'un item ne sont pas inventées au hasard. Elles proviennent de **vocabulaires**, qui définissent trois choses : quels champs existent, ce que chaque champ signifie, et quel type de valeur est attendu.
+
+**Pourquoi ne pas créer ses propres champs ?** Parce qu'un champ nommé « Auteur » ne signifie rien en dehors de la base qui l'a créé : ailleurs, on aura retenu « Créateur », « Rédigé par » ou « Responsable », et plus rien ne se croise. Reprendre un vocabulaire publié, c'est employer un identifiant que d'autres systèmes reconnaissent déjà, sans avoir à leur fournir de mode d'emploi. C'est ce qui rend les données exportables et comparables avec celles d'autres institutions — et ce qui donne son intérêt à l'API évoquée au [module 1](#mod1).
 
 Le plus connu est [Dublin Core](https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/) (préfixe `dcterms:`) : c'est le vocabulaire le plus utilisé internationalement, présent par défaut dans Omeka S.
 
@@ -215,7 +242,7 @@ Les vocabulaires installés sur l'instance sont listés dans l'onglet <kbd>Vocab
 Pour le détail des vocabulaires et de leur logique sous-jacente, voir la page [Exploiter le web sémantique pour les métadonnées](dico_rdf.qmd).
 :::
 
-## 4. Organisation et relations {#mod4}
+## 5. Organisation et relations {#mod5}
 
 ::: {.callout-note title="Objectif" appearance="simple"}
 Comprendre comment les items s'organisent et se lient entre eux.
@@ -263,7 +290,7 @@ Sans ce mécanisme, une même notion se retrouve écrite de plusieurs façons et
 Les deux approches ont leur place. Mais dès qu'une donnée **peut** pointer vers un autre item, faites-le : vos données seront plus riches et plus cohérentes.
 :::
 
-## 5. Le module ScanR {#mod5}
+## 6. Le module ScanR {#mod6}
 
 ::: {.callout-note title="Objectif" appearance="simple"}
 Savoir importer une fiche « personne » depuis ScanR, et connaître les limites de l'opération.
@@ -322,7 +349,7 @@ Il existe deux chemins, à choisir selon le volume à traiter.
 - **Configuration préalable** — un template et un item set dédiés aux personnes importées sont nécessaires.
 :::
 
-## 6. Atelier pratique {#mod6}
+## 7. Atelier pratique {#mod7}
 
 ::: {.callout-note title="Objectif" appearance="simple"}
 Mettre en pratique l'édition d'un item et la création d'une relation.

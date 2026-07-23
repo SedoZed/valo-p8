@@ -209,29 +209,35 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#mod2" id="toc-mod2" class="nav-link" data-scroll-target="#mod2">2. L’item, unité de base</a>
   <ul class="collapse">
   <li><a href="#anatomie-dun-item" id="toc-anatomie-dun-item" class="nav-link" data-scroll-target="#anatomie-dun-item">Anatomie d’un item</a></li>
-  <li><a href="#trouver-un-item" id="toc-trouver-un-item" class="nav-link" data-scroll-target="#trouver-un-item">Trouver un item</a></li>
   </ul></li>
-  <li><a href="#mod3" id="toc-mod3" class="nav-link" data-scroll-target="#mod3">3. Vocabulaires et propriétés</a>
+  <li><a href="#mod3" id="toc-mod3" class="nav-link" data-scroll-target="#mod3">3. Trouver un item</a>
+  <ul class="collapse">
+  <li><a href="#les-trois-méthodes" id="toc-les-trois-méthodes" class="nav-link" data-scroll-target="#les-trois-méthodes">Les trois méthodes</a></li>
+  <li><a href="#la-recherche-avancée" id="toc-la-recherche-avancée" class="nav-link" data-scroll-target="#la-recherche-avancée">La recherche avancée</a></li>
+  </ul></li>
+  <li><a href="#mod4" id="toc-mod4" class="nav-link" data-scroll-target="#mod4">4. Vocabulaires et propriétés</a>
   <ul class="collapse">
   <li><a href="#principe" id="toc-principe" class="nav-link" data-scroll-target="#principe">Principe</a></li>
+  <li><a href="#classes-et-propriétés" id="toc-classes-et-propriétés" class="nav-link" data-scroll-target="#classes-et-propriétés">Classes et propriétés</a></li>
   <li><a href="#deux-types-de-valeurs" id="toc-deux-types-de-valeurs" class="nav-link" data-scroll-target="#deux-types-de-valeurs">Deux types de valeurs</a></li>
   </ul></li>
-  <li><a href="#mod4" id="toc-mod4" class="nav-link" data-scroll-target="#mod4">4. Organisation et relations</a>
+  <li><a href="#mod5" id="toc-mod5" class="nav-link" data-scroll-target="#mod5">5. Organisation et relations</a>
   <ul class="collapse">
   <li><a href="#a.-les-item-sets" id="toc-a.-les-item-sets" class="nav-link" data-scroll-target="#a.-les-item-sets">A. Les Item Sets</a></li>
   <li><a href="#b.-les-relations-entre-items" id="toc-b.-les-relations-entre-items" class="nav-link" data-scroll-target="#b.-les-relations-entre-items">B. Les relations entre items</a></li>
   </ul></li>
-  <li><a href="#mod5" id="toc-mod5" class="nav-link" data-scroll-target="#mod5">5. Le module ScanR</a>
+  <li><a href="#mod6" id="toc-mod6" class="nav-link" data-scroll-target="#mod6">6. Le module ScanR</a>
   <ul class="collapse">
   <li><a href="#effectuer-un-import" id="toc-effectuer-un-import" class="nav-link" data-scroll-target="#effectuer-un-import">Effectuer un import</a></li>
   </ul></li>
-  <li><a href="#mod6" id="toc-mod6" class="nav-link" data-scroll-target="#mod6">6. Atelier pratique</a></li>
+  <li><a href="#mod7" id="toc-mod7" class="nav-link" data-scroll-target="#mod7">7. Atelier pratique</a></li>
   <li><a href="#synthèse-et-repères" id="toc-synthèse-et-repères" class="nav-link" data-scroll-target="#synthèse-et-repères">Synthèse et repères</a>
   <ul class="collapse">
   <li><a href="#en-résumé" id="toc-en-résumé" class="nav-link" data-scroll-target="#en-résumé">En résumé</a></li>
   </ul></li>
   <li><a href="#annexes" id="toc-annexes" class="nav-link" data-scroll-target="#annexes">Annexes</a>
   <ul class="collapse">
+  <li><a href="#aidememoire" id="toc-aidememoire" class="nav-link" data-scroll-target="#aidememoire">Aide-mémoire : la recherche avancée</a></li>
   <li><a href="#glossaire" id="toc-glossaire" class="nav-link" data-scroll-target="#glossaire">Glossaire</a></li>
   <li><a href="#liens-utiles" id="toc-liens-utiles" class="nav-link" data-scroll-target="#liens-utiles">Liens utiles</a></li>
   </ul></li>
@@ -374,17 +380,17 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td><kbd>Items</kbd></td>
 <td>Les entrées individuelles de la base</td>
-<td>2</td>
+<td>2 et 3</td>
 </tr>
 <tr class="even">
 <td><kbd>Item Sets</kbd></td>
 <td>Les regroupements d’items</td>
-<td>4</td>
+<td>5</td>
 </tr>
 <tr class="odd">
 <td><kbd>ScanR</kbd></td>
 <td>L’import de fiches personnes</td>
-<td>5</td>
+<td>6</td>
 </tr>
 </tbody>
 </table>
@@ -407,7 +413,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Comprendre qu’un item est l’entrée fondamentale dans la base, et savoir le retrouver.</p>
+<p>Comprendre qu’un item est l’entrée fondamentale dans la base, et savoir de quoi il est composé.</p>
 </div>
 </div>
 <section id="anatomie-dun-item" class="level3 page-columns page-full">
@@ -431,11 +437,11 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td><strong>Médias</strong></td>
-<td>Fichiers attachés (peu utilisés ici)</td>
+<td>Fichiers attachés (peu utilisé ici)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Exemple concret :</strong></p>
+<p><strong>Exemple :</strong></p>
 <div id="fig-item" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Page d'affichage d'un item, montrant ses métadonnées, son identifiant et ses médias">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-item-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -449,49 +455,72 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
-<col style="width: 75%">
+<col style="width: 45%">
+<col style="width: 28%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Élément</th>
 <th>Valeur</th>
+<th>Propriété</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>o:id</code></td>
+<td>Identifiant unique</td>
 <td>7457</td>
+<td><code>o:id</code></td>
 </tr>
 <tr class="even">
-<td><code>dcterms:title</code></td>
+<td>Métadonnée</td>
 <td><em>Samuel SZONIECKY</em></td>
+<td><code>dcterms:title</code></td>
 </tr>
 <tr class="odd">
-<td><code>dcterms:isPartOf</code></td>
+<td>Métadonnée</td>
 <td>→ Item « PARAGRAPHE » (o:id 1954)</td>
+<td><code>dcterms:isPartOf</code></td>
 </tr>
 <tr class="even">
-<td><code>foaf:birthday</code></td>
+<td>Métadonnée</td>
 <td>1971</td>
+<td><code>foaf:birthday</code></td>
 </tr>
 <tr class="odd">
-<td>Média(s)</td>
+<td>Média</td>
 <td><code>pfp_SSZ.jpg</code> (2,4 Mo)</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<p>Notez que <code>dcterms:isPartOf</code> ne contient pas du texte, mais un <strong>lien vers un autre item</strong>. On y revient au <a href="#mod4">module 4</a>.</p>
+<p>À noter : <code>dcterms:isPartOf</code> ne contient pas du texte, mais plutôt une sorte d’<strong>hyperlien</strong>. On y revient au <a href="#mod5">module 5</a>.</p>
 <section id="oid" class="level4 page-columns page-full">
 <h4 class="anchored" data-anchor-id="oid">L’identifiant <code>o:id</code></h4>
+<p>Numéro unique attribué automatiquement à la création d’un item. Il ne change <strong>jamais</strong>, même en cas de modification ou de suppression de l’item. C’est donc le seul point d’accroche fiable pour désigner un item.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p><strong><code>o:id</code></strong> — le numéro de matricule de l’item. Il ne change jamais.</p>
-</div></div><p>Numéro unique attribué automatiquement à la création. Il ne change <strong>jamais</strong>, même si le titre ou l’ensemble des métadonnées sont modifiés. C’est donc le seul point d’accroche fiable pour désigner un item.</p>
+<p><strong><code>o:id</code></strong> — En cas de suppression, l’identifiant ne sera jamais réattribué à un autre item.</p>
+</div></div></section>
 </section>
 </section>
-<section id="trouver-un-item" class="level3">
-<h3 class="anchored" data-anchor-id="trouver-un-item">Trouver un item</h3>
-<p>Avant de modifier un item, il faut d’abord le repérer.</p>
+<section id="mod3" class="level2">
+<h2 class="anchored" data-anchor-id="mod3">3. Trouver un item</h2>
+<div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Objectif
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Savoir retrouver un item dans la base, et croiser plusieurs critères de recherche sans se tromper d’outil.</p>
+</div>
+</div>
+<p>Avant de modifier un item, il faut d’abord le repérer. Trois méthodes, de la plus rapide à la plus précise.</p>
+<section id="les-trois-méthodes" class="level3">
+<h3 class="anchored" data-anchor-id="les-trois-méthodes">Les trois méthodes</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 24%">
@@ -508,7 +537,7 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 <tbody>
 <tr class="odd">
 <td><strong>Barre de recherche</strong></td>
-<td>En haut de la page <kbd>Items</kbd></td>
+<td>En haut du menu latéral gauche</td>
 <td>Mot-clé, titre, fragment de contenu</td>
 </tr>
 <tr class="even">
@@ -518,7 +547,7 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 </tr>
 <tr class="odd">
 <td><strong>Accès direct par o:id</strong></td>
-<td>URL <code>/admin/item/1543</code></td>
+<td>URL <code>/admin/item/7457</code></td>
 <td>Quand l’<code>o:id</code> est déjà connu</td>
 </tr>
 </tbody>
@@ -533,54 +562,135 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>L’URL d’édition suit le même schéma : <code>/admin/item/1543/edit</code>. Inversement, si vous êtes en train d’éditer un item, son <code>o:id</code> se lit directement dans la barre d’adresse.</p>
+<p>L’URL d’édition suit le même schéma : <code>/admin/item/7457/edit</code>. Inversement, si vous êtes en train d’éditer un item, son <code>o:id</code> se lit directement dans la barre d’adresse.</p>
 </div>
 </div>
-<section id="le-module-advanced-search" class="level4">
-<h4 class="anchored" data-anchor-id="le-module-advanced-search">Le module Advanced Search</h4>
-<p>Le module <strong>Advanced Search</strong> enrichit la recherche de base. Il permet de :</p>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Trois surprises de la barre de recherche">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Trois surprises de la barre de recherche
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
-<li>combiner plusieurs critères simultanément (<em>titre + date + créateur</em>) ;</li>
-<li>filtrer par classe de ressource, par item set, ou selon qu’une propriété est renseignée ou vide ;</li>
-<li>trier les résultats (date, titre, classe, pertinence) ;</li>
-<li>partager une recherche : tous les critères sont inscrits dans l’URL, qui peut être copiée telle quelle.</li>
+<li><strong>Elle ne cherche que dans les items.</strong> Les trois points de suspension à côté du champ permettent de basculer vers <kbd>Item Sets</kbd> ou <kbd>Media</kbd>. Sans cela, chercher un item set renvoie zéro résultat — et laisse croire qu’il n’existe pas.</li>
+<li><strong>Plusieurs mots séparés par un espace élargissent la recherche</strong>, au lieu de la restreindre. Les termes sont traités comme des alternatives ; le tri par pertinence se contente de remonter en tête ce qui contient les deux. Tout ce qui contient l’un <em>ou</em> l’autre reste dans la liste.</li>
+<li><strong>Pas de troncature.</strong> Il faut saisir le mot entier : « laborat » ne trouvera pas « laboratoire ».</li>
 </ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Ce qui se passe quand vous validez une recherche">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Ce qui se passe quand vous validez une recherche
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>L’index.</strong> Omeka ne relit pas les items un par un au moment de la requête. À chaque enregistrement, il fabrique une version « à plat » de l’item — titre et valeurs mis bout à bout — qu’il range dans une table d’index. C’est elle que la recherche interroge, pas les fiches elles-mêmes. Elle est découpée en <strong>mots entiers</strong>, d’où l’absence de troncature : « laborat » n’y figure pas, « laboratoire » oui.</p>
+<p><strong>Le classement — et pourquoi il trompe.</strong> Une recherche plein texte ne produit pas une sélection, mais un <strong>classement</strong>. Tout item contenant <em>au moins un</em> des termes saisis entre dans la liste ; ceux qui les contiennent tous sont simplement placés devant. Un terme répété, ou situé dans un champ court, fait encore remonter l’item.</p>
+<p>C’est précisément ce qui induit en erreur : les premières lignes semblent répondre exactement à la question posée, et rien n’indique à partir d’où la liste décroche. Il n’y a pas de seuil, seulement une pente. Pour obtenir une véritable sélection, il faut passer par la section <strong>Filters</strong> de la recherche avancée, décrite ci-dessous.</p>
+<p><strong>Hors recherche.</strong> La liste est triée par <code>o:id</code> décroissant, donc les items créés le plus récemment en premier : l’ordre paraît arbitraire, il ne l’est pas. Et quel que soit le critère de tri retenu, les valeurs vides sont toujours renvoyées en fin de liste.</p>
+<p>Conséquence pratique : la barre de recherche et l’opérateur <code>contains</code> de la recherche avancée ne travaillent pas du tout de la même manière.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 13%">
-<col style="width: 53%">
-<col style="width: 33%">
+<col style="width: 47%">
+<col style="width: 23%">
+<col style="width: 29%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Action</th>
-<th>Emplacement</th>
-<th>Résultat</th>
+<th></th>
+<th>Barre de recherche</th>
+<th><code>contains</code> (Filters)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Rechercher</td>
-<td>Bouton <kbd>Recherche avancée</kbd>, au-dessus de la liste</td>
-<td>Formulaire à champs multiples</td>
+<td>Unité comparée</td>
+<td>Le mot entier</td>
+<td>La suite de caractères</td>
 </tr>
 <tr class="even">
-<td>Filtrer</td>
-<td>Panneau latéral gauche</td>
-<td>Affiner par item set, vocabulaire…</td>
+<td>« trav » trouve-t-il « travail » ?</td>
+<td>Non</td>
+<td>Oui</td>
 </tr>
 <tr class="odd">
-<td>Trier</td>
-<td>Menu déroulant <kbd>Trier par</kbd></td>
-<td>Réordonner les résultats</td>
+<td>« travail » trouve-t-il « Travail collaboratif » ?</td>
+<td>Oui</td>
+<td>Oui</td>
+</tr>
+<tr class="even">
+<td>Classement des résultats</td>
+<td>Par pertinence</td>
+<td>Aucun</td>
 </tr>
 </tbody>
 </table>
+<p>Deux réserves : les mots très courts (deux ou trois lettres) sont généralement ignorés par l’index, et un item modifié en dehors de l’interface peut ne pas y être à jour.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="la-recherche-avancée" class="level3">
+<h3 class="anchored" data-anchor-id="la-recherche-avancée">La recherche avancée</h3>
+<p>Le bouton <kbd>Advanced search</kbd>, au-dessus de la liste des items, ouvre un formulaire permettant de :</p>
+<ul>
+<li>croiser plusieurs critères (<em>titre + date + concept</em>) ;</li>
+<li>filtrer par classe de ressource, par item set, ou selon qu’une propriété est renseignée ou vide ;</li>
+<li>trier les résultats (date, titre, classe, pertinence) ;</li>
+<li>partager une recherche : tous les critères sont inscrits dans l’URL, qui peut être copiée telle quelle.</li>
+</ul>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Deux blocs se ressemblent — un seul fait le travail">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Deux blocs se ressemblent — un seul fait le travail
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le formulaire contient <strong>deux sections voisines et d’apparence identique</strong> :</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 67%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Section</th>
+<th>Ce qu’elle permet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Search by value</strong></td>
+<td>Un critère à la fois, sans choix entre ET et OU</td>
+</tr>
+<tr class="even">
+<td><strong>Filters</strong></td>
+<td>Plusieurs critères, avec un menu déroulant <strong>AND / OR</strong> entre chaque ligne</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pour croiser des critères, utilisez « Filters ».</strong> Rien dans l’interface ne l’indique.</p>
+<p>Autre piège, dans « Search by value » : une ligne dont le champ texte reste vide est <strong>supprimée sans avertissement</strong> à la validation. Le symptôme n’est pas une erreur ni une liste vide — c’est une liste <em>trop longue</em>, qui ressemble à une recherche réussie.</p>
+</div>
+</div>
+<p>Le détail des opérateurs et des cas particuliers se trouve dans l’<a href="#aidememoire">aide-mémoire en annexe</a>.</p>
 </section>
 </section>
-</section>
-<section id="mod3" class="level2">
-<h2 class="anchored" data-anchor-id="mod3">3. Vocabulaires et propriétés</h2>
+<section id="mod4" class="level2">
+<h2 class="anchored" data-anchor-id="mod4">4. Vocabulaires et propriétés</h2>
 <div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -597,6 +707,7 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 <section id="principe" class="level3">
 <h3 class="anchored" data-anchor-id="principe">Principe</h3>
 <p>Les métadonnées d’un item ne sont pas inventées au hasard. Elles proviennent de <strong>vocabulaires</strong>, qui définissent trois choses : quels champs existent, ce que chaque champ signifie, et quel type de valeur est attendu.</p>
+<p><strong>Pourquoi ne pas créer ses propres champs ?</strong> Parce qu’un champ nommé « Auteur » ne signifie rien en dehors de la base qui l’a créé : ailleurs, on aura retenu « Créateur », « Rédigé par » ou « Responsable », et plus rien ne se croise. Reprendre un vocabulaire publié, c’est employer un identifiant que d’autres systèmes reconnaissent déjà, sans avoir à leur fournir de mode d’emploi. C’est ce qui rend les données exportables et comparables avec celles d’autres institutions — et ce qui donne son intérêt à l’API évoquée au <a href="#mod1">module 1</a>.</p>
 <p>Le plus connu est <a href="https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/">Dublin Core</a> (préfixe <code>dcterms:</code>) : c’est le vocabulaire le plus utilisé internationalement, présent par défaut dans Omeka S.</p>
 <table class="caption-top table">
 <colgroup>
@@ -635,10 +746,65 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 <tr class="odd">
 <td><code>dcterms:type</code></td>
 <td>Type de ressource</td>
-<td>Texte ou vocabulaire contrôlé</td>
+<td>Texte ou URI</td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="classes-et-propriétés" class="level3">
+<h3 class="anchored" data-anchor-id="classes-et-propriétés">Classes et propriétés</h3>
+<p>Un vocabulaire contient en réalité <strong>deux sortes de termes</strong>, qu’il ne faut pas confondre. La distinction tient en une phrase : la classe dit ce que la chose <em>est</em>, la propriété dit ce qu’on en <em>dit</em>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 40%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Classe</th>
+<th>Propriété</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Question posée</td>
+<td>« De quelle nature est cet item ? »</td>
+<td>« Quelle information je saisis ? »</td>
+</tr>
+<tr class="even">
+<td>Nombre par item</td>
+<td>Une seule, et elle est facultative</td>
+<td>Autant qu’on veut</td>
+</tr>
+<tr class="odd">
+<td>Dans l’interface</td>
+<td>Le champ <kbd>Resource class</kbd></td>
+<td>Les champs de saisie</td>
+</tr>
+<tr class="even">
+<td>Exemples</td>
+<td><code>foaf:Person</code>, <code>dctype:Image</code></td>
+<td><code>dcterms:title</code>, <code>foaf:name</code></td>
+</tr>
+</tbody>
+</table>
+<p>Dublin Core Terms fournit 55 propriétés — dont Title et Creator — et 22 classes. Pour les classes, le vocabulaire de référence est plutôt Dublin Core Type et ses 12 entrées : Image, Moving Image, Sound, Text, Physical Object, etc.</p>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Un mot, deux sens">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Un mot, deux sens
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les <strong>vocabulaires</strong> d’Omeka S ne sont pas des <strong>vocabulaires contrôlés</strong>.</p>
+<p>Les premiers sont des ensembles de classes et de propriétés, c’est-à-dire des <em>champs</em>. Les seconds sont des listes de termes autorisés, c’est-à-dire des <em>valeurs</em> — et ils se gèrent par d’autres modules (Value Suggest, Custom Vocab).</p>
+</div>
+</div>
 </section>
 <section id="deux-types-de-valeurs" class="level3">
 <h3 class="anchored" data-anchor-id="deux-types-de-valeurs">Deux types de valeurs</h3>
@@ -678,6 +844,20 @@ Figure&nbsp;2: Le sélecteur de type de valeur, en mode édition d’un item.
 </figcaption>
 </figure>
 </div>
+<div class="callout callout-style-simple callout-important callout-titled" title="Omeka ne vérifie rien">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Omeka ne vérifie rien
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le logiciel n’impose <strong>aucune</strong> des règles définies par les vocabulaires. Une propriété censée pointer vers une autre ressource acceptera sans broncher du texte libre, et personne ne vous signalera l’erreur.</p>
+<p>La cohérence des données repose donc entièrement sur la personne qui saisit — ce qui est précisément la raison d’être de cette formation. Seuls les <strong>modèles de ressource</strong> (<em>resource templates</em>) permettent d’imposer un type de valeur sur un champ donné.</p>
+</div>
+</div>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -694,8 +874,8 @@ Figure&nbsp;2: Le sélecteur de type de valeur, en mode édition d’un item.
 </div>
 </section>
 </section>
-<section id="mod4" class="level2">
-<h2 class="anchored" data-anchor-id="mod4">4. Organisation et relations</h2>
+<section id="mod5" class="level2">
+<h2 class="anchored" data-anchor-id="mod5">5. Organisation et relations</h2>
 <div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -766,6 +946,7 @@ Figure&nbsp;2: Le sélecteur de type de valeur, en mode édition d’un item.
 </div>
 </div>
 </div>
+<p>Sans ce mécanisme, une même notion se retrouve écrite de plusieurs façons et devient introuvable. Notre propre base en donne l’illustration : les concepts <strong>« Multimodality »</strong>, <strong>« Multimodalité »</strong>, <strong>« Multimodal »</strong> et <strong>« interface multimodale »</strong> y coexistent comme quatre items distincts. Une recherche sur l’un d’eux ignore les trois autres.</p>
 <p><strong>Pourquoi ne pas simplement écrire le nom en texte ?</strong></p>
 <table class="caption-top table">
 <colgroup>
@@ -808,8 +989,8 @@ Figure&nbsp;2: Le sélecteur de type de valeur, en mode édition d’un item.
 </div>
 </section>
 </section>
-<section id="mod5" class="level2">
-<h2 class="anchored" data-anchor-id="mod5">5. Le module ScanR</h2>
+<section id="mod6" class="level2">
+<h2 class="anchored" data-anchor-id="mod6">6. Le module ScanR</h2>
 <div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -830,7 +1011,7 @@ Figure&nbsp;2: Le sélecteur de type de valeur, en mode édition d’un item.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Ce module ne couvre que la manipulation dans Omeka S. Pour le fonctionnement de la source elle-même, la structure des données et les cas d’usage plus larges, voir la page <a href="scanr_extract.qmd">ScanR comme source de données</a>.</p>
+<p>Ce module ne couvre que la manipulation dans Omeka S. Pour le fonctionnement de la source elle-même, la structure des données et les cas d’usage plus larges, voir la page <a href="../donnees/scanr_extract.html">ScanR comme source de données</a>.</p>
 </div>
 </div>
 </div>
@@ -962,8 +1143,8 @@ Figure&nbsp;4: La case à cocher de fusion, dans la fenêtre d’édition par lo
 </div>
 </section>
 </section>
-<section id="mod6" class="level2">
-<h2 class="anchored" data-anchor-id="mod6">6. Atelier pratique</h2>
+<section id="mod7" class="level2">
+<h2 class="anchored" data-anchor-id="mod7">7. Atelier pratique</h2>
 <div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1076,6 +1257,88 @@ Figure&nbsp;4: La case à cocher de fusion, dans la fenêtre d’édition par lo
 </section>
 <section id="annexes" class="level2">
 <h2 class="anchored" data-anchor-id="annexes">Annexes</h2>
+<section id="aidememoire" class="level3">
+<h3 class="anchored" data-anchor-id="aidememoire">Aide-mémoire : la recherche avancée</h3>
+<section id="les-deux-sections-du-formulaire" class="level4">
+<h4 class="anchored" data-anchor-id="les-deux-sections-du-formulaire">Les deux sections du formulaire</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 51%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Section</th>
+<th>Origine</th>
+<th>Ce qu’elle permet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Search by value</strong></td>
+<td>Cœur d’Omeka S</td>
+<td>Un critère, sans joncteur visible</td>
+</tr>
+<tr class="even">
+<td><strong>Filters</strong></td>
+<td>Module Advanced Search</td>
+<td>Plusieurs critères, avec menu <strong>AND / OR</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Les deux cohabitent parce que le module reprend progressivement les fonctions du cœur. Pour toute recherche à plusieurs critères, c’est <strong>Filters</strong>.</p>
+</section>
+<section id="les-opérateurs-disponibles" class="level4">
+<h4 class="anchored" data-anchor-id="les-opérateurs-disponibles">Les opérateurs disponibles</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 42%">
+<col style="width: 57%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Opérateur</th>
+<th>Ce qu’il fait</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>is exactly</code> / <code>is not exactly</code></td>
+<td>Valeur strictement identique</td>
+</tr>
+<tr class="even">
+<td><code>contains</code> / <code>does not contain</code></td>
+<td>Recherche de sous-chaîne</td>
+</tr>
+<tr class="odd">
+<td><code>is resource with ID</code> / <code>is not resource with ID</code></td>
+<td>Pointe vers l’item dont l’<code>o:id</code> est indiqué</td>
+</tr>
+<tr class="even">
+<td><code>has any value</code> / <code>has no values</code></td>
+<td>La propriété est renseignée, ou vide</td>
+</tr>
+<tr class="odd">
+<td><code>has data type</code> / <code>does not have data type</code></td>
+<td>Filtre sur le type de valeur</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="trois-comportements-à-connaître" class="level4">
+<h4 class="anchored" data-anchor-id="trois-comportements-à-connaître">Trois comportements à connaître</h4>
+<p><strong><code>contains</code> est une recherche de sous-chaîne brute.</strong> Ni lemmatisation, ni tolérance orthographique. Chercher « travail » ramène « Travail collaboratif », mais <strong>ni</strong> « Travelling » <strong>ni</strong> « traveller » — alors qu’un lecteur pressé pourrait s’y attendre.</p>
+<p><strong><code>is resource with ID</code> est plus fiable que <code>contains</code></strong> dès qu’on cherche un concept précis : il vise l’<code>o:id</code> de la cible et ne dépend donc pas de l’orthographe de son titre. C’est aussi l’opérateur qui répond à la question « quels items pointent vers celui-ci ? ».</p>
+<p><strong>Les critères ne se groupent pas.</strong> Les joncteurs s’appliquent en séquence, sans parenthèses : une requête du type <code>(A OU B) ET C</code> n’est pas exprimable dans le formulaire.</p>
+</section>
+<section id="vérifier-ce-qui-a-réellement-été-envoyé" class="level4">
+<h4 class="anchored" data-anchor-id="vérifier-ce-qui-a-réellement-été-envoyé">Vérifier ce qui a réellement été envoyé</h4>
+<p>Après avoir lancé une recherche, l’URL contient tous les critères. Chaque critère y apparaît sous la forme <code>filter[0]</code>, <code>filter[1]</code>, etc. — les crochets étant affichés par le navigateur sous leur forme encodée, <code>%5B0%5D</code> et <code>%5B1%5D</code>.</p>
+<p>Compter ces numéros permet de vérifier combien de critères ont réellement été pris en compte. Un <code>%5B1%5D</code> sans <code>%5B0%5D</code> signale qu’une ligne a été supprimée parce qu’elle était vide.</p>
+<p>Cette URL est par ailleurs partageable telle quelle : c’est le moyen le plus simple de transmettre une recherche à un collègue.</p>
+</section>
+</section>
 <section id="glossaire" class="level3">
 <h3 class="anchored" data-anchor-id="glossaire">Glossaire</h3>
 <table class="caption-top table">
@@ -1099,40 +1362,52 @@ Figure&nbsp;4: La case à cocher de fusion, dans la fenêtre d’édition par lo
 <td>Stockage central où sont créées, modifiées et organisées les données</td>
 </tr>
 <tr class="odd">
+<td>Classe</td>
+<td>Nature d’un item (<code>foaf:Person</code>…) ; une seule par item, facultative</td>
+</tr>
+<tr class="even">
+<td>Facette</td>
+<td>Filtre proposé à partir des résultats, pour affiner par clics successifs</td>
+</tr>
+<tr class="odd">
+<td>Filtre</td>
+<td>Critère de recherche combinable, dans la section « Filters »</td>
+</tr>
+<tr class="even">
 <td>Item</td>
 <td>Entrée dans la base (photo, document, personne, objet…)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Item Set</td>
 <td>Regroupement logique d’items (collection, fonds thématique)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Média</td>
 <td>Fichier attaché à un item</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Module</td>
 <td>Extension ajoutant des fonctionnalités à Omeka S (ex. ScanR)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>o:id</code></td>
 <td>Identifiant unique et permanent, attribué automatiquement</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Propriété</td>
 <td>Champ spécifique issu d’un vocabulaire (ex. <code>dcterms:title</code>)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Relation</td>
 <td>Lien actif entre deux items, via une propriété de type ressource</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Ressource</td>
 <td>Valeur pointant vers un autre item, par opposition au texte libre</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Vocabulaire</td>
-<td>Ensemble de propriétés et de classes définissant les champs disponibles</td>
+<td>Ensemble de classes et de propriétés définissant les champs disponibles — à ne pas confondre avec un vocabulaire contrôlé, qui est une liste de valeurs autorisées</td>
 </tr>
 </tbody>
 </table>
