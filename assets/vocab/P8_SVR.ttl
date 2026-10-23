@@ -129,6 +129,21 @@ valo:OPE a rdfs:Class ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
+valo:TypeOPE a rdfs:Class ;
+    rdfs:label "Types d'OPE" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:GestionOPE a rdfs:Class ;
+    rdfs:label "Type de pilotage / gestion des OPE" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:TypePartenaire a rdfs:Class ;
+    rdfs:label "Type de partenaire" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
 # Liste des propriétés utilisées dans la base de données OMEKA S
 
 valo:cnu a rdf:Property ; # Utilisé dans : Enseignants chercheurs ; 
@@ -251,12 +266,37 @@ valo:opeCollabLabo a rdf:Property ; # Utilisé dans : OPE
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
+valo:opeType a rdf:Property ; # Utilisé dans : OPE
+    rdfs:label "Type de l'OPE" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:modePilotageOPE a rdf:Property ; # Utilisé dans : OPE
+    rdfs:label "Mode de pilotage / gestion de l'OPE" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
 valo:ecImplique a rdf:Property ; # Utilisé dans : OPE
     rdfs:label "Enseignant chercheur impliqué..." ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:rankValidated a rdf:Property ; # Utilisé dans : Enseignant-chercheur (annotation uniquement
+valo:rankValidated a rdf:Property ; # Utilisé dans : Enseignant-chercheur (annotation uniquement)
     rdfs:label "Pertinence d'un concept (post-vérification par EC)" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:typePartenaire a rdf:Property ; # Utilisé dans : y
+    rdfs:label "Type du partenaire..." ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:budgOPE a rdf:Property ; # Utilisé dans : Enseignant-chercheur (annotation uniquement)
+    rdfs:label "Budget de l'OPE" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+valo:montantGlobal a rdf:Property ; # Utilisé dans : Enseignant-chercheur (annotation uniquement)
+    rdfs:label "Montant global (TTC) de l'OPE" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .

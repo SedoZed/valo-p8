@@ -30,10 +30,21 @@ Effectuer des modifications ciblées directement dans l'interface.
 :::
 :::
 
+### Concepts clés
+
+| Concept              | Définition simplifiée                                               | À retenir                          |
+|----------------------|---------------------------------------------------------------------|------------------------------------|
+| **Affichage admin**  | Là où on crée, modifie et organise le contenu de la base de données | Interface principale de travail    |
+| **API**              | Mécanisme d'exposition programmatique des données                   | Export vers des outils externes    |
+| **Site / CMS**       | Outil de déploiement de sites publics, interne à Omeka S            | Non utilisé pour le moment         |
+
+
+
 ::: {.callout-note appearance="simple"}
 ## Comment lire ce document
 
 Les libellés de l'interface sont notés comme ceci : <kbd>Batch actions</kbd>.
+
 Les noms de champs sont notés comme cela : `dcterms:title`.
 :::
 
@@ -43,29 +54,27 @@ Les noms de champs sont notés comme cela : `dcterms:title`.
 Comprendre la logique interne d'Omeka S.
 :::
 
-### Concepts clés
+### Pourquoi Omeka S ?
 
-| Concept              | Définition simplifiée                                    | À retenir                          |
-|----------------------|----------------------------------------------------------|------------------------------------|
-| **Base de données**  | Là où on crée, modifie et organise le contenu             | Interface principale de travail    |
-| **Site / CMS**       | Outil de déploiement de sites publics, interne à Omeka S  | Non utilisé pour le moment         |
-| **API**              | Mécanisme d'exposition programmatique des données         | Export vers des outils externes    |
+Omeka S est une interface open-source conçue initialement pour structurer des collections numériques patrimoniales (*musées, archives, bibliothèques*) où les métadonnées comptent autant que les fichiers eux-mêmes. L'accent est mis sur la **qualité et l'interopérabilité des données** : chaque item est décrit selon des vocabulaires standards, ce qui rend les informations fiables, cohérentes et réutilisables.
+
+Également, d'un point de vue gestion et entretien des données, avoir une telle interface permets une manipulation bien moins complexe qu'en temps normal (phpMyAdmin, SQL, ...).
 
 ### Se repérer dans l'interface
 
-L'administration compte une dizaine d'entrées dans son menu latéral. Trois seulement seront utilisées pendant cette formation :
+L'administration compte une dizaine d'entrées dans son menu latéral. En voici quelques uns d'importants :
 
 | Entrée du menu | À quoi elle sert | Vu au module |
 |---|---|---|
 | <kbd>Items</kbd> | Les entrées individuelles de la base | 2 et 3 |
 | <kbd>Item Sets</kbd> | Les regroupements d'items | 5 |
+| <kbd>Vocabularies</kbd>| Liste des vocabulaires utilisés | 4 |
 | <kbd>ScanR</kbd> | L'import de fiches personnes | 6 |
+| <kbd>Resource Template</kbd> | Liste des templates d'items réccurents | --- |
+| <kbd>CSV Imports</kbd> | Méthode d'import massif de données | --- |
+| <kbd>Exports</kbd> | Méthode d'export massif de données | --- |
 
-Le reste du menu relève de l'administration de l'instance et n'est pas abordé ici.
-
-### Pourquoi Omeka S ?
-
-Omeka S est conçu pour structurer des collections patrimoniales (*musées, archives, bibliothèques*) où les métadonnées comptent autant que les fichiers eux-mêmes. L'accent est mis sur la **qualité et l'interopérabilité des données** : chaque item est décrit selon des vocabulaires standards, ce qui rend les informations fiables, cohérentes et réutilisables.
+Le reste des entrées ne vous seront normalement pas utiles à aucun moment.
 
 ## 2. L'item, unité de base {#mod2}
 
@@ -127,43 +136,21 @@ Avant de modifier un item, il faut d'abord le repérer. Trois méthodes, de la p
 L'URL d'édition suit le même schéma : `/admin/item/7457/edit`. Inversement, si vous êtes en train d'éditer un item, son `o:id` se lit directement dans la barre d'adresse.
 :::
 
-::: {.callout-warning title="Trois surprises de la barre de recherche" appearance="simple"}
-- **Elle ne cherche que dans les items.** Les trois points de suspension à côté du champ permettent de basculer vers <kbd>Item Sets</kbd> ou <kbd>Media</kbd>. Sans cela, chercher un item set renvoie zéro résultat — et laisse croire qu'il n'existe pas.
+::: {.callout-warning title="Points à savoir" appearance="simple"}
+- **L'ordre d'affichage** des items après une recherche ne se fait **pas par pertinence** mais, par défaut, en fontion des **dates de création** des items (du plus récent au plus ancien). Il est possible de changer l'ordre d'affichage, pour afficher par ordre alphabétique par exemple, en haut à droite, sous "add new item" une fois la requête envoyée.
 - **Plusieurs mots séparés par un espace élargissent la recherche**, au lieu de la restreindre. Les termes sont traités comme des alternatives ; le tri par pertinence se contente de remonter en tête ce qui contient les deux. Tout ce qui contient l'un *ou* l'autre reste dans la liste.
-- **Pas de troncature.** Il faut saisir le mot entier : « laborat » ne trouvera pas « laboratoire ».
 :::
 
-::: {.callout-note title="Ce qui se passe quand vous validez une recherche" collapse="true"}
-**L'index.** Omeka ne relit pas les items un par un au moment de la requête. À chaque enregistrement, il fabrique une version « à plat » de l'item — titre et valeurs mis bout à bout — qu'il range dans une table d'index. C'est elle que la recherche interroge, pas les fiches elles-mêmes. Elle est découpée en **mots entiers**, d'où l'absence de troncature : « laborat » n'y figure pas, « laboratoire » oui.
-
-**Le classement — et pourquoi il trompe.** Une recherche plein texte ne produit pas une sélection, mais un **classement**. Tout item contenant *au moins un* des termes saisis entre dans la liste ; ceux qui les contiennent tous sont simplement placés devant. Un terme répété, ou situé dans un champ court, fait encore remonter l'item.
-
-C'est précisément ce qui induit en erreur : les premières lignes semblent répondre exactement à la question posée, et rien n'indique à partir d'où la liste décroche. Il n'y a pas de seuil, seulement une pente. Pour obtenir une véritable sélection, il faut passer par la section **Filters** de la recherche avancée, décrite ci-dessous.
-
-**Hors recherche.** La liste est triée par `o:id` décroissant, donc les items créés le plus récemment en premier : l'ordre paraît arbitraire, il ne l'est pas. Et quel que soit le critère de tri retenu, les valeurs vides sont toujours renvoyées en fin de liste.
-
-Conséquence pratique : la barre de recherche et l'opérateur `contains` de la recherche avancée ne travaillent pas du tout de la même manière.
-
-|                                        | Barre de recherche | `contains` (Filters)    |
-|----------------------------------------|--------------------|-------------------------|
-| Unité comparée                         | Le mot entier      | La suite de caractères  |
-| « trav » trouve-t-il « travail » ?     | Non                | Oui                     |
-| « travail » trouve-t-il « Travail collaboratif » ? | Oui    | Oui                     |
-| Classement des résultats               | Par pertinence     | Aucun                   |
-
-Deux réserves : les mots très courts (deux ou trois lettres) sont généralement ignorés par l'index, et un item modifié en dehors de l'interface peut ne pas y être à jour.
-:::
 
 ### La recherche avancée
 
 Le bouton <kbd>Advanced search</kbd>, au-dessus de la liste des items, ouvre un formulaire permettant de :
 
-- croiser plusieurs critères (*titre + date + concept*) ;
-- filtrer par classe de ressource, par item set, ou selon qu'une propriété est renseignée ou vide ;
-- trier les résultats (date, titre, classe, pertinence) ;
+- Croiser plusieurs critères (*titre*, *item set*, *class*, ...) ;
+- Affiner la méthode de recherche (*est strictement...* , *contient.../ne contient pas...* , *Propriété N est vide...*, ...) ;
 - partager une recherche : tous les critères sont inscrits dans l'URL, qui peut être copiée telle quelle.
 
-::: {.callout-warning title="Deux blocs se ressemblent — un seul fait le travail" appearance="simple"}
+::: {.callout-warning title="Attention à utiliser le bon bloc de recherche !" appearance="simple"}
 Le formulaire contient **deux sections voisines et d'apparence identique** :
 
 | Section | Ce qu'elle permet |
@@ -173,7 +160,6 @@ Le formulaire contient **deux sections voisines et d'apparence identique** :
 
 **Pour croiser des critères, utilisez « Filters ».** Rien dans l'interface ne l'indique.
 
-Autre piège, dans « Search by value » : une ligne dont le champ texte reste vide est **supprimée sans avertissement** à la validation. Le symptôme n'est pas une erreur ni une liste vide — c'est une liste *trop longue*, qui ressemble à une recherche réussie.
 :::
 
 Le détail des opérateurs et des cas particuliers se trouve dans l'[aide-mémoire en annexe](#aidememoire).
@@ -186,38 +172,43 @@ Comprendre d'où viennent les champs que l'on voit en ouvrant un item.
 
 ### Principe
 
-Les métadonnées d'un item ne sont pas inventées au hasard. Elles proviennent de **vocabulaires**, qui définissent trois choses : quels champs existent, ce que chaque champ signifie, et quel type de valeur est attendu.
-
-**Pourquoi ne pas créer ses propres champs ?** Parce qu'un champ nommé « Auteur » ne signifie rien en dehors de la base qui l'a créé : ailleurs, on aura retenu « Créateur », « Rédigé par » ou « Responsable », et plus rien ne se croise. Reprendre un vocabulaire publié, c'est employer un identifiant que d'autres systèmes reconnaissent déjà, sans avoir à leur fournir de mode d'emploi. C'est ce qui rend les données exportables et comparables avec celles d'autres institutions — et ce qui donne son intérêt à l'API évoquée au [module 1](#mod1).
-
-Le plus connu est [Dublin Core](https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/) (préfixe `dcterms:`) : c'est le vocabulaire le plus utilisé internationalement, présent par défaut dans Omeka S.
-
-| Propriété             | Signification      | Type attendu                    |
-|-----------------------|--------------------|---------------------------------|
-| `dcterms:title`       | Titre de l'item    | Texte                           |
-| `dcterms:creator`     | Créateur           | Texte ou ressource              |
-| `dcterms:date`        | Date               | Texte (format ISO recommandé)   |
-| `dcterms:description` | Description        | Texte long                      |
-| `dcterms:type`        | Type de ressource  | Texte ou URI                    |
-
-### Classes et propriétés
+Chaque item contient un certain nombre de données, elles-mêmes rangées selon des qualificatifs que l'on appelle "propriétés" : **ce sont les métadonnées**. Chaque propriété provient d'un **vocabulaires**, qui définissent trois choses : quels champs existent, ce que chaque champ signifie, et quel type de valeur est attendu. 
 
 Un vocabulaire contient en réalité **deux sortes de termes**, qu'il ne faut pas confondre. La distinction tient en une phrase : la classe dit ce que la chose *est*, la propriété dit ce qu'on en *dit*.
 
-|                     | Classe                              | Propriété                        |
-|---------------------|-------------------------------------|----------------------------------|
+|                     | Classe                              | Propriété                          |
+|---------------------|-------------------------------------|----------------------------------- |
 | Question posée      | « De quelle nature est cet item ? » | « Quelle information je saisis ? » |
-| Nombre par item     | Une seule, et elle est facultative  | Autant qu'on veut                |
-| Dans l'interface    | Le champ <kbd>Resource class</kbd>  | Les champs de saisie             |
-| Exemples            | `foaf:Person`, `dctype:Image`       | `dcterms:title`, `foaf:name`     |
+| Nombre par item     | Une seule, et elle est facultative  | Autant qu'on veut                  |
+| Dans l'interface    | Le champ <kbd>Resource class</kbd>  | Les champs de saisie               |
+| Exemples            | `foaf:Person`, `dctype:Image`       | `dcterms:title`, `foaf:name`       |
 
-Dublin Core Terms fournit 55 propriétés — dont Title et Creator — et 22 classes. Pour les classes, le vocabulaire de référence est plutôt Dublin Core Type et ses 12 entrées : Image, Moving Image, Sound, Text, Physical Object, etc.
 
-::: {.callout-warning title="Un mot, deux sens" appearance="simple"}
-Les **vocabulaires** d'Omeka S ne sont pas des **vocabulaires contrôlés**.
+Le plus connu est [Dublin Core](https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/) (préfixe `dcterms:`) : c'est le vocabulaire le plus utilisé internationalement, présent par défaut dans Omeka S. Mais d'autres dictionnaires existent, écrits pour satisfaire X ou Y but. Dublin Core Terms fournit 55 propriétés — dont Title et Creator — et 22 classes. Pour les classes, le vocabulaire de référence est plutôt Dublin Core Type et ses 12 entrées : Image, Moving Image, Sound, Text, Physical Object, etc.
 
-Les premiers sont des ensembles de classes et de propriétés, c'est-à-dire des *champs*. Les seconds sont des listes de termes autorisés, c'est-à-dire des *valeurs* — et ils se gèrent par d'autres modules (Value Suggest, Custom Vocab).
+| Propriété             | Signification                        | Type attendu                    |
+|-----------------------|--------------------------------------|---------------------------------|
+| `dcterms:title`       | Titre de l'item                      | Texte                           |
+| `dcterms:alternative` | Titre alternatif                     | Texte ou ressource              |
+| `dcterms:date`        | Date                                 | Texte (format ISO recommandé)   |
+| `dcterms:description` | Description                          | Texte long                      |
+| `dcterms:isPartOf`    | Littéralement "faisant parti de..."  | Texte, URI, o:id, ...           |
+
+Aussi, rien n'interdit d'utiliser son propre vocabulaire personnalisé, à condition de le rendre lisible et structuré pour la machine grâce à un dictionnaire RDF (Resource Description Framework). Par exemple, un dictionnaire RDF a été créé spécialement pour le projet de cartographie (préfixe : `valo:`) dont voici quelques exemples :
+
+| Propriété              | Signification                         | Type attendu                    |
+|------------------------|---------------------------------------|---------------------------------|
+| `valo:domaineHceres`   | Domaine(s) HCERES d'un item (EC, ...) | o:id                            |
+| `valo:modePilotageOPE` | Titre alternatif                      | o:id                            |
+| `valo:budgOPE`         | Budget d'une OPE                      | Texte                           |
+
+::: {.callout-tip appearance="simple"}
+## Où consulter les vocabulaires ?
+
+Les vocabulaires chargés et utilisés par la base sont listés dans l'onglet <kbd>Vocabularies</kbd> de l'interface, et consultable en cliquant sur les hyperliens en rouge, sous "*Classes*" et "*Properties*".
+.
 :::
+
 
 ### Deux types de valeurs
 
@@ -232,14 +223,6 @@ Les premiers sont des ensembles de classes et de propriétés, c'est-à-dire des
 Le logiciel n'impose **aucune** des règles définies par les vocabulaires. Une propriété censée pointer vers une autre ressource acceptera sans broncher du texte libre, et personne ne vous signalera l'erreur.
 
 La cohérence des données repose donc entièrement sur la personne qui saisit — ce qui est précisément la raison d'être de cette formation. Seuls les **modèles de ressource** (*resource templates*) permettent d'imposer un type de valeur sur un champ donné.
-:::
-
-::: {.callout-tip appearance="simple"}
-## Où consulter les vocabulaires ?
-
-Les vocabulaires installés sur l'instance sont listés dans l'onglet <kbd>Vocabularies</kbd> de l'interface. Les propriétés, elles, apparaissent directement au moment de créer ou d'éditer un item.
-
-Pour le détail des vocabulaires et de leur logique sous-jacente, voir la page [Exploiter le web sémantique pour les métadonnées](dico_rdf.qmd).
 :::
 
 ## 5. Organisation et relations {#mod5}

@@ -199,12 +199,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#préambule" id="toc-préambule" class="nav-link active" data-scroll-target="#préambule">Préambule</a></li>
-  <li><a href="#mod1" id="toc-mod1" class="nav-link" data-scroll-target="#mod1">1. Le paysage global</a>
+  <li><a href="#préambule" id="toc-préambule" class="nav-link active" data-scroll-target="#préambule">Préambule</a>
   <ul class="collapse">
   <li><a href="#concepts-clés" id="toc-concepts-clés" class="nav-link" data-scroll-target="#concepts-clés">Concepts clés</a></li>
-  <li><a href="#se-repérer-dans-linterface" id="toc-se-repérer-dans-linterface" class="nav-link" data-scroll-target="#se-repérer-dans-linterface">Se repérer dans l’interface</a></li>
+  </ul></li>
+  <li><a href="#mod1" id="toc-mod1" class="nav-link" data-scroll-target="#mod1">1. Le paysage global</a>
+  <ul class="collapse">
   <li><a href="#pourquoi-omeka-s" id="toc-pourquoi-omeka-s" class="nav-link" data-scroll-target="#pourquoi-omeka-s">Pourquoi Omeka S ?</a></li>
+  <li><a href="#se-repérer-dans-linterface" id="toc-se-repérer-dans-linterface" class="nav-link" data-scroll-target="#se-repérer-dans-linterface">Se repérer dans l’interface</a></li>
   </ul></li>
   <li><a href="#mod2" id="toc-mod2" class="nav-link" data-scroll-target="#mod2">2. L’item, unité de base</a>
   <ul class="collapse">
@@ -302,35 +304,6 @@ ul.task-list li input[type="checkbox"] {
 <p>Effectuer des modifications ciblées directement dans l’interface.</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Comment lire ce document
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Les libellés de l’interface sont notés comme ceci : <kbd>Batch actions</kbd>. Les noms de champs sont notés comme cela : <code>dcterms:title</code>.</p>
-</div>
-</div>
-</section>
-<section id="mod1" class="level2">
-<h2 class="anchored" data-anchor-id="mod1">1. Le paysage global</h2>
-<div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Objectif
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Comprendre la logique interne d’Omeka S.</p>
-</div>
-</div>
 <section id="concepts-clés" class="level3">
 <h3 class="anchored" data-anchor-id="concepts-clés">Concepts clés</h3>
 <table class="caption-top table">
@@ -364,11 +337,51 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Comment lire ce document
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les libellés de l’interface sont notés comme ceci : <kbd>Batch actions</kbd>.</p>
+<p>Les noms de champs sont notés comme cela : <code>dcterms:title</code>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="mod1" class="level2">
+<h2 class="anchored" data-anchor-id="mod1">1. Le paysage global</h2>
+<div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Objectif
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Comprendre la logique interne d’Omeka S.</p>
+</div>
+</div>
+<section id="pourquoi-omeka-s" class="level3">
+<h3 class="anchored" data-anchor-id="pourquoi-omeka-s">Pourquoi Omeka S ?</h3>
+<p>Omeka S est conçu pour structurer des collections patrimoniales (<em>musées, archives, bibliothèques</em>) où les métadonnées comptent autant que les fichiers eux-mêmes. L’accent est mis sur la <strong>qualité et l’interopérabilité des données</strong> : chaque item est décrit selon des vocabulaires standards, ce qui rend les informations fiables, cohérentes et réutilisables.</p>
+<p>De plus, ça reste une interface accessible comparé à d’autres interfaces type phpMyAdmin, etc.</p>
 </section>
 <section id="se-repérer-dans-linterface" class="level3">
 <h3 class="anchored" data-anchor-id="se-repérer-dans-linterface">Se repérer dans l’interface</h3>
-<p>L’administration compte une dizaine d’entrées dans son menu latéral. Trois seulement seront utilisées pendant cette formation :</p>
+<p>L’administration compte une dizaine d’entrées dans son menu latéral. En voici quelques uns d’importants :</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Entrée du menu</th>
@@ -388,17 +401,33 @@ ul.task-list li input[type="checkbox"] {
 <td>5</td>
 </tr>
 <tr class="odd">
+<td><kbd>Vocabularies</kbd></td>
+<td>Liste des vocabulaires utilisés</td>
+<td>4</td>
+</tr>
+<tr class="even">
 <td><kbd>ScanR</kbd></td>
 <td>L’import de fiches personnes</td>
 <td>6</td>
 </tr>
+<tr class="odd">
+<td><kbd>Resource Template</kbd></td>
+<td>Liste des templates d’items réccurents</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><kbd>CSV Imports</kbd></td>
+<td>Méthode d’import massif de données</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td><kbd>Exports</kbd></td>
+<td>Méthode d’export massif de données</td>
+<td>—</td>
+</tr>
 </tbody>
 </table>
-<p>Le reste du menu relève de l’administration de l’instance et n’est pas abordé ici.</p>
-</section>
-<section id="pourquoi-omeka-s" class="level3">
-<h3 class="anchored" data-anchor-id="pourquoi-omeka-s">Pourquoi Omeka S ?</h3>
-<p>Omeka S est conçu pour structurer des collections patrimoniales (<em>musées, archives, bibliothèques</em>) où les métadonnées comptent autant que les fichiers eux-mêmes. L’accent est mis sur la <strong>qualité et l’interopérabilité des données</strong> : chaque item est décrit selon des vocabulaires standards, ce qui rend les informations fiables, cohérentes et réutilisables.</p>
+<p>Le reste des entrées ne vous seront normalement pas utiles à aucun moment.</p>
 </section>
 </section>
 <section id="mod2" class="level2 page-columns page-full">
@@ -582,63 +611,6 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 </ul>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Ce qui se passe quand vous validez une recherche">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Ce qui se passe quand vous validez une recherche
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>L’index.</strong> Omeka ne relit pas les items un par un au moment de la requête. À chaque enregistrement, il fabrique une version « à plat » de l’item — titre et valeurs mis bout à bout — qu’il range dans une table d’index. C’est elle que la recherche interroge, pas les fiches elles-mêmes. Elle est découpée en <strong>mots entiers</strong>, d’où l’absence de troncature : « laborat » n’y figure pas, « laboratoire » oui.</p>
-<p><strong>Le classement — et pourquoi il trompe.</strong> Une recherche plein texte ne produit pas une sélection, mais un <strong>classement</strong>. Tout item contenant <em>au moins un</em> des termes saisis entre dans la liste ; ceux qui les contiennent tous sont simplement placés devant. Un terme répété, ou situé dans un champ court, fait encore remonter l’item.</p>
-<p>C’est précisément ce qui induit en erreur : les premières lignes semblent répondre exactement à la question posée, et rien n’indique à partir d’où la liste décroche. Il n’y a pas de seuil, seulement une pente. Pour obtenir une véritable sélection, il faut passer par la section <strong>Filters</strong> de la recherche avancée, décrite ci-dessous.</p>
-<p><strong>Hors recherche.</strong> La liste est triée par <code>o:id</code> décroissant, donc les items créés le plus récemment en premier : l’ordre paraît arbitraire, il ne l’est pas. Et quel que soit le critère de tri retenu, les valeurs vides sont toujours renvoyées en fin de liste.</p>
-<p>Conséquence pratique : la barre de recherche et l’opérateur <code>contains</code> de la recherche avancée ne travaillent pas du tout de la même manière.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 47%">
-<col style="width: 23%">
-<col style="width: 29%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>Barre de recherche</th>
-<th><code>contains</code> (Filters)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Unité comparée</td>
-<td>Le mot entier</td>
-<td>La suite de caractères</td>
-</tr>
-<tr class="even">
-<td>« trav » trouve-t-il « travail » ?</td>
-<td>Non</td>
-<td>Oui</td>
-</tr>
-<tr class="odd">
-<td>« travail » trouve-t-il « Travail collaboratif » ?</td>
-<td>Oui</td>
-<td>Oui</td>
-</tr>
-<tr class="even">
-<td>Classement des résultats</td>
-<td>Par pertinence</td>
-<td>Aucun</td>
-</tr>
-</tbody>
-</table>
-<p>Deux réserves : les mots très courts (deux ou trois lettres) sont généralement ignorés par l’index, et un item modifié en dehors de l’interface peut ne pas y être à jour.</p>
-</div>
-</div>
-</div>
 </section>
 <section id="la-recherche-avancée" class="level3">
 <h3 class="anchored" data-anchor-id="la-recherche-avancée">La recherche avancée</h3>
@@ -649,13 +621,13 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 <li>trier les résultats (date, titre, classe, pertinence) ;</li>
 <li>partager une recherche : tous les critères sont inscrits dans l’URL, qui peut être copiée telle quelle.</li>
 </ul>
-<div class="callout callout-style-simple callout-warning callout-titled" title="Deux blocs se ressemblent — un seul fait le travail">
+<div class="callout callout-style-simple callout-warning callout-titled" title="Attention à utiliser le bon bloc de recherche !">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avertissement</span>Deux blocs se ressemblent — un seul fait le travail
+<span class="screen-reader-only">Avertissement</span>Attention à utiliser le bon bloc de recherche !
 </div>
 </div>
 <div class="callout-body-container callout-body">
