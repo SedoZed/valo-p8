@@ -86,15 +86,17 @@ Comprendre qu'un item est l'entrée fondamentale dans la base, et savoir de quoi
 
 Un item = une entrée dans la base de données. Il contient trois parties :
 
-| Élément                          | Description                                  |
-|----------------------------------|----------------------------------------------|
-| **[`o:id`](#oid)**               | Numéro unique, attribué automatiquement      |
-| **Métadonnées**                  | Champs descriptifs                           |
-| **Médias**                       | Fichiers attachés (peu utilisé ici)         |
+| Élément                          | Description                                                                        |
+|----------------------------------|------------------------------------------------------------------------------------|
+| **[`o:id`](#oid)**               | Numéro unique, attribué automatiquement à chaque entité (item, item set, ...)      |
+| **Métadonnées**                  | Champs descriptifs de l'entité sélectionnée                                        |
+| **Médias**                       | Fichiers attachés (peu utilisé dans notre cas)                                     |
+
 
 **Exemple :**
 
 ![Fiche d'un item dans l'administration. Le numéro `o:id` figure dans le volet de droite.](../assets/img/formation1.png){#fig-item fig-alt="Page d'affichage d'un item, montrant ses métadonnées, son identifiant et ses médias"}
+
 
 | Élément            | Valeur                            | Propriété            |
 |--------------------|-----------------------------------|----------------------|
@@ -106,6 +108,13 @@ Un item = une entrée dans la base de données. Il contient trois parties :
 
 À noter : `dcterms:isPartOf` ne contient pas du texte, mais plutôt une sorte d'**hyperlien**. On y revient au [module 5](#mod5).
 
+::: {.callout-tip appearance="simple"}
+## Astuce
+
+L'identifiant `o:id` peut aussi être récupéré directement dans l'URL, par exemple : loremipsum.fr/admin/item/**7457**
+
+:::
+
 #### L'identifiant `o:id` {#oid}
 
 Numéro unique attribué automatiquement à la création d'un item. Il ne change **jamais**, même en cas de modification ou de suppression de l'item. C'est donc le seul point d'accroche fiable pour désigner un item.
@@ -114,57 +123,7 @@ Numéro unique attribué automatiquement à la création d'un item. Il ne change
 **`o:id`** — En cas de suppression, l'identifiant ne sera jamais réattribué à un autre item.
 :::
 
-## 3. Trouver un item {#mod3}
-
-::: {.callout-note title="Objectif" appearance="simple"}
-Savoir retrouver un item dans la base, et croiser plusieurs critères de recherche sans se tromper d'outil.
-:::
-
-Avant de modifier un item, il faut d'abord le repérer. Trois méthodes, de la plus rapide à la plus précise.
-
-### Les trois méthodes
-
-| Méthode                    | Comment faire                              | Quand l'utiliser                          |
-|----------------------------|--------------------------------------------|-------------------------------------------|
-| **Barre de recherche**     | En haut du menu latéral gauche             | Mot-clé, titre, fragment de contenu       |
-| **Filtre par Item Set**    | Menu latéral → <kbd>Item Sets</kbd>        | Chercher dans une collection précise      |
-| **Accès direct par o:id**  | URL `/admin/item/7457`                     | Quand l'`o:id` est déjà connu             |
-
-::: {.callout-tip appearance="simple"}
-## Astuce
-
-L'URL d'édition suit le même schéma : `/admin/item/7457/edit`. Inversement, si vous êtes en train d'éditer un item, son `o:id` se lit directement dans la barre d'adresse.
-:::
-
-::: {.callout-warning title="Points à savoir" appearance="simple"}
-- **L'ordre d'affichage** des items après une recherche ne se fait **pas par pertinence** mais, par défaut, en fontion des **dates de création** des items (du plus récent au plus ancien). Il est possible de changer l'ordre d'affichage, pour afficher par ordre alphabétique par exemple, en haut à droite, sous "add new item" une fois la requête envoyée.
-- **Plusieurs mots séparés par un espace élargissent la recherche**, au lieu de la restreindre. Les termes sont traités comme des alternatives ; le tri par pertinence se contente de remonter en tête ce qui contient les deux. Tout ce qui contient l'un *ou* l'autre reste dans la liste.
-:::
-
-
-### La recherche avancée
-
-Le bouton <kbd>Advanced search</kbd>, au-dessus de la liste des items, ouvre un formulaire permettant de :
-
-- Croiser plusieurs critères (*titre*, *item set*, *class*, ...) ;
-- Affiner la méthode de recherche (*est strictement...* , *contient.../ne contient pas...* , *Propriété N est vide...*, ...) ;
-- partager une recherche : tous les critères sont inscrits dans l'URL, qui peut être copiée telle quelle.
-
-::: {.callout-warning title="Attention à utiliser le bon bloc de recherche !" appearance="simple"}
-Le formulaire contient **deux sections voisines et d'apparence identique** :
-
-| Section | Ce qu'elle permet |
-|---------|-------------------|
-| **Search by value** | Un critère à la fois, sans choix entre ET et OU |
-| **Filters** | Plusieurs critères, avec un menu déroulant **AND / OR** entre chaque ligne |
-
-**Pour croiser des critères, utilisez « Filters ».** Rien dans l'interface ne l'indique.
-
-:::
-
-Le détail des opérateurs et des cas particuliers se trouve dans l'[aide-mémoire en annexe](#aidememoire).
-
-## 4. Vocabulaires et propriétés {#mod4}
+## 3. Vocabulaires et propriétés {#mod4}
 
 ::: {.callout-note title="Objectif" appearance="simple"}
 Comprendre d'où viennent les champs que l'on voit en ouvrant un item.
@@ -174,7 +133,7 @@ Comprendre d'où viennent les champs que l'on voit en ouvrant un item.
 
 Chaque item contient un certain nombre de données, elles-mêmes rangées selon des qualificatifs que l'on appelle "propriétés" : **ce sont les métadonnées**. Chaque propriété provient d'un **vocabulaires**, qui définissent trois choses : quels champs existent, ce que chaque champ signifie, et quel type de valeur est attendu. 
 
-Un vocabulaire contient en réalité **deux sortes de termes**, qu'il ne faut pas confondre. La distinction tient en une phrase : la classe dit ce que la chose *est*, la propriété dit ce qu'on en *dit*.
+Un vocabulaire contient **deux sortes de termes**, qu'il ne faut pas confondre. La distinction tient en une phrase : la classe dit ce que la chose *est*, les propriétés disent ce qui *qualifie* la chose.
 
 |                     | Classe                              | Propriété                          |
 |---------------------|-------------------------------------|----------------------------------- |
@@ -184,7 +143,7 @@ Un vocabulaire contient en réalité **deux sortes de termes**, qu'il ne faut pa
 | Exemples            | `foaf:Person`, `dctype:Image`       | `dcterms:title`, `foaf:name`       |
 
 
-Le plus connu est [Dublin Core](https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/) (préfixe `dcterms:`) : c'est le vocabulaire le plus utilisé internationalement, présent par défaut dans Omeka S. Mais d'autres dictionnaires existent, écrits pour satisfaire X ou Y but. Dublin Core Terms fournit 55 propriétés — dont Title et Creator — et 22 classes. Pour les classes, le vocabulaire de référence est plutôt Dublin Core Type et ses 12 entrées : Image, Moving Image, Sound, Text, Physical Object, etc.
+Le vocabulaire plus connu est le vocab' [Dublin Core](https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/) (préfixe `dcterms:` et `dctype:`) : il est le plus utilisé internationalement, fournit 55 propriétés et 22 classes. Mais d'autres dictionnaires existent, écrits pour satisfaire X ou Y but. 
 
 | Propriété             | Signification                        | Type attendu                    |
 |-----------------------|--------------------------------------|---------------------------------|
@@ -206,26 +165,23 @@ Aussi, rien n'interdit d'utiliser son propre vocabulaire personnalisé, à condi
 ## Où consulter les vocabulaires ?
 
 Les vocabulaires chargés et utilisés par la base sont listés dans l'onglet <kbd>Vocabularies</kbd> de l'interface, et consultable en cliquant sur les hyperliens en rouge, sous "*Classes*" et "*Properties*".
-.
 :::
 
 
-### Deux types de valeurs
+### Propriété : deux types de valeurs
+
 
 | Type            | Description                          | Exemple                                                |
 |-----------------|--------------------------------------|--------------------------------------------------------|
 | **Texte libre** | Du texte saisi directement           | Un titre, une description, parfois une date            |
 | **Ressource**   | Un lien vers un autre item           | `dcterms:creator` pointant vers l'item « Jean Dupont » (o:id 89) |
 
+Une particularité clef de Omeka S est qu'il permet de **lier les items entre eux** grâce à leur **o:id** pour créer des relations. Ces redirections prenant la forme d'un **lien hypertexte** sont ce que l'on appelle des "Ressource" dans Omeka S.
+
 ![Le sélecteur de type de valeur, en mode édition d'un item.](../assets/img/formation2.png){#fig-types fig-alt="Sélecteur permettant de choisir entre une valeur texte, une ressource ou une URI"}
 
-::: {.callout-important title="Omeka ne vérifie rien" appearance="simple"}
-Le logiciel n'impose **aucune** des règles définies par les vocabulaires. Une propriété censée pointer vers une autre ressource acceptera sans broncher du texte libre, et personne ne vous signalera l'erreur.
 
-La cohérence des données repose donc entièrement sur la personne qui saisit — ce qui est précisément la raison d'être de cette formation. Seuls les **modèles de ressource** (*resource templates*) permettent d'imposer un type de valeur sur un champ donné.
-:::
-
-## 5. Organisation et relations {#mod5}
+## 4. Organisation et relations {#mod5}
 
 ::: {.callout-note title="Objectif" appearance="simple"}
 Comprendre comment les items s'organisent et se lient entre eux.
@@ -272,6 +228,55 @@ Sans ce mécanisme, une même notion se retrouve écrite de plusieurs façons et
 
 Les deux approches ont leur place. Mais dès qu'une donnée **peut** pointer vers un autre item, faites-le : vos données seront plus riches et plus cohérentes.
 :::
+
+
+## 5. Trouver un item {#mod3}
+
+::: {.callout-note title="Objectif" appearance="simple"}
+Savoir retrouver un item dans la base, et croiser plusieurs critères de recherche sans se tromper d'outil.
+:::
+
+Avant de modifier un item, il faut d'abord le repérer. Trois méthodes, de la plus rapide à la plus précise.
+
+### Les trois méthodes
+
+| Méthode                        | Comment faire                              | Quand l'utiliser                          |
+|--------------------------------|--------------------------------------------|-------------------------------------------|
+| **Barre de recherche**         | En haut du menu latéral gauche             | Mot clef, titre, fragment de contenu      |
+| **Feuilleter les Item Set**    | Menu latéral → <kbd>Item Sets</kbd>        | Chercher dans une collection précise      |
+| **Accès direct par o:id**      | URL `/admin/item/7457`                     | Quand l'`o:id` est déjà connu             |
+
+::: {.callout-warning title="Points à savoir" appearance="simple"}
+- **L'ordre d'affichage** des items après une recherche ne se fait **pas par pertinence** mais, par défaut, en fontion des **dates de création** des items (du plus récent au plus ancien). Il est possible de changer l'ordre d'affichage, pour afficher par ordre alphabétique par exemple, en haut à droite, sous "add new item" une fois la requête envoyée.
+- **Plusieurs mots séparés par un espace élargissent la recherche**, au lieu de la restreindre. Les termes sont traités comme des alternatives ; le tri par pertinence se contente de remonter en tête ce qui contient les deux. Tout ce qui contient l'un *ou* l'autre reste dans la liste.
+:::
+
+
+### La recherche avancée
+
+Le bouton <kbd>Advanced search</kbd>, au-dessus de la liste des items, ouvre un formulaire permettant de :
+
+- Croiser plusieurs critères (*titre*, *item set*, *class*, ...) ;
+- Affiner la méthode de recherche (*est strictement...* , *contient.../ne contient pas...* , *Propriété N est vide...*, ...) ;
+- partager une recherche : tous les critères sont inscrits dans l'URL, qui peut être copiée telle quelle.
+
+**C'est la méthode recommandée pour effectuer une recherche précise** (un EC précis, un partenaire précis, etc), la barre de recherche standard (celle en haut du menu latéral) est très imprécise, comme évoqué précédemment.
+
+::: {.callout-warning title="Attention à utiliser le bon bloc de recherche !" appearance="simple"}
+Le formulaire contient **deux sections voisines et d'apparence identique** :
+
+| Section | Ce qu'elle permet |
+|---------|-------------------|
+| **Search by value** | Un critère à la fois, sans choix entre ET et OU |
+| **Filters** | Plusieurs critères, avec un menu déroulant **AND / OR** entre chaque ligne |
+
+**Pour croiser des critères, utilisez « Filters ».** Rien dans l'interface ne l'indique.
+
+:::
+
+Le détail des opérateurs et des cas particuliers se trouve dans l'[aide-mémoire en annexe](#aidememoire).
+
+
 
 ## 6. Le module ScanR {#mod6}
 

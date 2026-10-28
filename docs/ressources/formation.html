@@ -212,21 +212,20 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#anatomie-dun-item" id="toc-anatomie-dun-item" class="nav-link" data-scroll-target="#anatomie-dun-item">Anatomie d’un item</a></li>
   </ul></li>
-  <li><a href="#mod3" id="toc-mod3" class="nav-link" data-scroll-target="#mod3">3. Trouver un item</a>
-  <ul class="collapse">
-  <li><a href="#les-trois-méthodes" id="toc-les-trois-méthodes" class="nav-link" data-scroll-target="#les-trois-méthodes">Les trois méthodes</a></li>
-  <li><a href="#la-recherche-avancée" id="toc-la-recherche-avancée" class="nav-link" data-scroll-target="#la-recherche-avancée">La recherche avancée</a></li>
-  </ul></li>
-  <li><a href="#mod4" id="toc-mod4" class="nav-link" data-scroll-target="#mod4">4. Vocabulaires et propriétés</a>
+  <li><a href="#mod4" id="toc-mod4" class="nav-link" data-scroll-target="#mod4">3. Vocabulaires et propriétés</a>
   <ul class="collapse">
   <li><a href="#principe" id="toc-principe" class="nav-link" data-scroll-target="#principe">Principe</a></li>
-  <li><a href="#classes-et-propriétés" id="toc-classes-et-propriétés" class="nav-link" data-scroll-target="#classes-et-propriétés">Classes et propriétés</a></li>
   <li><a href="#deux-types-de-valeurs" id="toc-deux-types-de-valeurs" class="nav-link" data-scroll-target="#deux-types-de-valeurs">Deux types de valeurs</a></li>
   </ul></li>
-  <li><a href="#mod5" id="toc-mod5" class="nav-link" data-scroll-target="#mod5">5. Organisation et relations</a>
+  <li><a href="#mod5" id="toc-mod5" class="nav-link" data-scroll-target="#mod5">4. Organisation et relations</a>
   <ul class="collapse">
   <li><a href="#a.-les-item-sets" id="toc-a.-les-item-sets" class="nav-link" data-scroll-target="#a.-les-item-sets">A. Les Item Sets</a></li>
   <li><a href="#b.-les-relations-entre-items" id="toc-b.-les-relations-entre-items" class="nav-link" data-scroll-target="#b.-les-relations-entre-items">B. Les relations entre items</a></li>
+  </ul></li>
+  <li><a href="#mod3" id="toc-mod3" class="nav-link" data-scroll-target="#mod3">5. Trouver un item</a>
+  <ul class="collapse">
+  <li><a href="#les-trois-méthodes" id="toc-les-trois-méthodes" class="nav-link" data-scroll-target="#les-trois-méthodes">Les trois méthodes</a></li>
+  <li><a href="#la-recherche-avancée" id="toc-la-recherche-avancée" class="nav-link" data-scroll-target="#la-recherche-avancée">La recherche avancée</a></li>
   </ul></li>
   <li><a href="#mod6" id="toc-mod6" class="nav-link" data-scroll-target="#mod6">6. Le module ScanR</a>
   <ul class="collapse">
@@ -308,9 +307,9 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="concepts-clés">Concepts clés</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 18%">
-<col style="width: 50%">
-<col style="width: 31%">
+<col style="width: 17%">
+<col style="width: 54%">
+<col style="width: 28%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -321,19 +320,19 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Base de données</strong></td>
-<td>Là où on crée, modifie et organise le contenu</td>
+<td><strong>Affichage admin</strong></td>
+<td>Là où on crée, modifie et organise le contenu de la base de données</td>
 <td>Interface principale de travail</td>
 </tr>
 <tr class="even">
-<td><strong>Site / CMS</strong></td>
-<td>Outil de déploiement de sites publics, interne à Omeka S</td>
-<td>Non utilisé pour le moment</td>
-</tr>
-<tr class="odd">
 <td><strong>API</strong></td>
 <td>Mécanisme d’exposition programmatique des données</td>
 <td>Export vers des outils externes</td>
+</tr>
+<tr class="odd">
+<td><strong>Site / CMS</strong></td>
+<td>Outil de déploiement de sites publics, interne à Omeka S</td>
+<td>Non utilisé pour le moment</td>
 </tr>
 </tbody>
 </table>
@@ -370,8 +369,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="pourquoi-omeka-s" class="level3">
 <h3 class="anchored" data-anchor-id="pourquoi-omeka-s">Pourquoi Omeka S ?</h3>
-<p>Omeka S est conçu pour structurer des collections patrimoniales (<em>musées, archives, bibliothèques</em>) où les métadonnées comptent autant que les fichiers eux-mêmes. L’accent est mis sur la <strong>qualité et l’interopérabilité des données</strong> : chaque item est décrit selon des vocabulaires standards, ce qui rend les informations fiables, cohérentes et réutilisables.</p>
-<p>De plus, ça reste une interface accessible comparé à d’autres interfaces type phpMyAdmin, etc.</p>
+<p>Omeka S est une interface open-source conçue initialement pour structurer des collections numériques patrimoniales (<em>musées, archives, bibliothèques</em>) où les métadonnées comptent autant que les fichiers eux-mêmes. L’accent est mis sur la <strong>qualité et l’interopérabilité des données</strong> : chaque item est décrit selon des vocabulaires standards, ce qui rend les informations fiables, cohérentes et réutilisables.</p>
+<p>Également, d’un point de vue gestion et entretien des données, avoir une telle interface permets une manipulation bien moins complexe qu’en temps normal (phpMyAdmin, SQL, …).</p>
 </section>
 <section id="se-repérer-dans-linterface" class="level3">
 <h3 class="anchored" data-anchor-id="se-repérer-dans-linterface">Se repérer dans l’interface</h3>
@@ -532,137 +531,8 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 </div></div></section>
 </section>
 </section>
-<section id="mod3" class="level2">
-<h2 class="anchored" data-anchor-id="mod3">3. Trouver un item</h2>
-<div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Objectif
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Savoir retrouver un item dans la base, et croiser plusieurs critères de recherche sans se tromper d’outil.</p>
-</div>
-</div>
-<p>Avant de modifier un item, il faut d’abord le repérer. Trois méthodes, de la plus rapide à la plus précise.</p>
-<section id="les-trois-méthodes" class="level3">
-<h3 class="anchored" data-anchor-id="les-trois-méthodes">Les trois méthodes</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 24%">
-<col style="width: 38%">
-<col style="width: 37%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Méthode</th>
-<th>Comment faire</th>
-<th>Quand l’utiliser</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Barre de recherche</strong></td>
-<td>En haut du menu latéral gauche</td>
-<td>Mot-clé, titre, fragment de contenu</td>
-</tr>
-<tr class="even">
-<td><strong>Filtre par Item Set</strong></td>
-<td>Menu latéral → <kbd>Item Sets</kbd></td>
-<td>Chercher dans une collection précise</td>
-</tr>
-<tr class="odd">
-<td><strong>Accès direct par o:id</strong></td>
-<td>URL <code>/admin/item/7457</code></td>
-<td>Quand l’<code>o:id</code> est déjà connu</td>
-</tr>
-</tbody>
-</table>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Astuce</span>Astuce
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>L’URL d’édition suit le même schéma : <code>/admin/item/7457/edit</code>. Inversement, si vous êtes en train d’éditer un item, son <code>o:id</code> se lit directement dans la barre d’adresse.</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-warning callout-titled" title="Trois surprises de la barre de recherche">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avertissement</span>Trois surprises de la barre de recherche
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><strong>Elle ne cherche que dans les items.</strong> Les trois points de suspension à côté du champ permettent de basculer vers <kbd>Item Sets</kbd> ou <kbd>Media</kbd>. Sans cela, chercher un item set renvoie zéro résultat — et laisse croire qu’il n’existe pas.</li>
-<li><strong>Plusieurs mots séparés par un espace élargissent la recherche</strong>, au lieu de la restreindre. Les termes sont traités comme des alternatives ; le tri par pertinence se contente de remonter en tête ce qui contient les deux. Tout ce qui contient l’un <em>ou</em> l’autre reste dans la liste.</li>
-<li><strong>Pas de troncature.</strong> Il faut saisir le mot entier : « laborat » ne trouvera pas « laboratoire ».</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="la-recherche-avancée" class="level3">
-<h3 class="anchored" data-anchor-id="la-recherche-avancée">La recherche avancée</h3>
-<p>Le bouton <kbd>Advanced search</kbd>, au-dessus de la liste des items, ouvre un formulaire permettant de :</p>
-<ul>
-<li>croiser plusieurs critères (<em>titre + date + concept</em>) ;</li>
-<li>filtrer par classe de ressource, par item set, ou selon qu’une propriété est renseignée ou vide ;</li>
-<li>trier les résultats (date, titre, classe, pertinence) ;</li>
-<li>partager une recherche : tous les critères sont inscrits dans l’URL, qui peut être copiée telle quelle.</li>
-</ul>
-<div class="callout callout-style-simple callout-warning callout-titled" title="Attention à utiliser le bon bloc de recherche !">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avertissement</span>Attention à utiliser le bon bloc de recherche !
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Le formulaire contient <strong>deux sections voisines et d’apparence identique</strong> :</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 32%">
-<col style="width: 67%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Section</th>
-<th>Ce qu’elle permet</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Search by value</strong></td>
-<td>Un critère à la fois, sans choix entre ET et OU</td>
-</tr>
-<tr class="even">
-<td><strong>Filters</strong></td>
-<td>Plusieurs critères, avec un menu déroulant <strong>AND / OR</strong> entre chaque ligne</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Pour croiser des critères, utilisez « Filters ».</strong> Rien dans l’interface ne l’indique.</p>
-<p>Autre piège, dans « Search by value » : une ligne dont le champ texte reste vide est <strong>supprimée sans avertissement</strong> à la validation. Le symptôme n’est pas une erreur ni une liste vide — c’est une liste <em>trop longue</em>, qui ressemble à une recherche réussie.</p>
-</div>
-</div>
-<p>Le détail des opérateurs et des cas particuliers se trouve dans l’<a href="#aidememoire">aide-mémoire en annexe</a>.</p>
-</section>
-</section>
 <section id="mod4" class="level2">
-<h2 class="anchored" data-anchor-id="mod4">4. Vocabulaires et propriétés</h2>
+<h2 class="anchored" data-anchor-id="mod4">3. Vocabulaires et propriétés</h2>
 <div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -678,59 +548,13 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 </div>
 <section id="principe" class="level3">
 <h3 class="anchored" data-anchor-id="principe">Principe</h3>
-<p>Les métadonnées d’un item ne sont pas inventées au hasard. Elles proviennent de <strong>vocabulaires</strong>, qui définissent trois choses : quels champs existent, ce que chaque champ signifie, et quel type de valeur est attendu.</p>
-<p><strong>Pourquoi ne pas créer ses propres champs ?</strong> Parce qu’un champ nommé « Auteur » ne signifie rien en dehors de la base qui l’a créé : ailleurs, on aura retenu « Créateur », « Rédigé par » ou « Responsable », et plus rien ne se croise. Reprendre un vocabulaire publié, c’est employer un identifiant que d’autres systèmes reconnaissent déjà, sans avoir à leur fournir de mode d’emploi. C’est ce qui rend les données exportables et comparables avec celles d’autres institutions — et ce qui donne son intérêt à l’API évoquée au <a href="#mod1">module 1</a>.</p>
-<p>Le plus connu est <a href="https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/">Dublin Core</a> (préfixe <code>dcterms:</code>) : c’est le vocabulaire le plus utilisé internationalement, présent par défaut dans Omeka S.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 30%">
-<col style="width: 26%">
-<col style="width: 43%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Propriété</th>
-<th>Signification</th>
-<th>Type attendu</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>dcterms:title</code></td>
-<td>Titre de l’item</td>
-<td>Texte</td>
-</tr>
-<tr class="even">
-<td><code>dcterms:creator</code></td>
-<td>Créateur</td>
-<td>Texte ou ressource</td>
-</tr>
-<tr class="odd">
-<td><code>dcterms:date</code></td>
-<td>Date</td>
-<td>Texte (format ISO recommandé)</td>
-</tr>
-<tr class="even">
-<td><code>dcterms:description</code></td>
-<td>Description</td>
-<td>Texte long</td>
-</tr>
-<tr class="odd">
-<td><code>dcterms:type</code></td>
-<td>Type de ressource</td>
-<td>Texte ou URI</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="classes-et-propriétés" class="level3">
-<h3 class="anchored" data-anchor-id="classes-et-propriétés">Classes et propriétés</h3>
+<p>Chaque item contient un certain nombre de données, elles-mêmes rangées selon des qualificatifs que l’on appelle “propriétés” : <strong>ce sont les métadonnées</strong>. Chaque propriété provient d’un <strong>vocabulaires</strong>, qui définissent trois choses : quels champs existent, ce que chaque champ signifie, et quel type de valeur est attendu.</p>
 <p>Un vocabulaire contient en réalité <strong>deux sortes de termes</strong>, qu’il ne faut pas confondre. La distinction tient en une phrase : la classe dit ce que la chose <em>est</em>, la propriété dit ce qu’on en <em>dit</em>.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 22%">
-<col style="width: 40%">
-<col style="width: 36%">
+<col style="width: 39%">
+<col style="width: 37%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -762,19 +586,91 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 </tr>
 </tbody>
 </table>
-<p>Dublin Core Terms fournit 55 propriétés — dont Title et Creator — et 22 classes. Pour les classes, le vocabulaire de référence est plutôt Dublin Core Type et ses 12 entrées : Image, Moving Image, Sound, Text, Physical Object, etc.</p>
-<div class="callout callout-style-simple callout-warning callout-titled" title="Un mot, deux sens">
+<p>Le plus connu est <a href="https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/">Dublin Core</a> (préfixe <code>dcterms:</code>) : c’est le vocabulaire le plus utilisé internationalement, présent par défaut dans Omeka S. Mais d’autres dictionnaires existent, écrits pour satisfaire X ou Y but. Dublin Core Terms fournit 55 propriétés — dont Title et Creator — et 22 classes. Pour les classes, le vocabulaire de référence est plutôt Dublin Core Type et ses 12 entrées : Image, Moving Image, Sound, Text, Physical Object, etc.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 40%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propriété</th>
+<th>Signification</th>
+<th>Type attendu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>dcterms:title</code></td>
+<td>Titre de l’item</td>
+<td>Texte</td>
+</tr>
+<tr class="even">
+<td><code>dcterms:alternative</code></td>
+<td>Titre alternatif</td>
+<td>Texte ou ressource</td>
+</tr>
+<tr class="odd">
+<td><code>dcterms:date</code></td>
+<td>Date</td>
+<td>Texte (format ISO recommandé)</td>
+</tr>
+<tr class="even">
+<td><code>dcterms:description</code></td>
+<td>Description</td>
+<td>Texte long</td>
+</tr>
+<tr class="odd">
+<td><code>dcterms:isPartOf</code></td>
+<td>Littéralement “faisant parti de…”</td>
+<td>Texte, URI, o:id, …</td>
+</tr>
+</tbody>
+</table>
+<p>Aussi, rien n’interdit d’utiliser son propre vocabulaire personnalisé, à condition de le rendre lisible et structuré pour la machine grâce à un dictionnaire RDF (Resource Description Framework). Par exemple, un dictionnaire RDF a été créé spécialement pour le projet de cartographie (préfixe : <code>valo:</code>) dont voici quelques exemples :</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 40%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propriété</th>
+<th>Signification</th>
+<th>Type attendu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>valo:domaineHceres</code></td>
+<td>Domaine(s) HCERES d’un item (EC, …)</td>
+<td>o:id</td>
+</tr>
+<tr class="even">
+<td><code>valo:modePilotageOPE</code></td>
+<td>Titre alternatif</td>
+<td>o:id</td>
+</tr>
+<tr class="odd">
+<td><code>valo:budgOPE</code></td>
+<td>Budget d’une OPE</td>
+<td>Texte</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avertissement</span>Un mot, deux sens
+<span class="screen-reader-only">Astuce</span>Où consulter les vocabulaires ?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Les <strong>vocabulaires</strong> d’Omeka S ne sont pas des <strong>vocabulaires contrôlés</strong>.</p>
-<p>Les premiers sont des ensembles de classes et de propriétés, c’est-à-dire des <em>champs</em>. Les seconds sont des listes de termes autorisés, c’est-à-dire des <em>valeurs</em> — et ils se gèrent par d’autres modules (Value Suggest, Custom Vocab).</p>
+<p>Les vocabulaires chargés et utilisés par la base sont listés dans l’onglet <kbd>Vocabularies</kbd> de l’interface, et consultable en cliquant sur les hyperliens en rouge, sous “<em>Classes</em>” et “<em>Properties</em>”. .</p>
 </div>
 </div>
 </section>
@@ -830,24 +726,10 @@ Figure&nbsp;2: Le sélecteur de type de valeur, en mode édition d’un item.
 <p>La cohérence des données repose donc entièrement sur la personne qui saisit — ce qui est précisément la raison d’être de cette formation. Seuls les <strong>modèles de ressource</strong> (<em>resource templates</em>) permettent d’imposer un type de valeur sur un champ donné.</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Astuce</span>Où consulter les vocabulaires ?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Les vocabulaires installés sur l’instance sont listés dans l’onglet <kbd>Vocabularies</kbd> de l’interface. Les propriétés, elles, apparaissent directement au moment de créer ou d’éditer un item.</p>
-<p>Pour le détail des vocabulaires et de leur logique sous-jacente, voir la page <a href="../ressources/dico_rdf.html">Exploiter le web sémantique pour les métadonnées</a>.</p>
-</div>
-</div>
 </section>
 </section>
 <section id="mod5" class="level2">
-<h2 class="anchored" data-anchor-id="mod5">5. Organisation et relations</h2>
+<h2 class="anchored" data-anchor-id="mod5">4. Organisation et relations</h2>
 <div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -959,6 +841,132 @@ Figure&nbsp;2: Le sélecteur de type de valeur, en mode édition d’un item.
 <p>Les deux approches ont leur place. Mais dès qu’une donnée <strong>peut</strong> pointer vers un autre item, faites-le : vos données seront plus riches et plus cohérentes.</p>
 </div>
 </div>
+</section>
+</section>
+<section id="mod3" class="level2">
+<h2 class="anchored" data-anchor-id="mod3">5. Trouver un item</h2>
+<div class="callout callout-style-simple callout-note callout-titled" title="Objectif">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Objectif
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Savoir retrouver un item dans la base, et croiser plusieurs critères de recherche sans se tromper d’outil.</p>
+</div>
+</div>
+<p>Avant de modifier un item, il faut d’abord le repérer. Trois méthodes, de la plus rapide à la plus précise.</p>
+<section id="les-trois-méthodes" class="level3">
+<h3 class="anchored" data-anchor-id="les-trois-méthodes">Les trois méthodes</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Méthode</th>
+<th>Comment faire</th>
+<th>Quand l’utiliser</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Barre de recherche</strong></td>
+<td>En haut du menu latéral gauche</td>
+<td>Mot clef, titre, fragment de contenu</td>
+</tr>
+<tr class="even">
+<td><strong>Feuilleter les Item Set</strong></td>
+<td>Menu latéral → <kbd>Item Sets</kbd></td>
+<td>Chercher dans une collection précise</td>
+</tr>
+<tr class="odd">
+<td><strong>Accès direct par o:id</strong></td>
+<td>URL <code>/admin/item/7457</code></td>
+<td>Quand l’<code>o:id</code> est déjà connu</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Astuce
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>L’URL d’édition suit le même schéma : <code>/admin/item/7457/edit</code>. Inversement, si vous êtes en train d’éditer un item, son <code>o:id</code> se lit directement dans la barre d’adresse.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Points à savoir">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Points à savoir
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>L’ordre d’affichage</strong> des items après une recherche ne se fait <strong>pas par pertinence</strong> mais, par défaut, en fontion des <strong>dates de création</strong> des items (du plus récent au plus ancien). Il est possible de changer l’ordre d’affichage, pour afficher par ordre alphabétique par exemple, en haut à droite, sous “add new item” une fois la requête envoyée.</li>
+<li><strong>Plusieurs mots séparés par un espace élargissent la recherche</strong>, au lieu de la restreindre. Les termes sont traités comme des alternatives ; le tri par pertinence se contente de remonter en tête ce qui contient les deux. Tout ce qui contient l’un <em>ou</em> l’autre reste dans la liste.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="la-recherche-avancée" class="level3">
+<h3 class="anchored" data-anchor-id="la-recherche-avancée">La recherche avancée</h3>
+<p>Le bouton <kbd>Advanced search</kbd>, au-dessus de la liste des items, ouvre un formulaire permettant de :</p>
+<ul>
+<li>Croiser plusieurs critères (<em>titre</em>, <em>item set</em>, <em>class</em>, …) ;</li>
+<li>Affiner la méthode de recherche (<em>est strictement…</em> , <em>contient…/ne contient pas…</em> , <em>Propriété N est vide…</em>, …) ;</li>
+<li>partager une recherche : tous les critères sont inscrits dans l’URL, qui peut être copiée telle quelle.</li>
+</ul>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Attention à utiliser le bon bloc de recherche !">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Attention à utiliser le bon bloc de recherche !
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le formulaire contient <strong>deux sections voisines et d’apparence identique</strong> :</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 67%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Section</th>
+<th>Ce qu’elle permet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Search by value</strong></td>
+<td>Un critère à la fois, sans choix entre ET et OU</td>
+</tr>
+<tr class="even">
+<td><strong>Filters</strong></td>
+<td>Plusieurs critères, avec un menu déroulant <strong>AND / OR</strong> entre chaque ligne</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pour croiser des critères, utilisez « Filters ».</strong> Rien dans l’interface ne l’indique.</p>
+</div>
+</div>
+<p>Le détail des opérateurs et des cas particuliers se trouve dans l’<a href="#aidememoire">aide-mémoire en annexe</a>.</p>
 </section>
 </section>
 <section id="mod6" class="level2">
