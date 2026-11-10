@@ -41,6 +41,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-66a63c344f183a26081cdb80a294f993.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -240,7 +243,11 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./assets/img/illu-debian-gnome-wikipedia.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/img/illu-debian-gnome-wikipedia.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Visuel type de l’interface Debian GNOME, issu de la page Wikipédia de ce dernier"><img src="./assets/img/illu-debian-gnome-wikipedia.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%" alt="Visuel type de l’interface Debian GNOME, issu de la page Wikipédia de ce dernier"></a></p>
+</figure>
+</div>
 <figcaption>Visuel type de l’interface Debian GNOME, issu de la page Wikipédia de ce dernier</figcaption>
 </figure>
 </div>
@@ -302,7 +309,11 @@ Mise en garde
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./assets/img/vscode_module.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/img/vscode_module.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Image d’illustration sur l’apparence de l’interface VSCode lors de l’installation d’un module"><img src="./assets/img/vscode_module.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%" alt="Image d’illustration sur l’apparence de l’interface VSCode lors de l’installation d’un module"></a></p>
+</figure>
+</div>
 <figcaption>Image d’illustration sur l’apparence de l’interface VSCode lors de l’installation d’un module</figcaption>
 </figure>
 </div>
@@ -379,7 +390,11 @@ Mise en garde
 <p>Une fois dans le fichier, définir un “user”, un “password”, un “databasename” (basiquement le nom du dossier renommé plus tôt) puis compléter la ligne “host=localhost”</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./assets/img/sc-shot_database-ini.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/img/sc-shot_database-ini.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Voilà à quoi doit ressembler “database.ini”"><img src="./assets/img/sc-shot_database-ini.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%" alt="Voilà à quoi doit ressembler “database.ini”"></a></p>
+</figure>
+</div>
 <figcaption>Voilà à quoi doit ressembler “database.ini”</figcaption>
 </figure>
 </div>
@@ -518,6 +533,11 @@ Mise en garde
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -847,6 +867,38 @@ Mise en garde
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

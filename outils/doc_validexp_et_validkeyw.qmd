@@ -1,0 +1,1086 @@
+---
+title: "ValidExpertises & CleanKeyword"
+subtitle: "Présentation des deux interfaces d'interaction avec la BDD"
+author: "Cédric BOUCLY"
+date: "2026-11-01"
+date-format: "D MMMM YYYY"
+lang: fr
+keywords: [Omeka S, interfaces, fonctionnement, maintenance, API]
+---
+
+::: {.callout-warning title="Attention" appearance="simple"}
+La page est en cours d'écriture. Les informations ci-dessous ne sont donc pas exactes car incomplètes ou manquant de contexte. Merci d'attendre une version finale de la page ou de lire avec précaution.
+
+Dépôts GitHub : [SedoZed/validKeyword](https://github.com/SedoZed/validKeyword) · [samszo/validExpertises](https://github.com/samszo/validExpertises)
+:::
+
+***
+
+
+
+***
+
+Deux applications web sont documentées ici : "**validExpertises**", par laquelle les enseignants-chercheurs valident et notent leurs mots-clefs d'expertise, et "**validKeyword**", par laquelle le service de valorisation détecte et fusionne les doublons dans le référentiel de mots-clefs. Elles interrogent la même instance Omeka S et partagent la même couche d'accès.
+
+# validExpertises
+
+## Principe
+
+Les domaines d'expertise des enseignants-chercheurs ont été extraits automatiquement de leurs publications via **ScanR**, la plateforme nationale de la recherche. Cette extraction est bruyante : elle produit des mots-clefs pertinents, d'autres marginaux, d'autres franchement hors sujet. Le Service de valorisation de la recherche opère un premier tri, puis l'enseignant-chercheur valide lui-même ce qui le représente.
+
+validExpertises est l'interface de cette validation. Elle sert trois publics distincts, avec trois interfaces différentes construites à partir du même fichier.
+
+## Les trois modes de session {#sec-ve-modes}
+
+Le mode est déterminé **par les paramètres de l'URL**, et non par un compte utilisateur. Deux indicateurs sont calculés au chargement (`index.html`, L. 348) :
+
+```js
+const fromUrl = aUrl.params.has('idCreator')
+             || aUrl.params.has('idAuthor')
+             || aUrl.params.has('t');
+
+const fromDL  = aUrl.params.has('idLab');
+```
+
+| Mode          | URL                           | Qui                    | Ce qu'il peut faire                                                                  |
+|---------------|-------------------------------|------------------------|--------------------------------------------------------------------------------------|
+| **Opérateur** | aucun paramètre               | SVR, administrateurs   | tout : parcourir les laboratoires, noter, envoyer les liens, outils d'administration |
+| **EC**        | `?idAuthor=…&idCreator=…&t=…` | l'enseignant-chercheur | noter ses propres mots-clefs, en suggérer, en retirer                                |
+| **DU**        | `?idLab=…&idCreator=…&t=…`    | directeur·rice d'unité | consulter les fiches de son laboratoire, transmettre les liens                       |
+
+::: {.callout-important}
+## L'ordre d'appel des deux verrous est significatif
+
+```js
+if (fromUrl) lockEcMode();
+if (fromDL)  lockDlMode();
+```
+
+Un lien DU porte **aussi** `idCreator` et `t` : `fromUrl` y est donc vrai, et `lockEcMode()` s'exécute en premier. Or il neutralise `showBrowse` et masque la liste. `lockDlMode()` doit passer **après** pour rétablir la navigation et la liste du laboratoire. Inverser les deux lignes rend la fiche d'un EC sans issue pour un DU.
+:::
+
+`lockEcMode()` (L. 2147) masque la carte de recherche et la liste, désactive le champ de recherche et remplace `window.showBrowse` par une fonction vide.
+
+`lockDlMode()` (L. 2100) masque la recherche et le sélecteur de laboratoire, masque la barre « Ajouter un mot-clef » — le DU assure le suivi, il n'a pas vocation à suggérer des concepts sur les fiches d'autrui —, pose `window._dlMode`, et rétablit un retour à la liste restreint au laboratoire du DU. Si `pa.dlCanEdit` est faux, il pose également `window._dlReadOnly`, qui met les fiches en lecture seule.
+
+### Le jeton d'accès
+
+Le paramètre `t` transporte la clef d'API « EC », encodée de façon à n'être pas
+lisible à l'œil nu (L. 2076) :
+
+```js
+function encodeKey(key) {
+    const b64 = btoa(key);
+    const rev = b64.split('').reverse().join('');
+    return rev.replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '.');
+}
+```
+
+Base64, inversion, puis substitution des caractères gênants en URL. `decodeKey` fait le chemin inverse et renvoie une chaîne vide en cas d'échec.
+
+::: {.callout-warning}
+## Ce n'est pas un secret
+
+L'encodage est réversible par quiconque lit le code source, qui est public. Il **décourage la curiosité, il ne protège rien**. La clef transportée est celle d'un compte Omeka S aux droits volontairement réduits (`pa.ecKeyCred`), et c'est là que réside la vraie limite : si ce compte peut écrire au-delà de ce qu'un EC doit pouvoir faire, le lien devient une faille.
+
+Les liens sont construits par `buildEcLink` (L. 2176) et `buildDlLink` (L. 2168), tous deux à partir de `window.location.href`, ce qui les rend indépendants du domaine de déploiement.
+:::
+
+::: {.callout-note}
+## Les `&amp;` de certains clients de messagerie
+
+Certains clients (Zimbra, ...) transmettent la valeur brute des attributs `href` sans la décoder, ce qui fait arriver `&amp;` à la place de `&` dans l'URL. L'application corrige cela avant toute lecture de paramètre (L. 354) :
+
+```js
+const cleanHref = document.location.href.replace(/&amp;/g, '&');
+```
+
+Sans cette normalisation, un lien ouvert depuis certains webmails ne déclenchait aucun mode et l'EC se retrouvait devant une page vide.
+:::
+
+## L'échelle de notation
+
+Quatre niveaux, plus un état neutre. Les libellés sont dans `LEVEL_NAMES` :
+
+| Valeur | Libellé             | Couleur        |
+|--------|---------------------|----------------|
+| `null` | non noté            | gris `#D3D1C7` |
+| `0`    | sans avis           | —              |
+| `1`    | Non pertinent       | `#E24B4A`      |
+| `2`    | Expertise marginale | `#EF9F27`      |
+| `3`    | Expertise reconnue  | `#97C459`      |
+| `4`    | Expertise centrale  | `#1D9E75`      |
+
+Le niveau **0 (« sans avis »)** n'est pas proposé aux enseignants-chercheurs : il n'existe que du côté des opérateurs, pour signaler explicitement qu'un mot-clef a été examiné sans que l'on tranche. Il est **exclu du calcul de la moyenne** affichée.
+
+::: {.callout-note}
+## Pourquoi `null` et `0` ne sont pas la même chose
+
+`null` signifie « personne n'a regardé », `0` signifie « quelqu'un a regardé et s'est abstenu ». Les confondre ferait disparaître l'information la plus utile au suivi de campagne : savoir ce qui reste à faire. Tout code manipulant un rang doit distinguer les deux — `rank === null` et non `!rank`.
+
+La distinction est **fragile en pratique**, pour deux raisons tenant à JavaScript : `null <= 2` est vrai (voir @sec-ve-autohide), et `formatExpertise` (L. 2668) écrit `e.rank = 0` lorsque la propriété de rang est absente de l'item — une expertise mal formée devient donc un « sans avis » indistinguable d'un vrai.
+:::
+
+### La « Proposition du SVR » affichée à l'EC
+
+Quand plusieurs opérateurs ont noté le même mot-clef, l'EC ne voit pas leurs notes séparément : elles sont réduites à une ligne unique (L. 2832-2844).
+
+```js
+const allOpExps = d.expertises.filter(e =>
+    e.creatorId !== 'scanr' &&
+    String(e.creatorId) !== String(cfg.creatorId) &&
+    e['o:id']);
+const opExps = allOpExps.filter(e => e.rank >= 1 && e.rank <= 4);
+const avg = Math.round(opExps.reduce((s, e) => s + e.rank, 0) / opExps.length);
+```
+
+Trois propriétés de ce calcul sont à connaître :
+
+- la moyenne est **arithmétique et non pondérée** — l'avis d'un opérateur chevronné et celui d'un vacataire pèsent pareil ;
+- les notes `0` (« sans avis ») sont **exclues** de la moyenne, mais déclenchent, si elles sont seules, une mention distincte « Évalué par le SVR » — ce qui préserve la différence entre « examiné sans trancher » et « pas examiné » ;
+- `Math.round` **arrondit `.5` vers le haut** : deux opérateurs à 2 et 3 affichent 3, soit « Expertise reconnue ». L'arrondi est donc favorable à l'EC.
+
+::: {.callout-note}
+## Un seul niveau diverge entre la pastille et le bouton
+
+Le niveau 1 n'a pas la même couleur selon où il s'affiche :
+
+|                           | Fond           | Bordure         | Source            |
+|---------------------------|----------------|-----------------|-------------------|
+| Pastille `.lvl-1`         | `#F1EFE8` gris | `#D3D1C7`       | `main.css` L. 255 |
+| Bouton `.level-btn.lvl-1` | `#FCEBEB` rose | `#F09595`       | `main.css` L. 694 |
+| Bord gauche de carte      | —              | `#E24B4A` rouge | `LEVEL_BORDER[1]` |
+
+« Non pertinent » est donc rouge quand on le choisit et sur le bord de la carte, mais **gris** quand il est restitué en pastille. Les niveaux 2, 3 et 4 sont cohérents entre les trois. C'est probablement un reliquat : le gris était l'ancienne couleur du niveau 1 avant que l'échelle ne gagne un rouge franc.
+:::
+
+### L'indicateur ScanR
+
+Une note brute de ScanR n'a pas de sens dans l'absolu : elle dépend du volume de publications de la personne. `computeScanrIndicator` (L. 2605) la rend **relative à la fiche** en calculant les quartiles des notes ScanR de cette personne, puis en étiquetant chaque mot-clef :
+
+- `high` si la note est au-dessus du troisième quartile,
+- `low` si elle est au-dessous du premier,
+- `mid` entre les deux.
+
+L'indicateur n'est calculé qu'à partir de **quatre mots-clefs notés par ScanR** ; en deçà, l'échantillon est trop faible et l'étiquette vaut `null`.
+
+## Le cycle de notation
+
+Chaque note est un **item Omeka S distinct** de la classe `valo:Expertises_all`, qui pointe vers le mot-clef par `valo:expertise` et porte le rang dans `curation:rank`. L'auteur de la note est identifié par `dcterms:creator` ; une expertise sans créateur est, par convention, une note issue de l'extraction ScanR.
+
+Le parcours : l'utilisateur clique un niveau (`onLevelSelect`, L. 3264), puis « Ajouter » ou « Modifier ». Selon le cas, `createExpertise`, `updateExpertise` ou `deleteExpertise` (section CRUD, L. 2933) écrit en base, et `showNewExpertise` met l'affichage à jour sans recharger la fiche.
+
+::: {.callout-important}
+## `latestCreatorExpertise` — ne jamais prendre « la première »
+
+Des fiches portent encore plusieurs expertises du même auteur sur un même mot-clef, séquelles d'un bug de pagination corrigé en 0.2.12. Trois endroits du code désignaient alors des enregistrements différents : le niveau surligné venait du premier de la liste, les pastilles du dernier, et la modification portait sur le premier. L'utilisateur voyait une note, en enregistrait une autre, et retrouvait la première au rechargement.
+
+`latestCreatorExpertise(d)` tranche une fois pour toutes : **la plus récente par date de création, départagée par `o:id`**. Tout code lisant la note d'un auteur doit passer par elle, et jamais par un `find()` direct.
+:::
+
+## Suggestion d'un mot-clef
+
+Un EC peut proposer un mot-clef absent de sa liste. Deux cas :
+
+- le concept **existe déjà** dans le référentiel : `addKeyword` le rattache à la
+  fiche ;
+- le concept **n'existe pas** : `suggestNewKeyword` crée d'abord un
+  `skos:Concept`, puis appelle `addKeyword`.
+
+Un **quota** limite le nombre de suggestions, fixé par `pa.maxSuggestedKw`. Il n'est compté qu'en mode EC, et le compteur est recalculé à chaque chargement de fiche **à partir des concepts réellement rattachés dont l'EC est le créateur** — et non depuis un total stocké. Un mot-clef retiré rend donc sa suggestion.
+
+::: {.callout-warning}
+## Deux pièges déjà rencontrés dans ce parcours
+
+`addKeyword` renvoie désormais un booléen. Elle signalait ses erreurs sans les remonter à son appelant : `suggestNewKeyword` enchaînait sur « suggéré et ajouté » alors que le rattachement avait échoué, laissant un `skos:Concept` orphelin en base et une suggestion décomptée pour rien.
+
+`addKeyword` peut sortir **avant son bloc `try`** — mot-clef déjà présent, retrait en cours. Tout appelant qui a masqué l'interface avant de l'appeler doit la rétablir sur ce chemin-là aussi, sinon l'utilisateur reste devant une page vide.
+:::
+
+## Retrait d'un mot-clef
+
+Une croix discrète apparaît sur les cartes que l'on peut retirer. `canRemoveKeyword` (L. 3075) en fixe les conditions :
+
+```js
+if (fromDL || window._dlReadOnly) return false;  // le DU ne fait que consulter
+if (d['@annotation']) return false;              // issu de l'extraction ScanR
+// et aucune note d'un autre auteur ne doit exister
+```
+
+Autrement dit : on ne retire que ce que l'on a soi-même ajouté, et seulement tant que personne d'autre ne l'a noté. Le retrait relit la fiche, en ôte le mot-clef de toutes les propriétés configurées, réécrit la fiche entière en `PUT`, puis supprime les expertises devenues orphelines.
+
+::: {.callout-note}
+## Pourquoi un verrou global
+
+`isRemovingKeyword` interdit deux retraits simultanés. Chaque retrait relit la fiche entière avant de la réécrire : deux retraits concurrents liraient la même version et le second annulerait le premier. Le même verrou couvre l'ajout et la suggestion, pour la même raison.
+
+Le verrou est posé **après** la confirmation, jamais avant : une annulation sortirait sans passer par le `finally` et le laisserait fermé pour le reste de la session.
+:::
+
+## Vue « parcourir » et suivi de campagne
+
+Réservée aux opérateurs et aux DU, elle liste les enseignants-chercheurs d'un laboratoire avec, pour chacun, le nombre de mots-clefs et son état d'évaluation.
+
+### Ce que signifie réellement la pastille ✓ {#sec-ve-badge}
+
+La pastille verte « Évalué » se lit naturellement comme « j'ai évalué cette personne ». **Ce n'est pas ce qu'elle dit.** `computeEvaluatedEcIds` (L. 1687) charge *toutes* les expertises de l'instance et retient l'identifiant de l'EC cible, sans aucun filtre sur `dcterms:creator` :
+
+```js
+const all = await a.omk.getAllItems(`resource_class_id[]=${idClassExp}&per_page=1000`);
+all.forEach(e => {
+    const ecId = e['dcterms:source']?.[0]?.value_resource_id;
+    if (ecId) evaluatedEcIds.add(parseInt(ecId));
+});
+```
+
+La pastille signifie donc : **« cette fiche porte au moins une note, de qui que ce soit »**. Un EC déjà traité par un autre opérateur apparaît comme évalué pour tout le monde.
+
+::: {.callout-warning}
+## Un commentaire du code affirme le contraire
+
+À la ligne 1851, un commentaire décrit ce calcul comme reposant sur `cfg.creatorId` — ce qu'il ne fait pas. Juste au-dessus, aux lignes 1841-1847, subsiste une tentative abandonnée de ce calcul par créateur, réduite à un `false // placeholder` : la variable `isEvaluated` qu'elle produit **n'est jamais lue**, seule `evaluated` (ligne 1852) alimente la pastille.
+
+C'est du code mort doublé d'un commentaire trompeur. Quiconque voudra rendre la pastille personnelle doit partir de `computeEvaluatedEcIds`, et non de ce vestige. Le coût réel de l'opération est ce qui l'a fait abandonner : filtrer par créateur suppose de connaître le créateur de chaque note, donc de charger les expertises de chaque EC listé.
+:::
+
+### Un filtre implémenté sans bouton
+
+Trois valeurs de `browseEcFilter` sont traitées — `all`, `done`, `todo` (L. 1719-1721) — mais le balisage n'offre que deux pastilles, `data-ec-filter="all"` et `data-ec-filter="done"` (L. 233-234). **Le filtre « non évalués » existe dans la logique et n'est atteignable par aucun clic.** Ajouter la troisième pastille suffirait à l'activer ; c'est probablement le filtre le plus utile en suivi de campagne.
+
+### L'auto-masquage au-delà de vingt cartes {#sec-ve-autohide}
+
+Sur une fiche de plus de vingt mots-clefs, une partie des cartes est masquée par défaut, un bandeau annonçant le nombre et offrant de tout afficher. Le critère mérite d'être énoncé exactement, car trois descriptions circulent dans le code pour un seul comportement :
+
+```js
+const hiddenByAuto = shouldAutoHide ? keywords.slice(20).filter(kw => kw.rank <= 2) : [];
+```
+
+`kw.rank` vaut `null` quand le créateur courant n'a pas noté le mot-clef (`formatKeyword`, L. 2640). Or **`null <= 2` est vrai en JavaScript** : `null` est converti en `0`. Le critère réel est donc : *au-delà de la vingtième carte, tout ce qui n'est pas noté 3 ou 4 par le créateur courant disparaît* — les non-notés compris.
+
+::: {.callout-important}
+## Les trois descriptions divergentes
+
+| Source              | Ce qu'elle dit                      |
+|---------------------|-------------------------------------|
+| Commentaire L. 2742 | « masque ceux avec `rank < 5` »     |
+| Variable L. 421 | « masque les mots-clefs de niveau 1-2 » |
+| Code L. 2745 | masque `null`, `0`, `1` et `2`             |
+
+Seule la troisième ligne fait foi. La conséquence pratique est contre-intuitive : **les mots-clefs qui restent à traiter sont ceux que l'auto-masquage cache en priorité.** Une suggestion fraîchement ajoutée par un EC a un rang `null` et se classe en fin de liste : sur une fiche fournie, elle disparaît immédiatement derrière « Afficher tout », alors que c'est précisément celle qu'il voudrait relire.
+
+Si l'on veut corriger ce point, le changement est d'un caractère — `kw.rank !== null && kw.rank <= 2` — mais il modifie le nombre de cartes visibles sur toutes les fiches fournies, donc l'impression de charge de travail des EC en cours de campagne. À ne pas déployer au milieu d'une campagne de notation.
+:::
+
+## Envoi des liens par courriel
+
+Les opérateurs transmettent aux EC leur lien individuel, et aux DU le lien de dispatch de leur laboratoire. Le message est construit en clair par `ecMailParts` et `dlMailParts`, qui renvoient un objet `{ to, subject, body }`. Deux fonctions en dérivent les deux formes :
+
+- `partsToMailto(p)` → un lien `mailto:` encodé ;
+- `partsToText(p)` → le message en clair, pour le presse-papiers.
+
+::: {.callout-tip}
+## Modifier le texte d'un message
+
+Le corps est écrit en clair dans `ecMailParts` et `dlMailParts`, signalés par un commentaire `// ── Corps de l'email … ──` (L. 2196 et L. 2272). **Une seule source alimente le lien et la copie** : les deux ne peuvent pas diverger. L'encodage n'a lieu qu'au dernier moment, dans `partsToMailto`.
+
+Attention à la longueur : le corps voyage intégralement dans l'URL. Le message actuel produit environ 1,7 ko, ce qui passe partout ; au-delà de 8 ko, certains serveurs mandataires refusent la requête.
+:::
+
+::: {.callout-warning}
+## La chaîne `mailto:` échappe à l'application
+
+L'enveloppe est une vraie balise `<a href="mailto:…" target="_blank">`, ce qui donne le menu contextuel, le Ctrl+clic et l'ouverture native en nouvel onglet. Mais ce qui se passe ensuite ne dépend plus de l'application :
+
+- le système d'exploitation confie le lien à **son** application de messagerie par défaut, qui peut n'être pas le navigateur en cours ;
+- le webmail réécrit l'URL selon le gestionnaire de protocole enregistré dans le navigateur, qui peut être périmé ou mal formé ;
+- si la session du webmail n'est pas ouverte, la redirection peut échouer — un cas observé en production se soldait par une erreur 502.
+
+C'est pourquoi un bouton **📋 copier le message** accompagne chaque enveloppe : il rend le service indépendant de la configuration de chaque poste. En cas de remontée d'un utilisateur sur l'envoi de courriel, c'est la première chose à proposer.
+:::
+
+Le laboratoire nommé dans le message est celui **de la personne destinataire**, lu sur sa fiche, et non celui sélectionné au menu. La sélection courante reste privilégiée lorsqu'elle figure parmi ses laboratoires, afin de ne rien changer au cas habituel. En recherche globale, les deux divergent : un EC pouvait recevoir un message mentionnant le laboratoire de quelqu'un d'autre.
+
+## Outils d'administration
+
+Accessibles aux seuls opérateurs, dans la fenêtre de configuration.
+
+**Statistiques de validation** (`computeValidationStats`, L. 598) — lecture seule. Dénombre les EC, ceux qui se sont auto-évalués, et répartit par laboratoire.
+
+**Déduplication des notes** (`dedupRanks`, L. 492) — nettoie les items `valo:Expertises_all` portant plusieurs valeurs de `curation:rank`, séquelle de la confusion entre les deux comportements d'`updateRessource`. Peut être restreinte à un laboratoire.
+
+**Migration** (`migrateExpertises`, L. 758) — conversion ponctuelle de l'ancienne échelle `-100 / +100` vers l'échelle 1–4. Son drapeau d'exécution est stocké sous `validExpertises_migration_v024_done`. **Elle n'a plus lieu d'être exécutée** sur une base déjà migrée.
+
+## Détails techniques {#sec-ve-navigation}
+
+### Carte du code
+
+Le module fait environ 3 077 lignes. Les bandeaux de commentaires servent de
+sommaire :
+
+| Ligne | Section |
+|---|---|
+| 348 | `URL PARAMS & MODE` |
+| 383 | `CONFIGURATION` |
+| 438 | `APP SWITCHER` |
+| 492 | `DÉDUPLICATION DES NOTES` |
+| 598 | `STATISTIQUES DE VALIDATION` |
+| 758 | `MIGRATION` |
+| 867 | `INIT` |
+| 917 | `SETTINGS` |
+| 1133 | `AUTOCOMPLETE — PERSONNE` |
+| 1229 | `AUTOCOMPLETE — MOT-CLEF` |
+| 1348 | `BANDEAU GUIDE EC` |
+| 1499 | `FILTRE MOTS-CLEFS` |
+| 1540 | `AJOUT D'UN MOT-CLEF` |
+| 1603 | `BROWSE — LISTE ECs PAR LABO` |
+| 2162 | `GÉNÉRATION DE LIENS EC` |
+| 2389 | `CHARGEMENT D'UNE PERSONNE` |
+| 2605 | `INDICATEUR SCANR RELATIF` |
+| 2710 | `RENDU D3 — MOTS-CLEFS` |
+| 2933 | `CRUD — EXPERTISES` |
+| 3264 | `SÉLECTEUR DE NIVEAU` |
+| 3337 | `UI UTILS` |
+
+### Vocabulaire Omeka S
+
+| Terme | Emploi |
+|---|---|
+| `valo:EnseignantChercheur` | classe des fiches de personnes |
+| `valo:Laboratoire` | classe des laboratoires |
+| `valo:Expertises_all` | classe des notes |
+| `skos:Concept` | classe des mots-clefs |
+| `valo:expertise` | la note pointe vers le mot-clef |
+| `curation:rank` | valeur de la note |
+| `dcterms:creator` | auteur de la note ; absent ⇒ ScanR |
+| `dcterms:isPartOf` | rattachement d'un EC à ses laboratoires |
+| `dcterms:subject`, `dcterms:isReferencedBy` | propriétés portant les mots-clefs d'une fiche |
+| `valo:responsableDe` | laboratoires dont un opérateur est responsable |
+| `valo:directeurs` | directeur·rice·s d'un laboratoire |
+| `foaf:mbox` | adresse électronique |
+
+### Configuration
+
+Stockée sous `validExpertises_cfg`, **jamais en mode EC ou DU** : une session ouverte par lien ne doit rien laisser dans le navigateur de son destinataire.
+
+Réglages courants : adresse de l'API, compte Omeka S, identifiant de l'évaluateur, date limite de validation, affichage de tous les EC.
+Réglages avancés : type de personne autorisé, propriétés portant les mots-clefs, propriété de rang.
+
+Autres clefs de stockage :
+
+| Clef                                  | Rôle |
+|---------------------------------------|--------------------------|
+| `validExpertises_cfg`                 | configuration opérateur  |
+| `validExpertises_guide_collapsed`     | état replié du guide EC  |
+| `validExpertises_guide_seen_v030`     | popup d'accueil déjà vue |
+| `validExpertises_migration_v024_done` | migration exécutée       |
+
+::: {.callout-warning}
+## Ne pas renommer `validExpertises_guide_seen_v030`
+
+Changer cette clef **réaffiche la popup d'accueil à tous les EC**, y compris à ceux qui ont déjà terminé leur validation. Ne la modifier que si l'on veut délibérément représenter le guide.
+:::
+
+## Points de maintenance {#sec-ve-maintenance}
+
+::: {.callout-important}
+## Toujours préciser `per_page`
+
+L'API Omeka S plafonne une recherche à **25 résultats** lorsque `per_page` est omis. C'est à l'origine du bug le plus coûteux de l'historique : au-delà de 25 expertises sur une fiche, l'application ne voyait plus la note déjà saisie, affichait « Ajouter » au lieu de « Modifier », et chaque validation créait une expertise supplémentaire au lieu de mettre à jour l'existante. Le défaut n'apparaissait qu'une fois le seuil franchi, donc progressivement et sans cause apparente.
+
+Préférer `getAllItems` dès qu'un nombre de résultats peut croître.
+:::
+
+::: {.callout-important}
+## Vérifier toute écriture
+
+Voir le socle commun : `postData` ne contrôle pas le statut HTTP. Une création ou une mise à jour se vérifie par la présence de `o:id` dans la réponse, une suppression par l'absence de clef `errors`. Sans cela, l'interface annonce des réussites qui n'ont pas eu lieu.
+:::
+
+::: {.callout-important}
+## `cfg.rankProp` est réglable en lecture, pas en écriture
+
+La fenêtre de configuration expose un champ « propriété de rang » qui alimente `cfg.rankProp` (valeur par défaut `curation:rank`). Quatorze endroits du code l'honorent : la déduplication, la migration, `formatExpertise`, le rendu.
+
+**`getExpertiseValues` ne l'honore pas.** C'est elle qui construit le corps de toute création et de toute mise à jour de note, et elle écrit la propriété en dur (L. 2973) :
+
+```js
+const data = {
+    ...
+    'curation:rank': rank,   // ← et non [cfg.rankProp]
+};
+```
+
+Changer ce réglage produit donc une application qui **écrit dans une propriété et relit dans une autre** : les notes semblent s'enregistrer, et reviennent à `0` au rechargement — `formatExpertise` ne trouvant pas `cfg.rankProp` sur l'item.
+
+Deux issues : soit remplacer la clef littérale par `[cfg.rankProp]` dans `getExpertiseValues`, soit retirer le champ de la fenêtre de configuration. La seconde est plus honnête tant que personne n'a besoin d'une autre propriété : un réglage qui casse l'application vaut moins qu'un réglage absent.
+:::
+
+::: {.callout-caution}
+## Deux lectures différentes de `foaf:mbox`
+
+Omeka S peut stocker une adresse électronique de deux façons : en littéral (`@value`) ou en URI (`@id` valant `mailto:…`). Les deux endroits qui lisent cette propriété ne traitent pas les deux cas :
+
+| Emplacement           | Code                                                               | `@value` | `@id`   |
+|-----------------------|--------------------------------------------------------------------|----------|---------|
+| Liste des EC, L. 1859 | `mailVal?.['@id']?.replace('mailto:','') \|\| mailVal?.['@value']` | oui      | oui     |
+| Zone des DU, L. 2027  | `(dl['foaf:mbox'] \|\| [])[0]?.['@value']`                         | oui      | **non** |
+
+En pratique les adresses sont saisies en texte normal, donc le défaut ne se manifeste pas aujourd'hui. Il se manifesterait au premier import qui produirait des URI : l'enveloppe du DU apparaîtrait désactivée sans explication, alors que l'adresse est bien renseignée dans Omeka. La ligne 1859 est la forme à recopier.
+:::
+
+::: {.callout-note}
+## Code mort identifié
+
+Deux vestiges sans effet, à supprimer plutôt qu'à comprendre :
+
+- **L. 1841-1847** — calcul de `isEvaluated` réduit à un `false // placeholder`, variable jamais lue (voir @sec-ve-badge) ;
+- **L. 2829** — `const opExpertises = kw.data().map ? null : null;`, qui vaut `null` dans les deux branches et n'est jamais utilisée.
+:::
+
+::: {.callout-caution}
+## Masquer n'est pas interdire
+
+Les outils réservés aux opérateurs sont masqués par la classe `app-dropdown-operator` et la condition `fromUrl`. **C'est de l'hygiène d'interface, pas du contrôle d'accès.** Les données de l'instance étant publiques en lecture, une application masquée reste atteignable par son adresse. Une restriction réelle se règle côté serveur.
+:::
+
+::: {.callout-caution}
+## Ne pas réafficher la page après une erreur
+
+`setLoading(true)` masque le bandeau, la grille et la barre d'action, mais `setLoading(false)` ne les réaffiche pas. Toute opération qui masque l'interface doit la rétablir sur **tous** ses chemins de sortie, y compris ceux qui ne passent pas par le bloc `try`. `restoreAfterError()` est prévue pour cela : elle reconstruit l'affichage depuis les données déjà en mémoire, sans relire l'API — puisque c'est justement elle qui vient d'échouer.
+:::
+
+::: {.callout-note}
+## Deux particularités de mise en forme à connaître
+
+`.btn-ghost` est **blanc** globalement, parce qu'il habille aussi « Retour à la liste », posé sur le bandeau d'un EC qui demeure en Maroon. Seul celui du bandeau d'en-tête est redéfini en sombre sur clair. Une bascule globale rendrait le bouton de retour illisible.
+
+L'attribut `disabled` **n'existe pas sur une balise `<a>`** : l'état inactif d'une enveloppe sans adresse repose sur l'absence de `href` et sur une classe. Surtout pas de `pointer-events: none`, qui laisserait le clic atteindre la ligne et ouvrir la fiche de l'EC.
+:::
+
+# validKeyword
+
+## Principe
+
+Le référentiel de mots-clefs est alimenté par deux sources : l'extraction automatique depuis ScanR et les suggestions des enseignants-chercheurs. Les deux produisent des doublons — variantes orthographiques, singulier contre pluriel, sigles développés ou non, traductions. Un référentiel qui contient à la fois « réseaux de neurones » et « réseau de neurones » éclate l'information : deux chercheurs travaillant sur le même sujet n'apparaissent plus ensemble.
+
+cleanKeywords détecte ces doublons et permet de les fusionner sans perdre les rattachements existants. Elle est **réservée aux opérateurs** : sans clef d'API valide, elle ouvre sa fenêtre de configuration et s'arrête là.
+
+## Deux onglets
+
+**Détection** : balaye le référentiel, regroupe les concepts jugés semblables en *clusters*, et présente chaque groupe avec les actions possibles.
+
+**Parcourir** : liste tous les concepts, avec recherche, pagination, et un panneau d'information par concept (ses rattachements, ses métadonnées). C'est depuis cet onglet que l'on renomme, supprime, ou fusionne manuellement deux concepts que la détection n'a pas rapprochés.
+
+## La détection de doublons
+
+L'algorithme vit dans `assets/js/similarity.js`, qui expose trois fonctions : `findPairs`, `buildClusters` et `extractWikidataId`.
+
+Le parcours est toujours le même (`scanLetter`, L. 915 ; `scanAll`) :
+
+1. charger les concepts, par lettre initiale ou tous ;
+2. `findPairs(concepts)` produit les paires jugées semblables, chacune avec un
+   score et un motif (`reason`) ;
+3. les paires déjà rejetées sont retirées ;
+4. `buildClusters(pairs, concepts)` regroupe les paires en grappes.
+
+```js
+const pairs    = findPairs(concepts).filter(p => !rejected.has(pairKey(p)));
+const clusters = buildClusters(pairs, concepts);
+```
+
+Deux mécanismes de détection cohabitent : une **similarité textuelle** — dépluralisation token par token, exclusion des chiffres romains divergents — et une **identité Wikidata**, bien plus fiable : deux concepts portant le même QID dans `dcterms:isReferencedBy` sont le même concept, sans discussion possible. `buildWikidataIndex` construit cet index, et les groupes concernés portent un badge distinct.
+
+::: {.callout-note}
+## Le clustering ne relie que par liens directs
+
+Le regroupement Union-Find reliait initialement les concepts par transitivité : si A ressemble à B et B à C, les trois formaient un groupe — même lorsque A et C n'avaient rien à voir. Les grappes dérivaient alors d'un thème à l'autre.
+
+Désormais, un index des paires directement qualifiées filtre les membres : seuls les concepts ayant **au moins un lien direct** avec un autre membre du groupe sont conservés.
+:::
+
+### Les seuils de l'algorithme {#sec-ck-seuils}
+
+Six constantes gouvernent la détection. Elles sont **regroupées en bas de `similarity.js`**, ce qui est le bon endroit pour les régler : il n'y a pas d'autre valeur numérique à chercher ailleurs.
+
+| Constante | Valeur | Ligne | Rôle |
+|---------------------|--------|-----|----------------------------------------------------------------------|
+| `MIN_PAIR_SCORE`    | `0.70` | 146 | score minimum pour retenir une paire textuelle                       |
+| `MIN_WIKIDATA_TEXT` | `0.50` | 147 | similarité textuelle minimale pour valider un rapprochement Wikidata |
+| `WIKIDATA_WEIGHT`   | `0.55` | 148 | poids du signal Wikidata dans le score combiné                       |
+| `TEXT_WEIGHT`       | `0.45` | 149 | poids du signal textuel                                              |
+| `MIN_CLUSTER_SCORE` | `0.75` | 257 | score minimum pour relier deux concepts dans une grappe              |
+| `MAX_CLUSTER_SIZE`  | `6`    | 258 | taille maximale d'une grappe                                         |
+
+Le score combiné d'un rapprochement Wikidata vaut `0.55 × 1.0 + 0.45 × similarité_textuelle`, soit **au moins 0,775** dès que la similarité textuelle franchit `MIN_WIKIDATA_TEXT`. Autrement dit : une identité de QID suffit presque toujours à qualifier la paire, le signal textuel ne servant qu'à écarter les QID manifestement mal saisis.
+
+`MAX_CLUSTER_SIZE = 6` n'est pas une limite esthétique. L'union de deux groupes est **refusée** si elle dépasserait six membres (`similarity.js`, L. 276) : c'est le garde-fou contre les chaînes de proche-en-proche qui dérivent d'un thème à l'autre.
+
+::: {.callout-important}
+## Les deux seuils ne sont pas le même, et l'écart est invisible
+
+`findPairs` retient les paires à partir de **0,70**. `buildClusters` ne relie les concepts qu'à partir de **0,75** :
+
+```js
+const qualifiedPairs = pairs.filter(p => p.score >= MIN_CLUSTER_SCORE);
+```
+
+Comme l'interface n'affiche **que des grappes** — jamais une paire isolée —, les rapprochements notés entre 0,70 et 0,74 sont calculés à chaque scan puis silencieusement écartés. Ils ne s'affichent nulle part et ne sont pas comptés dans les rejets : l'opérateur ne sait pas qu'ils existent.
+
+Ce n'est pas nécessairement un défaut : la bande 0,70-0,74 est celle des faux positifs, et ne pas la montrer évite un tri fastidieux. Mais c'est à savoir avant de chercher pourquoi deux concepts qui se ressemblent n'apparaissent jamais. Pour les faire apparaître, abaisser `MIN_CLUSTER_SCORE`, et non `MIN_PAIR_SCORE`.
+:::
+
+::: {.callout-warning}
+## `pairKey()` doit être symétrique
+
+La clef d'une paire sert à retrouver les paires rejetées. Elle était construite dans un ordre dépendant du contexte — scan frais contre restauration depuis le cache —, si bien qu'un rejet enregistré n'était plus reconnu après rechargement. Elle est désormais **toujours triée numériquement** (`min_max`). Toute modification de cette fonction doit préserver cette propriété.
+:::
+
+## Le balayage par lettre
+
+Le référentiel est trop volumineux pour être analysé d'un bloc confortablement. Une barre alphabétique (`buildAlphaBar`) permet de le traiter lettre par lettre, et les lettres terminées sont mémorisées sous `cleanKeywords_done` — le travail se reprend d'une session à l'autre. Un balayage global reste possible.
+
+::: {.callout-important}
+## Une lettre peut être marquée verte sans avoir été analysée
+
+`scanLetter` charge les concepts par `a.omk.searchItems`, qui **ne pagine pas**, avec `per_page=500` (L. 936). Au-delà de 500 concepts commençant par la même lettre, le reste n'est jamais examiné, et rien ne le signale.
+
+Plus gênant : le marquage de la lettre comme traitée se trouve **hors du `try/catch`** qui entoure le chargement (L. 947) :
+
+```js
+} catch (e) {
+    if (!silent) toast('Erreur lors du chargement', 'err', e.message);
+}
+
+doneLetters.add(letter);
+localStorage.setItem(DONE_KEY, JSON.stringify([...doneLetters]));
+```
+
+Une erreur réseau produit donc un message d'alerte **et** une lettre verte, avec zéro concept analysé. Comme les lettres vertes sont la mesure de l'avancement, la progression affichée peut être fausse sans que personne s'en aperçoive.
+
+Les deux correctifs sont indépendants et peu risqués : déplacer les deux lignes à l'intérieur du `try`, après le traitement ; et passer à `getAllItems`, qui pagine, pour la requête de chargement. Le second est également à appliquer à `refreshScope` (L. 660, `per_page=1000` par laboratoire) et, pour les mêmes raisons, partout où `searchItems` est appelé avec un `per_page` élevé — c'est la signature d'une pagination qu'on espère ne pas avoir à faire.
+:::
+
+## Le cache de scan
+
+Un scan coûte cher. Son résultat est donc stocké sous `cleanKeywords_scan_cache` (`saveCache`, L. 361) : horodatage, nombre de concepts, nombre de groupes, et pour chaque groupe ses concepts et ses paires.
+
+::: {.callout-note}
+## Ce que le cache stocke, et pourquoi
+
+Seul le strict nécessaire est conservé : `o:id`, libellé, et `dcterms:isReferencedBy`. Les paires gardent `aId` / `bId` **explicitement**, afin que `pairKey()` fonctionne encore après restauration — sans quoi les rejets enregistrés seraient perdus.
+
+Le cache reflète un état passé de la base. `markStaleConcepts` (L. 1425) barre les concepts entre-temps supprimés et désactive leur sélection, en s'assurant qu'un choix valide reste coché. Un bandeau signale l'âge du scan.
+:::
+
+## La fusion
+
+C'est l'opération centrale, et la plus délicate : elle réécrit des fiches d'enseignants-chercheurs. `executeFusion(srcId, tgtId, …)` (L. 1260) procède en cinq étapes dans un ordre qui n'est pas négociable.
+
+**0. Vérification.** Le concept source existe-t-il encore ? S'il a disparu — fusionné par quelqu'un d'autre entre-temps — l'opération s'arrête, l'identifiant est marqué supprimé et l'affichage mis à jour.
+
+**1. Mise à jour des fiches EC.** Pour chaque propriété configurée dans `cfg.personPropExp`, toutes les fiches référençant la source sont relues et réécrites. Le cas important :
+
+```js
+const hasTgt = currentVals.some(v => v.value_resource_id == tgtId);
+if (hasTgt) {
+    // La cible est déjà présente — on retire juste la source
+    updated = currentVals.filter(v => v.value_resource_id != srcId);
+} else {
+    // La cible est absente — on remplace la source par la cible
+    updated = currentVals.map(v => v.value_resource_id == srcId
+                                 ? { ...v, value_resource_id: tgtId } : v);
+}
+```
+
+Sans ce test, un EC rattaché aux **deux** concepts se retrouvait avec le même mot-clef en double après fusion.
+
+**2. Transfert des expertises.** Les items `valo:Expertises_all` qui pointaient vers la source pointent désormais vers la cible. Les notes sont donc conservées.
+
+**Point d'arrêt.** Si une erreur est survenue aux étapes 1 ou 2, la fusion **s'interrompt et la source n'est pas supprimée** :
+
+```js
+if (errors > 0) {
+    logFusion(`Fusion interrompue (${errors} erreur(s)) — source non supprimée`);
+    return false;
+}
+```
+
+La base reste dans un état partiellement migré mais cohérent : rien n'a été perdu, l'opération peut être relancée.
+
+**3. Transfert des métadonnées** — non bloquant. `dcterms:isReferencedBy` (le QID Wikidata), `skos:altLabel`, `skos:broader`, `skos:narrower`, `skos:related` sont fusionnés vers la cible, avec déduplication par valeur. Un échec ici n'interrompt pas la fusion : ces métadonnées sont utiles mais non critiques.
+
+**4. Traçabilité** — `dcterms:replaces` est ajouté sur la cible, pointant vers la source. C'est ce qui permet, plus tard, de savoir qu'un concept en a absorbé un autre. Non bloquant également.
+
+**5. Suppression de la source**, et seulement alors.
+
+::: {.callout-important}
+## L'ordre des étapes est la garantie
+
+Supprimer la source avant d'avoir transféré ses rattachements ferait perdre définitivement l'information : rien ne permettrait de retrouver quels enseignants-chercheurs étaient concernés. Toute modification de `executeFusion` doit conserver cette séquence et le point d'arrêt qui la protège.
+:::
+
+Trois chemins mènent à cette fonction : `previewCluster` (prévisualisation avant confirmation), `quickFuseCluster` et `directFuseCluster` (fusion en deux ou trois clics depuis un groupe), et la fusion manuelle depuis l'onglet « Parcourir ».
+
+## Renommage, suppression, rejet
+
+**Renommage** (`renameConceptInPlace`, L. 1516) : l'étiquette d'un concept s'édite directement dans la liste. Un avertissement précède la première modification de la session : renommer un concept le change **pour tous les EC qui le portent**. L'avertissement peut être désactivé définitivement (`cleanKeywords_rename_no_warn`). Une notification offre d'annuler l'opération.
+
+**Suppression** (`deleteConceptWithCleanup`, L. 1647) : une fenêtre de confirmation liste les enseignants-chercheurs rattachés avant d'agir, pour que l'opérateur mesure la portée. Les identifiants supprimés sont mémorisés sous `cleanKeywords_deleted` afin de marquer les entrées périmées du cache.
+
+::: {.callout-important}
+## La suppression est moins complète que la fusion
+
+`executeFusion` et `deleteConceptWithCleanup` traitent le même problème — détacher un concept de tout ce qui le référence — mais pas de la même façon.
+
+**La suppression ne touche pas aux items d'expertise.** Elle nettoie les propriétés listées dans `cfg.personPropExp` sur les fiches EC (L. 1718), et s'arrête là. Les items `valo:Expertises_all` dont `valo:expertise` pointait vers le concept subsistent, désormais rattachés à une ressource inexistante. La fusion, elle, les transfère explicitement (étape 2). Supprimer un concept noté laisse donc des notes orphelines en base ; elles ne se voient pas dans l'interface, mais elles comptent dans les statistiques et dans les scans.
+
+**La comparaison d'identifiants n'y est pas écrite pareil.** Les deux fonctions filtrent la même chose avec deux opérateurs différents :
+
+| Fonction                   | Ligne | Code                                |
+|----------------------------|-------|-------------------------------------|
+| `executeFusion`            | 1296  | `v.value_resource_id != srcId`      |
+| `deleteConceptWithCleanup` | 1723  | `v.value_resource_id !== conceptId` |
+
+Si les deux membres sont toujours des nombres, les deux formes sont équivalentes et tout va bien. Mais la présence du `!=` souple dans la fusion signale qu'une discordance de type y a été rencontrée — sinon personne n'écrit `!=` par choix. Si la même discordance se produit à la suppression, le `!==` strict ne retire **rien**, l'écriture réussit sans effet, et la référence au concept supprimé survit sur la fiche de l'EC.
+
+Aligner la suppression sur la fusion est un correctif d'un caractère. Mieux vaudrait normaliser aux deux endroits — `Number(v.value_resource_id) === Number(id)` — et ne plus dépendre de la forme que l'API renvoie.
+:::
+
+**Rejet d'un groupe** (`rejectCluster`, L. 1135) : déclare que les concepts d'un groupe ne sont pas des doublons. Les clefs des paires sont ajoutées à l'ensemble `rejected` et stockées sous `cleanKeywords_rejected`.
+
+::: {.callout-caution}
+## Les rejets ne vivent que dans le navigateur
+
+`cleanKeywords_rejected`, `cleanKeywords_done` et `cleanKeywords_deleted` sont dans le `localStorage` du poste. **Rien n'est écrit en base.** Deux conséquences : un collègue sur un autre poste reverra les groupes déjà rejetés, et vider les données du navigateur efface tout le travail de tri.
+
+C'est une limite connue de la conception actuelle. Si le tri doit devenir collectif, il faudra le porter dans Omeka S — par exemple par une propriété sur les concepts concernés.
+:::
+
+## Le périmètre opérateur
+
+Tous les opérateurs ne travaillent pas sur tout le référentiel. `refreshScope` (L. 632) calcule un périmètre :
+
+- si l'utilisateur est administrateur global, ou si aucun identifiant d'évaluateur n'est configuré, `allowedConceptIds` vaut `null` — aucune restriction ;
+- sinon, les laboratoires dont il est responsable (`valo:responsableDe`) sont lus sur sa fiche, puis les concepts rattachés aux EC de ces laboratoires forment l'ensemble autorisé.
+
+Ce périmètre filtre la détection **et** l'onglet « Parcourir ». Un bouton 🔄 permet de le recalculer sans recharger la page.
+
+::: {.callout-caution}
+## Le périmètre est permissif en cas d'échec, et ne restreint que l'affichage
+
+Deux propriétés de ce mécanisme sont à comprendre avant de compter dessus.
+
+**Il s'ouvre quand il échoue.** Si le calcul lève une exception, la branche de rattrapage (L. 681-685) remet `allowedConceptIds = null`, c'est-à-dire *aucune restriction* :
+
+```js
+} catch (e) {
+    allowedConceptIds = null;
+    toast('Erreur lors du calcul du périmètre — accès complet utilisé', 'err', e.message);
+```
+
+Le choix est délibéré et le message est franc — mieux vaut un opérateur qui voit trop qu'un opérateur bloqué —, mais il signifie qu'une panne réseau passagère élargit le périmètre au référentiel entier pour le reste de la session.
+
+**Il filtre ce qui s'affiche, pas ce qui s'écrit.** `allowedConceptIds` est consulté au rendu des listes et des grappes ; `executeFusion`, `renameConceptInPlace` et `deleteConceptWithCleanup` ne le consultent pas. Un concept hors périmètre atteint par une autre voie reste modifiable. Comme pour les menus de validExpertises : c'est de l'hygiène d'interface, pas du contrôle d'accès. La seule restriction réelle tient aux droits du compte Omeka S utilisé.
+:::
+
+## Journal et erreurs
+
+Chaque opération de fusion écrit dans un journal visible à l'écran (`logFusion`, L. 1479), ligne à ligne : fiche EC mise à jour, expertise transférée, métadonnée fusionnée, suppression. Dix-huit points d'appel le nourrissent. C'est le seul endroit où l'on peut voir **ce qui a réellement été écrit** quand une fusion se passe mal.
+
+::: {.callout-caution}
+## Le journal ne survit pas au rechargement, et ignore les suppressions
+
+`logFusion` écrit directement dans le `<div id="fusionLog">` du document. Rien n'est conservé : ni en base, ni dans le `localStorage`. **Un rechargement de la page efface l'historique de la session**, et c'est précisément ce qu'on fait après une fusion qui s'est mal passée.
+
+Son nom dit la seconde limite : les dix-huit appels sont tous dans le chemin de fusion. `deleteConceptWithCleanup` et `renameConceptInPlace` n'écrivent rien — une suppression de concept ne laisse donc **aucune trace consultable**, alors que c'est l'opération la plus destructrice de l'application.
+
+En conséquence pratique : avant une série de fusions, et avant tout rechargement, **copier le contenu du journal** si l'on veut pouvoir reconstituer ce qui a été fait. Si l'on doit améliorer un point de cette application, c'est un bon candidat : faire écrire `logFusion` dans le `localStorage` en plus du DOM, et l'appeler depuis la suppression et le renommage, coûte peu et comble le trou le plus béant de la traçabilité.
+:::
+
+::: {.callout-note}
+## Erreurs CORS
+
+`isCorsError` et `humanizeError` traduisent les échecs réseau en messages lisibles. Une erreur CORS se manifeste par un `TypeError: Failed to fetch` indiscernable d'une panne réseau. Elle survient lorsque l'instance Omeka S n'autorise plus le domaine qui sert l'application — typiquement après un changement de configuration serveur. Le symptôme est spectaculaire : plus rien ne fonctionne, sans erreur explicite. C'est à vérifier en premier si l'application cesse brusquement de charger quoi que ce soit.
+:::
+
+## Détails techniques {#sec-ck-navigation}
+
+### Carte du code
+
+Le module fait environ 2 065 lignes.
+
+| Ligne | Section                                                |
+|-------|--------------------------------------------------------|
+| 286   | `CONSTANTES & ÉTAT GLOBAL`                             |
+| 356   | `CACHE DU SCAN`                                        |
+| 440   | `INIT`                                                 |
+| 486   | `SETTINGS`                                             |
+| 508   | `APP SWITCHER`                                         |
+| 697   | `LISTENERS — TABS, SCAN, CLUSTERS, NAVIGATION`         |
+| 779   | `UTILITAIRES CLUSTERS — FILTRE, TRI, COMPTEUR, SCROLL` |
+| 837   | `ALPHABET + SCAN`                                      |
+| 984   | `RENDU DES CLUSTERS`                                   |
+| 1081  | `ACTIONS SUR LES CLUSTERS`                             |
+| 1255  | `EXÉCUTION DE LA FUSION (opération BDD)`               |
+| 1420  | `DÉTECTION D'OBSOLESCENCE POST-FUSION`                 |
+| 1464  | `JOURNAL DES OPÉRATIONS`                               |
+| 1490  | `BROWSE — TOUS LES CONCEPTS`                           |
+| 1517  | `RENOMMAGE DE CONCEPT`                                 |
+| 1648  | `SUPPRESSION INDIVIDUELLE DE CONCEPT`                  |
+| 1923  | `ECs RATTACHÉS À UN CONCEPT`                           |
+| 2158  | `STICKY FUSION` (voir les points de maintenance)       |
+| 2240  | `UTILS`                                                |
+
+### État global
+
+Contrairement à validExpertises, cleanKeywords conserve une vingtaine de variables d'état au niveau du module (L. 286) : `allConcepts`, `currentPairs`, `currentClusters`, `wikidataIndex`, `allowedConceptIds`, les filtres et tris, les ensembles `rejected`, `doneLetters` et `deletedIds`. C'est le prix du fonctionnement par scan : l'application travaille sur un instantané chargé en mémoire, pas sur des requêtes à la demande.
+
+### Vocabulaire Omeka S
+
+| Terme                                           | Emploi                                         |
+|-------------------------------------------------|------------------------------------------------|
+| `skos:Concept`                                  | classe des mots-clefs                          |
+| `skos:prefLabel`, `dcterms:title`               | étiquette d'un concept                         |
+| `skos:altLabel`                                 | variantes, transférées à la fusion             |
+| `skos:broader`, `skos:narrower`, `skos:related` | relations, transférées à la fusion             |
+| `dcterms:isReferencedBy`                        | QID Wikidata                                   |
+| `dcterms:replaces`                              | traçabilité de la fusion                       |
+| `valo:expertise`                                | lien d'une note vers un concept                |
+| `valo:EnseignantChercheur`                      | classe des fiches de personnes                 |
+| `valo:responsableDe`                            | laboratoires d'un opérateur, pour le périmètre |
+
+### Configuration et stockage
+
+Réglages : adresse de l'API, compte Omeka S, identifiant de l'évaluateur, propriétés portant les mots-clefs des personnes. Un bouton vide le cache des métadonnées Omeka S.
+
+| Clef                           | Rôle                                 | Perdue si l'on vide le navigateur |
+|--------------------------------|--------------------------------------|-----------------------------------|
+| `cleanKeywords_cfg`            | configuration                        | réglages à ressaisir              |
+| `cleanKeywords_scan_cache`     | résultat du dernier scan             | scan à relancer                   |
+| `cleanKeywords_rejected`       | paires déclarées non-doublons        | **tri perdu**                     |
+| `cleanKeywords_done`           | lettres terminées                    | **progression perdue**            |
+| `cleanKeywords_deleted`        | concepts supprimés                   | marquage du cache perdu           |
+| `cleanKeywords_rename_no_warn` | avertissement de renommage désactivé | avertissement réaffiché           |
+| `cleanKeywords_scroll`         | position de défilement               | sans conséquence                  |
+
+## Points de maintenance {#sec-ck-maintenance}
+
+::: {.callout-important}
+## Les règles du socle s'appliquent ici aussi
+
+`per_page` à préciser systématiquement, écritures à vérifier explicitement, distinction entre les deux comportements d'`updateRessource`. Voir le socle commun. `executeFusion` utilise les deux formes : la concaténation pour `valo:expertise` et `dcterms:replaces`, le `PUT` complet pour les fiches EC et le transfert de métadonnées.
+:::
+
+::: {.callout-caution}
+## Toute modification de la fusion demande un test sur données jetables
+
+C'est la seule opération des deux applications qui **supprime** des données et en réécrit d'autres en cascade. Une erreur y est irréversible : les rattachements d'un concept supprimé ne se reconstituent pas.
+
+Avant d'y toucher, se donner un concept de test rattaché à au moins deux EC, dont un portant **déjà** les deux concepts à fusionner — c'est le cas qui a produit les doublons par le passé.
+:::
+
+::: {.callout-important}
+## Le panneau « Sticky fusion » est complet et inatteignable
+
+La section `STICKY FUSION` (L. 2157-2239) implémente une fusion manuelle depuis un panneau flottant : deux champs à autocomplétion, une flèche, un bouton « Fusionner → », la validation (source et cible distinctes, toutes deux renseignées) et l'appel à la confirmation. Le balisage existe (L. 107-124), les deux autocomplétions sont branchées (L. 2167-2168), le bouton de fermeture a son écouteur (L. 2164).
+
+**Rien n'ouvre ce panneau.** La fonction prévue pour cela est bien définie :
+
+```js
+function openStickyFusion()  { document.getElementById('stickyFusion').classList.add('open'); }
+```
+
+…et elle **n'est appelée nulle part**. Aucun bouton du balisage ne la déclenche, aucun écouteur ne la référence, et c'est le seul endroit du fichier qui ajoute la classe `open` à cet élément. Le panneau, dépourvu de cette classe, reste donc hors de l'écran en permanence.
+
+Deux lectures possibles : une fonctionnalité jamais terminée, ou un bouton supprimé par accident lors d'un remaniement. Le journal des modifications ne tranche pas, mais le bandeau de la section donne l'intention d'origine — *« STICKY FUSION (formulaire de fusion manuelle depuis Browse) »* : le point d'entrée était prévu dans l'onglet « Parcourir », qui propose aujourd'hui sa propre fusion manuelle. L'hypothèse la plus probable est donc un doublon fonctionnel dont une seule des deux voies a survécu.
+
+Dans les deux cas, **il n'y a rien de cassé à réparer en urgence** : la fusion manuelle reste accessible depuis l'onglet « Parcourir », qui est la voie documentée. Mais il faut trancher, car du code mort en apparence vivante est le pire état pour un mainteneur : on croit avoir une fonctionnalité, on la « corrige », et rien ne change à l'écran.
+
+- **Pour l'activer** : ajouter un bouton appelant `openStickyFusion()`, puis tester le chemin complet jusqu'à `executeFusion` — il n'a probablement jamais tourné en production.
+- **Pour la retirer** : supprimer les lignes 107-124 du balisage, la section 2157-2239, les variables `stickyFusionSrc` / `stickyFusionTgt` (L. 339-340), leur réinitialisation (L. 762-766) et les règles `.sticky-fusion*` du CSS.
+
+La seconde option est la plus sûre tant que personne n'a demandé cette fonctionnalité.
+:::
+
+::: {.callout-warning}
+## Trois défauts mineurs à corriger à l'occasion
+
+Aucun des trois ne justifie un déploiement à lui seul ; ils sont réunis ici pour être traités ensemble le jour où l'on touchera à ces fonctions.
+
+**Un bouton de fusion reste actif sur une grappe dégradée.** `markStaleConcepts` (L. 1425) désactive les actions d'une grappe réduite à un seul concept actif, mais sa liste de sélecteurs (L. 1457) ne couvre que `fuse-cl`, `preview-cl` et `confirm-cl`. Les boutons `fuse-quick` (L. 1044) et `fuse-direct` ne sont pas désactivés : sur une grappe marquée « ⚠ À réviser », le bouton « Fusionner → » reste cliquable. L'opération se heurtera à la vérification d'existence de `executeFusion` (étape 0), donc sans dégât — mais l'interface promet une action qui échouera.
+
+**Un appel de `saveCache` passe des arguments fantômes.** La signature est `saveCache(clusters, totalConcepts = 0)` (L. 361). L'appel de la ligne 1624 s'écrit `saveCache(currentClusters, null, null)` : le troisième argument est ignoré, et le second vaut `null` au lieu de laisser agir la valeur par défaut. Le cache enregistre alors `totalConcepts: null`, et le bandeau qui annonce la taille du scan affiche un total vide.
+
+**`buildClusters` reçoit un paramètre qu'elle n'utilise pas.** Sa signature est `buildClusters(pairs, allConcepts)` (`similarity.js`, L. 260), mais `allConcepts` n'apparaît pas dans le corps : le regroupement se fait entièrement à partir des paires. Les trois sites d'appel le transmettent fidèlement. Ce n'est pas un bug, c'est un faux-ami : il laisse croire que les concepts isolés sont pris en compte dans le regroupement, ce qui n'est pas le cas.
+:::
+
+::: {.callout-note}
+## Deux variables de style qui n'existaient pas
+
+`--color-background-secondary` et `--color-border-tertiary`, employées dans la liste des EC de la fenêtre de suppression, n'étaient déclarées nulle part : ces règles tombaient toujours sur leur valeur de repli, deux gris restés hors du système de jetons. Elles ont été rattachées aux jetons réels. Le même motif — `var(--jeton-inexistant, #valeur)` — est à surveiller : il ressemble à un jeton sans en être un, et il changera silencieusement le jour où quelqu'un déclarera une variable de ce nom.
+:::
+
+::: {.callout-note}
+## Le filigrane « & » n'est pas repris du tableau de bord
+
+Il demande `overflow: hidden` sur l'en-tête, ce qui écrêterait le panneau du menu déroulant, positionné en absolu à l'intérieur. C'est exactement la panne que [ValoVizu](/outils/doc_valovizu.qmd) avait rencontrée avant de sortir son panneau du bandeau. À ne pas réintroduire.
+:::
+
+# Annexe — anomalies relevées dans les fichiers documentés {.unnumbered}
+
+Ces points ont été constatés en lisant les fichiers fournis pour rédiger ce document. Ils ne remettent pas en cause le fonctionnement, mais méritent une vérification avant la prochaine livraison.
+
+## Le menu déroulant n'est pas stylé de la même façon dans les deux applications {.unnumbered}
+
+Les deux `index.html` insèrent une entrée « Omeka S » précédée d'un `<div class="app-dropdown-sep">` et suivie d'un `<span class="app-dropdown-note">`. Les deux feuilles de style ne les connaissent pas pareil :
+
+| Classe               | `cleanKeywords_main.css` | `validExpertises_main.css` |
+|----------------------|--------------------------|----------------------------|
+| `.app-dropdown-sep`  | 1 règle                  | **absente**                |
+| `.app-dropdown-note` | 1 règle                  | **absente**                |
+
+Dans validExpertises, le filet séparateur est donc **invisible** et la mention « instance » s'affiche sans mise en forme. Les deux règles sont à reporter depuis `cleanKeywords_main.css`.
+
+Le bloc `:root` est, lui, bien identique — vingt jetons aux mêmes valeurs, vérifié. L'écart ne porte que sur les règles du menu, ce qui est exactement le genre de divergence que la propriété « même menu partout » est censée interdire.
+
+## Les journaux de modifications sont en retard sur le code {.unnumbered}
+
+Les numéros de version sont cohérents entre eux : `validExpertises` affiche 0.3.5 et appelle `main.css?v=0.3.5` ; `cleanKeywords` affiche 0.2.0 et appelle `?v=0.2.0`. Sur ce point, rien à redire.
+
+En revanche, les deux fichiers contiennent une fonction `ajouterLienOmeka()` — celle qui déduit l'adresse de l'instance Omeka S depuis celle de l'API et ajoute l'entrée au menu — qui **n'est mentionnée dans aucun des deux `CHANGELOG.md`**, dont les entrées de tête sont datées du 20 octobre 2026.
+
+Deux hypothèses : soit la fonctionnalité a été livrée sans entrée de journal, soit les fichiers fournis sont en avance sur les journaux fournis. Dans les deux cas, **les `CHANGELOG.md` ne décrivent pas tout à fait le code livré**, ce qui compte puisque ce document les présente comme faisant foi sur l'historique. À rapprocher du dépôt avant de considérer la documentation close.
+
+## Rappel : le `?v=` doit suivre {.unnumbered}
+
+Il est correct en l'état. Le rappel vaut pour la prochaine modification de l'une ou l'autre feuille de style : incrémenter le paramètre **en même temps** que le numéro de version affiché (voir le socle commun).
+
+# Socle commun aux deux applications
+
+## Nature technique
+
+Les deux applications sont des **pages statiques**. Aucun serveur applicatif,
+aucune compilation, aucune dépendance à installer : on dépose un dossier sur un
+serveur web et l'application fonctionne. Toute la logique s'exécute dans le
+navigateur et dialogue directement avec l'API REST d'Omeka S.
+
+| | |
+|---|---|
+| Langages | HTML, CSS, JavaScript (modules ES natifs) |
+| Bibliothèque | D3.js v7, servie localement (`assets/js/d3.min.js`) |
+| Données | API REST Omeka S |
+| Compilation | aucune |
+| Dépendances externes au chargement | aucune — rien n'est chargé depuis un CDN |
+
+Le JavaScript est écrit directement dans `index.html`, dans un unique
+`<script type="module">`. Ce n'est pas un accident d'écriture mais une
+contrainte assumée : l'application doit pouvoir être déposée et corrigée sans
+chaîne de construction. En contrepartie, le fichier est volumineux — environ
+3 400 lignes pour validExpertises, 2 300 pour cleanKeywords — et se navigue par
+les bandeaux de commentaires qui en découpent les sections (voir
+@sec-ve-navigation et @sec-ck-navigation).
+
+## Arborescence de déploiement
+
+Les trois outils de la suite sont voisins sous un même dossier parent. Les liens
+qu'ils échangent sont **relatifs**, ce qui suppose cette disposition :
+
+```
+outils/
+├── validExpertises/
+│   ├── index.html            application complète (balisage + logique)
+│   ├── .htaccess             en-têtes de cache
+│   └── assets/
+│       ├── main.css          feuille de style
+│       └── js/
+│           ├── omk.js        couche d'accès Omeka S
+│           ├── auth.js       authentification, instancie omk
+│           ├── authParams.js paramètres de déploiement
+│           ├── appUrl.js     lecture des paramètres d'URL
+│           └── d3.min.js     D3.js v7
+├── validKeyword/             
+│   ├── index.html
+│   ├── .htaccess
+│   └── assets/
+│       ├── main.css
+│       └── js/
+│           ├── omk.js
+│           ├── auth.js
+│           ├── authParams.js
+│           ├── similarity.js algorithme de détection de doublons
+│           └── d3.min.js
+└── valoVizu/                 tableau de bord (hors périmètre de ce document)
+```
+
+
+## Couche d'accès et authentification
+
+Trois modules se partagent le dialogue avec Omeka S.
+
+`authParams.js` porte les **paramètres de déploiement** : adresse de l'API,
+identifiants techniques, propriétés métier à utiliser. C'est le seul fichier à
+modifier pour pointer vers une autre instance.
+
+`auth.js` prend ces paramètres, authentifie et instancie la couche d'accès.
+Les deux applications l'appellent de la même façon :
+
+```js
+a = new auth({ mail: cfg.propMail, apiOmk: cfg.apiBase,
+               ident: cfg.keyId, key: cfg.keyCred });
+```
+
+`omk.js` est la **couche d'accès** proprement dite. Les deux applications
+n'utilisent qu'une dizaine de ses méthodes :
+
+| Méthode | Rôle |
+|---|---|
+| `getItem(id)` | lit un item, requête fraîche |
+| `searchItems(query)` | recherche, **plafonnée à 25 résultats sans `per_page`** |
+| `searchItemsPaginated(…)` | recherche paginée |
+| `getAllItems(query)` | parcourt toutes les pages |
+| `createItem(data)` | crée un item |
+| `updateRessource(id, data, type, fd, méthode)` | met à jour |
+| `deleteItem(item)` | supprime |
+| `getPropId(terme)` | identifiant numérique d'une propriété |
+| `getClassByTerm(terme)` | classe par son terme |
+| `getRtId(terme)` | identifiant d'un modèle de ressource |
+
+Les métadonnées d'Omeka S — propriétés, classes, modèles — sont **mises en cache
+24 heures** dans le navigateur, ce qui évite de les recharger à chaque ouverture.
+Le cache se vide depuis la fenêtre de configuration.
+
+::: {.callout-important}
+## `updateRessource` : concaténer ou remplacer
+
+Cette méthode a deux comportements selon les arguments reçus, et la confusion
+entre les deux a déjà produit des données corrompues.
+
+Avec l'argument `data`, elle **concatène** : les valeurs transmises s'ajoutent à
+celles déjà présentes. Avec l'argument `fd` et la méthode `PUT`, elle
+**remplace** l'item entier par ce qu'on lui donne.
+
+La forme `PUT` complet exige de relire l'item juste avant, de modifier l'objet
+relu, puis de le renvoyer en entier. Un `PUT` construit à partir d'une lecture
+ancienne écrase les modifications faites entre-temps.
+:::
+
+::: {.callout-important}
+## Les écritures ne lèvent pas d'exception
+
+`postData`, dans `omk.js`, renvoie le corps JSON de la réponse **sans contrôler
+le statut HTTP**. Un refus du serveur — droits insuffisants, item déjà supprimé,
+donnée invalide — revient donc sous la forme d'un objet JSON d'erreur, et non
+d'une exception.
+
+Toute écriture doit par conséquent être vérifiée explicitement : présence de
+`o:id` dans la réponse pour une création ou une mise à jour, absence de clef
+`errors` pour une suppression. Les deux applications le font désormais partout ;
+tout nouveau code d'écriture doit faire de même, faute de quoi l'interface
+annoncera des réussites qui n'ont pas eu lieu.
+:::
+
+## Charte graphique
+
+Les deux feuilles de style partagent **le même bloc `:root` de vingt jetons**,
+aux valeurs rigoureusement identiques. C'est ce qui garantit que les trois outils
+se ressemblent, et c'est une propriété à préserver : modifier un jeton dans une
+application sans le répercuter dans l'autre les fait diverger.
+
+Les couleurs viennent de la charte de l'Université Paris 8 — Poppy, Raspberry,
+Purple, Maroon — réparties ainsi :
+
+| Jeton | Valeur | Emploi |
+|---|---|---|
+| `--accent` | `#AE164E` | Raspberry, couleur d'interaction |
+| `--primary` | `#75151F` | Maroon, bandeaux sombres |
+| `--danger` | `#E30F1B` | Poppy, réservé à l'alerte |
+| `--success` | `#1B6B45` | hors charte — état « fait » |
+| `--warn` | `#92400E` | hors charte — état « à faire » |
+| `--bg` | `#F7F4F5` | fond de page |
+| `--card-bg` | `#FFFFFF` | fond des cartes |
+| `--text` | `#1A1418` | texte |
+| `--muted` | `#5B5058` | texte secondaire |
+| `--border` | `#E2D8DC` | filets |
+| `--neutral` | `#877C83` | éléments neutres |
+| `--shadow` | `0 1px 2px rgba(20,35,43,.10)` | ombre des cartes |
+| `--signal-2` | `#FAE7ED` | rose pâle, survol |
+| `--filet-doux` | `#EFE8EB` | gris chaud, entrée courante |
+
+Le vert et l'ambre ne figurent pas dans la charte, qui ne contient aucune de ces
+deux teintes. Ils portent l'opposition « fait » / « à faire », l'information la
+plus consultée des deux interfaces, qu'aucune des cinq couleurs
+institutionnelles ne peut rendre. Les six derniers jetons — `--barre-*`,
+`--ombre-modale`, `--alerte-2` — ne sont pas encore employés : ils sont posés
+d'avance pour qu'un éventuel thème sombre soit un bloc à ajouter plutôt qu'un
+chantier.
+
+Tous les contrastes dépassent le seuil AA : Raspberry 6,94 sur blanc, Poppy
+4,83, Maroon 11,15, vert 6,49, ambre 7,09.
+
+::: {.callout-tip}
+## Changer une couleur
+
+Il suffit de modifier la valeur du jeton dans `:root`, **dans les deux feuilles
+de style**. Les quelque 170 appels à `var()` de chaque feuille suivent
+automatiquement. Ne pas écrire de couleur en dur : trois résidus de l'ancienne
+palette avaient survécu hors des jetons et ont produit, au moment du changement
+de charte, un bandeau en dégradé rouge vers bleu et un bouton rouge auréolé de
+bleu.
+:::
+
+## Cache et mise à jour
+
+Le `.htaccess` de chaque application désactive le cache **pour `index.html`
+seulement** :
+
+```apache
+<Files "index.html">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+</Files>
+```
+
+La feuille de style, elle, est mise en cache par le navigateur. Elle est donc
+appelée avec un paramètre de version :
+
+```html
+<link rel="stylesheet" href="assets/main.css?v=0.3.5">
+```
+
+::: {.callout-warning}
+## À faire à chaque release qui touche `main.css`
+
+Incrémenter le `?v=` **en même temps que le numéro de version affiché**. Sans
+cela, les utilisateurs reçoivent le nouveau HTML avec l'ancienne feuille de
+style : les éléments nouvellement stylés s'affichent sans mise en forme jusqu'à
+un rechargement forcé. Comme `index.html` n'est jamais mis en cache, le nouveau
+HTML porte toujours le nouveau paramètre, et l'invalidation est garantie.
+
+Les modules JavaScript sous `assets/js/` n'ont **pas** ce mécanisme. Si l'un
+d'eux change — `omk.js` notamment —, il faudra soit étendre le `.htaccess`, soit
+versionner les chemins d'import.
+:::
+
+## Navigation entre les outils
+
+Un bouton en forme de carré barré, ancré à 24 px du bord gauche et 18 px du haut
+du bandeau, ouvre le menu des outils. Ces coordonnées sont identiques dans les
+trois applications : d'une page à l'autre, le bouton tombe au même pixel quelle
+que soit la largeur de la fenêtre.
+
+Le menu liste les trois outils, puis l'instance Omeka S détachée par un filet.
+Conventions communes :
+
+- l'application courante figure dans la liste mais **n'est pas un lien** — un
+  renvoi vers la page où l'on se trouve déjà n'a rien à offrir ; elle porte un
+  fond neutre et une pastille Raspberry ;
+- les outils voisins **remplacent la page** : ce sont des pages de la même suite,
+  pas des références extérieures ;
+- l'instance Omeka S **s'ouvre dans un nouvel onglet** : on y va vérifier une
+  fiche, pas quitter l'outil. Son adresse est déduite de celle de l'API, car
+  elle change d'un déploiement à l'autre.
+
+::: {.callout-note}
+## Le titre n'ouvre pas le menu
+
+Seul le bouton carré le fait. Le titre a cessé d'être cliquable lorsque le bouton en a été détaché pour être ancré au bord. C'est un changement d'habitude pour les opérateurs qui connaissaient les versions antérieures.
+:::

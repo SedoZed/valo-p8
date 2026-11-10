@@ -1,0 +1,2568 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Cédric BOUCLY">
+<meta name="keywords" content="Omeka S, interfaces, fonctionnement, maintenance, API">
+
+<title>ValidExpertises &amp; CleanKeyword – CartoExpert</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-66a63c344f183a26081cdb80a294f993.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CartoExpert</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Recherche"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Basculer la navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-général" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Général</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-général">    
+        <li>
+    <a class="dropdown-item" href="../index.html">
+ <span class="dropdown-text">Contexte du projet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../install.html">
+ <span class="dropdown-text">Prérequis de travail et installations</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Données</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-données">    
+        <li>
+    <a class="dropdown-item" href="../donnees/structure_bdd.html">
+ <span class="dropdown-text">Structure principale de la base Omeka S</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../donnees/standardiser_data2csv.html">
+ <span class="dropdown-text">↳ Préparer les données (CSV)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../donnees/bdd_omeka.html">
+ <span class="dropdown-text">↳ Importer dans Oméka S</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../donnees/scanr_extract.html">
+ <span class="dropdown-text">↳ Extraire depuis ScanR</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-outils" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Outils</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-outils">    
+        <li>
+    <a class="dropdown-item" href="../outils/doc_validexp_et_validkeyw.html">
+ <span class="dropdown-text">validExpertises &amp; validKeywords</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../outils/doc_valovizu.html">
+ <span class="dropdown-text">L’interface de datavisualisation ValoVizu</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ressources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ressources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-ressources">    
+        <li>
+    <a class="dropdown-item" href="../ressources/formation.html">
+ <span class="dropdown-text">Formation Omeka S pour non-informaticiens</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ressources/hypothesis.html">
+ <span class="dropdown-text">Hypothes.is comme outil collaboratif</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ressources/listmonk.html">
+ <span class="dropdown-text">ListMonk pour les campagnes de mailing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ressources/dico_rdf.html">
+ <span class="dropdown-text">Web sémantique &amp; RDF</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ressources/iag.html">
+ <span class="dropdown-text">Utilisation de l’IA Générative</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sur cette page</h2>
+   
+  <ul>
+  <li><a href="#validexpertises" id="toc-validexpertises" class="nav-link active" data-scroll-target="#validexpertises">validExpertises</a>
+  <ul class="collapse">
+  <li><a href="#principe" id="toc-principe" class="nav-link" data-scroll-target="#principe">Principe</a></li>
+  <li><a href="#sec-ve-modes" id="toc-sec-ve-modes" class="nav-link" data-scroll-target="#sec-ve-modes">Les trois modes de session</a>
+  <ul class="collapse">
+  <li><a href="#le-jeton-daccès" id="toc-le-jeton-daccès" class="nav-link" data-scroll-target="#le-jeton-daccès">Le jeton d’accès</a></li>
+  </ul></li>
+  <li><a href="#léchelle-de-notation" id="toc-léchelle-de-notation" class="nav-link" data-scroll-target="#léchelle-de-notation">L’échelle de notation</a>
+  <ul class="collapse">
+  <li><a href="#la-proposition-du-svr-affichée-à-lec" id="toc-la-proposition-du-svr-affichée-à-lec" class="nav-link" data-scroll-target="#la-proposition-du-svr-affichée-à-lec">La « Proposition du SVR » affichée à l’EC</a></li>
+  <li><a href="#lindicateur-scanr" id="toc-lindicateur-scanr" class="nav-link" data-scroll-target="#lindicateur-scanr">L’indicateur ScanR</a></li>
+  </ul></li>
+  <li><a href="#le-cycle-de-notation" id="toc-le-cycle-de-notation" class="nav-link" data-scroll-target="#le-cycle-de-notation">Le cycle de notation</a></li>
+  <li><a href="#suggestion-dun-mot-clef" id="toc-suggestion-dun-mot-clef" class="nav-link" data-scroll-target="#suggestion-dun-mot-clef">Suggestion d’un mot-clef</a></li>
+  <li><a href="#retrait-dun-mot-clef" id="toc-retrait-dun-mot-clef" class="nav-link" data-scroll-target="#retrait-dun-mot-clef">Retrait d’un mot-clef</a></li>
+  <li><a href="#vue-parcourir-et-suivi-de-campagne" id="toc-vue-parcourir-et-suivi-de-campagne" class="nav-link" data-scroll-target="#vue-parcourir-et-suivi-de-campagne">Vue « parcourir » et suivi de campagne</a>
+  <ul class="collapse">
+  <li><a href="#sec-ve-badge" id="toc-sec-ve-badge" class="nav-link" data-scroll-target="#sec-ve-badge">Ce que signifie réellement la pastille ✓</a></li>
+  <li><a href="#un-filtre-implémenté-sans-bouton" id="toc-un-filtre-implémenté-sans-bouton" class="nav-link" data-scroll-target="#un-filtre-implémenté-sans-bouton">Un filtre implémenté sans bouton</a></li>
+  <li><a href="#sec-ve-autohide" id="toc-sec-ve-autohide" class="nav-link" data-scroll-target="#sec-ve-autohide">L’auto-masquage au-delà de vingt cartes</a></li>
+  </ul></li>
+  <li><a href="#envoi-des-liens-par-courriel" id="toc-envoi-des-liens-par-courriel" class="nav-link" data-scroll-target="#envoi-des-liens-par-courriel">Envoi des liens par courriel</a></li>
+  <li><a href="#outils-dadministration" id="toc-outils-dadministration" class="nav-link" data-scroll-target="#outils-dadministration">Outils d’administration</a></li>
+  <li><a href="#sec-ve-navigation" id="toc-sec-ve-navigation" class="nav-link" data-scroll-target="#sec-ve-navigation">Détails techniques</a>
+  <ul class="collapse">
+  <li><a href="#carte-du-code" id="toc-carte-du-code" class="nav-link" data-scroll-target="#carte-du-code">Carte du code</a></li>
+  <li><a href="#vocabulaire-omeka-s" id="toc-vocabulaire-omeka-s" class="nav-link" data-scroll-target="#vocabulaire-omeka-s">Vocabulaire Omeka S</a></li>
+  <li><a href="#configuration" id="toc-configuration" class="nav-link" data-scroll-target="#configuration">Configuration</a></li>
+  </ul></li>
+  <li><a href="#sec-ve-maintenance" id="toc-sec-ve-maintenance" class="nav-link" data-scroll-target="#sec-ve-maintenance">Points de maintenance</a></li>
+  </ul></li>
+  <li><a href="#validkeyword" id="toc-validkeyword" class="nav-link" data-scroll-target="#validkeyword">validKeyword</a>
+  <ul class="collapse">
+  <li><a href="#principe-1" id="toc-principe-1" class="nav-link" data-scroll-target="#principe-1">Principe</a></li>
+  <li><a href="#deux-onglets" id="toc-deux-onglets" class="nav-link" data-scroll-target="#deux-onglets">Deux onglets</a></li>
+  <li><a href="#la-détection-de-doublons" id="toc-la-détection-de-doublons" class="nav-link" data-scroll-target="#la-détection-de-doublons">La détection de doublons</a>
+  <ul class="collapse">
+  <li><a href="#sec-ck-seuils" id="toc-sec-ck-seuils" class="nav-link" data-scroll-target="#sec-ck-seuils">Les seuils de l’algorithme</a></li>
+  </ul></li>
+  <li><a href="#le-balayage-par-lettre" id="toc-le-balayage-par-lettre" class="nav-link" data-scroll-target="#le-balayage-par-lettre">Le balayage par lettre</a></li>
+  <li><a href="#le-cache-de-scan" id="toc-le-cache-de-scan" class="nav-link" data-scroll-target="#le-cache-de-scan">Le cache de scan</a></li>
+  <li><a href="#la-fusion" id="toc-la-fusion" class="nav-link" data-scroll-target="#la-fusion">La fusion</a></li>
+  <li><a href="#renommage-suppression-rejet" id="toc-renommage-suppression-rejet" class="nav-link" data-scroll-target="#renommage-suppression-rejet">Renommage, suppression, rejet</a></li>
+  <li><a href="#le-périmètre-opérateur" id="toc-le-périmètre-opérateur" class="nav-link" data-scroll-target="#le-périmètre-opérateur">Le périmètre opérateur</a></li>
+  <li><a href="#journal-et-erreurs" id="toc-journal-et-erreurs" class="nav-link" data-scroll-target="#journal-et-erreurs">Journal et erreurs</a></li>
+  <li><a href="#sec-ck-navigation" id="toc-sec-ck-navigation" class="nav-link" data-scroll-target="#sec-ck-navigation">Détails techniques</a>
+  <ul class="collapse">
+  <li><a href="#carte-du-code-1" id="toc-carte-du-code-1" class="nav-link" data-scroll-target="#carte-du-code-1">Carte du code</a></li>
+  <li><a href="#état-global" id="toc-état-global" class="nav-link" data-scroll-target="#état-global">État global</a></li>
+  <li><a href="#vocabulaire-omeka-s-1" id="toc-vocabulaire-omeka-s-1" class="nav-link" data-scroll-target="#vocabulaire-omeka-s-1">Vocabulaire Omeka S</a></li>
+  <li><a href="#configuration-et-stockage" id="toc-configuration-et-stockage" class="nav-link" data-scroll-target="#configuration-et-stockage">Configuration et stockage</a></li>
+  </ul></li>
+  <li><a href="#sec-ck-maintenance" id="toc-sec-ck-maintenance" class="nav-link" data-scroll-target="#sec-ck-maintenance">Points de maintenance</a></li>
+  </ul></li>
+  <li><a href="#annexe-anomalies-relevées-dans-les-fichiers-documentés" id="toc-annexe-anomalies-relevées-dans-les-fichiers-documentés" class="nav-link" data-scroll-target="#annexe-anomalies-relevées-dans-les-fichiers-documentés">Annexe — anomalies relevées dans les fichiers documentés</a>
+  <ul class="collapse">
+  <li><a href="#le-menu-déroulant-nest-pas-stylé-de-la-même-façon-dans-les-deux-applications" id="toc-le-menu-déroulant-nest-pas-stylé-de-la-même-façon-dans-les-deux-applications" class="nav-link" data-scroll-target="#le-menu-déroulant-nest-pas-stylé-de-la-même-façon-dans-les-deux-applications">Le menu déroulant n’est pas stylé de la même façon dans les deux applications</a></li>
+  <li><a href="#les-journaux-de-modifications-sont-en-retard-sur-le-code" id="toc-les-journaux-de-modifications-sont-en-retard-sur-le-code" class="nav-link" data-scroll-target="#les-journaux-de-modifications-sont-en-retard-sur-le-code">Les journaux de modifications sont en retard sur le code</a></li>
+  <li><a href="#rappel-le-v-doit-suivre" id="toc-rappel-le-v-doit-suivre" class="nav-link" data-scroll-target="#rappel-le-v-doit-suivre">Rappel : le <code>?v=</code> doit suivre</a></li>
+  </ul></li>
+  <li><a href="#socle-commun-aux-deux-applications" id="toc-socle-commun-aux-deux-applications" class="nav-link" data-scroll-target="#socle-commun-aux-deux-applications">Socle commun aux deux applications</a>
+  <ul class="collapse">
+  <li><a href="#nature-technique" id="toc-nature-technique" class="nav-link" data-scroll-target="#nature-technique">Nature technique</a></li>
+  <li><a href="#arborescence-de-déploiement" id="toc-arborescence-de-déploiement" class="nav-link" data-scroll-target="#arborescence-de-déploiement">Arborescence de déploiement</a></li>
+  <li><a href="#couche-daccès-et-authentification" id="toc-couche-daccès-et-authentification" class="nav-link" data-scroll-target="#couche-daccès-et-authentification">Couche d’accès et authentification</a></li>
+  <li><a href="#charte-graphique" id="toc-charte-graphique" class="nav-link" data-scroll-target="#charte-graphique">Charte graphique</a></li>
+  <li><a href="#cache-et-mise-à-jour" id="toc-cache-et-mise-à-jour" class="nav-link" data-scroll-target="#cache-et-mise-à-jour">Cache et mise à jour</a></li>
+  <li><a href="#navigation-entre-les-outils" id="toc-navigation-entre-les-outils" class="nav-link" data-scroll-target="#navigation-entre-les-outils">Navigation entre les outils</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ValidExpertises &amp; CleanKeyword</h1>
+<p class="subtitle lead">Présentation des deux interfaces d’interaction avec la BDD</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Auteur·rice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Cédric BOUCLY </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Date de publication</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">1 novembre 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Mots clés</div>
+    <p>Omeka S, interfaces, fonctionnement, maintenance, API</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-simple callout-warning callout-titled" title="Attention">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Attention
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La page est en cours d’écriture. Les informations ci-dessous ne sont donc pas exactes car incomplètes ou manquant de contexte. Merci d’attendre une version finale de la page ou de lire avec précaution.</p>
+<p>Dépôts GitHub : <a href="https://github.com/SedoZed/validKeyword">SedoZed/validKeyword</a> · <a href="https://github.com/samszo/validExpertises">samszo/validExpertises</a></p>
+</div>
+</div>
+<hr>
+<hr>
+<p>Deux applications web sont documentées ici : “<strong>validExpertises</strong>”, par laquelle les enseignants-chercheurs valident et notent leurs mots-clefs d’expertise, et “<strong>validKeyword</strong>”, par laquelle le service de valorisation détecte et fusionne les doublons dans le référentiel de mots-clefs. Elles interrogent la même instance Omeka S et partagent la même couche d’accès.</p>
+<section id="validexpertises" class="level1">
+<h1>validExpertises</h1>
+<section id="principe" class="level2">
+<h2 class="anchored" data-anchor-id="principe">Principe</h2>
+<p>Les domaines d’expertise des enseignants-chercheurs ont été extraits automatiquement de leurs publications via <strong>ScanR</strong>, la plateforme nationale de la recherche. Cette extraction est bruyante : elle produit des mots-clefs pertinents, d’autres marginaux, d’autres franchement hors sujet. Le Service de valorisation de la recherche opère un premier tri, puis l’enseignant-chercheur valide lui-même ce qui le représente.</p>
+<p>validExpertises est l’interface de cette validation. Elle sert trois publics distincts, avec trois interfaces différentes construites à partir du même fichier.</p>
+</section>
+<section id="sec-ve-modes" class="level2">
+<h2 class="anchored" data-anchor-id="sec-ve-modes">Les trois modes de session</h2>
+<p>Le mode est déterminé <strong>par les paramètres de l’URL</strong>, et non par un compte utilisateur. Deux indicateurs sont calculés au chargement (<code>index.html</code>, L. 348) :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fromUrl <span class="op">=</span> aUrl<span class="op">.</span><span class="at">params</span><span class="op">.</span><span class="fu">has</span>(<span class="st">'idCreator'</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>             <span class="op">||</span> aUrl<span class="op">.</span><span class="at">params</span><span class="op">.</span><span class="fu">has</span>(<span class="st">'idAuthor'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>             <span class="op">||</span> aUrl<span class="op">.</span><span class="at">params</span><span class="op">.</span><span class="fu">has</span>(<span class="st">'t'</span>)<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> fromDL  <span class="op">=</span> aUrl<span class="op">.</span><span class="at">params</span><span class="op">.</span><span class="fu">has</span>(<span class="st">'idLab'</span>)<span class="op">;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 19%">
+<col style="width: 15%">
+<col style="width: 55%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Mode</th>
+<th>URL</th>
+<th>Qui</th>
+<th>Ce qu’il peut faire</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Opérateur</strong></td>
+<td>aucun paramètre</td>
+<td>SVR, administrateurs</td>
+<td>tout : parcourir les laboratoires, noter, envoyer les liens, outils d’administration</td>
+</tr>
+<tr class="even">
+<td><strong>EC</strong></td>
+<td><code>?idAuthor=…&amp;idCreator=…&amp;t=…</code></td>
+<td>l’enseignant-chercheur</td>
+<td>noter ses propres mots-clefs, en suggérer, en retirer</td>
+</tr>
+<tr class="odd">
+<td><strong>DU</strong></td>
+<td><code>?idLab=…&amp;idCreator=…&amp;t=…</code></td>
+<td>directeur·rice d’unité</td>
+<td>consulter les fiches de son laboratoire, transmettre les liens</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>L’ordre d’appel des deux verrous est significatif
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (fromUrl) <span class="fu">lockEcMode</span>()<span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (fromDL)  <span class="fu">lockDlMode</span>()<span class="op">;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Un lien DU porte <strong>aussi</strong> <code>idCreator</code> et <code>t</code> : <code>fromUrl</code> y est donc vrai, et <code>lockEcMode()</code> s’exécute en premier. Or il neutralise <code>showBrowse</code> et masque la liste. <code>lockDlMode()</code> doit passer <strong>après</strong> pour rétablir la navigation et la liste du laboratoire. Inverser les deux lignes rend la fiche d’un EC sans issue pour un DU.</p>
+</div>
+</div>
+<p><code>lockEcMode()</code> (L. 2147) masque la carte de recherche et la liste, désactive le champ de recherche et remplace <code>window.showBrowse</code> par une fonction vide.</p>
+<p><code>lockDlMode()</code> (L. 2100) masque la recherche et le sélecteur de laboratoire, masque la barre « Ajouter un mot-clef » — le DU assure le suivi, il n’a pas vocation à suggérer des concepts sur les fiches d’autrui —, pose <code>window._dlMode</code>, et rétablit un retour à la liste restreint au laboratoire du DU. Si <code>pa.dlCanEdit</code> est faux, il pose également <code>window._dlReadOnly</code>, qui met les fiches en lecture seule.</p>
+<section id="le-jeton-daccès" class="level3">
+<h3 class="anchored" data-anchor-id="le-jeton-daccès">Le jeton d’accès</h3>
+<p>Le paramètre <code>t</code> transporte la clef d’API « EC », encodée de façon à n’être pas lisible à l’œil nu (L. 2076) :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">encodeKey</span>(key) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> b64 <span class="op">=</span> <span class="fu">btoa</span>(key)<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> rev <span class="op">=</span> b64<span class="op">.</span><span class="fu">split</span>(<span class="st">''</span>)<span class="op">.</span><span class="fu">reverse</span>()<span class="op">.</span><span class="fu">join</span>(<span class="st">''</span>)<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> rev<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\+</span><span class="ss">/g</span><span class="op">,</span> <span class="st">'-'</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\/</span><span class="ss">/g</span><span class="op">,</span> <span class="st">'_'</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/=/g</span><span class="op">,</span> <span class="st">'.'</span>)<span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Base64, inversion, puis substitution des caractères gênants en URL. <code>decodeKey</code> fait le chemin inverse et renvoie une chaîne vide en cas d’échec.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Ce n’est pas un secret
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>L’encodage est réversible par quiconque lit le code source, qui est public. Il <strong>décourage la curiosité, il ne protège rien</strong>. La clef transportée est celle d’un compte Omeka S aux droits volontairement réduits (<code>pa.ecKeyCred</code>), et c’est là que réside la vraie limite : si ce compte peut écrire au-delà de ce qu’un EC doit pouvoir faire, le lien devient une faille.</p>
+<p>Les liens sont construits par <code>buildEcLink</code> (L. 2176) et <code>buildDlLink</code> (L. 2168), tous deux à partir de <code>window.location.href</code>, ce qui les rend indépendants du domaine de déploiement.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Les <code>&amp;amp;</code> de certains clients de messagerie
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Certains clients (Zimbra, …) transmettent la valeur brute des attributs <code>href</code> sans la décoder, ce qui fait arriver <code>&amp;amp;</code> à la place de <code>&amp;</code> dans l’URL. L’application corrige cela avant toute lecture de paramètre (L. 354) :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> cleanHref <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="at">location</span><span class="op">.</span><span class="at">href</span><span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&amp;amp;/g</span><span class="op">,</span> <span class="st">'&amp;'</span>)<span class="op">;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Sans cette normalisation, un lien ouvert depuis certains webmails ne déclenchait aucun mode et l’EC se retrouvait devant une page vide.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="léchelle-de-notation" class="level2">
+<h2 class="anchored" data-anchor-id="léchelle-de-notation">L’échelle de notation</h2>
+<p>Quatre niveaux, plus un état neutre. Les libellés sont dans <code>LEVEL_NAMES</code> :</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Valeur</th>
+<th>Libellé</th>
+<th>Couleur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>null</code></td>
+<td>non noté</td>
+<td>gris <code>#D3D1C7</code></td>
+</tr>
+<tr class="even">
+<td><code>0</code></td>
+<td>sans avis</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td><code>1</code></td>
+<td>Non pertinent</td>
+<td><code>#E24B4A</code></td>
+</tr>
+<tr class="even">
+<td><code>2</code></td>
+<td>Expertise marginale</td>
+<td><code>#EF9F27</code></td>
+</tr>
+<tr class="odd">
+<td><code>3</code></td>
+<td>Expertise reconnue</td>
+<td><code>#97C459</code></td>
+</tr>
+<tr class="even">
+<td><code>4</code></td>
+<td>Expertise centrale</td>
+<td><code>#1D9E75</code></td>
+</tr>
+</tbody>
+</table>
+<p>Le niveau <strong>0 (« sans avis »)</strong> n’est pas proposé aux enseignants-chercheurs : il n’existe que du côté des opérateurs, pour signaler explicitement qu’un mot-clef a été examiné sans que l’on tranche. Il est <strong>exclu du calcul de la moyenne</strong> affichée.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Pourquoi <code>null</code> et <code>0</code> ne sont pas la même chose
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>null</code> signifie « personne n’a regardé », <code>0</code> signifie « quelqu’un a regardé et s’est abstenu ». Les confondre ferait disparaître l’information la plus utile au suivi de campagne : savoir ce qui reste à faire. Tout code manipulant un rang doit distinguer les deux — <code>rank === null</code> et non <code>!rank</code>.</p>
+<p>La distinction est <strong>fragile en pratique</strong>, pour deux raisons tenant à JavaScript : <code>null &lt;= 2</code> est vrai (voir <a href="#sec-ve-autohide" class="quarto-xref">Section&nbsp;1.7.3</a>), et <code>formatExpertise</code> (L. 2668) écrit <code>e.rank = 0</code> lorsque la propriété de rang est absente de l’item — une expertise mal formée devient donc un « sans avis » indistinguable d’un vrai.</p>
+</div>
+</div>
+<section id="la-proposition-du-svr-affichée-à-lec" class="level3">
+<h3 class="anchored" data-anchor-id="la-proposition-du-svr-affichée-à-lec">La « Proposition du SVR » affichée à l’EC</h3>
+<p>Quand plusieurs opérateurs ont noté le même mot-clef, l’EC ne voit pas leurs notes séparément : elles sont réduites à une ligne unique (L. 2832-2844).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> allOpExps <span class="op">=</span> d<span class="op">.</span><span class="at">expertises</span><span class="op">.</span><span class="fu">filter</span>(e <span class="kw">=&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="at">creatorId</span> <span class="op">!==</span> <span class="st">'scanr'</span> <span class="op">&amp;&amp;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span>(e<span class="op">.</span><span class="at">creatorId</span>) <span class="op">!==</span> <span class="bu">String</span>(cfg<span class="op">.</span><span class="at">creatorId</span>) <span class="op">&amp;&amp;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    e[<span class="st">'o:id'</span>])<span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> opExps <span class="op">=</span> allOpExps<span class="op">.</span><span class="fu">filter</span>(e <span class="kw">=&gt;</span> e<span class="op">.</span><span class="at">rank</span> <span class="op">&gt;=</span> <span class="dv">1</span> <span class="op">&amp;&amp;</span> e<span class="op">.</span><span class="at">rank</span> <span class="op">&lt;=</span> <span class="dv">4</span>)<span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> avg <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(opExps<span class="op">.</span><span class="fu">reduce</span>((s<span class="op">,</span> e) <span class="kw">=&gt;</span> s <span class="op">+</span> e<span class="op">.</span><span class="at">rank</span><span class="op">,</span> <span class="dv">0</span>) <span class="op">/</span> opExps<span class="op">.</span><span class="at">length</span>)<span class="op">;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Trois propriétés de ce calcul sont à connaître :</p>
+<ul>
+<li>la moyenne est <strong>arithmétique et non pondérée</strong> — l’avis d’un opérateur chevronné et celui d’un vacataire pèsent pareil ;</li>
+<li>les notes <code>0</code> (« sans avis ») sont <strong>exclues</strong> de la moyenne, mais déclenchent, si elles sont seules, une mention distincte « Évalué par le SVR » — ce qui préserve la différence entre « examiné sans trancher » et « pas examiné » ;</li>
+<li><code>Math.round</code> <strong>arrondit <code>.5</code> vers le haut</strong> : deux opérateurs à 2 et 3 affichent 3, soit « Expertise reconnue ». L’arrondi est donc favorable à l’EC.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Un seul niveau diverge entre la pastille et le bouton
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le niveau 1 n’a pas la même couleur selon où il s’affiche :</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 20%">
+<col style="width: 21%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Fond</th>
+<th>Bordure</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pastille <code>.lvl-1</code></td>
+<td><code>#F1EFE8</code> gris</td>
+<td><code>#D3D1C7</code></td>
+<td><code>main.css</code> L. 255</td>
+</tr>
+<tr class="even">
+<td>Bouton <code>.level-btn.lvl-1</code></td>
+<td><code>#FCEBEB</code> rose</td>
+<td><code>#F09595</code></td>
+<td><code>main.css</code> L. 694</td>
+</tr>
+<tr class="odd">
+<td>Bord gauche de carte</td>
+<td>—</td>
+<td><code>#E24B4A</code> rouge</td>
+<td><code>LEVEL_BORDER[1]</code></td>
+</tr>
+</tbody>
+</table>
+<p>« Non pertinent » est donc rouge quand on le choisit et sur le bord de la carte, mais <strong>gris</strong> quand il est restitué en pastille. Les niveaux 2, 3 et 4 sont cohérents entre les trois. C’est probablement un reliquat : le gris était l’ancienne couleur du niveau 1 avant que l’échelle ne gagne un rouge franc.</p>
+</div>
+</div>
+</section>
+<section id="lindicateur-scanr" class="level3">
+<h3 class="anchored" data-anchor-id="lindicateur-scanr">L’indicateur ScanR</h3>
+<p>Une note brute de ScanR n’a pas de sens dans l’absolu : elle dépend du volume de publications de la personne. <code>computeScanrIndicator</code> (L. 2605) la rend <strong>relative à la fiche</strong> en calculant les quartiles des notes ScanR de cette personne, puis en étiquetant chaque mot-clef :</p>
+<ul>
+<li><code>high</code> si la note est au-dessus du troisième quartile,</li>
+<li><code>low</code> si elle est au-dessous du premier,</li>
+<li><code>mid</code> entre les deux.</li>
+</ul>
+<p>L’indicateur n’est calculé qu’à partir de <strong>quatre mots-clefs notés par ScanR</strong> ; en deçà, l’échantillon est trop faible et l’étiquette vaut <code>null</code>.</p>
+</section>
+</section>
+<section id="le-cycle-de-notation" class="level2">
+<h2 class="anchored" data-anchor-id="le-cycle-de-notation">Le cycle de notation</h2>
+<p>Chaque note est un <strong>item Omeka S distinct</strong> de la classe <code>valo:Expertises_all</code>, qui pointe vers le mot-clef par <code>valo:expertise</code> et porte le rang dans <code>curation:rank</code>. L’auteur de la note est identifié par <code>dcterms:creator</code> ; une expertise sans créateur est, par convention, une note issue de l’extraction ScanR.</p>
+<p>Le parcours : l’utilisateur clique un niveau (<code>onLevelSelect</code>, L. 3264), puis « Ajouter » ou « Modifier ». Selon le cas, <code>createExpertise</code>, <code>updateExpertise</code> ou <code>deleteExpertise</code> (section CRUD, L. 2933) écrit en base, et <code>showNewExpertise</code> met l’affichage à jour sans recharger la fiche.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span><code>latestCreatorExpertise</code> — ne jamais prendre « la première »
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Des fiches portent encore plusieurs expertises du même auteur sur un même mot-clef, séquelles d’un bug de pagination corrigé en 0.2.12. Trois endroits du code désignaient alors des enregistrements différents : le niveau surligné venait du premier de la liste, les pastilles du dernier, et la modification portait sur le premier. L’utilisateur voyait une note, en enregistrait une autre, et retrouvait la première au rechargement.</p>
+<p><code>latestCreatorExpertise(d)</code> tranche une fois pour toutes : <strong>la plus récente par date de création, départagée par <code>o:id</code></strong>. Tout code lisant la note d’un auteur doit passer par elle, et jamais par un <code>find()</code> direct.</p>
+</div>
+</div>
+</section>
+<section id="suggestion-dun-mot-clef" class="level2">
+<h2 class="anchored" data-anchor-id="suggestion-dun-mot-clef">Suggestion d’un mot-clef</h2>
+<p>Un EC peut proposer un mot-clef absent de sa liste. Deux cas :</p>
+<ul>
+<li>le concept <strong>existe déjà</strong> dans le référentiel : <code>addKeyword</code> le rattache à la fiche ;</li>
+<li>le concept <strong>n’existe pas</strong> : <code>suggestNewKeyword</code> crée d’abord un <code>skos:Concept</code>, puis appelle <code>addKeyword</code>.</li>
+</ul>
+<p>Un <strong>quota</strong> limite le nombre de suggestions, fixé par <code>pa.maxSuggestedKw</code>. Il n’est compté qu’en mode EC, et le compteur est recalculé à chaque chargement de fiche <strong>à partir des concepts réellement rattachés dont l’EC est le créateur</strong> — et non depuis un total stocké. Un mot-clef retiré rend donc sa suggestion.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Deux pièges déjà rencontrés dans ce parcours
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>addKeyword</code> renvoie désormais un booléen. Elle signalait ses erreurs sans les remonter à son appelant : <code>suggestNewKeyword</code> enchaînait sur « suggéré et ajouté » alors que le rattachement avait échoué, laissant un <code>skos:Concept</code> orphelin en base et une suggestion décomptée pour rien.</p>
+<p><code>addKeyword</code> peut sortir <strong>avant son bloc <code>try</code></strong> — mot-clef déjà présent, retrait en cours. Tout appelant qui a masqué l’interface avant de l’appeler doit la rétablir sur ce chemin-là aussi, sinon l’utilisateur reste devant une page vide.</p>
+</div>
+</div>
+</section>
+<section id="retrait-dun-mot-clef" class="level2">
+<h2 class="anchored" data-anchor-id="retrait-dun-mot-clef">Retrait d’un mot-clef</h2>
+<p>Une croix discrète apparaît sur les cartes que l’on peut retirer. <code>canRemoveKeyword</code> (L. 3075) en fixe les conditions :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (fromDL <span class="op">||</span> <span class="bu">window</span><span class="op">.</span><span class="at">_dlReadOnly</span>) <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span>  <span class="co">// le DU ne fait que consulter</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (d[<span class="st">'@annotation'</span>]) <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span>              <span class="co">// issu de l'extraction ScanR</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">// et aucune note d'un autre auteur ne doit exister</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Autrement dit : on ne retire que ce que l’on a soi-même ajouté, et seulement tant que personne d’autre ne l’a noté. Le retrait relit la fiche, en ôte le mot-clef de toutes les propriétés configurées, réécrit la fiche entière en <code>PUT</code>, puis supprime les expertises devenues orphelines.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Pourquoi un verrou global
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>isRemovingKeyword</code> interdit deux retraits simultanés. Chaque retrait relit la fiche entière avant de la réécrire : deux retraits concurrents liraient la même version et le second annulerait le premier. Le même verrou couvre l’ajout et la suggestion, pour la même raison.</p>
+<p>Le verrou est posé <strong>après</strong> la confirmation, jamais avant : une annulation sortirait sans passer par le <code>finally</code> et le laisserait fermé pour le reste de la session.</p>
+</div>
+</div>
+</section>
+<section id="vue-parcourir-et-suivi-de-campagne" class="level2">
+<h2 class="anchored" data-anchor-id="vue-parcourir-et-suivi-de-campagne">Vue « parcourir » et suivi de campagne</h2>
+<p>Réservée aux opérateurs et aux DU, elle liste les enseignants-chercheurs d’un laboratoire avec, pour chacun, le nombre de mots-clefs et son état d’évaluation.</p>
+<section id="sec-ve-badge" class="level3">
+<h3 class="anchored" data-anchor-id="sec-ve-badge">Ce que signifie réellement la pastille ✓</h3>
+<p>La pastille verte « Évalué » se lit naturellement comme « j’ai évalué cette personne ». <strong>Ce n’est pas ce qu’elle dit.</strong> <code>computeEvaluatedEcIds</code> (L. 1687) charge <em>toutes</em> les expertises de l’instance et retient l’identifiant de l’EC cible, sans aucun filtre sur <code>dcterms:creator</code> :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> all <span class="op">=</span> <span class="cf">await</span> a<span class="op">.</span><span class="at">omk</span><span class="op">.</span><span class="fu">getAllItems</span>(<span class="vs">`resource_class_id[]=</span><span class="sc">${</span>idClassExp<span class="sc">}</span><span class="vs">&amp;per_page=1000`</span>)<span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>all<span class="op">.</span><span class="fu">forEach</span>(e <span class="kw">=&gt;</span> {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> ecId <span class="op">=</span> e[<span class="st">'dcterms:source'</span>]<span class="op">?.</span>[<span class="dv">0</span>]<span class="op">?.</span><span class="at">value_resource_id</span><span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (ecId) evaluatedEcIds<span class="op">.</span><span class="fu">add</span>(<span class="pp">parseInt</span>(ecId))<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>La pastille signifie donc : <strong>« cette fiche porte au moins une note, de qui que ce soit »</strong>. Un EC déjà traité par un autre opérateur apparaît comme évalué pour tout le monde.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Un commentaire du code affirme le contraire
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>À la ligne 1851, un commentaire décrit ce calcul comme reposant sur <code>cfg.creatorId</code> — ce qu’il ne fait pas. Juste au-dessus, aux lignes 1841-1847, subsiste une tentative abandonnée de ce calcul par créateur, réduite à un <code>false // placeholder</code> : la variable <code>isEvaluated</code> qu’elle produit <strong>n’est jamais lue</strong>, seule <code>evaluated</code> (ligne 1852) alimente la pastille.</p>
+<p>C’est du code mort doublé d’un commentaire trompeur. Quiconque voudra rendre la pastille personnelle doit partir de <code>computeEvaluatedEcIds</code>, et non de ce vestige. Le coût réel de l’opération est ce qui l’a fait abandonner : filtrer par créateur suppose de connaître le créateur de chaque note, donc de charger les expertises de chaque EC listé.</p>
+</div>
+</div>
+</section>
+<section id="un-filtre-implémenté-sans-bouton" class="level3">
+<h3 class="anchored" data-anchor-id="un-filtre-implémenté-sans-bouton">Un filtre implémenté sans bouton</h3>
+<p>Trois valeurs de <code>browseEcFilter</code> sont traitées — <code>all</code>, <code>done</code>, <code>todo</code> (L. 1719-1721) — mais le balisage n’offre que deux pastilles, <code>data-ec-filter="all"</code> et <code>data-ec-filter="done"</code> (L. 233-234). <strong>Le filtre « non évalués » existe dans la logique et n’est atteignable par aucun clic.</strong> Ajouter la troisième pastille suffirait à l’activer ; c’est probablement le filtre le plus utile en suivi de campagne.</p>
+</section>
+<section id="sec-ve-autohide" class="level3">
+<h3 class="anchored" data-anchor-id="sec-ve-autohide">L’auto-masquage au-delà de vingt cartes</h3>
+<p>Sur une fiche de plus de vingt mots-clefs, une partie des cartes est masquée par défaut, un bandeau annonçant le nombre et offrant de tout afficher. Le critère mérite d’être énoncé exactement, car trois descriptions circulent dans le code pour un seul comportement :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> hiddenByAuto <span class="op">=</span> shouldAutoHide <span class="op">?</span> keywords<span class="op">.</span><span class="fu">slice</span>(<span class="dv">20</span>)<span class="op">.</span><span class="fu">filter</span>(kw <span class="kw">=&gt;</span> kw<span class="op">.</span><span class="at">rank</span> <span class="op">&lt;=</span> <span class="dv">2</span>) <span class="op">:</span> []<span class="op">;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>kw.rank</code> vaut <code>null</code> quand le créateur courant n’a pas noté le mot-clef (<code>formatKeyword</code>, L. 2640). Or <strong><code>null &lt;= 2</code> est vrai en JavaScript</strong> : <code>null</code> est converti en <code>0</code>. Le critère réel est donc : <em>au-delà de la vingtième carte, tout ce qui n’est pas noté 3 ou 4 par le créateur courant disparaît</em> — les non-notés compris.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Les trois descriptions divergentes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Ce qu’elle dit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Commentaire L. 2742</td>
+<td>« masque ceux avec <code>rank &lt; 5</code> »</td>
+</tr>
+<tr class="even">
+<td>Variable L. 421</td>
+<td>« masque les mots-clefs de niveau 1-2 »</td>
+</tr>
+<tr class="odd">
+<td>Code L. 2745</td>
+<td>masque <code>null</code>, <code>0</code>, <code>1</code> et <code>2</code></td>
+</tr>
+</tbody>
+</table>
+<p>Seule la troisième ligne fait foi. La conséquence pratique est contre-intuitive : <strong>les mots-clefs qui restent à traiter sont ceux que l’auto-masquage cache en priorité.</strong> Une suggestion fraîchement ajoutée par un EC a un rang <code>null</code> et se classe en fin de liste : sur une fiche fournie, elle disparaît immédiatement derrière « Afficher tout », alors que c’est précisément celle qu’il voudrait relire.</p>
+<p>Si l’on veut corriger ce point, le changement est d’un caractère — <code>kw.rank !== null &amp;&amp; kw.rank &lt;= 2</code> — mais il modifie le nombre de cartes visibles sur toutes les fiches fournies, donc l’impression de charge de travail des EC en cours de campagne. À ne pas déployer au milieu d’une campagne de notation.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="envoi-des-liens-par-courriel" class="level2">
+<h2 class="anchored" data-anchor-id="envoi-des-liens-par-courriel">Envoi des liens par courriel</h2>
+<p>Les opérateurs transmettent aux EC leur lien individuel, et aux DU le lien de dispatch de leur laboratoire. Le message est construit en clair par <code>ecMailParts</code> et <code>dlMailParts</code>, qui renvoient un objet <code>{ to, subject, body }</code>. Deux fonctions en dérivent les deux formes :</p>
+<ul>
+<li><code>partsToMailto(p)</code> → un lien <code>mailto:</code> encodé ;</li>
+<li><code>partsToText(p)</code> → le message en clair, pour le presse-papiers.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Modifier le texte d’un message
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le corps est écrit en clair dans <code>ecMailParts</code> et <code>dlMailParts</code>, signalés par un commentaire <code>// ── Corps de l'email … ──</code> (L. 2196 et L. 2272). <strong>Une seule source alimente le lien et la copie</strong> : les deux ne peuvent pas diverger. L’encodage n’a lieu qu’au dernier moment, dans <code>partsToMailto</code>.</p>
+<p>Attention à la longueur : le corps voyage intégralement dans l’URL. Le message actuel produit environ 1,7 ko, ce qui passe partout ; au-delà de 8 ko, certains serveurs mandataires refusent la requête.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>La chaîne <code>mailto:</code> échappe à l’application
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>L’enveloppe est une vraie balise <code>&lt;a href="mailto:…" target="_blank"&gt;</code>, ce qui donne le menu contextuel, le Ctrl+clic et l’ouverture native en nouvel onglet. Mais ce qui se passe ensuite ne dépend plus de l’application :</p>
+<ul>
+<li>le système d’exploitation confie le lien à <strong>son</strong> application de messagerie par défaut, qui peut n’être pas le navigateur en cours ;</li>
+<li>le webmail réécrit l’URL selon le gestionnaire de protocole enregistré dans le navigateur, qui peut être périmé ou mal formé ;</li>
+<li>si la session du webmail n’est pas ouverte, la redirection peut échouer — un cas observé en production se soldait par une erreur 502.</li>
+</ul>
+<p>C’est pourquoi un bouton <strong>📋 copier le message</strong> accompagne chaque enveloppe : il rend le service indépendant de la configuration de chaque poste. En cas de remontée d’un utilisateur sur l’envoi de courriel, c’est la première chose à proposer.</p>
+</div>
+</div>
+<p>Le laboratoire nommé dans le message est celui <strong>de la personne destinataire</strong>, lu sur sa fiche, et non celui sélectionné au menu. La sélection courante reste privilégiée lorsqu’elle figure parmi ses laboratoires, afin de ne rien changer au cas habituel. En recherche globale, les deux divergent : un EC pouvait recevoir un message mentionnant le laboratoire de quelqu’un d’autre.</p>
+</section>
+<section id="outils-dadministration" class="level2">
+<h2 class="anchored" data-anchor-id="outils-dadministration">Outils d’administration</h2>
+<p>Accessibles aux seuls opérateurs, dans la fenêtre de configuration.</p>
+<p><strong>Statistiques de validation</strong> (<code>computeValidationStats</code>, L. 598) — lecture seule. Dénombre les EC, ceux qui se sont auto-évalués, et répartit par laboratoire.</p>
+<p><strong>Déduplication des notes</strong> (<code>dedupRanks</code>, L. 492) — nettoie les items <code>valo:Expertises_all</code> portant plusieurs valeurs de <code>curation:rank</code>, séquelle de la confusion entre les deux comportements d’<code>updateRessource</code>. Peut être restreinte à un laboratoire.</p>
+<p><strong>Migration</strong> (<code>migrateExpertises</code>, L. 758) — conversion ponctuelle de l’ancienne échelle <code>-100 / +100</code> vers l’échelle 1–4. Son drapeau d’exécution est stocké sous <code>validExpertises_migration_v024_done</code>. <strong>Elle n’a plus lieu d’être exécutée</strong> sur une base déjà migrée.</p>
+</section>
+<section id="sec-ve-navigation" class="level2">
+<h2 class="anchored" data-anchor-id="sec-ve-navigation">Détails techniques</h2>
+<section id="carte-du-code" class="level3">
+<h3 class="anchored" data-anchor-id="carte-du-code">Carte du code</h3>
+<p>Le module fait environ 3 077 lignes. Les bandeaux de commentaires servent de sommaire :</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Ligne</th>
+<th>Section</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>348</td>
+<td><code>URL PARAMS &amp; MODE</code></td>
+</tr>
+<tr class="even">
+<td>383</td>
+<td><code>CONFIGURATION</code></td>
+</tr>
+<tr class="odd">
+<td>438</td>
+<td><code>APP SWITCHER</code></td>
+</tr>
+<tr class="even">
+<td>492</td>
+<td><code>DÉDUPLICATION DES NOTES</code></td>
+</tr>
+<tr class="odd">
+<td>598</td>
+<td><code>STATISTIQUES DE VALIDATION</code></td>
+</tr>
+<tr class="even">
+<td>758</td>
+<td><code>MIGRATION</code></td>
+</tr>
+<tr class="odd">
+<td>867</td>
+<td><code>INIT</code></td>
+</tr>
+<tr class="even">
+<td>917</td>
+<td><code>SETTINGS</code></td>
+</tr>
+<tr class="odd">
+<td>1133</td>
+<td><code>AUTOCOMPLETE — PERSONNE</code></td>
+</tr>
+<tr class="even">
+<td>1229</td>
+<td><code>AUTOCOMPLETE — MOT-CLEF</code></td>
+</tr>
+<tr class="odd">
+<td>1348</td>
+<td><code>BANDEAU GUIDE EC</code></td>
+</tr>
+<tr class="even">
+<td>1499</td>
+<td><code>FILTRE MOTS-CLEFS</code></td>
+</tr>
+<tr class="odd">
+<td>1540</td>
+<td><code>AJOUT D'UN MOT-CLEF</code></td>
+</tr>
+<tr class="even">
+<td>1603</td>
+<td><code>BROWSE — LISTE ECs PAR LABO</code></td>
+</tr>
+<tr class="odd">
+<td>2162</td>
+<td><code>GÉNÉRATION DE LIENS EC</code></td>
+</tr>
+<tr class="even">
+<td>2389</td>
+<td><code>CHARGEMENT D'UNE PERSONNE</code></td>
+</tr>
+<tr class="odd">
+<td>2605</td>
+<td><code>INDICATEUR SCANR RELATIF</code></td>
+</tr>
+<tr class="even">
+<td>2710</td>
+<td><code>RENDU D3 — MOTS-CLEFS</code></td>
+</tr>
+<tr class="odd">
+<td>2933</td>
+<td><code>CRUD — EXPERTISES</code></td>
+</tr>
+<tr class="even">
+<td>3264</td>
+<td><code>SÉLECTEUR DE NIVEAU</code></td>
+</tr>
+<tr class="odd">
+<td>3337</td>
+<td><code>UI UTILS</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="vocabulaire-omeka-s" class="level3">
+<h3 class="anchored" data-anchor-id="vocabulaire-omeka-s">Vocabulaire Omeka S</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Terme</th>
+<th>Emploi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>valo:EnseignantChercheur</code></td>
+<td>classe des fiches de personnes</td>
+</tr>
+<tr class="even">
+<td><code>valo:Laboratoire</code></td>
+<td>classe des laboratoires</td>
+</tr>
+<tr class="odd">
+<td><code>valo:Expertises_all</code></td>
+<td>classe des notes</td>
+</tr>
+<tr class="even">
+<td><code>skos:Concept</code></td>
+<td>classe des mots-clefs</td>
+</tr>
+<tr class="odd">
+<td><code>valo:expertise</code></td>
+<td>la note pointe vers le mot-clef</td>
+</tr>
+<tr class="even">
+<td><code>curation:rank</code></td>
+<td>valeur de la note</td>
+</tr>
+<tr class="odd">
+<td><code>dcterms:creator</code></td>
+<td>auteur de la note ; absent ⇒ ScanR</td>
+</tr>
+<tr class="even">
+<td><code>dcterms:isPartOf</code></td>
+<td>rattachement d’un EC à ses laboratoires</td>
+</tr>
+<tr class="odd">
+<td><code>dcterms:subject</code>, <code>dcterms:isReferencedBy</code></td>
+<td>propriétés portant les mots-clefs d’une fiche</td>
+</tr>
+<tr class="even">
+<td><code>valo:responsableDe</code></td>
+<td>laboratoires dont un opérateur est responsable</td>
+</tr>
+<tr class="odd">
+<td><code>valo:directeurs</code></td>
+<td>directeur·rice·s d’un laboratoire</td>
+</tr>
+<tr class="even">
+<td><code>foaf:mbox</code></td>
+<td>adresse électronique</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="configuration" class="level3">
+<h3 class="anchored" data-anchor-id="configuration">Configuration</h3>
+<p>Stockée sous <code>validExpertises_cfg</code>, <strong>jamais en mode EC ou DU</strong> : une session ouverte par lien ne doit rien laisser dans le navigateur de son destinataire.</p>
+<p>Réglages courants : adresse de l’API, compte Omeka S, identifiant de l’évaluateur, date limite de validation, affichage de tous les EC. Réglages avancés : type de personne autorisé, propriétés portant les mots-clefs, propriété de rang.</p>
+<p>Autres clefs de stockage :</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Clef</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>validExpertises_cfg</code></td>
+<td>configuration opérateur</td>
+</tr>
+<tr class="even">
+<td><code>validExpertises_guide_collapsed</code></td>
+<td>état replié du guide EC</td>
+</tr>
+<tr class="odd">
+<td><code>validExpertises_guide_seen_v030</code></td>
+<td>popup d’accueil déjà vue</td>
+</tr>
+<tr class="even">
+<td><code>validExpertises_migration_v024_done</code></td>
+<td>migration exécutée</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Ne pas renommer <code>validExpertises_guide_seen_v030</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Changer cette clef <strong>réaffiche la popup d’accueil à tous les EC</strong>, y compris à ceux qui ont déjà terminé leur validation. Ne la modifier que si l’on veut délibérément représenter le guide.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-ve-maintenance" class="level2">
+<h2 class="anchored" data-anchor-id="sec-ve-maintenance">Points de maintenance</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Toujours préciser <code>per_page</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>L’API Omeka S plafonne une recherche à <strong>25 résultats</strong> lorsque <code>per_page</code> est omis. C’est à l’origine du bug le plus coûteux de l’historique : au-delà de 25 expertises sur une fiche, l’application ne voyait plus la note déjà saisie, affichait « Ajouter » au lieu de « Modifier », et chaque validation créait une expertise supplémentaire au lieu de mettre à jour l’existante. Le défaut n’apparaissait qu’une fois le seuil franchi, donc progressivement et sans cause apparente.</p>
+<p>Préférer <code>getAllItems</code> dès qu’un nombre de résultats peut croître.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Vérifier toute écriture
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Voir le socle commun : <code>postData</code> ne contrôle pas le statut HTTP. Une création ou une mise à jour se vérifie par la présence de <code>o:id</code> dans la réponse, une suppression par l’absence de clef <code>errors</code>. Sans cela, l’interface annonce des réussites qui n’ont pas eu lieu.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span><code>cfg.rankProp</code> est réglable en lecture, pas en écriture
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La fenêtre de configuration expose un champ « propriété de rang » qui alimente <code>cfg.rankProp</code> (valeur par défaut <code>curation:rank</code>). Quatorze endroits du code l’honorent : la déduplication, la migration, <code>formatExpertise</code>, le rendu.</p>
+<p><strong><code>getExpertiseValues</code> ne l’honore pas.</strong> C’est elle qui construit le corps de toute création et de toute mise à jour de note, et elle écrit la propriété en dur (L. 2973) :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> data <span class="op">=</span> {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'curation:rank'</span><span class="op">:</span> rank<span class="op">,</span>   <span class="co">// ← et non [cfg.rankProp]</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Changer ce réglage produit donc une application qui <strong>écrit dans une propriété et relit dans une autre</strong> : les notes semblent s’enregistrer, et reviennent à <code>0</code> au rechargement — <code>formatExpertise</code> ne trouvant pas <code>cfg.rankProp</code> sur l’item.</p>
+<p>Deux issues : soit remplacer la clef littérale par <code>[cfg.rankProp]</code> dans <code>getExpertiseValues</code>, soit retirer le champ de la fenêtre de configuration. La seconde est plus honnête tant que personne n’a besoin d’une autre propriété : un réglage qui casse l’application vaut moins qu’un réglage absent.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Mise en garde</span>Deux lectures différentes de <code>foaf:mbox</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Omeka S peut stocker une adresse électronique de deux façons : en littéral (<code>@value</code>) ou en URI (<code>@id</code> valant <code>mailto:…</code>). Les deux endroits qui lisent cette propriété ne traitent pas les deux cas :</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 61%">
+<col style="width: 9%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Emplacement</th>
+<th>Code</th>
+<th><code>@value</code></th>
+<th><code>@id</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Liste des EC, L. 1859</td>
+<td><code>mailVal?.['@id']?.replace('mailto:','') \|\| mailVal?.['@value']</code></td>
+<td>oui</td>
+<td>oui</td>
+</tr>
+<tr class="even">
+<td>Zone des DU, L. 2027</td>
+<td><code>(dl['foaf:mbox'] \|\| [])[0]?.['@value']</code></td>
+<td>oui</td>
+<td><strong>non</strong></td>
+</tr>
+</tbody>
+</table>
+<p>En pratique les adresses sont saisies en texte normal, donc le défaut ne se manifeste pas aujourd’hui. Il se manifesterait au premier import qui produirait des URI : l’enveloppe du DU apparaîtrait désactivée sans explication, alors que l’adresse est bien renseignée dans Omeka. La ligne 1859 est la forme à recopier.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Code mort identifié
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Deux vestiges sans effet, à supprimer plutôt qu’à comprendre :</p>
+<ul>
+<li><strong>L. 1841-1847</strong> — calcul de <code>isEvaluated</code> réduit à un <code>false // placeholder</code>, variable jamais lue (voir <a href="#sec-ve-badge" class="quarto-xref">Section&nbsp;1.7.1</a>) ;</li>
+<li><strong>L. 2829</strong> — <code>const opExpertises = kw.data().map ? null : null;</code>, qui vaut <code>null</code> dans les deux branches et n’est jamais utilisée.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Mise en garde</span>Masquer n’est pas interdire
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les outils réservés aux opérateurs sont masqués par la classe <code>app-dropdown-operator</code> et la condition <code>fromUrl</code>. <strong>C’est de l’hygiène d’interface, pas du contrôle d’accès.</strong> Les données de l’instance étant publiques en lecture, une application masquée reste atteignable par son adresse. Une restriction réelle se règle côté serveur.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Mise en garde</span>Ne pas réafficher la page après une erreur
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>setLoading(true)</code> masque le bandeau, la grille et la barre d’action, mais <code>setLoading(false)</code> ne les réaffiche pas. Toute opération qui masque l’interface doit la rétablir sur <strong>tous</strong> ses chemins de sortie, y compris ceux qui ne passent pas par le bloc <code>try</code>. <code>restoreAfterError()</code> est prévue pour cela : elle reconstruit l’affichage depuis les données déjà en mémoire, sans relire l’API — puisque c’est justement elle qui vient d’échouer.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Deux particularités de mise en forme à connaître
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>.btn-ghost</code> est <strong>blanc</strong> globalement, parce qu’il habille aussi « Retour à la liste », posé sur le bandeau d’un EC qui demeure en Maroon. Seul celui du bandeau d’en-tête est redéfini en sombre sur clair. Une bascule globale rendrait le bouton de retour illisible.</p>
+<p>L’attribut <code>disabled</code> <strong>n’existe pas sur une balise <code>&lt;a&gt;</code></strong> : l’état inactif d’une enveloppe sans adresse repose sur l’absence de <code>href</code> et sur une classe. Surtout pas de <code>pointer-events: none</code>, qui laisserait le clic atteindre la ligne et ouvrir la fiche de l’EC.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="validkeyword" class="level1">
+<h1>validKeyword</h1>
+<section id="principe-1" class="level2">
+<h2 class="anchored" data-anchor-id="principe-1">Principe</h2>
+<p>Le référentiel de mots-clefs est alimenté par deux sources : l’extraction automatique depuis ScanR et les suggestions des enseignants-chercheurs. Les deux produisent des doublons — variantes orthographiques, singulier contre pluriel, sigles développés ou non, traductions. Un référentiel qui contient à la fois « réseaux de neurones » et « réseau de neurones » éclate l’information : deux chercheurs travaillant sur le même sujet n’apparaissent plus ensemble.</p>
+<p>cleanKeywords détecte ces doublons et permet de les fusionner sans perdre les rattachements existants. Elle est <strong>réservée aux opérateurs</strong> : sans clef d’API valide, elle ouvre sa fenêtre de configuration et s’arrête là.</p>
+</section>
+<section id="deux-onglets" class="level2">
+<h2 class="anchored" data-anchor-id="deux-onglets">Deux onglets</h2>
+<p><strong>Détection</strong> : balaye le référentiel, regroupe les concepts jugés semblables en <em>clusters</em>, et présente chaque groupe avec les actions possibles.</p>
+<p><strong>Parcourir</strong> : liste tous les concepts, avec recherche, pagination, et un panneau d’information par concept (ses rattachements, ses métadonnées). C’est depuis cet onglet que l’on renomme, supprime, ou fusionne manuellement deux concepts que la détection n’a pas rapprochés.</p>
+</section>
+<section id="la-détection-de-doublons" class="level2">
+<h2 class="anchored" data-anchor-id="la-détection-de-doublons">La détection de doublons</h2>
+<p>L’algorithme vit dans <code>assets/js/similarity.js</code>, qui expose trois fonctions : <code>findPairs</code>, <code>buildClusters</code> et <code>extractWikidataId</code>.</p>
+<p>Le parcours est toujours le même (<code>scanLetter</code>, L. 915 ; <code>scanAll</code>) :</p>
+<ol type="1">
+<li>charger les concepts, par lettre initiale ou tous ;</li>
+<li><code>findPairs(concepts)</code> produit les paires jugées semblables, chacune avec un score et un motif (<code>reason</code>) ;</li>
+<li>les paires déjà rejetées sont retirées ;</li>
+<li><code>buildClusters(pairs, concepts)</code> regroupe les paires en grappes.</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> pairs    <span class="op">=</span> <span class="fu">findPairs</span>(concepts)<span class="op">.</span><span class="fu">filter</span>(p <span class="kw">=&gt;</span> <span class="op">!</span>rejected<span class="op">.</span><span class="fu">has</span>(<span class="fu">pairKey</span>(p)))<span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> clusters <span class="op">=</span> <span class="fu">buildClusters</span>(pairs<span class="op">,</span> concepts)<span class="op">;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Deux mécanismes de détection cohabitent : une <strong>similarité textuelle</strong> — dépluralisation token par token, exclusion des chiffres romains divergents — et une <strong>identité Wikidata</strong>, bien plus fiable : deux concepts portant le même QID dans <code>dcterms:isReferencedBy</code> sont le même concept, sans discussion possible. <code>buildWikidataIndex</code> construit cet index, et les groupes concernés portent un badge distinct.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Le clustering ne relie que par liens directs
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le regroupement Union-Find reliait initialement les concepts par transitivité : si A ressemble à B et B à C, les trois formaient un groupe — même lorsque A et C n’avaient rien à voir. Les grappes dérivaient alors d’un thème à l’autre.</p>
+<p>Désormais, un index des paires directement qualifiées filtre les membres : seuls les concepts ayant <strong>au moins un lien direct</strong> avec un autre membre du groupe sont conservés.</p>
+</div>
+</div>
+<section id="sec-ck-seuils" class="level3">
+<h3 class="anchored" data-anchor-id="sec-ck-seuils">Les seuils de l’algorithme</h3>
+<p>Six constantes gouvernent la détection. Elles sont <strong>regroupées en bas de <code>similarity.js</code></strong>, ce qui est le bon endroit pour les régler : il n’y a pas d’autre valeur numérique à chercher ailleurs.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 7%">
+<col style="width: 4%">
+<col style="width: 67%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Constante</th>
+<th>Valeur</th>
+<th>Ligne</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>MIN_PAIR_SCORE</code></td>
+<td><code>0.70</code></td>
+<td>146</td>
+<td>score minimum pour retenir une paire textuelle</td>
+</tr>
+<tr class="even">
+<td><code>MIN_WIKIDATA_TEXT</code></td>
+<td><code>0.50</code></td>
+<td>147</td>
+<td>similarité textuelle minimale pour valider un rapprochement Wikidata</td>
+</tr>
+<tr class="odd">
+<td><code>WIKIDATA_WEIGHT</code></td>
+<td><code>0.55</code></td>
+<td>148</td>
+<td>poids du signal Wikidata dans le score combiné</td>
+</tr>
+<tr class="even">
+<td><code>TEXT_WEIGHT</code></td>
+<td><code>0.45</code></td>
+<td>149</td>
+<td>poids du signal textuel</td>
+</tr>
+<tr class="odd">
+<td><code>MIN_CLUSTER_SCORE</code></td>
+<td><code>0.75</code></td>
+<td>257</td>
+<td>score minimum pour relier deux concepts dans une grappe</td>
+</tr>
+<tr class="even">
+<td><code>MAX_CLUSTER_SIZE</code></td>
+<td><code>6</code></td>
+<td>258</td>
+<td>taille maximale d’une grappe</td>
+</tr>
+</tbody>
+</table>
+<p>Le score combiné d’un rapprochement Wikidata vaut <code>0.55 × 1.0 + 0.45 × similarité_textuelle</code>, soit <strong>au moins 0,775</strong> dès que la similarité textuelle franchit <code>MIN_WIKIDATA_TEXT</code>. Autrement dit : une identité de QID suffit presque toujours à qualifier la paire, le signal textuel ne servant qu’à écarter les QID manifestement mal saisis.</p>
+<p><code>MAX_CLUSTER_SIZE = 6</code> n’est pas une limite esthétique. L’union de deux groupes est <strong>refusée</strong> si elle dépasserait six membres (<code>similarity.js</code>, L. 276) : c’est le garde-fou contre les chaînes de proche-en-proche qui dérivent d’un thème à l’autre.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Les deux seuils ne sont pas le même, et l’écart est invisible
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>findPairs</code> retient les paires à partir de <strong>0,70</strong>. <code>buildClusters</code> ne relie les concepts qu’à partir de <strong>0,75</strong> :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> qualifiedPairs <span class="op">=</span> pairs<span class="op">.</span><span class="fu">filter</span>(p <span class="kw">=&gt;</span> p<span class="op">.</span><span class="at">score</span> <span class="op">&gt;=</span> MIN_CLUSTER_SCORE)<span class="op">;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Comme l’interface n’affiche <strong>que des grappes</strong> — jamais une paire isolée —, les rapprochements notés entre 0,70 et 0,74 sont calculés à chaque scan puis silencieusement écartés. Ils ne s’affichent nulle part et ne sont pas comptés dans les rejets : l’opérateur ne sait pas qu’ils existent.</p>
+<p>Ce n’est pas nécessairement un défaut : la bande 0,70-0,74 est celle des faux positifs, et ne pas la montrer évite un tri fastidieux. Mais c’est à savoir avant de chercher pourquoi deux concepts qui se ressemblent n’apparaissent jamais. Pour les faire apparaître, abaisser <code>MIN_CLUSTER_SCORE</code>, et non <code>MIN_PAIR_SCORE</code>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span><code>pairKey()</code> doit être symétrique
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La clef d’une paire sert à retrouver les paires rejetées. Elle était construite dans un ordre dépendant du contexte — scan frais contre restauration depuis le cache —, si bien qu’un rejet enregistré n’était plus reconnu après rechargement. Elle est désormais <strong>toujours triée numériquement</strong> (<code>min_max</code>). Toute modification de cette fonction doit préserver cette propriété.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="le-balayage-par-lettre" class="level2">
+<h2 class="anchored" data-anchor-id="le-balayage-par-lettre">Le balayage par lettre</h2>
+<p>Le référentiel est trop volumineux pour être analysé d’un bloc confortablement. Une barre alphabétique (<code>buildAlphaBar</code>) permet de le traiter lettre par lettre, et les lettres terminées sont mémorisées sous <code>cleanKeywords_done</code> — le travail se reprend d’une session à l’autre. Un balayage global reste possible.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Une lettre peut être marquée verte sans avoir été analysée
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>scanLetter</code> charge les concepts par <code>a.omk.searchItems</code>, qui <strong>ne pagine pas</strong>, avec <code>per_page=500</code> (L. 936). Au-delà de 500 concepts commençant par la même lettre, le reste n’est jamais examiné, et rien ne le signale.</p>
+<p>Plus gênant : le marquage de la lettre comme traitée se trouve <strong>hors du <code>try/catch</code></strong> qui entoure le chargement (L. 947) :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>} <span class="cf">catch</span> (e) {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>silent) <span class="fu">toast</span>(<span class="st">'Erreur lors du chargement'</span><span class="op">,</span> <span class="st">'err'</span><span class="op">,</span> e<span class="op">.</span><span class="at">message</span>)<span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>doneLetters<span class="op">.</span><span class="fu">add</span>(letter)<span class="op">;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>localStorage<span class="op">.</span><span class="fu">setItem</span>(DONE_KEY<span class="op">,</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>([<span class="op">...</span>doneLetters]))<span class="op">;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Une erreur réseau produit donc un message d’alerte <strong>et</strong> une lettre verte, avec zéro concept analysé. Comme les lettres vertes sont la mesure de l’avancement, la progression affichée peut être fausse sans que personne s’en aperçoive.</p>
+<p>Les deux correctifs sont indépendants et peu risqués : déplacer les deux lignes à l’intérieur du <code>try</code>, après le traitement ; et passer à <code>getAllItems</code>, qui pagine, pour la requête de chargement. Le second est également à appliquer à <code>refreshScope</code> (L. 660, <code>per_page=1000</code> par laboratoire) et, pour les mêmes raisons, partout où <code>searchItems</code> est appelé avec un <code>per_page</code> élevé — c’est la signature d’une pagination qu’on espère ne pas avoir à faire.</p>
+</div>
+</div>
+</section>
+<section id="le-cache-de-scan" class="level2">
+<h2 class="anchored" data-anchor-id="le-cache-de-scan">Le cache de scan</h2>
+<p>Un scan coûte cher. Son résultat est donc stocké sous <code>cleanKeywords_scan_cache</code> (<code>saveCache</code>, L. 361) : horodatage, nombre de concepts, nombre de groupes, et pour chaque groupe ses concepts et ses paires.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Ce que le cache stocke, et pourquoi
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Seul le strict nécessaire est conservé : <code>o:id</code>, libellé, et <code>dcterms:isReferencedBy</code>. Les paires gardent <code>aId</code> / <code>bId</code> <strong>explicitement</strong>, afin que <code>pairKey()</code> fonctionne encore après restauration — sans quoi les rejets enregistrés seraient perdus.</p>
+<p>Le cache reflète un état passé de la base. <code>markStaleConcepts</code> (L. 1425) barre les concepts entre-temps supprimés et désactive leur sélection, en s’assurant qu’un choix valide reste coché. Un bandeau signale l’âge du scan.</p>
+</div>
+</div>
+</section>
+<section id="la-fusion" class="level2">
+<h2 class="anchored" data-anchor-id="la-fusion">La fusion</h2>
+<p>C’est l’opération centrale, et la plus délicate : elle réécrit des fiches d’enseignants-chercheurs. <code>executeFusion(srcId, tgtId, …)</code> (L. 1260) procède en cinq étapes dans un ordre qui n’est pas négociable.</p>
+<p><strong>0. Vérification.</strong> Le concept source existe-t-il encore ? S’il a disparu — fusionné par quelqu’un d’autre entre-temps — l’opération s’arrête, l’identifiant est marqué supprimé et l’affichage mis à jour.</p>
+<p><strong>1. Mise à jour des fiches EC.</strong> Pour chaque propriété configurée dans <code>cfg.personPropExp</code>, toutes les fiches référençant la source sont relues et réécrites. Le cas important :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> hasTgt <span class="op">=</span> currentVals<span class="op">.</span><span class="fu">some</span>(v <span class="kw">=&gt;</span> v<span class="op">.</span><span class="at">value_resource_id</span> <span class="op">==</span> tgtId)<span class="op">;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (hasTgt) {</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// La cible est déjà présente — on retire juste la source</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    updated <span class="op">=</span> currentVals<span class="op">.</span><span class="fu">filter</span>(v <span class="kw">=&gt;</span> v<span class="op">.</span><span class="at">value_resource_id</span> <span class="op">!=</span> srcId)<span class="op">;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// La cible est absente — on remplace la source par la cible</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    updated <span class="op">=</span> currentVals<span class="op">.</span><span class="fu">map</span>(v <span class="kw">=&gt;</span> v<span class="op">.</span><span class="at">value_resource_id</span> <span class="op">==</span> srcId</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                                 <span class="op">?</span> { <span class="op">...</span>v<span class="op">,</span> <span class="dt">value_resource_id</span><span class="op">:</span> tgtId } <span class="op">:</span> v)<span class="op">;</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Sans ce test, un EC rattaché aux <strong>deux</strong> concepts se retrouvait avec le même mot-clef en double après fusion.</p>
+<p><strong>2. Transfert des expertises.</strong> Les items <code>valo:Expertises_all</code> qui pointaient vers la source pointent désormais vers la cible. Les notes sont donc conservées.</p>
+<p><strong>Point d’arrêt.</strong> Si une erreur est survenue aux étapes 1 ou 2, la fusion <strong>s’interrompt et la source n’est pas supprimée</strong> :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (errors <span class="op">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">logFusion</span>(<span class="vs">`Fusion interrompue (</span><span class="sc">${</span>errors<span class="sc">}</span><span class="vs"> erreur(s)) — source non supprimée`</span>)<span class="op">;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>La base reste dans un état partiellement migré mais cohérent : rien n’a été perdu, l’opération peut être relancée.</p>
+<p><strong>3. Transfert des métadonnées</strong> — non bloquant. <code>dcterms:isReferencedBy</code> (le QID Wikidata), <code>skos:altLabel</code>, <code>skos:broader</code>, <code>skos:narrower</code>, <code>skos:related</code> sont fusionnés vers la cible, avec déduplication par valeur. Un échec ici n’interrompt pas la fusion : ces métadonnées sont utiles mais non critiques.</p>
+<p><strong>4. Traçabilité</strong> — <code>dcterms:replaces</code> est ajouté sur la cible, pointant vers la source. C’est ce qui permet, plus tard, de savoir qu’un concept en a absorbé un autre. Non bloquant également.</p>
+<p><strong>5. Suppression de la source</strong>, et seulement alors.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>L’ordre des étapes est la garantie
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Supprimer la source avant d’avoir transféré ses rattachements ferait perdre définitivement l’information : rien ne permettrait de retrouver quels enseignants-chercheurs étaient concernés. Toute modification de <code>executeFusion</code> doit conserver cette séquence et le point d’arrêt qui la protège.</p>
+</div>
+</div>
+<p>Trois chemins mènent à cette fonction : <code>previewCluster</code> (prévisualisation avant confirmation), <code>quickFuseCluster</code> et <code>directFuseCluster</code> (fusion en deux ou trois clics depuis un groupe), et la fusion manuelle depuis l’onglet « Parcourir ».</p>
+</section>
+<section id="renommage-suppression-rejet" class="level2">
+<h2 class="anchored" data-anchor-id="renommage-suppression-rejet">Renommage, suppression, rejet</h2>
+<p><strong>Renommage</strong> (<code>renameConceptInPlace</code>, L. 1516) : l’étiquette d’un concept s’édite directement dans la liste. Un avertissement précède la première modification de la session : renommer un concept le change <strong>pour tous les EC qui le portent</strong>. L’avertissement peut être désactivé définitivement (<code>cleanKeywords_rename_no_warn</code>). Une notification offre d’annuler l’opération.</p>
+<p><strong>Suppression</strong> (<code>deleteConceptWithCleanup</code>, L. 1647) : une fenêtre de confirmation liste les enseignants-chercheurs rattachés avant d’agir, pour que l’opérateur mesure la portée. Les identifiants supprimés sont mémorisés sous <code>cleanKeywords_deleted</code> afin de marquer les entrées périmées du cache.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>La suppression est moins complète que la fusion
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>executeFusion</code> et <code>deleteConceptWithCleanup</code> traitent le même problème — détacher un concept de tout ce qui le référence — mais pas de la même façon.</p>
+<p><strong>La suppression ne touche pas aux items d’expertise.</strong> Elle nettoie les propriétés listées dans <code>cfg.personPropExp</code> sur les fiches EC (L. 1718), et s’arrête là. Les items <code>valo:Expertises_all</code> dont <code>valo:expertise</code> pointait vers le concept subsistent, désormais rattachés à une ressource inexistante. La fusion, elle, les transfère explicitement (étape 2). Supprimer un concept noté laisse donc des notes orphelines en base ; elles ne se voient pas dans l’interface, mais elles comptent dans les statistiques et dans les scans.</p>
+<p><strong>La comparaison d’identifiants n’y est pas écrite pareil.</strong> Les deux fonctions filtrent la même chose avec deux opérateurs différents :</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 9%">
+<col style="width: 51%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fonction</th>
+<th>Ligne</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>executeFusion</code></td>
+<td>1296</td>
+<td><code>v.value_resource_id != srcId</code></td>
+</tr>
+<tr class="even">
+<td><code>deleteConceptWithCleanup</code></td>
+<td>1723</td>
+<td><code>v.value_resource_id !== conceptId</code></td>
+</tr>
+</tbody>
+</table>
+<p>Si les deux membres sont toujours des nombres, les deux formes sont équivalentes et tout va bien. Mais la présence du <code>!=</code> souple dans la fusion signale qu’une discordance de type y a été rencontrée — sinon personne n’écrit <code>!=</code> par choix. Si la même discordance se produit à la suppression, le <code>!==</code> strict ne retire <strong>rien</strong>, l’écriture réussit sans effet, et la référence au concept supprimé survit sur la fiche de l’EC.</p>
+<p>Aligner la suppression sur la fusion est un correctif d’un caractère. Mieux vaudrait normaliser aux deux endroits — <code>Number(v.value_resource_id) === Number(id)</code> — et ne plus dépendre de la forme que l’API renvoie.</p>
+</div>
+</div>
+<p><strong>Rejet d’un groupe</strong> (<code>rejectCluster</code>, L. 1135) : déclare que les concepts d’un groupe ne sont pas des doublons. Les clefs des paires sont ajoutées à l’ensemble <code>rejected</code> et stockées sous <code>cleanKeywords_rejected</code>.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Mise en garde</span>Les rejets ne vivent que dans le navigateur
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>cleanKeywords_rejected</code>, <code>cleanKeywords_done</code> et <code>cleanKeywords_deleted</code> sont dans le <code>localStorage</code> du poste. <strong>Rien n’est écrit en base.</strong> Deux conséquences : un collègue sur un autre poste reverra les groupes déjà rejetés, et vider les données du navigateur efface tout le travail de tri.</p>
+<p>C’est une limite connue de la conception actuelle. Si le tri doit devenir collectif, il faudra le porter dans Omeka S — par exemple par une propriété sur les concepts concernés.</p>
+</div>
+</div>
+</section>
+<section id="le-périmètre-opérateur" class="level2">
+<h2 class="anchored" data-anchor-id="le-périmètre-opérateur">Le périmètre opérateur</h2>
+<p>Tous les opérateurs ne travaillent pas sur tout le référentiel. <code>refreshScope</code> (L. 632) calcule un périmètre :</p>
+<ul>
+<li>si l’utilisateur est administrateur global, ou si aucun identifiant d’évaluateur n’est configuré, <code>allowedConceptIds</code> vaut <code>null</code> — aucune restriction ;</li>
+<li>sinon, les laboratoires dont il est responsable (<code>valo:responsableDe</code>) sont lus sur sa fiche, puis les concepts rattachés aux EC de ces laboratoires forment l’ensemble autorisé.</li>
+</ul>
+<p>Ce périmètre filtre la détection <strong>et</strong> l’onglet « Parcourir ». Un bouton 🔄 permet de le recalculer sans recharger la page.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Mise en garde</span>Le périmètre est permissif en cas d’échec, et ne restreint que l’affichage
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Deux propriétés de ce mécanisme sont à comprendre avant de compter dessus.</p>
+<p><strong>Il s’ouvre quand il échoue.</strong> Si le calcul lève une exception, la branche de rattrapage (L. 681-685) remet <code>allowedConceptIds = null</code>, c’est-à-dire <em>aucune restriction</em> :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>} <span class="cf">catch</span> (e) {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    allowedConceptIds <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">toast</span>(<span class="st">'Erreur lors du calcul du périmètre — accès complet utilisé'</span><span class="op">,</span> <span class="st">'err'</span><span class="op">,</span> e<span class="op">.</span><span class="at">message</span>)<span class="op">;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Le choix est délibéré et le message est franc — mieux vaut un opérateur qui voit trop qu’un opérateur bloqué —, mais il signifie qu’une panne réseau passagère élargit le périmètre au référentiel entier pour le reste de la session.</p>
+<p><strong>Il filtre ce qui s’affiche, pas ce qui s’écrit.</strong> <code>allowedConceptIds</code> est consulté au rendu des listes et des grappes ; <code>executeFusion</code>, <code>renameConceptInPlace</code> et <code>deleteConceptWithCleanup</code> ne le consultent pas. Un concept hors périmètre atteint par une autre voie reste modifiable. Comme pour les menus de validExpertises : c’est de l’hygiène d’interface, pas du contrôle d’accès. La seule restriction réelle tient aux droits du compte Omeka S utilisé.</p>
+</div>
+</div>
+</section>
+<section id="journal-et-erreurs" class="level2">
+<h2 class="anchored" data-anchor-id="journal-et-erreurs">Journal et erreurs</h2>
+<p>Chaque opération de fusion écrit dans un journal visible à l’écran (<code>logFusion</code>, L. 1479), ligne à ligne : fiche EC mise à jour, expertise transférée, métadonnée fusionnée, suppression. Dix-huit points d’appel le nourrissent. C’est le seul endroit où l’on peut voir <strong>ce qui a réellement été écrit</strong> quand une fusion se passe mal.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Mise en garde</span>Le journal ne survit pas au rechargement, et ignore les suppressions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>logFusion</code> écrit directement dans le <code>&lt;div id="fusionLog"&gt;</code> du document. Rien n’est conservé : ni en base, ni dans le <code>localStorage</code>. <strong>Un rechargement de la page efface l’historique de la session</strong>, et c’est précisément ce qu’on fait après une fusion qui s’est mal passée.</p>
+<p>Son nom dit la seconde limite : les dix-huit appels sont tous dans le chemin de fusion. <code>deleteConceptWithCleanup</code> et <code>renameConceptInPlace</code> n’écrivent rien — une suppression de concept ne laisse donc <strong>aucune trace consultable</strong>, alors que c’est l’opération la plus destructrice de l’application.</p>
+<p>En conséquence pratique : avant une série de fusions, et avant tout rechargement, <strong>copier le contenu du journal</strong> si l’on veut pouvoir reconstituer ce qui a été fait. Si l’on doit améliorer un point de cette application, c’est un bon candidat : faire écrire <code>logFusion</code> dans le <code>localStorage</code> en plus du DOM, et l’appeler depuis la suppression et le renommage, coûte peu et comble le trou le plus béant de la traçabilité.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Erreurs CORS
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>isCorsError</code> et <code>humanizeError</code> traduisent les échecs réseau en messages lisibles. Une erreur CORS se manifeste par un <code>TypeError: Failed to fetch</code> indiscernable d’une panne réseau. Elle survient lorsque l’instance Omeka S n’autorise plus le domaine qui sert l’application — typiquement après un changement de configuration serveur. Le symptôme est spectaculaire : plus rien ne fonctionne, sans erreur explicite. C’est à vérifier en premier si l’application cesse brusquement de charger quoi que ce soit.</p>
+</div>
+</div>
+</section>
+<section id="sec-ck-navigation" class="level2">
+<h2 class="anchored" data-anchor-id="sec-ck-navigation">Détails techniques</h2>
+<section id="carte-du-code-1" class="level3">
+<h3 class="anchored" data-anchor-id="carte-du-code-1">Carte du code</h3>
+<p>Le module fait environ 2 065 lignes.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Ligne</th>
+<th>Section</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>286</td>
+<td><code>CONSTANTES &amp; ÉTAT GLOBAL</code></td>
+</tr>
+<tr class="even">
+<td>356</td>
+<td><code>CACHE DU SCAN</code></td>
+</tr>
+<tr class="odd">
+<td>440</td>
+<td><code>INIT</code></td>
+</tr>
+<tr class="even">
+<td>486</td>
+<td><code>SETTINGS</code></td>
+</tr>
+<tr class="odd">
+<td>508</td>
+<td><code>APP SWITCHER</code></td>
+</tr>
+<tr class="even">
+<td>697</td>
+<td><code>LISTENERS — TABS, SCAN, CLUSTERS, NAVIGATION</code></td>
+</tr>
+<tr class="odd">
+<td>779</td>
+<td><code>UTILITAIRES CLUSTERS — FILTRE, TRI, COMPTEUR, SCROLL</code></td>
+</tr>
+<tr class="even">
+<td>837</td>
+<td><code>ALPHABET + SCAN</code></td>
+</tr>
+<tr class="odd">
+<td>984</td>
+<td><code>RENDU DES CLUSTERS</code></td>
+</tr>
+<tr class="even">
+<td>1081</td>
+<td><code>ACTIONS SUR LES CLUSTERS</code></td>
+</tr>
+<tr class="odd">
+<td>1255</td>
+<td><code>EXÉCUTION DE LA FUSION (opération BDD)</code></td>
+</tr>
+<tr class="even">
+<td>1420</td>
+<td><code>DÉTECTION D'OBSOLESCENCE POST-FUSION</code></td>
+</tr>
+<tr class="odd">
+<td>1464</td>
+<td><code>JOURNAL DES OPÉRATIONS</code></td>
+</tr>
+<tr class="even">
+<td>1490</td>
+<td><code>BROWSE — TOUS LES CONCEPTS</code></td>
+</tr>
+<tr class="odd">
+<td>1517</td>
+<td><code>RENOMMAGE DE CONCEPT</code></td>
+</tr>
+<tr class="even">
+<td>1648</td>
+<td><code>SUPPRESSION INDIVIDUELLE DE CONCEPT</code></td>
+</tr>
+<tr class="odd">
+<td>1923</td>
+<td><code>ECs RATTACHÉS À UN CONCEPT</code></td>
+</tr>
+<tr class="even">
+<td>2158</td>
+<td><code>STICKY FUSION</code> (voir les points de maintenance)</td>
+</tr>
+<tr class="odd">
+<td>2240</td>
+<td><code>UTILS</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="état-global" class="level3">
+<h3 class="anchored" data-anchor-id="état-global">État global</h3>
+<p>Contrairement à validExpertises, cleanKeywords conserve une vingtaine de variables d’état au niveau du module (L. 286) : <code>allConcepts</code>, <code>currentPairs</code>, <code>currentClusters</code>, <code>wikidataIndex</code>, <code>allowedConceptIds</code>, les filtres et tris, les ensembles <code>rejected</code>, <code>doneLetters</code> et <code>deletedIds</code>. C’est le prix du fonctionnement par scan : l’application travaille sur un instantané chargé en mémoire, pas sur des requêtes à la demande.</p>
+</section>
+<section id="vocabulaire-omeka-s-1" class="level3">
+<h3 class="anchored" data-anchor-id="vocabulaire-omeka-s-1">Vocabulaire Omeka S</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 49%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Terme</th>
+<th>Emploi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>skos:Concept</code></td>
+<td>classe des mots-clefs</td>
+</tr>
+<tr class="even">
+<td><code>skos:prefLabel</code>, <code>dcterms:title</code></td>
+<td>étiquette d’un concept</td>
+</tr>
+<tr class="odd">
+<td><code>skos:altLabel</code></td>
+<td>variantes, transférées à la fusion</td>
+</tr>
+<tr class="even">
+<td><code>skos:broader</code>, <code>skos:narrower</code>, <code>skos:related</code></td>
+<td>relations, transférées à la fusion</td>
+</tr>
+<tr class="odd">
+<td><code>dcterms:isReferencedBy</code></td>
+<td>QID Wikidata</td>
+</tr>
+<tr class="even">
+<td><code>dcterms:replaces</code></td>
+<td>traçabilité de la fusion</td>
+</tr>
+<tr class="odd">
+<td><code>valo:expertise</code></td>
+<td>lien d’une note vers un concept</td>
+</tr>
+<tr class="even">
+<td><code>valo:EnseignantChercheur</code></td>
+<td>classe des fiches de personnes</td>
+</tr>
+<tr class="odd">
+<td><code>valo:responsableDe</code></td>
+<td>laboratoires d’un opérateur, pour le périmètre</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="configuration-et-stockage" class="level3">
+<h3 class="anchored" data-anchor-id="configuration-et-stockage">Configuration et stockage</h3>
+<p>Réglages : adresse de l’API, compte Omeka S, identifiant de l’évaluateur, propriétés portant les mots-clefs des personnes. Un bouton vide le cache des métadonnées Omeka S.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 36%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Clef</th>
+<th>Rôle</th>
+<th>Perdue si l’on vide le navigateur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>cleanKeywords_cfg</code></td>
+<td>configuration</td>
+<td>réglages à ressaisir</td>
+</tr>
+<tr class="even">
+<td><code>cleanKeywords_scan_cache</code></td>
+<td>résultat du dernier scan</td>
+<td>scan à relancer</td>
+</tr>
+<tr class="odd">
+<td><code>cleanKeywords_rejected</code></td>
+<td>paires déclarées non-doublons</td>
+<td><strong>tri perdu</strong></td>
+</tr>
+<tr class="even">
+<td><code>cleanKeywords_done</code></td>
+<td>lettres terminées</td>
+<td><strong>progression perdue</strong></td>
+</tr>
+<tr class="odd">
+<td><code>cleanKeywords_deleted</code></td>
+<td>concepts supprimés</td>
+<td>marquage du cache perdu</td>
+</tr>
+<tr class="even">
+<td><code>cleanKeywords_rename_no_warn</code></td>
+<td>avertissement de renommage désactivé</td>
+<td>avertissement réaffiché</td>
+</tr>
+<tr class="odd">
+<td><code>cleanKeywords_scroll</code></td>
+<td>position de défilement</td>
+<td>sans conséquence</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="sec-ck-maintenance" class="level2">
+<h2 class="anchored" data-anchor-id="sec-ck-maintenance">Points de maintenance</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Les règles du socle s’appliquent ici aussi
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>per_page</code> à préciser systématiquement, écritures à vérifier explicitement, distinction entre les deux comportements d’<code>updateRessource</code>. Voir le socle commun. <code>executeFusion</code> utilise les deux formes : la concaténation pour <code>valo:expertise</code> et <code>dcterms:replaces</code>, le <code>PUT</code> complet pour les fiches EC et le transfert de métadonnées.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Mise en garde</span>Toute modification de la fusion demande un test sur données jetables
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>C’est la seule opération des deux applications qui <strong>supprime</strong> des données et en réécrit d’autres en cascade. Une erreur y est irréversible : les rattachements d’un concept supprimé ne se reconstituent pas.</p>
+<p>Avant d’y toucher, se donner un concept de test rattaché à au moins deux EC, dont un portant <strong>déjà</strong> les deux concepts à fusionner — c’est le cas qui a produit les doublons par le passé.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Le panneau « Sticky fusion » est complet et inatteignable
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La section <code>STICKY FUSION</code> (L. 2157-2239) implémente une fusion manuelle depuis un panneau flottant : deux champs à autocomplétion, une flèche, un bouton « Fusionner → », la validation (source et cible distinctes, toutes deux renseignées) et l’appel à la confirmation. Le balisage existe (L. 107-124), les deux autocomplétions sont branchées (L. 2167-2168), le bouton de fermeture a son écouteur (L. 2164).</p>
+<p><strong>Rien n’ouvre ce panneau.</strong> La fonction prévue pour cela est bien définie :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">openStickyFusion</span>()  { <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'stickyFusion'</span>)<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">add</span>(<span class="st">'open'</span>)<span class="op">;</span> }</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>…et elle <strong>n’est appelée nulle part</strong>. Aucun bouton du balisage ne la déclenche, aucun écouteur ne la référence, et c’est le seul endroit du fichier qui ajoute la classe <code>open</code> à cet élément. Le panneau, dépourvu de cette classe, reste donc hors de l’écran en permanence.</p>
+<p>Deux lectures possibles : une fonctionnalité jamais terminée, ou un bouton supprimé par accident lors d’un remaniement. Le journal des modifications ne tranche pas, mais le bandeau de la section donne l’intention d’origine — <em>« STICKY FUSION (formulaire de fusion manuelle depuis Browse) »</em> : le point d’entrée était prévu dans l’onglet « Parcourir », qui propose aujourd’hui sa propre fusion manuelle. L’hypothèse la plus probable est donc un doublon fonctionnel dont une seule des deux voies a survécu.</p>
+<p>Dans les deux cas, <strong>il n’y a rien de cassé à réparer en urgence</strong> : la fusion manuelle reste accessible depuis l’onglet « Parcourir », qui est la voie documentée. Mais il faut trancher, car du code mort en apparence vivante est le pire état pour un mainteneur : on croit avoir une fonctionnalité, on la « corrige », et rien ne change à l’écran.</p>
+<ul>
+<li><strong>Pour l’activer</strong> : ajouter un bouton appelant <code>openStickyFusion()</code>, puis tester le chemin complet jusqu’à <code>executeFusion</code> — il n’a probablement jamais tourné en production.</li>
+<li><strong>Pour la retirer</strong> : supprimer les lignes 107-124 du balisage, la section 2157-2239, les variables <code>stickyFusionSrc</code> / <code>stickyFusionTgt</code> (L. 339-340), leur réinitialisation (L. 762-766) et les règles <code>.sticky-fusion*</code> du CSS.</li>
+</ul>
+<p>La seconde option est la plus sûre tant que personne n’a demandé cette fonctionnalité.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Trois défauts mineurs à corriger à l’occasion
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Aucun des trois ne justifie un déploiement à lui seul ; ils sont réunis ici pour être traités ensemble le jour où l’on touchera à ces fonctions.</p>
+<p><strong>Un bouton de fusion reste actif sur une grappe dégradée.</strong> <code>markStaleConcepts</code> (L. 1425) désactive les actions d’une grappe réduite à un seul concept actif, mais sa liste de sélecteurs (L. 1457) ne couvre que <code>fuse-cl</code>, <code>preview-cl</code> et <code>confirm-cl</code>. Les boutons <code>fuse-quick</code> (L. 1044) et <code>fuse-direct</code> ne sont pas désactivés : sur une grappe marquée « ⚠ À réviser », le bouton « Fusionner → » reste cliquable. L’opération se heurtera à la vérification d’existence de <code>executeFusion</code> (étape 0), donc sans dégât — mais l’interface promet une action qui échouera.</p>
+<p><strong>Un appel de <code>saveCache</code> passe des arguments fantômes.</strong> La signature est <code>saveCache(clusters, totalConcepts = 0)</code> (L. 361). L’appel de la ligne 1624 s’écrit <code>saveCache(currentClusters, null, null)</code> : le troisième argument est ignoré, et le second vaut <code>null</code> au lieu de laisser agir la valeur par défaut. Le cache enregistre alors <code>totalConcepts: null</code>, et le bandeau qui annonce la taille du scan affiche un total vide.</p>
+<p><strong><code>buildClusters</code> reçoit un paramètre qu’elle n’utilise pas.</strong> Sa signature est <code>buildClusters(pairs, allConcepts)</code> (<code>similarity.js</code>, L. 260), mais <code>allConcepts</code> n’apparaît pas dans le corps : le regroupement se fait entièrement à partir des paires. Les trois sites d’appel le transmettent fidèlement. Ce n’est pas un bug, c’est un faux-ami : il laisse croire que les concepts isolés sont pris en compte dans le regroupement, ce qui n’est pas le cas.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Deux variables de style qui n’existaient pas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>--color-background-secondary</code> et <code>--color-border-tertiary</code>, employées dans la liste des EC de la fenêtre de suppression, n’étaient déclarées nulle part : ces règles tombaient toujours sur leur valeur de repli, deux gris restés hors du système de jetons. Elles ont été rattachées aux jetons réels. Le même motif — <code>var(--jeton-inexistant, #valeur)</code> — est à surveiller : il ressemble à un jeton sans en être un, et il changera silencieusement le jour où quelqu’un déclarera une variable de ce nom.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Le filigrane « &amp; » n’est pas repris du tableau de bord
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il demande <code>overflow: hidden</code> sur l’en-tête, ce qui écrêterait le panneau du menu déroulant, positionné en absolu à l’intérieur. C’est exactement la panne que <a href="../outils/doc_valovizu.html">ValoVizu</a> avait rencontrée avant de sortir son panneau du bandeau. À ne pas réintroduire.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="annexe-anomalies-relevées-dans-les-fichiers-documentés" class="level1 unnumbered">
+<h1 class="unnumbered">Annexe — anomalies relevées dans les fichiers documentés</h1>
+<p>Ces points ont été constatés en lisant les fichiers fournis pour rédiger ce document. Ils ne remettent pas en cause le fonctionnement, mais méritent une vérification avant la prochaine livraison.</p>
+<section id="le-menu-déroulant-nest-pas-stylé-de-la-même-façon-dans-les-deux-applications" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="le-menu-déroulant-nest-pas-stylé-de-la-même-façon-dans-les-deux-applications">Le menu déroulant n’est pas stylé de la même façon dans les deux applications</h2>
+<p>Les deux <code>index.html</code> insèrent une entrée « Omeka S » précédée d’un <code>&lt;div class="app-dropdown-sep"&gt;</code> et suivie d’un <code>&lt;span class="app-dropdown-note"&gt;</code>. Les deux feuilles de style ne les connaissent pas pareil :</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 34%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Classe</th>
+<th><code>cleanKeywords_main.css</code></th>
+<th><code>validExpertises_main.css</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>.app-dropdown-sep</code></td>
+<td>1 règle</td>
+<td><strong>absente</strong></td>
+</tr>
+<tr class="even">
+<td><code>.app-dropdown-note</code></td>
+<td>1 règle</td>
+<td><strong>absente</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Dans validExpertises, le filet séparateur est donc <strong>invisible</strong> et la mention « instance » s’affiche sans mise en forme. Les deux règles sont à reporter depuis <code>cleanKeywords_main.css</code>.</p>
+<p>Le bloc <code>:root</code> est, lui, bien identique — vingt jetons aux mêmes valeurs, vérifié. L’écart ne porte que sur les règles du menu, ce qui est exactement le genre de divergence que la propriété « même menu partout » est censée interdire.</p>
+</section>
+<section id="les-journaux-de-modifications-sont-en-retard-sur-le-code" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="les-journaux-de-modifications-sont-en-retard-sur-le-code">Les journaux de modifications sont en retard sur le code</h2>
+<p>Les numéros de version sont cohérents entre eux : <code>validExpertises</code> affiche 0.3.5 et appelle <code>main.css?v=0.3.5</code> ; <code>cleanKeywords</code> affiche 0.2.0 et appelle <code>?v=0.2.0</code>. Sur ce point, rien à redire.</p>
+<p>En revanche, les deux fichiers contiennent une fonction <code>ajouterLienOmeka()</code> — celle qui déduit l’adresse de l’instance Omeka S depuis celle de l’API et ajoute l’entrée au menu — qui <strong>n’est mentionnée dans aucun des deux <code>CHANGELOG.md</code></strong>, dont les entrées de tête sont datées du 20 octobre 2026.</p>
+<p>Deux hypothèses : soit la fonctionnalité a été livrée sans entrée de journal, soit les fichiers fournis sont en avance sur les journaux fournis. Dans les deux cas, <strong>les <code>CHANGELOG.md</code> ne décrivent pas tout à fait le code livré</strong>, ce qui compte puisque ce document les présente comme faisant foi sur l’historique. À rapprocher du dépôt avant de considérer la documentation close.</p>
+</section>
+<section id="rappel-le-v-doit-suivre" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="rappel-le-v-doit-suivre">Rappel : le <code>?v=</code> doit suivre</h2>
+<p>Il est correct en l’état. Le rappel vaut pour la prochaine modification de l’une ou l’autre feuille de style : incrémenter le paramètre <strong>en même temps</strong> que le numéro de version affiché (voir le socle commun).</p>
+</section>
+</section>
+<section id="socle-commun-aux-deux-applications" class="level1">
+<h1>Socle commun aux deux applications</h1>
+<section id="nature-technique" class="level2">
+<h2 class="anchored" data-anchor-id="nature-technique">Nature technique</h2>
+<p>Les deux applications sont des <strong>pages statiques</strong>. Aucun serveur applicatif, aucune compilation, aucune dépendance à installer : on dépose un dossier sur un serveur web et l’application fonctionne. Toute la logique s’exécute dans le navigateur et dialogue directement avec l’API REST d’Omeka S.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Langages</td>
+<td>HTML, CSS, JavaScript (modules ES natifs)</td>
+</tr>
+<tr class="even">
+<td>Bibliothèque</td>
+<td>D3.js v7, servie localement (<code>assets/js/d3.min.js</code>)</td>
+</tr>
+<tr class="odd">
+<td>Données</td>
+<td>API REST Omeka S</td>
+</tr>
+<tr class="even">
+<td>Compilation</td>
+<td>aucune</td>
+</tr>
+<tr class="odd">
+<td>Dépendances externes au chargement</td>
+<td>aucune — rien n’est chargé depuis un CDN</td>
+</tr>
+</tbody>
+</table>
+<p>Le JavaScript est écrit directement dans <code>index.html</code>, dans un unique <code>&lt;script type="module"&gt;</code>. Ce n’est pas un accident d’écriture mais une contrainte assumée : l’application doit pouvoir être déposée et corrigée sans chaîne de construction. En contrepartie, le fichier est volumineux — environ 3 400 lignes pour validExpertises, 2 300 pour cleanKeywords — et se navigue par les bandeaux de commentaires qui en découpent les sections (voir <a href="#sec-ve-navigation" class="quarto-xref">Section&nbsp;1.10</a> et <a href="#sec-ck-navigation" class="quarto-xref">Section&nbsp;2.10</a>).</p>
+</section>
+<section id="arborescence-de-déploiement" class="level2">
+<h2 class="anchored" data-anchor-id="arborescence-de-déploiement">Arborescence de déploiement</h2>
+<p>Les trois outils de la suite sont voisins sous un même dossier parent. Les liens qu’ils échangent sont <strong>relatifs</strong>, ce qui suppose cette disposition :</p>
+<pre><code>outils/
+├── validExpertises/
+│   ├── index.html            application complète (balisage + logique)
+│   ├── .htaccess             en-têtes de cache
+│   └── assets/
+│       ├── main.css          feuille de style
+│       └── js/
+│           ├── omk.js        couche d'accès Omeka S
+│           ├── auth.js       authentification, instancie omk
+│           ├── authParams.js paramètres de déploiement
+│           ├── appUrl.js     lecture des paramètres d'URL
+│           └── d3.min.js     D3.js v7
+├── validKeyword/             
+│   ├── index.html
+│   ├── .htaccess
+│   └── assets/
+│       ├── main.css
+│       └── js/
+│           ├── omk.js
+│           ├── auth.js
+│           ├── authParams.js
+│           ├── similarity.js algorithme de détection de doublons
+│           └── d3.min.js
+└── valoVizu/                 tableau de bord (hors périmètre de ce document)</code></pre>
+</section>
+<section id="couche-daccès-et-authentification" class="level2">
+<h2 class="anchored" data-anchor-id="couche-daccès-et-authentification">Couche d’accès et authentification</h2>
+<p>Trois modules se partagent le dialogue avec Omeka S.</p>
+<p><code>authParams.js</code> porte les <strong>paramètres de déploiement</strong> : adresse de l’API, identifiants techniques, propriétés métier à utiliser. C’est le seul fichier à modifier pour pointer vers une autre instance.</p>
+<p><code>auth.js</code> prend ces paramètres, authentifie et instancie la couche d’accès. Les deux applications l’appellent de la même façon :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="kw">new</span> <span class="fu">auth</span>({ <span class="dt">mail</span><span class="op">:</span> cfg<span class="op">.</span><span class="at">propMail</span><span class="op">,</span> <span class="dt">apiOmk</span><span class="op">:</span> cfg<span class="op">.</span><span class="at">apiBase</span><span class="op">,</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>               <span class="dt">ident</span><span class="op">:</span> cfg<span class="op">.</span><span class="at">keyId</span><span class="op">,</span> <span class="dt">key</span><span class="op">:</span> cfg<span class="op">.</span><span class="at">keyCred</span> })<span class="op">;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>omk.js</code> est la <strong>couche d’accès</strong> proprement dite. Les deux applications n’utilisent qu’une dizaine de ses méthodes :</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Méthode</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>getItem(id)</code></td>
+<td>lit un item, requête fraîche</td>
+</tr>
+<tr class="even">
+<td><code>searchItems(query)</code></td>
+<td>recherche, <strong>plafonnée à 25 résultats sans <code>per_page</code></strong></td>
+</tr>
+<tr class="odd">
+<td><code>searchItemsPaginated(…)</code></td>
+<td>recherche paginée</td>
+</tr>
+<tr class="even">
+<td><code>getAllItems(query)</code></td>
+<td>parcourt toutes les pages</td>
+</tr>
+<tr class="odd">
+<td><code>createItem(data)</code></td>
+<td>crée un item</td>
+</tr>
+<tr class="even">
+<td><code>updateRessource(id, data, type, fd, méthode)</code></td>
+<td>met à jour</td>
+</tr>
+<tr class="odd">
+<td><code>deleteItem(item)</code></td>
+<td>supprime</td>
+</tr>
+<tr class="even">
+<td><code>getPropId(terme)</code></td>
+<td>identifiant numérique d’une propriété</td>
+</tr>
+<tr class="odd">
+<td><code>getClassByTerm(terme)</code></td>
+<td>classe par son terme</td>
+</tr>
+<tr class="even">
+<td><code>getRtId(terme)</code></td>
+<td>identifiant d’un modèle de ressource</td>
+</tr>
+</tbody>
+</table>
+<p>Les métadonnées d’Omeka S — propriétés, classes, modèles — sont <strong>mises en cache 24 heures</strong> dans le navigateur, ce qui évite de les recharger à chaque ouverture. Le cache se vide depuis la fenêtre de configuration.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span><code>updateRessource</code> : concaténer ou remplacer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cette méthode a deux comportements selon les arguments reçus, et la confusion entre les deux a déjà produit des données corrompues.</p>
+<p>Avec l’argument <code>data</code>, elle <strong>concatène</strong> : les valeurs transmises s’ajoutent à celles déjà présentes. Avec l’argument <code>fd</code> et la méthode <code>PUT</code>, elle <strong>remplace</strong> l’item entier par ce qu’on lui donne.</p>
+<p>La forme <code>PUT</code> complet exige de relire l’item juste avant, de modifier l’objet relu, puis de le renvoyer en entier. Un <code>PUT</code> construit à partir d’une lecture ancienne écrase les modifications faites entre-temps.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Les écritures ne lèvent pas d’exception
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>postData</code>, dans <code>omk.js</code>, renvoie le corps JSON de la réponse <strong>sans contrôler le statut HTTP</strong>. Un refus du serveur — droits insuffisants, item déjà supprimé, donnée invalide — revient donc sous la forme d’un objet JSON d’erreur, et non d’une exception.</p>
+<p>Toute écriture doit par conséquent être vérifiée explicitement : présence de <code>o:id</code> dans la réponse pour une création ou une mise à jour, absence de clef <code>errors</code> pour une suppression. Les deux applications le font désormais partout ; tout nouveau code d’écriture doit faire de même, faute de quoi l’interface annoncera des réussites qui n’ont pas eu lieu.</p>
+</div>
+</div>
+</section>
+<section id="charte-graphique" class="level2">
+<h2 class="anchored" data-anchor-id="charte-graphique">Charte graphique</h2>
+<p>Les deux feuilles de style partagent <strong>le même bloc <code>:root</code> de vingt jetons</strong>, aux valeurs rigoureusement identiques. C’est ce qui garantit que les trois outils se ressemblent, et c’est une propriété à préserver : modifier un jeton dans une application sans le répercuter dans l’autre les fait diverger.</p>
+<p>Les couleurs viennent de la charte de l’Université Paris 8 — Poppy, Raspberry, Purple, Maroon — réparties ainsi :</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Jeton</th>
+<th>Valeur</th>
+<th>Emploi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>--accent</code></td>
+<td><code>#AE164E</code></td>
+<td>Raspberry, couleur d’interaction</td>
+</tr>
+<tr class="even">
+<td><code>--primary</code></td>
+<td><code>#75151F</code></td>
+<td>Maroon, bandeaux sombres</td>
+</tr>
+<tr class="odd">
+<td><code>--danger</code></td>
+<td><code>#E30F1B</code></td>
+<td>Poppy, réservé à l’alerte</td>
+</tr>
+<tr class="even">
+<td><code>--success</code></td>
+<td><code>#1B6B45</code></td>
+<td>hors charte — état « fait »</td>
+</tr>
+<tr class="odd">
+<td><code>--warn</code></td>
+<td><code>#92400E</code></td>
+<td>hors charte — état « à faire »</td>
+</tr>
+<tr class="even">
+<td><code>--bg</code></td>
+<td><code>#F7F4F5</code></td>
+<td>fond de page</td>
+</tr>
+<tr class="odd">
+<td><code>--card-bg</code></td>
+<td><code>#FFFFFF</code></td>
+<td>fond des cartes</td>
+</tr>
+<tr class="even">
+<td><code>--text</code></td>
+<td><code>#1A1418</code></td>
+<td>texte</td>
+</tr>
+<tr class="odd">
+<td><code>--muted</code></td>
+<td><code>#5B5058</code></td>
+<td>texte secondaire</td>
+</tr>
+<tr class="even">
+<td><code>--border</code></td>
+<td><code>#E2D8DC</code></td>
+<td>filets</td>
+</tr>
+<tr class="odd">
+<td><code>--neutral</code></td>
+<td><code>#877C83</code></td>
+<td>éléments neutres</td>
+</tr>
+<tr class="even">
+<td><code>--shadow</code></td>
+<td><code>0 1px 2px rgba(20,35,43,.10)</code></td>
+<td>ombre des cartes</td>
+</tr>
+<tr class="odd">
+<td><code>--signal-2</code></td>
+<td><code>#FAE7ED</code></td>
+<td>rose pâle, survol</td>
+</tr>
+<tr class="even">
+<td><code>--filet-doux</code></td>
+<td><code>#EFE8EB</code></td>
+<td>gris chaud, entrée courante</td>
+</tr>
+</tbody>
+</table>
+<p>Le vert et l’ambre ne figurent pas dans la charte, qui ne contient aucune de ces deux teintes. Ils portent l’opposition « fait » / « à faire », l’information la plus consultée des deux interfaces, qu’aucune des cinq couleurs institutionnelles ne peut rendre. Les six derniers jetons — <code>--barre-*</code>, <code>--ombre-modale</code>, <code>--alerte-2</code> — ne sont pas encore employés : ils sont posés d’avance pour qu’un éventuel thème sombre soit un bloc à ajouter plutôt qu’un chantier.</p>
+<p>Tous les contrastes dépassent le seuil AA : Raspberry 6,94 sur blanc, Poppy 4,83, Maroon 11,15, vert 6,49, ambre 7,09.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Changer une couleur
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il suffit de modifier la valeur du jeton dans <code>:root</code>, <strong>dans les deux feuilles de style</strong>. Les quelque 170 appels à <code>var()</code> de chaque feuille suivent automatiquement. Ne pas écrire de couleur en dur : trois résidus de l’ancienne palette avaient survécu hors des jetons et ont produit, au moment du changement de charte, un bandeau en dégradé rouge vers bleu et un bouton rouge auréolé de bleu.</p>
+</div>
+</div>
+</section>
+<section id="cache-et-mise-à-jour" class="level2">
+<h2 class="anchored" data-anchor-id="cache-et-mise-à-jour">Cache et mise à jour</h2>
+<p>Le <code>.htaccess</code> de chaque application désactive le cache <strong>pour <code>index.html</code> seulement</strong> :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode apache code-with-copy"><code class="sourceCode apache"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;Files</span><span class="at"> "index.html"</span><span class="fu">&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    Header<span class="st"> set Cache-Control "no-cache, no-store, must-revalidate"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;/Files&gt;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>La feuille de style, elle, est mise en cache par le navigateur. Elle est donc appelée avec un paramètre de version :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">"stylesheet"</span><span class="ot"> href</span><span class="op">=</span><span class="st">"assets/main.css?v=0.3.5"</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>À faire à chaque release qui touche <code>main.css</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Incrémenter le <code>?v=</code> <strong>en même temps que le numéro de version affiché</strong>. Sans cela, les utilisateurs reçoivent le nouveau HTML avec l’ancienne feuille de style : les éléments nouvellement stylés s’affichent sans mise en forme jusqu’à un rechargement forcé. Comme <code>index.html</code> n’est jamais mis en cache, le nouveau HTML porte toujours le nouveau paramètre, et l’invalidation est garantie.</p>
+<p>Les modules JavaScript sous <code>assets/js/</code> n’ont <strong>pas</strong> ce mécanisme. Si l’un d’eux change — <code>omk.js</code> notamment —, il faudra soit étendre le <code>.htaccess</code>, soit versionner les chemins d’import.</p>
+</div>
+</div>
+</section>
+<section id="navigation-entre-les-outils" class="level2">
+<h2 class="anchored" data-anchor-id="navigation-entre-les-outils">Navigation entre les outils</h2>
+<p>Un bouton en forme de carré barré, ancré à 24 px du bord gauche et 18 px du haut du bandeau, ouvre le menu des outils. Ces coordonnées sont identiques dans les trois applications : d’une page à l’autre, le bouton tombe au même pixel quelle que soit la largeur de la fenêtre.</p>
+<p>Le menu liste les trois outils, puis l’instance Omeka S détachée par un filet. Conventions communes :</p>
+<ul>
+<li>l’application courante figure dans la liste mais <strong>n’est pas un lien</strong> — un renvoi vers la page où l’on se trouve déjà n’a rien à offrir ; elle porte un fond neutre et une pastille Raspberry ;</li>
+<li>les outils voisins <strong>remplacent la page</strong> : ce sont des pages de la même suite, pas des références extérieures ;</li>
+<li>l’instance Omeka S <strong>s’ouvre dans un nouvel onglet</strong> : on y va vérifier une fiche, pas quitter l’outil. Son adresse est déduite de celle de l’API, car elle change d’un déploiement à l’autre.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Le titre n’ouvre pas le menu
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Seul le bouton carré le fait. Le titre a cessé d’être cliquable lorsque le bouton en a été détaché pour être ancré au bord. C’est un changement d’habitude pour les opérateurs qui connaissaient les versions antérieures.</p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copié");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copié");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Direction de la Recherche de Paris 8</p>
+</div>   
+    <div class="nav-footer-center">
+<div class="footer-img">
+<p><img src="https://sedozed.github.io/valo-p8/assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo"></p>
+</div>
+</div>
+    <div class="nav-footer-right">
+<p>Documentation interne, ne pas diffuser</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

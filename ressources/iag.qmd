@@ -1,6 +1,46 @@
 ---
-title: "Utilisation des IA Génératives dans diverses tâches"
+title: "Utilisation de l'IA Générative"
+subtitle: "Détail d'utilisation de l'IA générative dans le projet de cartographie et conseil vis-à-vis de son utilisation à l'avenir."
+author: "Cédric BOUCLY"
+date: "2026-11-10"
+date-format: "D MMMM YYYY"
 lang: fr
+keywords: [Protocole, IA Générative, Risques, Bénéfices, Documentation]
 ---
+::: {.callout-warning title="Attention" appearance="simple"}
+La page est en cours d'écriture. Les informations ci-dessous ne sont donc pas exactes car incomplètes ou manquant de contexte. Merci d'attendre une version finale de la page ou de lire avec précaution.
+:::
 
-# Work in progress...
+-----
+
+# Préambule
+
+Se référer avant toute chose à la charte IA ainsi qu'aux guides de l'Université, accessibles ici : https://www.univ-paris8.fr/-Numerique-et-intelligence-artificielle-#onglet-10756
+
+Deux possibilités d'usages de modèle d'IAG :
+- **Les modèles grand public, hébergés et mis à disposition par des groupes privés** : Cette solution permet les meilleurs résultats, mais nécessite de faire très attention aux données transmises notamment pour les gros projets, et d'utiliser les modes "incognito" quand c'est possible (évite que les conversations servent d'entrainement à l'IA), et peut nécessiter un certain investissement financier. Modèle principalement utilisé : [Claude (by Anthropic)](https://claude.com/fr)
+
+- **L'interface "[Albert API](https://ia.numerique.gouv.fr/outils-ia/albert-api/)" mise à disposition par le ministère** : Solution plus souveraine et éthique, notamment sur les questions des données. Permets d'utiliser différents modèles open-sources hébergés au Ministère, mais nécessite de jongler entre les modèles (et ne bénéficie pas forcément des dernières tech'). Enfin, son utilisation est gratuite à condition que l'utilisateur est bien validé par l'État (utiliser donc adresse mail pro pour s'authentifier).
+
+Une troisième option, celle d'héberger localement un modèle LLM, peut être envisageable et offrirait les mêmes avantages que Albert API, voir mieux. Cependant, faire tourner un modèle LLM demande une très forte puissance de calcul, ce que l'université ne peut (vraisemblablement) pas se permettre d'acquérir en l'état.
+
+# Développement logiciel
+
+## Création d'interfaces.
+"Vibecoding" présente des risques de sécurité très importants. Ainsi, le code doit non seulement être relu et compris + les interfaces vibecodées ne doivent pas dépasser le statut de prototype et ne pas être placées en exploitation publiques. Lorsqu'une interface (web notamment) est hébergée sur un serveur publique, TOUJOURS REGARDER QU'AUCUNE INFO CRITIQUE EST ENCODÉE EN DUR DANS LE CODE (l'IA a tendance à faire ça).
+
+## Création d'algorithmes rapides
+Utiliser l'IA pour créer des programmes Python permettant d'automatiser certains processus, le tout sans transmettre d'information à un modèle d'IA.
+
+# Traiter de l'informations
+Il est possible de faire appel à l'IA pour de la recherche approfondie, faire des associations de synonymes ou mettre à jour des données déjà existantes (via une extraction, par exemple). Cependant, non seulement la marge d'erreur reste présence et nécessite de la relecture, et aussi lorsque de la donnée est transférée à l'IA, il faut BIEN FAIRE ATTENTION à les anonymiser et surtout à les décontextualiser.
+
+## Interagir avec la base Omeka
+Peut servir pour établir une cartographie de la structure de la base Omeka S et/ou apporter du contexte STRUCTUREL à l'IA (pour qu'elle puisse s'adapter), via l'API. Attention cependant avec ça : il est facile pour l'IA de récupérer des informations sensibles via l'API sans même qu'elle ne cherche à le faire réellement (l'API peut être très bavard, et l'IA très attentive). Il est donc important d'être méticuleux lorsqu'on demande à l'IA d'exploiter l'API, en contrôlant attentivement le périmètre d'information des requêtes API.
+
+# Autres
+
+## Documentation
+Générer de la documentation est sans doute la partie la moins sensible et la plus logique de façon d'utiliser l'IA. Tant que les consignes de la charte IA sont respectées (ne pas diffuser d'information sensible, etc), alors tout est bon.
+
+ASTUCE : Demander la rédaction directement dans les conversations de différents projets permet d'obtenir les résultats les plus précis. L'IA est entrainée à rédiger des documentations, donc lui demander explicitement d'en faire une (avec quelques consignes en plus) est très efficace.

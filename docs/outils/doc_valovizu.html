@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Cédric BOUCLY">
+<meta name="keywords" content="Omeka S, interfaces, fonctionnement, maintenance, API">
+
+<title>ValoVizu : Présentation – CartoExpert</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-66a63c344f183a26081cdb80a294f993.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CartoExpert</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Recherche"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Basculer la navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-général" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Général</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-général">    
+        <li>
+    <a class="dropdown-item" href="../index.html">
+ <span class="dropdown-text">Contexte du projet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../install.html">
+ <span class="dropdown-text">Prérequis de travail et installations</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Données</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-données">    
+        <li>
+    <a class="dropdown-item" href="../donnees/structure_bdd.html">
+ <span class="dropdown-text">Structure principale de la base Omeka S</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../donnees/standardiser_data2csv.html">
+ <span class="dropdown-text">↳ Préparer les données (CSV)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../donnees/bdd_omeka.html">
+ <span class="dropdown-text">↳ Importer dans Oméka S</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../donnees/scanr_extract.html">
+ <span class="dropdown-text">↳ Extraire depuis ScanR</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-outils" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Outils</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-outils">    
+        <li>
+    <a class="dropdown-item" href="../outils/doc_validexp_et_validkeyw.html">
+ <span class="dropdown-text">validExpertises &amp; validKeywords</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../outils/doc_valovizu.html">
+ <span class="dropdown-text">L’interface de datavisualisation ValoVizu</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ressources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ressources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-ressources">    
+        <li>
+    <a class="dropdown-item" href="../ressources/formation.html">
+ <span class="dropdown-text">Formation Omeka S pour non-informaticiens</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ressources/hypothesis.html">
+ <span class="dropdown-text">Hypothes.is comme outil collaboratif</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ressources/listmonk.html">
+ <span class="dropdown-text">ListMonk pour les campagnes de mailing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ressources/dico_rdf.html">
+ <span class="dropdown-text">Web sémantique &amp; RDF</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../ressources/iag.html">
+ <span class="dropdown-text">Utilisation de l’IA Générative</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sur cette page</h2>
+   
+  <ul>
+  <li><a href="#ce-que-fait-loutil" id="toc-ce-que-fait-loutil" class="nav-link active" data-scroll-target="#ce-que-fait-loutil">Ce que fait l’outil</a>
+  <ul class="collapse">
+  <li><a href="#les-deux-tableaux-de-bord" id="toc-les-deux-tableaux-de-bord" class="nav-link" data-scroll-target="#les-deux-tableaux-de-bord">Les deux tableaux de bord</a>
+  <ul class="collapse">
+  <li><a href="#sec-ope" id="toc-sec-ope" class="nav-link" data-scroll-target="#sec-ope">Partenariats</a></li>
+  <li><a href="#sec-ec" id="toc-sec-ec" class="nav-link" data-scroll-target="#sec-ec">Enseignants-chercheurs</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#les-fonctionnalités-transversales" id="toc-les-fonctionnalités-transversales" class="nav-link" data-scroll-target="#les-fonctionnalités-transversales">Les fonctionnalités transversales</a>
+  <ul class="collapse">
+  <li><a href="#filtrer-masquer-détacher" id="toc-filtrer-masquer-détacher" class="nav-link" data-scroll-target="#filtrer-masquer-détacher">Filtrer, masquer, détacher</a></li>
+  <li><a href="#sec-restrictions" id="toc-sec-restrictions" class="nav-link" data-scroll-target="#sec-restrictions">Restreindre une figure sans toucher aux autres</a></li>
+  <li><a href="#partager-une-vue" id="toc-partager-une-vue" class="nav-link" data-scroll-target="#partager-une-vue">Partager une vue</a></li>
+  <li><a href="#annuler-et-rétablir" id="toc-annuler-et-rétablir" class="nav-link" data-scroll-target="#annuler-et-rétablir">Annuler et rétablir</a></li>
+  <li><a href="#profils-de-réglages" id="toc-profils-de-réglages" class="nav-link" data-scroll-target="#profils-de-réglages">Profils de réglages</a></li>
+  <li><a href="#exporter" id="toc-exporter" class="nav-link" data-scroll-target="#exporter">Exporter</a></li>
+  <li><a href="#remonter-à-la-fiche-omeka-s" id="toc-remonter-à-la-fiche-omeka-s" class="nav-link" data-scroll-target="#remonter-à-la-fiche-omeka-s">Remonter à la fiche Omeka S</a></li>
+  <li><a href="#contrôle-de-la-qualité-des-données" id="toc-contrôle-de-la-qualité-des-données" class="nav-link" data-scroll-target="#contrôle-de-la-qualité-des-données">Contrôle de la qualité des données</a></li>
+  <li><a href="#navigation-entre-les-outils" id="toc-navigation-entre-les-outils" class="nav-link" data-scroll-target="#navigation-entre-les-outils">Navigation entre les outils</a></li>
+  </ul></li>
+  <li><a href="#sec-montants" id="toc-sec-montants" class="nav-link" data-scroll-target="#sec-montants">Les montants : une conception à connaître</a>
+  <ul class="collapse">
+  <li><a href="#les-trois-réglages" id="toc-les-trois-réglages" class="nav-link" data-scroll-target="#les-trois-réglages">Les trois réglages</a></li>
+  <li><a href="#le-double-comptage-et-comment-il-est-signalé" id="toc-le-double-comptage-et-comment-il-est-signalé" class="nav-link" data-scroll-target="#le-double-comptage-et-comment-il-est-signalé">Le double comptage, et comment il est signalé</a></li>
+  </ul></li>
+  <li><a href="#détails-techniques" id="toc-détails-techniques" class="nav-link" data-scroll-target="#détails-techniques">Détails techniques</a>
+  <ul class="collapse">
+  <li><a href="#langages-et-dépendances" id="toc-langages-et-dépendances" class="nav-link" data-scroll-target="#langages-et-dépendances">Langages et dépendances</a></li>
+  <li><a href="#connexion-à-omeka-s" id="toc-connexion-à-omeka-s" class="nav-link" data-scroll-target="#connexion-à-omeka-s">Connexion à Omeka S</a>
+  <ul class="collapse">
+  <li><a href="#classes-et-propriétés-lues" id="toc-classes-et-propriétés-lues" class="nav-link" data-scroll-target="#classes-et-propriétés-lues">Classes et propriétés lues</a></li>
+  <li><a href="#le-cache-et-quand-il-faut-linvalider" id="toc-le-cache-et-quand-il-faut-linvalider" class="nav-link" data-scroll-target="#le-cache-et-quand-il-faut-linvalider">Le cache, et quand il faut l’invalider</a></li>
+  </ul></li>
+  <li><a href="#persistance-dans-le-navigateur" id="toc-persistance-dans-le-navigateur" class="nav-link" data-scroll-target="#persistance-dans-le-navigateur">Persistance dans le navigateur</a></li>
+  </ul></li>
+  <li><a href="#arborescence" id="toc-arborescence" class="nav-link" data-scroll-target="#arborescence">Arborescence</a></li>
+  <li><a href="#maintenance-où-lon-touche-quoi" id="toc-maintenance-où-lon-touche-quoi" class="nav-link" data-scroll-target="#maintenance-où-lon-touche-quoi">Maintenance : où l’on touche quoi</a>
+  <ul class="collapse">
+  <li><a href="#ajouter-ou-modifier-un-champ" id="toc-ajouter-ou-modifier-un-champ" class="nav-link" data-scroll-target="#ajouter-ou-modifier-un-champ">Ajouter ou modifier un champ</a></li>
+  <li><a href="#ajouter-une-figure" id="toc-ajouter-une-figure" class="nav-link" data-scroll-target="#ajouter-une-figure">Ajouter une figure</a></li>
+  <li><a href="#changer-la-charte-graphique" id="toc-changer-la-charte-graphique" class="nav-link" data-scroll-target="#changer-la-charte-graphique">Changer la charte graphique</a></li>
+  <li><a href="#changer-les-tranches-de-montant" id="toc-changer-les-tranches-de-montant" class="nav-link" data-scroll-target="#changer-les-tranches-de-montant">Changer les tranches de montant</a></li>
+  <li><a href="#changer-les-masquages-doffice" id="toc-changer-les-masquages-doffice" class="nav-link" data-scroll-target="#changer-les-masquages-doffice">Changer les masquages d’office</a></li>
+  <li><a href="#ajouter-un-contrôle-de-qualité" id="toc-ajouter-un-contrôle-de-qualité" class="nav-link" data-scroll-target="#ajouter-un-contrôle-de-qualité">Ajouter un contrôle de qualité</a></li>
+  <li><a href="#sec-ecosysteme" id="toc-sec-ecosysteme" class="nav-link" data-scroll-target="#sec-ecosysteme">Modifier la liste des outils de l’écosystème</a></li>
+  </ul></li>
+  <li><a href="#les-vérifications" id="toc-les-vérifications" class="nav-link" data-scroll-target="#les-vérifications">Les vérifications</a>
+  <ul class="collapse">
+  <li><a href="#la-méthode-à-suivre-pour-toute-correction" id="toc-la-méthode-à-suivre-pour-toute-correction" class="nav-link" data-scroll-target="#la-méthode-à-suivre-pour-toute-correction">La méthode à suivre pour toute correction</a></li>
+  </ul></li>
+  <li><a href="#pièges-connus" id="toc-pièges-connus" class="nav-link" data-scroll-target="#pièges-connus">Pièges connus</a>
+  <ul class="collapse">
+  <li><a href="#écarter-une-valeur-de-léchelle-oblige-à-borner-son-dessin" id="toc-écarter-une-valeur-de-léchelle-oblige-à-borner-son-dessin" class="nav-link" data-scroll-target="#écarter-une-valeur-de-léchelle-oblige-à-borner-son-dessin">Écarter une valeur de l’échelle oblige à borner son dessin</a></li>
+  <li><a href="#un-élément-flottant-ne-vit-pas-chez-celui-qui-louvre" id="toc-un-élément-flottant-ne-vit-pas-chez-celui-qui-louvre" class="nav-link" data-scroll-target="#un-élément-flottant-ne-vit-pas-chez-celui-qui-louvre">Un élément flottant ne vit pas chez celui qui l’ouvre</a></li>
+  <li><a href="#aria-label-jamais-title-là-où-une-infobulle-existe" id="toc-aria-label-jamais-title-là-où-une-infobulle-existe" class="nav-link" data-scroll-target="#aria-label-jamais-title-là-où-une-infobulle-existe"><code>aria-label</code>, jamais <code>&lt;title&gt;</code>, là où une infobulle existe</a></li>
+  <li><a href="#le-glissement-nest-pas-un-clic" id="toc-le-glissement-nest-pas-un-clic" class="nav-link" data-scroll-target="#le-glissement-nest-pas-un-clic">Le glissement n’est pas un clic</a></li>
+  <li><a href="#lidentité-dune-valeur-nest-pas-son-libellé" id="toc-lidentité-dune-valeur-nest-pas-son-libellé" class="nav-link" data-scroll-target="#lidentité-dune-valeur-nest-pas-son-libellé">L’identité d’une valeur n’est pas son libellé</a></li>
+  </ul></li>
+  <li><a href="#déploiement" id="toc-déploiement" class="nav-link" data-scroll-target="#déploiement">Déploiement</a></li>
+  <li><a href="#glossaire" id="toc-glossaire" class="nav-link" data-scroll-target="#glossaire">Glossaire</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ValoVizu : Présentation</h1>
+<p class="subtitle lead">Présentation de l’interface de datavisualisation des données présentes sur Omeka S</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Auteur·rice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Cédric BOUCLY </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Date de publication</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">1 novembre 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Mots clés</div>
+    <p>Omeka S, interfaces, fonctionnement, maintenance, API</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="ce-que-fait-loutil" class="level1">
+<h1>Ce que fait l’outil</h1>
+<p>ValoVizu interroge l’instance <strong>Omeka S</strong> de l’université et en tire deux tableaux de bord : les <strong>partenariats</strong> (les opérations contractuelles, leurs partenaires, leurs montants) et les <strong>enseignants-chercheurs</strong> (leurs laboratoires, leurs statuts, leurs thèmes de recherche). La même base, deux lectures, deux publics.</p>
+<p>L’outil n’écrit rien dans Omeka S. Il lit, normalise, compte et dessine. Toute correction de donnée se fait dans Omeka S, et se voit ici au rechargement suivant.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Le principe qui commande tout le reste
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Un seul point de vérité par tableau de bord.</strong> Il existe un unique objet d’état — quels filtres sont posés, quelles valeurs sont masquées, quelle recherche est en cours — et tous les panneaux reçoivent les mêmes enregistrements filtrés. Aucun panneau ne refait ce travail dans son coin.</p>
+<p>Conséquence pratique : <strong>tout geste dans n’importe quelle figure agit sur l’ensemble de la page.</strong> Cliquer une barre « Convention » dans les types de contrat restreint aussitôt les indicateurs, le réseau, le tableau et la légende. C’est ce qui fait de l’outil une exploration plutôt qu’une collection de graphiques.</p>
+</div>
+</div>
+<section id="les-deux-tableaux-de-bord" class="level2">
+<h2 class="anchored" data-anchor-id="les-deux-tableaux-de-bord">Les deux tableaux de bord</h2>
+<p>Le basculement se fait par les deux onglets en haut de page. Chaque tableau de bord a <strong>son propre état de sélection</strong> : revenir à l’autre onglet retrouve les filtres qu’on y avait laissés.</p>
+<section id="sec-ope" class="level3">
+<h3 class="anchored" data-anchor-id="sec-ope">Partenariats</h3>
+<p>Un enregistrement = une opération de partenariat (classe <code>OPE</code> dans Omeka S).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Panneau</th>
+<th>Ce qu’il répond</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Indicateurs</strong></td>
+<td>Opérations, partenaires distincts, types de contrat, laboratoires impliqués, période couverte ; budget cumulé, montant global cumulé, budget médian, concentration</td>
+</tr>
+<tr class="even">
+<td><strong>Opérations par année</strong></td>
+<td>Le rythme de la contractualisation</td>
+</tr>
+<tr class="odd">
+<td><strong>Types de contrat</strong></td>
+<td>La répartition par nature juridique, croisable avec la durée</td>
+</tr>
+<tr class="even">
+<td><strong>Montants</strong></td>
+<td>Cinq lectures des données financières (voir <a href="#sec-montants" class="quarto-xref">Section&nbsp;3</a>)</td>
+</tr>
+<tr class="odd">
+<td><strong>Types de partenaires</strong></td>
+<td>Entreprises, collectivités, associations, universités…</td>
+</tr>
+<tr class="even">
+<td><strong>Partenaires</strong></td>
+<td>Qui revient le plus souvent</td>
+</tr>
+<tr class="odd">
+<td><strong>Laboratoires</strong></td>
+<td>Quelles unités contractualisent</td>
+</tr>
+<tr class="even">
+<td><strong>Durée des opérations</strong></td>
+<td>En tranches ou en jours, au choix</td>
+</tr>
+<tr class="odd">
+<td><strong>Années et partenaires</strong></td>
+<td>Croisement, en empilements ou en matrice</td>
+</tr>
+<tr class="even">
+<td><strong>Durée des partenariats par laboratoire</strong></td>
+<td>Frise : qui est engagé, quand, et jusqu’à quand</td>
+</tr>
+<tr class="odd">
+<td><strong>Relations</strong></td>
+<td>Laboratoires × partenaires, en colonnes, en flux ou en matrice</td>
+</tr>
+<tr class="even">
+<td><strong>Partenaires</strong> (panneau dédié)</td>
+<td>La fiche de chaque partenaire, exportable en CSV</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-ec" class="level3">
+<h3 class="anchored" data-anchor-id="sec-ec">Enseignants-chercheurs</h3>
+<p>Un enregistrement = un chercheur (classe <code>EnseignantChercheur</code>).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Panneau</th>
+<th>Ce qu’il répond</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Indicateurs</strong></td>
+<td>Effectifs, laboratoires, domaines HCERES, sections CNU, thèmes de recherche distincts</td>
+</tr>
+<tr class="even">
+<td><strong>Réseau</strong></td>
+<td>Les chercheurs autour de leurs laboratoires, en simulation de forces</td>
+</tr>
+<tr class="odd">
+<td><strong>Laboratoires et statuts</strong></td>
+<td>La composition de chaque unité</td>
+</tr>
+<tr class="even">
+<td><strong>Mots-clés</strong></td>
+<td>Nuage de mots, ou histogramme</td>
+</tr>
+<tr class="odd">
+<td><strong>Sections CNU</strong></td>
+<td>Le rattachement disciplinaire</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Le réseau n’est pas un décor
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il répond à ce qu’aucun histogramme ne traite : quels pôles pèsent le plus, lesquels sont voisins, et <strong>qui est à cheval sur deux laboratoires</strong>. Les enveloppes colorées cernent les groupes ; un nœud placé entre deux enveloppes est un chercheur partagé. On peut saisir un pôle pour le déplacer — le glisser ne filtre pas, seul le clic simple filtre.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="les-fonctionnalités-transversales" class="level1">
+<h1>Les fonctionnalités transversales</h1>
+<section id="filtrer-masquer-détacher" class="level2">
+<h2 class="anchored" data-anchor-id="filtrer-masquer-détacher">Filtrer, masquer, détacher</h2>
+<p>Trois gestes distincts, qu’il faut savoir distinguer pour lire les chiffres.</p>
+<p><strong>Filtrer</strong> (clic sur une valeur, ou case dans la colonne de gauche) restreint la sélection à cette valeur. C’est réversible et cumulatif.</p>
+<p><strong>Masquer</strong> (clic droit → <em>Masquer cette valeur</em>) met une valeur <strong>hors périmètre</strong> : elle disparaît de tous les comptages, comme si elle n’existait pas. L’université elle-même est masquée d’office côté partenariats — elle figure dans presque toutes les opérations, ce qui est exact mais écrase l’échelle et masque les partenaires extérieurs, qui sont le sujet.</p>
+<p><strong>Détacher</strong> (ou « épingler ») sort une valeur d’un regroupement « Autres » pour la montrer isolément.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rien n’est jamais écarté en silence. Les valeurs masquées figurent dans un panneau dédié, et la <strong>légende</strong> sous le titre énonce en toutes lettres ce que la vue affiche et ce qu’elle exclut. C’est cette phrase qu’on colle sous une figure dans un rapport.</p>
+</div>
+</div>
+</section>
+<section id="sec-restrictions" class="level2">
+<h2 class="anchored" data-anchor-id="sec-restrictions">Restreindre une figure sans toucher aux autres</h2>
+<p>Le clic droit sur une valeur propose aussi de <strong>ne garder que certaines valeurs sur cette figure-là</strong>. La différence avec un filtre :</p>
+<ul>
+<li>un <strong>filtre</strong> change la sélection, donc tous les chiffres de la page ;</li>
+<li>une <strong>restriction</strong> ne change que ce qu’une figure donnée montre. Les effectifs ne sont pas recalculés : on cache des barres, on ne refait pas les comptes.</li>
+</ul>
+<p>Plusieurs figures peuvent porter des restrictions différentes en même temps. Un bandeau sous la figure le rappelle, un bouton global « Tout réafficher » les lève toutes, et elles sont reportées dans l’adresse et dans l’historique d’annulation — elles se comportent à tous égards comme un filtre, sauf qu’elles ne recalculent rien.</p>
+</section>
+<section id="partager-une-vue" class="level2">
+<h2 class="anchored" data-anchor-id="partager-une-vue">Partager une vue</h2>
+<p>Le bouton <strong>Copier le lien</strong> produit une adresse qui reproduit exactement la sélection courante : filtres, masquages, détachements, restrictions, recherche.</p>
+<p>Ce qui <strong>n’est pas</strong> reporté : les réglages d’affichage — mode d’une figure, sens des barres, niveau de détail, thème. Ils relèvent du confort de celui qui regarde, non de ce qu’il montre, et les embarquer allongerait l’adresse sans rien apporter à qui la reçoit.</p>
+<p>L’écriture de l’adresse n’empile <strong>aucune entrée dans l’historique du navigateur</strong> : chaque case cochée y créerait une étape, et le bouton « précédent » deviendrait un annulateur maladroit.</p>
+</section>
+<section id="annuler-et-rétablir" class="level2">
+<h2 class="anchored" data-anchor-id="annuler-et-rétablir">Annuler et rétablir</h2>
+<p>Les boutons <code>↶ Annuler</code> / <code>↷ Rétablir</code> portent sur la sélection, avec une profondeur de quarante pas. Ils annoncent ce qu’ils vont défaire (« annuler le filtre laboratoire », « annuler un masquage ») : un bouton sans objet oblige à cliquer pour savoir ce qu’il fait.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Pourquoi l’état est relevé au rendu, et non à l’action
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Les modifications de la sélection partent d’une douzaine d’endroits : facettes, menu contextuel, clics dans les figures, fenêtre des regroupements, profils. Instrumenter chacun demanderait de n’en oublier aucun, aujourd’hui et à chaque ajout — et un oubli ne se verrait pas.</p>
+<p>L’état est donc comparé à chaque rendu avec le dernier relevé : s’il a changé, le précédent rejoint la pile. Aucun point d’appel à instrumenter, et tout changement est saisi, d’où qu’il vienne.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="profils-de-réglages" class="level2">
+<h2 class="anchored" data-anchor-id="profils-de-réglages">Profils de réglages</h2>
+<p>Un profil enregistre une sélection complète sous un nom, dans le navigateur. Utile pour les vues qu’on reconstitue chaque mois.</p>
+</section>
+<section id="exporter" class="level2">
+<h2 class="anchored" data-anchor-id="exporter">Exporter</h2>
+<ul>
+<li><strong>Une figure</strong> : bouton d’export en PNG ou SVG. <strong>La légende est incrustée dans le fichier</strong>, non proposée à côté : une figure exportée quitte l’outil et circule seule ; sans la phrase qui la décrit, plus personne ne sait sur quelle sélection elle porte.</li>
+<li><strong>La sélection</strong> : export CSV depuis le tableau.</li>
+<li><strong>Les partenaires</strong> : export CSV depuis le panneau dédié.</li>
+</ul>
+</section>
+<section id="remonter-à-la-fiche-omeka-s" class="level2">
+<h2 class="anchored" data-anchor-id="remonter-à-la-fiche-omeka-s">Remonter à la fiche Omeka S</h2>
+<p>Le menu contextuel d’une valeur, d’un enregistrement ou d’un point de figure propose <strong>Ouvrir la fiche dans Omeka S</strong>, qui mène à la page d’administration de l’item (<code>…/admin/item/{id}</code>).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Pourquoi la page d’administration et non l’identifiant
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>L’<code>@id</code> d’un item Omeka S renvoie du JSON-LD, pas une page lisible. L’adresse est donc reconstruite à partir de celle de l’API, dont on retire le suffixe <code>/api</code>.</p>
+<p>Le renvoi n’est proposé <strong>que pour les valeurs qui proviennent d’un item lié</strong> — un partenaire, un type de contrat. Les champs calculés (une année, une tranche de durée) n’ont pas de fiche : proposer le lien mènerait à une page inexistante.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="contrôle-de-la-qualité-des-données" class="level2">
+<h2 class="anchored" data-anchor-id="contrôle-de-la-qualité-des-données">Contrôle de la qualité des données</h2>
+<p>Un panneau replié en bas de page signale ce que la donnée a d’incertain. Un tableau de bord donne une impression de complétude qu’aucun jeu de données ne mérite ; ce panneau rétablit la mesure.</p>
+<p>Onze contrôles, dont : année déduite plutôt que saisie, dates incohérentes (fin avant début), durée anormalement longue, partenaire sans type, montant illisible, <strong>budget supérieur au montant global</strong> (inversion probable des deux champs), opération sans laboratoire.</p>
+</section>
+<section id="navigation-entre-les-outils" class="level2">
+<h2 class="anchored" data-anchor-id="navigation-entre-les-outils">Navigation entre les outils</h2>
+<p>Le bouton à trois barres, en haut à gauche, relie les applications de l’ensemble : ValoVizu, validExpertises, cleanKeywords, plus un renvoi vers l’instance Omeka S. Voir <a href="#sec-ecosysteme" class="quarto-xref">Section&nbsp;6.7</a> pour la maintenance de cette liste.</p>
+</section>
+</section>
+<section id="sec-montants" class="level1">
+<h1>Les montants : une conception à connaître</h1>
+<p>Ce panneau a été repris deux fois. Les raisons méritent d’être connues, parce qu’elles décrivent un piège général.</p>
+<p><strong>Première version : des tranches fixes, comptées en barres.</strong> Lecture fausse par construction — une distribution de montants est très dissymétrique, si bien que les deux premières tranches absorbaient l’essentiel des opérations et que les contrats exceptionnels, c’est-à-dire précisément ce qu’on cherche, disparaissaient dans la dernière. Rien ne distinguait 26 k€ de 49 k€.</p>
+<p><strong>Deuxième version : des figures de distribution</strong> — courbe classée, courbe de concentration, boîtes à moustaches. Techniquement plus justes, et moins informatives : elles répondaient à « quelle est la forme statistique de la série », question que personne ne pose, et ne portaient <strong>aucun chiffre lisible</strong> là où une barre étiquetée en donnait un.</p>
+<p><strong>Version actuelle : des euros cumulés par catégorie, écrits sur chaque barre.</strong> Ce qu’aucune des deux précédentes ne montrait : combien d’euros, de qui, quand.</p>
+<section id="les-trois-réglages" class="level2">
+<h2 class="anchored" data-anchor-id="les-trois-réglages">Les trois réglages</h2>
+<p>La tête du panneau porte trois sélecteurs indépendants. Réunis en un menu unique, ils auraient fait soixante entrées pour trois décisions.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Réglage</th>
+<th>Ce qu’il décide</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Montant</strong></td>
+<td>La grandeur mesurée : budget de l’opération (part Paris 8) ou montant global TTC</td>
+</tr>
+<tr class="even">
+<td><strong>Afficher</strong></td>
+<td>La lecture : montants cumulés, volume contre valeur, bande de dispersion, cumul dans le temps, les plus gros contrats</td>
+</tr>
+<tr class="odd">
+<td><strong>Par</strong></td>
+<td>La maille : année, type de contrat, laboratoire, partenaire, type de partenaire, domaine d’activité</td>
+</tr>
+</tbody>
+</table>
+<p>S’y ajoute une bascule <strong>linéaire / logarithmique</strong> partout où un axe porte des montants bruts, et une bascule de sens des barres.</p>
+</section>
+<section id="le-double-comptage-et-comment-il-est-signalé" class="level2">
+<h2 class="anchored" data-anchor-id="le-double-comptage-et-comment-il-est-signalé">Le double comptage, et comment il est signalé</h2>
+<p>Sommer les euros par <strong>année</strong> ou par <strong>type de contrat</strong> est exact : une opération n’a qu’une année et qu’un type. Sur les <strong>laboratoires</strong> et les <strong>partenaires</strong>, une opération compte pour chacune de ses valeurs, et la somme des barres dépasse le total réel.</p>
+<p>L’outil affiche donc toujours le <strong>total réel de la sélection</strong> sous la figure, et annonce l’écart <strong>dans les deux sens</strong> :</p>
+<ul>
+<li>au-dessus → double comptage d’un champ multivalué ;</li>
+<li>en dessous → des opérations n’apparaissent sur aucune barre, parce que toutes leurs valeurs pour ce champ sont masquées (le masquage d’office de l’université produit ce cas en maille « Partenaire »).</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Avertissement
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La <strong>bande de dispersion</strong> est la seule lecture qui n’additionne rien : une opération portée par deux laboratoires y apparaît dans les deux rangs sans fausser aucune médiane. C’est la lecture à privilégier quand le double comptage gêne.</p>
+</div>
+</div>
+<p>Les <strong>tranches de montant</strong> n’ont pas disparu : elles restent en facette, où leur rôle est de sélectionner (« les contrats de plus de 100 k€ ») et non de décrire. Un seuil arbitraire est sans conséquence quand il ne sert qu’à découper une sélection.</p>
+</section>
+</section>
+<section id="détails-techniques" class="level1">
+<h1>Détails techniques</h1>
+<section id="langages-et-dépendances" class="level2">
+<h2 class="anchored" data-anchor-id="langages-et-dépendances">Langages et dépendances</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Langage</strong></td>
+<td>JavaScript, modules ES natifs (<code>import</code> / <code>export</code>)</td>
+</tr>
+<tr class="even">
+<td><strong>Dépendances d’exécution</strong></td>
+<td><strong>aucune</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Figures</strong></td>
+<td>SVG construit à la main, sans bibliothèque graphique</td>
+</tr>
+<tr class="even">
+<td><strong>Styles</strong></td>
+<td>CSS natif, variables personnalisées, aucun préprocesseur</td>
+</tr>
+<tr class="odd">
+<td><strong>Build</strong></td>
+<td><strong>aucun</strong> — pas de transpilation, pas de bundler, pas de <code>node_modules</code></td>
+</tr>
+<tr class="even">
+<td><strong>Tests</strong></td>
+<td>Node ≥ 18 + <code>jsdom</code> ; <code>playwright</code> pour la seule suite de mise en page</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>L’outil doit être servi en HTTP, pas ouvert en <code>file://</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les modules ES sont soumis à la politique d’origine : un double-clic sur <code>index.html</code> échoue. En développement, n’importe quel serveur statique convient :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> http.server 8000</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># puis http://localhost:8000/</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="connexion-à-omeka-s" class="level2">
+<h2 class="anchored" data-anchor-id="connexion-à-omeka-s">Connexion à Omeka S</h2>
+<p><strong>Aucune adresse n’est codée en dur.</strong> L’application demande l’adresse de l’API au premier lancement et la retient dans le navigateur. Une adresse inscrite dans le code se retrouverait dans le dépôt publié, y désignerait une instance qui ne regarde personne d’autre, et imposerait de modifier le code pour déployer ailleurs.</p>
+<p>Les clés <code>key_identity</code> / <code>key_credential</code> sont facultatives : elles ne servent qu’aux items non publics. <strong>Elles sont stockées en clair dans le navigateur</strong> — n’y mettre qu’une clé en lecture seule.</p>
+<section id="classes-et-propriétés-lues" class="level3">
+<h3 class="anchored" data-anchor-id="classes-et-propriétés-lues">Classes et propriétés lues</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Rôle</th>
+<th>Classe Omeka S (réglable)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chercheurs</td>
+<td><code>EnseignantChercheur</code></td>
+</tr>
+<tr class="even">
+<td>Opérations</td>
+<td><code>OPE</code></td>
+</tr>
+<tr class="odd">
+<td>Partenaires</td>
+<td><code>PartenairesOPE</code></td>
+</tr>
+</tbody>
+</table>
+<p>Principales propriétés exploitées :</p>
+<pre><code>Chercheurs    foaf:givenName, foaf:familyName, dcterms:alternative,
+              dcterms:isPartOf (laboratoire), dcterms:subject (mots-clés),
+              curation:status | valo:statut, valo:domaineHceres, valo:cnu
+
+Opérations    dcterms:title, curation:start | valo:dateDebut,
+              curation:end | valo:dateFin, dcterms:date,
+              valo:opeType (type de contrat), valo:opeCollabExterne (partenaires),
+              valo:budgOPE (budget), valo:montantGlobal (montant TTC)</code></pre>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Pourquoi deux noms pour la même information
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Les champs de date, de statut et de type de contrat sont lus sous plusieurs noms (<code>curation:start</code> <strong>ou</strong> <code>valo:dateDebut</code>), et à défaut par recherche approchante sur le nom de propriété. La saisie a varié dans le temps ; n’en lire qu’une forme viderait le champ sans rien signaler.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="le-cache-et-quand-il-faut-linvalider" class="level3">
+<h3 class="anchored" data-anchor-id="le-cache-et-quand-il-faut-linvalider">Le cache, et quand il faut l’invalider</h3>
+<p>Les données chargées sont conservées dans le navigateur, sous une clé qui dépend de l’adresse de l’API. Le bouton <strong>Recharger les données</strong> le vide et réinterroge l’API.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span><code>VERSION_FORMAT</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>js/core/omeka.js</code> porte une constante <code>VERSION_FORMAT</code> (actuellement <strong>7</strong>). Un cache dont la version diffère est ignoré et rechargé.</p>
+<p><strong>Toute modification de la forme des enregistrements normalisés — ajout d’un champ, changement de nom, changement de type — doit s’accompagner d’une incrémentation de cette constante.</strong> Sans quoi les utilisateurs qui ont déjà un cache verront l’ancienne forme, et l’application échouera sur un champ absent sans que rien n’explique pourquoi.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="persistance-dans-le-navigateur" class="level2">
+<h2 class="anchored" data-anchor-id="persistance-dans-le-navigateur">Persistance dans le navigateur</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Clé</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>valo_config</code></td>
+<td>Adresse de l’API, identifiants, noms de classes</td>
+</tr>
+<tr class="even">
+<td><code>valo_preferences</code></td>
+<td>Thème, couleurs, unité de durée, pas du tableau, panneaux repliés</td>
+</tr>
+<tr class="odd">
+<td><code>valo_reglages</code></td>
+<td>Profils enregistrés, renommages</td>
+</tr>
+<tr class="even">
+<td><code>valo_cache_ec_…</code>, <code>valo_cache_ope_…</code></td>
+<td>Données chargées, par adresse d’API</td>
+</tr>
+</tbody>
+</table>
+<p>Rien n’est envoyé ailleurs qu’à l’instance Omeka S configurée.</p>
+</section>
+</section>
+<section id="arborescence" class="level1">
+<h1>Arborescence</h1>
+<pre><code>valo/
+├── index.html              Squelette de la page : hôtes des panneaux, modale
+│                           de configuration, voiles d'attente et d'erreur
+├── css/
+│   └── style.css           Toute la présentation, thèmes clair et sombre
+├── js/
+│   ├── app.js              Orchestration : branchements, rendu, menus
+│   ├── core/               Le moteur — ne connaît rien du DOM
+│   │   ├── omeka.js        Chargement API, normalisation, cache, montants
+│   │   ├── champs.js       Registre des champs (le pivot, voir plus bas)
+│   │   ├── selection.js    Point de vérité unique : retenus(), comptesFacette()
+│   │   ├── groupe.js       Regroupement « Autres » au-delà des n premières
+│   │   ├── adresse.js      Sélection ⇄ adresse de la page
+│   │   ├── historique.js   Annulation / rétablissement
+│   │   ├── preferences.js  Préférences d'affichage
+│   │   ├── reglages.js     Profils, renommages
+│   │   └── qualite.js      Contrôles sur la donnée
+│   ├── panels/             Un fichier par zone de la page
+│   │   ├── indicateurs.js  Bandeau de chiffres-clés
+│   │   ├── figures.js      Tous les panneaux graphiques (registre PANNEAUX)
+│   │   ├── relations.js    Laboratoires × partenaires, trois lectures
+│   │   ├── reseau.js       Réseau des chercheurs
+│   │   ├── partenaires.js  Fiches des partenaires
+│   │   ├── tableau.js      Tableau des enregistrements
+│   │   ├── atelier.js      Exploration libre : deux champs au choix
+│   │   └── qualite.js      Présentation des constats
+│   └── ui/                 Briques d'affichage réutilisables
+│       ├── graphique.js    Figures SVG : barres, colonnes, empilements,
+│       │                   bulles, frise, matrice, nuage de mots
+│       ├── montants.js     Figures financières (axe de valeur continue)
+│       ├── constellation.js  Rendu du réseau
+│       ├── physique.js     Simulation de forces
+│       ├── quadtree.js     Arbre quaternaire (Barnes-Hut)
+│       ├── enveloppe.js    Enveloppe convexe des groupes
+│       ├── flux.js         Diagramme de flux
+│       ├── facettes.js     Colonne de filtres
+│       ├── menu.js         Menu contextuel + poserFlottant()
+│       ├── outils.js       Menu de navigation entre applications
+│       ├── infobulle.js    Infobulle suivant le pointeur
+│       ├── legende.js      Phrase décrivant la sélection
+│       ├── liste.js        Fenêtre de consultation d'un regroupement
+│       └── exportFigure.js Export PNG / SVG avec légende incrustée
+├── test/
+│   ├── tout.sh             Lance l'ensemble
+│   ├── moteur.mjs          Sélection, regroupements, lecture des données
+│   ├── interface.mjs       Parcours complet dans jsdom
+│   ├── effets.mjs          Effets de bord, géométrie des figures
+│   ├── styles.mjs          Feuille de style, contrastes
+│   └── mise-en-page.mjs    Géométrie réelle, dans Chromium
+├── LISEZMOI.md             Les partis pris et leurs raisons
+└── CHANGELOG.md            Ce qui a changé, version par version</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>La règle de dépendance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>core/</code> <strong>ne touche jamais au DOM</strong>. Il se teste donc sans navigateur, et c’est ce qui rend la suite <code>moteur.mjs</code> possible et rapide. <code>panels/</code> et <code>ui/</code> peuvent en dépendre ; l’inverse est interdit.</p>
+</div>
+</div>
+</section>
+<section id="maintenance-où-lon-touche-quoi" class="level1">
+<h1>Maintenance : où l’on touche quoi</h1>
+<p>Cette section liste les endroits qu’on modifie réellement, et ce qu’il faut vérifier après.</p>
+<section id="ajouter-ou-modifier-un-champ" class="level2">
+<h2 class="anchored" data-anchor-id="ajouter-ou-modifier-un-champ">Ajouter ou modifier un champ</h2>
+<p><strong>Fichier : <code>js/core/champs.js</code></strong> — c’est le pivot. Facettes, compteurs, graphiques, légende et export lisent ce registre et <strong>ne connaissent pas la structure des enregistrements</strong>. Ajouter une entrée suffit à faire apparaître le champ partout.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>{ <span class="dt">cle</span><span class="op">:</span> <span class="st">'monChamp'</span><span class="op">,</span>              <span class="co">// identifiant stable, utilisé dans les réglages</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">libelle</span><span class="op">:</span> <span class="st">'Mon champ'</span><span class="op">,</span>         <span class="co">// nom au singulier</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">pluriel</span><span class="op">:</span> <span class="st">'tous mes champs'</span><span class="op">,</span>   <span class="co">// pour la légende</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">nature</span><span class="op">:</span> <span class="st">'nominal'</span><span class="op">,</span>            <span class="co">// 'nominal' | 'temporel'</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">multiple</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span>              <span class="co">// un enregistrement peut-il en porter plusieurs ?</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">absent</span><span class="op">:</span> <span class="st">'Mon champ non renseigné'</span><span class="op">,</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">valeurs</span><span class="op">:</span> r <span class="kw">=&gt;</span> <span class="fu">ouSans</span>([r<span class="op">.</span><span class="at">monChamp</span>]<span class="op">,</span> <span class="st">'Mon champ non renseigné'</span>) }<span class="op">,</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Pour un champ <strong>dérivé d’une entité liée</strong> (le type d’un partenaire n’est pas une propriété de l’opération mais du partenaire), déclarer en plus <code>entite</code>, <code>identite</code> et <code>extrait</code>. Sans cette déclaration, masquer un partenaire le retirerait des comptages de partenaires mais laisserait sa contribution au décompte des types.</p>
+<p><strong>À faire ensuite :</strong></p>
+<ol type="1">
+<li>Alimenter le champ dans <code>js/core/omeka.js</code> (fonction <code>normaliserEc</code> ou <code>normaliserOpe</code>).</li>
+<li><strong>Incrémenter <code>VERSION_FORMAT</code>.</strong></li>
+<li>Ajouter la clé à <code>FACETTES</code> dans <code>champs.js</code> pour qu’elle apparaisse en filtre.</li>
+<li>Déclarer son libellé d’absence dans l’objet <code>SANS</code>.</li>
+</ol>
+</section>
+<section id="ajouter-une-figure" class="level2">
+<h2 class="anchored" data-anchor-id="ajouter-une-figure">Ajouter une figure</h2>
+<p><strong>Fichier : <code>js/panels/figures.js</code></strong>, registre <code>PANNEAUX</code>. Une entrée suffit :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>{ <span class="dt">id</span><span class="op">:</span> <span class="st">'monPanneau'</span><span class="op">,</span>        <span class="co">// identifiant stable (restrictions, repli)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">titre</span><span class="op">:</span> <span class="st">'Mon panneau'</span><span class="op">,</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">cle</span><span class="op">:</span> <span class="st">'monChamp'</span><span class="op">,</span>         <span class="co">// champ compté</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">forme</span><span class="op">:</span> <span class="st">'barres'</span><span class="op">,</span>         <span class="co">// 'barres' | 'colonnes' | 'empilees' | 'frise' |</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                           <span class="co">// 'nuage' | 'montants'</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">detail</span><span class="op">:</span> <span class="dv">12</span><span class="op">,</span>              <span class="co">// nombre de valeurs avant regroupement « Autres »</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span><span class="op">:</span> <span class="st">'Phrase expliquant ce que la figure montre.'</span> }<span class="op">,</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Un panneau peut porter plusieurs <strong>modes</strong> (<code>modes: [...]</code>), qui redéfinissent le champ, le croisement ou la forme sans changer son <code>id</code>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>L’identifiant de restriction
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Une restriction d’affichage est repérée par <code>${id}:${cle}</code>, et non par <code>id</code> seul. Les modes changent <code>cle</code> sans changer <code>id</code> : une restriction posée sur un laboratoire s’appliquerait sinon aux statuts, et la figure deviendrait blanche.</p>
+</div>
+</div>
+</section>
+<section id="changer-la-charte-graphique" class="level2">
+<h2 class="anchored" data-anchor-id="changer-la-charte-graphique">Changer la charte graphique</h2>
+<p><strong>Fichier : <code>css/style.css</code></strong>, bloc <code>:root</code>. Toutes les couleurs sont des variables ; aucune n’est écrite en dur ailleurs.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>--signal<span class="in">:</span>  <span class="pp">#AE164E</span>;   <span class="co">/* Raspberry — la couleur d'action et de sélection */</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>--alerte<span class="in">:</span>  <span class="pp">#E30F1B</span>;   <span class="co">/* Poppy */</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>--barre-fond<span class="in">:</span> <span class="pp">#75151F</span>; <span class="co">/* Maroon — la barre de légende */</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Le thème sombre (<code>[data-theme="sombre"]</code>) emploie des variantes éclaircies : <strong>aucune couleur de la charte n’atteint le niveau de contraste AA sur fond sombre.</strong> La suite <code>styles.mjs</code> vérifie les contrastes ; une teinte insuffisante y échoue.</p>
+</section>
+<section id="changer-les-tranches-de-montant" class="level2">
+<h2 class="anchored" data-anchor-id="changer-les-tranches-de-montant">Changer les tranches de montant</h2>
+<p><strong>Fichier : <code>js/core/champs.js</code></strong>, constante <code>TRANCHES_MONTANT</code> — sept lignes. Le barème est fixe et non calculé sur la sélection : des tranches qui bougeraient avec les filtres interdiraient de comparer deux vues.</p>
+</section>
+<section id="changer-les-masquages-doffice" class="level2">
+<h2 class="anchored" data-anchor-id="changer-les-masquages-doffice">Changer les masquages d’office</h2>
+<p><strong>Fichier : <code>js/core/champs.js</code></strong>, constante <code>MOTIFS_MASQUES</code>. La reconnaissance se fait sur une forme réduite (sans accents ni ponctuation), les intitulés variant d’une saisie à l’autre.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> MOTIFS_MASQUES <span class="op">=</span> {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">ope</span><span class="op">:</span> [<span class="ss">/</span><span class="sc">^</span><span class="ss">universit</span><span class="sc">[ée]?</span><span class="ss">paris</span><span class="sc">(</span><span class="ss">8</span><span class="sc">|</span><span class="ss">viii</span><span class="sc">)$</span><span class="ss">/</span>]<span class="op">,</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">ec</span><span class="op">:</span>  []<span class="op">,</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ajouter-un-contrôle-de-qualité" class="level2">
+<h2 class="anchored" data-anchor-id="ajouter-un-contrôle-de-qualité">Ajouter un contrôle de qualité</h2>
+<p><strong>Fichier : <code>js/core/qualite.js</code></strong>. Chaque contrôle porte une <code>cle</code> stable, un libellé, et renvoie les enregistrements concernés. Les onze contrôles existants servent de modèle.</p>
+</section>
+<section id="sec-ecosysteme" class="level2">
+<h2 class="anchored" data-anchor-id="sec-ecosysteme">Modifier la liste des outils de l’écosystème</h2>
+<p><strong>Fichier : <code>js/ui/outils.js</code></strong>, constante <code>OUTILS</code> — c’est la seule liste à tenir à jour.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> OUTILS <span class="op">=</span> [</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">nom</span><span class="op">:</span> <span class="st">'ValoVizu'</span><span class="op">,</span> <span class="dt">aide</span><span class="op">:</span> <span class="st">'vous êtes ici'</span><span class="op">,</span> <span class="dt">courant</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">nom</span><span class="op">:</span> <span class="st">'validExpertises'</span><span class="op">,</span> <span class="dt">chemin</span><span class="op">:</span> <span class="st">'../validExpertises/index.html'</span> }<span class="op">,</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">nom</span><span class="op">:</span> <span class="st">'cleanKeywords'</span><span class="op">,</span> <span class="dt">chemin</span><span class="op">:</span> <span class="st">'../validKeyword/index.html'</span> }<span class="op">,</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Avertissement
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les chemins doivent rester <strong>relatifs</strong>. Une adresse absolue réintroduirait dans le dépôt publié une adresse interne — exactement ce qu’on a retiré pour l’API. Une vérification automatique échoue si une URL absolue entre dans cette liste.</p>
+</div>
+</div>
+<p>L’instance Omeka S, elle, n’est pas dans la liste : elle est <strong>déduite</strong> de l’adresse de l’API, parce qu’elle change d’un déploiement à l’autre.</p>
+</section>
+</section>
+<section id="les-vérifications" class="level1">
+<h1>Les vérifications</h1>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sh</span> test/tout.sh</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Suite</th>
+<th>Objet</th>
+<th>Vérifications</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>moteur.mjs</code></td>
+<td>Sélection, regroupements, lecture des données</td>
+<td>233</td>
+</tr>
+<tr class="even">
+<td><code>interface.mjs</code></td>
+<td>Parcours complet dans jsdom</td>
+<td>488</td>
+</tr>
+<tr class="odd">
+<td><code>effets.mjs</code></td>
+<td>Effets de bord, géométrie des figures</td>
+<td>227</td>
+</tr>
+<tr class="even">
+<td><code>styles.mjs</code></td>
+<td>Feuille de style, contrastes</td>
+<td>28</td>
+</tr>
+<tr class="odd">
+<td><code>mise-en-page.mjs</code></td>
+<td>Géométrie réelle, dans Chromium</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><strong>Total</strong></td>
+<td><strong>985</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Les quatre premières ne demandent que Node et <code>jsdom</code>. La cinquième demande Playwright ; faute de le trouver, <strong>elle passe son tour en le disant plutôt qu’en échouant</strong>, et les autres s’exécutent normalement.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">--no-save</span> playwright <span class="kw">&amp;&amp;</span> <span class="ex">npx</span> playwright install chromium</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Pourquoi une suite à part pour la mise en page
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>jsdom n’a pas de moteur de rendu</strong> : <code>getBoundingClientRect()</code> y renvoie des zéros. Aucune des 976 autres vérifications ne peut voir qu’un élément déborde, est écrêté, ou déplace ses voisins.</p>
+<p>C’est exactement ainsi qu’un menu déroulant cassé a pu être livré avec tout au vert : il s’écrêtait dans l’<code>overflow: hidden</code> du bandeau, dont il ne laissait voir que la première entrée, et la mise au point de son premier lien faisait défiler le bandeau, qui sautait de vingt pixels.</p>
+</div>
+</div>
+<section id="la-méthode-à-suivre-pour-toute-correction" class="level2">
+<h2 class="anchored" data-anchor-id="la-méthode-à-suivre-pour-toute-correction">La méthode à suivre pour toute correction</h2>
+<ol type="1">
+<li>Écrire la vérification <strong>avant</strong> le correctif.</li>
+<li>Appliquer le correctif.</li>
+<li><strong>Saboter le code</strong> et confirmer que la vérification échoue.</li>
+</ol>
+<p>Le troisième point n’est pas un excès de zèle. Plusieurs vérifications de ce projet ont passé alors que le défaut était présent — parce qu’elles mesuraient une grandeur indirecte, parce qu’une garde escamotait tout un bloc en silence, ou parce qu’une lecture non protégée interrompait la série. <strong>Le sabotage est le seul moyen de s’assurer qu’une vérification vérifie quelque chose.</strong></p>
+</section>
+</section>
+<section id="pièges-connus" class="level1">
+<h1>Pièges connus</h1>
+<p>Ces règles ont chacune coûté un défaut livré. Les enfreindre les ramène.</p>
+<section id="écarter-une-valeur-de-léchelle-oblige-à-borner-son-dessin" class="level2">
+<h2 class="anchored" data-anchor-id="écarter-une-valeur-de-léchelle-oblige-à-borner-son-dessin">Écarter une valeur de l’échelle oblige à borner son dessin</h2>
+<p>Ce défaut est apparu <strong>six fois de suite</strong> dans des figures différentes.</p>
+<p>Un regroupement « Autres » ou une absence ne doit pas commander le maximum de l’échelle — sinon il écrase toutes les barres réelles. Mais l’écarter du calcul sans <strong>borner sa longueur dessinée</strong> le fait sortir du cadre.</p>
+<p>La règle : exclure du maximum <strong>et</strong> borner le tracé, avec un chevron de troncature pour le signaler. Une vérification systématique parcourt toutes les familles de figures et échoue si un élément quitte son cadre.</p>
+</section>
+<section id="un-élément-flottant-ne-vit-pas-chez-celui-qui-louvre" class="level2">
+<h2 class="anchored" data-anchor-id="un-élément-flottant-ne-vit-pas-chez-celui-qui-louvre">Un élément flottant ne vit pas chez celui qui l’ouvre</h2>
+<p>Menus contextuels, boîte à outils : tout ce qui se pose par-dessus la page passe par <code>poserFlottant()</code> dans <code>js/ui/menu.js</code>, qui l’attache au <code>body</code> et le pose en coordonnées de fenêtre.</p>
+<p>Posé sous son bouton, un panneau hérite de l’<code>overflow</code> de ses ancêtres : écrêté s’ils masquent le débordement, et — pire — capable de <strong>faire défiler son conteneur</strong> quand on met au point un élément situé hors de la boîte écrêtée.</p>
+</section>
+<section id="aria-label-jamais-title-là-où-une-infobulle-existe" class="level2">
+<h2 class="anchored" data-anchor-id="aria-label-jamais-title-là-où-une-infobulle-existe"><code>aria-label</code>, jamais <code>&lt;title&gt;</code>, là où une infobulle existe</h2>
+<p>Un <code>&lt;title&gt;</code> SVG produit une infobulle native que le navigateur affiche <strong>en plus</strong> de celle de l’outil. Les deux se superposent.</p>
+</section>
+<section id="le-glissement-nest-pas-un-clic" class="level2">
+<h2 class="anchored" data-anchor-id="le-glissement-nest-pas-un-clic">Le glissement n’est pas un clic</h2>
+<p>Dans le réseau, saisir un nœud pour le déplacer ne doit pas filtrer. <code>stopPropagation</code> <strong>ne suffit pas</strong> : il ne suspend pas les autres écouteurs du même élément et dépend de l’ordre d’enregistrement. Un drapeau posé sur l’élément distingue le glissement du clic.</p>
+</section>
+<section id="lidentité-dune-valeur-nest-pas-son-libellé" class="level2">
+<h2 class="anchored" data-anchor-id="lidentité-dune-valeur-nest-pas-son-libellé">L’identité d’une valeur n’est pas son libellé</h2>
+<p>L’identité est ce sur quoi on compte et on groupe ; le libellé est ce qu’on affiche. Un renommage ne doit jamais changer l’identité, sans quoi les profils enregistrés et les liens partagés cessent de désigner la même chose.</p>
+</section>
+</section>
+<section id="déploiement" class="level1">
+<h1>Déploiement</h1>
+<p>L’outil est un ensemble de fichiers statiques. Il n’y a <strong>rien à compiler</strong>.</p>
+<ol type="1">
+<li>Copier le dossier sur le serveur web, à côté des autres applications de l’ensemble (<code>validExpertises</code>, <code>validKeyword</code>) pour que les liens relatifs du menu fonctionnent.</li>
+<li>Vérifier que le serveur sert les <code>.js</code> avec le type <code>text/javascript</code> — sans quoi les modules ES sont refusés.</li>
+<li>Au premier lancement, saisir l’adresse de l’API Omeka S dans la fenêtre de configuration. Elle est retenue dans le navigateur.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>CORS
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>L’instance Omeka S doit autoriser les requêtes depuis l’origine où ValoVizu est servi. Servis depuis le même domaine, il n’y a rien à régler.</p>
+</div>
+</div>
+</section>
+<section id="glossaire" class="level1">
+<h1>Glossaire</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Terme</th>
+<th>Sens dans l’outil</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>OPE</strong></td>
+<td>Opération de partenariat — un enregistrement du tableau de bord <em>Partenariats</em></td>
+</tr>
+<tr class="even">
+<td><strong>EC</strong></td>
+<td>Enseignant-chercheur</td>
+</tr>
+<tr class="odd">
+<td><strong>Facette</strong></td>
+<td>Un champ proposé comme filtre dans la colonne de gauche</td>
+</tr>
+<tr class="even">
+<td><strong>Masquer</strong></td>
+<td>Mettre une valeur hors périmètre : elle disparaît de tous les comptages</td>
+</tr>
+<tr class="odd">
+<td><strong>Détacher</strong> (épingler)</td>
+<td>Sortir une valeur d’un regroupement « Autres »</td>
+</tr>
+<tr class="even">
+<td><strong>Restriction</strong></td>
+<td>Limiter ce qu’<strong>une figure</strong> montre, sans recalculer les effectifs</td>
+</tr>
+<tr class="odd">
+<td><strong>Regroupement</strong></td>
+<td>La barre « Autres », qui cumule les valeurs au-delà des n premières</td>
+</tr>
+<tr class="even">
+<td><strong>Maille</strong></td>
+<td>Le champ par lequel une figure de montants agrège (année, laboratoire…)</td>
+</tr>
+<tr class="odd">
+<td><strong>Légende</strong></td>
+<td>La phrase sous le titre qui décrit la sélection affichée</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Pour aller plus loin
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><code>LISEZMOI.md</code> — les partis pris et <strong>leurs raisons</strong>, y compris les solutions écartées. C’est le document à lire avant de remettre en cause une décision.</li>
+<li><code>CHANGELOG.md</code> — ce qui a changé, version par version, avec les mentions <code>⚠ cache</code> qui signalent les changements de <code>VERSION_FORMAT</code>.</li>
+<li>Les en-têtes de chaque module : ils expliquent ce que le fichier fait <strong>et pourquoi il le fait ainsi</strong>.</li>
+</ul>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copié");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copié");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Direction de la Recherche de Paris 8</p>
+</div>   
+    <div class="nav-footer-center">
+<div class="footer-img">
+<p><img src="https://sedozed.github.io/valo-p8/assets/img/logo_paris8_couleurs-officielles.png" alt="Logo de l'Université" class="footer-logo"></p>
+</div>
+</div>
+    <div class="nav-footer-right">
+<p>Documentation interne, ne pas diffuser</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

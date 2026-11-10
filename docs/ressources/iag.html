@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Cédric BOUCLY">
+<meta name="keywords" content="Protocole, IA Générative, Risques, Bénéfices, Documentation">
 
-<title>Utilisation des IA Génératives dans diverses tâches – CartoExpert</title>
+<title>Utilisation de l’IA Générative – CartoExpert</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -100,8 +102,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Contexte du projet</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../installations.html">
- <span class="dropdown-text">Prérequis de travail</span></a>
+    <a class="dropdown-item" href="../install.html">
+ <span class="dropdown-text">Prérequis de travail et installations</span></a>
   </li>  
     </ul>
   </li>
@@ -111,16 +113,21 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-données">    
         <li>
+    <a class="dropdown-item" href="../donnees/structure_bdd.html">
+ <span class="dropdown-text">Structure principale de la base Omeka S</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
     <a class="dropdown-item" href="../donnees/standardiser_data2csv.html">
- <span class="dropdown-text">Préparer les données (CSV)</span></a>
+ <span class="dropdown-text">↳ Préparer les données (CSV)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../donnees/bdd_omeka.html">
- <span class="dropdown-text">Importer dans Oméka S</span></a>
+ <span class="dropdown-text">↳ Importer dans Oméka S</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../donnees/scanr_extract.html">
- <span class="dropdown-text">Extraire depuis ScanR</span></a>
+ <span class="dropdown-text">↳ Extraire depuis ScanR</span></a>
   </li>  
     </ul>
   </li>
@@ -130,21 +137,13 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-outils">    
         <li>
-    <a class="dropdown-item" href="../outils/pres_syst.html">
- <span class="dropdown-text">CartoExpert — présentation</span></a>
+    <a class="dropdown-item" href="../outils/doc_validexp_et_validkeyw.html">
+ <span class="dropdown-text">validExpertises &amp; validKeywords</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="../outils/introduction_validata.html">
- <span class="dropdown-text">ValiDatas</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../outils/guide_operateur_validata.html">
- <span class="dropdown-text">↳ Guide opérateur</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../outils/doc_tech_validata.html">
- <span class="dropdown-text">↳ Documentation technique</span></a>
+    <a class="dropdown-item" href="../outils/doc_valovizu.html">
+ <span class="dropdown-text">L’interface de datavisualisation ValoVizu</span></a>
   </li>  
     </ul>
   </li>
@@ -153,6 +152,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Ressources</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-ressources">    
+        <li>
+    <a class="dropdown-item" href="../ressources/formation.html">
+ <span class="dropdown-text">Formation Omeka S pour non-informaticiens</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="../ressources/hypothesis.html">
  <span class="dropdown-text">Hypothes.is comme outil collaboratif</span></a>
@@ -187,7 +190,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#work-in-progress" id="toc-work-in-progress" class="nav-link active" data-scroll-target="#work-in-progress">Work in progress…</a></li>
+  <li><a href="#préambule" id="toc-préambule" class="nav-link active" data-scroll-target="#préambule">Préambule</a></li>
+  <li><a href="#développement-logiciel" id="toc-développement-logiciel" class="nav-link" data-scroll-target="#développement-logiciel">Développement logiciel</a>
+  <ul class="collapse">
+  <li><a href="#création-dinterfaces." id="toc-création-dinterfaces." class="nav-link" data-scroll-target="#création-dinterfaces.">Création d’interfaces.</a></li>
+  <li><a href="#création-dalgorithmes-rapides" id="toc-création-dalgorithmes-rapides" class="nav-link" data-scroll-target="#création-dalgorithmes-rapides">Création d’algorithmes rapides</a></li>
+  </ul></li>
+  <li><a href="#traiter-de-linformations" id="toc-traiter-de-linformations" class="nav-link" data-scroll-target="#traiter-de-linformations">Traiter de l’informations</a>
+  <ul class="collapse">
+  <li><a href="#interagir-avec-la-base-omeka" id="toc-interagir-avec-la-base-omeka" class="nav-link" data-scroll-target="#interagir-avec-la-base-omeka">Interagir avec la base Omeka</a></li>
+  </ul></li>
+  <li><a href="#autres" id="toc-autres" class="nav-link" data-scroll-target="#autres">Autres</a>
+  <ul class="collapse">
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -196,27 +212,91 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Utilisation des IA Génératives dans diverses tâches</h1>
+<h1 class="title">Utilisation de l’IA Générative</h1>
+<p class="subtitle lead">Détail d’utilisation de l’IA générative dans le projet de cartographie et conseil vis-à-vis de son utilisation à l’avenir.</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Auteur·rice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Cédric BOUCLY </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Date de publication</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">10 novembre 2026</p>
+    </div>
+  </div>
   
     
   </div>
   
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Mots clés</div>
+    <p>Protocole, IA Générative, Risques, Bénéfices, Documentation</p>
+  </div>
+</div>
 
 </header>
 
 
-<section id="work-in-progress" class="level1">
-<h1>Work in progress…</h1>
+<div class="callout callout-style-simple callout-warning callout-titled" title="Attention">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Attention
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La page est en cours d’écriture. Les informations ci-dessous ne sont donc pas exactes car incomplètes ou manquant de contexte. Merci d’attendre une version finale de la page ou de lire avec précaution.</p>
+</div>
+</div>
+<hr>
+<section id="préambule" class="level1">
+<h1>Préambule</h1>
+<p>Se référer avant toute chose à la charte IA ainsi qu’aux guides de l’Université, accessibles ici : https://www.univ-paris8.fr/-Numerique-et-intelligence-artificielle-#onglet-10756</p>
+<p>Deux possibilités d’usages de modèle d’IAG : - <strong>Les modèles grand public, hébergés et mis à disposition par des groupes privés</strong> : Cette solution permet les meilleurs résultats, mais nécessite de faire très attention aux données transmises notamment pour les gros projets, et d’utiliser les modes “incognito” quand c’est possible (évite que les conversations servent d’entrainement à l’IA), et peut nécessiter un certain investissement financier. Modèle principalement utilisé : <a href="https://claude.com/fr">Claude (by Anthropic)</a></p>
+<ul>
+<li><strong>L’interface “<a href="https://ia.numerique.gouv.fr/outils-ia/albert-api/">Albert API</a>” mise à disposition par le ministère</strong> : Solution plus souveraine et éthique, notamment sur les questions des données. Permets d’utiliser différents modèles open-sources hébergés au Ministère, mais nécessite de jongler entre les modèles (et ne bénéficie pas forcément des dernières tech’). Enfin, son utilisation est gratuite à condition que l’utilisateur est bien validé par l’État (utiliser donc adresse mail pro pour s’authentifier).</li>
+</ul>
+<p>Une troisième option, celle d’héberger localement un modèle LLM, peut être envisageable et offrirait les mêmes avantages que Albert API, voir mieux. Cependant, faire tourner un modèle LLM demande une très forte puissance de calcul, ce que l’université ne peut (vraisemblablement) pas se permettre d’acquérir en l’état.</p>
+</section>
+<section id="développement-logiciel" class="level1">
+<h1>Développement logiciel</h1>
+<section id="création-dinterfaces." class="level2">
+<h2 class="anchored" data-anchor-id="création-dinterfaces.">Création d’interfaces.</h2>
+<p>“Vibecoding” présente des risques de sécurité très importants. Ainsi, le code doit non seulement être relu et compris + les interfaces vibecodées ne doivent pas dépasser le statut de prototype et ne pas être placées en exploitation publiques. Lorsqu’une interface (web notamment) est hébergée sur un serveur publique, TOUJOURS REGARDER QU’AUCUNE INFO CRITIQUE EST ENCODÉE EN DUR DANS LE CODE (l’IA a tendance à faire ça).</p>
+</section>
+<section id="création-dalgorithmes-rapides" class="level2">
+<h2 class="anchored" data-anchor-id="création-dalgorithmes-rapides">Création d’algorithmes rapides</h2>
+<p>Utiliser l’IA pour créer des programmes Python permettant d’automatiser certains processus, le tout sans transmettre d’information à un modèle d’IA.</p>
+</section>
+</section>
+<section id="traiter-de-linformations" class="level1">
+<h1>Traiter de l’informations</h1>
+<p>Il est possible de faire appel à l’IA pour de la recherche approfondie, faire des associations de synonymes ou mettre à jour des données déjà existantes (via une extraction, par exemple). Cependant, non seulement la marge d’erreur reste présence et nécessite de la relecture, et aussi lorsque de la donnée est transférée à l’IA, il faut BIEN FAIRE ATTENTION à les anonymiser et surtout à les décontextualiser.</p>
+<section id="interagir-avec-la-base-omeka" class="level2">
+<h2 class="anchored" data-anchor-id="interagir-avec-la-base-omeka">Interagir avec la base Omeka</h2>
+<p>Peut servir pour établir une cartographie de la structure de la base Omeka S et/ou apporter du contexte STRUCTUREL à l’IA (pour qu’elle puisse s’adapter), via l’API. Attention cependant avec ça : il est facile pour l’IA de récupérer des informations sensibles via l’API sans même qu’elle ne cherche à le faire réellement (l’API peut être très bavard, et l’IA très attentive). Il est donc important d’être méticuleux lorsqu’on demande à l’IA d’exploiter l’API, en contrôlant attentivement le périmètre d’information des requêtes API.</p>
+</section>
+</section>
+<section id="autres" class="level1">
+<h1>Autres</h1>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -307,6 +387,11 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

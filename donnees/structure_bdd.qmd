@@ -1,0 +1,170 @@
+---
+title: "Cartographie des modèles de ressource"
+subtitle: "Cartographie de la base de données à partir des ressources templates principaux"
+author: "Cédric BOUCLY"
+date: "2026-11-01"
+date-format: "D MMMM YYYY"
+lang: fr
+keywords: [Omeka S, documentation, structure de données, métadonnées, ontologies]
+---
+
+Ce document décrit la structure **telle que la déclarent les modèles de ressources** *(resource template)* de l'instance Omeka S, dédié au projet de cartographie du SVR de l'Université Paris 8, croisée avec les propriétés et les resource_classes`. Il ne dit rien des données réellement saisies.
+
+## Mode d'emploi
+
+### Types de données
+
+| Notation   | Sens dans Omeka S                                                                                                                      |
+|------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| `str`      | Chaine de caractères attendue (texte, date, mail,). **Faire attention à bien vérifier si une structure de saisi est attendue**.        |
+| `resource` | Lien vers une ressource interne (item, collection ou média) de la base                                                                 |
+| `uri`      | Lien vers une redirection externe comme [idRef](https://www.idref.fr/), [scanR](https://scanr.enseignementsup-recherche.gouv.fr/), etc |
+
+*Les annotations sont mises de côté, et il sera spécifié si une annotation peut être attendue à un moment donné.
+
+### Conditions d'écriture
+ 
+- **Cible attendue** : pour un lien, le modèle (ex. `T3`), la classe ou la collection vers lesquels la valeur doit pointer.
+- **Structure attendue** : pour un texte, le format à respecter (ex. `AAAA-MM-JJ`, « 14 chiffres »).
+- Les cellules `_à compléter_` sont à remplir. Les mentions **Piste :** dans *Notes* sont des hypothèses, à valider ou supprimer.
+
+## Vue d'ensemble
+
+| Id  | Modèle                       | Classe associée                    | Propriétés | Liens `resource` |
+|-----|------------------------------|------------------------------------|------------|------------------|
+| T2  | Enseignants chercheurs (UP8) | `valo:EnseignantChercheur`         | 12         | 5                |
+| T3  | Équipes de recherche         | `valo:Axe`                         | 3          | 0                |
+| T4  | Laboratoires                 | `valo:Laboratoire`                 | 11         | 6                |
+| T8  | Personnel de la DSR          | `foaf:Person`                      | 2          | 0                |
+| T11 | Personnes collaboratrices    | `valo:EnseignantChercheurOutsider` | 6          | 0                |
+| T12 | Expertise                    | `valo:Expertises_all`              | 5          | 0                |
+| T13 | École doctorale              | `valo:Ecole_Doctorale`             | 3          | 0                |
+| T14 | OPEs                         | `valo:OPE`                         | 10         | 5                |
+| T15 | Partenaire (OPE)             | `valo:PartenairesOPE`              | 7          | 2                |
+
+
+## Graphe des liens
+
+Chaque flèche correspond à une propriété de type `resource`. Les cibles inconnues apparaissent en nœuds orange `?`.
+
+**Pour compléter :** remplace le nœud `?` par l'identifiant du modèle cible. Par exemple, `T4 -->|"valo:axeRech"| q4c(("?")):::todo` devient `T4 -->|"valo:axeRech"| T3`. Si la cible est une classe sans modèle, crée un nœud, par exemple `C_CNU["valo:DomaineCNU"]:::cls`.
+
+```{mermaid}
+%%| fig-cap: "Liens de type resource déclarés par les modèles (cibles à compléter)"
+flowchart LR
+  classDef tpl fill:#e8f0fe,stroke:#3367d6,color:#111;
+  classDef cls fill:#eef7ee,stroke:#3c8d40,color:#111;
+  classDef todo fill:#fff4e5,stroke:#e8a33d,stroke-dasharray:4 3,color:#111;
+
+  T2["T2 · Enseignants chercheurs (UP8)"]:::tpl
+  T4["T4 · Laboratoires"]:::tpl
+  T14["T14 · OPEs"]:::tpl
+  T15["T15 · Partenaire (OPE)"]:::tpl
+
+  T2 -->|"curation:status"| q2a["In Item set **Statut Universitaire** (o:id 3)"]:::cls
+  T2 -->|"dcterms:isPartOf"| q2b["In Item set **Laboratoires de Paris 8** (o:id 30437)"]:::cls
+  T2 -->|"dcterms:hasPart"| q2c["In Item set **Sous-équipes** (o:id 7)"]:::cls
+  T2 -->|"valo:cnu"| q2d["In Item set **Code CNU** (o:id 9)"]:::cls
+  T2 -->|"valo:domaineHceres"| q2e["In Item set **Code HCERES** (o:id 10)"]:::cls
+
+  T4 -->|"valo:domaineHceres"| q4a["In Item set **Code HCERES** (o:id 10)"]:::cls
+  T4 -->|"valo:domaineErc"| q4b["In Item set **Code Panels ERC** (o:id 11) ET/OU **Code Domaines ERC** (o:id 1022)"]:::cls
+  T4 -->|"valo:axeRech"| q4c["In Item set **Axe de recherche** (o:id 8)"]:::cls
+  T4 -->|"valo:keywords"| q4d["In Item set **Mots clefs** (o:id 1565)"]:::cls
+  T4 -->|"valo:expertise"| q4e["In Item set **Expertise_labo** (o:id 1292)"]:::cls
+  T4 -->|"valo:directeurs"| q4f["In Item set **Enseignants-Chercheurs de Paris 8** (o:id 30435) ET/OU **Enseignants Chercheurs et collaborateurs externes
+** (o:id 30436)"]:::cls
+
+  T14 -->|"valo:modePilotageOPE"| q14a["In Item set **Mode de gestion / Pilotage (OPE)** (o:id 157269)"]:::cls
+  T14 -->|"valo:ecImplique"| q14b["In Item set **Enseignants Chercheurs de UP8** (o:id 30435)"]:::cls
+  T14 -->|"valo:opeCollabLabo"| q14c["In Item set **Laboratoires de Paris 8** (o:id 30437)"]:::cls
+  T14 -->|"valo:opeCollabExterne"| q14d["In Item set **Partenaires (OPE)** (o:id 121229)"]:::cls
+  T14 -->|"valo:opeType"| q14e["In Item set **Type de contrat** (o:id 156249)"]:::cls
+
+  T15 -->|"valo:codeNaf"| q15a["In Item set **Code NAF/APE** (o:id 120553)"]:::cls
+  T15 -->|"valo:typePartenaire"| q15b["Item set 157306 · Type d'organisation"]:::cls
+```
+
+## Détail par modèle
+
+### T2 · Enseignants chercheurs (UP8)
+
+Classe : `valo:EnseignantChercheur` (id 162).
+
+| Propriété            | Libellé             | Type       | Cible attendue                                          | Structure attendue | Notes |
+|----------------------|---------------------|------------|---------------------------------------------------------|--------------------|-------|
+| `dcterms:title`      | Title               | `text`     | ∅                                                       | _"Prénom NOM"_     |       |
+| `foaf:givenName`     | Given name          | `text`     | ∅                                                       | _"Prénom"_         |       |
+| `foaf:familyName`    | familyName          | `text`     | ∅                                                       | _"NOM"_            |       |
+| `foaf:birthday`      | birthday            | `text`     | ∅                                                       | Année uniquement   |       |
+| `curation:status`    | Status              | `resource` | Item set "**Statut universitaire**" (`o:id` = 3)        | ∅                  |       |
+| `dcterms:identifier` | Identifier          | `text`     | ∅                                                       | _"idtype:xxxxx"_   | Lors de l'extraction scanR, si un IdRef est trouvé, il sera ajouté automatiquement. |
+| `dcterms:isPartOf`   | Is Part Of          | `resource` | Item set "**Laboratoires de Paris 8**" (`o:id` = 30437) | ∅                  |       |
+| `dcterms:hasPart`    | Has Part            | `resource` | Item set "**Sous-équipes**" (`o:id` = 7)                | ∅                  |       |
+| `foaf:mbox`          | personal mailbox    | `text`     | ∅                                                       | 1 mail par entrée  |       |
+| `valo:cnu`           | Nomenclature CNU    | `resource` | Item set "**Code CNU**" (`o:id` = 9)                    | ∅                  |       |
+| `valo:domaineHceres` | Nomenclature HCERES | `resource` | Item set "**Code HCERES**" (`o:id` = 10)                | ∅                  |       |
+| `valo:dbt_research`  | Début de recherche  | `text`     | ∅                                                       | _"JJ/MM/AAAA"_     |       |
+
+::: {.callout-tip appearance="simple"}
+## Note
+
+La liste ci-dessus détaille le contenu d'un item "enseignant-chercheur" **AVANT** un quelconque import via le module scanR. Les ajouts de ce dernier post-extraction sont détaillés à la toute fin.
+
+:::
+
+### T4 · Laboratoires
+
+Classe : `valo:Laboratoire` (id 163).
+
+| Propriété             | Libellé (vocabulaire)                                  | Type       | Cible attendue                                                    | Structure attendue       | Notes |
+|-----------------------|--------------------------------------------------------|------------|-------------------------------------------------------------------|--------------------------|-------|
+| `dcterms:title`       | Title                                                  | `text`     | ∅                                                                 | Nom le plus utilisé      |       |
+| `dcterms:alternative` | Alternative Title                                      | `text`     | ∅                                                                 | Nom alternatif           |       |
+| `foaf:mbox`           | personal mailbox                                       | `text`     | ∅                                                                 | Mail(s) de contact       | Mail commun, mail des DUs, ... |
+| `valo:domaineHceres`  | Nomenclature HCERES                                    | `resource` | Item set "**Code HCERES**" (`o:id` = 10 )                         | ∅                        |       |
+| `valo:domaineErc`     | Nomenclature ERC                                       | `resource` | Item set "**Code Domaines ERC**" (`o:id` = 1022)                  | ∅                        |       |
+| `valo:obj_Recherche`  | Objet de recherche                                     | `text`     | ∅                                                                 | Texte du rapport HCERES  | Si aucun séparateur, tout mettre en **UN SEUL** champ |
+| `valo:axeRech`        | Axe de recherche                                       | `resource` | Item set "**Axe de recherche**" (`o:id` = 8)                      | ∅                        |       |
+| `valo:keywords`       | Mots-clefs                                             | `resource` | Item set "**Mots Clefs**" (`o:id` = 1565)                         | ∅                        |       |
+| `valo:expertise`      | Expertises revendiquées                                | `resource` | Item set "**Expertise_labo**" (`o:id` = 1292)                     | ∅                        |       |
+| `valo:directeurs`     | Directeur(s) de laboratoire                            | `resource` | Item set "**Enseignants-Chercheurs de Paris 8**" (`o:id` = 30435) | ∅                        | Si le(s) DU(s) est/sont hors P8, alors inscrire le responsable du labo pour UP8s|
+| `hal:rnsr`            | Répertoire National des Structures de Recherche (RNSR) | `text`     | ∅              | Identifiant uniquement   |       |
+
+::: {.callout-tip appearance="simple"}
+## Note
+
+Les champs "Objet de recherche", "Axe de recherche", "Mots-clefs" et "Expertises revendiquées" **doivent correspondre** à ce qui est écrit sur le dernier rapport HCERES du laboratoire, **à la lettre près** (sauf séparateurs comme ";"). Autrement, en cas de changement, demander la validation du/des DU(s).
+
+:::
+
+### T14 · OPEs
+
+Classe : `valo:OPE` (id 184).
+
+| Propriété               | Libellé (vocabulaire)               | Type       | Cible attendue                                                    | Structure attendue |
+|-------------------------|-------------------------------------|------------|-------------------------------------------------------------------|--------------------|-------|
+| `dcterms:title`         | Title                               | `text`     | ∅                                                                 | OPE/CONV-YYYY-NNNN |
+| `valo:modePilotageOPE`  | Mode de pilotage / gestion de l'OPE | `resource` | Item set "**Mode de gestion / Pilotage (OPE)**" (`o:id` = 157269) | ∅                  |
+| `valo:ecImplique`       | Enseignant chercheur impliqué…      | `resource` | Item set "**Enseignants Chercheurs de UP8**" (`o:id` = 30435)     | ∅                  |
+| `valo:opeCollabLabo`    | OPE porté par le laboratoire…       | `resource` | Item set "**Laboratoires de Paris 8**" (`o:id` = 30437)           | ∅                  |
+| `valo:opeCollabExterne` | OPE en collaboration avec…          | `resource` | Item set "**Partenaires (OPE)**" (`o:id` = 121229)                | ∅                  |
+| `valo:opeType`          | Type de l'OPE                       | `resource` | Item set "**Type de contrat**" (`o:id` = 156249)                  | ∅                  |
+| `valo:budgOPE`          | Budget de l'OPE                     | `text`     | ∅                                                                 | _à compléter_      |
+| `valo:montantGlobal`    | Montant global (TTC)                | `text`     | ∅                                                                 | _à compléter_      |
+| `curation:start`        | Start                               | `text`     | ∅                                                                 | `DD/MM/YY`         |
+| `curation:end`          | End                                 | `text`     | ∅                                                                 | `DD/MM/YY`         |
+
+### T15 · Partenaire (OPE)
+
+Classe : `valo:PartenairesOPE` (id 183).
+
+| Propriété | Libellé (vocabulaire) | Type | Cible attendue | Structure attendue | Notes |
+|---|---|---|---|---|---|
+| `dcterms:title` | Title | ∅ | _à compléter_ | _à compléter_ | |
+| `valo:siret` | A comme numéro SIRET | ∅ | _à compléter_ | _à compléter_ | Un SIRET compte 14 chiffres. |
+| `valo:siren` | A comme numéro SIREN | ∅ | _à compléter_ | _à compléter_ | Un SIREN compte 9 chiffres (les 9 premiers du SIRET). |
+| `valo:codeNaf` | A le code NAF/APE | `resource` | _à compléter_ | — | **Piste :** items `valo:CodeNAF` (classe sans modèle). |
+| `dcterms:alternative` | Alternative Title | ∅ | _à compléter_ | _à compléter_ | Commentaire du modèle : autres appellations de la structure. |
+| `curation:location` | Location | ∅ | _à compléter_ | Code postal, si structure française (déclaré dans le modèle) | |
+| `valo:typePartenaire` | Type du partenaire… | `resource` | Item set 157306 « Type d'organisation » (déclaré dans le modèle) | — | Une classe `valo:TypePartenaire` existe aussi : les items de cet item set en relèvent-ils ? |

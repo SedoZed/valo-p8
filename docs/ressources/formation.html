@@ -215,7 +215,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#mod4" id="toc-mod4" class="nav-link" data-scroll-target="#mod4">3. Vocabulaires et propriétés</a>
   <ul class="collapse">
   <li><a href="#principe" id="toc-principe" class="nav-link" data-scroll-target="#principe">Principe</a></li>
-  <li><a href="#deux-types-de-valeurs" id="toc-deux-types-de-valeurs" class="nav-link" data-scroll-target="#deux-types-de-valeurs">Deux types de valeurs</a></li>
+  <li><a href="#propriété-deux-types-de-valeurs" id="toc-propriété-deux-types-de-valeurs" class="nav-link" data-scroll-target="#propriété-deux-types-de-valeurs">Propriété : deux types de valeurs</a></li>
   </ul></li>
   <li><a href="#mod5" id="toc-mod5" class="nav-link" data-scroll-target="#mod5">4. Organisation et relations</a>
   <ul class="collapse">
@@ -457,15 +457,15 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td><strong><a href="#oid"><code>o:id</code></a></strong></td>
-<td>Numéro unique, attribué automatiquement</td>
+<td>Numéro unique, attribué automatiquement à chaque entité (item, item set, …)</td>
 </tr>
 <tr class="even">
 <td><strong>Métadonnées</strong></td>
-<td>Champs descriptifs</td>
+<td>Champs descriptifs de l’entité sélectionnée</td>
 </tr>
 <tr class="odd">
 <td><strong>Médias</strong></td>
-<td>Fichiers attachés (peu utilisé ici)</td>
+<td>Fichiers attachés (peu utilisé dans notre cas)</td>
 </tr>
 </tbody>
 </table>
@@ -522,6 +522,19 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 </tbody>
 </table>
 <p>À noter : <code>dcterms:isPartOf</code> ne contient pas du texte, mais plutôt une sorte d’<strong>hyperlien</strong>. On y revient au <a href="#mod5">module 5</a>.</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Astuce
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>L’identifiant <code>o:id</code> peut aussi être récupéré directement dans l’URL, par exemple : loremipsum.fr/admin/item/<strong>7457</strong></p>
+</div>
+</div>
 <section id="oid" class="level4 page-columns page-full">
 <h4 class="anchored" data-anchor-id="oid">L’identifiant <code>o:id</code></h4>
 <p>Numéro unique attribué automatiquement à la création d’un item. Il ne change <strong>jamais</strong>, même en cas de modification ou de suppression de l’item. C’est donc le seul point d’accroche fiable pour désigner un item.</p>
@@ -549,7 +562,7 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 <section id="principe" class="level3">
 <h3 class="anchored" data-anchor-id="principe">Principe</h3>
 <p>Chaque item contient un certain nombre de données, elles-mêmes rangées selon des qualificatifs que l’on appelle “propriétés” : <strong>ce sont les métadonnées</strong>. Chaque propriété provient d’un <strong>vocabulaires</strong>, qui définissent trois choses : quels champs existent, ce que chaque champ signifie, et quel type de valeur est attendu.</p>
-<p>Un vocabulaire contient en réalité <strong>deux sortes de termes</strong>, qu’il ne faut pas confondre. La distinction tient en une phrase : la classe dit ce que la chose <em>est</em>, la propriété dit ce qu’on en <em>dit</em>.</p>
+<p>Un vocabulaire contient <strong>deux sortes de termes</strong>, qu’il ne faut pas confondre. La distinction tient en une phrase : la classe dit ce que la chose <em>est</em>, les propriétés disent ce qui <em>qualifie</em> la chose.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 22%">
@@ -586,7 +599,7 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 </tr>
 </tbody>
 </table>
-<p>Le plus connu est <a href="https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/">Dublin Core</a> (préfixe <code>dcterms:</code>) : c’est le vocabulaire le plus utilisé internationalement, présent par défaut dans Omeka S. Mais d’autres dictionnaires existent, écrits pour satisfaire X ou Y but. Dublin Core Terms fournit 55 propriétés — dont Title et Creator — et 22 classes. Pour les classes, le vocabulaire de référence est plutôt Dublin Core Type et ses 12 entrées : Image, Moving Image, Sound, Text, Physical Object, etc.</p>
+<p>Le vocabulaire plus connu est le vocab’ <a href="https://www.dublincore.org/specifications/dublin-core/usageguide/qualifiers/">Dublin Core</a> (préfixe <code>dcterms:</code> et <code>dctype:</code>) : il est le plus utilisé internationalement, fournit 55 propriétés et 22 classes. Mais d’autres dictionnaires existent, écrits pour satisfaire X ou Y but.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 24%">
@@ -670,12 +683,12 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Les vocabulaires chargés et utilisés par la base sont listés dans l’onglet <kbd>Vocabularies</kbd> de l’interface, et consultable en cliquant sur les hyperliens en rouge, sous “<em>Classes</em>” et “<em>Properties</em>”. .</p>
+<p>Les vocabulaires chargés et utilisés par la base sont listés dans l’onglet <kbd>Vocabularies</kbd> de l’interface, et consultable en cliquant sur les hyperliens en rouge, sous “<em>Classes</em>” et “<em>Properties</em>”.</p>
 </div>
 </div>
 </section>
-<section id="deux-types-de-valeurs" class="level3">
-<h3 class="anchored" data-anchor-id="deux-types-de-valeurs">Deux types de valeurs</h3>
+<section id="propriété-deux-types-de-valeurs" class="level3">
+<h3 class="anchored" data-anchor-id="propriété-deux-types-de-valeurs">Propriété : deux types de valeurs</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 15%">
@@ -702,6 +715,7 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 </tr>
 </tbody>
 </table>
+<p>Une particularité clef de Omeka S est qu’il permet de <strong>lier les items entre eux</strong> grâce à leur <strong>o:id</strong> pour créer des relations. Ces redirections prenant la forme d’un <strong>lien hypertexte</strong> sont ce que l’on appelle des “Ressource” dans Omeka S.</p>
 <div id="fig-types" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Sélecteur permettant de choisir entre une valeur texte, une ressource ou une URI">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -711,20 +725,6 @@ Figure&nbsp;1: Fiche d’un item dans l’administration. Le numéro <code>o:id<
 Figure&nbsp;2: Le sélecteur de type de valeur, en mode édition d’un item.
 </figcaption>
 </figure>
-</div>
-<div class="callout callout-style-simple callout-important callout-titled" title="Omeka ne vérifie rien">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Omeka ne vérifie rien
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Le logiciel n’impose <strong>aucune</strong> des règles définies par les vocabulaires. Une propriété censée pointer vers une autre ressource acceptera sans broncher du texte libre, et personne ne vous signalera l’erreur.</p>
-<p>La cohérence des données repose donc entièrement sur la personne qui saisit — ce qui est précisément la raison d’être de cette formation. Seuls les <strong>modèles de ressource</strong> (<em>resource templates</em>) permettent d’imposer un type de valeur sur un champ donné.</p>
-</div>
 </div>
 </section>
 </section>
@@ -892,19 +892,6 @@ Figure&nbsp;2: Le sélecteur de type de valeur, en mode édition d’un item.
 </tr>
 </tbody>
 </table>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Astuce</span>Astuce
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>L’URL d’édition suit le même schéma : <code>/admin/item/7457/edit</code>. Inversement, si vous êtes en train d’éditer un item, son <code>o:id</code> se lit directement dans la barre d’adresse.</p>
-</div>
-</div>
 <div class="callout callout-style-simple callout-warning callout-titled" title="Points à savoir">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -930,6 +917,7 @@ Figure&nbsp;2: Le sélecteur de type de valeur, en mode édition d’un item.
 <li>Affiner la méthode de recherche (<em>est strictement…</em> , <em>contient…/ne contient pas…</em> , <em>Propriété N est vide…</em>, …) ;</li>
 <li>partager une recherche : tous les critères sont inscrits dans l’URL, qui peut être copiée telle quelle.</li>
 </ul>
+<p><strong>C’est la méthode recommandée pour effectuer une recherche précise</strong> (un EC précis, un partenaire précis, etc), la barre de recherche standard (celle en haut du menu latéral) est très imprécise, comme évoqué précédemment.</p>
 <div class="callout callout-style-simple callout-warning callout-titled" title="Attention à utiliser le bon bloc de recherche !">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

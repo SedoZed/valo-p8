@@ -206,21 +206,6 @@ valo:partenariats a rdf:Property ; # Utilisé dans : Enseignants chercheurs ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-valo:orcid a rdf:Property ; # Utilisé dans : Enseignants chercheurs
-    rdfs:label "ORCID" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-valo:idRNSR a rdf:Property ; # Utilisé dans : Laboratoires
-    rdfs:label "ID RNSR" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-valo:idHAL a rdf:Property ; # Utilisé dans : Laboratoires
-    rdfs:label "ID HAL" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
 valo:keywords a rdf:Property ; # Utilisé dans : Laboratoires
     rdfs:label "Mots-clefs" ;
     rdfs:domain o:Resource ;

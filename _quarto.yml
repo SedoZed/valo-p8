@@ -22,29 +22,28 @@ website:
         menu:
           - text: "Contexte du projet"
             href: index.qmd
-          - text: "Prérequis de travail"
-            href: installations.qmd
+          - text: "Prérequis de travail et installations"
+            href: install.qmd
 
       - text: "Données"
         menu:
-          - text: "Préparer les données (CSV)"
+          - text: "Structure principale de la base Omeka S"
+            href: donnees/structure_bdd.qmd
+          - text: "---"
+          - text: "↳ Préparer les données (CSV)"
             href: donnees/standardiser_data2csv.qmd
-          - text: "Importer dans Oméka S"
+          - text: "↳ Importer dans Oméka S"
             href: donnees/bdd_omeka.qmd
-          - text: "Extraire depuis ScanR"
+          - text: "↳ Extraire depuis ScanR"
             href: donnees/scanr_extract.qmd
 
       - text: "Outils"
         menu:
-          - text: "CartoExpert — présentation"
-            href: outils/pres_syst.qmd
+          - text: "validExpertises & validKeywords"
+            href: outils/doc_validexp_et_validkeyw.qmd
           - text: "---"
-          - text: "ValiDatas"
-            href: outils/introduction_validata.qmd
-          - text: "↳ Guide opérateur"
-            href: outils/guide_operateur_validata.qmd
-          - text: "↳ Documentation technique"
-            href: outils/doc_tech_validata.qmd
+          - text: "L'interface de datavisualisation ValoVizu"
+            href: outils/doc_valovizu.qmd
 
       - text: "Ressources"
         menu:
