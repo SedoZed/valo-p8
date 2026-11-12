@@ -105,8 +105,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Contexte du projet</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../installations.html">
- <span class="dropdown-text">Prérequis de travail</span></a>
+    <a class="dropdown-item" href="../install.html">
+ <span class="dropdown-text">Prérequis de travail et installations</span></a>
   </li>  
     </ul>
   </li>
@@ -116,16 +116,21 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-données">    
         <li>
+    <a class="dropdown-item" href="../donnees/structure_bdd.html">
+ <span class="dropdown-text">Structure principale de la base Omeka S</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
     <a class="dropdown-item" href="../donnees/standardiser_data2csv.html">
- <span class="dropdown-text">Préparer les données (CSV)</span></a>
+ <span class="dropdown-text">↳ Préparer les données (CSV)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../donnees/bdd_omeka.html">
- <span class="dropdown-text">Importer dans Oméka S</span></a>
+ <span class="dropdown-text">↳ Importer dans Oméka S</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../donnees/scanr_extract.html">
- <span class="dropdown-text">Extraire depuis ScanR</span></a>
+ <span class="dropdown-text">↳ Extraire depuis ScanR</span></a>
   </li>  
     </ul>
   </li>
@@ -135,21 +140,13 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-outils">    
         <li>
-    <a class="dropdown-item" href="../outils/pres_syst.html">
- <span class="dropdown-text">CartoExpert — présentation</span></a>
+    <a class="dropdown-item" href="../outils/doc_validexp_et_validkeyw.html">
+ <span class="dropdown-text">validExpertises &amp; validKeywords</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="../outils/introduction_validata.html">
- <span class="dropdown-text">ValiDatas</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../outils/guide_operateur_validata.html">
- <span class="dropdown-text">↳ Guide opérateur</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../outils/doc_tech_validata.html">
- <span class="dropdown-text">↳ Documentation technique</span></a>
+    <a class="dropdown-item" href="../outils/doc_valovizu.html">
+ <span class="dropdown-text">L’interface de datavisualisation ValoVizu</span></a>
   </li>  
     </ul>
   </li>
@@ -205,10 +202,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#graphe-des-liens" id="toc-graphe-des-liens" class="nav-link" data-scroll-target="#graphe-des-liens">Graphe des liens</a></li>
   <li><a href="#détail-par-modèle" id="toc-détail-par-modèle" class="nav-link" data-scroll-target="#détail-par-modèle">Détail par modèle</a>
   <ul class="collapse">
-  <li><a href="#t2-enseignants-chercheurs-up8" id="toc-t2-enseignants-chercheurs-up8" class="nav-link" data-scroll-target="#t2-enseignants-chercheurs-up8">T2 · Enseignants chercheurs (UP8)</a></li>
-  <li><a href="#t4-laboratoires" id="toc-t4-laboratoires" class="nav-link" data-scroll-target="#t4-laboratoires">T4 · Laboratoires</a></li>
-  <li><a href="#t14-opes" id="toc-t14-opes" class="nav-link" data-scroll-target="#t14-opes">T14 · OPEs</a></li>
-  <li><a href="#t15-partenaire-ope" id="toc-t15-partenaire-ope" class="nav-link" data-scroll-target="#t15-partenaire-ope">T15 · Partenaire (OPE)</a></li>
+  <li><a href="#enseignants-chercheurs-up8" id="toc-enseignants-chercheurs-up8" class="nav-link" data-scroll-target="#enseignants-chercheurs-up8">Enseignants chercheurs (UP8)</a></li>
+  <li><a href="#laboratoires" id="toc-laboratoires" class="nav-link" data-scroll-target="#laboratoires">Laboratoires</a></li>
+  <li><a href="#opes" id="toc-opes" class="nav-link" data-scroll-target="#opes">OPEs</a></li>
+  <li><a href="#partenaire-ope" id="toc-partenaire-ope" class="nav-link" data-scroll-target="#partenaire-ope">Partenaire (OPE)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -281,14 +278,13 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>*Les annotations sont mises de côté, et il sera spécifié si une annotation peut être attendue à un moment donné.</p>
+<p><em>Les annotations sont mises de côté, et il sera spécifié si une annotation peut être attendue à un moment donné. </em>Il sera fait, à plusieurs reprises, mention d’un vocabulaire non-conventionnel créé spécéfiquement pour les besoins de la <em>DSR</em>. Sa documentation est disponible <a href="">ici</a>.</p>
 </section>
 <section id="conditions-décriture" class="level3">
 <h3 class="anchored" data-anchor-id="conditions-décriture">Conditions d’écriture</h3>
 <ul>
 <li><strong>Cible attendue</strong> : pour un lien, le modèle (ex. <code>T3</code>), la classe ou la collection vers lesquels la valeur doit pointer.</li>
 <li><strong>Structure attendue</strong> : pour un texte, le format à respecter (ex. <code>AAAA-MM-JJ</code>, « 14 chiffres »).</li>
-<li>Les cellules <code>_à compléter_</code> sont à remplir. Les mentions <strong>Piste :</strong> dans <em>Notes</em> sont des hypothèses, à valider ou supprimer.</li>
 </ul>
 </section>
 </section>
@@ -428,8 +424,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="détail-par-modèle" class="level2">
 <h2 class="anchored" data-anchor-id="détail-par-modèle">Détail par modèle</h2>
-<section id="t2-enseignants-chercheurs-up8" class="level3">
-<h3 class="anchored" data-anchor-id="t2-enseignants-chercheurs-up8">T2 · Enseignants chercheurs (UP8)</h3>
+<section id="enseignants-chercheurs-up8" class="level3">
+<h3 class="anchored" data-anchor-id="enseignants-chercheurs-up8">Enseignants chercheurs (UP8)</h3>
 <p>Classe : <code>valo:EnseignantChercheur</code> (id 162).</p>
 <table class="caption-top table">
 <colgroup>
@@ -563,8 +559,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="t4-laboratoires" class="level3">
-<h3 class="anchored" data-anchor-id="t4-laboratoires">T4 · Laboratoires</h3>
+<section id="laboratoires" class="level3">
+<h3 class="anchored" data-anchor-id="laboratoires">Laboratoires</h3>
 <p>Classe : <code>valo:Laboratoire</code> (id 163).</p>
 <table class="caption-top table">
 <colgroup>
@@ -690,17 +686,16 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="t14-opes" class="level3">
-<h3 class="anchored" data-anchor-id="t14-opes">T14 · OPEs</h3>
+<section id="opes" class="level3">
+<h3 class="anchored" data-anchor-id="opes">OPEs</h3>
 <p>Classe : <code>valo:OPE</code> (id 184).</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 14%">
+<col style="width: 15%">
 <col style="width: 22%">
 <col style="width: 7%">
-<col style="width: 39%">
-<col style="width: 11%">
-<col style="width: 4%">
+<col style="width: 41%">
+<col style="width: 13%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -709,7 +704,6 @@ ul.task-list li input[type="checkbox"] {
 <th>Type</th>
 <th>Cible attendue</th>
 <th>Structure attendue</th>
-<th></th>
 </tr>
 </thead>
 <tbody>
@@ -718,8 +712,7 @@ ul.task-list li input[type="checkbox"] {
 <td>Title</td>
 <td><code>text</code></td>
 <td>∅</td>
-<td>OPE/CONV-YYYY-NNNN</td>
-<td></td>
+<td><em>OPE/CONV</em>-YYYY-NNNN</td>
 </tr>
 <tr class="even">
 <td><code>valo:modePilotageOPE</code></td>
@@ -727,7 +720,6 @@ ul.task-list li input[type="checkbox"] {
 <td><code>resource</code></td>
 <td>Item set “<strong>Mode de gestion / Pilotage (OPE)</strong>” (<code>o:id</code> = 157269)</td>
 <td>∅</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td><code>valo:ecImplique</code></td>
@@ -735,7 +727,6 @@ ul.task-list li input[type="checkbox"] {
 <td><code>resource</code></td>
 <td>Item set “<strong>Enseignants Chercheurs de UP8</strong>” (<code>o:id</code> = 30435)</td>
 <td>∅</td>
-<td></td>
 </tr>
 <tr class="even">
 <td><code>valo:opeCollabLabo</code></td>
@@ -743,7 +734,6 @@ ul.task-list li input[type="checkbox"] {
 <td><code>resource</code></td>
 <td>Item set “<strong>Laboratoires de Paris 8</strong>” (<code>o:id</code> = 30437)</td>
 <td>∅</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td><code>valo:opeCollabExterne</code></td>
@@ -751,7 +741,6 @@ ul.task-list li input[type="checkbox"] {
 <td><code>resource</code></td>
 <td>Item set “<strong>Partenaires (OPE)</strong>” (<code>o:id</code> = 121229)</td>
 <td>∅</td>
-<td></td>
 </tr>
 <tr class="even">
 <td><code>valo:opeType</code></td>
@@ -759,7 +748,6 @@ ul.task-list li input[type="checkbox"] {
 <td><code>resource</code></td>
 <td>Item set “<strong>Type de contrat</strong>” (<code>o:id</code> = 156249)</td>
 <td>∅</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td><code>valo:budgOPE</code></td>
@@ -767,7 +755,6 @@ ul.task-list li input[type="checkbox"] {
 <td><code>text</code></td>
 <td>∅</td>
 <td><em>à compléter</em></td>
-<td></td>
 </tr>
 <tr class="even">
 <td><code>valo:montantGlobal</code></td>
@@ -775,7 +762,6 @@ ul.task-list li input[type="checkbox"] {
 <td><code>text</code></td>
 <td>∅</td>
 <td><em>à compléter</em></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td><code>curation:start</code></td>
@@ -783,7 +769,6 @@ ul.task-list li input[type="checkbox"] {
 <td><code>text</code></td>
 <td>∅</td>
 <td><code>DD/MM/YY</code></td>
-<td></td>
 </tr>
 <tr class="even">
 <td><code>curation:end</code></td>
@@ -791,22 +776,20 @@ ul.task-list li input[type="checkbox"] {
 <td><code>text</code></td>
 <td>∅</td>
 <td><code>DD/MM/YY</code></td>
-<td></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="t15-partenaire-ope" class="level3">
-<h3 class="anchored" data-anchor-id="t15-partenaire-ope">T15 · Partenaire (OPE)</h3>
+<section id="partenaire-ope" class="level3">
+<h3 class="anchored" data-anchor-id="partenaire-ope">Partenaire (OPE)</h3>
 <p>Classe : <code>valo:PartenairesOPE</code> (id 183).</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 7%">
+<col style="width: 31%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -815,65 +798,57 @@ ul.task-list li input[type="checkbox"] {
 <th>Type</th>
 <th>Cible attendue</th>
 <th>Structure attendue</th>
-<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><code>dcterms:title</code></td>
 <td>Title</td>
+<td><code>text</code></td>
 <td>∅</td>
-<td><em>à compléter</em></td>
-<td><em>à compléter</em></td>
-<td></td>
+<td>Intitulé le plus utilisé.</td>
 </tr>
 <tr class="even">
 <td><code>valo:siret</code></td>
 <td>A comme numéro SIRET</td>
+<td><code>text</code></td>
 <td>∅</td>
-<td><em>à compléter</em></td>
-<td><em>à compléter</em></td>
 <td>Un SIRET compte 14 chiffres.</td>
 </tr>
 <tr class="odd">
 <td><code>valo:siren</code></td>
 <td>A comme numéro SIREN</td>
+<td><code>text</code></td>
 <td>∅</td>
-<td><em>à compléter</em></td>
-<td><em>à compléter</em></td>
 <td>Un SIREN compte 9 chiffres (les 9 premiers du SIRET).</td>
 </tr>
 <tr class="even">
 <td><code>valo:codeNaf</code></td>
 <td>A le code NAF/APE</td>
 <td><code>resource</code></td>
-<td><em>à compléter</em></td>
-<td>—</td>
-<td><strong>Piste :</strong> items <code>valo:CodeNAF</code> (classe sans modèle).</td>
+<td>Item set “<strong>Code NAF/APE</strong>” (<code>o:id</code> = 120553)</td>
+<td>∅</td>
 </tr>
 <tr class="odd">
 <td><code>dcterms:alternative</code></td>
 <td>Alternative Title</td>
+<td><code>text</code></td>
 <td>∅</td>
-<td><em>à compléter</em></td>
-<td><em>à compléter</em></td>
-<td>Commentaire du modèle : autres appellations de la structure.</td>
+<td>Autres intitulés possibles</td>
 </tr>
 <tr class="even">
 <td><code>curation:location</code></td>
 <td>Location</td>
+<td><code>text</code></td>
 <td>∅</td>
-<td><em>à compléter</em></td>
-<td>Code postal, si structure française (déclaré dans le modèle)</td>
-<td></td>
+<td>Code postal si française, ou le nom du pays</td>
 </tr>
 <tr class="odd">
 <td><code>valo:typePartenaire</code></td>
 <td>Type du partenaire…</td>
 <td><code>resource</code></td>
-<td>Item set 157306 « Type d’organisation » (déclaré dans le modèle)</td>
-<td>—</td>
-<td>Une classe <code>valo:TypePartenaire</code> existe aussi : les items de cet item set en relèvent-ils ?</td>
+<td>Item set <strong>Type d’organisation</strong> (<code>o:id</code> = 157306)</td>
+<td>∅</td>
 </tr>
 </tbody>
 </table>

@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Cédric BOUCLY">
+<meta name="keywords" content="Introduction générale, Présentation du projet, Perspectives d’évolution, Profil de l’opérateur">
 
-<title>Contexte d’exploitation – CartoExpert</title>
+<title>Qu’est-ce donc que ce projet ? – CartoExpert</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -100,8 +102,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Contexte du projet</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./installations.html">
- <span class="dropdown-text">Prérequis de travail</span></a>
+    <a class="dropdown-item" href="./install.html">
+ <span class="dropdown-text">Prérequis de travail et installations</span></a>
   </li>  
     </ul>
   </li>
@@ -111,16 +113,21 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-données">    
         <li>
+    <a class="dropdown-item" href="./donnees/structure_bdd.html">
+ <span class="dropdown-text">Structure principale de la base Omeka S</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
     <a class="dropdown-item" href="./donnees/standardiser_data2csv.html">
- <span class="dropdown-text">Préparer les données (CSV)</span></a>
+ <span class="dropdown-text">↳ Préparer les données (CSV)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./donnees/bdd_omeka.html">
- <span class="dropdown-text">Importer dans Oméka S</span></a>
+ <span class="dropdown-text">↳ Importer dans Oméka S</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./donnees/scanr_extract.html">
- <span class="dropdown-text">Extraire depuis ScanR</span></a>
+ <span class="dropdown-text">↳ Extraire depuis ScanR</span></a>
   </li>  
     </ul>
   </li>
@@ -130,21 +137,13 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-outils">    
         <li>
-    <a class="dropdown-item" href="./outils/pres_syst.html">
- <span class="dropdown-text">CartoExpert — présentation</span></a>
+    <a class="dropdown-item" href="./outils/doc_validexp_et_validkeyw.html">
+ <span class="dropdown-text">validExpertises &amp; validKeywords</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./outils/introduction_validata.html">
- <span class="dropdown-text">ValiDatas</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./outils/guide_operateur_validata.html">
- <span class="dropdown-text">↳ Guide opérateur</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./outils/doc_tech_validata.html">
- <span class="dropdown-text">↳ Documentation technique</span></a>
+    <a class="dropdown-item" href="./outils/doc_valovizu.html">
+ <span class="dropdown-text">L’interface de datavisualisation ValoVizu</span></a>
   </li>  
     </ul>
   </li>
@@ -201,19 +200,38 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Contexte d’exploitation</h1>
+<h1 class="title">Qu’est-ce donc que ce projet ?</h1>
+<p class="subtitle lead">Présentation générale du projet CartoExpert, son évolution et ses prérequis humain</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Auteur·rice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Cédric BOUCLY </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Date de publication</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">1 novembre 2026</p>
+    </div>
+  </div>
   
     
   </div>
   
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Mots clés</div>
+    <p>Introduction générale, Présentation du projet, Perspectives d’évolution, Profil de l’opérateur</p>
+  </div>
+</div>
 
 </header>
 
@@ -222,8 +240,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Au sein de la <strong>Direction des Services à la Recherche</strong> <em>(DSR)</em> de l’<a href="https://www.univ-paris8.fr/">Université Paris 8</a>, le <strong>Service de la Valorisation de la Recherche</strong> <em>(SVR)</em> a pour principale mission de développer des partenariats avec les acteurs non-académiques et de valoriser les expertises des laboratoires et des chercheurs de l’université. Pour accomplir cette mission, le <em>SVR</em> a besoin de bien connaitre ces expertises pour orienter la recherche de partenariats et bien les expliquer à des acteurs non académiques. Ainsi, pour assister son personnel dans sa mission, le service a souhaité réaliser des cartographies représentant les activités, compétences, expertises, productions et savoir-faire des chercheurs et laboratoires d’UP8 et de disposer d’un outil qui lui permet de faire l’interface entre les acteurs non-académiques et leurs interlocuteurs dans la communauté scientifique d’UP8.</p>
 <section id="portée-du-projet" class="level2">
 <h2 class="anchored" data-anchor-id="portée-du-projet">Portée du projet</h2>
-<p>Ce projet, intitulé <strong>CartoExpert</strong>, réalisé en collaboration avec le <a href="https://paragraphe.univ-paris8.fr/">Laboratoire Paragraphe</a>, s’adressent en priorité aux chargés de partenariat et de valorisation et aux chargés de montage de projets de la DSR qui ont besoin d’identifier les bons interlocuteurs et de les mettre en relation. En effet, les expertises nécessaires pour répondre à des appels aux projets ou des demandes exprimés par des acteurs externes doivent être identifiées par les équipes de la DSR afin de faire la meilleure mise en relation possible.</p>
-<p>De plus, <strong>CartoExpert</strong> a plutôt pour vocation de couvrir le domaine de la recherche et moins celui de l’enseignement ou aux autres activités de la communauté universitaire dans la mesure où il s’agit d’un outil pour la direction des services à la recherche. Rien, cependant, n’interdit de penser l’outil de telle sorte qu’il intégre à l’avenir d’autres données.</p>
+<p>Ce projet, intitulé <strong>CartoExpert</strong>, réalisé en collaboration avec <a href="https://cv.hal.science/samuel-szoniecky">Samuel Szoniecky</a> du <a href="https://paragraphe.univ-paris8.fr/">Laboratoire Paragraphe</a>, s’adressent en priorité aux chargés de partenariat et de valorisation et aux chargés de montage de projets de la DSR qui ont besoin d’identifier les bons interlocuteurs et de les mettre en relation. En effet, les expertises nécessaires pour répondre à des appels aux projets ou des demandes exprimés par des acteurs externes doivent être identifiées par les équipes de la DSR afin de faire la meilleure mise en relation possible. De plus, <strong>CartoExpert</strong> a plutôt pour vocation de couvrir le domaine de la recherche et moins celui de l’enseignement ou aux autres activités de la communauté universitaire dans la mesure où il s’agit d’un outil pour la direction des services à la recherche. Rien, cependant, n’interdit de penser l’outil de telle sorte qu’il intégre à l’avenir d’autres données.</p>
+<p>Petit à petit, ce projet a vu un autre objectif lui être attribué, celui-ci étant l’identification de divers usages et besoins émis par le personnel du <em>SVR</em> dans le but d’établir un cahier des charges servant à l’avenir à adopter (ou créer de toute part) au sein de <a href="https://www.univ-paris8.fr/">Université Paris 8</a> un <strong>Système d’Information de Recherche</strong> (plus internationalement appelé <em>CRIS</em>, pour <em><a href="https://en.wikipedia.org/wiki/Current_research_information_system">Current Research Information System</a></em>).</p>
 <hr>
 </section>
 <section id="quelles-expertises-requises" class="level1">
@@ -321,6 +339,11 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

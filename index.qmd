@@ -1,17 +1,20 @@
 ---
-title: "Contexte d'exploitation"
+title: "Qu'est-ce donc que ce projet ?"
+subtitle: "Présentation générale du projet CartoExpert, son évolution et ses prérequis humain"
+author: "Cédric BOUCLY"
+date: "2026-11-01"
+date-format: "D MMMM YYYY"
 lang: fr
+keywords: [Introduction générale, Présentation du projet, Perspectives d'évolution, Profil de l'opérateur]
 ---
-
-<br>
 
 Au sein de la **Direction des Services à la Recherche** *(DSR)* de l'[Université Paris 8](https://www.univ-paris8.fr/), le **Service de la Valorisation de la Recherche** *(SVR)* a pour principale mission de développer des partenariats avec les acteurs non-académiques et de valoriser les expertises des laboratoires et des chercheurs de l’université. Pour accomplir cette mission, le *SVR* a besoin de bien connaitre ces expertises pour orienter la recherche de partenariats et bien les expliquer à des acteurs non académiques. Ainsi, pour assister son personnel dans sa mission, le service a souhaité réaliser des cartographies représentant les activités, compétences, expertises, productions et savoir-faire des chercheurs et laboratoires d’UP8 et de disposer d’un outil qui lui permet de faire l’interface entre les acteurs non-académiques et leurs interlocuteurs dans la communauté scientifique d’UP8.
 
 ## Portée du projet
 
-Ce projet, intitulé **CartoExpert**, réalisé en collaboration avec le [Laboratoire Paragraphe](https://paragraphe.univ-paris8.fr/), s’adressent en priorité aux chargés de partenariat et de valorisation et aux chargés de montage de projets de la DSR qui ont besoin d’identifier les bons interlocuteurs et de les mettre en relation. En effet, les expertises nécessaires pour répondre à des appels aux projets ou des demandes exprimés par des acteurs externes doivent être identifiées par les équipes de la DSR afin de faire la meilleure mise en relation possible.
+Ce projet, intitulé **CartoExpert**, réalisé en collaboration avec [Samuel Szoniecky](https://cv.hal.science/samuel-szoniecky) du [Laboratoire Paragraphe](https://paragraphe.univ-paris8.fr/), s’adressent en priorité aux chargés de partenariat et de valorisation et aux chargés de montage de projets de la DSR qui ont besoin d’identifier les bons interlocuteurs et de les mettre en relation. En effet, les expertises nécessaires pour répondre à des appels aux projets ou des demandes exprimés par des acteurs externes doivent être identifiées par les équipes de la DSR afin de faire la meilleure mise en relation possible. De plus, **CartoExpert** a plutôt pour vocation de couvrir le domaine de la recherche et moins celui de l’enseignement ou aux autres activités de la communauté universitaire dans la mesure où il s’agit d’un outil pour la direction des services à la recherche. Rien, cependant, n’interdit de penser l’outil de telle sorte qu’il intégre à l’avenir d’autres données.
 
-De plus, **CartoExpert** a plutôt pour vocation de couvrir le domaine de la recherche et moins celui de l’enseignement ou aux autres activités de la communauté universitaire dans la mesure où il s’agit d’un outil pour la direction des services à la recherche. Rien, cependant, n’interdit de penser l’outil de telle sorte qu’il intégre à l’avenir d’autres données.
+Petit à petit, ce projet a vu un autre objectif lui être attribué, celui-ci étant l'identification de divers usages et besoins émis par le personnel du *SVR* dans le but d'établir un cahier des charges servant à l'avenir à adopter (ou créer de toute part) au sein de [Université Paris 8](https://www.univ-paris8.fr/) un **Système d'Information de Recherche** (plus internationalement appelé *CRIS*, pour *[Current Research Information System](https://en.wikipedia.org/wiki/Current_research_information_system)*).
 
 - - - 
 

@@ -5,9 +5,8 @@ author: "Cédric BOUCLY"
 date: "2026-11-01"
 date-format: "D MMMM YYYY"
 lang: fr
-keywords: [Omeka S, interfaces, fonctionnement, maintenance, API]
+keywords: [Interface, Datavisualisation, Fonctionnement, Maintenance, API Omeka S]
 ---
-
 
 # Ce que fait l'outil
 
@@ -18,63 +17,50 @@ L'outil n'écrit rien dans Omeka S. Il lit, normalise, compte et dessine. Toute 
 ::: {.callout-note}
 ## Le principe qui commande tout le reste
 
-**Un seul point de vérité par tableau de bord.** Il existe un unique objet
-d'état — quels filtres sont posés, quelles valeurs sont masquées, quelle
-recherche est en cours — et tous les panneaux reçoivent les mêmes
-enregistrements filtrés. Aucun panneau ne refait ce travail dans son coin.
+**Un seul point de vérité par tableau de bord.** Il existe un unique objet d'état — quels filtres sont posés, quelles valeurs sont masquées, quelle recherche est en cours — et tous les panneaux reçoivent les mêmes enregistrements filtrés. Aucun panneau ne refait ce travail dans son coin.
 
-Conséquence pratique : **tout geste dans n'importe quelle figure agit sur
-l'ensemble de la page.** Cliquer une barre « Convention » dans les types de
-contrat restreint aussitôt les indicateurs, le réseau, le tableau et la
-légende. C'est ce qui fait de l'outil une exploration plutôt qu'une collection
-de graphiques.
+Conséquence pratique : **tout geste dans n'importe quelle figure agit sur l'ensemble de la page.** Cliquer une barre « Convention » dans les types de contrat restreint aussitôt les indicateurs, le réseau, le tableau et la légende. C'est ce qui fait de l'outil une exploration plutôt qu'une collection de graphiques.
 :::
 
 ## Les deux tableaux de bord
 
-Le basculement se fait par les deux onglets en haut de page. Chaque tableau de
-bord a **son propre état de sélection** : revenir à l'autre onglet retrouve les
-filtres qu'on y avait laissés.
+Le basculement se fait par les deux onglets en haut de page. Chaque tableau de bord a **son propre état de sélection** : revenir à l'autre onglet retrouve les filtres qu'on y avait laissés.
 
 ### Partenariats {#sec-ope}
 
 Un enregistrement = une opération de partenariat (classe `OPE` dans Omeka S).
 
-| Panneau | Ce qu'il répond |
-|---|---|
-| **Indicateurs** | Opérations, partenaires distincts, types de contrat, laboratoires impliqués, période couverte ; budget cumulé, montant global cumulé, budget médian, concentration |
-| **Opérations par année** | Le rythme de la contractualisation |
-| **Types de contrat** | La répartition par nature juridique, croisable avec la durée |
-| **Montants** | Cinq lectures des données financières (voir @sec-montants) |
-| **Types de partenaires** | Entreprises, collectivités, associations, universités… |
-| **Partenaires** | Qui revient le plus souvent |
-| **Laboratoires** | Quelles unités contractualisent |
-| **Durée des opérations** | En tranches ou en jours, au choix |
-| **Années et partenaires** | Croisement, en empilements ou en matrice |
+| Panneau                                    | Ce qu'il répond |
+|--------------------------------------------|-----------------|
+| **Indicateurs**                            | Opérations, partenaires distincts, types de contrat, laboratoires impliqués, période couverte ; budget cumulé, montant global cumulé, budget médian, concentration |
+| **Opérations par année**                   | Le rythme de la contractualisation |
+| **Types de contrat**                       | La répartition par nature juridique, croisable avec la durée |
+| **Montants**                               | Cinq lectures des données financières (voir @sec-montants) |
+| **Types de partenaires**                   | Entreprises, collectivités, associations, universités… |
+| **Partenaires**                            | Qui revient le plus souvent |
+| **Laboratoires**                           | Quelles unités contractualisent |
+| **Durée des opérations**                   | En tranches ou en jours, au choix |
+| **Années et partenaires**                  | Croisement, en empilements ou en matrice |
 | **Durée des partenariats par laboratoire** | Frise : qui est engagé, quand, et jusqu'à quand |
-| **Relations** | Laboratoires × partenaires, en colonnes, en flux ou en matrice |
-| **Partenaires** (panneau dédié) | La fiche de chaque partenaire, exportable en CSV |
+| **Relations**                              | Laboratoires × partenaires, en colonnes, en flux ou en matrice |
+| **Partenaires** (panneau dédié)            | La fiche de chaque partenaire, exportable en CSV |
 
 ### Enseignants-chercheurs {#sec-ec}
 
 Un enregistrement = un chercheur (classe `EnseignantChercheur`).
 
 | Panneau | Ce qu'il répond |
-|---|---|
-| **Indicateurs** | Effectifs, laboratoires, domaines HCERES, sections CNU, thèmes de recherche distincts |
-| **Réseau** | Les chercheurs autour de leurs laboratoires, en simulation de forces |
+|-----------------------------|---|
+| **Indicateurs**             | Effectifs, laboratoires, domaines HCERES, sections CNU, thèmes de recherche distincts |
+| **Réseau**                  | Les chercheurs autour de leurs laboratoires, en simulation de forces |
 | **Laboratoires et statuts** | La composition de chaque unité |
-| **Mots-clés** | Nuage de mots, ou histogramme |
-| **Sections CNU** | Le rattachement disciplinaire |
+| **Mots-clés**               | Nuage de mots, ou histogramme |
+| **Sections CNU**            | Le rattachement disciplinaire |
 
 ::: {.callout-tip}
 ## Le réseau n'est pas un décor
 
-Il répond à ce qu'aucun histogramme ne traite : quels pôles pèsent le plus,
-lesquels sont voisins, et **qui est à cheval sur deux laboratoires**. Les
-enveloppes colorées cernent les groupes ; un nœud placé entre deux enveloppes
-est un chercheur partagé. On peut saisir un pôle pour le déplacer — le glisser
-ne filtre pas, seul le clic simple filtre.
+Il répond à ce qu'aucun histogramme ne traite : quels pôles pèsent le plus, lesquels sont voisins, et **qui est à cheval sur deux laboratoires**. Les enveloppes colorées cernent les groupes ; un nœud placé entre deux enveloppes est un chercheur partagé. On peut saisir un pôle pour le déplacer — le glisser ne filtre pas, seul le clic simple filtre.
 :::
 
 # Les fonctionnalités transversales
@@ -83,73 +69,43 @@ ne filtre pas, seul le clic simple filtre.
 
 Trois gestes distincts, qu'il faut savoir distinguer pour lire les chiffres.
 
-**Filtrer** (clic sur une valeur, ou case dans la colonne de gauche) restreint
-la sélection à cette valeur. C'est réversible et cumulatif.
+**Filtrer** (clic sur une valeur, ou case dans la colonne de gauche) restreint la sélection à cette valeur. C'est réversible et cumulatif.
 
-**Masquer** (clic droit → *Masquer cette valeur*) met une valeur **hors
-périmètre** : elle disparaît de tous les comptages, comme si elle n'existait
-pas. L'université elle-même est masquée d'office côté partenariats — elle
-figure dans presque toutes les opérations, ce qui est exact mais écrase
-l'échelle et masque les partenaires extérieurs, qui sont le sujet.
+**Masquer** (clic droit → *Masquer cette valeur*) met une valeur **hors périmètre** : elle disparaît de tous les comptages, comme si elle n'existait pas. L'université elle-même est masquée d'office côté partenariats — elle figure dans presque toutes les opérations, ce qui est exact mais écrase l'échelle et masque les partenaires extérieurs, qui sont le sujet.
 
-**Détacher** (ou « épingler ») sort une valeur d'un regroupement « Autres »
-pour la montrer isolément.
+**Détacher** (ou « épingler ») sort une valeur d'un regroupement « Autres » pour la montrer isolément.
 
 ::: {.callout-important}
-Rien n'est jamais écarté en silence. Les valeurs masquées figurent dans un
-panneau dédié, et la **légende** sous le titre énonce en toutes lettres ce que
-la vue affiche et ce qu'elle exclut. C'est cette phrase qu'on colle sous une
-figure dans un rapport.
+Rien n'est jamais écarté en silence. Les valeurs masquées figurent dans un panneau dédié, et la **légende** sous le titre énonce en toutes lettres ce que la vue affiche et ce qu'elle exclut. C'est cette phrase qu'on colle sous une figure dans un rapport.
 :::
 
 ## Restreindre une figure sans toucher aux autres {#sec-restrictions}
 
-Le clic droit sur une valeur propose aussi de **ne garder que certaines valeurs
-sur cette figure-là**. La différence avec un filtre :
+Le clic droit sur une valeur propose aussi de **ne garder que certaines valeurs sur cette figure-là**. La différence avec un filtre :
 
 - un **filtre** change la sélection, donc tous les chiffres de la page ;
-- une **restriction** ne change que ce qu'une figure donnée montre. Les
-  effectifs ne sont pas recalculés : on cache des barres, on ne refait pas les
-  comptes.
+- une **restriction** ne change que ce qu'une figure donnée montre. Les effectifs ne sont pas recalculés : on cache des barres, on ne refait pas les comptes.
 
-Plusieurs figures peuvent porter des restrictions différentes en même temps.
-Un bandeau sous la figure le rappelle, un bouton global « Tout réafficher »
-les lève toutes, et elles sont reportées dans l'adresse et dans l'historique
-d'annulation — elles se comportent à tous égards comme un filtre, sauf qu'elles
-ne recalculent rien.
+Plusieurs figures peuvent porter des restrictions différentes en même temps. Un bandeau sous la figure le rappelle, un bouton global « Tout réafficher » les lève toutes, et elles sont reportées dans l'adresse et dans l'historique d'annulation — elles se comportent à tous égards comme un filtre, sauf qu'elles ne recalculent rien.
 
 ## Partager une vue
 
-Le bouton **Copier le lien** produit une adresse qui reproduit exactement la
-sélection courante : filtres, masquages, détachements, restrictions, recherche.
+Le bouton **Copier le lien** produit une adresse qui reproduit exactement la sélection courante : filtres, masquages, détachements, restrictions, recherche.
 
-Ce qui **n'est pas** reporté : les réglages d'affichage — mode d'une figure,
-sens des barres, niveau de détail, thème. Ils relèvent du confort de celui qui
-regarde, non de ce qu'il montre, et les embarquer allongerait l'adresse sans
-rien apporter à qui la reçoit.
+Ce qui **n'est pas** reporté : les réglages d'affichage — mode d'une figure, sens des barres, niveau de détail, thème. Ils relèvent du confort de celui qui regarde, non de ce qu'il montre, et les embarquer allongerait l'adresse sans rien apporter à qui la reçoit.
 
-L'écriture de l'adresse n'empile **aucune entrée dans l'historique du
-navigateur** : chaque case cochée y créerait une étape, et le bouton
-« précédent » deviendrait un annulateur maladroit.
+L'écriture de l'adresse n'empile **aucune entrée dans l'historique du navigateur** : chaque case cochée y créerait une étape, et le bouton « précédent » deviendrait un annulateur maladroit.
 
 ## Annuler et rétablir
 
-Les boutons `↶ Annuler` / `↷ Rétablir` portent sur la sélection, avec une
-profondeur de quarante pas. Ils annoncent ce qu'ils vont défaire (« annuler le
-filtre laboratoire », « annuler un masquage ») : un bouton sans objet oblige à
-cliquer pour savoir ce qu'il fait.
+Les boutons `↶ Annuler` / `↷ Rétablir` portent sur la sélection, avec une profondeur de quarante pas. Ils annoncent ce qu'ils vont défaire (« annuler le filtre laboratoire », « annuler un masquage ») : un bouton sans objet oblige à cliquer pour savoir ce qu'il fait.
 
 ::: {.callout-note collapse="true"}
 ## Pourquoi l'état est relevé au rendu, et non à l'action
 
-Les modifications de la sélection partent d'une douzaine d'endroits : facettes,
-menu contextuel, clics dans les figures, fenêtre des regroupements, profils.
-Instrumenter chacun demanderait de n'en oublier aucun, aujourd'hui et à chaque
-ajout — et un oubli ne se verrait pas.
+Les modifications de la sélection partent d'une douzaine d'endroits : facettes, menu contextuel, clics dans les figures, fenêtre des regroupements, profils. Instrumenter chacun demanderait de n'en oublier aucun, aujourd'hui et à chaque ajout — et un oubli ne se verrait pas.
 
-L'état est donc comparé à chaque rendu avec le dernier relevé : s'il a changé,
-le précédent rejoint la pile. Aucun point d'appel à instrumenter, et tout
-changement est saisi, d'où qu'il vienne.
+L'état est donc comparé à chaque rendu avec le dernier relevé : s'il a changé, le précédent rejoint la pile. Aucun point d'appel à instrumenter, et tout changement est saisi, d'où qu'il vienne.
 :::
 
 ## Profils de réglages
@@ -159,10 +115,7 @@ Utile pour les vues qu'on reconstitue chaque mois.
 
 ## Exporter
 
-- **Une figure** : bouton d'export en PNG ou SVG. **La légende est incrustée
-  dans le fichier**, non proposée à côté : une figure exportée quitte l'outil
-  et circule seule ; sans la phrase qui la décrit, plus personne ne sait sur
-  quelle sélection elle porte.
+- **Une figure** : bouton d'export en PNG ou SVG. **La légende est incrustée dans le fichier**, non proposée à côté : une figure exportée quitte l'outil et circule seule ; sans la phrase qui la décrit, plus personne ne sait sur quelle sélection elle porte.
 - **La sélection** : export CSV depuis le tableau.
 - **Les partenaires** : export CSV depuis le panneau dédié.
 

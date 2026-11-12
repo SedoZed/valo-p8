@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Cédric BOUCLY">
+<meta name="keywords" content="Prérequis, Documentation technique, Hardware, Software">
 
-<title>Prérequis et installation – CartoExpert</title>
+<title>Prérequis matériel et installations – CartoExpert</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,8 +105,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Contexte du projet</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./installations.qmd">
- <span class="dropdown-text">Prérequis de travail</span></a>
+    <a class="dropdown-item" href="./install.html">
+ <span class="dropdown-text">Prérequis de travail et installations</span></a>
   </li>  
     </ul>
   </li>
@@ -114,21 +116,21 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-données">    
         <li>
-    <a class="dropdown-item" href="./donnees/standardiser_data2csv.html">
- <span class="dropdown-text">Préparer les données (CSV)</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./donnees/bdd_omeka.html">
- <span class="dropdown-text">Importer dans Oméka S</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./donnees/scanr_extract.html">
- <span class="dropdown-text">Extraire depuis ScanR</span></a>
+    <a class="dropdown-item" href="./donnees/structure_bdd.html">
+ <span class="dropdown-text">Structure principale de la base Omeka S</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./donnees/structure_bdd.html">
- <span class="dropdown-text">Structure principale de la base Omeka S</span></a>
+    <a class="dropdown-item" href="./donnees/standardiser_data2csv.html">
+ <span class="dropdown-text">↳ Préparer les données (CSV)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./donnees/bdd_omeka.html">
+ <span class="dropdown-text">↳ Importer dans Oméka S</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./donnees/scanr_extract.html">
+ <span class="dropdown-text">↳ Extraire depuis ScanR</span></a>
   </li>  
     </ul>
   </li>
@@ -138,21 +140,13 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-outils">    
         <li>
-    <a class="dropdown-item" href="./outils/pres_syst.qmd">
- <span class="dropdown-text">CartoExpert — présentation</span></a>
+    <a class="dropdown-item" href="./outils/doc_validexp_et_validkeyw.html">
+ <span class="dropdown-text">validExpertises &amp; validKeywords</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="./outils/introduction_validata.html">
- <span class="dropdown-text">ValiDatas</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./outils/guide_operateur_validata.html">
- <span class="dropdown-text">↳ Guide opérateur</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./outils/doc_tech_validata.html">
- <span class="dropdown-text">↳ Documentation technique</span></a>
+    <a class="dropdown-item" href="./outils/doc_valovizu.html">
+ <span class="dropdown-text">L’interface de datavisualisation ValoVizu</span></a>
   </li>  
     </ul>
   </li>
@@ -216,24 +210,42 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Prérequis et installation</h1>
+<h1 class="title">Prérequis matériel et installations</h1>
+<p class="subtitle lead">De quoi l’opérateur a-t-il besoin pour opérer, côté hardware comme software ?</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Auteur·rice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Cédric BOUCLY </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Date de publication</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">1 novembre 2026</p>
+    </div>
+  </div>
   
     
   </div>
   
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Mots clés</div>
+    <p>Prérequis, Documentation technique, Hardware, Software</p>
+  </div>
+</div>
 
 </header>
 
 
-<p><br></p>
 <p>Le maintien opérationel du projet CartoExpert nécessite l’installation d’un poste de travail particulier, avec des paramètres et des contraintes physiques et logicielle à prendre en compte. Cette page de la documentation se focalisera donc sur ces prérequis à effectuer, et sur les installations à effectuer.</p>
 <section id="constituer-lécosystème-de-travail" class="level2">
 <h2 class="anchored" data-anchor-id="constituer-lécosystème-de-travail">Constituer l’écosystème de travail</h2>
@@ -244,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
 <p>En terme d’OS, il est fortement recommandé de se tourner vers une <a href="https://fr.wikipedia.org/wiki/Distribution_Linux">distribution Linux</a> intitulée <a href="https://fr.wikipedia.org/wiki/Debian">Debian</a> plutôt que vers un environnement Windows car :</p>
 <ul>
 <li><p><a href="#installer-le-logiciel-oméka-s">Oméka S</a>, l’outil utilisé pour mapper nos données, tourne très mal sur Windows.</p></li>
-<li><p>Les serveurs de la DSR <strong>tournent eux aussi sur une distrio Debian</strong>. Avoir un environnement de travail similaire aux serveurs facilitera le transfert de données locales vers les serveurs le moment venu.</p></li>
+<li><p>Les serveurs de la DSR <strong>tournent eux aussi sur une distro Linux Debian</strong>. Avoir un environnement de travail similaire aux serveurs facilitera le transfert de données locales vers les serveurs le moment venu.</p></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">

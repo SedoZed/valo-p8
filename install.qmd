@@ -1,9 +1,12 @@
 ---
-title: "Prérequis et installation"
+title: "Prérequis matériel et installations"
+subtitle: "De quoi l'opérateur a-t-il besoin pour opérer, côté hardware comme software ?"
+author: "Cédric BOUCLY"
+date: "2026-11-01"
+date-format: "D MMMM YYYY"
 lang: fr
+keywords: [Prérequis, Documentation technique, Hardware, Software]
 ---
-
-</br>
 
 Le maintien opérationel du projet CartoExpert nécessite l'installation d'un poste de travail particulier, avec des paramètres et des contraintes physiques et logicielle à prendre en compte. Cette page de la documentation se focalisera donc sur ces prérequis à effectuer, et sur les installations à effectuer.
 
@@ -21,7 +24,7 @@ En terme d'OS, il est fortement recommandé de se tourner vers une [distribution
 
 - [Oméka S](#installer-le-logiciel-oméka-s), l'outil utilisé pour mapper nos données, tourne très mal sur Windows.
 
-- Les serveurs de la DSR **tournent eux aussi sur une distrio Debian**. Avoir un environnement de travail similaire aux serveurs facilitera le transfert de données locales vers les serveurs le moment venu.
+- Les serveurs de la DSR **tournent eux aussi sur une distro Linux Debian**. Avoir un environnement de travail similaire aux serveurs facilitera le transfert de données locales vers les serveurs le moment venu.
 
 ![Visuel type de l'interface Debian GNOME, issu de la page Wikipédia de ce dernier](/assets/img/illu-debian-gnome-wikipedia.png){width="70%" fig-align="center"}
 

@@ -21,12 +21,12 @@ Ce document décrit la structure **telle que la déclarent les modèles de resso
 | `uri`      | Lien vers une redirection externe comme [idRef](https://www.idref.fr/), [scanR](https://scanr.enseignementsup-recherche.gouv.fr/), etc |
 
 *Les annotations sont mises de côté, et il sera spécifié si une annotation peut être attendue à un moment donné.
+*Il sera fait, à plusieurs reprises, mention d'un vocabulaire non-conventionnel créé spécéfiquement pour les besoins de la *DSR*. Sa documentation est disponible [ici]().
 
 ### Conditions d'écriture
  
 - **Cible attendue** : pour un lien, le modèle (ex. `T3`), la classe ou la collection vers lesquels la valeur doit pointer.
 - **Structure attendue** : pour un texte, le format à respecter (ex. `AAAA-MM-JJ`, « 14 chiffres »).
-- Les cellules `_à compléter_` sont à remplir. Les mentions **Piste :** dans *Notes* sont des hypothèses, à valider ou supprimer.
 
 ## Vue d'ensemble
 
@@ -87,7 +87,7 @@ flowchart LR
 
 ## Détail par modèle
 
-### T2 · Enseignants chercheurs (UP8)
+### Enseignants chercheurs (UP8)
 
 Classe : `valo:EnseignantChercheur` (id 162).
 
@@ -113,7 +113,7 @@ La liste ci-dessus détaille le contenu d'un item "enseignant-chercheur" **AVANT
 
 :::
 
-### T4 · Laboratoires
+### Laboratoires
 
 Classe : `valo:Laboratoire` (id 163).
 
@@ -138,33 +138,33 @@ Les champs "Objet de recherche", "Axe de recherche", "Mots-clefs" et "Expertises
 
 :::
 
-### T14 · OPEs
+### OPEs
 
 Classe : `valo:OPE` (id 184).
 
-| Propriété               | Libellé (vocabulaire)               | Type       | Cible attendue                                                    | Structure attendue |
-|-------------------------|-------------------------------------|------------|-------------------------------------------------------------------|--------------------|-------|
-| `dcterms:title`         | Title                               | `text`     | ∅                                                                 | OPE/CONV-YYYY-NNNN |
-| `valo:modePilotageOPE`  | Mode de pilotage / gestion de l'OPE | `resource` | Item set "**Mode de gestion / Pilotage (OPE)**" (`o:id` = 157269) | ∅                  |
-| `valo:ecImplique`       | Enseignant chercheur impliqué…      | `resource` | Item set "**Enseignants Chercheurs de UP8**" (`o:id` = 30435)     | ∅                  |
-| `valo:opeCollabLabo`    | OPE porté par le laboratoire…       | `resource` | Item set "**Laboratoires de Paris 8**" (`o:id` = 30437)           | ∅                  |
-| `valo:opeCollabExterne` | OPE en collaboration avec…          | `resource` | Item set "**Partenaires (OPE)**" (`o:id` = 121229)                | ∅                  |
-| `valo:opeType`          | Type de l'OPE                       | `resource` | Item set "**Type de contrat**" (`o:id` = 156249)                  | ∅                  |
-| `valo:budgOPE`          | Budget de l'OPE                     | `text`     | ∅                                                                 | _à compléter_      |
-| `valo:montantGlobal`    | Montant global (TTC)                | `text`     | ∅                                                                 | _à compléter_      |
-| `curation:start`        | Start                               | `text`     | ∅                                                                 | `DD/MM/YY`         |
-| `curation:end`          | End                                 | `text`     | ∅                                                                 | `DD/MM/YY`         |
+| Propriété               | Libellé (vocabulaire)               | Type       | Cible attendue                                                    | Structure attendue   |
+|-------------------------|-------------------------------------|------------|-------------------------------------------------------------------|----------------------|
+| `dcterms:title`         | Title                               | `text`     | ∅                                                                 | *OPE/CONV*-YYYY-NNNN |
+| `valo:modePilotageOPE`  | Mode de pilotage / gestion de l'OPE | `resource` | Item set "**Mode de gestion / Pilotage (OPE)**" (`o:id` = 157269) | ∅                    |
+| `valo:ecImplique`       | Enseignant chercheur impliqué…      | `resource` | Item set "**Enseignants Chercheurs de UP8**" (`o:id` = 30435)     | ∅                    |
+| `valo:opeCollabLabo`    | OPE porté par le laboratoire…       | `resource` | Item set "**Laboratoires de Paris 8**" (`o:id` = 30437)           | ∅                    |
+| `valo:opeCollabExterne` | OPE en collaboration avec…          | `resource` | Item set "**Partenaires (OPE)**" (`o:id` = 121229)                | ∅                    |
+| `valo:opeType`          | Type de l'OPE                       | `resource` | Item set "**Type de contrat**" (`o:id` = 156249)                  | ∅                    |
+| `valo:budgOPE`          | Budget de l'OPE                     | `text`     | ∅                                                                 | _à compléter_        |
+| `valo:montantGlobal`    | Montant global (TTC)                | `text`     | ∅                                                                 | _à compléter_        |
+| `curation:start`        | Start                               | `text`     | ∅                                                                 | `DD/MM/YY`           |
+| `curation:end`          | End                                 | `text`     | ∅                                                                 | `DD/MM/YY`           |
 
-### T15 · Partenaire (OPE)
+### Partenaire (OPE)
 
 Classe : `valo:PartenairesOPE` (id 183).
 
-| Propriété | Libellé (vocabulaire) | Type | Cible attendue | Structure attendue | Notes |
-|---|---|---|---|---|---|
-| `dcterms:title` | Title | ∅ | _à compléter_ | _à compléter_ | |
-| `valo:siret` | A comme numéro SIRET | ∅ | _à compléter_ | _à compléter_ | Un SIRET compte 14 chiffres. |
-| `valo:siren` | A comme numéro SIREN | ∅ | _à compléter_ | _à compléter_ | Un SIREN compte 9 chiffres (les 9 premiers du SIRET). |
-| `valo:codeNaf` | A le code NAF/APE | `resource` | _à compléter_ | — | **Piste :** items `valo:CodeNAF` (classe sans modèle). |
-| `dcterms:alternative` | Alternative Title | ∅ | _à compléter_ | _à compléter_ | Commentaire du modèle : autres appellations de la structure. |
-| `curation:location` | Location | ∅ | _à compléter_ | Code postal, si structure française (déclaré dans le modèle) | |
-| `valo:typePartenaire` | Type du partenaire… | `resource` | Item set 157306 « Type d'organisation » (déclaré dans le modèle) | — | Une classe `valo:TypePartenaire` existe aussi : les items de cet item set en relèvent-ils ? |
+| Propriété             | Libellé (vocabulaire) | Type       | Cible attendue                                      | Structure attendue                                    |
+|-----------------------|-----------------------|------------|-----------------------------------------------------|-------------------------------------------------------|
+| `dcterms:title`       | Title                 | `text`     | ∅                                                   | Intitulé le plus utilisé.                             |
+| `valo:siret`          | A comme numéro SIRET  | `text`     | ∅                                                   | Un SIRET compte 14 chiffres.                          |
+| `valo:siren`          | A comme numéro SIREN  | `text`     | ∅                                                   | Un SIREN compte 9 chiffres (les 9 premiers du SIRET). |
+| `valo:codeNaf`        | A le code NAF/APE     | `resource` | Item set "**Code NAF/APE**" (`o:id` = 120553)       | ∅                                                     |
+| `dcterms:alternative` | Alternative Title     | `text`     | ∅                                                   | Autres intitulés possibles                            |
+| `curation:location`   | Location              | `text`     | ∅                                                   | Code postal si française, ou le nom du pays           |
+| `valo:typePartenaire` | Type du partenaire…   | `resource` | Item set **Type d'organisation** (`o:id` = 157306)  | ∅                                                     |
